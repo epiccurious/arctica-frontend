@@ -2,8 +2,11 @@
 <header>
     <h1>{{ title }}</h1>
     <h2>{{ subtitle }}</h2>
-    <Button_primary />
-    <Button_secondary />
+    <div class="btn_container"> 
+        <Button_primary />
+        <Button_secondary />
+    </div>
+
 </header>
 </template>
 

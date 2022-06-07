@@ -56,4 +56,14 @@ export default {
   line-height: 18px;
 
 }
+
+.btn_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 21px;
+
+}
 </style>
