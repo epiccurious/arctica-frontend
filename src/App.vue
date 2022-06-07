@@ -42,6 +42,7 @@ export default {
   height: 46px;
   font-size: 18px;
   line-height: 18px;
+  font-weight: 500;
 
 }
 

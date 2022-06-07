@@ -34,6 +34,7 @@ header{
     align-items: center;
     padding: 0px 0px 50px;
     gap: 10px;
+    font-weight: 600;
 }
 h1{
     font-size: 21px;
@@ -41,5 +42,6 @@ h1{
 h2{
     font-size: 18px;
     color: #777777;
+    font-weight: 400;
 }
 </style>
