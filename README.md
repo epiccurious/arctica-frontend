@@ -1,5 +1,10 @@
 # arctica-frontend
 
+## Developer Environment
+```
+npm install -g @vue/cli
+```
+
 ## Project setup
 ```
 npm install
