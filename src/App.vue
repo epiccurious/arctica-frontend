@@ -1,17 +1,21 @@
 <template>
-<Header title="Welcome to Arctica" subtitle="Everything looks good. Glad to have you back."/>
-<!-- consider breaking this into seperate header & subheader components -->
+  <!-- <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </nav> -->
+  <!-- The above nav and router links will be reworked for post login -->
+  <router-view/>
 </template>
 
 <script>
-import Header from './components/Header'
-
+import { RouterView, RouterLink } from "vue-router";
+{
+  RouterView;
+  RouterLink
+}
 
 export default {
   name: 'App',
-  components: {
-    Header,
-  },
 }
 </script>
 
@@ -32,7 +36,6 @@ export default {
   background: #FFFFFF;
   margin-top: 60px;
 }
-
 .btn {
   background: #F7931A;
   box-shadow: 0px 4px 4p rgba(0, 0, 0, 0.25);
@@ -43,9 +46,7 @@ export default {
   font-size: 18px;
   line-height: 18px;
   font-weight: 500;
-
 }
-
 .btn2 {
   background: #FFFFFF;
   box-shadow: 0px 4px 4p rgba(0, 0, 0, 0.25);
@@ -55,9 +56,7 @@ export default {
   height: 46px;
   font-size: 18px;
   line-height: 18px;
-
 }
-
 .btn_container{
   display: flex;
   flex-direction: column;
@@ -65,6 +64,5 @@ export default {
   align-items: center;
   padding: 0px;
   gap: 21px;
-
 }
 </style>
