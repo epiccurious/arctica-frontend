@@ -3,8 +3,8 @@
     <h1>{{ title }}</h1>
     <h2>{{ subtitle }}</h2>
     <div class="btn_container"> 
-        <Button_primary />
-        <Button_secondary />
+        <Button_primary text="Log in"/>
+        <Button_secondary text="Quick Withdrawal - $500"/>
     </div>
 
 </header>

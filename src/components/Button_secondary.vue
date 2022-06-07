@@ -1,9 +1,17 @@
 <template>
-<button class="btn2">Quick Withdrawal - $500</button>
+<button @click="onClick()" class="btn2">{{ text }}</button>
 </template>
 
 <script>
 export default{
     name: 'Button_secondary',
+    props: {
+        text: String,
+    },
+    methods: {
+        onClick(){
+            console.log('button clicked')
+        }
+    },
 }
 </script>

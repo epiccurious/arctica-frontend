@@ -1,9 +1,17 @@
 <template>
-<button class="btn">Log in</button>
+<button @click="onClick()" class="btn">{{ text }}</button>
 </template>
 
 <script>
 export default{
     name: 'Button_primary',
+    props: {
+        text: String,
+    },
+    methods: {
+        onClick(){
+            console.log('button clicked')
+        }
+    },
 }
 </script>
