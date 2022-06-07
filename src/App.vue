@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<Header title="Welcome to Arctica" subtitle="Everything looks good. Glad to have you back."/>
+<!-- consider breaking this into seperate header & subheader components -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Header,
+  },
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter';
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 21px;
   color: #2c3e50;
+  background: #FFFFFF;
   margin-top: 60px;
+}
+
+.btn {
+  background: #F7931A;
+  box-shadow: 0px 4px 4p rgba(0, 0, 0, 0.25);
+  border-radius:5px;
+  color: #FFFFFF;
+
 }
 </style>
