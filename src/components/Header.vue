@@ -2,17 +2,10 @@
 <header>
     <h1>{{ title }}</h1>
     <h2>{{ subtitle }}</h2>
-    <div class="btn_container"> 
-        <Button_primary text="Log in"/>
-        <Button_secondary text="Quick Withdrawal - $500"/>
-    </div>
-
 </header>
 </template>
 
 <script>
-import Button_primary from './Button_primary'
-import Button_secondary from './Button_secondary.vue'
 
 export default {
     name: 'Header',
@@ -20,10 +13,6 @@ export default {
         title: String,
         subtitle: String,
 },
-    components: {
-        Button_primary,
-        Button_secondary,
-    },
 }
 </script>
 

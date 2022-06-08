@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <Nav />
-    <h1>This is a dashboard that will display the wallets</h1>
+    <h1>Wallets</h1>
   </div>
 </template>
 
@@ -16,3 +16,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.dashboard{
+  width:100%;
+}
+</style>
