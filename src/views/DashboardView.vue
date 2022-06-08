@@ -1,7 +1,11 @@
 <template>
-  <div class="dashboard">
+  <div class="page">
     <Nav />
-    <h1>Wallets</h1>
+      <div class="dashboard">
+        <h1>Wallets</h1>
+        <h2>Immediate Wallet</h2>
+        <h2>Delayed Wallet</h2>
+      </div>
   </div>
 </template>
 
@@ -19,6 +23,13 @@ export default {
 
 <style scoped>
 .dashboard{
-  width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1{
+  margin-top: 50px;
+  /* border-style: solid; 
+  border-width: 0px 0px 1px 0px; */
 }
 </style>

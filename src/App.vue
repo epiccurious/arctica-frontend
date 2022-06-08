@@ -1,10 +1,12 @@
 <template>
+<div class="page">
   <nav id="nav">Debug Nav bar:
-    <router-link :to="{ name: 'login' }">Home</router-link> 
+    <router-link :to="{ name: 'login' }">Login</router-link> 
     <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
   </nav>
   <!-- The above nav and router links will be reworked for post login, currently just for testing -->
   <router-view/>
+</div>
 </template>
 
 <script>
@@ -67,5 +69,8 @@ export default {
 }
 #nav a{
   padding:5px;
+}
+.page{
+  width:100%;
 }
 </style>
