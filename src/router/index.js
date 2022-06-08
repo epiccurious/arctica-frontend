@@ -8,12 +8,12 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/wallets',
+    name: 'dashboard',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/DashboardView.vue')
   }
 ]
 
@@ -24,6 +24,7 @@ const routes = [
 //remember to use lazy loading to optimize...
 //remember to use code splitting for dynamic routes to optimize...
 //consider prefetch for transaction history to optimize...
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes

@@ -1,9 +1,9 @@
 <template>
-  <!-- <nav>
-    <router-link to="{ name: 'login' }"">Home</router-link> |
-    <router-link to="{ name: 'about' }">About</router-link>
-  </nav> -->
-  <!-- The above nav and router links will be reworked for post login -->
+  <nav id="nav">
+    <router-link :to="{ name: 'login' }">Home</router-link> 
+    <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
+  </nav>
+  <!-- The above nav and router links will be reworked for post login, currently just for testing -->
   <router-view/>
 </template>
 
@@ -64,5 +64,8 @@ export default {
   align-items: center;
   padding: 0px;
   gap: 21px;
+}
+#nav a{
+  padding:5px;
 }
 </style>
