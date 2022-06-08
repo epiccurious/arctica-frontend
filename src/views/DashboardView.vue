@@ -2,9 +2,17 @@
   <div class="page">
     <Nav />
       <div class="dashboard">
-        <h1>Wallets</h1>
-        <h2>Immediate Wallet</h2>
-        <h2>Delayed Wallet</h2>
+        <div class="head_container">
+          <h1>Wallets</h1>
+        </div>
+        <div class="wallet_container">
+          <h2>Immediate Wallet</h2>
+          <h3>2 SD cards</h3>
+        </div>
+        <div class="wallet_container">
+          <h2>Delayed Wallet</h2>
+          <h3>5 SD cards + 2 Time Machine Keys</h3>
+        </div>
       </div>
   </div>
 </template>
@@ -26,10 +34,24 @@ export default {
   display:flex;
   flex-direction: column;
   align-items: center;
+  align-content: center;
+  justify-content: center;
+  width:70%;
 }
 h1{
   margin-top: 50px;
-  /* border-style: solid; 
-  border-width: 0px 0px 1px 0px; */
+  padding:10px;
+}
+.head_container{
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.wallet_container{
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
 }
 </style>

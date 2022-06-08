@@ -29,6 +29,7 @@ export default{
     height: 100px;
     border-style: solid; 
     border-width: 0px 0px 1px 0px;
+    border-color: #DEDEDE;
 }
 .icon_container{
     display:flex;
