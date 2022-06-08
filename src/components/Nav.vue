@@ -9,6 +9,8 @@
 </header>
 </template>
 
+<!-- Todo: update icon image above to show current page selected -->
+
 <script>
 import { RouterView, RouterLink } from "vue-router";
 {
