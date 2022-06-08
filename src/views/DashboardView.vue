@@ -25,6 +25,9 @@
             <span><img src="@/assets/carat_right.png"/></span>
           </div>
         </div>
+          <div class="decay_timer">
+            <h3>Approximate time until next decay: 1 year & 162 days</h3>
+          </div>
       </div>
   </div>
 </template>
@@ -77,6 +80,7 @@ h1{
 .wallet_container_right{
   display:flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items:center;
   align-content:center;
