@@ -7,7 +7,7 @@
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
   </nav>
-  <!-- The above nav and router links will be reworked for post login, currently just for testing -->
+  <!-- The above is just a debug menu, will be removed -->
   <router-view/>
 </div>
 </template>
@@ -27,11 +27,13 @@ export default {
     }
   },
   provide: {
-    immediate: true,
+    immediate: false,
     delayed: false
   }
 }
 </script>
+
+<!-- Need to make props provided here and injected into nav dynamic with current selected wallet -->
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
