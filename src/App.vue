@@ -1,7 +1,7 @@
 <template>
   <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="{ name: 'login' }"">Home</router-link> |
+    <router-link to="{ name: 'about' }">About</router-link>
   </nav> -->
   <!-- The above nav and router links will be reworked for post login -->
   <router-view/>
