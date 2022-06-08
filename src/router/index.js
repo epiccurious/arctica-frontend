@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
+import DashboardView from '../views/DashboardView.vue'
 
 const routes = [
   {
@@ -10,15 +11,15 @@ const routes = [
   {
     path: '/wallets',
     name: 'dashboard',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "dashboard" */ '../views/DashboardView.vue')
+    component: DashboardView
   },
   {
     path: '/wallets/immediate',
     name: 'immediate',
-    component: () => import('../views/immediate/Transactions.vue')
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "dashboard" */ '../views/immediate/Transactions.vue')
      
    },
    {
@@ -35,10 +36,9 @@ const routes = [
   },
 ]
 
-//need path for wallets list (dashboard)
-//need path for dashboard -> immediate wallet (send/tx/receive)
-//need path for dashborad -> delayed wallet (send/tx/receive) 
-//need path for dashboard -> delayed wallet -> time machine protocol
+//need path for immediate wallet (spend/receive)
+//need path for delayed wallet (spend/receive)
+//need path for delayed wallet -> time machine protocol
 //remember to use lazy loading to optimize...
 //remember to use code splitting for dynamic routes to optimize...
 //consider prefetch for transaction history to optimize...
