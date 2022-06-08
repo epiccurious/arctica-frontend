@@ -3,7 +3,7 @@
     <div class="nav_container"> 
         <div class="icon_container">
     <router-link class="icons" :to="{ name: 'dashboard' }"><img src="@/assets/wallets.png"></router-link> 
-    <router-link class="icons" :to="{ name: '' }"><img src="@/assets/settings.png"></router-link>
+    <router-link class="icons" :to="{ name: 'settings' }"><img src="@/assets/settings.png"></router-link>
         </div>
     </div>
 </header>

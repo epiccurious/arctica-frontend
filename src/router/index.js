@@ -13,8 +13,14 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/DashboardView.vue')
-  }
+    component: () => import(/* webpackChunkName: "dashboard" */ '../views/DashboardView.vue')
+  },
+  {
+   path: '/settings',
+   name: 'settings',
+   component: () => import('../views/Settings.vue')
+    
+  },
 ]
 
 //need path for wallets list (dashboard)
