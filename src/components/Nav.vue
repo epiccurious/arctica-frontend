@@ -89,9 +89,7 @@ export default{
     width:50%;
 }
 .description_balance{
-    display:flex;
-    flex-direction: column;
-    padding-left: 5px;
+    padding-left: 20px;
 }
 #icon_container{
     display:flex;
