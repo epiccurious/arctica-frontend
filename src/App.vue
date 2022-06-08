@@ -5,6 +5,7 @@
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
+    <router-link :to="{ name: 'delayed' }">Delayed</router-link>
   </nav>
   <!-- The above nav and router links will be reworked for post login, currently just for testing -->
   <router-view/>

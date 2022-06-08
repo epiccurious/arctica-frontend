@@ -16,7 +16,7 @@
             </div>
         </router-link> 
 
-        <div class="wallet_container">
+        <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet</h2>
           <h3>5 SD cards + 2 Time Machine Keys</h3>
@@ -25,7 +25,7 @@
             <h2 class="balance">12.05312325 BTC</h2>
             <span><img src="@/assets/carat_right.png"/></span>
           </div>
-        </div>
+        </router-link> 
           <div class="decay_timer">
             <h3>Approximate time until next decay: 1 year & 162 days</h3>
           </div>

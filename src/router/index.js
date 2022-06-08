@@ -21,6 +21,12 @@ const routes = [
     component: () => import('../views/immediate/Transactions.vue')
      
    },
+   {
+    path: '/wallets/delayed',
+    name: 'delayed',
+    component: () => import('../views/delayed/Transactions.vue')
+     
+   },
   {
    path: '/settings',
    name: 'settings',
