@@ -16,6 +16,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "dashboard" */ '../views/DashboardView.vue')
   },
   {
+    path: '/wallets/immediate',
+    name: 'immediate',
+    component: () => import('../views/immediate/Transactions.vue')
+     
+   },
+  {
    path: '/settings',
    name: 'settings',
    component: () => import('../views/Settings.vue')

@@ -5,16 +5,17 @@
         <div class="head_container">
           <h1>Wallets</h1>
         </div>
-        <div class="wallet_container">
-          <div class="wallet_container_left">
-          <h2>Immediate Wallet</h2>
-          <h3>2 SD cards</h3>
-          </div>
-          <div class="wallet_container_right">
-            <h2 class="balance">0.27847100 BTC</h2>
-            <span><img src="@/assets/carat_right.png"/></span>
-          </div>
-        </div>
+        <router-link class="wallet_container" :to="{ name: 'immediate' }">
+            <div class="wallet_container_left">
+            <h2>Immediate Wallet</h2>
+            <h3>2 SD cards</h3>
+            </div>
+            <div class="wallet_container_right">
+              <h2 class="balance">0.27847100 BTC</h2>
+              <span><img src="@/assets/carat_right.png"/></span>
+            </div>
+        </router-link> 
+
         <div class="wallet_container">
           <div class="wallet_container_left">
           <h2>Delayed Wallet</h2>
@@ -35,6 +36,11 @@
 
 <script>
 import Nav from '@/components/Nav'
+import { RouterView, RouterLink } from "vue-router";
+{
+  RouterView;
+  RouterLink
+}
 
 export default {
   name: 'DashboardView',
@@ -85,5 +91,13 @@ h1{
   align-items:center;
   align-content:center;
   width:50%;
+}
+.wallet_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
 }
 </style>

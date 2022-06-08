@@ -2,8 +2,9 @@
 <div class="page">
   <nav id="nav">Debug Nav bar:
     <router-link :to="{ name: 'login' }">Login</router-link> 
-    <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
+    <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'settings' }">Settings</router-link>
+    <router-link :to="{ name: 'immediate' }">Immediate</router-link>
   </nav>
   <!-- The above nav and router links will be reworked for post login, currently just for testing -->
   <router-view/>
@@ -73,5 +74,9 @@ export default {
 }
 .page{
   width:100%;
+}
+a{
+  text-decoration: inherit;
+  color: inherit;
 }
 </style>

@@ -9,7 +9,12 @@
 </header>
 </template>
 
-<!-- Todo: update icon image above to show current page selected -->
+<!-- Todo: 
+-update icon image above to dynamically show current page selected
+-conditionally render wallet selected in top left when within a wallet (immediate or delayed)
+-conditionally render wallet/send/receieve in the middle when within a wallet (immedate or delayed)
+-update middle menu to dynamically show current page selected
+ -->
 
 <script>
 import { RouterView, RouterLink } from "vue-router";
