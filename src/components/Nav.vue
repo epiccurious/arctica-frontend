@@ -20,7 +20,7 @@
             </div>
 
             <div v-if="immediate == true" class="middle_menu">
-                <h2>Wallet Send Receive</h2>
+                <h2 class="wallet_tab">Wallet</h2> <h2 class="send_tab">Send</h2>  <h2 class="receive_tab">Receive</h2> 
             </div>
 
             <div v-else-if="delayed == true" class="middle_menu">
@@ -74,6 +74,7 @@ export default{
 #menu_container{ 
     display:flex;
     flex-direction: row;
+    justify-content:space-between;
     align-items: center;
     align-content:center;
 }
@@ -83,10 +84,20 @@ export default{
 .wallet_overview{
     display:flex;
     flex-direction: row;
-    width:50%;
+    /* width:50%; */
 }
 .middle_menu{
-    width:50%;
+    display:flex;
+    flex-direction: row;
+}
+.wallet_tab{
+    padding:25px;
+}
+.send_tab{
+    padding:25px;
+}
+.receive_tab{
+    padding:25px;
 }
 .description_balance{
     padding-left: 20px;
