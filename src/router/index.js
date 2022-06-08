@@ -17,9 +17,19 @@ const routes = [
   }
 ]
 
+//need path for wallets list (dashboard)
+//need path for dashboard -> immediate wallet (send/tx/receive)
+//need path for dashborad -> delayed wallet (send/tx/receive) 
+//need path for dashboard -> delayed wallet -> time machine protocol
+//remember to use lazy loading to optimize...
+//remember to use code splitting for dynamic routes to optimize...
+//consider prefetch for transaction history to optimize...
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+//may want to disable this web history feature at some point. Seems like a recipe for trouble to allow 
+//the user to navigate through the app with forward and back pages.
 
 export default router
