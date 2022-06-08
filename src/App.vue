@@ -1,5 +1,5 @@
 <template>
-  <nav id="nav">
+  <nav id="nav">Debug Nav bar:
     <router-link :to="{ name: 'login' }">Home</router-link> 
     <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
   </nav>
