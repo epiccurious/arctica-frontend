@@ -43,6 +43,7 @@
 -conditionally render wallet selected in top left when within a wallet (immediate or delayed)
 -conditionally render wallet/send/receieve in the middle when within a wallet (immedate or delayed)
 -update middle menu to dynamically show current page selected
+-hook up routes to middle menu links
  -->
 
 <script>
