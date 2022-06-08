@@ -21,6 +21,15 @@ import { RouterView, RouterLink } from "vue-router";
 
 export default {
   name: 'App',
+  data(){
+    return{
+
+    }
+  },
+  provide: {
+    immediate: true,
+    delayed: false
+  }
 }
 </script>
 

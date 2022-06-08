@@ -2,23 +2,29 @@
 <header>
     <div id="nav_container"> 
         <div id="menu_container">
-            <div v-if="immediate" class="wallet_overview">
-                <img src="@/assets/Wallet.png"/>
-                immediate overview
+            <div v-if="immediate == true" class="wallet_overview">
+                    <img src="@/assets/Wallet.png"/>
+                    <div class="description_balance">
+                    <h3 class="description">Immediate Wallet</h3>
+                    <h3 class="balance">₿ 0.27847100</h3>
+                    </div>
             </div>
-            <div v-else-if="delayed" class="wallet_overview">
-                <img src="@/assets/Wallet.png"/>
-                delayed overview
+            <div v-else-if="delayed == true" class="wallet_overview">
+                    <img src="@/assets/Wallet.png"/>
+                    <div class="description_balance">
+                    <h3 class="description">Delayed Wallet</h3>
+                    <h3 class="balance">₿ 0.27847100</h3>
+                    </div>
             </div>
             <div v-else class="spaceholder">
             </div>
 
-            <div v-if="immediate" class="middle_menu">
-                middle menu goes here
+            <div v-if="immediate == true" class="middle_menu">
+                <h2>Wallet Send Receive</h2>
             </div>
 
-            <div v-else-if="delayed" class="middle_menu">
-                middle menu goes here
+            <div v-else-if="delayed == true" class="middle_menu">
+                <h2>Wallet Send Receive</h2>
             </div>
 
             <div v-else class="spaceholder">
@@ -50,6 +56,9 @@ export default{
     name: 'Nav',
     props: {},
     methods: {},
+    inject:[
+        'immediate','delayed'
+    ],
 }
 </script>
 
@@ -65,9 +74,24 @@ export default{
 #menu_container{ 
     display:flex;
     flex-direction: row;
+    align-items: center;
+    align-content:center;
 }
 .spaceholder{
     width:50%;
+}
+.wallet_overview{
+    display:flex;
+    flex-direction: row;
+    width:50%;
+}
+.middle_menu{
+    width:50%;
+}
+.description_balance{
+    display:flex;
+    flex-direction: column;
+    padding-left: 5px;
 }
 #icon_container{
     display:flex;
@@ -79,5 +103,11 @@ export default{
 .icons{
     display:flex;
     padding: 5px;
+}
+img{
+    align-self: center;
+}
+.description{
+    color: #777777;
 }
 </style>
