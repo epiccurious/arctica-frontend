@@ -6,6 +6,8 @@
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
+    <router-link :to="{ name: 'immediateSend' }">ImmediateSend</router-link>
+    <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
   </nav>
   <!-- The above is just a debug menu, will be removed -->
   <router-view/>

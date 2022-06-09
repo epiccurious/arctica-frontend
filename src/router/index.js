@@ -23,6 +23,18 @@ const routes = [
      
    },
    {
+    path: '/wallets/immediate/send',
+    name: 'immediateSend',
+    component: () => import('../views/immediate/Send.vue')
+     
+   },
+   {
+    path: '/wallets/immediate/receive',
+    name: 'immediateReceive',
+    component: () => import('../views/immediate/Receive.vue')
+     
+   },
+   {
     path: '/wallets/delayed',
     name: 'delayed',
     component: () => import('../views/delayed/Transactions.vue')
