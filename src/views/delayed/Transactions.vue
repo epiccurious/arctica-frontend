@@ -5,14 +5,14 @@
         <div class="head_container">
           <h1>Transactions</h1>
         </div>
-        <div class="transaction_container">
+        <div v-for="transaction in transactions" :key="transaction.id" class="transaction_container">
           <div class="transaction_container_left">
-          <h2>Luigi's pizza</h2>
-          <h3>2 minutes ago</h3>
+          <h2>{{ transaction.address }}</h2>
+          <h3>{{ transaction.datetime }}</h3>
           </div>
           <div class="transaction_container_right">
-            <h2 class="balance">₿ -21,736 sats</h2>
-            <h2 class="fiat_currency">$ -12.75</h2>
+            <h2 class="balance">₿ -{{ transaction.balance.toLocaleString('en-US') }} sats</h2>
+            <h2 class="fiat_currency">$ -{{ transaction.fiat_currency.toLocaleString('en-US') }}</h2>
           </div>
         </div>
       </div>
@@ -27,6 +27,15 @@ export default {
   name: 'delayed',
   components: {
     Nav
+  },
+  data() {
+      return{
+          transactions: [
+              {id: 1, address: '1231i2nd23in43if', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-09T12:00:00-06:30'},
+              {id: 2, address: '134jfni348f44523', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-06:30'},
+              {id: 3, address: '158jgj58jj85449j', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-09T12:00:00-06:30'}
+          ]
+      }
   }
 }
 </script>
