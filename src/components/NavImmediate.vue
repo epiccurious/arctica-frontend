@@ -12,11 +12,17 @@
 
             <div class="middle_menu">
                 <h2 v-if="wallet" class="wallet_tab_selected">Wallet</h2> 
-                <h2 v-else class="wallet_tab">Wallet</h2> 
+                <router-link v-else :to="{ name: 'immediate' }">
+                    <h2 class="wallet_tab">Wallet</h2> 
+                </router-link>
                 <h2 v-if="send" class="send_tab_selected">Send</h2> 
-                <h2 v-else class="send_tab">Send</h2> 
+                <router-link v-else :to="{ name: 'immediateSend' }">
+                    <h2 class="send_tab">Send</h2>
+                </router-link> 
                 <h2 v-if="receive" class="receive_tab_selected">Receive</h2> 
-                <h2 v-else class="receive_tab">Receive</h2> 
+                <router-link v-else :to="{ name: 'immediateReceive' }">
+                    <h2 class="receive_tab">Receive</h2> 
+                </router-link>
             </div>
 
             <div id="icon_container">
