@@ -56,7 +56,9 @@ export default{
     display:flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding:5px;
+    align-items: center;
+    align-content:center;
+    padding-top:40px;
 }
 
 .icons{
