@@ -2,8 +2,8 @@
   <div class="login">
 <Header title="Welcome to Arctica" subtitle="Everything looks good. Glad to have you back."/>
     <div class="btn_container"> 
-        <button @click="onClick()" class="btn">Log in</Button>
-        <button @click="onClick2()" class="btn2">Quick Withdrawal - $500</button>
+        <button @click="login()" class="btn">Log in</Button>
+        <button @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
     </div>
   </div>
 </template>
@@ -18,10 +18,10 @@ export default {
     Header,
     },
     methods: {
-        onClick(){
+        login(){
             console.log('login clicked')
         },
-        onClick2(){
+        quickWithdrawal(){
             console.log('quick withdrawal clicked')
         }
     },
