@@ -11,9 +11,6 @@
 </header>
 </template>
 
-<!-- Todo: 
--update icon image above to dynamically show current page selected
- -->
 
 <script>
 import { RouterView, RouterLink } from "vue-router";

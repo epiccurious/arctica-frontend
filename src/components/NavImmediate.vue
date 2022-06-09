@@ -44,7 +44,29 @@ import { RouterView, RouterLink } from "vue-router";
 export default{
     name: 'NavImmediate',
     props: {},
-    methods: {},
+    computed: {
+        wallet(){
+            if(this.$route.path =='/wallets/immediate'){
+                return true
+            } else {
+                return false
+            }
+        },
+        send(){
+            if(this.$route.path=='/wallets/immediate/send'){
+                return true
+            } else{
+                return false
+            }
+        },
+        receive(){
+            if(this.$route.path=='/wallets/immediate/receive'){
+                return true
+            } else{
+                return false
+            }
+        }
+    },
 }
 </script>
 

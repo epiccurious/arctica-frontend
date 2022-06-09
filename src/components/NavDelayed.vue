@@ -11,7 +11,12 @@
             </div>
 
             <div class="middle_menu">
-                <h2 class="wallet_tab">Wallet</h2> <h2 class="send_tab">Send</h2>  <h2 class="receive_tab">Receive</h2> 
+                <h2 v-if="wallet" class="wallet_tab_selected">Wallet</h2> 
+                <h2 v-else class="wallet_tab">Wallet</h2> 
+                <h2 v-if="send" class="send_tab_selected">Send</h2> 
+                <h2 v-else class="send_tab">Send</h2> 
+                <h2 v-if="receive" class="receive_tab_selected">Receive</h2> 
+                <h2 v-else class="receive_tab">Receive</h2> 
             </div>
 
             <div id="icon_container">
@@ -34,7 +39,29 @@ import { RouterView, RouterLink } from "vue-router";
 export default{
     name: 'NavDelayed',
     props: {},
-    methods: {},
+        computed: {
+        wallet(){
+            if(this.$route.path =='/wallets/delayed'){
+                return true
+            } else {
+                return false
+            }
+        },
+        send(){
+            if(this.$route.path=='/wallets/delayed/send'){
+                return true
+            } else{
+                return false
+            }
+        },
+        receive(){
+            if(this.$route.path=='/wallets/delayed/receive'){
+                return true
+            } else{
+                return false
+            }
+        }
+    },
 }
 </script>
 
@@ -71,6 +98,18 @@ export default{
 }
 .receive_tab{
     padding:25px;
+}
+.wallet_tab_selected{
+    padding:25px;
+    color:#F7931A;
+}
+.receive_tab_selected{
+    padding:25px;
+    color:#F7931A;
+}
+.send_tab_selected{
+    padding:25px;
+    color:#F7931A;
 }
 .description_balance{
     padding-left: 20px;
