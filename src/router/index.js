@@ -40,6 +40,18 @@ const routes = [
     component: () => import('../views/delayed/Transactions.vue')
      
    },
+   {
+    path: '/wallets/delayed/send',
+    name: 'delayedSend',
+    component: () => import('../views/delayed/Send.vue')
+     
+   },
+   {
+    path: '/wallets/delayed/receive',
+    name: 'delayedReceive',
+    component: () => import('../views/delayed/Receive.vue')
+     
+   },
   {
    path: '/settings',
    name: 'settings',
@@ -48,8 +60,7 @@ const routes = [
   },
 ]
 
-//need path for immediate wallet (spend/receive)
-//need path for delayed wallet (spend/receive)
+
 //need path for delayed wallet -> time machine protocol
 //remember to use lazy loading to optimize...
 //remember to use code splitting for dynamic routes to optimize...
