@@ -11,7 +11,7 @@
             <h3>2 SD cards</h3>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance">0.27847100 BTC</h2>
+              <h2 class="balance">{{ immediateBalance }} BTC</h2>
               <span><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -22,7 +22,7 @@
           <h3>5 SD cards + 2 Time Machine Keys</h3>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance">12.05312325 BTC</h2>
+            <h2 class="balance">{{ delayedBalance }} BTC</h2>
             <span><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
@@ -46,7 +46,8 @@ export default {
   name: 'DashboardView',
   components: {
     Nav
-  }
+  },
+    inject: ['immediateBalance', 'delayedBalance']
 }
 </script>
 

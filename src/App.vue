@@ -31,8 +31,8 @@ export default {
     }
   },
   provide: {
-    immediate: false,
-    delayed: false
+      immediateBalance: 0.27847100,
+      delayedBalance: 12.05312325,
   }
 }
 </script>

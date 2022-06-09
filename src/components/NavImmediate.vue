@@ -6,7 +6,7 @@
                     <img src="@/assets/Wallet.png"/>
                     <div class="description_balance">
                     <h3 class="description">Immediate Wallet</h3>
-                    <h3 class="balance">₿ 0.27847100</h3>
+                    <h3 class="balance">₿ {{ immediateBalance }}</h3>
                     </div>
             </div>
 
@@ -72,6 +72,7 @@ export default{
             }
         }
     },
+    inject: ['immediateBalance', 'delayedBalance']
 }
 </script>
 
