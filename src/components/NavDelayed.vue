@@ -90,7 +90,6 @@ export default{
 .wallet_overview{
     display:flex;
     flex-direction: row;
-    /* width:50%; */
 }
 .middle_menu{
     display:flex;

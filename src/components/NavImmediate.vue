@@ -36,8 +36,7 @@
 
 
 <!-- Todo:
--update middle menu to dynamically show current page selected
--hook up routes to middle menu links
+-fix styling for middle menu selector show (needs bottom orange border)
 -show dynamic balance -->
 
 <script>
@@ -95,7 +94,6 @@ export default{
 .wallet_overview{
     display:flex;
     flex-direction: row;
-    /* width:50%; */
 }
 .middle_menu{
     display:flex;
