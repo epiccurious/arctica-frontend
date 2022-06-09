@@ -19,6 +19,8 @@
   </div>
 </template>
 
+<!-- Need search and filter component -->
+
 
 <script>
 import Nav from '@/components/Nav'
