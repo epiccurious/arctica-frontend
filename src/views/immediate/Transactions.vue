@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Nav />
+    <NavImmediate />
       <div class="dashboard">
         <div class="head_container">
           <h1>Transactions</h1>
@@ -23,12 +23,12 @@
 
 
 <script>
-import Nav from '@/components/Nav'
+import NavImmediate from '@/components/NavImmediate'
 
 export default {
   name: 'immediate',
   components: {
-    Nav
+    NavImmediate
   },
   data() {
       return{

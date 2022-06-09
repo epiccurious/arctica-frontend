@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Nav />
+    <NavDelayed />
       <div class="dashboard">
         <div class="head_container">
           <h1>Transactions</h1>
@@ -21,12 +21,12 @@
 
 
 <script>
-import Nav from '@/components/Nav'
+import NavDelayed from '@/components/NavDelayed'
 
 export default {
   name: 'delayed',
   components: {
-    Nav
+    NavDelayed
   },
   data() {
       return{
