@@ -111,14 +111,23 @@ export default{
 .wallet_tab_selected{
     padding:25px;
     color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
 }
 .receive_tab_selected{
     padding:25px;
     color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
 }
 .send_tab_selected{
     padding:25px;
     color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
 }
 .description_balance{
     padding-left: 20px;
