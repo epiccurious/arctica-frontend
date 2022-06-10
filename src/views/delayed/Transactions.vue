@@ -3,7 +3,7 @@
     <NavDelayed />
       <div class="dashboard">
         <div class="head_container">
-          <h1>Transactions</h1>
+          <h1>Transaction History</h1>
         </div>
         <div v-for="transaction in transactions" :key="transaction.id" class="transaction_container">
           <div class="transaction_container_left">
