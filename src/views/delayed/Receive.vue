@@ -9,9 +9,9 @@
                 <h2 id="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
-                <div @click="copy()" id="copy">
+                <div @click="copy(address)" id="copy">
                     <img src="@/assets/Copy.png">
-                    <h3>Copy Address</h3>
+                    <h3 id="copy_text">Copy Address</h3>
                 </div>
                 <div id="download">
                     <img src="@/assets/Arrow_down.png">
@@ -40,15 +40,14 @@ export default {
     NavDelayed
   },
   methods: {
-        copy(){
-          console.log('copy pressed')
-          this.$refs.clone.focus()
-          document.execCommand('copy')
+       async copy(s){
+          await navigator.clipboard.writeText(s)
+          alert('Copied Address!')
         },
       },
   data(){
       return{
-          address: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky'
+          address: 'bc1qyFgK82tfxndmjl237j6xdvvhxrrnfky'
       }
   }
 }
@@ -98,6 +97,13 @@ export default {
     display:flex;
     flex-direction: row;
     padding-bottom: 10px;
+}
+#copy:hover{
+    border: 2px dotted #EDEDED;
+    cursor:pointer
+}
+#copy_text:hover{
+    cursor:pointer;
 }
 #download{
     display:flex;
