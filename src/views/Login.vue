@@ -11,7 +11,7 @@
                 </form>
                 <div class="btn_container"> 
                     <button v-if="password1 == password2 && password1 != '' && password2 != '' " @click="login()" class="btn">Continue</Button>
-                    <button v-else @click="login()" class="btn3">Continue</Button>
+                    <button v-else class="btn3">Continue</Button>
                     <button @click="passwordRecovery()" class="btn2">I Forgot my Password</button>
                 </div>
             </div>
