@@ -26,7 +26,10 @@
 
 
 <!-- 
-Images are distorted here...why!? -->
+Todo:
+-Images are distorted here...why!?
+-copy button is broken...clipboard is kinda hard
+-download QR button not yet implemented -->
 
 <script>
 import NavImmediate from '@/components/NavImmediate'

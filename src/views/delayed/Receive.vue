@@ -9,7 +9,7 @@
                 <h2 id="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
-                <div id="copy">
+                <div @click="copy()" id="copy">
                     <img src="@/assets/Copy.png">
                     <h3>Copy Address</h3>
                 </div>
@@ -26,7 +26,10 @@
 
 
 <!-- 
-Images are distorted here...why!? -->
+Todo:
+-Images are distorted here...why!?
+-copy button is broken...clipboard is kinda hard
+-download QR button not yet implemented -->
 
 <script>
 import NavDelayed from '@/components/NavDelayed'
@@ -36,6 +39,13 @@ export default {
   components: {
     NavDelayed
   },
+  methods: {
+        copy(){
+          console.log('copy pressed')
+          this.$refs.clone.focus()
+          document.execCommand('copy')
+        },
+      },
   data(){
       return{
           address: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky'
