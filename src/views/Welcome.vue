@@ -13,7 +13,7 @@
 import Header from '@/components/Header'
 
 export default {
-  name: 'WelcomeView',
+  name: 'Welcome',
   components: {
     Header,
     },

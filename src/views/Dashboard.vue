@@ -43,7 +43,7 @@ import { RouterView, RouterLink } from "vue-router";
 }
 
 export default {
-  name: 'DashboardView',
+  name: 'Dashboard',
   components: {
     Nav
   },

@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import WelcomeView from '../views/WelcomeView.vue'
+import Welcome from '../views/Welcome.vue'
 import Login from '../views/Login.vue'
-import DashboardView from '../views/DashboardView.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 const routes = [
   {
     path: '/',
     name: 'welcome',
-    component: WelcomeView
+    component: Welcome
   },
   {
     path: '/boot',
@@ -23,7 +23,7 @@ const routes = [
   {
     path: '/wallets',
     name: 'dashboard',
-    component: DashboardView
+    component: Dashboard
   },
   {
     path: '/wallets/immediate',
