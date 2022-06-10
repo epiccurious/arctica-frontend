@@ -2,7 +2,9 @@
 <div class="page">
     <NavDelayed/>
     <div class="outer_container">
+      <div class="head_container">
          <h1>Receive Bitcoin</h1>
+       </div>
         <div class="receive_container">
             <div class="receive_top">
                 <img src="@/assets/placeholderQR.png">
@@ -124,5 +126,8 @@ h3{
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+}
+.head_container{
+  width: 30%;
 }
   </style>
