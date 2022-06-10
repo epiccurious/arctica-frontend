@@ -5,7 +5,7 @@
         <div class="receive_container">
             <div class="receive_top">
                 <img src="@/assets/placeholderQR.png">
-                <h2 id="receive_address">bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky</h2>
+                <h2 id="receive_address">{{ address }}</h2>
             </div>
         </div>
 </div>
@@ -22,6 +22,11 @@ export default {
     NavImmediate,
     Header
   },
+  data(){
+      return{
+          address: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky'
+      }
+  }
 }
 </script>
 
@@ -42,6 +47,7 @@ export default {
     line-height: 20px;
     text-transform: uppercase;
     font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
-    color: #777777
+    color: #777777;
+    word-wrap: break-word;
 }
   </style>

@@ -22,10 +22,10 @@ header{
     flex-direction: column;
     align-items: center;
     padding: 0px 0px 25px;
-    font-weight: 600;
 }
 h1{
     font-size: 21px;
+    font-weight:600;
 }
 h2{
     font-size: 18px;

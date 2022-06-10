@@ -45,7 +45,7 @@ import { RouterView, RouterLink } from "vue-router";
 export default{
     name: 'NavDelayed',
     props: {},
-        computed: {
+    computed: {
         wallet(){
             if(this.$route.path =='/wallets/delayed'){
                 return true
