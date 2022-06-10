@@ -10,6 +10,12 @@ const routes = [
     component: WelcomeView
   },
   {
+    path: '/boot',
+    name: 'Boot',
+    component: () => import('../views/Boot.vue')
+     
+   },
+  {
     path: '/login',
     name: 'Login',
     component: Login
