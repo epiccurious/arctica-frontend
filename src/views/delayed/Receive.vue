@@ -15,7 +15,7 @@
                 </div>
                 <div id="download">
                     <img src="@/assets/Arrow_down.png">
-                    <h3>Download QR Code</h3>
+                    <h3 id="download_text">Download QR Code</h3>
                 </div>
             </div>
         </div>
@@ -107,6 +107,12 @@ export default {
     display:flex;
     flex-direction: row;
     padding-bottom: 10px;
+}
+#download:hover{
+    cursor:pointer
+}
+#download_text:hover{
+    cursor:pointer;
 }
 h1{
   margin-top: 50px;
