@@ -1,8 +1,8 @@
 <template>
 <div class="page">
     <NavImmediate/>
-    <center>
-    <h1>Receive Bitcoin</h1>
+    <div class="outer_container">
+         <h1>Receive Bitcoin</h1>
         <div class="receive_container">
             <div class="receive_top">
                 <img src="@/assets/placeholderQR.png">
@@ -19,10 +19,14 @@
                 </div>
             </div>
         </div>
-    </center>
+        <button class="btn">New Address</Button>
+    </div>        
 </div>
 </template>
 
+
+<!-- 
+Images are distorted here...why!? -->
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
@@ -42,6 +46,11 @@ export default {
 
 
 <style scoped>
+.outer_container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
 .receive_container{
     border: 1px solid #EDEDED;
     border-radius: 5px;
@@ -53,6 +62,7 @@ export default {
     align-content: center;
     justify-content: center;
     width:35%;
+    margin: 25px auto;
 }
 .receive_top{
     display:flex;
@@ -87,6 +97,7 @@ export default {
 h1{
   margin-top: 50px;
   padding:10px;
+  text-align:left;
 }
 h3{
     font-weight: 400;
