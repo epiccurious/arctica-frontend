@@ -13,13 +13,13 @@
 import Header from '@/components/Header'
 
 export default {
-  name: 'LoginView',
+  name: 'WelcomeView',
   components: {
     Header,
     },
     methods: {
         login(){
-            console.log('login clicked')
+            this.$router.push({ path: '/login' })
         },
         quickWithdrawal(){
             console.log('quick withdrawal clicked')

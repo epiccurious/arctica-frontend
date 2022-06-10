@@ -1,7 +1,8 @@
 <template>
 <div class="page">
   <nav id="nav">Debug Nav bar:
-    <router-link :to="{ name: 'login' }">Login</router-link> 
+    <router-link :to="{ name: 'welcome' }">Welcome</router-link> 
+    <router-link :to="{ name: 'Login' }">Login</router-link> 
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
