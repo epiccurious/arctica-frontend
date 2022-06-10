@@ -21,8 +21,7 @@ header{
     display:flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px 0px 50px;
-    gap: 10px;
+    padding: 0px 0px 25px;
     font-weight: 600;
 }
 h1{

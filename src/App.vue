@@ -86,6 +86,14 @@ export default {
   padding: 0px;
   gap: 21px;
 }
+/* .form_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 21px;
+} */
 #nav a{
   padding:5px;
 }
