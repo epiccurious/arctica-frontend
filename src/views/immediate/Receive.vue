@@ -91,6 +91,7 @@ export default {
     font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
     color: #777777;
     word-wrap: break-word;
+    align-self:center;
 }
 #copy{
     display:flex;
