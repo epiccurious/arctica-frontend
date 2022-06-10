@@ -78,6 +78,19 @@ export default {
   font-size: 18px;
   line-height: 18px;
 }
+.btn3 {
+  background: #DEDEDE;
+  box-shadow: 0px 4px 4p rgba(0, 0, 0, 0.25);
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  border-radius:5px;
+  color: #FFFFFF;
+  width: 335px;
+  height: 46px;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 500;
+}
 .btn_container{
   display: flex;
   flex-direction: column;
@@ -86,14 +99,6 @@ export default {
   padding: 0px;
   gap: 21px;
 }
-/* .form_container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  gap: 21px;
-} */
 #nav a{
   padding:5px;
 }

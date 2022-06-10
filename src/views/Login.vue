@@ -4,19 +4,22 @@
             <div class="form_container">
                 <form>
                     <label>Enter Password</label>
-                   <br><input type="password" required placeholder="Your secret password">
+                   <br><input v-model="password1" type="password" required placeholder="Your secret password">
 
                     <br><label>Confirm Password</label>
-                   <br><input type="password" required placeholder="Your secret password">
+                   <br><input v-model="password2" type="password" required placeholder="Your secret password">
                 </form>
                 <div class="btn_container"> 
-                    <button @click="login()" class="btn">Continue</Button>
+                    <button v-if="password1 == password2 && password1 != '' && password2 != '' " @click="login()" class="btn">Continue</Button>
+                    <button v-else @click="login()" class="btn3">Continue</Button>
                     <button @click="passwordRecovery()" class="btn2">I Forgot my Password</button>
                 </div>
             </div>
             
 </div>  
 </template>
+
+<!-- Currently, the two passwords inputs just need to match in order for the user to login -->
 
 <script>
 import Header from '@/components/Header'
@@ -28,12 +31,19 @@ export default {
     },
     methods: {
         login(){
-            console.log('Login Clicked')
+            this.$router.push({ path: '/wallets' })
         },
         passwordRecovery(){
             console.log('Password Recovery Clicked')
         },
     },
+ computed: {},
+ data(){
+     return{
+         password1: '',
+         password2: ''
+     }
+ }
 }
 </script>
 
