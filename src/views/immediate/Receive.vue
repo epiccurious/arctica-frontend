@@ -98,7 +98,6 @@ export default {
     padding-bottom: 10px;
 }
 #copy:hover{
-    border: 2px dotted #EDEDED;
     cursor:pointer
 }
 #copy_text:hover{

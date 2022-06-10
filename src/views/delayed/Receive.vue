@@ -28,7 +28,6 @@
 <!-- 
 Todo:
 -Images are distorted here...why!?
--copy button is broken...clipboard is kinda hard
 -download QR button not yet implemented -->
 
 <script>
@@ -99,7 +98,6 @@ export default {
     padding-bottom: 10px;
 }
 #copy:hover{
-    border: 2px dotted #EDEDED;
     cursor:pointer
 }
 #copy_text:hover{
