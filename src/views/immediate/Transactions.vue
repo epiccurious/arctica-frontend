@@ -49,7 +49,7 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
-  width:70%;
+  width:100%;
 }
 h1{
   margin-top: 50px;
