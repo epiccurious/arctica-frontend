@@ -59,10 +59,12 @@ form{
     margin: 30px auto;
     text-align: left;
     padding:40px;
+    font-size: 16px;
 }
 label{
     display:inline-block;
     margin: 25px 0 15px;
+    font-size: 20px;
 
 }
 input{
