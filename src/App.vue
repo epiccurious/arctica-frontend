@@ -33,7 +33,7 @@ export default {
     }
   },
   provide: {
-      immediateBalance: 0.27847100,
+      immediateBalance: 0.27847143,
       delayedBalance: 12.05312325,
   }
 }
