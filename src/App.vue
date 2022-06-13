@@ -92,6 +92,15 @@ export default {
   line-height: 18px;
   font-weight: 500;
 }
+.btnclose{
+  background-color: #FFFFFF;
+  border:none;
+  width: auto;
+  height: fit-content;
+}
+.btnclose:hover{
+  cursor:pointer;
+}
 .btn_container{
   display: flex;
   flex-direction: column;
