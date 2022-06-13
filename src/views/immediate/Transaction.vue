@@ -9,6 +9,36 @@
             <input type="text" placeholder="Enter a description...">
         </div>
 
+        <div class="tx_block">
+            <h2>To</h2>
+            <h3>address here</h3>
+        </div>
+
+        <div class="tx_block">
+            <h2>Amount</h2>
+            <h3>amount here</h3>
+        </div>
+
+        <div class="tx_block">
+            <h2>Fee</h2>
+            <h3>fee here</h3>
+        </div>
+
+        <div class="tx_block">
+            <h2>Time</h2>
+            <h3>time here</h3>
+        </div>
+
+        <div class="tx_block">
+            <h2>Status</h2>
+            <h3>status here</h3>
+        </div>
+
+        <div id="footer_block">
+            <h2>View in explorer</h2>
+            <img src="@/assets/carat_right.png">
+        </div>
+
     </div>
 </div>
 </template>
@@ -26,7 +56,7 @@ export default {
     display:flex;
     flex-direction:column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width:70%;
     margin: 0 auto;
     
@@ -43,5 +73,20 @@ export default {
     width:100%;
     justify-content: space-between;
     
+}
+#description_block{
+    display:flex;
+    align-self:center;
+    justify-self:center;
+}
+
+#tx_block{
+    display:flex;
+    flex-direction: row;
+}
+
+#footer_block{
+    display:flex;
+    flex-direction: row;
 }
 </style>
