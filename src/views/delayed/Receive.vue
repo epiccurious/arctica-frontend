@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn">New Address</Button>
+        <button @click="newAddress()" class="btn">New Address</Button>
     </div>        
 </div>
 </template>
@@ -45,6 +45,9 @@ export default {
           await navigator.clipboard.writeText(s)
           alert('Copied Address!')
         },
+        newAddress(){
+          console.log('New address clicked')
+        }
       },
   data(){
       return{
