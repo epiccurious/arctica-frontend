@@ -75,7 +75,7 @@ export default {
     align-content: center;
     justify-content: center;
     width:70%;
-    margin: 25px auto;
+    margin: 0 auto;
 }
 h1{
   margin-top: 50px;
@@ -91,9 +91,9 @@ h1{
 form{
     max-width:70%;
     width: 60%;
-    margin: 30px auto;
+    margin: 10px auto;
     text-align: left;
-    padding:40px;
+    padding:15px;
 }
 label{
     display:inline-block;
