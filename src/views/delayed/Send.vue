@@ -1,7 +1,7 @@
 <template>
 <div class="page">
     <NavDelayed/>
-    <h1>This is the send page</h1>
+    <h1>This is the send page. See immediate wallet</h1>
 </div>
 </template>
 
