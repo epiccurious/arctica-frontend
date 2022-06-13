@@ -5,9 +5,10 @@
             <h1>Transaction</h1>
             <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/X.png"></button>
         </header>
-        <div id="description box">
+        <div id="description_block">
             <input type="text" placeholder="Enter a description...">
         </div>
+
     </div>
 </div>
 </template>
