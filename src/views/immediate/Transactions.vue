@@ -25,7 +25,7 @@
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
-import Transaction from './Transaction.vue'
+import Transaction from '@/components/Transaction.vue'
 
 export default {
   name: 'immediate',

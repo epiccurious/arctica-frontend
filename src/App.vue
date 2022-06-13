@@ -69,6 +69,9 @@ export default {
   line-height: 18px;
   font-weight: 500;
 }
+.btn:hover{
+  cursor:pointer;
+}
 .btn2 {
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -78,6 +81,9 @@ export default {
   height: 46px;
   font-size: 18px;
   line-height: 18px;
+}
+.btn2:hover{
+  cursor:pointer;
 }
 .btn3 {
   background: #DEDEDE;

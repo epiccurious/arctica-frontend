@@ -1,5 +1,6 @@
 <template>
-  <div class="page">
+<Transaction v-if="transactionView == true" v-on:closeOut="closeOut"/>
+  <div v-else class="page">
     <NavDelayed />
       <div class="dashboard">
         <div class="head_container">
@@ -22,11 +23,13 @@
 
 <script>
 import NavDelayed from '@/components/NavDelayed'
+import Transaction from '@/components/Transaction'
 
 export default {
   name: 'delayed',
   components: {
-    NavDelayed
+    NavDelayed,
+    Transaction
   },
   data() {
       return{
@@ -34,13 +37,19 @@ export default {
               {id: 1, address: '1231i2nd23in43if', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-09T12:00:00-06:30'},
               {id: 2, address: '134jfni348f44523', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-06:30'},
               {id: 3, address: '158jgj58jj85449j', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-09T12:00:00-06:30'}
-          ]
+              ],
+           transactionView: false,
       }
   },
-  methods: {
+    methods: {
       transactionDetail(){
-          console.log(`transaction clicked`)
-      }
+          console.log(`transaction ${this.transactions.id} clicked`)
+          this.transactionView = true
+      },
+      closeOut(){
+          console.log('detail window closed')
+          this.transactionView = false
+      },
   },
 }
 </script>
