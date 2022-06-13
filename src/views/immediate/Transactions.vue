@@ -5,7 +5,7 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div v-for="transaction in transactions" :key="transaction.id" class="transaction_container">
+        <div @click="transactionDetail()" v-for="transaction in transactions" :key="transaction.id" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ transaction.address }}</h2>
           <h3>{{ transaction.datetime }}</h3>
@@ -38,7 +38,12 @@ export default {
               {id: 3, address: '158jgj58jj85449j', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-09T12:00:00-06:30'}
           ]
       }
-  }
+  },
+    methods: {
+      transactionDetail(){
+          console.log(`transaction clicked`)
+      }
+  },
 }
 </script>
 
@@ -71,6 +76,9 @@ h1{
   border-width: 0px 0px 1px 0px;
   border-color: #DEDEDE;
   width: 80%;
+}
+.transaction_container:hover{
+    cursor:pointer
 }
 .transaction_container_left{
   display:flex;
