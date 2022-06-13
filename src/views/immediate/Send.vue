@@ -11,14 +11,19 @@
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
             <br><label>Address</label>
-            <br><input v-model="address" type="text" required placeholder="Enter Address">
+            <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
             <br><label>Amount</label>
-            <br><input type="text" required placeholder="Enter Address">
              <!-- May remove this, will have to hit an exchange API for the price data -->
 
             <div class="balance_calculator">
-                balance calc goes here
+                <div class="balance_left">
+                <h3>Your Balance</h3>
+                <h4>₿ {{ immediateBalance }}</h4>
+                </div>
+                <div class="balance_right">
+                    <button @click="selectMax()" class="btn4">Select Max</button>
+                </div>
             </div>
             
             <br><label>Fee</label>
@@ -28,8 +33,8 @@
         </form>
     </div>
         <div class="button_container">
-            <button class="btn2">Add another recipient</button>
-            <button class="btn">Continue</Button>
+            <button @click="addRecipient()" class="btn2">Add another recipient</button>
+            <button @click="continueFn()" class="btn">Continue</Button>
         </div>
     </div>        
 </div>
@@ -44,12 +49,24 @@ export default {
   components: {
     NavImmediate
   },
+    methods: {
+        continueFn(){
+            console.log('Continue clicked')
+        },
+        addRecipient(){
+            console.log('Add recipient clicked')
+        },
+        selectMax(){
+            console.log('Select max clicked')
+        },
+    },
    data(){
      return{
          description: '',
          address: '',
      }
- }
+ },
+ inject: ['immediateBalance'],
 }
 </script>
 
@@ -77,6 +94,17 @@ export default {
     width:70%;
     margin: 0 auto;
 }
+.balance_left{
+    display:flex;
+    flex-direction: column;
+}
+.balance_calculator{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items:center;
+}
 h1{
   margin-top: 50px;
   padding:10px;
@@ -84,6 +112,22 @@ h1{
   font-weight:600;
   font-size:21px;
   line-height:25px
+}
+h3{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight:400;
+    font-size:15px;
+    line-height: 18px;
+    color: #777777;
+}
+h4{
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color:#000000;
 }
 .head_container{
   width: 30%;
@@ -133,6 +177,17 @@ input{
   border-radius:5px;
   color: #000000;
   width: 335px;
+  height: 46px;
+  font-size: 18px;
+  line-height: 18px;
+  margin-right: 10px;
+}
+.btn4 {
+  background: #FFFFFF;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius:5px;
+  color: #000000;
+  width: 200px;
   height: 46px;
   font-size: 18px;
   line-height: 18px;

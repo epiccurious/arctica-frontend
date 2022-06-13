@@ -60,7 +60,7 @@ export default {
 }
 .btn {
   background: #F7931A;
-  box-shadow: 0px 4px 4p rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius:5px;
   color: #FFFFFF;
   width: 335px;
@@ -71,7 +71,7 @@ export default {
 }
 .btn2 {
   background: #FFFFFF;
-  box-shadow: 0px 4px 4p rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius:5px;
   color: #000000;
   width: 335px;
@@ -81,7 +81,7 @@ export default {
 }
 .btn3 {
   background: #DEDEDE;
-  box-shadow: 0px 4px 4p rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   filter: blur(2px);
   -webkit-filter: blur(2px);
   border-radius:5px;
