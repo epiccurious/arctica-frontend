@@ -7,7 +7,7 @@
          </div>
     <div class="send_container">
         <form>
-            <label>Description (optional)</label>
+            <label id="top_label">Description (optional)</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
             <br><label>Address</label>
@@ -90,7 +90,6 @@ export default {
 }
 .send_container{
     box-sizing:border-box;
-    padding:15px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -149,6 +148,11 @@ label{
     margin: 25px 0 15px;
     font-size: 20px;
 
+}
+#top_label{
+    display:inline-block;
+    margin: 0 auto;
+    font-size: 20px;
 }
 input{
     display: block;
