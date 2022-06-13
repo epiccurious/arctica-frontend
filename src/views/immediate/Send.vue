@@ -12,10 +12,25 @@
 
             <br><label>Address</label>
             <br><input v-model="address" type="text" required placeholder="Enter Address">
+
+            <br><label>Amount</label>
+            <br><input type="text" required placeholder="Enter Address">
+             <!-- May remove this, will have to hit an exchange API for the price data -->
+
+            <div class="balance_calculator">
+                balance calc goes here
+            </div>
+            
+            <br><label>Fee</label>
+            <br><input v-model="fee" type="text" required placeholder="Enter Address">
+            <!-- This needs to be a dropdown menu -->
+
         </form>
     </div>
-
-        <button class="btn">New Address</Button>
+        <div class="button_container">
+            <button class="btn2">Add another recipient</button>
+            <button class="btn">Continue</Button>
+        </div>
     </div>        
 </div>
 </template>
@@ -93,5 +108,9 @@ input{
     box-sizing: border-box;
     border: 1px solid #ddd;
     
+}
+.button_container{
+    display:flex;
+    flex-direction: row;
 }
   </style>
