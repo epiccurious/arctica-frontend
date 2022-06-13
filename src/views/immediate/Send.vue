@@ -14,7 +14,7 @@
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
             <br><label>Amount</label>
-             <!-- May remove this, will have to hit an exchange API for the price data -->
+            <br><input v-model="amount" type="float" required placeholder="₿ 0.00">
 
             <div class="balance_calculator">
                 <div class="balance_left">
@@ -27,8 +27,12 @@
             </div>
             
             <br><label>Fee</label>
-            <br><input v-model="fee" type="text" required placeholder="Enter Address">
-            <!-- This needs to be a dropdown menu -->
+            <br><select name="fee" id="fee">
+                <option value="high">High Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="low">Low Priority</option>
+                <option value="custom">Custom (Advanced)</option>
+            </select>
 
         </form>
     </div>
@@ -64,6 +68,7 @@ export default {
      return{
          description: '',
          address: '',
+         amount: '',
      }
  },
  inject: ['immediateBalance'],
@@ -153,6 +158,15 @@ input{
     border: 1px solid #ddd;
     
 }
+select{
+    display: block;
+    padding: 10px 50px 10px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    background-color:#FFFFFF;
+    
+}
 .button_container{
     display:flex;
     flex-direction: row;
@@ -184,10 +198,10 @@ input{
 }
 .btn4 {
   background: #FFFFFF;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  border-radius:5px;
+  /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius:5px; */
   color: #000000;
-  width: 200px;
+  width: 150px;
   height: 46px;
   font-size: 18px;
   line-height: 18px;
