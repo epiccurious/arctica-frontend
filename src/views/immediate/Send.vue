@@ -15,6 +15,7 @@
 
             <br><label>Amount</label>
             <br><input v-model="amount" type="float" required placeholder="₿ 0.00">
+            <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
 
             <div class="balance_calculator">
                 <div class="balance_left">
@@ -40,8 +41,9 @@
     </div>
         <div class="button_container">
             <button @click="addRecipient()" class="btn2">Add another recipient</button>
-            <button @click="continueFn()" class="btn">Continue</Button>
+            <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
         </div>
+        <p>{{ this.transaction }}</p>
     </div>        
 </div>
 </template>
@@ -56,8 +58,9 @@ export default {
     NavImmediate
   },
     methods: {
-        continueFn(){
+        continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
+            this.transaction = {description:description, address:address, amount:amount, fee:fee, customFee:customFee}
         },
         addRecipient(){
             console.log('Add recipient clicked')
@@ -82,9 +85,10 @@ export default {
          description: '',
          address: '',
          amount: '',
-         fee: '',
+         fee: 'high',
          customFee: '',
          custom: false,
+         transaction: {},
      }
  },
  inject: ['immediateBalance'],

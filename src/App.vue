@@ -128,4 +128,11 @@ a{
 ::placeholder{
     color:#BBBBBB
 }
+input[type="checkbox"]{
+  display: inline-block;
+  width: 16px;
+  margin: 0 10px 0 0;
+  position: relative;
+  top: 2px;
+}
 </style>
