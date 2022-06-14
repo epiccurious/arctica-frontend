@@ -105,6 +105,7 @@ export default {
          transaction: {},
          constructed: false,
      }
+    //  Need a function to deliver dynamic fee estimates for the above data
  },
  inject: ['immediateBalance'],
 }
