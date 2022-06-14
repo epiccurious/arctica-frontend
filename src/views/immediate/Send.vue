@@ -1,5 +1,6 @@
   <template>
-<div class="page">
+  <Sign v-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
+<div v-else class="page">
     <NavImmediate/>
     <div class="outer_container">
         <div class="head_container">
@@ -51,16 +52,22 @@
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
+import Sign from '@/components/Sign'
 
 export default {
   name: 'immediateSend',
   components: {
-    NavImmediate
+    NavImmediate,
+    Sign
   },
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
             this.transaction = {description:description, address:address, amount:amount, fee:fee, customFee:customFee}
+            this.txConstructed(this.transaction)
+        },
+        txConstructed(transaction){
+            this.constructed = transaction
         },
         addRecipient(){
             console.log('Add recipient clicked')
@@ -75,7 +82,11 @@ export default {
         customDisable(){
             console.log('Custom Fee Deselected')
             this.custom = false
-        }
+        },
+        closeOut(){
+          console.log('sign window closed')
+          this.constructed = false
+      },
     },
    data(){
      return{
@@ -89,6 +100,7 @@ export default {
          customFee: '',
          custom: false,
          transaction: {},
+         constructed: false,
      }
  },
  inject: ['immediateBalance'],
