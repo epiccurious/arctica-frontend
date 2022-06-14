@@ -27,10 +27,10 @@
             </div>
             
             <br><label>Fee</label>
-            <br><select name="fee" id="fee">
-                <option @click="customDisable()" value="high">High Priority</option>
-                <option @click="customDisable()" value="medium">Medium Priority</option>
-                <option @click="customDisable()" value="low">Low Priority</option>
+            <br><select v-model="fee" name="fee" id="fee" required>
+                <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
+                <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
+                <option @click="customDisable()" value="low">Low Priority {{ lowFee }} sat/Byte</option>
                 <option @click="customEnable()" value="custom">Custom (Advanced)</option>
             </select>
             <br><label v-if="custom == true">Sats per Byte</label>
@@ -76,9 +76,14 @@ export default {
     },
    data(){
      return{
+         highFee: 12,
+         mediumFee: 5,
+         lowFee: 1,
          description: '',
          address: '',
          amount: '',
+         fee: '',
+         customFee: '',
          custom: false,
      }
  },
@@ -146,14 +151,18 @@ h4{
     color:#000000;
 }
 .head_container{
-  width: 30%;
+margin: 0 auto;
+width: 44%;
 }
 form{
     max-width:70%;
     width: 60%;
     margin: 10px auto;
     text-align: left;
-    padding:15px;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:15px;
 }
 label{
     display:inline-block;
