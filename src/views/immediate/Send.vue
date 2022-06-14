@@ -7,7 +7,7 @@
          </div>
     <div class="send_container">
         <form>
-            <label id="top_label">Description (optional)</label>
+            <label>Description</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
             <br><label>Address</label>
@@ -28,11 +28,13 @@
             
             <br><label>Fee</label>
             <br><select name="fee" id="fee">
-                <option value="high">High Priority</option>
-                <option value="medium">Medium Priority</option>
-                <option value="low">Low Priority</option>
-                <option value="custom">Custom (Advanced)</option>
+                <option @click="customDisable()" value="high">High Priority</option>
+                <option @click="customDisable()" value="medium">Medium Priority</option>
+                <option @click="customDisable()" value="low">Low Priority</option>
+                <option @click="customEnable()" value="custom">Custom (Advanced)</option>
             </select>
+            <br><label v-if="custom == true">Sats per Byte</label>
+            <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
 
         </form>
     </div>
@@ -63,12 +65,21 @@ export default {
         selectMax(){
             console.log('Select max clicked')
         },
+        customEnable(){
+            console.log('Custom Fee Selected')
+            this.custom = true
+        },
+        customDisable(){
+            console.log('Custom Fee Deselected')
+            this.custom = false
+        }
     },
    data(){
      return{
          description: '',
          address: '',
          amount: '',
+         custom: false,
      }
  },
  inject: ['immediateBalance'],
@@ -101,6 +112,7 @@ export default {
 .balance_left{
     display:flex;
     flex-direction: column;
+    align-items:flex-start;
 }
 .balance_calculator{
     display:flex;
@@ -149,17 +161,15 @@ label{
     font-size: 20px;
 
 }
-#top_label{
-    display:inline-block;
-    margin: 0 auto;
-    font-size: 20px;
-}
 input{
     display: block;
     padding: 10px 50px 10px 10px;
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #ddd;
+    font-size: 18px;
+    font-weight:400;
+    line-height:140%;
     
 }
 select{
@@ -202,8 +212,6 @@ select{
 }
 .btn4 {
   background: #FFFFFF;
-  /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  border-radius:5px; */
   color: #000000;
   width: 150px;
   height: 46px;

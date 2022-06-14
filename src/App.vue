@@ -125,4 +125,7 @@ a{
   text-decoration: inherit;
   color: inherit;
 }
+::placeholder{
+    color:#BBBBBB
+}
 </style>
