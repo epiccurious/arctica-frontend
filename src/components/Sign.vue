@@ -1,9 +1,12 @@
 <template>
 <div class="page">
     <div class="display_block">
+        <div id="back_button">
+            <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/carat_left.png">Back</button>
+        </div>
         this is the transaction signing page
         {{ this.transaction }}
-        <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/X.png"></button>
+        
 
     </div>
 </div>
@@ -23,18 +26,6 @@ export default {
     flex-direction:column;
     justify-content: center;
     align-items: flex-start;
-    width:30%;
-    padding:2%;
-    margin: 0 auto;
-    background: #FFFFFF;
-    border-radius:10px;
-}
-.page{
-  width:100%;
-  padding-top:5%;
-  padding-bottom:5%;
-  background: rgba(0, 0, 0, 0.5);
-  margin: 0 auto;
 }
 
 </style>

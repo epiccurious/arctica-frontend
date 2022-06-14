@@ -44,7 +44,6 @@
             <button @click="addRecipient()" class="btn2">Add another recipient</button>
             <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
         </div>
-        <p>{{ this.transaction }}</p>
     </div>        
 </div>
 </template>
@@ -66,6 +65,7 @@ export default {
             this.transaction = {description:description, address:address, amount:amount, fee:fee, customFee:customFee}
             this.txConstructed(this.transaction)
         },
+        // eventually the continueFn() should construct and return the PSBT
         txConstructed(transaction){
             this.constructed = transaction
         },
