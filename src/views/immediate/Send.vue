@@ -74,6 +74,7 @@ export default {
         },
         selectMax(){
             console.log('Select max clicked')
+            this.amount = this.immediateBalance
         },
         customEnable(){
             console.log('Custom Fee Selected')

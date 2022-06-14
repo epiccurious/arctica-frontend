@@ -21,8 +21,11 @@ export default{
             if(this.$route.name === 'immediateSend'){
                 this.$router.push({ path: '/wallets/immediate' })
             }
+            else if(this.$route.name === 'delayedSend'){
+                this.$router.push({ path: '/wallets/delayed' })
+            }
             else{
-                this.$router.push(this.$router.push({ path: '/wallets/delayed' }))
+                this.$router.push({ path: '/wallets' })
             }
         },
         viewTx(){
