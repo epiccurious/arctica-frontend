@@ -1,12 +1,12 @@
 <template>
-<Transaction v-if="transactionView == true" v-on:closeOut="closeOut"/>
-  <div v-else class="page">
+<Transaction v-if="transactionView" v-on:closeOut="closeOut" :transaction="transactions[transactionView - 1]" />
+<div v-else class="page">
     <NavImmediate />
       <div class="dashboard">
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail()" v-for="transaction in transactions" :key="transaction.id" class="transaction_container">
+        <div @click="transactionDetail(transaction.id)" v-for="transaction in transactions" :key="transaction.id" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ transaction.address }}</h2>
           <h3>{{ transaction.datetime }}</h3>
@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-  </div>
+</div>
 </template>
 
 <!-- Need search and filter component -->
@@ -40,13 +40,15 @@ export default {
               {id: 2, address: '134jfni348f44523', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-06:30'},
               {id: 3, address: '158jgj58jj85449j', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-09T12:00:00-06:30'}
           ],
-          transactionView: false,
+          transactionView: false
+          
+          
       }
   },
     methods: {
-      transactionDetail(){
-          console.log(`transaction ${this.transactions.id} clicked`)
-          this.transactionView = true
+      transactionDetail(transactionId){
+          console.log(`transaction ${transactionId} clicked`)
+          this.transactionView = transactionId
       },
       closeOut(){
           console.log('detail window closed')

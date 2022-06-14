@@ -11,12 +11,12 @@
 
         <div class="tx_block">
             <h2>To</h2>
-            <h3>address here</h3>
+            <h3>{{ this.transaction.address }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>amount here</h3>
+            <h3>{{ this.transaction.balance }}</h3>
         </div>
 
         <div class="tx_block">
@@ -26,7 +26,7 @@
 
         <div class="tx_block">
             <h2>Time</h2>
-            <h3>time here</h3>
+            <h3>{{ this.transaction.datetime }}</h3>
         </div>
 
         <div class="tx_block">
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-    props: ['transactions' ],
+    props: ['transaction'],
     methods: {},
 }
 </script>
