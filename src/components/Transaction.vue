@@ -1,6 +1,6 @@
 <template>
 <div class="page">
-    <div class="transaction_block">
+    <div class="display_block">
         <header id="transaction_head">
             <h1>Transaction</h1>
             <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/X.png"></button>
@@ -21,7 +21,7 @@
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>fee here</h3>
+            <h3>{{ this.transaction.fee }}</h3>
         </div>
 
         <div class="tx_block">
@@ -31,12 +31,13 @@
 
         <div class="tx_block">
             <h2>Status</h2>
-            <h3>status here</h3>
+            <h3 v-if="this.transaction.status=='Confirmed'" id="confirmed" >{{ this.transaction.status }}</h3>
+            <h3 v-else id="unconfirmed" >{{ this.transaction.status }}</h3>
         </div>
 
         <div id="footer_block">
             <h2>View in explorer</h2>
-            <img src="@/assets/carat_right.png">
+            <div><img src="@/assets/carat_right.png"></div>
         </div>
 
     </div>
@@ -52,18 +53,21 @@ export default {
 </script>
 
 <style scoped>
-.transaction_block{
+.display_block{
     display:flex;
     flex-direction:column;
     justify-content: center;
     align-items: flex-start;
-    width:70%;
+    width:30%;
+    padding:2%;
     margin: 0 auto;
-    
     background: #FFFFFF;
+    border-radius:10px;
 }
 .page{
   width:100%;
+  padding-top:5%;
+  padding-bottom:5%;
   background: rgba(0, 0, 0, 0.5);
   margin: 0 auto;
 }
@@ -78,15 +82,50 @@ export default {
     display:flex;
     align-self:center;
     justify-self:center;
+    width:100%;
 }
 
-#tx_block{
+.tx_block{
     display:flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-content:center;
+    width:90%;
+    border-style: solid; 
+    border-width: 0px 0px 1px 0px;
+    border-color: #DEDEDE;
 }
 
 #footer_block{
     display:flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-content:center;
+    align-items:center;
+    width:90%;
+}
+h2{
+    font-weight:400;
+    font-size:18px;
+    line-height: 140%;
+}
+h3{
+    font-weight:400;
+    font-size:18px;
+    line-height: 140%;
+    text-align:right;
+}
+#confirmed{
+    color:#27AE60;
+}
+#unconfirmed{
+    color: #EB5757;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    text-align:center;
 }
 </style>

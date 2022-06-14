@@ -36,9 +36,9 @@ export default {
   data() {
       return{
           transactions: [
-              {id: 1, address: '1231i2nd23in43if', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-09T12:00:00-06:30'},
-              {id: 2, address: '134jfni348f44523', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-06:30'},
-              {id: 3, address: '158jgj58jj85449j', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-09T12:00:00-06:30'}
+              {id: 1, address: '1231i2nd23in43if', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-10T12:00:00-04:10' , fee: 0.00000987, status: 'Unconfirmed'},
+              {id: 2, address: '134jfni348f44523', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-09:30', fee: 0.00001247, status: 'Confirmed'},
+              {id: 3, address: '158jgj58jj85449j', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000408, status: 'Confirmed'}
           ],
           transactionView: false
           
