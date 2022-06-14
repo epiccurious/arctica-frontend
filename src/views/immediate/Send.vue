@@ -72,10 +72,12 @@ export default {
         addRecipient(){
             console.log('Add recipient clicked')
         },
-        selectMax(){
-            console.log('Select max clicked')
-            this.amount = this.immediateBalance
-        },
+        // selectMax(){
+        //     console.log('Select max clicked')
+        //     this.amount = this.immediateBalance
+        // },
+
+        //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...
         customEnable(){
             console.log('Custom Fee Selected')
             this.custom = true
