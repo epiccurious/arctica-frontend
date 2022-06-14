@@ -1,12 +1,12 @@
 <template>
-<Broadcast v-if="signed" v-on:closeOut="closeOut" :transaction="transaction" />
+<Confirmation v-if="sent" />
 <div v-else class="page">
-    <div id="back_button">
+    <!-- <div id="back_button">
         <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/carat_left.png">Back</button>
-    </div>
+    </div> -->
     <div class="display_block">
-        <h1>Approve Transaction for Signing</h1>
-        <img src="@/assets/checkmark_grey.png">
+        <h1>Ready to send?</h1>
+        <img src="@/assets/checkmark_green.png">
         <div class="tx_block">
             <h2>To</h2>
             <h3>{{ this.transaction.address }}</h3>
@@ -23,7 +23,7 @@
         </div>
 
         <div id="btn_container">
-            <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
+            <button @click="broadcast()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
             <button @click="$emit('closeOut')" class="btn2">Discard</button>
         </div>
         
@@ -34,22 +34,22 @@
 
 
 <script>
-import Broadcast from '@/components/Broadcast'
+import Confirmation from '@/components/Confirmation'
 
 export default {
     props: ['transaction'],
     components: {
-    Broadcast
-  },
+        Confirmation
+    },
     methods: {
-        sign(){
-            console.log('signing...')
-            this.signed = true
+        broadcast(){
+            console.log('broadcasting...')
+            this.sent = true
         }
     },
     data(){
         return{
-            signed: false
+        sent: false
         }
     }
 }
