@@ -18,7 +18,12 @@
 export default{
     methods:{
         back(){
-            console.log('back button clicked')
+            if(this.$route.name === 'immediateSend'){
+                this.$router.push({ path: '/wallets/immediate' })
+            }
+            else{
+                this.$router.push(this.$router.push({ path: '/wallets/delayed' }))
+            }
         },
         viewTx(){
             console.log('view tx clicked')
