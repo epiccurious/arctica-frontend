@@ -5,6 +5,17 @@
         <div class="head_container">
           <h1>Wallets</h1>
         </div>
+        <router-link class="wallet_container" :to="{ name: 'hot' }">
+            <div class="wallet_container_left">
+            <h2>Hot Wallet</h2>
+            <h3>Spend Now</h3>
+            </div>
+            <div class="wallet_container_right">
+              <h2 class="balance">{{ hotBalance }} BTC</h2>
+              <span><img src="@/assets/carat_right.png"/></span>
+            </div>
+        </router-link> 
+
         <router-link class="wallet_container" :to="{ name: 'immediate' }">
             <div class="wallet_container_left">
             <h2>Immediate Wallet</h2>
@@ -47,7 +58,7 @@ export default {
   components: {
     Nav
   },
-    inject: ['immediateBalance', 'delayedBalance']
+    inject: ['hotBalance', 'immediateBalance', 'delayedBalance']
 }
 </script>
 

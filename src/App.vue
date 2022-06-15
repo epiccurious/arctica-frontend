@@ -6,6 +6,9 @@
     <router-link :to="{ name: 'Login' }">Login</router-link> 
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'settings' }">Settings</router-link>
+    <router-link :to="{ name: 'hot' }">Hot</router-link>
+    <router-link :to="{ name: 'hotSend' }">HotSend</router-link>
+    <router-link :to="{ name: 'hotReceive' }">HotReceive</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'immediateSend' }">ImmediateSend</router-link>
     <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
@@ -33,6 +36,7 @@ export default {
     }
   },
   provide: {
+      hotBalance: 0.12759374,
       immediateBalance: 0.27847143,
       delayedBalance: 12.05312325,
   }

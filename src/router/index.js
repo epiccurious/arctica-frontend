@@ -26,6 +26,23 @@ const routes = [
     component: Dashboard
   },
   {
+    path: '/wallets/hot',
+    name: 'hot',
+    component: () => import('../views/hot/Transactions.vue')
+     
+   },
+   {
+    path: '/wallets/hot/send',
+    name: 'hotSend',
+    component: () => import('../views/hot/Send.vue')
+     
+   },
+   {
+    path: '/wallets/hot/receive',
+    name: 'hotReceive',
+    component: () => import('../views/hot/Receive.vue')
+   },
+  {
     path: '/wallets/immediate',
     name: 'immediate',
     // route level code-splitting

@@ -5,22 +5,22 @@
             <div class="wallet_overview">
                     <img src="@/assets/Wallet.png"/>
                     <div class="description_balance">
-                    <h3 class="description">Immediate Wallet</h3>
-                    <h3 class="balance">₿ {{ immediateBalance }}</h3>
+                    <h3 class="description">Hot Wallet</h3>
+                    <h3 class="balance">₿ {{ hotBalance }}</h3>
                     </div>
             </div>
 
             <div class="middle_menu">
                 <h2 v-if="wallet" class="wallet_tab_selected">Wallet</h2> 
-                <router-link v-else :to="{ name: 'immediate' }">
+                <router-link v-else :to="{ name: 'hot' }">
                     <h2 class="wallet_tab">Wallet</h2> 
                 </router-link>
                 <h2 v-if="send" class="send_tab_selected">Send</h2> 
-                <router-link v-else :to="{ name: 'immediateSend' }">
+                <router-link v-else :to="{ name: 'hotSend' }">
                     <h2 class="send_tab">Send</h2>
                 </router-link> 
                 <h2 v-if="receive" class="receive_tab_selected">Receive</h2> 
-                <router-link v-else :to="{ name: 'immediateReceive' }">
+                <router-link v-else :to="{ name: 'hotReceive' }">
                     <h2 class="receive_tab">Receive</h2> 
                 </router-link>
             </div>
@@ -35,6 +35,7 @@
 </template>
 
 
+
 <script>
 import { RouterView, RouterLink } from "vue-router";
 {
@@ -43,32 +44,32 @@ import { RouterView, RouterLink } from "vue-router";
 }
 
 export default{
-    name: 'NavImmediate',
+    name: 'NavHot',
     props: {},
     computed: {
         wallet(){
-            if(this.$route.path =='/wallets/immediate'){
+            if(this.$route.path =='/wallets/hot'){
                 return true
             } else {
                 return false
             }
         },
         send(){
-            if(this.$route.path=='/wallets/immediate/send'){
+            if(this.$route.path=='/wallets/hot/send'){
                 return true
             } else{
                 return false
             }
         },
         receive(){
-            if(this.$route.path=='/wallets/immediate/receive'){
+            if(this.$route.path=='/wallets/hot/receive'){
                 return true
             } else{
                 return false
             }
         }
     },
-    inject: ['immediateBalance']
+    inject: ['hotBalance']
 }
 </script>
 

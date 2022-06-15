@@ -68,7 +68,7 @@ export default{
             }
         }
     },
-    inject: ['immediateBalance', 'delayedBalance']
+    inject: [ 'delayedBalance']
 }
 </script>
 
