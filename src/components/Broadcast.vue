@@ -23,7 +23,7 @@
         </div>
 
         <div id="btn_container">
-            <button @click="broadcast()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
+            <button @click="broadcast()" class="btn">Send</button>
             <button @click="$emit('closeOut')" class="btn2">Discard</button>
         </div>
         
