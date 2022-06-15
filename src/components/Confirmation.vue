@@ -24,9 +24,10 @@ export default{
             else if(this.$route.name === 'delayedSend'){
                 this.$router.push({ path: '/wallets/delayed' })
             }
-            else{
-                this.$router.push({ path: '/wallets' })
+            else if(this.$route.name ==='hotSend'){
+                this.$router.push({ path: '/wallets/hot' })
             }
+            else{this.$router.push({ path: '/wallets' })}
         },
         viewTx(){
             console.log('view tx clicked')
