@@ -1,12 +1,12 @@
 <template>
-<Transaction v-if="transactionView" v-on:closeOut="closeOut" :transaction="transactions[transactionView - 1]" />
+<Transaction v-if="transactionView" v-on:closeOut="closeOut" :transaction="immediateTransactions[transactionView - 1]" />
 <div v-else class="page">
     <NavImmediate />
       <div class="dashboard">
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail(transaction.id)" v-for="transaction in transactions" :key="transaction.id" class="transaction_container">
+        <div @click="transactionDetail(transaction.id)" v-for="transaction in immediateTransactions" :key="transaction.id" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ transaction.address }}</h2>
           <h3>{{ transaction.datetime }}</h3>
@@ -35,7 +35,7 @@ export default {
   },
   data() {
       return{
-          transactions: [
+          immediateTransactions: [
               {id: 1, address: '1231i2nd23in43if', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-10T12:00:00-04:10' , fee: 0.00000987, status: 'Unconfirmed'},
               {id: 2, address: '134jfni348f44523', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-09:30', fee: 0.00001247, status: 'Confirmed'},
               {id: 3, address: '158jgj58jj85449j', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000408, status: 'Confirmed'}
