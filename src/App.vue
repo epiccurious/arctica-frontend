@@ -15,6 +15,7 @@
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
     <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
+    <router-link :to="{ name: 'Setup1' }">Setup-1</router-link>
   </nav>
   <!-- The above is just a debug menu, will be removed -->
   <router-view/>
