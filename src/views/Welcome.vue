@@ -1,5 +1,5 @@
 <template>
-  <div v-if="readyToWork == false" class="login">
+  <div v-if="readyToWork == false" class="loading">
 <Header title="Welcome to Arctica" subtitle="Hang Tight. We are checking on a few things. "/>
     <div class="btn_container"> 
         <button class="btn3">Log in</Button>
@@ -52,4 +52,14 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.loading{
+  cursor:wait;
+}
+
+.btn3{
+  cursor:wait;
+}
+</style>
 
