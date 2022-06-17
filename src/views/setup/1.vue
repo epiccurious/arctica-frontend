@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack')
+            console.log('user ack, starting setup')
             this.$router.push({ path: '/setup/2' })
         },
     },

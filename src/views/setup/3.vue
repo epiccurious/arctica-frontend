@@ -32,7 +32,7 @@ export default {
     },
     methods: {
             acknowledge(){
-            console.log('user ack')
+            console.log('user ack, media devices are ready')
             this.$router.push({ path: '/setup/4' })
         },
         warn(){

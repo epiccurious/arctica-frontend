@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack')
+            console.log('user ack, password confirmed')
             this.$router.push({ path: '/setup/3' })
         },
         warn(){

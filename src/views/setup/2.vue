@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack')
+            console.log('user ack, moving to confirm password')
             this.passwordSetup = true
         },
         warn(){
