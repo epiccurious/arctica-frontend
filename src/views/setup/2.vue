@@ -1,5 +1,8 @@
 <template>
-  <header>
+<Setup2A v-if="passwordSetup" :password="password2"/>
+
+
+  <header v-else>
 <h1>Let's setup your password</h1>
  <h2>Select two words which are easy for you to remember, such as an adjective and a noun.</h2> 
  <h2>You should not write these words down.</h2> 
@@ -16,7 +19,7 @@
                 </form>
                 <div class="btn_container"> 
                     <button v-if="password1 == password2 && password1 != '' && password2 != '' " @click="acknowledge()" class="btn">Continue</Button>
-                    <button v-else class="btn3">Continue</Button>
+                    <button v-else @click="warn()" class="btn3">Continue</Button>
                 </div>
                 </div>
     </header>
@@ -25,20 +28,27 @@
 </template>
 
 <script>
+import Setup2A from './2A'
 
 export default {
   name: 'Setup2',
   components: {
+      Setup2A
     },
     methods: {
         acknowledge(){
             console.log('user ack')
+            this.passwordSetup = true
+        },
+        warn(){
+            console.log('user trying to proceed without password match, need form correction')
         },
     },
      data(){
      return{
          password1: '',
-         password2: ''
+         password2: '',
+         passwordSetup: false
      }
  }
 }

@@ -1,47 +1,37 @@
 <template>
-<div class="page">
-        <Header title="Log in" subtitle="Please enter your password below."/>
+  <header>
+<h1>Let's double check your password.</h1>
+ <h2>Confirm the password that you created on the previous screen.</h2> 
             <div class="form_container">
                 <form>
                     <label>Enter Password</label>
                    <br><input v-model="password1" type="password" required placeholder="Your secret password">
-
-                    <br><label>Confirm Password</label>
-                   <br><input v-model="password2" type="password" required placeholder="Your secret password">
                 </form>
                 <div class="btn_container"> 
-                    <button v-if="password1 == password2 && password1 != '' && password2 != '' " @click="login()" class="btn">Continue</Button>
+                    <button v-if="password1 == this.password" @click="acknowledge()" class="btn">Continue</Button>
                     <button v-else @click="warn()" class="btn3">Continue</Button>
-                    <button @click="passwordRecovery()" class="btn2">I Forgot my Password</button>
                 </div>
-            </div>
-            
-</div>  
+                </div>
+    </header>
 </template>
 
-<!-- Currently, the two passwords inputs just need to match in order for the user to login -->
-
 <script>
-import Header from '@/components/Header'
 
 export default {
-  name: 'Login',
+  name: 'Setup2A',
+  props: ['password'],
   components: {
-    Header,
     },
     methods: {
-        login(){
-            this.$router.push({ path: '/wallets' })
-        },
-        passwordRecovery(){
-            console.log('Password Recovery Clicked')
+        acknowledge(){
+            console.log('user ack')
         },
         warn(){
             console.log('user trying to proceed without password match, need form correction')
+            console.log(this.password)
         },
     },
- computed: {},
- data(){
+     data(){
      return{
          password1: '',
          password2: ''
@@ -51,6 +41,24 @@ export default {
 </script>
 
 <style scoped>
+header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 25px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+h1{
+    font-size: 21px;
+    font-weight:600;
+    line-height: 25px;
+}
+h2{
+    font-size: 18px;
+    color: #777777;
+    font-weight: 400;
+}
 .form_container{
     display: flex;
     flex-direction: column;
@@ -78,4 +86,3 @@ input{
     
 }
 </style>
-
