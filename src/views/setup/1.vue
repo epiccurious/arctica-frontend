@@ -1,20 +1,10 @@
 <template>
-  <div v-if="this.installing == false" class="login">
-<Header title="Welcome to Arctica" subtitle="The first step is for us to install the Bitcoin Software."/>
+  <div class="login">
+<Header title="Welcome to Arctica" subtitle="Let's begin the setup process."/>
     <div class="btn_container"> 
-        <button @click="acknowledge()" class="btn">Install</Button>
+        <button @click="acknowledge()" class="btn">Get Started</Button>
     </div>
   </div>
-  
-  <div v-else class="installing">
-<Header title="Welcome to Arctica" subtitle="Please wait...Installing Bitcoin Core"/>
-    <div class="btn_container"> 
-        <button class="btn3">Install</Button>
-        <button @click="debug()" class="btn2">Debug - proceed</button>
-        <!-- this is useful for testing if core is already installed or if the installation button still doesn't do anything -->
-    </div>
-  </div>
-  
 </template>
 
 <script>
@@ -27,27 +17,16 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('installing bitcoin core')
-            this.installing = true
-        },
-        debug(){
-            console.log('debug clicked')
+            console.log('user ack')
             this.$router.push({ path: '/setup/2' })
-        }
+        },
     },
     data(){
         return{
-            installing: false
         }
     }
 }
 </script>
 
 <style scoped>
-.installing{
-    cursor:wait;
-}
-.btn3{
-    cursor:wait;
-}
 </style>
