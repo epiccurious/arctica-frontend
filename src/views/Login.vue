@@ -51,12 +51,6 @@ export default {
 </script>
 
 <style scoped>
-.form_container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-}
 form{
     max-width:420px;
     margin: 30px auto;
