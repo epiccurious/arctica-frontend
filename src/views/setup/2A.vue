@@ -29,6 +29,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack')
+            this.$router.push({ path: '/setup/3' })
         },
         warn(){
             console.log('user trying to proceed without password match, need form correction')
