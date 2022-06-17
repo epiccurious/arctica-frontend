@@ -41,7 +41,7 @@ export default {
             console.log('quick withdrawal clicked')
         },
         greenLight(){
-          console.log('green light given, this is currently a debug feature only and does nothing')
+          console.log('green light given, this is currently a debug feature only and does nothing except enable you to proceed')
           this.readyToWork = true
         }
     },

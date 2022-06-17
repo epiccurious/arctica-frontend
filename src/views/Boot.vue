@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('closing the application')
+            console.log('user ack, closing the application')
         },
         help(){
             console.log('fetching help')

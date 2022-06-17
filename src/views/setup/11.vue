@@ -1,8 +1,8 @@
 <template>
 <div class="page">
-    <Header title="SD Card 7" subtitle="Please insert SD card 7."/>
+    <Header title="SD creation successful" subtitle="Please insert SD 1 into your secondary machine and reboot the device."/>
     
-    <div class="form_container">
+    <!-- <div class="form_container">
         <form>
             <input type="checkbox" v-model="checkbox" name="checkbox">
             <label for="checkbox">I have inserted SD card 7.</label>
@@ -11,7 +11,7 @@
             <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
-    </div> 
+    </div>  -->
 
 
 </div>
@@ -28,8 +28,7 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, flashing SD 7')
-            this.$router.push({ path: '/setup/11' })
+            console.log('user ack, close application')
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

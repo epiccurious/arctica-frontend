@@ -136,6 +136,11 @@ const routes = [
     name: 'Setup10',
     component: () => import('../views/setup/10.vue')
    },
+   {
+    path: '/setup/11',
+    name: 'Setup11',
+    component: () => import('../views/setup/11.vue')
+   },
 ]
 
 
