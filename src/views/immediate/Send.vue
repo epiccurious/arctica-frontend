@@ -62,7 +62,7 @@ export default {
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
-            this.transaction = {description:description, address:address, amount:amount, fee:fee, customFee:customFee}
+            this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
             this.txConstructed(this.transaction)
         },
         // eventually the continueFn() should construct and return the PSBT

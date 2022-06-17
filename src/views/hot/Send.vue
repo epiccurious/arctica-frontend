@@ -1,5 +1,6 @@
   <template>
   <Sign v-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
+  <!-- this uses a truthy comparison to conditionally render -->
 <div v-else class="page">
     <NavHot/>
     <div class="outer_container">
@@ -21,7 +22,7 @@
             <div class="balance_calculator">
                 <div class="balance_left">
                 <h3>Your Balance</h3>
-                <h4>₿ {{ hotBalance }}</h4>
+                <h4>₿ {{ immediateBalance }}</h4>
                 </div>
                 <div class="balance_right">
                     <button @click="selectMax()" class="btn4">Select Max</button>
@@ -62,10 +63,10 @@ export default {
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
-            this.transaction = {description:description, address:address, amount:amount, fee:fee, customFee:customFee}
+            this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
+            //currently id is static here, eventually will take from parent info as well exchange rate is hard coded at 20k here until we hit an exchange API
             this.txConstructed(this.transaction)
         },
-        // eventually the continueFn() should construct and return the PSBT
         txConstructed(transaction){
             this.constructed = transaction
         },
@@ -107,7 +108,7 @@ export default {
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
- inject: ['hotBalance'],
+ inject: ['immediateBalance'],
 }
 </script>
 
