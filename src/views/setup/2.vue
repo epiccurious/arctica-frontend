@@ -1,5 +1,5 @@
 <template>
-<Setup2A v-if="passwordSetup" :password="password2"/>
+<Setup2A v-if="passwordSetup" v-on:goBack="goBack" :password="password2"/>
 
 
   <header v-else>
@@ -43,6 +43,12 @@ export default {
         warn(){
             console.log('user trying to proceed without password match, need form correction')
         },
+        goBack(){
+            console.log('user wants new password')
+            this.passwordSetup = false
+            this.password1 = ''
+            this.password2 = ''
+        }
     },
      data(){
      return{

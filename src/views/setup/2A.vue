@@ -10,10 +10,14 @@
                 <div class="btn_container"> 
                     <button v-if="password1 == this.password" @click="acknowledge()" class="btn">Continue</Button>
                     <button v-else @click="warn()" class="btn3">Continue</Button>
+                    <button @click="$emit('goBack')" class="btn2">New Password</button>
                 </div>
                 </div>
     </header>
 </template>
+
+<!-- 
+this component needs a fail condition -->
 
 <script>
 
@@ -28,7 +32,6 @@ export default {
         },
         warn(){
             console.log('user trying to proceed without password match, need form correction')
-            console.log(this.password)
         },
     },
      data(){
