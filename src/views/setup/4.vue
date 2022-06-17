@@ -1,17 +1,11 @@
 <template>
 <div class="page">
-    <header>
-        <h1>Time to setup your keys...</h1>
-        <h2>Take 8 CDs and label them "CD 1" through "CD 7", and label the final one "setup".</h2> 
-        <h2>Take 7 DVDs and label them "DVD 1" through "DVD 7".</h2> 
-        <h2>Take 7 SD cards and label them "1" through "7"</h2>
-        <h2>Take 7 Envelopes and label them "1" through "7"</h2>
-    </header>
+    <Header title="SD Card 1" subtitle="Please insert SD card 1."/>
     
     <div class="form_container">
         <form>
             <input type="checkbox" v-model="checkbox" name="checkbox">
-            <label for="checkbox">My devices are properly labelled</label>
+            <label for="checkbox">I have inserted SD card 1.</label>
         </form>
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
@@ -25,13 +19,15 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
 
 export default {
-  name: 'Setup3',
+  name: 'Setup4',
   components: {
+      Header
     },
     methods: {
-            acknowledge(){
+        acknowledge(){
             console.log('user ack')
             this.$router.push({ path: '/setup/4' })
         },
