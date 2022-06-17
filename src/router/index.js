@@ -151,6 +151,21 @@ const routes = [
     name: 'Setup13',
     component: () => import('../views/setup/13.vue')
    },
+   {
+    path: '/setup/14',
+    name: 'Setup14',
+    component: () => import('../views/setup/14.vue')
+   },
+   {
+    path: '/setup/15',
+    name: 'Setup15',
+    component: () => import('../views/setup/15.vue')
+   },
+   {
+    path: '/setup/16',
+    name: 'Setup16',
+    component: () => import('../views/setup/16.vue')
+   },
 ]
 
 

@@ -1,7 +1,10 @@
 <template>
 <div class="page">
-    <Header title="SD 1 creation complete" subtitle="Please insert SD 2 and reboot this machine."/>
-
+<header>
+<h1>SD 4 creation complete</h1>
+ <h2>Please remove SD 4 and remove the setup CD.</h2>
+ <h2>Return to your primary machine, insert SD 5, and reboot.</h2> 
+ </header>
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
             <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
@@ -12,12 +15,9 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
-  name: 'Setup13',
+  name: 'Setup16',
   components: {
-      Header
     },
     methods: {
         acknowledge(){
@@ -25,7 +25,7 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.$router.push({ path: '/setup/14' })
+            this.$router.push({ path: '/setup/17' })
         },
 
     },
@@ -37,3 +37,22 @@ export default {
 }
 </script>
 
+<style scoped>
+header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 25px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+h1{
+    font-size: 21px;
+    font-weight:600;
+    line-height: 25px;
+}
+h2{
+    font-size: 18px;
+    color: #777777;
+    font-weight: 400;
+}</style>

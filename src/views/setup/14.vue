@@ -1,6 +1,6 @@
 <template>
 <div class="page">
-    <Header title="SD 1 creation complete" subtitle="Please insert SD 2 and reboot this machine."/>
+    <Header title="SD 2 creation complete" subtitle="Please insert SD 3 and reboot this machine."/>
 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
@@ -15,7 +15,7 @@
 import Header from '@/components/Header'
 
 export default {
-  name: 'Setup13',
+  name: 'Setup14',
   components: {
       Header
     },
@@ -25,7 +25,7 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.$router.push({ path: '/setup/14' })
+            this.$router.push({ path: '/setup/15' })
         },
 
     },
