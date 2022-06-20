@@ -276,6 +276,26 @@ const routes = [
     name: 'Setup38',
     component: () => import('../views/setup/38.vue')
    },
+   {
+    path: '/setup/39',
+    name: 'Setup39',
+    component: () => import('../views/setup/39.vue')
+   },
+   {
+    path: '/setup/40',
+    name: 'Setup40',
+    component: () => import('../views/setup/40.vue')
+   },
+   {
+    path: '/setup/41',
+    name: 'Setup41',
+    component: () => import('../views/setup/41.vue')
+   },
+   {
+    path: '/setup/42',
+    name: 'Setup42',
+    component: () => import('../views/setup/42.vue')
+   },
 ]
 
 
