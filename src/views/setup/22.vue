@@ -1,3 +1,5 @@
+<!-- Consider adding a hyperlink to 'destroy it at this time' that walks user through proper CD destruction steps -->
+
 <template>
 <div class="page">
     <Header title="Remove the 'Setup' CD" subtitle="The setup CD is no longer needed. Please remove it from the machine and destroy it at this time."/>
