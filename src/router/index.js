@@ -201,6 +201,21 @@ const routes = [
     name: 'Setup23',
     component: () => import('../views/setup/23.vue')
    },
+   {
+    path: '/setup/24',
+    name: 'Setup24',
+    component: () => import('../views/setup/24.vue')
+   },
+   {
+    path: '/setup/25',
+    name: 'Setup25',
+    component: () => import('../views/setup/25.vue')
+   },
+   {
+    path: '/setup/26',
+    name: 'Setup26',
+    component: () => import('../views/setup/26.vue')
+   },
 ]
 
 
