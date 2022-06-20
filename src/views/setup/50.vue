@@ -34,7 +34,7 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.$router.push({ path: '/setup/20' })
+            this.$router.push({ path: '/setup/51' })
         },
 
     },
