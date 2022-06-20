@@ -1,3 +1,5 @@
+<!-- User moves to secondary machine at this point -->
+
 <template>
 <div class="page">
     <Header title="Please insert the setup CD" subtitle="Insert setup CD to continue."/>
