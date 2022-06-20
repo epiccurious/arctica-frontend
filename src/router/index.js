@@ -296,6 +296,51 @@ const routes = [
     name: 'Setup42',
     component: () => import('../views/setup/42.vue')
    },
+   {
+    path: '/setup/43',
+    name: 'Setup43',
+    component: () => import('../views/setup/43.vue')
+   },
+   {
+    path: '/setup/44',
+    name: 'Setup44',
+    component: () => import('../views/setup/44.vue')
+   },
+   {
+    path: '/setup/45',
+    name: 'Setup45',
+    component: () => import('../views/setup/45.vue')
+   },
+   {
+    path: '/setup/46',
+    name: 'Setup46',
+    component: () => import('../views/setup/46.vue')
+   },
+   {
+    path: '/setup/47',
+    name: 'Setup47',
+    component: () => import('../views/setup/47.vue')
+   },
+   {
+    path: '/setup/48',
+    name: 'Setup48',
+    component: () => import('../views/setup/48.vue')
+   },
+   {
+    path: '/setup/49',
+    name: 'Setup49',
+    component: () => import('../views/setup/49.vue')
+   },
+   {
+    path: '/setup/50',
+    name: 'Setup50',
+    component: () => import('../views/setup/50.vue')
+   },
+   {
+    path: '/setup/51',
+    name: 'Setup51',
+    component: () => import('../views/setup/51.vue')
+   },
 ]
 
 
