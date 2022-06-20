@@ -33,6 +33,8 @@
     <router-link :to="{ name: 'Setup16' }">Setup-16</router-link>
     <router-link :to="{ name: 'Setup17' }">Setup-17</router-link>
     <router-link :to="{ name: 'Setup18' }">Setup-18</router-link>
+    <router-link :to="{ name: 'Setup19' }">Setup-19</router-link>
+    <router-link :to="{ name: 'Setup20' }">Setup-20</router-link>
   </nav>
   <!-- The above is just a debug menu, will be removed -->
   <router-view/>
