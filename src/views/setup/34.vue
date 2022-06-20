@@ -1,15 +1,15 @@
 <template>
 <div class="page">
 <header>
-<h1>Package 2 is now complete.</h1>
- <h2>Please remove DVD 2.</h2>
- <h2>Place SD card 2, and backups CD 2 and DVD 2 into Envelope 2.</h2> 
- <h2>This envelope should be stored somewhere secure and easily accessible, like your home safe.</h2>
+<h1>Package 3 is now complete.</h1>
+ <h2>Please remove DVD 3.</h2>
+ <h2>Place SD card 3, and backups CD 3 and DVD 3 into Envelope 3.</h2> 
+ <h2>This envelope should be stored somewhere...[placeholder text]</h2>
  </header>
       <div class="form_container">
         <form>
             <input type="checkbox" v-model="checkbox" name="checkbox">
-            <label for="checkbox">My #2 devices have been placed into Envelope 2.</label>
+            <label for="checkbox">My #3 devices have been placed into Envelope 3.</label>
         </form>
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
@@ -23,13 +23,13 @@
 
 <script>
 export default {
-  name: 'Setup30',
+  name: 'Setup34',
   components: {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, package 2 completed')
-            this.$router.push({ path: '/setup/31' })
+            console.log('user ack, package 3 completed')
+            this.$router.push({ path: '/setup/35' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

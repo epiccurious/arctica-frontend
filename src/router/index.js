@@ -236,6 +236,26 @@ const routes = [
     name: 'Setup30',
     component: () => import('../views/setup/30.vue')
    },
+   {
+    path: '/setup/31',
+    name: 'Setup31',
+    component: () => import('../views/setup/31.vue')
+   },
+   {
+    path: '/setup/32',
+    name: 'Setup32',
+    component: () => import('../views/setup/32.vue')
+   },
+   {
+    path: '/setup/33',
+    name: 'Setup33',
+    component: () => import('../views/setup/33.vue')
+   },
+   {
+    path: '/setup/34',
+    name: 'Setup34',
+    component: () => import('../views/setup/34.vue')
+   },
 ]
 
 
