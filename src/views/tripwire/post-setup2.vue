@@ -20,7 +20,10 @@
                 </div>
             </div>
         </div>
-        <button @click="newAddress()" class="btn">New Address</Button>
+        <div class="btn_container">
+            <button @click="postpone()" class="btn2">Skip for Now</button>
+            <button @click="markComplete()" class="btn">Done</Button>
+        </div>
     </div>        
 </div>
 </template>
@@ -29,17 +32,23 @@
 <!-- -download QR button not yet implemented  -->
 
 <script>
+import Header from '@/components/Header.vue'
+
 export default {
-  name: 'delayedReceive',
+  name: 'tripwirePostSetup2',
   components: {
+      Header
   },
   methods: {
        async copy(s){
           await navigator.clipboard.writeText(s)
           alert('Copied Address!')
         },
-        newAddress(){
-          console.log('New address clicked')
+        markComplete(){
+          console.log('Tripwire marked complete')
+        },
+        postpone(){
+            console.log('User postponing tripwire funding')
         }
       },
   data(){
@@ -90,28 +99,6 @@ export default {
     color: #777777;
     word-wrap: break-word;
     align-self:center;
-}
-#copy{
-    display:flex;
-    flex-direction: row;
-    padding-bottom: 10px;
-}
-#copy:hover{
-    cursor:pointer
-}
-#copy_text:hover{
-    cursor:pointer;
-}
-#download{
-    display:flex;
-    flex-direction: row;
-    padding-bottom: 10px;
-}
-#download:hover{
-    cursor:pointer
-}
-#download_text:hover{
-    cursor:pointer;
 }
 h1{
   margin-top: 50px;

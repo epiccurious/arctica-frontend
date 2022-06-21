@@ -67,6 +67,7 @@
     <router-link :to="{ name: 'Setup50' }">Setup-50</router-link>
     <router-link :to="{ name: 'Setup51' }">Setup-51</router-link>
     <router-link :to="{ name: 'tripwirePostSetup1' }">Tripwire-Post-Setup-1</router-link>
+    <router-link :to="{ name: 'tripwirePostSetup2' }">Tripwire-Post-Setup-2</router-link>
   </nav>
   <!-- The above is just a debug menu, will be removed -->
   <router-view/>
