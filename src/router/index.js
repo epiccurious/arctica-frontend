@@ -344,12 +344,12 @@ const routes = [
    {
     path: '/tripwire/setup/1',
     name: 'tripwirePostSetup1',
-    component: () => import('../views/tripwire/post-setup1.vue')
+    component: () => import('../views/post-setup/tripwire1.vue')
    },
    {
     path: '/tripwire/setup/2',
     name: 'tripwirePostSetup2',
-    component: () => import('../views/tripwire/post-setup2.vue')
+    component: () => import('../views/post-setup/tripwire2.vue')
    },
 ]
 
