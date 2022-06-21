@@ -197,4 +197,26 @@ input[type="checkbox"]{
     align-items: center;
     gap: 25px;
 }
+#copy{
+    display:flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+#copy:hover{
+    cursor:pointer
+}
+#copy_text:hover{
+    cursor:pointer;
+}
+#download{
+    display:flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+#download:hover{
+    cursor:pointer
+}
+#download_text:hover{
+    cursor:pointer;
+}
 </style>

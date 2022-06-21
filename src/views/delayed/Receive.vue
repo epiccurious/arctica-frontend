@@ -27,10 +27,7 @@
 </template>
 
 
-<!-- 
-Todo:
--Images are distorted here...why!?
--download QR button not yet implemented -->
+<!-- -download QR button not yet implemented  -->
 
 <script>
 import NavDelayed from '@/components/NavDelayed'
@@ -97,28 +94,6 @@ export default {
     color: #777777;
     word-wrap: break-word;
     align-self:center;
-}
-#copy{
-    display:flex;
-    flex-direction: row;
-    padding-bottom: 10px;
-}
-#copy:hover{
-    cursor:pointer
-}
-#copy_text:hover{
-    cursor:pointer;
-}
-#download{
-    display:flex;
-    flex-direction: row;
-    padding-bottom: 10px;
-}
-#download:hover{
-    cursor:pointer
-}
-#download_text:hover{
-    cursor:pointer;
 }
 h1{
   margin-top: 50px;

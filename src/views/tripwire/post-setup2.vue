@@ -1,10 +1,9 @@
 <template>
 <div class="page">
-    <NavImmediate/>
     <div class="outer_container">
-        <div class="head_container">
-         <h1>Receive Bitcoin</h1>
-         </div>
+      <div class="head_container">
+        <Header title="Tripwire Receive Address" subtitle="It is reccomended that you send ~$500 to your tripwire." />
+       </div>
         <div class="receive_container">
             <div class="receive_top">
                 <img src="@/assets/placeholderQR.png">
@@ -27,31 +26,25 @@
 </template>
 
 
-<!-- 
-Todo:
--Images are distorted here...why!?
--download QR button not yet implemented -->
+<!-- -download QR button not yet implemented  -->
 
 <script>
-import NavImmediate from '@/components/NavImmediate'
-
 export default {
-  name: 'immediateReceive',
+  name: 'delayedReceive',
   components: {
-    NavImmediate,
   },
-  methods:{
-        async copy(s){
-        await navigator.clipboard.writeText(s)
-        alert('Copied Address!')
+  methods: {
+       async copy(s){
+          await navigator.clipboard.writeText(s)
+          alert('Copied Address!')
         },
         newAddress(){
-            console.log('new address clicked')
-        },
-  },
+          console.log('New address clicked')
+        }
+      },
   data(){
       return{
-          address: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky'
+          address: 'bc1qyFgK82tfxndmjl237j6xdvvhxrrnfky'
       }
   }
 }
@@ -97,6 +90,28 @@ export default {
     color: #777777;
     word-wrap: break-word;
     align-self:center;
+}
+#copy{
+    display:flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+#copy:hover{
+    cursor:pointer
+}
+#copy_text:hover{
+    cursor:pointer;
+}
+#download{
+    display:flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+#download:hover{
+    cursor:pointer
+}
+#download_text:hover{
+    cursor:pointer;
 }
 h1{
   margin-top: 50px;
