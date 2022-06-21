@@ -351,6 +351,12 @@ const routes = [
     name: 'tripwirePostSetup2',
     component: () => import('../views/post-setup/tripwire2.vue')
    },
+   {
+    path: '/duress/setup/2',
+    name: 'duressPostSetup1',
+    component: () => import('../views/post-setup/duress1.vue')
+   },
+   
 ]
 
 
