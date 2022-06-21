@@ -1,0 +1,67 @@
+<template>
+<div class="page">
+<header>
+    <h1>Time to fund your tripwire</h1>
+    <h2>Ensure you have read and understand the <a href="#">Tripwire Protocol</a>.</h2>
+    <h2>These funds are accessible by you but it is not reccomended that you access them outside of an emergency.</h2>
+ </header>
+      <div class="form_container">
+        <form>
+            <input type="checkbox" v-model="checkbox" name="checkbox">
+            <label for="checkbox">I have read and understand the <a href="#">Tripwire Protocol</a>.</label>
+        </form>
+        <div class="btn_container"> 
+            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-else @click="warn()" class="btn3">Proceed</Button>
+        </div>
+    </div> 
+
+</div>
+
+</template>
+
+<script>
+export default {
+  name: 'tripwirePostSetup1',
+  components: {
+    },
+    methods: {
+        acknowledge(){
+            console.log('user ack, initiating tripwire')
+            this.$router.push({ path: '/tripwire/setup/2' })
+        },
+        warn(){
+            console.log('user trying to proceed without checkbox validation')
+        },
+
+    },
+    data(){
+        return{
+            checkbox: false,
+        }
+    }
+}
+</script>
+
+<style scoped>
+a{
+    color:#2D9CDB;
+}
+header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 25px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+h1{
+    font-size: 21px;
+    font-weight:600;
+    line-height: 25px;
+}
+h2{
+    font-size: 18px;
+    color: #777777;
+    font-weight: 400;
+}</style>
