@@ -376,6 +376,11 @@ const routes = [
     name: 'quick1',
     component: () => import('../views/tripwire/quick1.vue')
    },
+   {
+    path: '/quick/send',
+    name: 'quick2',
+    component: () => import('../views/tripwire/quick2.vue')
+   },
 ]
 
 

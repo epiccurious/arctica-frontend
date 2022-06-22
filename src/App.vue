@@ -5,6 +5,7 @@
     <router-link :to="{ name: 'welcome' }">Welcome</router-link> 
     <router-link :to="{ name: 'Login' }">Login</router-link> 
     <router-link :to="{ name: 'quick1' }">Quick-1</router-link> 
+    <router-link :to="{ name: 'quick2' }">Quick-2</router-link> 
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'hot' }">Hot</router-link>
@@ -94,6 +95,7 @@ export default {
     }
   },
   provide: {
+      quickBalance: 0.000052,
       hotBalance: 0.12759374,
       immediateBalance: 0.27847143,
       delayedBalance: 12.05312325,

@@ -29,6 +29,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceeding to send page')
+            this.$router.push({ path: '/quick/send' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
