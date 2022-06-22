@@ -39,6 +39,7 @@ export default {
         },
         quickWithdrawal(){
             console.log('quick withdrawal clicked')
+            this.$router.push({ path: '/quick' })
         },
         greenLight(){
           console.log('green light given, this is currently a debug feature only and does nothing except enable you to proceed')

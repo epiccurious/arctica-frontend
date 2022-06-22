@@ -4,6 +4,7 @@
     <router-link :to="{ name: 'Boot' }">Boot</router-link> 
     <router-link :to="{ name: 'welcome' }">Welcome</router-link> 
     <router-link :to="{ name: 'Login' }">Login</router-link> 
+    <router-link :to="{ name: 'quick1' }">Quick-1</router-link> 
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'hot' }">Hot</router-link>

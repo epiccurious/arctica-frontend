@@ -371,6 +371,11 @@ const routes = [
     name: 'piiPostSetup3',
     component: () => import('../views/post-setup/pii3.vue')
    },
+   {
+    path: '/quick',
+    name: 'quick1',
+    component: () => import('../views/tripwire/quick1.vue')
+   },
 ]
 
 
