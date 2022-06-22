@@ -366,6 +366,11 @@ const routes = [
     name: 'piiPostSetup2',
     component: () => import('../views/post-setup/pii2.vue')
    },
+   {
+    path: '/recovery/setup/3',
+    name: 'piiPostSetup3',
+    component: () => import('../views/post-setup/pii3.vue')
+   },
 ]
 
 
