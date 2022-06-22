@@ -70,6 +70,7 @@
     <router-link :to="{ name: 'tripwirePostSetup2' }">Tripwire-Post-Setup-2</router-link>
     <router-link :to="{ name: 'duressPostSetup1' }">Duress-Post-Setup-1</router-link>
     <router-link :to="{ name: 'piiPostSetup1' }">Recovery-Post-Setup-1</router-link>
+    <router-link :to="{ name: 'piiPostSetup2' }">Recovery-Post-Setup-2</router-link>
   </nav>
   <!-- The above is just a debug menu, will be removed -->
   <router-view/>
