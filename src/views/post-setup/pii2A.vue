@@ -1,18 +1,17 @@
 <template>
-<piiPostSetup2A v-if="addExtra" />
-<div v-else class="page">
-<Header title="Family Information" subtitle="Please enter your full name below and attach a recent photo of yourself."/>
+<div class="page">
+<Header title="Family member #1" subtitle="Please enter your family member's full name below and attach a recent photo."/>
       <div class="form_container">
         <form>
                     <label>Enter Full Name</label>
-                   <br><input v-model="name" type="text" required placeholder="Your full name">
+                   <br><input v-model="familyName1" type="text" required placeholder="Your full name">
 
                     <br><button class="btn4" @click="onPickFile">Upload Photo</button>
                     <input type="file" style="display: none" ref="fileInput" accept="image/*" @change="onFilePicked" />
                     <!-- This button currently reloads the page after you upload an image, need to find a fix -->
         </form>
         <div class="btn_container"> 
-            <button v-if="name && image" @click="acknowledge()" class="btn">Finish</Button>
+            <button v-if="familyName1 && image" @click="acknowledge()" class="btn">Finish</Button>
             <button v-else @click="warn()" class="btn3">Finish</Button>
             <button @click="addMember()" class="btn2">Add another member</button>
             <button @click="proceed()" class="btn2">continue(debug option)</button> <!--this will be removed -->
@@ -24,14 +23,12 @@
 </template>
 
 <script>
-import piiPostSetup2A from './pii2A'
 import Header from '@/components/Header'
 
 export default {
-  name: 'piiPostSetup2',
+  name: 'piiPostSetup2A',
   components: {
-      Header,
-      piiPostSetup2A
+      Header
     },
     methods: {
         acknowledge(){
@@ -67,7 +64,7 @@ export default {
     },
     data(){
         return{
-            name: null,
+            familyName1: null,
             image: null,
             addExtra: false,
         }
