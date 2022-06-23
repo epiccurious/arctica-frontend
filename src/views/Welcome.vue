@@ -24,6 +24,8 @@
 -check the tripwire
 -Check for any published time machine keys/privacy keys -->
 
+<!-- Quick withdrawal button should eventually grey out if the balance has been swept/accessed -->
+
 
 <script>
 import Header from '@/components/Header'
