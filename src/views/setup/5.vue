@@ -1,6 +1,6 @@
 <template>
 <div class="page">
-    <Header title="SD Card 2" subtitle="Please insert SD card 2."/>
+    <Header title="SD Card 2" subtitle="Please remove SD card 1 & insert SD card 2."/>
     
     <div class="form_container">
         <form>
