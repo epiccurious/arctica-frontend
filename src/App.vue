@@ -75,7 +75,7 @@
     <router-link :to="{ name: 'piiPostSetup2' }">Recovery-Post-Setup-2</router-link>
     <router-link :to="{ name: 'piiPostSetup3' }">Recovery-Post-Setup-3</router-link>
   </nav>
-  <!-- The above is just a debug menu, will be removed -->
+  <!-- The above is a debug menu, will be removed -->
   <router-view/>
 </div>
 </template>
@@ -102,8 +102,6 @@ export default {
   }
 }
 </script>
-
-<!-- Need to make props provided here and injected into nav dynamic with current selected wallet -->
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
