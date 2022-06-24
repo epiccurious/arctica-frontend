@@ -40,7 +40,7 @@
         </form>
     </div>
         <div class="button_container">
-            <button @click="addRecipient()" class="btn2">Add another recipient</button>
+            <button @click="goBack()" class="btn2">Go back</button>
             <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
         </div>
     </div>        
@@ -66,8 +66,8 @@ export default {
         txConstructed(transaction){
             this.constructed = transaction
         },
-        addRecipient(){
-            console.log('Add recipient clicked')
+              goBack(){
+            this.$router.push({ path: '/' })
         },
         // selectMax(){
         //     console.log('Select max clicked')
