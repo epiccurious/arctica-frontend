@@ -7,7 +7,7 @@
         <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/carat_left.png">Back</button>
     </div>
     <div class="display_block">
-        <h1>Approve Transaction for Signing</h1>
+        <h1>Approve X Transactions for Signing</h1>
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
             <h2>To</h2>

@@ -72,6 +72,7 @@ export default {
         },
         addRecipient(){
             console.log('Add recipient clicked')
+            this.multiOutput = true
         },
         // selectMax(){
         //     console.log('Select max clicked')
@@ -105,6 +106,7 @@ export default {
          custom: false,
          transaction: {},
          constructed: false,
+         multiOutput: false,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
