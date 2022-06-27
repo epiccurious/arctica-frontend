@@ -76,6 +76,11 @@ const routes = [
      
    },
    {
+    path: '/delayed/timemachine/1',
+    name: 'TimeMachine1',
+    component: () => import('../views/delayed/timemachine/1.vue')
+   },
+   {
     path: '/wallets/delayed/receive',
     name: 'delayedReceive',
     component: () => import('../views/delayed/Receive.vue')
@@ -381,6 +386,7 @@ const routes = [
     name: 'quick2',
     component: () => import('../views/tripwire/quick2.vue')
    },
+
 ]
 
 

@@ -67,10 +67,15 @@ export default {
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
+            // eventually the continueFn() should construct and return the PSBT
             this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
-            this.txConstructed(this.transaction)
+            if (this.timeLock == false){
+                this.txConstructed(this.transaction)
+            } else {
+                this.$router.push({ path: '/delayed/timemachine/1' })
+            }
+            
         },
-        // eventually the continueFn() should construct and return the PSBT
         txConstructed(transaction){
             this.constructed = transaction
         },
@@ -100,9 +105,6 @@ export default {
         console.log('user acks time machine protocol')
         this.warning = false
       },
-        warn(){
-            console.log('user trying to proceed without checkbox validation')
-        },
     },
    data(){
      return{
@@ -119,7 +121,7 @@ export default {
          constructed: false,
          multiOutput: false,
          warning: true,
-         checkbox: false,
+         timeLock: true, //this will be set to false once the timelock decays naturally and arctica has verified that the users time machine keys have been published
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
