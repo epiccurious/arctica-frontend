@@ -81,6 +81,11 @@ const routes = [
     component: () => import('../views/delayed/timemachine/1.vue')
    },
    {
+    path: '/delayed/timemachine/2',
+    name: 'TimeMachine2',
+    component: () => import('../views/delayed/timemachine/2.vue')
+   },
+   {
     path: '/wallets/delayed/receive',
     name: 'delayedReceive',
     component: () => import('../views/delayed/Receive.vue')

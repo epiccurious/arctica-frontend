@@ -16,6 +16,8 @@
     <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
+    <router-link :to="{ name: 'TimeMachine1' }">Time-Machine-1</router-link>
+    <router-link :to="{ name: 'TimeMachine2' }">Time-Machine-2</router-link>
     <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
     <router-link :to="{ name: 'Setup1' }">Setup-1</router-link>
     <router-link :to="{ name: 'Setup2' }">Setup-2</router-link>
@@ -74,7 +76,6 @@
     <router-link :to="{ name: 'piiPostSetup1' }">Recovery-Post-Setup-1</router-link>
     <router-link :to="{ name: 'piiPostSetup2' }">Recovery-Post-Setup-2</router-link>
     <router-link :to="{ name: 'piiPostSetup3' }">Recovery-Post-Setup-3</router-link>
-    <router-link :to="{ name: 'TimeMachine1' }">Time-Machine-1</router-link>
   </nav>
   <!-- The above is a debug menu, will be removed -->
   <router-view/>
