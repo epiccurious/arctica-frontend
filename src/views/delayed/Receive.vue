@@ -1,5 +1,6 @@
 <template>
-<div class="page">
+<DelayWarning v-if="warning" v-on:ackWarning="ackWarning"/>
+<div v-else class="page">
     <NavDelayed/>
     <div class="outer_container">
       <div class="head_container">
@@ -31,11 +32,13 @@
 
 <script>
 import NavDelayed from '@/components/NavDelayed'
+import DelayWarning from './DelayWarning'
 
 export default {
   name: 'delayedReceive',
   components: {
-    NavDelayed
+    NavDelayed,
+    DelayWarning
   },
   methods: {
        async copy(s){
@@ -44,11 +47,16 @@ export default {
         },
         newAddress(){
           console.log('New address clicked')
-        }
+        },
+                ackWarning(){
+        console.log('user acks time machine protocol')
+        this.warning = false
+      },
       },
   data(){
       return{
-          address: 'bc1qyFgK82tfxndmjl237j6xdvvhxrrnfky'
+          address: 'bc1qyFgK82tfxndmjl237j6xdvvhxrrnfky',
+          warning: true,
       }
   }
 }

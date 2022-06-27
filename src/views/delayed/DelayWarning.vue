@@ -30,6 +30,11 @@ export default {
             checkbox: false,
         }
     },
+    methods:{
+        warn(){
+            console.log('user trying to proceed without checkbox validation')
+        },
+    }
 }
 </script>
 
