@@ -1,21 +1,22 @@
 <template>
 <div class="page">
     <header>
-        <h1>Placeholder page, time machine confirmation</h1>
-        <h2>Take 8 CDs and label them "CD 1" through "CD 7", and label the final one "setup".</h2> 
-        <h2>Take 7 DVDs and label them "DVD 1" through "DVD 7".</h2> 
-        <h2>Take 7 SD cards and label them "1" through "7"</h2>
-        <h2>Take 7 Envelopes and label them "1" through "7"</h2>
+        <h1>Initiating this process is irreversible.</h1>
+        <h2>To proceed you must release the information provided in your Personally Identifiable Information folder.</h2> 
+        <h2>This information will be released to anonymous Time Machine Operators.</h2> 
+        <h2>Additionally, this process will take several weeks and cost you approximately $20,000.</h2>
+        <h2>Are you sure you wish to proceed?</h2>
     </header>
     
     <div class="form_container">
         <form>
             <input type="checkbox" v-model="checkbox" name="checkbox">
-            <label for="checkbox">My devices are properly labelled</label>
+            <label for="checkbox">I acknowledge these costs.</label>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
-            <button v-else @click="warn()" class="btn3">Continue</Button>
+            <button v-if="checkbox" @click="acknowledge()" class="btn">Release my information</Button>
+            <button v-else @click="warn()" class="btn3">Release my information</Button>
+            <button @click="goBack()" class="btn2">Nevermind</button>
         </div>
     </div> 
 
@@ -31,13 +32,17 @@ export default {
   components: {
     },
     methods: {
-            acknowledge(){
-            console.log('user ack, media devices are ready')
-            this.$router.push({ path: '/setup/4' })
+        acknowledge(){
+            console.log('user ack, initiating time machine protocol')
+            this.$router.push({ path: '/delayed/timemachine/2' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+        goBack(){
+            console.log('user aborting time machine protocol')
+            this.$router.push({ path: '/wallets' })
+        }
 
     },
     data(){
