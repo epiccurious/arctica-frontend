@@ -1,63 +1,68 @@
 <template>
-  <Sign v-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
-<div v-else class="page">
-    <NavDelayed/>
-    <div class="outer_container">
-        <div class="head_container">
-         <h1>Send Bitcoin</h1>
-         </div>
-    <div class="send_container">
-        <form>
-            <label>Description</label>
-            <br><input v-model="description" type="text" placeholder="What is this transaction for?">
+    <DelayWarning v-if="warning" v-on:ackWarning="ackWarning"/>
 
-            <br><label>Address</label>
-            <br><input v-model="address" type="text" required placeholder="Enter Address"> 
+    <Sign v-else-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
 
-            <br><label>Amount</label>
-            <br><input v-model="amount" type="float" required placeholder="₿ 0.00">
-            <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
-
-            <div class="balance_calculator">
-                <div class="balance_left">
-                <h3>Your Balance</h3>
-                <h4>₿ {{ immediateBalance }}</h4>
-                </div>
-                <div class="balance_right">
-                    <button @click="selectMax()" class="btn4">Select Max</button>
-                </div>
+    <div v-else class="page">
+        <NavDelayed/>
+        <div class="outer_container">
+            <div class="head_container">
+            <h1>Send Bitcoin</h1>
             </div>
-            
-            <br><label>Fee</label>
-            <br><select v-model="fee" name="fee" id="fee" required>
-                <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
-                <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
-                <option @click="customDisable()" value="low">Low Priority {{ lowFee }} sat/Byte</option>
-                <option @click="customEnable()" value="custom">Custom (Advanced)</option>
-            </select>
-            <br><label v-if="custom == true">Sats per Byte</label>
-            <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
+        <div class="send_container">
+            <form>
+                <label>Description</label>
+                <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
-        </form>
-    </div>
-        <div class="button_container">
-            <button @click="addRecipient()" class="btn2">Add another recipient</button>
-            <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
+                <br><label>Address</label>
+                <br><input v-model="address" type="text" required placeholder="Enter Address"> 
+
+                <br><label>Amount</label>
+                <br><input v-model="amount" type="float" required placeholder="₿ 0.00">
+                <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
+
+                <div class="balance_calculator">
+                    <div class="balance_left">
+                    <h3>Your Balance</h3>
+                    <h4>₿ {{ immediateBalance }}</h4>
+                    </div>
+                    <div class="balance_right">
+                        <button @click="selectMax()" class="btn4">Select Max</button>
+                    </div>
+                </div>
+                
+                <br><label>Fee</label>
+                <br><select v-model="fee" name="fee" id="fee" required>
+                    <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
+                    <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
+                    <option @click="customDisable()" value="low">Low Priority {{ lowFee }} sat/Byte</option>
+                    <option @click="customEnable()" value="custom">Custom (Advanced)</option>
+                </select>
+                <br><label v-if="custom == true">Sats per Byte</label>
+                <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
+
+            </form>
         </div>
-    </div>        
-</div>
+            <div class="button_container">
+                <button @click="addRecipient()" class="btn2">Add another recipient</button>
+                <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
+            </div>
+        </div>        
+    </div>
 </template>
 
 
 <script>
 import NavDelayed from '@/components/NavDelayed'
 import Sign from '@/components/Sign'
+import DelayWarning from './DelayWarning'
 
 export default {
   name: 'delayedSend',
   components: {
     NavDelayed,
-    Sign
+    Sign,
+    DelayWarning
   },
     methods: {
         continueFn(description, address, amount, fee, customFee){
@@ -91,6 +96,13 @@ export default {
           console.log('sign window closed')
           this.constructed = false
       },
+        ackWarning(){
+        console.log('user acks time machine protocol')
+        this.warning = false
+      },
+        warn(){
+            console.log('user trying to proceed without checkbox validation')
+        },
     },
    data(){
      return{
@@ -106,6 +118,8 @@ export default {
          transaction: {},
          constructed: false,
          multiOutput: false,
+         warning: true,
+         checkbox: false,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
@@ -250,4 +264,5 @@ select{
   line-height: 18px;
   margin-right: 10px;
 }
+
   </style>
