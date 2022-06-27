@@ -15,7 +15,7 @@
 import Header from '@/components/Header'
 
 export default {
-  name: 'TimeMachine4',
+  name: 'TimeMachine3A',
   components: {
     Header,
     },
