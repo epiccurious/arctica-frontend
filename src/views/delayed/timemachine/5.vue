@@ -33,9 +33,6 @@ export default {
             console.log('user ack, saving the document')
             this.$router.push({ path: '/wallets' })
         },
-        warn(){
-            console.log('user trying to proceed without checkbox validation')
-        },
 
     },
 }

@@ -1,11 +1,12 @@
-<!-- This page will be a popup that appears everytime the user logs in, when the user has reecived a notice from a Time Machine Operator but has not yet presented Arctica with the
-Time Machine Key obtained from the meeting.-->
+<!-- This page will be a popup that appears everytime the user logs in, when the user has completed their first time machine operation and
+is waiting for a confirmation from the second time machine operator.-->
 
 <template>
 <div class="page">
     <header>
-        <h1>Once you've received your Time Machine Key...</h1>
-        <h2>Please insert the SD card you were given and reboot this machine</h2>
+        <h1>Your First Time Machine Operation is Complete</h1>
+        <h2>We are now waiting on a second Time Machine Operator.</h2>
+        <h2>Check back in 24 hours.</h2>
     </header>
     
 
@@ -22,7 +23,7 @@ Time Machine Key obtained from the meeting.-->
 <script>
 
 export default {
-  name: 'TimeMachine6',
+  name: 'TimeMachine7',
   components: {
     },
     methods: {
