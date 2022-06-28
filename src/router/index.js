@@ -444,6 +444,12 @@ const routes = [
     name: 'quick2',
     component: () => import('../views/tripwire/quick2.vue')
    },
+   {
+    path: '/quick/compromised',
+    name: 'Compromised',
+    component: () => import('../views/tripwire/compromised.vue')
+   },
+
 
 ]
 

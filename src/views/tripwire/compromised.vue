@@ -1,4 +1,4 @@
-<!-- This screen is not currently display anywhere, but will function as a popup that displays upon login if the user has a compromised tripwire -->
+<!-- This screen will function as a popup that displays upon login if the user has a compromised tripwire -->
 
 <template>
 <div class="page">

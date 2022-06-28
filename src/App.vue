@@ -4,11 +4,12 @@
     <router-link :to="{ name: 'Boot' }">Boot</router-link> 
     <router-link :to="{ name: 'welcome' }">Welcome</router-link> 
     <router-link :to="{ name: 'Login' }">Login</router-link> 
-    <router-link :to="{ name: 'BPS_Bricked' }">BPS-Bricked</router-link> 
+    <router-link :to="{ name: 'BPS_Bricked' }">BPSBricked</router-link> 
     <router-link :to="{ name: 'Recovery' }">Recovery</router-link> 
-    <router-link :to="{ name: 'RecoveryInitiate' }">Recovery-Initiate</router-link> 
-    <router-link :to="{ name: 'quick1' }">Quick-1</router-link> 
-    <router-link :to="{ name: 'quick2' }">Quick-2</router-link> 
+    <router-link :to="{ name: 'RecoveryInitiate' }">RecoveryInitiate</router-link> 
+    <router-link :to="{ name: 'quick1' }">Quick1</router-link> 
+    <router-link :to="{ name: 'quick2' }">Quick2</router-link> 
+    <router-link :to="{ name: 'Compromised' }">TripwireCompromised</router-link> 
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'hot' }">Hot</router-link>
