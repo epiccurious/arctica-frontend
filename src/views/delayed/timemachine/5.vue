@@ -1,0 +1,63 @@
+<!-- This page will be a popup that appears when Arctica receives confirmation that a Time Machine Operator has accepted the call and received payment.
+The document which the user prints out will be generated dynamically and include the Time Machine Operators name (and maybe phone number?) -->
+
+<template>
+<div class="page">
+    <header>
+        <h1>A Time Machine Operator has been provide your information and payment.</h1>
+        <h2>Your operator is James Smith his phone number is XXX-XXX-XXXX.</h2> 
+        <h2>The document below will include step by step instructions for your in person meeting.</h2>
+        <h2>If your operator does not follow these instructions perfrectly you should assume he is trying to steal from you.</h2>
+        <h2>You should print this document after saving.</h2>
+    </header>
+    
+
+        <div class="btn_container"> 
+            <button @click="acknowledge()" class="btn">Save this information</Button>
+        </div>
+
+
+
+</div>
+
+</template>
+
+<script>
+
+export default {
+  name: 'TimeMachine5',
+  components: {
+    },
+    methods: {
+        acknowledge(){
+            console.log('user ack, saving the document')
+            this.$router.push({ path: '/wallets' })
+        },
+        warn(){
+            console.log('user trying to proceed without checkbox validation')
+        },
+
+    },
+}
+</script>
+
+<style scoped>
+header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 25px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+h1{
+    font-size: 21px;
+    font-weight:600;
+    line-height: 25px;
+}
+h2{
+    font-size: 18px;
+    color: #777777;
+    font-weight: 400;
+}
+</style>
