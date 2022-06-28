@@ -21,6 +21,7 @@
     <router-link :to="{ name: 'TimeMachine3' }">Time-Machine-3</router-link>
     <router-link :to="{ name: 'TimeMachine4' }">Time-Machine-4</router-link>
     <router-link :to="{ name: 'TimeMachine5' }">Time-Machine-5</router-link>
+    <router-link :to="{ name: 'TimeMachine6' }">Time-Machine-6</router-link>
     <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
     <router-link :to="{ name: 'Setup1' }">Setup-1</router-link>
     <router-link :to="{ name: 'Setup2' }">Setup-2</router-link>

@@ -1,0 +1,60 @@
+<!-- This page will be a popup that appears everytime the user logs in, when the user has reecived a notice from a Time Machine Operator but has not yet presented Arctica with the
+Time Machine Key obtained from the meeting.-->
+
+<template>
+<div class="page">
+    <header>
+        <h1>Once you've received your Time Machine Key...</h1>
+        <h2>Please insert the SD card you were given and reboot this machine</h2>
+    </header>
+    
+
+        <div class="btn_container"> 
+            <button @click="acknowledge()" class="btn">Ok</Button>
+        </div>
+
+
+
+</div>
+
+</template>
+
+<script>
+
+export default {
+  name: 'TimeMachine5',
+  components: {
+    },
+    methods: {
+        acknowledge(){
+            console.log('user ack, closing popup')
+            this.$router.push({ path: '/wallets' })
+        },
+        warn(){
+            console.log('user trying to proceed without checkbox validation')
+        },
+
+    },
+}
+</script>
+
+<style scoped>
+header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 25px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+h1{
+    font-size: 21px;
+    font-weight:600;
+    line-height: 25px;
+}
+h2{
+    font-size: 18px;
+    color: #777777;
+    font-weight: 400;
+}
+</style>
