@@ -22,14 +22,13 @@
 <script>
 
 export default {
-  name: 'TimeMachine9',
+  name: 'BPS_Bricked',
   components: {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, closing popup')
-            this.$router.push({ path: '/wallets/delayed' })
-            //update a global delayed wallet unlocked variable here
+            console.log('user ack, initiating manual recovery process')
+            this.$router.push({ path: '/login/recovery' })
         },
 
     },

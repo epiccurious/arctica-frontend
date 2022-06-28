@@ -35,6 +35,7 @@ export default {
         },
         passwordRecovery(){
             console.log('Password Recovery Clicked')
+            this.$router.push({ path: '/login/recovery' })
         },
         warn(){
             console.log('user trying to proceed without password match, need form correction')

@@ -21,6 +21,18 @@ const routes = [
     component: Login
   },
   {
+    path: '/login/bricked',
+    name: 'BPS_Bricked',
+    component: () => import('../views/Manual_Login/BPS_Bricked.vue')
+     
+   },
+   {
+    path: '/login/recovery',
+    name: 'Recovery',
+    component: () => import('../views/Manual_Login/Recovery.vue')
+     
+   },
+  {
     path: '/wallets',
     name: 'dashboard',
     component: Dashboard
