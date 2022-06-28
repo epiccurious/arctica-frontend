@@ -32,6 +32,12 @@ const routes = [
     component: () => import('../views/Manual_Login/Recovery.vue')
      
    },
+   {
+    path: '/login/recovery_initiate',
+    name: 'RecoveryInitiate',
+    component: () => import('../views/Manual_Login/Recovery_initiate.vue')
+     
+   },
   {
     path: '/wallets',
     name: 'dashboard',

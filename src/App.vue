@@ -6,6 +6,7 @@
     <router-link :to="{ name: 'Login' }">Login</router-link> 
     <router-link :to="{ name: 'BPS_Bricked' }">BPS-Bricked</router-link> 
     <router-link :to="{ name: 'Recovery' }">Recovery</router-link> 
+    <router-link :to="{ name: 'RecoveryInitiate' }">Recovery-Initiate</router-link> 
     <router-link :to="{ name: 'quick1' }">Quick-1</router-link> 
     <router-link :to="{ name: 'quick2' }">Quick-2</router-link> 
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
