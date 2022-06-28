@@ -2,7 +2,7 @@
 
 <template>
   <div class="page">
-<Header title="Manual Recovery Initiated." subtitle="Please insert SD card 2."/>
+<Header title="Manual Recovery Initiated." subtitle="Please insert your next avaialble SD card."/>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
         <button @click="help()" class="btn2">I need help</button>

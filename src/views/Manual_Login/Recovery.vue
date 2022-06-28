@@ -4,8 +4,11 @@
   <div class="page">
 <Header title="How many SD cards do you have access to?"/>
     <div class="btn_container"> 
-        <button @click="acknowledge()" class="btn">Ok (This will close the application)</Button>
-        <button @click="help()" class="btn2">I need help</button>
+        <button @click="acknowledge()" class="btn">I have 3 SD cards</Button>
+        <button class="btn3">I have 2 SD cards</button>
+        <h3>Unlocks in 27 days.</h3>
+        <button class="btn3">I have 1 SD card</button>
+        <h3>Unlocks in 57 days.</h3>
     </div>
   </div>
 </template>
@@ -21,10 +24,8 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, closing the application')
+            this.$router.push({ path: '/login/recovery_initiate' })
         },
-        help(){
-            console.log('fetching help')
-        }
     },
 }
 </script>
