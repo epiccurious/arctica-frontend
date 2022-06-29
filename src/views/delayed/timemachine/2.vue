@@ -50,12 +50,6 @@ export default {
 
 <style scoped>
 
-form{
-    max-width:420px;
-    margin: 30px auto;
-    text-align: left;
-    padding:40px;
-}
 label{
     display:inline-block;
     margin: 25px 0 15px;

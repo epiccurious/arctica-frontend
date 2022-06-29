@@ -64,10 +64,4 @@ h2{
     color: #777777;
     font-weight: 400;
 }
-form{
-    max-width:420px;
-    margin: 10px auto;
-    text-align: left;
-    padding:10px;
-}
 </style>

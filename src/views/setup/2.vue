@@ -22,8 +22,8 @@
                     <button v-else @click="warn()" class="btn3">Continue</Button>
                 </div>
                 </div>
-    </header>
-
+    
+</header>
   
 </template>
 
@@ -70,12 +70,6 @@ h2{
     font-size: 18px;
     color: #777777;
     font-weight: 400;
-}
-form{
-    max-width:420px;
-    margin: 30px auto;
-    text-align: left;
-    padding:40px;
 }
 label{
     display:inline-block;

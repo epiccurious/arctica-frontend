@@ -212,7 +212,6 @@ input[type="checkbox"]{
 .form_container{
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 25px;
 }
 #copy{
