@@ -1,5 +1,4 @@
 <template>
-<header>
     <div id="nav_container"> 
         <div id="icon_container">
             <router-link v-if="dash" class="icons" :to="{ name: 'dashboard' }"><img src="@/assets/wallets_selected.png"></router-link>
@@ -8,7 +7,6 @@
             <router-link v-else class="icons" :to="{ name: 'settings' }"><img src="@/assets/settings.png"></router-link>
         </div>
     </div>
-</header>
 </template>
 
 
