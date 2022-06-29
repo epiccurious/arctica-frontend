@@ -202,12 +202,6 @@ form{
     padding-right:15px;
     padding-bottom:15px;
 }
-label{
-    display:inline-block;
-    margin: 25px 0 15px;
-    font-size: 20px;
-
-}
 input{
     display: block;
     padding: 10px 50px 10px 10px;
