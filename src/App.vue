@@ -161,8 +161,6 @@ export default {
 .btn3 {
   background: #DEDEDE;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
   border-radius:5px;
   color: #FFFFFF;
   width: 335px;
