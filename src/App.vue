@@ -243,6 +243,22 @@ input[type="checkbox"] {
   width:16px;
   margin: 0 10px 0 0;
   position: relative;
-  top: 2px;
+  top: 0px;
+}
+header{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center ;
+    justify-content:center;
+    padding: 0px 0px 25px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+form{
+    max-width:420px;
+    margin: 10px auto;
+    text-align: left;
+    padding:10px;
 }
 </style>

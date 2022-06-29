@@ -35,6 +35,7 @@ export default {
   },
   data() {
       return{
+        // this is hardcoded dummy data, remove once the getTransactions script fetches from backend
           hotTransactions: [
               {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-10T12:00:00-04:10' , fee: 0.00000987, status: 'Unconfirmed'},
               {id: 2, address: 'bc1qu7cr0hyc4xfnk3fh0cdce43fnzfwdtq5a089vs3pp7d0hhxesvwq88ecfp', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-09:30', fee: 0.00001247, status: 'Confirmed'},

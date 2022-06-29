@@ -4,7 +4,7 @@
 <header>
     <h1>Let's create a duress password</h1>
     <h2>When you attempt to login with this password, it will activate Arctica's <a href="#">Duress Protocol</a>.</h2>
-    <h3>This will automatically send Bitcoin.</h3>
+    <h3>Entering your Duress Password at the Login screen will automatically send Bitcoin.</h3>
  </header>
       <div class="form_container">
         <form>

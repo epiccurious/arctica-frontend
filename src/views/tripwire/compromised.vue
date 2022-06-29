@@ -3,9 +3,11 @@
 <template>
 <div class="page">
     <header>
+        <!-- <div class="left"> -->
         <h1>Someone has performed a quick withdrawal from SD 5</h1>
         <h2>If you did not spend this money, you should assume envelope 5 is compromised.</h2> 
         <h2>All of your funds should now be moved to a fresh Arctica wallet.</h2> 
+        <!-- </div> -->
     </header>
     
     <div class="form_container">
@@ -49,14 +51,7 @@ export default {
 </script>
 
 <style scoped>
-header{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 0px 25px;
-    margin: 0 auto;
-    margin-top: 5%;
-}
+
 h1{
     font-size: 21px;
     font-weight:600;
@@ -67,10 +62,8 @@ h2{
     color: #777777;
     font-weight: 400;
 }
-form{
-    max-width:420px;
-    margin: 10px auto;
-    text-align: left;
-    padding:10px;
-}
+/* .left{
+    text-align:left;
+    margin: 0 auto;
+} */
 </style>
