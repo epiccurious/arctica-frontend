@@ -1,9 +1,7 @@
 <template>
 <div class="page">
     <div class="outer_container">
-      <div class="head_container">
         <Header title="Tripwire Receive Address" subtitle="It is reccomended that you send ~$500 to your tripwire." />
-       </div>
         <div class="receive_container">
             <div class="receive_top">
                 <img src="@/assets/placeholderQR.png">
