@@ -182,6 +182,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  justify-items:center;
   align-items: center;
   padding: 0px;
   gap: 21px;

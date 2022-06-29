@@ -22,7 +22,7 @@
             <h3>₿ {{ this.transaction.fee }}</h3>
         </div>
 
-        <div id="btn_container">
+        <div class="btn_container">
             <button @click="broadcast(this.transaction)" class="btn">Send</button>
             <button @click="$emit('closeOut')" class="btn2">Discard</button>
         </div>
@@ -65,15 +65,8 @@ export default {
     padding: 4%;
     width: 40%;
 }
-#btn_container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-items:center;
-    justify-content: center;
+.btn_container{
     margin-top: 2%;
-    gap: 21px;
 }
 .tx_block{
     display:flex;

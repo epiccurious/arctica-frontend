@@ -22,7 +22,7 @@
             <h3>₿ {{ this.transaction.fee }}</h3>
         </div>
 
-        <div id="btn_container">
+        <div class="btn_container">
             <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
             <button @click="$emit('closeOut')" class="btn2">Discard</button>
         </div>
@@ -65,15 +65,14 @@ export default {
     padding: 4%;
     width: 40%;
 }
-#btn_container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-items:center;
-    justify-content: center;
+.btn_container{
     margin-top: 2%;
-    gap: 21px;
+}
+.btn{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 .tx_block{
     display:flex;
