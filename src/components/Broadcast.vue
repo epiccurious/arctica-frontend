@@ -93,12 +93,6 @@ export default {
     justify-items: center;
     justify-content: center;
 }
-.btn{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
 .btnclose{
     display:flex;
     flex-direction: row;
