@@ -81,4 +81,7 @@ h2{
 h3{
     font-weight:800;
 }
+.checkbox_container{
+margin-left:10%; 
+}
 </style>

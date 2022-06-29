@@ -58,4 +58,7 @@ h2{
 a{
     color:#2D9CDB;
 }
+.checkbox_container{
+margin-left:10%; 
+}
 </style>

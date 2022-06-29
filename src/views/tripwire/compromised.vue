@@ -3,11 +3,9 @@
 <template>
 <div class="page">
     <header>
-        <!-- <div class="left"> -->
         <h1>Someone has performed a quick withdrawal from SD 5</h1>
         <h2>If you did not spend this money, you should assume envelope 5 is compromised.</h2> 
-        <h2>All of your funds should now be moved to a fresh Arctica wallet.</h2> 
-        <!-- </div> -->
+        <h2>For your security, all of your funds should now be moved to a fresh Arctica wallet.</h2> 
     </header>
     
     <div class="form_container">
@@ -64,8 +62,7 @@ h2{
     color: #777777;
     font-weight: 400;
 }
-/* .left{
-    text-align:left;
-    margin: 0 auto;
-} */
+.checkbox_container{
+margin-left:10%; 
+}
 </style>

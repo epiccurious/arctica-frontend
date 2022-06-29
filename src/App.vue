@@ -250,6 +250,7 @@ input[type="checkbox"] {
 .checkbox_container{
     display:flex;
     flex-direction: row;
+    width:100%;
 }
 header{
     display:flex;
