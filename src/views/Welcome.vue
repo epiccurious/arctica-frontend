@@ -1,6 +1,9 @@
 <template>
   <div v-if="readyToWork == false" class="loading">
-<Header title="Welcome to Arctica" subtitle="Hang Tight. We are checking on a few things. "/>
+  <header>
+    <h1>Welcome to Arctica</h1>
+    <h2>Hang Tight. We are checking on a few things.</h2>
+  </header>
     <div class="btn_container"> 
         <button class="btn3">Log in</Button>
         <button @click="greenLight()" class="btn2">Debug - simulate green light</button>
@@ -9,7 +12,10 @@
 
 
   <div v-else class="login">
-<Header title="Welcome to Arctica" subtitle="Everything looks good. Glad to have you back."/>
+    <header>
+      <h1>Welcome to Arctica</h1>
+      <h2>Everything looks good. Glad to have you back.</h2>
+    </header>
     <div class="btn_container"> 
         <button @click="login()" class="btn">Log in</Button>
         <button @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
@@ -28,13 +34,8 @@
 
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'Welcome',
-  components: {
-    Header,
-    },
     methods: {
         login(){
             this.$router.push({ path: '/login' })

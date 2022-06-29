@@ -2,7 +2,7 @@
 <div class="page">
 <header>
 <h1>Package 6 is now complete.</h1>
- <h2>Please remove DVD 6.</h2>
+<h2>Pleae remove DVD 6.</h2>
  <h2>Place SD card 6, and backups CD 6 and DVD 6 into Envelope 6.</h2> 
  <h2>This envelope should be stored somewhere...[placeholder text]</h2>
  </header>

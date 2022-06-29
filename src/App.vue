@@ -274,4 +274,14 @@ label{
     margin: 25px 0 15px;
     font-size: 20px;
 }
+h1{
+    font-size: 21px;
+    font-weight:600;
+    line-height: 25px;
+}
+h2{
+    font-size: 18px;
+    color: #777777;
+    font-weight: 400;
+}
 </style>
