@@ -1,7 +1,9 @@
 <template>
 <header>
-    <h1>{{ title }}</h1>
-    <h2>{{ subtitle }}</h2>
+    <div class="left">
+        <h1>{{ title }}</h1>
+        <h2>{{ subtitle }}</h2>
+    </div>
 </header>
 </template>
 
@@ -17,6 +19,9 @@ export default {
 </script>
 
 <style scoped>
+.left{
+    text-align: left;
+}
 h1{
     font-size: 21px;
     font-weight:600;

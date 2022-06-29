@@ -253,6 +253,7 @@ header{
     padding: 0px 0px 25px;
     margin: 0 auto;
     margin-top: 5%;
+    width:19%;
 }
 form{
     max-width:420px;
