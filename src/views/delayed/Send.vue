@@ -202,17 +202,6 @@ form{
     padding-right:15px;
     padding-bottom:15px;
 }
-input{
-    display: block;
-    padding: 10px 50px 10px 10px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    font-size: 18px;
-    font-weight:400;
-    line-height:140%;
-    
-}
 select{
     display: block;
     padding: 10px 50px 10px 10px;

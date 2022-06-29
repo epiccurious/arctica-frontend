@@ -81,19 +81,8 @@ h2{
 h3{
     font-weight:800;
 }
-input{
-    display: block;
-    padding: 10px 50px 10px 10px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    
-}
 #checkbox_container{
     display:flex;
     flex-direction: row;
-}
-input[type="checkbox"]{
-    max-width:16px;
 }
 </style>
