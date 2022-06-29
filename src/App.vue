@@ -1,6 +1,6 @@
 <template>
 <div class="page">
-  <!-- <nav id="nav">Debug Nav bar:
+  <nav id="nav">Debug Nav bar:
     <router-link :to="{ name: 'Boot' }">Boot</router-link> 
     <router-link :to="{ name: 'welcome' }">Welcome</router-link> 
     <router-link :to="{ name: 'Login' }">Login</router-link> 
@@ -87,7 +87,7 @@
     <router-link :to="{ name: 'piiPostSetup1' }">Recovery-Post-Setup-1</router-link>
     <router-link :to="{ name: 'piiPostSetup2' }">Recovery-Post-Setup-2</router-link>
     <router-link :to="{ name: 'piiPostSetup3' }">Recovery-Post-Setup-3</router-link>
-  </nav> -->
+  </nav>
   <!-- The above is a debug menu, will be removed -->
   <router-view/>
 </div>

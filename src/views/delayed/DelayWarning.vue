@@ -28,6 +28,7 @@ export default {
     data(){
         return{
             checkbox: false,
+            
         }
     },
     methods:{
@@ -41,14 +42,6 @@ export default {
 <style scoped>
 #delay{
     font-weight: 700;
-}
-header{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 0px 25px;
-    margin: 0 auto;
-    margin-top: 5%;
 }
 h1{
     font-size: 21px;

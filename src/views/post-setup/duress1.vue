@@ -68,14 +68,6 @@ export default {
 a{
     color:#2D9CDB;
 }
-header{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 0px 25px;
-    margin: 0 auto;
-    margin-top: 5%;
-}
 h1{
     font-size: 21px;
     font-weight:600;
