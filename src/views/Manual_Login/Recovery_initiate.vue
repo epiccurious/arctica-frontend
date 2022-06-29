@@ -2,7 +2,10 @@
 
 <template>
   <div class="page">
-<Header title="Manual Recovery Initiated." subtitle="Please insert your next avaialble SD card."/>
+    <header>
+      <h1>Manual Recovery Initiated.</h1>
+      <h2>Please insert your next available SD card.</h2>
+    </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
         <button @click="help()" class="btn2">I need help</button>
@@ -11,13 +14,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'RecoveryInitiate',
-  components: {
-    Header,
-    },
     methods: {
         acknowledge(){
             console.log('user ack, recovery initiating')

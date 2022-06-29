@@ -2,7 +2,9 @@
 
 <template>
   <div class="page">
-<Header title="How many SD cards do you have access to?"/>
+    <header>
+      <h1>How many SD cards do you have access to?</h1>
+    </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">I have 3 SD cards</Button>
         <button class="btn3">I have 2 SD cards</button>
@@ -14,13 +16,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'Recovery',
-  components: {
-    Header,
-    },
     methods: {
         acknowledge(){
             console.log('user ack, closing the application')

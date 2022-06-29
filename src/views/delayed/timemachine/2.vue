@@ -1,7 +1,10 @@
 <template>
 <Duress2 v-if="passwordSetup" v-on:goBack="goBack" :password="password2"/>
 <div v-else class="page">
-<Header title="Please update your contact information" subtitle="In order to ensure your Time Machine Operator can contact you, plase provide current contact information."/>
+    <header>
+        <h1>Please update your contact information</h1>
+        <h2>In order to ensure your Time Machine Operator can contact you, please provide current contact information.</h2>
+    </header>
       <div class="form_container">
         <form>
                     <label>Enter Phone Number</label>
@@ -22,12 +25,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
 export default {
   name: 'TimeMachine2',
-  components: {
-    Header,
-  },
     methods: {
         acknowledge(){
             console.log('user ack, gathering contact phone number')

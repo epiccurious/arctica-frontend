@@ -4,7 +4,10 @@
 
 <template>
   <div class="login">
-<Header title="Insufficient Funds" subtitle="In order to proceed you must have atleast $10,000 in your immediate account."/>
+    <header>
+      <h1>Insufficient Funds</h1>
+      <h2>In order to proceed you must have atleast $10,000 in your immediate account.</h2>
+    </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
     </div>
@@ -12,13 +15,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'TimeMachine4A',
-  components: {
-    Header,
-    },
     methods: {
         acknowledge(){
             console.log('user ack, proceeding to immediate receive tab')

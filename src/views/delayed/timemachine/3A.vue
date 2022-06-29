@@ -4,7 +4,10 @@
 
 <template>
   <div class="login">
-<Header title="Your Time Machine request is still processing" subtitle="We are still waiting on Time Machine Operators. Check back in 24 hours."/>
+<header>
+  <h1>Your Time Machine request is still processing</h1>
+  <h2>We are still waiting on Time Machine Operators. Check back in 24 hours.</h2>
+</header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
     </div>
@@ -12,13 +15,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'TimeMachine3A',
-  components: {
-    Header,
-    },
     methods: {
         acknowledge(){
             console.log('user ack')
