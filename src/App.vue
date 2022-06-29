@@ -245,7 +245,11 @@ input[type="checkbox"] {
   width:16px;
   margin: 0 10px 0 0;
   position: relative;
-  top: 0px;
+  top: 5px;
+}
+.checkbox_container{
+    display:flex;
+    flex-direction: row;
 }
 header{
     display:flex;

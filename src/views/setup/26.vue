@@ -9,8 +9,10 @@
  </header>
       <div class="form_container">
         <form>
-            <input type="checkbox" v-model="checkbox" name="checkbox">
-            <label for="checkbox">My #1 devices have been placed into Envelope 1.</label>
+            <div class="checkbox_container">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <label for="checkbox">My #1 devices have been placed into Envelope 1.</label>
+            </div>
         </form>
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>

@@ -34,7 +34,7 @@ export default {
             this.$router.push({ path: '/delayed/timemachine/3' })
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
+            console.log('user trying to proceed but phone numbers do no match')
         },
 
 

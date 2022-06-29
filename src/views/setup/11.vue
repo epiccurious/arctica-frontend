@@ -27,9 +27,6 @@ export default {
         acknowledge(){
             console.log('user ack, closing application')
         },
-        warn(){
-            console.log('user trying to proceed without checkbox validation')
-        },
 
     },
     data(){

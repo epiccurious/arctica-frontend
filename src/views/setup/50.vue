@@ -30,7 +30,7 @@ export default {
             // this.$router.push({ path: '/setup/50' })
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
+            console.log('user trying to proceed without completed sync')
         },
         proceed(){
             console.log('debug proceed')

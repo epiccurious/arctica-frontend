@@ -9,8 +9,10 @@
         
         <div class="form_container">
             <form>
-                <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have read and understand the <a href="#">Time Machine Protocol</a>.</label>
+                <div class="checkbox_container">
+                    <input type="checkbox" v-model="checkbox" name="checkbox">
+                    <label for="checkbox">I have read and understand the <a href="#">Time Machine Protocol</a>.</label>
+                </div>
             </form>
             <div class="btn_container"> 
                 <button v-if="checkbox" @click="$emit('ackWarning')" class="btn">Proceed</Button>

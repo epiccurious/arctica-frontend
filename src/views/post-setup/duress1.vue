@@ -14,7 +14,7 @@
                     <br><label>Confirm Duress Password</label>
                    <br><input v-model="password2" type="password" required placeholder="Your duress password">
 
-            <div id="checkbox_container">
+            <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have read and understand the <a href="#">Duress Protocol</a>.</label>
             </div>
@@ -80,9 +80,5 @@ h2{
 }
 h3{
     font-weight:800;
-}
-#checkbox_container{
-    display:flex;
-    flex-direction: row;
 }
 </style>

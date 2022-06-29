@@ -36,7 +36,7 @@ export default {
             
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
+            console.log('user trying to proceed without name and/or image')
         },
         addMember(){
             console.log('adding a family member')

@@ -7,9 +7,11 @@
  </header>
       <div class="form_container">
         <form>
-            <input type="checkbox" v-model="checkbox" name="checkbox">
-            <label for="checkbox">I have read and understand the <a href="#">Tripwire Protocol</a>.</label>
-        </form>
+            <div class="checkbox_container">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <label for="checkbox">I have read and understand the <a href="#">Tripwire Protocol</a>.</label>
+            </div>
+       </form>
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
