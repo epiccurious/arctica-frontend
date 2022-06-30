@@ -8,37 +8,37 @@
         <router-link class="wallet_container" :to="{ name: 'hot' }">
             <div class="wallet_container_left">
             <h2>Hot Wallet</h2>
-            <h3>Spend Now</h3>
+            <h2 class="time_decay">Spend Now</h2>
             </div>
             <div class="wallet_container_right">
               <h2 class="balance">{{ hotBalance }} BTC</h2>
-              <span><img src="@/assets/carat_right.png"/></span>
+              <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
 
         <router-link class="wallet_container" :to="{ name: 'immediate' }">
             <div class="wallet_container_left">
             <h2>Immediate Wallet</h2>
-            <h3>2 SD cards</h3>
+            <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
               <h2 class="balance">{{ immediateBalance }} BTC</h2>
-              <span><img src="@/assets/carat_right.png"/></span>
+              <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
 
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet</h2>
-          <h3>5 SD cards + 2 Time Machine Keys</h3>
+          <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
             <h2 class="balance">{{ delayedBalance }} BTC</h2>
-            <span><img src="@/assets/carat_right.png"/></span>
+            <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
           <div class="decay_timer">
-            <h3>Approximate time until next decay: 1 year & 162 days</h3>
+            <h2 class="time_decay">Approximate time until next decay: 1 year & 162 days</h2>
           </div>
       </div>
   </div>
@@ -69,11 +69,24 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
-  width:100%;
+  width:60%;
+  margin-left:20%;
 }
 h1{
   margin-top: 50px;
   padding:10px;
+  line-height: 25px;
+
+}
+h2{
+  color:#000000;
+}
+.time_decay{
+  color:#777777;
+}
+.balance{
+  color:#404040;
+  text-align:right;
 }
 .head_container{
   border-style: solid; 
@@ -103,6 +116,9 @@ h1{
   align-items:center;
   align-content:center;
   width:50%;
+}
+.carat{
+  margin-top:0.5%;
 }
 .wallet_container{
   display:flex;
