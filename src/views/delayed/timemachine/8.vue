@@ -5,7 +5,7 @@
     <header>
         <h1>Your second Time Machine Operator is ready to assist.</h1>
         <h2>Please confirm you are ready to pay this operator $10,000 from your immediate wallet.</h2> 
-        <h2>Are you sure you wish to proceed?</h2>
+        <h4>Are you sure you wish to proceed?</h4>
     </header>
     
     <div class="form_container">

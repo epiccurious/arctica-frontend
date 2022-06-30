@@ -8,7 +8,7 @@ The document which the user prints out will be generated dynamically and include
         <h2>Your operator is James Smith his phone number is XXX-XXX-XXXX.</h2> 
         <h2>The document below will include step by step instructions for your in person meeting.</h2>
         <h2>If your operator does not follow these instructions perfrectly you should assume he is trying to steal from you.</h2>
-        <h2>You should print this document after saving.</h2>
+        <h4>You should print this document after saving.</h4>
     </header>
     
 
