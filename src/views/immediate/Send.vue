@@ -151,7 +151,6 @@ export default {
 h1{
   margin-top: 50px;
   padding:10px;
-  text-align:left;
 }
 h3{
     font-family: 'Inter';

@@ -280,6 +280,7 @@ h1{
     font-weight: 600;
     font-size: 21px;
     line-height: 140%;
+    text-align:left;
 }
 h2{
     font-family: 'Inter';
@@ -288,5 +289,6 @@ h2{
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
+    text-align:left;
 }
 </style>
