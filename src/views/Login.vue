@@ -1,6 +1,9 @@
 <template>
 <div class="page">
-        <Header title="Log in" subtitle="Please enter your password below."/>
+        <header>
+            <h1>Log in</h1>
+            <h2>Please enter your password below.</h2>
+        </header>
             <div class="form_container">
                 <form>
                     <label>Enter Password</label>
@@ -22,13 +25,8 @@
 <!-- Currently, the two passwords inputs just need to match in order for the user to login -->
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'Login',
-  components: {
-    Header,
-    },
     methods: {
         login(){
             this.$router.push({ path: '/wallets' })
