@@ -174,13 +174,4 @@ select{
     display:flex;
     flex-direction: row;
 }
-.btn4 {
-  background: #FFFFFF;
-  color: #000000;
-  width: 150px;
-  height: 46px;
-  font-size: 18px;
-  line-height: 18px;
-  margin-right: 10px;
-}
   </style>

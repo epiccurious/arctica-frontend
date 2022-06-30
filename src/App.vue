@@ -169,6 +169,18 @@ export default {
   line-height: 18px;
   font-weight: 500;
 }
+.btn4 {
+  background: #FFFFFF;
+  color: #000000;
+  width: 150px;
+  height: 46px;
+  font-size: 18px;
+  line-height: 18px;
+  margin-right: 10px;
+}
+.btn5{
+    padding:5px;
+}
 .btnclose{
     background-color: #FFFFFF;
     width: auto;

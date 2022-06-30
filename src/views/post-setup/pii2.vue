@@ -10,7 +10,7 @@
                     <label>Enter Full Name</label>
                    <br><input v-model="name" type="text" required placeholder="Your full name">
 
-                    <br><button class="btn4" @click="onPickFile">Upload Photo</button>
+                    <br><button class="btn5" @click="onPickFile">Upload Photo</button>
                     <input type="file" style="display: none" ref="fileInput" accept="image/*" @change="onFilePicked" />
                     <!-- This button currently reloads the page after you upload an image, need to find a fix -->
         </form>
@@ -75,9 +75,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.btn4{
-    padding:5px;
-}
-</style>
