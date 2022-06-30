@@ -20,6 +20,7 @@
     <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
+    <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
     <router-link :to="{ name: 'TimeMachine1' }">Time-Machine-1</router-link>
     <router-link :to="{ name: 'TimeMachine2' }">Time-Machine-2</router-link>
     <router-link :to="{ name: 'TimeMachine3' }">Time-Machine-3</router-link>
@@ -29,7 +30,6 @@
     <router-link :to="{ name: 'TimeMachine7' }">Time-Machine-7</router-link>
     <router-link :to="{ name: 'TimeMachine8' }">Time-Machine-8</router-link>
     <router-link :to="{ name: 'TimeMachine9' }">Time-Machine-9</router-link>
-    <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
     <router-link :to="{ name: 'Setup1' }">Setup-1</router-link>
     <router-link :to="{ name: 'Setup2' }">Setup-2</router-link>
     <router-link :to="{ name: 'Setup3' }">Setup-3</router-link>
@@ -221,6 +221,9 @@ a{
 }
 ::placeholder{
     color:#BBBBBB
+}
+.blue_link{
+    color:#2D9CDB;
 }
 .form_container{
     display: flex;

@@ -3,8 +3,8 @@
 <header>
     <!-- the below will need a full rework once page 2 and its child components are working correctly. This should be pulling in props from the previous page -->
     <h1>Does the below information look correct?</h1>
-    <h2>Your Full Name [name variable will go here] <a href="#">Image</a> <a href="#">Edit</a> <a href="#">Delete</a></h2>
-    <h2>Family Member #1 Name [name variable will go here] <a href="#">Image</a> <a href="#">Edit</a> <a href="#">Delete</a></h2>
+    <h2>Your Full Name [name variable will go here] <a class="blue_link" href="#">Image</a> <a class="blue_link" href="#">Edit</a> <a class="blue_link" href="#">Delete</a></h2>
+    <h2>Family Member #1 Name [name variable will go here] <a class="blue_link" href="#">Image</a> <a class="blue_link" href="#">Edit</a> <a class="blue_link" href="#">Delete</a></h2>
  </header>
       <div class="form_container">
         <form>
@@ -46,9 +46,6 @@ export default {
 </script>
 
 <style scoped>
-a{
-    color:#2D9CDB;
-}
 .checkbox_container{
 margin-left:5%; 
 }
