@@ -5,8 +5,8 @@
             <div class="wallet_overview">
                     <img src="@/assets/Wallet.png"/>
                     <div class="description_balance">
-                    <h3 class="description">Delayed Wallet</h3>
-                    <h3 class="balance">₿ {{ delayedBalance }}</h3>
+                    <h2 class="description">Delayed Wallet</h2>
+                    <h2 class="balance">₿ {{ delayedBalance }}</h2  >
                     </div>
             </div>
 
@@ -96,34 +96,40 @@ export default{
     flex-direction: row;
 }
 .wallet_tab{
-    padding:25px;
+    padding:28px;
+    font-weight:600;
 }
 .send_tab{
-    padding:25px;
+    padding:28px;
+    font-weight:600;
 }
 .receive_tab{
-    padding:25px;
+    padding:28px;
+    font-weight:600;
 }
 .wallet_tab_selected{
-    padding:25px;
+    padding:28px;
     color:#F7931A;
     border-style: solid; 
     border-width: 0px 0px 5px 0px;
     border-color: #F7931A;
+    font-weight:600;
 }
 .receive_tab_selected{
-    padding:25px;
+    padding:28px;
     color:#F7931A;
     border-style: solid; 
     border-width: 0px 0px 5px 0px;
     border-color: #F7931A;
+    font-weight:600;
 }
 .send_tab_selected{
-    padding:25px;
+    padding:28px;
     color:#F7931A;
     border-style: solid; 
     border-width: 0px 0px 5px 0px;
     border-color: #F7931A;
+    font-weight:600;
 }
 .description_balance{
     padding-left: 20px;
@@ -144,5 +150,11 @@ img{
 }
 .description{
     color: #777777;
+    line-height:16px;
+}
+.balance{
+    line-height: 15.73px;
+    color:#000000;
+
 }
 </style>
