@@ -1,6 +1,9 @@
 <template>
 <div class="page">
-<Header title="Family member #1" subtitle="Please enter your family member's full name below and attach a recent photo."/>
+    <header>
+        <h1>Family member # 1</h1>
+        <h2>Please enter your family member's full name below and attach a recent photo.</h2>
+    </header>
       <div class="form_container">
         <form>
                     <label>Enter Full Name</label>
@@ -23,13 +26,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'piiPostSetup2A',
-  components: {
-      Header
-    },
     methods: {
         acknowledge(){
             console.log('user ack, recovery folder finished, proceeding')

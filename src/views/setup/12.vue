@@ -2,8 +2,10 @@
 
 <template>
 <div class="page">
-    <Header title="Please insert the setup CD" subtitle="Insert setup CD to continue."/>
-    
+    <header>
+        <h1>Please insert the setup CD</h1>
+        <h2>Insert the setup CD to continue.</h2>
+    </header>   
     <div class="form_container">
         <form>
             <div class="checkbox_container">
@@ -23,13 +25,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'Setup12',
-  components: {
-      Header
-    },
     methods: {
         acknowledge(){
             console.log('user ack, loading pubkeys onto setup CD')

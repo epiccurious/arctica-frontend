@@ -1,7 +1,9 @@
 <template>
 <div class="page">
-    <Header title="SD Card 5" subtitle="Please remove SD card 4 & insert SD card 5."/>
-    
+        <header>
+        <h1>SD Card 5</h1>
+        <h2>Please remove SD card 4 & insert SD card 5.</h2>
+        </header>    
     <div class="form_container">
         <form>
             <div class="checkbox_container">
@@ -21,13 +23,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'Setup8',
-  components: {
-      Header
-    },
     methods: {
         acknowledge(){
             console.log('user ack, flashing SD 5')

@@ -1,7 +1,9 @@
 <template>
 <div class="page">
-    <Header title="SD 1 creation complete" subtitle="Please insert SD 2 and reboot this machine."/>
-
+    <header>
+        <h1>SD 1 creation complete</h1>
+        <h2>Please insert SD 2 and reboot this machine.</h2>
+    </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
             <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
@@ -12,13 +14,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'Setup13',
-  components: {
-      Header
-    },
     methods: {
         acknowledge(){
             console.log('user ack, close application')

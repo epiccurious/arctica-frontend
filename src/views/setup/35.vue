@@ -1,7 +1,9 @@
 <template>
 <div class="page">
-    <Header title="CD 4 Backup" subtitle="Please insert CD 4."/>
-    
+    <header>
+        <h1>CD 4 Backup</h1>
+        <h2>Please insert CD 4.</h2>
+    </header> 
     <div class="form_container">
         <form>
             <div class="checkbox_container">
@@ -21,13 +23,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
   name: 'Setup35',
-  components: {
-      Header
-    },
     methods: {
         acknowledge(){
             console.log('user ack, moving info from SD 4 to CD 4')

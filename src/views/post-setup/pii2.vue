@@ -1,7 +1,10 @@
 <template>
 <piiPostSetup2A v-if="addExtra" />
 <div v-else class="page">
-<Header title="Family Information" subtitle="Please enter your full name below and attach a recent photo of yourself."/>
+    <header>
+        <h1>Family Information</h1>
+        <h2>Please enter your full name below and attach a recent photo of yourself.</h2>
+    </header>
       <div class="form_container">
         <form>
                     <label>Enter Full Name</label>
@@ -25,12 +28,10 @@
 
 <script>
 import piiPostSetup2A from './pii2A'
-import Header from '@/components/Header'
 
 export default {
   name: 'piiPostSetup2',
   components: {
-      Header,
       piiPostSetup2A
     },
     methods: {

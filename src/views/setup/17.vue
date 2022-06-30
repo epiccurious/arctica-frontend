@@ -2,8 +2,10 @@
 
 <template>
 <div class="page">
-    <Header title="Please insert the setup CD" subtitle="Please insert the disc labelled 'Setup'"/>
-
+    <header>
+        <h1>Please insert the setup CD</h1>
+        <h2>Insert the disc labelled 'Setup'.</h2>
+    </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
         </div>
@@ -13,13 +15,9 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
 
 export default {
   name: 'Setup17',
-  components: {
-      Header
-    },
     methods: {
         acknowledge(){
             console.log('user ack, proceed, consider checkbox here?')
