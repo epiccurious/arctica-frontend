@@ -5,7 +5,7 @@
         <h2>To proceed you must release the information provided in your Personally Identifiable Information folder.</h2> 
         <h2>This information will be released to anonymous Time Machine Operators.</h2> 
         <h2>Additionally, this process will take several weeks and cost you approximately $20,000.</h2>
-        <h3>Are you sure you wish to proceed?</h3>
+        <h4>Are you sure you wish to proceed?</h4>
     </header>
     
     <div class="form_container">
