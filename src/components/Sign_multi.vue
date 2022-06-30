@@ -67,14 +67,6 @@ export default {
     align-content: center;
     align-items: center;
 }
-#back_btn{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
-    justify-content: center;
-}
 .btnclose{
     display:flex;
     flex-direction: row;

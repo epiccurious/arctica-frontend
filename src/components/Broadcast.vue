@@ -1,9 +1,6 @@
 <template>
 <Confirmation v-if="sent" />
 <div v-else class="page">
-    <!-- <div id="back_button">
-        <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/carat_left.png">Back</button>
-    </div> -->
     <div class="display_block">
         <h1>Ready to send?</h1>
         <img src="@/assets/checkmark_green.png">
@@ -58,14 +55,6 @@ export default {
 <style scoped>
 .btn_container{
     margin-top: 2%;
-}
-#back_btn{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
-    justify-content: center;
 }
 .btnclose{
     display:flex;
