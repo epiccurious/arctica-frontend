@@ -54,13 +54,9 @@ export default {
 
 <style scoped>
 .display_block{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
     align-items: flex-start;
     width:30%;
     padding:2%;
-    margin: 0 auto;
     background: #FFFFFF;
     border-radius:10px;
 }
@@ -84,18 +80,6 @@ export default {
     justify-self:center;
     width:100%;
 }
-
-.tx_block{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content:center;
-    width:90%;
-    border-style: solid; 
-    border-width: 0px 0px 1px 0px;
-    border-color: #DEDEDE;
-}
-
 #footer_block{
     display:flex;
     flex-direction: row;

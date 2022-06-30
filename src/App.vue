@@ -306,4 +306,23 @@ h3{
   width:60%;
   margin-left:20%;
 }
+.display_block{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 4%;
+    width: 40%;
+}
+.tx_block{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content:center;
+    width:90%;
+    border-style: solid; 
+    border-width: 0px 0px 1px 0px;
+    border-color: #DEDEDE;
+}
 </style>

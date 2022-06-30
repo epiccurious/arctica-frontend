@@ -37,15 +37,6 @@ export default{
 </script>
 
 <style scoped>
-.display_block{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 4%;
-    width: 40%;
-}
 .btn_container{
     margin-top: 2%;
 }
