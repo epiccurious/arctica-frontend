@@ -332,4 +332,24 @@ h3{
     border-width: 0px 0px 1px 0px;
     border-color: #DEDEDE;
 }
+.nav_container{
+    width:100%;
+    height: 100px;
+    border-style: solid; 
+    border-width: 0px 0px 1px 0px;
+    border-color: #DEDEDE;
+    margin-top:10px;
+}
+.icon_container{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    align-content:center;
+    padding:5px;
+}
+.icons{
+    display:flex;
+    padding: 5px;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <div id="nav_container"> 
-        <div id="icon_container">
+    <div class="nav_container"> 
+        <div class="icon_container">
             <router-link v-if="dash" class="icons" :to="{ name: 'dashboard' }"><img src="@/assets/wallets_selected.png"></router-link>
             <router-link v-else class="icons" :to="{ name: 'dashboard' }"><img src="@/assets/wallets.png"></router-link>  
             <router-link v-if="settings" class="icons" :to="{ name: 'settings' }"><img src="@/assets/settings_selected.png"></router-link>
@@ -41,25 +41,7 @@ export default{
 </script>
 
 <style scoped>
-#nav_container{
-    width:100%;
-    height: 100px;
-    border-style: solid; 
-    border-width: 0px 0px 1px 0px;
-    border-color: #DEDEDE;
-    margin-top:10px;
-}
-
-#icon_container{
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    align-content:center;
+.icon_container{
     padding-top:40px;
-}
-
-.icons{
-    padding: 5px;
 }
 </style>
