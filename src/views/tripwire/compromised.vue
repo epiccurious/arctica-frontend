@@ -10,7 +10,7 @@
     
     <div class="form_container">
         <form>
-            <div class="checkbox_container">
+            <div class="lg_checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I understand my security may be compromised</label>
             </div>
@@ -49,9 +49,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.checkbox_container{
-margin-left:10%; 
-}
-</style>

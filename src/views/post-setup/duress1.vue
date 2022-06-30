@@ -14,7 +14,7 @@
                     <br><label>Confirm Duress Password</label>
                    <br><input v-model="password2" type="password" required placeholder="Your duress password">
 
-            <div class="checkbox_container">
+            <div class="lg_checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have read and understand the <a class="blue_link" href="#">Duress Protocol</a>.</label>
             </div>
@@ -67,8 +67,5 @@ export default {
 <style scoped>
 #strong{
     font-weight:800;
-}
-.checkbox_container{
-margin-left:10%; 
 }
 </style>

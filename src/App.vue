@@ -274,6 +274,12 @@ input[type="checkbox"] {
     flex-direction: row;
     width:100%;
 }
+.lg_checkbox_container{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    margin-left:10%; 
+}
 form{
     max-width:420px;
     margin: 10px auto;

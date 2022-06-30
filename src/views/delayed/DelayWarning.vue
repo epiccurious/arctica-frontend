@@ -9,7 +9,7 @@
         
         <div class="form_container">
             <form>
-                <div class="checkbox_container">
+                <div class="lg_checkbox_container">
                     <input type="checkbox" v-model="checkbox" name="checkbox">
                     <label for="checkbox">I have read and understand the <a class="blue_link" href="#">Time Machine Protocol</a>.</label>
                 </div>
@@ -44,8 +44,5 @@ export default {
 <style scoped>
 #delay{
     font-weight: 700;
-}
-.checkbox_container{
-margin-left:10%; 
 }
 </style>

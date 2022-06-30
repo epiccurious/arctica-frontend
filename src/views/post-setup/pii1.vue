@@ -7,7 +7,7 @@
  </header>
       <div class="form_container">
         <form>
-            <div class="checkbox_container">
+            <div class="lg_checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have read and understand the <a class="blue_link" href="#">Tripwire Protocol</a> & <a class="blue_link" href="#">Duress Protocol</a>.</label>
             </div>
@@ -44,9 +44,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.checkbox_container{
-margin-left:10%; 
-}
-</style>

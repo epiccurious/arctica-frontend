@@ -8,7 +8,7 @@
  </header>
       <div class="form_container">
         <form>
-            <div class="checkbox_container">
+            <div class="lg_checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">My #6 devices have been placed into Envelope 6.</label>
             </div>
@@ -45,9 +45,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.checkbox_container{
-margin-left:10%; 
-}
-</style>
