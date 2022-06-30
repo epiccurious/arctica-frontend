@@ -6,8 +6,8 @@
 <h1>Let's setup your password</h1>
  <h2>Select two words which are easy for you to remember, such as an adjective and a noun.</h2> 
  <h2>You should not write these words down.</h2> 
-     <h2>below is an example which you can use if you like</h2>
-     <h3>Granite Sparkle</h3> <!-- this needs to eventually come from a word list -->
+     <h2>Below is an example which you can use if you like</h2>
+     <h4>Granite Sparkle</h4> <!-- this needs to eventually come from a word list -->
 
             <div class="form_container">
                 <form>
@@ -59,4 +59,10 @@ export default {
  }
 }
 </script>
+
+<style scoped>
+h4{
+    text-align:center;
+}
+</style>
 
