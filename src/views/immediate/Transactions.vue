@@ -72,11 +72,12 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
-  width:100%;
+  width:60%;
+  margin-left:20%;
 }
 h1{
   margin-top: 50px;
-  padding:10px;
+  padding:0px;
 }
 h2{
   color:#000000;
