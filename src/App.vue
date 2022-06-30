@@ -298,4 +298,13 @@ h3{
     font-size: 18px;
     line-height: 140%;
 }
+.dashboard{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width:60%;
+  margin-left:20%;
+}
 </style>
