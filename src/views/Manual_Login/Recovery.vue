@@ -8,9 +8,9 @@
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">I have 3 SD cards</Button>
         <button class="btn3">I have 2 SD cards</button>
-        <h3>Unlocks in 27 days.</h3>
+        <h2>Unlocks in 27 days.</h2>
         <button class="btn3">I have 1 SD card</button>
-        <h3>Unlocks in 57 days.</h3>
+        <h2>Unlocks in 57 days.</h2>
     </div>
   </div>
 </template>
@@ -26,4 +26,10 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+h2{
+  font-weight:700; 
+}
+</style>
 
