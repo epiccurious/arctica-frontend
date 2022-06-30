@@ -47,14 +47,6 @@ export default {
 </script>
 
 <style scoped>
-header{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 0px 25px;
-    margin: 0 auto;
-    margin-top: 5%;
-}
 .checkbox_container{
 margin-left:10%; 
 }
