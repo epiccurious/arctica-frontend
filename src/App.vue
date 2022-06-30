@@ -291,4 +291,11 @@ h2{
     line-height: 140%;
     text-align:left;
 }
+h3{
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+}
 </style>

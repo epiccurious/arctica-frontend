@@ -1,4 +1,5 @@
 <template>
+
     <div id="nav_container"> 
         <div id="menu_container">
             <div class="wallet_overview">

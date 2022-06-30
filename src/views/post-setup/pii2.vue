@@ -77,9 +77,6 @@ export default {
 </script>
 
 <style scoped>
-h3{
-    font-weight:800;
-}
 .btn4{
     padding:5px;
 }

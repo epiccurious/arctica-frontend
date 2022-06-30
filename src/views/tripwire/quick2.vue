@@ -19,8 +19,8 @@
 
             <div class="balance_calculator">
                 <div class="balance_left">
-                <h3>Your Balance</h3>
-                <h4>₿ {{ quickBalance }}</h4>
+                <h2>Your Balance</h2>
+                <h3>₿ {{ quickBalance }}</h3>
                 </div>
                 <div class="balance_right">
                     <button @click="selectMax()" class="btn4">Select Max</button>
@@ -146,22 +146,6 @@ export default {
 h1{
   margin-top: 50px;
   padding:10px;
-}
-h3{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight:400;
-    font-size:15px;
-    line-height: 18px;
-    color: #777777;
-}
-h4{
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color:#000000;
 }
 .head_container{
 margin: 0 auto;

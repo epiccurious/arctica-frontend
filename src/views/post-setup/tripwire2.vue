@@ -1,7 +1,10 @@
 <template>
 <div class="page">
     <div class="outer_container">
-        <Header title="Tripwire Receive Address" subtitle="It is reccomended that you send ~$500 to your tripwire." />
+        <header>
+            <h1>Tripwire Receive Address</h1>
+            <h2>It is reccomended that you send ~$500 to your tripwire.</h2>
+        </header>
         <div class="receive_container">
             <div class="receive_top">
                 <img src="@/assets/placeholderQR.png">
@@ -10,11 +13,11 @@
             <div class="receive_bottom">
                 <div @click="copy(address)" id="copy">
                     <img src="@/assets/Copy.png">
-                    <h3 id="copy_text">Copy Address</h3>
+                    <h2 id="copy_text">Copy Address</h2>
                 </div>
                 <div id="download">
                     <img src="@/assets/Arrow_down.png">
-                    <h3 id="download_text">Download QR Code</h3>
+                    <h2 id="download_text">Download QR Code</h2>
                 </div>
             </div>
         </div>
@@ -30,13 +33,8 @@
 <!-- -download QR button not yet implemented  -->
 
 <script>
-import Header from '@/components/Header.vue'
-
 export default {
   name: 'tripwirePostSetup2',
-  components: {
-      Header
-  },
   methods: {
        async copy(s){
           await navigator.clipboard.writeText(s)
@@ -89,7 +87,6 @@ export default {
     padding-right: 18px;
 }
 #receive_address{
-    font-weight:400;
     font-size:16px;
     line-height: 20px;
     text-transform: uppercase;
@@ -102,9 +99,14 @@ h1{
   margin-top: 50px;
   padding:10px;
 }
-h3{
-    font-weight: 400;
-    font-size: 14px;
+#copy_text{
+    color:#000000;
+    font-size:14px;
+    line-height: 17px;
+}
+#download_text{
+    color:#000000;
+    font-size:14px;
     line-height: 17px;
 }
 .head_container{

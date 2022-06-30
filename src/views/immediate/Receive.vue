@@ -13,11 +13,11 @@
             <div class="receive_bottom">
                 <div @click="copy(address)" id="copy">
                     <img src="@/assets/Copy.png">
-                    <h3 id="copy_text">Copy Address</h3>
+                    <h2 id="copy_text">Copy Address</h2>
                 </div>
                 <div id="download">
                     <img src="@/assets/Arrow_down.png">
-                    <h3 id="download_text">Download QR Code</h3>
+                    <h2 id="download_text">Download QR Code</h2>
                 </div>
             </div>
         </div>
@@ -89,7 +89,6 @@ export default {
     padding-right: 18px;
 }
 #receive_address{
-    font-weight:400;
     font-size:16px;
     line-height: 20px;
     text-transform: uppercase;
@@ -102,9 +101,14 @@ h1{
   margin-top: 50px;
   padding:10px;
 }
-h3{
-    font-weight: 400;
-    font-size: 14px;
+#copy_text{
+    color:#000000;
+    font-size:14px;
+    line-height: 17px;
+}
+#download_text{
+    color:#000000;
+    font-size:14px;
     line-height: 17px;
 }
 .head_container{

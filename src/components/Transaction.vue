@@ -105,15 +105,12 @@ export default {
     width:90%;
 }
 h2{
-    font-weight:400;
-    font-size:18px;
-    line-height: 140%;
+    color:#000000;
 }
 h3{
-    font-weight:400;
-    font-size:18px;
-    line-height: 140%;
+    font-family: 'Inter';
     text-align:right;
+    color: #404040;
 }
 #confirmed{
     color:#27AE60;

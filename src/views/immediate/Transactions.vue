@@ -13,7 +13,7 @@
           </div>
           <div class="transaction_container_right">
             <h2 class="balance">₿ -{{ transaction.balance.toLocaleString('en-US') }} sats</h2>
-            <h2 class="fiat_currency">$ -{{ transaction.fiat_currency.toLocaleString('en-US') }}</h2>
+            <h3 class="fiat_currency">$ -{{ transaction.fiat_currency.toLocaleString('en-US') }}</h3>
           </div>
         </div>
       </div>
@@ -78,6 +78,13 @@ h1{
   margin-top: 50px;
   padding:10px;
 }
+h2{
+  color:#000000;
+}
+h3{
+  font-family: 'Inter';
+  color: #777777;
+}
 .head_container{
   border-style: solid; 
   border-width: 0px 0px 1px 0px;
@@ -109,8 +116,4 @@ h1{
   align-content:center;
   width:50%;
 }
-.fiat_currency{
-    color: #777777;
-}
-
 </style>

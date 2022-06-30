@@ -97,11 +97,4 @@ export default {
     font-size:18px;
     line-height: 18px;
 }
-h3{
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 140%;
-}
 </style>
