@@ -110,19 +110,4 @@ h3{
     font-size: 18px;
     line-height: 140%;
 }
-h2{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 140%;
-}
-h1{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 21px;
-    line-height: 140%;
-}
-
 </style>

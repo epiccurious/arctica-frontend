@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script>  
 export default {
   name: 'TimeMachine3',
     methods: {

@@ -68,16 +68,6 @@ export default {
 a{
     color:#2D9CDB;
 }
-h1{
-    font-size: 21px;
-    font-weight:600;
-    line-height: 25px;
-}
-h2{
-    font-size: 18px;
-    color: #777777;
-    font-weight: 400;
-}
 h3{
     font-weight:800;
 }

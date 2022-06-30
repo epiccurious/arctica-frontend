@@ -45,16 +45,6 @@ export default {
 #delay{
     font-weight: 700;
 }
-h1{
-    font-size: 21px;
-    font-weight:600;
-    line-height: 25px;
-}
-h2{
-    font-size: 18px;
-    color: #777777;
-    font-weight: 400;
-}
 a{
     color:#2D9CDB;
 }

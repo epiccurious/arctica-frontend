@@ -252,17 +252,6 @@ input[type="checkbox"] {
     flex-direction: row;
     width:100%;
 }
-header{
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center ;
-    justify-content:center;
-    padding: 0px 0px 25px;
-    margin: 0 auto;
-    margin-top: 5%;
-    width:19%;
-}
 form{
     max-width:420px;
     margin: 10px auto;
@@ -274,14 +263,30 @@ label{
     margin: 25px 0 15px;
     font-size: 20px;
 }
+header{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center ;
+    justify-content:center;
+    padding: 0px 0px 25px;
+    margin: 0 auto;
+    margin-top: 5%;
+    width:19%;
+}
 h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
     font-size: 21px;
-    font-weight:600;
-    line-height: 25px;
+    line-height: 140%;
 }
 h2{
-    font-size: 18px;
+    font-family: 'Inter';
+    font-style: normal;
     color: #777777;
     font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
 }
 </style>

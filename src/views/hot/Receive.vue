@@ -101,9 +101,6 @@ h1{
   margin-top: 50px;
   padding:10px;
   text-align:left;
-  font-weight:600;
-  font-size:21px;
-  line-height:25px
 }
 h3{
     font-weight: 400;

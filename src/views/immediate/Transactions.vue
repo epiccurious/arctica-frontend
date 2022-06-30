@@ -77,9 +77,6 @@ export default {
 h1{
   margin-top: 50px;
   padding:10px;
-  font-weight:600;
-  font-size:21px;
-  line-height: 25px;
 }
 .head_container{
   border-style: solid; 
