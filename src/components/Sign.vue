@@ -65,13 +65,4 @@ export default {
     align-content: center;
     align-items: center;
 }
-.btnclose{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    font-weight:500;
-    font-size:18px;
-    line-height: 18px;
-}
 </style>

@@ -170,10 +170,17 @@ export default {
   font-weight: 500;
 }
 .btnclose{
-  background-color: #FFFFFF;
-  border:none;
-  width: auto;
-  height: fit-content;
+    background-color: #FFFFFF;
+    width: auto;
+    height: fit-content;
+    border:none;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    font-weight:500;
+    font-size:18px;
+    line-height: 18px;
 }
 .btnclose:hover{
   cursor:pointer;

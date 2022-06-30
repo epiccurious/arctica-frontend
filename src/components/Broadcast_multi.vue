@@ -58,13 +58,4 @@ export default {
 .btn_container{
     margin-top: 2%;
 }
-.btnclose{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    font-weight:500;
-    font-size:18px;
-    line-height: 18px;
-}
 </style>
