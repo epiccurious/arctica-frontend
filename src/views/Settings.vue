@@ -1,7 +1,7 @@
 <template>
 <div class="page"></div>
     <Nav/>
-      <div class="dashboard">
+      <div class="settings_dashboard">
         <div class="head_container">
           <h1>Settings</h1>
         </div>

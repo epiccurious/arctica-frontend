@@ -413,6 +413,15 @@ h3{
   width:60%;
   margin-left:20%;
 }
+.settings_dashboard{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width:40%;
+  margin-left:30%;
+}
 .display_block{
     display:flex;
     flex-direction:column;
