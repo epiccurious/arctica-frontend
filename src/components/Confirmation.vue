@@ -4,7 +4,7 @@
         <img src="@/assets/Circle_arrow_up.png">
         <h1>Transaction Sent. </h1>
         <h2>It usually takes about 30 minutes to be finalized.</h2>
-        <div class="btn_container">
+        <div class="horizontal_btn_container">
             <button @click="viewTx()" class="btn2">View Transaction</button>
             <button @click="back()" class="btn">Back to Wallet</button>
         </div>
@@ -35,9 +35,3 @@ export default{
     }
 }
 </script>
-
-<style scoped>
-.btn_container{
-    margin-top: 2%;
-}
-</style>

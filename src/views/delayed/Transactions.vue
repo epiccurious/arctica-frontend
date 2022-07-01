@@ -73,29 +73,4 @@ h3{
   font-family: 'Inter';
   color: #777777;
 }
-.transaction_container{
-  display:flex;
-  flex-direction: row;
-  border-style: solid; 
-  border-width: 0px 0px 1px 0px;
-  border-color: #DEDEDE;
-  width: 80%;
-}
-.transaction_container:hover{
-    cursor:pointer
-}
-.transaction_container_left{
-  display:flex;
-  flex-direction: column;
-  align-items:flex-start;
-  width:50%;
-}
-.transaction_container_right{
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items:center;
-  align-content:center;
-  width:50%;
-}
 </style>

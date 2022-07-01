@@ -2,7 +2,7 @@
     <div class="page">
         <header>
             <h1>Warning! Your Delayed Wallet is timelocked.</h1>
-            <h2>Your Delayed Wallet is timelocked for... <br><span id="delay">1 year 301 days</span></h2> 
+            <h2>Your Delayed Wallet is timelocked for... <br><span class="strong_text">1 year 301 days</span></h2> 
             <h2>Accessing these funds early will involve significant cost.</h2> 
             <h2>For more information, read the <a class="blue_link" href="#">Time Machine Protocol</a>.</h2>
         </header>
@@ -40,9 +40,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-#delay{
-    font-weight: 700;
-}
-</style>

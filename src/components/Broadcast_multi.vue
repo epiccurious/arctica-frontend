@@ -21,7 +21,7 @@
             <h3>₿ {{ this.transaction.fee }}</h3>
         </div>
 
-        <div class="btn_container">
+        <div class="horizontal_btn_container">
             <button @click="broadcast(this.transaction)" class="btn">Send</button>
             <button @click="$emit('closeOut')" class="btn2">Discard</button>
         </div>
@@ -53,9 +53,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-.btn_container{
-    margin-top: 2%;
-}
-</style>

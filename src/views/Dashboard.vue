@@ -11,7 +11,7 @@
             <h2 class="time_decay">Spend Now</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance">{{ hotBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ hotBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -22,7 +22,7 @@
             <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance">{{ immediateBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ immediateBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -33,7 +33,7 @@
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance">{{ delayedBalance }} BTC</h2>
+            <h2 class="balance_overview">{{ delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
@@ -75,7 +75,7 @@ h2{
 .time_decay{
   color:#777777;
 }
-.balance{
+.balance_overview{
   color:#404040;
   text-align:right;
 }

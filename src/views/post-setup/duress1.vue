@@ -4,7 +4,7 @@
 <header>
     <h1>Let's create a duress password</h1>
     <h2>When you attempt to login with this password, it will activate Arctica's <a class="blue_link" href="#">Duress Protocol</a>.</h2>
-    <h2 id="strong">Entering your Duress Password at the Login screen will automatically send Bitcoin.</h2>
+    <h2 class="strong_text">Entering your Duress Password at the Login screen will automatically send Bitcoin.</h2>
  </header>
       <div class="form_container">
         <form>
@@ -63,9 +63,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-#strong{
-    font-weight:800;
-}
-</style>

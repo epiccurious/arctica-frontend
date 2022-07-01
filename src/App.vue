@@ -206,6 +206,9 @@ export default {
   padding: 0px;
   gap: 21px;
 }
+.horizontal_btn_container{
+    margin-top: 2%;
+}
 #nav{
   margin-top:60px;
 }
@@ -478,5 +481,123 @@ h3{
     color:#000000;
     font-size:14px;
     line-height: 17px;
+}
+.transaction_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.transaction_container:hover{
+    cursor:pointer
+}
+.transaction_container_left{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  width:50%;
+}
+.transaction_container_right{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items:center;
+  align-content:center;
+  width:50%;
+}
+.settings_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.item_container_left{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  width:50%;
+}
+.item_container_right{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items:center;
+  align-content:center;
+  width:50%;
+}
+.menu_container{ 
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    align-content:center;
+}
+
+.wallet_overview{
+    display:flex;
+    flex-direction: row;
+}
+.middle_menu{
+    display:flex;
+    flex-direction: row;
+}
+.wallet_tab{
+    padding:28px;
+    font-weight:600;
+}
+.send_tab{
+    padding:28px;
+    font-weight:600;
+}
+.receive_tab{
+    padding:28px;
+    font-weight:600;
+}
+.wallet_tab_selected{
+    padding:28px;
+    color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
+    font-weight:600;
+}
+.receive_tab_selected{
+    padding:28px;
+    color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
+    font-weight:600;
+}
+.send_tab_selected{
+    padding:28px;
+    color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
+    font-weight:600;
+}
+.description_balance{
+    padding-left: 20px;
+}
+.description{
+    color: #777777;
+    line-height:16px;
+}
+.balance{
+    line-height: 15.73px;
+    color:#000000;
+
+}
+.loading{
+  cursor:wait;
+}
+.strong_text{
+    font-weight:800;
 }
 </style>
