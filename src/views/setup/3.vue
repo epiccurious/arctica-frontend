@@ -2,10 +2,10 @@
 <div class="page">
     <header>
         <h1>Time to setup your keys...</h1>
-        <h2>Take 8 CDs and label them "CD 1" through "CD 7", and label the final one "setup".</h2> 
-        <h2>Take 7 DVDs and label them "DVD 1" through "DVD 7".</h2> 
-        <h2>Take 7 SD cards and label them "1" through "7"</h2>
-        <h2>Take 7 Envelopes and label them "1" through "7"</h2>
+        <h2>Label 8 CD's "CD 1" through "CD 7", and label the final one "setup".</h2> 
+        <h2>Label 7 DVDs "DVD 1" through "DVD 7".</h2> 
+        <h2>Label 7 SD cards "1" through "7".</h2>
+        <h2>Label 7 Envelopes "1" through "7".</h2>
     </header>
     
     <div class="form_container">
