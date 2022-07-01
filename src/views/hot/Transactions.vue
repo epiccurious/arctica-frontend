@@ -67,10 +67,6 @@ export default {
 </script>
 
 <style scoped>
-h1{
-  margin-top: 50px;
-  padding:0px;
-}
 h2{
   color:#000000;
 }

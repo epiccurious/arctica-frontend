@@ -91,34 +91,7 @@ export default {
 </script>
 
 <style scoped>
-h1{
-  margin-top: 50px;
-  padding:10px;
-}
 h2{
   color:#000000;
-}
-.settings_container{
-  display:flex;
-  flex-direction: row;
-  border-style: solid; 
-  border-width: 0px 0px 1px 0px;
-  border-color: #DEDEDE;
-  width: 80%;
-}
-.item_container_left{
-  display:flex;
-  flex-direction: column;
-  align-items:flex-start;
-  width:50%;
-}
-.item_container_right{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items:center;
-  align-content:center;
-  width:50%;
 }
 </style>

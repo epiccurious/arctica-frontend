@@ -121,10 +121,6 @@ export default {
 
 
 <style scoped>
-h1{
-  margin-top: 50px;
-  padding:10px;
-}
 h2{
     font-size:15px;
     line-height: 18px;

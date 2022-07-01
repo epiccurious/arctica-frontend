@@ -111,13 +111,3 @@ export default {
 
 <style>
   </style>
-
-
-
-
-<style scoped>
-h1{
-  margin-top: 50px;
-  padding:10px;
-}
-  </style>

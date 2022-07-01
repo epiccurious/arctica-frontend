@@ -328,13 +328,57 @@ header{
   border-width: 0px 0px 1px 0px;
   border-color: #DEDEDE;
   width: 80%;
+  margin-top: 40px;
+  padding:10px;
 }
 .receive_head_container{
   width: 30%;
+  margin-top: 40px;
+  padding:10px;
 }
 .send_head_container{
 margin: 0 auto;
 width: 44%;
+margin-top: 40px;
+padding:10px;
+}
+.balance_overview{
+  color:#404040;
+  text-align:right;
+}
+.wallet_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.wallet_container_left{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  width:50%;
+}
+.wallet_container_right{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items:center;
+  align-content:center;
+  width:50%;
+}
+.carat{
+  margin-top:0.5%;
+}
+.wallet_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
 }
 h1{
     font-family: 'Inter';
