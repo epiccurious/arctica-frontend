@@ -2,22 +2,22 @@
 <div class="page">
     <NavHot/>
     <div class="outer_container">
-        <div class="head_container">
+        <div class="receive_head_container">
          <h1>Receive Bitcoin</h1>
          </div>
         <div class="receive_container">
             <div class="receive_top">
                 <img src="@/assets/placeholderQR.png">
-                <h2 id="receive_address">{{ address }}</h2>
+                <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
                 <div @click="copy(address)" id="copy">
                     <img src="@/assets/Copy.png">
-                    <h2 id="copy_text">Copy Address</h2>
+                    <h2 class="copy_text">Copy Address</h2>
                 </div>
                 <div id="download">
                     <img src="@/assets/Arrow_down.png">
-                    <h2 id="download_text">Download QR Code</h2>
+                    <h2 class="download_text">Download QR Code</h2>
                 </div>
             </div>
         </div>
@@ -58,54 +58,8 @@ export default {
 
 
 <style scoped>
-.receive_container{
-    border: 1px solid #EDEDED;
-    border-radius: 5px;
-    box-sizing:border-box;
-    padding:15px;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    width:35%;
-    margin: 25px auto;
-}
-.receive_top{
-    display:flex;
-    flex-direction: row;
-}
-.receive_bottom{
-    display:flex;
-    flex-direction: row;
-    justify-content:space-between;
-    padding-left: 18px;
-    padding-right: 18px;
-}
-#receive_address{
-    font-size:16px;
-    line-height: 20px;
-    text-transform: uppercase;
-    font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
-    color: #777777;
-    word-wrap: break-word;
-    align-self:center;
-}
 h1{
   margin-top: 50px;
   padding:10px;
-}
-#copy_text{
-    color:#000000;
-    font-size:14px;
-    line-height: 17px;
-}
-#download_text{
-    color:#000000;
-    font-size:14px;
-    line-height: 17px;
-}
-.head_container{
-  width: 30%;
 }
   </style>

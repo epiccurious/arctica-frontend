@@ -3,7 +3,7 @@
 <div v-else class="page">
     <NavImmediate/>
     <div class="outer_container">
-        <div class="head_container">
+        <div class="send_head_container">
          <h1>Send Bitcoin</h1>
          </div>
     <div class="send_container">
@@ -128,9 +128,5 @@ h1{
 h2{
     font-size:15px;
     line-height: 18px;
-}
-.head_container{
-margin: 0 auto;
-width: 44%;
 }
   </style>

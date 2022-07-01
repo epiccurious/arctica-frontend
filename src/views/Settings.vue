@@ -98,12 +98,6 @@ h1{
 h2{
   color:#000000;
 }
-.head_container{
-  border-style: solid; 
-  border-width: 0px 0px 1px 0px;
-  border-color: #DEDEDE;
-  width: 80%;
-}
 .settings_container{
   display:flex;
   flex-direction: row;

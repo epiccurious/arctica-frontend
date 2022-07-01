@@ -320,6 +320,19 @@ header{
     margin-top: 5%;
     width:19%;
 }
+.head_container{
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.receive_head_container{
+  width: 30%;
+}
+.send_head_container{
+margin: 0 auto;
+width: 44%;
+}
 h1{
     font-family: 'Inter';
     font-style: normal;
@@ -422,5 +435,48 @@ h3{
 .send_button_container{
     display:flex;
     flex-direction: row;
+}
+.receive_container{
+    border: 1px solid #EDEDED;
+    border-radius: 5px;
+    box-sizing:border-box;
+    padding:15px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width:35%;
+    margin: 25px auto;
+}
+.receive_top{
+    display:flex;
+    flex-direction: row;
+}
+.receive_bottom{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.receive_address{
+    font-size:16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
+    color: #777777;
+    word-wrap: break-word;
+    align-self:center;
+}
+.copy_text{
+    color:#000000;
+    font-size:14px;
+    line-height: 17px;
+}
+.download_text{
+    color:#000000;
+    font-size:14px;
+    line-height: 17px;
 }
 </style>

@@ -73,12 +73,6 @@ h3{
   font-family: 'Inter';
   color: #777777;
 }
-.head_container{
-  border-style: solid; 
-  border-width: 0px 0px 1px 0px;
-  border-color: #DEDEDE;
-  width: 80%;
-}
 .transaction_container{
   display:flex;
   flex-direction: row;

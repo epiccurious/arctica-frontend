@@ -2,7 +2,7 @@
   <Sign v-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
 <div v-else class="page">
     <div class="outer_container">
-        <div class="head_container">
+        <div class="send_head_container">
          <h1>Send Bitcoin</h1>
          </div>
     <div class="send_container">
@@ -119,9 +119,5 @@ export default {
 h1{
   margin-top: 50px;
   padding:10px;
-}
-.head_container{
-margin: 0 auto;
-width: 44%;
 }
   </style>
