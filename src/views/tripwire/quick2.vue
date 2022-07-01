@@ -6,7 +6,7 @@
          <h1>Send Bitcoin</h1>
          </div>
     <div class="send_container">
-        <form>
+        <form class="send_form">
             <label>Description</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
@@ -39,7 +39,7 @@
 
         </form>
     </div>
-        <div class="button_container">
+        <div class="send_button_container">
             <button @click="goBack()" class="btn2">Go back</button>
             <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
         </div>
@@ -116,33 +116,6 @@ export default {
 
 
 <style scoped>
-.outer_container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-.send_container{
-    box-sizing:border-box;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    width:70%;
-    margin: 0 auto;
-}
-.balance_left{
-    display:flex;
-    flex-direction: column;
-    align-items:flex-start;
-}
-.balance_calculator{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: space-between;
-    align-items:center;
-}
 h1{
   margin-top: 50px;
   padding:10px;
@@ -150,28 +123,5 @@ h1{
 .head_container{
 margin: 0 auto;
 width: 44%;
-}
-form{
-    max-width:70%;
-    width: 60%;
-    margin: 10px auto;
-    text-align: left;
-    padding-top:5px;
-    padding-left:15px;
-    padding-right:15px;
-    padding-bottom:15px;
-}
-select{
-    display: block;
-    padding: 10px 50px 10px 10px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    background-color:#FFFFFF;
-    
-}
-.button_container{
-    display:flex;
-    flex-direction: row;
 }
   </style>

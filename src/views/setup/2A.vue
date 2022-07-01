@@ -47,9 +47,7 @@ export default {
 <style scoped>
 
 form{
-    max-width:420px;
     margin: 30px auto;
-    text-align: left;
     padding:40px;
 }
 </style>

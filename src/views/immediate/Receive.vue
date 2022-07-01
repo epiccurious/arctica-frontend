@@ -59,11 +59,6 @@ export default {
 
 
 <style scoped>
-.outer_container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
 .receive_container{
     border: 1px solid #EDEDED;
     border-radius: 5px;

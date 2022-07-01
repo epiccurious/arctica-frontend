@@ -269,6 +269,15 @@ input[type="checkbox"] {
   position: relative;
   top: 5px;
 }
+select{
+    display: block;
+    padding: 10px 50px 10px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    background-color:#FFFFFF;
+    
+}
 .checkbox_container{
     display:flex;
     flex-direction: row;
@@ -285,6 +294,16 @@ form{
     margin: 10px auto;
     text-align: left;
     padding:10px;
+}
+.send_form{
+    max-width:70%;
+    width: 60%;
+    margin: 10px auto;
+    text-align: left;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:15px;
 }
 label{
     display:inline-block;
@@ -372,5 +391,36 @@ h3{
 .icons{
     display:flex;
     padding: 5px;
+}
+.outer_container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.send_container{
+    box-sizing:border-box;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width:70%;
+    margin: 0 auto;
+}
+.balance_left{
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+}
+.balance_calculator{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items:center;
+}
+.send_button_container{
+    display:flex;
+    flex-direction: row;
 }
 </style>
