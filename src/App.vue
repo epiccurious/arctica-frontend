@@ -21,6 +21,7 @@
     <router-link :to="{ name: 'sign2of2' }">Sign(2of2)</router-link>
     <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
+    <br>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
     <router-link :to="{ name: 'sign1of5' }">Sign(1of5)</router-link>
     <router-link :to="{ name: 'sign2of5' }">Sign(2of5)</router-link>
@@ -212,6 +213,12 @@ export default {
   align-items: center;
   padding: 0px;
   gap: 21px;
+}
+.btn_approve{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 .horizontal_btn_container{
     margin-top: 2%;

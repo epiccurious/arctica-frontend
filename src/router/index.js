@@ -76,15 +76,27 @@ const routes = [
      
    },
    {
-    path: '/wallets/immediate/sign1of2',
+    path: '/wallets/immediate/1of2',
     name: 'sign1of2',
     component: () => import('../views/immediate/multi/sign1.vue')
      
    },
    {
-    path: '/wallets/immediate/sign2of2',
+    path: '/wallets/immediate/2of2',
     name: 'sign2of2',
     component: () => import('../views/immediate/multi/sign2.vue')
+     
+   },
+   {
+    path: '/wallets/immediate/1of2success',
+    name: '1of2success',
+    component: () => import('../views/immediate/multi/1of2success.vue')
+     
+   },
+   {
+    path: '/wallets/immediate/2of2success',
+    name: '2of2success',
+    component: () => import('../views/immediate/multi/2of2success.vue')
      
    },
    {
@@ -106,31 +118,31 @@ const routes = [
      
    },
    {
-    path: '/wallets/delayed/sign1of5',
+    path: '/wallets/delayed/1of5',
     name: 'sign1of5',
     component: () => import('../views/delayed/multi/sign1.vue')
      
    },
    {
-    path: '/wallets/delayed/sign2of5',
+    path: '/wallets/delayed/2of5',
     name: 'sign2of5',
     component: () => import('../views/delayed/multi/sign2.vue')
      
    },
    {
-    path: '/wallets/delayed/sign3of5',
+    path: '/wallets/delayed/3of5',
     name: 'sign3of5',
     component: () => import('../views/delayed/multi/sign3.vue')
      
    },
    {
-    path: '/wallets/delayed/sign4of5',
+    path: '/wallets/delayed/4of5',
     name: 'sign4of5',
     component: () => import('../views/delayed/multi/sign4.vue')
      
    },
    {
-    path: '/wallets/delayed/sign5of5',
+    path: '/wallets/delayed/5of5',
     name: 'sign5of5',
     component: () => import('../views/delayed/multi/sign5.vue')
      
