@@ -39,7 +39,7 @@ export default {
         sign(){
             console.log('signing...')
             this.signed = true
-            // this.$router.push({ path: '/wallets/immediate/2of2success' })
+            this.$router.push({ path: '/wallets/delayed/4of5success' })
         }
     },
     data(){

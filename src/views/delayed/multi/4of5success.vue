@@ -1,7 +1,7 @@
 <template>
 <div class="page">
     <header>
-        <h1>2 of 5 Signing Successful</h1>
+        <h1>4 of 5 Signing Successful</h1>
         <h2>Please power off this device. Swap SD 2 for SD 1 and power back on.</h2>
     </header>
     
@@ -20,7 +20,7 @@
 <script>
 
 export default {
-  name: '2of5success',
+  name: '4of5success',
   components: {
     },
     methods: {
@@ -28,8 +28,8 @@ export default {
             console.log('user ack, closing application')
         },
         debug(){
-            console.log('debug proceed moving to 3 of 5')
-            this.$router.push({ path: '/wallets/delayed/3of5' })
+            console.log('debug proceed moving to 5 of 5')
+            this.$router.push({ path: '/wallets/delayed/5of5' })
         }
 
     },

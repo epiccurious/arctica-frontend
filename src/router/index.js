@@ -148,6 +148,36 @@ const routes = [
      
    },
    {
+    path: '/wallets/delayed/1of5success',
+    name: '1of5success',
+    component: () => import('../views/delayed/multi/1of5success.vue')
+     
+   },
+   {
+    path: '/wallets/delayed/2of5success',
+    name: '2of5success',
+    component: () => import('../views/delayed/multi/2of5success.vue')
+     
+   },
+   {
+    path: '/wallets/delayed/3of5success',
+    name: '3of5success',
+    component: () => import('../views/delayed/multi/3of5success.vue')
+     
+   },
+   {
+    path: '/wallets/delayed/4of5success',
+    name: '4of5success',
+    component: () => import('../views/delayed/multi/4of5success.vue')
+     
+   },
+   {
+    path: '/wallets/delayed/5of5success',
+    name: '5of5success',
+    component: () => import('../views/delayed/multi/5of5success.vue')
+     
+   },
+   {
     path: '/delayed/timemachine/1',
     name: 'TimeMachine1',
     component: () => import('../views/delayed/timemachine/1.vue')

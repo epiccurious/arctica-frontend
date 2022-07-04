@@ -28,8 +28,8 @@ export default {
             console.log('user ack, closing application')
         },
         debug(){
-            console.log('debug proceed')
-            // this.$router.push({ path: '/wallets/immediate/2of2' })
+            console.log('debug proceed signing successful moving to 2 of 5')
+            this.$router.push({ path: '/wallets/delayed/2of5' })
         }
 
     },
