@@ -18,16 +18,22 @@
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'immediateSend' }">ImmediateSend</router-link>
     <router-link :to="{ name: 'sign1of2' }">Sign(1of2)</router-link>
+    <router-link :to="{ name: '1of2success' }">1of2-success</router-link>
     <router-link :to="{ name: 'sign2of2' }">Sign(2of2)</router-link>
+    <router-link :to="{ name: '2of2success' }">2of2-success</router-link>
     <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
-    <br>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
     <router-link :to="{ name: 'sign1of5' }">Sign(1of5)</router-link>
+    <router-link :to="{ name: '1of5success' }">1of5-success</router-link>
     <router-link :to="{ name: 'sign2of5' }">Sign(2of5)</router-link>
+    <router-link :to="{ name: '2of5success' }">2of5-success</router-link>
     <router-link :to="{ name: 'sign3of5' }">Sign(3of5)</router-link>
+    <router-link :to="{ name: '3of5success' }">3of5-success</router-link>
     <router-link :to="{ name: 'sign4of5' }">Sign(4of5)</router-link>
+    <router-link :to="{ name: '4of5success' }">4of5-success</router-link>
     <router-link :to="{ name: 'sign5of5' }">Sign(5of5)</router-link>
+    <router-link :to="{ name: '5of5success' }">5of5-success</router-link>
     <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
     <router-link :to="{ name: 'TimeMachine1' }">Time-Machine-1</router-link>
     <router-link :to="{ name: 'TimeMachine2' }">Time-Machine-2</router-link>
