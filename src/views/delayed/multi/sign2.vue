@@ -1,7 +1,7 @@
 <template>
 <div class="page">
     <div class="display_block">
-        <h1>Approve Transaction for Signing (2 of 2)</h1>
+        <h1>Approve Transaction for Signing (2 of 5)</h1>
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
             <!-- <h2>To</h2>
