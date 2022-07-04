@@ -1,13 +1,10 @@
 <template>
 <div class="page">
-    <div id="back_button">
-        <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/carat_left.png">Back</button>
-    </div>
     <div class="display_block">
-        <h1>Approve Transaction for Signing</h1>
+        <h1>Approve Transaction for Signing (2 of 2)</h1>
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
-            <h2>To</h2>
+            <!-- <h2>To</h2>
             <h3>{{ this.transaction.address }}</h3>
         </div>
 
@@ -18,7 +15,7 @@
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>₿ {{ this.transaction.fee }}</h3>
+            <h3>₿ {{ this.transaction.fee }}</h3> -->
         </div>
 
         <div class="horizontal_btn_container">
@@ -36,17 +33,16 @@
 
 export default {
     name: 'sign5of5',
-    props: ['transaction'],
+    props: [],
+    //import PSBT eventually...
     methods: {
         sign(){
             console.log('signing...')
             this.signed = true
+            // this.$router.push({ path: '/wallets/immediate/2of2success' })
         }
     },
     data(){
-        return{
-            signed: false
-        }
     }
 }
 </script>
