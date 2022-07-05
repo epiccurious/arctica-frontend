@@ -72,7 +72,6 @@ const routes = [
    {
     path: '/wallets/immediate/send',
     name: 'immediateSend',
-    props: true,
     component: () => import('../views/immediate/Send.vue')
      
    },

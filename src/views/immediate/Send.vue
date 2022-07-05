@@ -41,6 +41,7 @@
     </div>
         <div class="send_button_container">
             <button @click="addRecipient()" class="btn2">Add another recipient</button>
+            <button @click="test()" class="btn2">test</button>
             <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
         </div>
     </div>        
@@ -50,7 +51,7 @@
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
-// import { provide } from 'vue'
+import store from '../../store.js'
 
 export default {
   name: 'immediateSend',
@@ -61,7 +62,7 @@ export default {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
             this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
-            this.$router.push({name: 'sign1of2', params: {transaction: this.transaction}})
+            this.$router.push({name: 'sign1of2'})
 
         },
         // eventually the continueFn() should construct and return the PSBT
@@ -83,6 +84,11 @@ export default {
             console.log('Custom Fee Deselected')
             this.custom = false
         },
+        test(){
+            // store.mutations.setTransaction//(100, this.description, this.address, this.amount, (20000*this.amount), '07oct20221000', this.fee, this.customFee, 'unconfirmed')
+            // store.mutations.setTransaction({id:100, description:this.description, address:this.address, amount:this.amount, fiat_currency:(20000*this.amount), datetime:'07oct20221000', fee:this.fee, customFee:this.customFee, status: 'unconfirmed'})
+            console.log(this.transaction)
+        }
     },
    data(){
      return{
@@ -102,6 +108,9 @@ export default {
     //  Need a function to deliver dynamic fee estimates for the above data
  },
  inject: ['immediateBalance'],
+ mounted(){
+    this.transaction = store.getters.getTransaction
+ }
 }
 </script>
 
