@@ -6,7 +6,7 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail(transaction.id)" v-for="transaction in delayedTransactions" :key="transaction.id" class="transaction_container">
+        <div @click="transactionDetail(transaction.id)" v-for="transaction in delayedTransactions.slice().reverse()" :key="transaction.id" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.address) }}</h2>
           <h3>{{ transaction.datetime }}</h3>
