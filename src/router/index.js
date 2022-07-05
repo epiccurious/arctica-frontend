@@ -72,12 +72,14 @@ const routes = [
    {
     path: '/wallets/immediate/send',
     name: 'immediateSend',
+    props: true,
     component: () => import('../views/immediate/Send.vue')
      
    },
    {
     path: '/wallets/immediate/1of2',
     name: 'sign1of2',
+    props: true,
     component: () => import('../views/immediate/multi/sign1.vue')
      
    },
@@ -537,8 +539,6 @@ const routes = [
 
 ]
 
-
-//need path for delayed wallet -> time machine protocol
 //remember to use lazy loading to optimize...
 //remember to use code splitting for dynamic routes to optimize...
 //consider prefetch for transaction history to optimize...

@@ -46,8 +46,6 @@ export default {
             this.$router.push({path: '/wallets/immediate'})
         }
     },
-    data(){
-    }
 }
 </script>
 

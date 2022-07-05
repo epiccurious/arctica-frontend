@@ -1,6 +1,5 @@
   <template>
-  <Sign v-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
-<div v-else class="page">
+<div class="page">
     <NavImmediate/>
     <div class="outer_container">
         <div class="send_head_container">
@@ -51,24 +50,21 @@
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
-import Sign from '@/components/Sign'
+// import { provide } from 'vue'
 
 export default {
   name: 'immediateSend',
   components: {
     NavImmediate,
-    Sign
-  },
+  },  
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
             this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
-            this.txConstructed(this.transaction)
+            this.$router.push({name: 'sign1of2', params: {transaction: this.transaction}})
+
         },
         // eventually the continueFn() should construct and return the PSBT
-        txConstructed(transaction){
-            this.constructed = transaction
-        },
         addRecipient(){
             console.log('Add recipient clicked')
             this.multiOutput = true
@@ -87,10 +83,6 @@ export default {
             console.log('Custom Fee Deselected')
             this.custom = false
         },
-        closeOut(){
-          console.log('sign window closed')
-          this.constructed = false
-      },
     },
    data(){
      return{
@@ -112,11 +104,6 @@ export default {
  inject: ['immediateBalance'],
 }
 </script>
-
-
-<style>
-  </style>
-
 
 
 
