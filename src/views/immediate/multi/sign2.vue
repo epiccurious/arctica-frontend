@@ -20,7 +20,7 @@
 
         <div class="horizontal_btn_container">
             <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
-            <button @click="$emit('closeOut')" class="btn2">Discard</button>
+            <button @click="discard()" class="btn2">Discard</button>
         </div>
         
 
@@ -40,6 +40,10 @@ export default {
             console.log('signing...')
             this.signed = true
             this.$router.push({ path: '/wallets/immediate/2of2success' })
+        },
+        discard(){
+            console.log('discarding PSBT')
+            this.$router.push({path: '/wallets/immediate'})
         }
     },
     data(){
