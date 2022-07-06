@@ -31,10 +31,10 @@
 
 
 <script>
+import store from '../../../store.js'
 
 export default {
     name: 'sign1of2',
-    props: ['transaction'],
     //import PSBT eventually...
     methods: {
         sign(){
@@ -47,10 +47,15 @@ export default {
             this.$router.push({path: '/wallets/immediate'})
         },
         test(){
-            // console.log(this.transaction)
             console.log('testing')
+            console.log(this.transaction)
         }
     },
+    data(){
+        return{
+            transaction: store.getters.getTransaction
+        }
+    }
 }
 </script>
 

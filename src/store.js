@@ -5,7 +5,9 @@ export default createStore({
     //bootup checking for special conditions and allowing for login
     psbtFound:null, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:null, timeMachineKeysFound:null, privacyKeysFound:null,
     //data for creating a new Transaction
-     id:null, description:null, address:null, amount:null, fiat_currency:null, datetime:null, fee:null, customFee:null, status: null,
+    transaction: null,
+     
+    id:null, description:null, address:null, amount:null, fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
     //existing transaction history, placeholder hardcodes
       immediateTransactions: [
         {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000987, status: 'Confirmed'},
@@ -55,6 +57,9 @@ export default createStore({
         },
         setTxStatus(state, payload){
             state.status = payload
+        },
+        setPendingTransaction(state){
+            state.transaction = {id: state.id, description: state.description, address: state.address, amount: state.amount, fiat_currency: state.fiat_currency, datetime: state.datetime, fee: state.fee, customFee: state.customFee, status: state.status}
         },
         clearTransaction(state){
             state.id = null

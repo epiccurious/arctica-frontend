@@ -41,7 +41,6 @@
     </div>
         <div class="send_button_container">
             <button @click="addRecipient()" class="btn2">Add another recipient</button>
-            <button @click="test()" class="btn2">test</button>
             <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
         </div>
     </div>        
@@ -61,7 +60,16 @@ export default {
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
-            this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
+            store.commit('setTxId', this.id)
+            store.commit('setTxDescription', description)
+            store.commit('setTxAddress', address)
+            store.commit('setTxAmount', amount)
+            store.commit('setTxFiat', this.fiat_currency)
+            store.commit('setTxDateTime', this.datetime)
+            store.commit('setTxFee', fee)
+            store.commit('setTxCustomFee', customFee)
+            store.commit('setTxStatus', 'unconfirmed')
+            this.transaction = store.getters.getTransaction
             this.$router.push({name: 'sign1of2'})
 
         },
@@ -84,15 +92,11 @@ export default {
             console.log('Custom Fee Deselected')
             this.custom = false
         },
-        test(){
-            // store.mutations.setTransaction//(100, this.description, this.address, this.amount, (20000*this.amount), '07oct20221000', this.fee, this.customFee, 'unconfirmed')
-            // store.mutations.setTransaction({id:100, description:this.description, address:this.address, amount:this.amount, fiat_currency:(20000*this.amount), datetime:'07oct20221000', fee:this.fee, customFee:this.customFee, status: 'unconfirmed'})
-            console.log(this.id)
-        },
     },
    data(){
      return{
          id: null,
+         datetime: null,
          highFee: 12,
          mediumFee: 5,
          lowFee: 1,
@@ -112,8 +116,11 @@ export default {
  mounted(){
     this.transaction = store.getters.getTransaction
     this.immediateBalance = store.getters.getImmediateBalance
+
     //get a new internal id for the bitcoin tx about to be created
     this.id = store.getters.getImmediateTransactions.length + 1
+
+    //set current datetime
  }
 }
 </script>
