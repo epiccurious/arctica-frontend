@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
     state: {
     //bootup checking for special conditions and allowing for login
-    psbtFound:null, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:null, timeMachineKeyFound:null, privacyKeyFound:null,
+    psbtFound:null, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:null, timeMachineKeysFound:null, privacyKeysFound:null,
     //data for creating a new Transaction
      id:null, description:null, address:null, amount:null, fiat_currency:null, datetime:null, fee:null, customFee:null, status: null,
     //existing transaction history, placeholder hardcodes
@@ -109,10 +109,10 @@ export default createStore({
         getTripwireHealthy(state){
             return state.tripwireHealthy
         },
-        getTimeMachineKeyFound(state){
+        getTimeMachineKeysFound(state){
             return state.timeMachineKeyFound
         },
-        getPrivacyKeyFound(state){
+        getPrivacyKeysFound(state){
             return state.privacyKeyFound
         },
 

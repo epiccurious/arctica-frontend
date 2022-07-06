@@ -34,6 +34,8 @@
 
 
 <script>
+import store from '../store.js'
+
 export default {
   name: 'Welcome',
     methods: {
@@ -44,24 +46,53 @@ export default {
             console.log('quick withdrawal clicked')
             this.$router.push({ path: '/quick' })
         },
+        readyToWorkFn(){
+          if(this.psbtFound != null && this.btcCoreHealthy != null && this.btcCoreHealthy != null && this.tripwireHealthy != null && this.timeMachineKeysFound != null && this.privacyKeysFound != null){
+            this.readyToWork = true
+            }
+            //add more logic to this as the appropriate conditionals come online
+      },
+      //this is a debug fn that simulates checking for all of the conditions required to allow login button to enable
+      debugBoot(){
+        this.psbtFound = false
+        this.btcCoreHealthy = false
+        this.btcCoreHealthy = false 
+        this.tripwireHealthy = false
+        this.timeMachineKeysFound = false 
+        this.privacyKeysFound = false
+      },
         greenLight(){
           console.log('green light given, this is currently a debug feature only and does nothing except enable you to proceed')
-          this.readyToWork = true
+          this.debugBoot()
+          this.readyToWorkFn()
+            
+          
         }
     },
+    computed: {},
     data(){
       return{
         readyToWork: false,
+        psbtFound:null, 
+        btcCoreHealthy:null, 
+        bpsHealthy:null, 
+        tripwireHealthy:null, 
+        timeMachineKeysFound:null, 
+        privacyKeysFound:null,
       }
-    }
+    },
+    mounted(){
+      this.psbtFound = store.getters.getPSBTFound
+      this.btcCoreHealthy = store.getters.getBTCCoreHealthy
+      this.bpsHealthy = store.getters.getBPSHealthy
+      this.tripwireHealthy = store.getters.getTripwireHealthy
+      this.timeMachineKeysFound = store.getters.getTimeMachineKeysFound
+      this.privacyKeysFound = store.getters.getPrivacyKeysFound
+    },
 }
 </script>
 
 <style scoped>
-.loading{
-  cursor:wait;
-}
-
 .btn3{
   cursor:wait;
 }
