@@ -30,6 +30,7 @@
 
 
 <script>
+import store from '../../../store.js'
 
 export default {
     name: 'sign2of2',
@@ -43,8 +44,9 @@ export default {
         },
         discard(){
             console.log('discarding PSBT')
-            this.$router.push({path: '/wallets/immediate'})
-        }
+            store.commit('clearTransaction')
+            this.$router.push({path: '/wallets/immediate'}) 
+        },
     },
 }
 </script>
