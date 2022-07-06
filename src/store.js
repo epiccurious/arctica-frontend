@@ -66,7 +66,46 @@ export default createStore({
             state.fee = null
             state.customFee = null
             state.status = null
-        }
+        },
+        setHotTransactions(state, payload){
+            state.hotTransactions = payload
+        },
+        setImmediateTransactions(state, payload){
+            state.immediateTransactions = payload
+        },
+        setDelayedTransactions(state, payload){
+            state.delayedTransactions = payload
+        },
+        setHotBalance(state, payload){
+            state.hotBalance = payload
+        },
+        setImmediateBalance(state, payload){
+            state.immediateBalance = payload
+        },
+        setquickBalance(state, payload){
+            state.quickBalance = payload
+        },
+        setDelayedBalance(state, payload){
+            state.delayedBalance = payload
+        },
+        setPSBTFound(state, payload){
+            state.psbtFound = payload
+        },
+        setBTCCoreHealthy(state, payload){
+            state.btcCoreHealthy = payload
+        },
+        setBPSHealthy(state, payload){
+            state.bpsHealthy = payload
+        },
+        setTripwireHealthy(state, payload){
+            state.tripwireHealthy = payload
+        },
+        setTimeMachineKeysFound(state, payload){
+            state.timeMachineKeyFound = payload
+        },
+        setPrivacyKeysFound(state, payload){
+            state.privacyKeyFound = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
