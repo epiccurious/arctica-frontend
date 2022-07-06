@@ -50,6 +50,7 @@
 
 <script>
 import Sign from '@/components/Sign'
+import store from '../../store.js'
 
 export default {
   name: 'quick2',

@@ -36,7 +36,7 @@
 
 <script>
 import { RouterView, RouterLink } from "vue-router";
-import store from '../../store.js'
+import store from '../store.js'
 {
   RouterView;
   RouterLink
