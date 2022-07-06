@@ -54,12 +54,21 @@ export default {
       },
       //this is a debug fn that simulates checking for all of the conditions required to allow login button to enable
       debugBoot(){
-        this.psbtFound = false
-        this.btcCoreHealthy = false
-        this.btcCoreHealthy = false 
-        this.tripwireHealthy = false
-        this.timeMachineKeysFound = false 
-        this.privacyKeysFound = false
+        // this.psbtFound = false
+        store.commit('setPSBTFound', false)
+        this.psbtFound = store.getters.getPSBTFound
+
+        store.commit('setBTCCoreHealthy', false)
+        this.btcCoreHealthy = store.getters.getBTCCoreHealthy
+
+        store.commit('setTripwireHealthy', false)
+        this.tripwireHealthy = store.getters.getTripwireHealthy
+
+        store.commit('setTimeMachineKeysFound', false)
+        this.timeMachineKeysFound = store.getters.getTimeMachineKeysFound
+
+        store.commit('setPrivacyKeysFound', false)
+        this.privacyKeysFound = store.getters.getPrivacyKeysFound
       },
         greenLight(){
           console.log('green light given, this is currently a debug feature only and does nothing except enable you to proceed')
