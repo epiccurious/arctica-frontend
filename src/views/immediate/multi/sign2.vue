@@ -4,7 +4,7 @@
         <h1>Approve Transaction for Signing (2 of 2)</h1>
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
-            <!-- <h2>To</h2>
+            <h2>To</h2>
             <h3>{{ this.transaction.address }}</h3>
         </div>
 
@@ -15,7 +15,7 @@
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>₿ {{ this.transaction.fee }}</h3> -->
+            <h3>₿ {{ this.transaction.fee }}</h3>
         </div>
 
         <div class="horizontal_btn_container">
@@ -48,6 +48,11 @@ export default {
             this.$router.push({path: '/wallets/immediate'}) 
         },
     },
+    data(){
+        return{
+            transaction: store.getters.getTransaction
+        }
+    }
 }
 </script>
 
