@@ -104,12 +104,13 @@ export default {
          transaction: {},
          constructed: false,
          multiOutput: false,
+         immediateBalance: null,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
- inject: ['immediateBalance'],
  mounted(){
     this.transaction = store.getters.getTransaction
+    this.immediateBalance = store.getters.getImmediateBalance
  }
 }
 </script>

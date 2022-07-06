@@ -35,6 +35,7 @@
 
 <script>
 import { RouterView, RouterLink } from "vue-router";
+import store from '../store.js'
 {
   RouterView;
   RouterLink
@@ -66,7 +67,14 @@ export default{
             }
         }
     },
-    inject: ['immediateBalance']
+         mounted(){
+    this.immediateBalance = store.getters.getImmediateBalance
+ },
+    data(){
+        return{
+            immediateBalance: null
+        }
+    }
 }
 </script>
 

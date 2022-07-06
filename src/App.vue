@@ -116,12 +116,6 @@ import { RouterView, RouterLink } from "vue-router";
 
 export default {
   name: 'App',
-  provide: {
-      quickBalance: 0.000052,
-      hotBalance: 0.12759374,
-      immediateBalance: 0.27847143,
-      delayedBalance: 12.05312325,
-  }
 }
 </script>
 

@@ -71,7 +71,7 @@ export default {
         },
         // selectMax(){
         //     console.log('Select max clicked')
-        //     this.amount = this.immediateBalance
+        //     this.amount = this.quickBalance
         // },
 
         //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...

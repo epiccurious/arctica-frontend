@@ -24,7 +24,7 @@
                 <div class="balance_calculator">
                     <div class="balance_left">
                     <h2>Your Balance</h2>
-                    <h3>₿ {{ immediateBalance }}</h3>
+                    <h3>₿ {{ delayedBalance }}</h3>
                     </div>
                     <div class="balance_right">
                         <button @click="selectMax()" class="btn4">Select Max</button>
@@ -56,6 +56,7 @@
 import NavDelayed from '@/components/NavDelayed'
 import Sign from '@/components/Sign'
 import DelayWarning from './DelayWarning'
+import store from '../../store.js'
 
 export default {
   name: 'delayedSend',
@@ -85,7 +86,7 @@ export default {
         },
         // selectMax(){
         //     console.log('Select max clicked')
-        //     this.amount = this.immediateBalance
+        //     this.amount = this.delayedBalance
         // },
 
         //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...
@@ -106,6 +107,9 @@ export default {
         this.warning = false
       },
     },
+    mounted(){
+        this.delayedBalance = store.getters.getDelayedBalance
+    },
    data(){
      return{
          highFee: 12,
@@ -122,10 +126,10 @@ export default {
          multiOutput: false,
          warning: true,
          timeLock: true, //this will be set to false once the timelock decays naturally and arctica has verified that the users time machine keys have been published
+         delayedBalance:null,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
- inject: ['immediateBalance'],
 }
 </script>
 
