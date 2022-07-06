@@ -109,9 +109,12 @@ export default {
     },
     mounted(){
         this.delayedBalance = store.getters.getDelayedBalance
+        //get a new internal id for the bitcoin tx about to be created
+        this.id = store.getters.getDelayedTransactions.length + 1
     },
    data(){
      return{
+         id: null,
          highFee: 12,
          mediumFee: 5,
          lowFee: 1,

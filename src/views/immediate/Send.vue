@@ -87,11 +87,12 @@ export default {
         test(){
             // store.mutations.setTransaction//(100, this.description, this.address, this.amount, (20000*this.amount), '07oct20221000', this.fee, this.customFee, 'unconfirmed')
             // store.mutations.setTransaction({id:100, description:this.description, address:this.address, amount:this.amount, fiat_currency:(20000*this.amount), datetime:'07oct20221000', fee:this.fee, customFee:this.customFee, status: 'unconfirmed'})
-            console.log(this.transaction)
-        }
+            console.log(this.id)
+        },
     },
    data(){
      return{
+         id: null,
          highFee: 12,
          mediumFee: 5,
          lowFee: 1,
@@ -111,6 +112,8 @@ export default {
  mounted(){
     this.transaction = store.getters.getTransaction
     this.immediateBalance = store.getters.getImmediateBalance
+    //get a new internal id for the bitcoin tx about to be created
+    this.id = store.getters.getImmediateTransactions.length + 1
  }
 }
 </script>

@@ -96,6 +96,7 @@ export default {
     },
    data(){
      return{
+         id: null,
          highFee: 12,
          mediumFee: 5,
          lowFee: 1,
@@ -114,6 +115,8 @@ export default {
  },
      mounted(){
     this.hotBalance = store.getters.getHotBalance
+        //get a new internal id for the bitcoin tx about to be created
+    this.id = store.getters.getHotTransactions.length + 1
  },
 }
 </script>
