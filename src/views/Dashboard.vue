@@ -48,6 +48,7 @@
 <script>
 import Nav from '@/components/Nav'
 import { RouterView, RouterLink } from "vue-router";
+import store from '../store.js'
 {
   RouterView;
   RouterLink
@@ -58,7 +59,18 @@ export default {
   components: {
     Nav
   },
-    inject: ['hotBalance', 'immediateBalance', 'delayedBalance']
+     mounted(){
+    this.hotBalance = store.getters.getHotBalance
+    this.immediateBalance = store.getters.getImmediateBalance
+    this.delayedBalance = store.getters.getDelayedBalance
+ },
+ data(){
+  return{
+    hotBalance: null,
+    immediateBalance: null,
+    delayedBalance: null,
+  }
+ }
 }
 </script>
 

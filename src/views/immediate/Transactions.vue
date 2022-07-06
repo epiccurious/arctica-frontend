@@ -39,8 +39,6 @@ export default {
       return{
           immediateTransactions: [],
           transactionView: false
-          
-          
       }
   },
    mounted(){

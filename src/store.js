@@ -20,8 +20,13 @@ export default createStore({
         {id: 2, address: 'bc1qu7cr0hyc4xfnk3fh0cdce43fnzfwdtq5a089vs3pp7d0hhxesvwq88ecfp', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-09:30', fee: 0.00001247, status: 'Confirmed'},
         {id: 3, address: 'bc1prd9haet4clzacme9gnpgxknj04480xemzh2wt3gkd5ut920tw7mq2j9ldh', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-10T12:00:00-04:10', fee: 0.00000408, status: 'Unconfirmed'}
     ],
+    //various wallet balances
+    quickBalance: 0.000052,
+    hotBalance: 0.12759374,
+    immediateBalance: 0.27847143,
+    delayedBalance: 12.05312325,
     },
-    mutations:{//synchronous
+    mutations:{//synchronous, alters data in state (commit)
         setTxId(state, payload){
             state.id = payload;
         },
@@ -61,10 +66,10 @@ export default createStore({
             state.status = null
         }
     },
-    actions:{//asynchronous
+    actions:{//asynchronous, used for external API calls (dispatch)
     },
     modules:{},
-    getters:{
+    getters:{ //get data from state, allows for changing/filtering
         getTransaction(state){
           let  transaction = {id:state.id, description:state.description, address:state.address, amount:state.amount, fiat_currency:state.fiat_currency, datetime:state.datetime, fee:state.fee, customFee:state.customFee, status:state.status}
             return (transaction)
@@ -77,6 +82,18 @@ export default createStore({
         },
         getDelayedTransactions(state){
             return state.delayedTransactions
+        },
+        getHotBalance(state){
+            return state.hotBalance
+        },
+        getImmediateBalance(state){
+            return state.immediateBalance
+        },
+        getquickBalance(state){
+            return state.quickBalance
+        },
+        getDelayedBalance(state){
+            return state.delayedBalance
         },
 
     }
