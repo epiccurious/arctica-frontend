@@ -101,6 +101,18 @@ const routes = [
      
    },
    {
+    path: '/wallets/immediate/broadcast',
+    name: 'broadcastImmediate',
+    component: () => import('../views/immediate/multi/broadcast.vue')
+     
+   },
+   {
+    path: '/wallets/immediate/confirmation',
+    name: 'confirmationImmediate',
+    component: () => import('../views/immediate/multi/confirmation.vue')
+     
+   },
+   {
     path: '/wallets/immediate/receive',
     name: 'immediateReceive',
     component: () => import('../views/immediate/Receive.vue')

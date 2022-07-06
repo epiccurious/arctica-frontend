@@ -29,6 +29,8 @@ export default {
         },
         debug(){
             console.log('debug proceed moving to broadcast')
+            this.$router.push({path: '/wallets/immediate/broadcast'}) 
+
         }
 
     },
