@@ -36,6 +36,7 @@
 
 <script>
 import { RouterView, RouterLink } from "vue-router";
+import store from '../store.js'
 {
   RouterView;
   RouterLink
@@ -67,7 +68,14 @@ export default{
             }
         }
     },
-    inject: ['hotBalance']
+     mounted(){
+    this.hotBalance = store.getters.getHotBalance
+ },
+    data(){
+        return{
+            hotBalance: null
+        }
+    }
 }
 </script>
 

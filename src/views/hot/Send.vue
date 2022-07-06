@@ -22,7 +22,7 @@
             <div class="balance_calculator">
                 <div class="balance_left">
                 <h2>Your Balance</h2>
-                <h3>₿ {{ immediateBalance }}</h3>
+                <h3>₿ {{ hotBalance }}</h3>
                 </div>
                 <div class="balance_right">
                     <button @click="selectMax()" class="btn4">Select Max</button>
@@ -53,6 +53,7 @@
 <script>
 import NavHot from '@/components/NavHot'
 import Sign from '@/components/Sign'
+import store from '../../store.js'
 
 export default {
   name: 'hotSend',
@@ -107,10 +108,13 @@ export default {
          transaction: {},
          constructed: false,
          multiOutput: false,
+         hotBalance: null,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
- inject: ['immediateBalance'],
+     mounted(){
+    this.hotBalance = store.getters.getHotBalance
+ },
 }
 </script>
 
