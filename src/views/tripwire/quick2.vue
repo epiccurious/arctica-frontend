@@ -101,10 +101,13 @@ export default {
          custom: false,
          transaction: {},
          constructed: false,
+         quickBalance: null,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
- inject: ['quickBalance'],
+          mounted(){
+    this.quickBalance = store.getters.getQuickBalance
+ },
 }
 </script>
 
