@@ -38,13 +38,13 @@ export default {
     methods: {
         broadcast(){
             console.log('broadcasting...')
-            this.$router.push({path: '/wallets/immediate/confirmation'}) 
-            store.commit('pushImmediateTransaction', this.transaction)
+            this.$router.push({name: 'hotConfirmation'}) 
+            store.commit('pushHotTransaction', this.transaction)
         },
         discard(){
             console.log('discarding PSBT')
             store.commit('clearTransaction')
-            this.$router.push({path: '/wallets/immediate'}) 
+            this.$router.push({name: 'hot'}) 
         },
     },
     computed:{

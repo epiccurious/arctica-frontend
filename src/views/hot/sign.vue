@@ -1,7 +1,7 @@
 <template>
 <div class="page">
     <div class="display_block">
-        <h1>Approve Transaction for Signing (1 of 2)</h1>
+        <h1>Approve Transaction for Signing</h1>
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
             <h2>To</h2>
@@ -38,12 +38,12 @@ export default {
         sign(){
             console.log('signing...')
             this.signed = true
-            this.$router.push({ path: '/wallets/immediate/1of2success' })
+            this.$router.push({ name: 'hotBroadcast' })
         },
         discard(){
             console.log('discarding PSBT')
             store.commit('clearTransaction')
-            this.$router.push({path: '/wallets/immediate'}) 
+            this.$router.push({name: 'hot'}) 
         },
     },
     data(){

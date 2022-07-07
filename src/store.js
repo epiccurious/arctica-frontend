@@ -76,6 +76,12 @@ export default createStore({
         pushImmediateTransaction(state, payload){
             state.immediateTransactions.push(payload)
         },
+        pushHotTransaction(state, payload){
+            state.hotTransactions.push(payload)
+        },
+        pushDelayedTransaction(state, payload){
+            state.delayedTransactions.push(payload)
+        },
         setDelayedTransactions(state, payload){
             state.delayedTransactions = payload
         },

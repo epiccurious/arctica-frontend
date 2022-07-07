@@ -1,7 +1,5 @@
   <template>
-  <Sign v-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
-  <!-- this uses a truthy comparison to conditionally render -->
-<div v-else class="page">
+<div class="page">
     <NavHot/>
     <div class="outer_container">
         <div class="send_head_container">
@@ -52,32 +50,37 @@
 
 <script>
 import NavHot from '@/components/NavHot'
-import Sign from '@/components/Sign'
 import store from '../../store.js'
 
 export default {
   name: 'hotSend',
   components: {
     NavHot,
-    Sign
-  },
+  },  
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
-            this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
-            //currently id is static here, eventually will take from parent info as well exchange rate is hard coded at 20k here until we hit an exchange API
-            this.txConstructed(this.transaction)
+            store.commit('setTxId', this.id)
+            store.commit('setTxDescription', description)
+            store.commit('setTxAddress', address)
+            store.commit('setTxAmount', amount)
+            store.commit('setTxFiat', this.fiat_currency)
+            store.commit('setTxDateTime', this.datetime)
+            store.commit('setTxFee', fee)
+            store.commit('setTxCustomFee', customFee)
+            store.commit('setTxStatus', 'unconfirmed')
+            this.transaction = store.getters.getTransaction
+            this.$router.push({name: 'hotSign'})
+
         },
-        txConstructed(transaction){
-            this.constructed = transaction
-        },
+        // eventually the continueFn() should construct the PSBT
         addRecipient(){
             console.log('Add recipient clicked')
             this.multiOutput = true
         },
         // selectMax(){
         //     console.log('Select max clicked')
-        //     this.amount = this.hotBalance
+        //     this.amount = this.immediateBalance
         // },
 
         //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...
@@ -89,14 +92,11 @@ export default {
             console.log('Custom Fee Deselected')
             this.custom = false
         },
-        closeOut(){
-          console.log('sign window closed')
-          this.constructed = false
-      },
     },
    data(){
      return{
          id: null,
+         datetime: null,
          highFee: 12,
          mediumFee: 5,
          lowFee: 1,
@@ -109,22 +109,24 @@ export default {
          transaction: {},
          constructed: false,
          multiOutput: false,
-         hotBalance: null,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
-     mounted(){
-    this.hotBalance = store.getters.getHotBalance
-        //get a new internal id for the bitcoin tx about to be created
+ mounted(){
+    this.transaction = store.getters.getTransaction
+
+    //get a new internal id for the bitcoin tx about to be created
     this.id = store.getters.getHotTransactions.length + 1
+
+    //set current datetime
+ },
+ computed:{
+    hotBalance(){
+        return store.getters.getHotBalance
+    },
  },
 }
 </script>
-
-
-<style>
-  </style>
-
 
 
 

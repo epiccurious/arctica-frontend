@@ -20,7 +20,7 @@ export default{
     name: 'hotConfirmation',
     methods:{
         back(){
-            this.$router.push({ path: '/wallets/immediate' })
+            this.$router.push({ name: 'hot' })
         },
         viewTx(){
             console.log('view tx clicked')
@@ -29,8 +29,8 @@ export default{
     },
     computed:{
         id(){
-           let immediateTransactions = store.getters.getImmediateTransactions
-           return immediateTransactions.length
+           let hotTransactions = store.getters.getHotTransactions
+           return hotTransactions.length
 
         }
     },
