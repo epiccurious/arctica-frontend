@@ -31,8 +31,8 @@
 
         <div class="tx_block">
             <h2>Status</h2>
-            <h3 v-if="this.transaction.status=='Confirmed'" class="confirmed" >{{ this.transaction.status }}</h3>
-            <h3 v-else class="unconfirmed" >{{ this.transaction.status }}</h3>
+            <h3 v-if="this.transaction.status=='Confirmed'" id="confirmed" >{{ this.transaction.status }}</h3>
+            <h3 v-else id="unconfirmed" >{{ this.transaction.status }}</h3>
         </div>
 
         <div class="footer_block">
@@ -103,5 +103,11 @@ input{
     padding:12px;
     border:none;
     text-align:center;
+}
+#confirmed{
+    color:#27AE60;
+}
+#unconfirmed{
+    color: #EB5757;
 }
 </style>
