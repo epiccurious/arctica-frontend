@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Welcome from '../views/Welcome.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes = [
   {
@@ -545,6 +546,13 @@ const routes = [
     path: '/quick/compromised',
     name: 'Compromised',
     component: () => import('../views/tripwire/compromised.vue')
+   },
+
+   //404 not found catchall
+   {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound,
    },
 
 
