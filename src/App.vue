@@ -440,6 +440,33 @@ h3{
     padding: 4%;
     width: 40%;
 }
+.description_block{
+    display:flex;
+    align-self:center;
+    justify-self:center;
+    width:100%;
+}
+.footer_block{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content:center;
+    align-items:center;
+    width:90%;
+}
+.confirmed{
+    color:#27AE60;
+}
+.unconfirmed{
+    color: #EB5757;
+}
+.transaction_head{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+    
+}
 .tx_block{
     display:flex;
     flex-direction: row;
