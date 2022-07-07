@@ -14,7 +14,6 @@ const routes = [
     path: '/boot',
     name: 'Boot',
     component: () => import('../views/Boot.vue')
-     
    },
   {
     path: '/login',
@@ -25,19 +24,16 @@ const routes = [
     path: '/login/bricked',
     name: 'BPS_Bricked',
     component: () => import('../views/Manual_Login/BPS_Bricked.vue')
-     
    },
    {
     path: '/login/recovery',
     name: 'Recovery',
     component: () => import('../views/Manual_Login/Recovery.vue')
-     
    },
    {
     path: '/login/recovery_initiate',
     name: 'RecoveryInitiate',
     component: () => import('../views/Manual_Login/Recovery_initiate.vue')
-     
    },
   {
     path: '/wallets',
@@ -48,19 +44,31 @@ const routes = [
     path: '/wallets/hot',
     name: 'hot',
     component: () => import('../views/hot/Transactions.vue')
-     
    },
    {
     path: '/wallets/hot/:id',
     name: 'hotTransaction',
     component: () => import('../views/hot/Transaction.vue')
-     
    },
    {
     path: '/wallets/hot/send',
     name: 'hotSend',
     component: () => import('../views/hot/Send.vue')
-     
+   },
+   {
+    path: '/wallets/hot/sign',
+    name: 'hotSign',
+    component: () => import('../views/hot/sign.vue')
+   },
+   {
+    path: '/wallets/hot/broadcast',
+    name: 'hotBroadcast',
+    component: () => import('../views/hot/broadcast.vue')
+   },
+   {
+    path: '/wallets/hot/confirmation',
+    name: 'hotConfirmation',
+    component: () => import('../views/hot/confirmation.vue')
    },
    {
     path: '/wallets/hot/receive',
@@ -74,13 +82,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "dashboard" */ '../views/immediate/Transactions.vue')
-     
    },
    {
     path: '/wallets/immediate/:id',
     name: 'immediateTransaction',
     component: () => import('../views/immediate/Transaction.vue')
-     
    },
    {
     path: '/wallets/immediate/send',
@@ -115,13 +121,13 @@ const routes = [
    },
    {
     path: '/wallets/immediate/broadcast',
-    name: 'broadcastImmediate',
+    name: 'immediateBroadcast',
     component: () => import('../views/immediate/multi/broadcast.vue')
      
    },
    {
     path: '/wallets/immediate/confirmation',
-    name: 'confirmationImmediate',
+    name: 'immediateConfirmation',
     component: () => import('../views/immediate/multi/confirmation.vue')
      
    },

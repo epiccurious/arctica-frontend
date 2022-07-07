@@ -15,9 +15,9 @@
 
 
 <script>
-import store from '../../../store.js'
+import store from '../../store.js'
 export default{
-    name: 'immediateConfirmation',
+    name: 'hotConfirmation',
     methods:{
         back(){
             this.$router.push({ path: '/wallets/immediate' })
