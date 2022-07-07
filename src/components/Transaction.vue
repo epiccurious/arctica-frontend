@@ -3,7 +3,7 @@
     <div class="display_block">
         <header id="transaction_head">
             <h1>Transaction</h1>
-            <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/X.png"></button>
+            <button class="btnclose" @click="closePopup()"><img src="@/assets/X.png"></button>
         </header>
         <div id="description_block">
             <input type="text" placeholder="Enter a description...">
@@ -48,7 +48,12 @@
 <script>
 export default {
     props: ['transaction'],
-    methods: {},
+    methods: {
+        closePopup(){
+            this.$router.push({ path: '/wallets' })
+            //should make this travel dynamically to the wallet tab the user is currently in!x
+        }
+    },
 }
 </script>
 

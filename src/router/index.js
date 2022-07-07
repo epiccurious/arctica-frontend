@@ -51,6 +51,12 @@ const routes = [
      
    },
    {
+    path: '/wallets/hot/:id',
+    name: 'hotTransaction',
+    component: () => import('../views/hot/Transaction.vue')
+     
+   },
+   {
     path: '/wallets/hot/send',
     name: 'hotSend',
     component: () => import('../views/hot/Send.vue')
@@ -68,6 +74,12 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "dashboard" */ '../views/immediate/Transactions.vue')
+     
+   },
+   {
+    path: '/wallets/immediate/:id',
+    name: 'immediateTransaction',
+    component: () => import('../views/immediate/Transaction.vue')
      
    },
    {
@@ -123,6 +135,12 @@ const routes = [
     path: '/wallets/delayed',
     name: 'delayed',
     component: () => import('../views/delayed/Transactions.vue')
+     
+   },
+   {
+    path: '/wallets/delayed/:id',
+    name: 'delayedTransaction',
+    component: () => import('../views/delayed/Transaction.vue')
      
    },
    {
