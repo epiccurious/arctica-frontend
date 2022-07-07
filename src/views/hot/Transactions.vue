@@ -1,6 +1,5 @@
 <template>
-<Transaction v-if="transactionView" v-on:closeOut="closeOut" :transaction="hotTransactions[transactionView - 1]" />
-<div v-else class="page">
+<div class="page">
     <NavHot />
       <div class="dashboard">
         <div class="head_container">
@@ -25,35 +24,17 @@
 
 <script>
 import NavHot from '@/components/NavHot'
-import Transaction from '@/components/Transaction.vue'
 import store from '../../store.js'
 
 export default {
   name: 'hot',
   components: {
     NavHot,
-    Transaction
-  },
-  data() {
-      return{
-          hotTransactions: [],
-          transactionView: false
-          
-          
-      }
-  },
-  mounted(){
-    this.hotTransactions = store.getters.getHotTransactions
-
   },
     methods: {
       transactionDetail(transactionId){
-          console.log(`transaction ${transactionId} clicked`)
-          this.transactionView = transactionId
-      },
-      closeOut(){
-          console.log('detail window closed')
-          this.transactionView = false
+        this.$router.push({ path: `/wallets/hot/${transactionId}` })
+
       },
   },
     computed:{
@@ -61,7 +42,10 @@ export default {
       return (str)=>{
         return str.slice(0,18) + '...'
       }
-      }
+      },
+      hotTransactions(){ 
+        return store.getters.getHotTransactions
+        }
   }
 }
 </script>

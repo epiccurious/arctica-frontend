@@ -454,12 +454,6 @@ h3{
     align-items:center;
     width:90%;
 }
-.confirmed{
-    color:#27AE60;
-}
-.unconfirmed{
-    color: #EB5757;
-}
 .transaction_head{
     display:flex;
     flex-direction: row;
