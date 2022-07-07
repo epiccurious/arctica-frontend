@@ -35,7 +35,7 @@ export default {
     methods: {
             acknowledge(){
             console.log('user ack, tripwire compromised')
-            this.$router.push({ path: '/wallets' })
+            this.$router.push({ name: 'dashboard' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

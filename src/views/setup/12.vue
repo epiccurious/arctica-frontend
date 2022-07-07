@@ -30,7 +30,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, loading pubkeys onto setup CD')
-            this.$router.push({ path: '/setup/13' })
+            this.$router.push({ name: 'Setup13' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

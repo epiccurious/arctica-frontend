@@ -20,7 +20,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceed')
-            this.$router.push({ path: '/setup/23' })
+            this.$router.push({ name: 'Setup23' })
         },
     },
 }

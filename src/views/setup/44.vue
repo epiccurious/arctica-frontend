@@ -28,7 +28,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, moving info from SD 6 to DVD 6')
-            this.$router.push({ path: '/setup/45' })
+            this.$router.push({ name: 'Setup45' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

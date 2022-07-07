@@ -28,7 +28,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, package 4 completed')
-            this.$router.push({ path: '/setup/38' })
+            this.$router.push({ name: 'Setup38' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

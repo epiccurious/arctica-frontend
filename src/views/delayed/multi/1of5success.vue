@@ -29,7 +29,7 @@ export default {
         },
         debug(){
             console.log('debug proceed signing successful moving to 2 of 5')
-            this.$router.push({ path: '/wallets/delayed/2of5' })
+            this.$router.push({ name: 'sign2of5' })
         }
 
     },

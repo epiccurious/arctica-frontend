@@ -35,7 +35,7 @@ export default {
     methods: {
             acknowledge(){
             console.log('user ack, media devices are ready')
-            this.$router.push({ path: '/setup/4' })
+            this.$router.push({ name: 'Setup4' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

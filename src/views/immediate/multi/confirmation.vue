@@ -20,7 +20,7 @@ export default{
     name: 'immediateConfirmation',
     methods:{
         back(){
-            this.$router.push({ path: '/wallets/immediate' })
+            this.$router.push({ name: 'immediate' })
         },
         viewTx(){
             console.log('view tx clicked')

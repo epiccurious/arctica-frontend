@@ -29,11 +29,11 @@ export default {
   name: 'Login',
     methods: {
         login(){
-            this.$router.push({ path: '/wallets' })
+            this.$router.push({ name: 'dashboard' })
         },
         passwordRecovery(){
             console.log('Password Recovery Clicked')
-            this.$router.push({ path: '/login/recovery' })
+            this.$router.push({ name: 'Recovery' })
         },
         warn(){
             console.log('user trying to proceed without password match, need form correction')

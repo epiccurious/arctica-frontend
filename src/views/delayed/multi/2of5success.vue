@@ -29,7 +29,7 @@ export default {
         },
         debug(){
             console.log('debug proceed moving to 3 of 5')
-            this.$router.push({ path: '/wallets/delayed/3of5' })
+            this.$router.push({ name: 'sign3of5' })
         }
 
     },

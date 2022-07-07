@@ -21,7 +21,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceed, consider checkbox here?')
-            this.$router.push({ path: '/setup/18' })
+            this.$router.push({ name: 'Setup18' })
         },
 
     },

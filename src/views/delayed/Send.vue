@@ -68,7 +68,7 @@ export default {
             if (this.timeLock == false){
                 this.txConstructed(this.transaction)
             } else {
-                this.$router.push({ path: '/delayed/timemachine/1' })
+                this.$router.push({ name: 'TimeMachine1' })
             }
             
         },

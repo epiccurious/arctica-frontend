@@ -47,7 +47,7 @@
 </template>
 
 
-<script>
+<script>    
 import store from '../../store.js'
 
 export default {
@@ -65,7 +65,7 @@ export default {
             this.constructed = transaction
         },
               goBack(){
-            this.$router.push({ path: '/' })
+            this.$router.push({ name: 'welcome' })
         },
         // selectMax(){
         //     console.log('Select max clicked')

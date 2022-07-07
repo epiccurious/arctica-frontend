@@ -28,7 +28,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, flashing SD 2')
-            this.$router.push({ path: '/setup/6' })
+            this.$router.push({ name: 'Setup6' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

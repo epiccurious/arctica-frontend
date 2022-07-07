@@ -25,7 +25,7 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.$router.push({ path: '/setup/17' })
+            this.$router.push({ name: 'Setup17' })
         },
 
     },

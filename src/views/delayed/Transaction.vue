@@ -56,7 +56,7 @@ export default{
 components:{},
 methods:{
     goBack(){
-        this.$router.push({ path: '/wallets/delayed' })
+        this.$router.push({ name: 'delayed' })
     }
 },
   computed:{

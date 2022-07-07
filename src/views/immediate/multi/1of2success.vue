@@ -29,7 +29,7 @@ export default {
         },
         debug(){
             console.log('debug proceed')
-            this.$router.push({ path: '/wallets/immediate/2of2' })
+            this.$router.push({ name: 'sign2of2' })
         }
 
     },

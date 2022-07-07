@@ -39,11 +39,11 @@ export default {
         sign(){
             console.log('signing...')
             this.signed = true
-            this.$router.push({ path: '/wallets/delayed/2of5success' })
+            this.$router.push({ name: '2of5success' })
         },
         discard(){
             console.log('discarding PSBT')
-            this.$router.push({path: '/wallets/immediate'})
+            this.$router.push({ name: 'delayed' })
         }
     },
     data(){

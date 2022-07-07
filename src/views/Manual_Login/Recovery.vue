@@ -21,7 +21,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, closing the application')
-            this.$router.push({ path: '/login/recovery_initiate' })
+            this.$router.push({ name: 'RecoveryInitiate' })
         },
     },
 }

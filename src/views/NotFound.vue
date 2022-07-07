@@ -17,7 +17,7 @@ export default{
 
     methods:{
         goHome(){
-            this.$router.push({ path: '/wallets' })
+            this.$router.push({ name: 'dashboard' })
         }
     }
 

@@ -19,7 +19,7 @@ export default {
     methods: {
         proceed(){
             console.log('user ack, close application')
-            this.$router.push({ path: '/setup/12' })
+            this.$router.push({ name: 'Setup12' })
         },
         acknowledge(){
             console.log('user ack, closing application')

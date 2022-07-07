@@ -20,7 +20,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceeding to immediate receive tab')
-            this.$router.push({ path: '/wallets/immediate/receive' })
+            this.$router.push({ name: 'immediateReceive' })
         },
 
     },

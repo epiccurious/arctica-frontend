@@ -31,13 +31,13 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceeding to send page')
-            this.$router.push({ path: '/quick/send' })
+            this.$router.push({ name: 'quick2' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
         goBack(){
-            this.$router.push({ path: '/' })
+            this.$router.push({ name: 'welcome' })
         }
 
     },

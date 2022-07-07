@@ -28,7 +28,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, initiating manual recovery process')
-            this.$router.push({ path: '/login/recovery' })
+            this.$router.push({ name: 'Recovery' })
         },
 
     },

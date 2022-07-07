@@ -36,14 +36,14 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, initiating time machine protocol')
-            this.$router.push({ path: '/delayed/timemachine/2' })
+            this.$router.push({ name: 'TimeMachine2' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
         goBack(){
             console.log('user aborting time machine protocol')
-            this.$router.push({ path: '/wallets' })
+            this.$router.push({ name: 'dashboard' })
         }
 
     },

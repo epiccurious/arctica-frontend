@@ -56,7 +56,7 @@ export default{
 components:{},
 methods:{
     goBack(){
-        this.$router.push({ path: '/wallets/immediate' })
+        this.$router.push({ name: 'immediate' })
     }
 },
   computed:{
