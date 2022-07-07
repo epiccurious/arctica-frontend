@@ -39,6 +39,7 @@ export default {
         broadcast(){
             console.log('broadcasting...')
             this.$router.push({path: '/wallets/immediate/confirmation'}) 
+            store.commit('pushImmediateTransaction', this.transaction)
         },
         discard(){
             console.log('discarding PSBT')
@@ -46,9 +47,9 @@ export default {
             this.$router.push({path: '/wallets/immediate'}) 
         },
     },
-    data(){
-        return{
-        transaction: store.getters.getTransaction
+    computed:{
+        transaction(){
+            return store.getters.getTransaction
         }
     }
 }

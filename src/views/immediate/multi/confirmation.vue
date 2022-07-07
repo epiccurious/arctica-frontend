@@ -15,15 +15,24 @@
 
 
 <script>
+import store from '../../../store.js'
 export default{
     name: 'confirmationImmediate',
     methods:{
         back(){
-                this.$router.push({ path: '/wallets/immediate' })
+            this.$router.push({ path: '/wallets/immediate' })
         },
         viewTx(){
             console.log('view tx clicked')
+            this.$router.push({path: `${this.id}`})
         }
-    }
+    },
+    computed:{
+        id(){
+           let immediateTransactions = store.getters.getImmediateTransactions
+           return immediateTransactions.length
+
+        }
+    },
 }
 </script>

@@ -46,7 +46,7 @@ export default {
       immediateTransactions(){ 
         return store.getters.getImmediateTransactions
         }
-  }
+  },
 }
 </script>
 
