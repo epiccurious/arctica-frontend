@@ -1,6 +1,5 @@
 <template>
-<Transaction v-if="transactionView" v-on:closeOut="closeOut" :transaction="immediateTransactions[transactionView - 1]" />
-<div v-else class="page">
+<div class="page">
     <NavImmediate />
       <div class="dashboard">
         <div class="head_container">
@@ -25,33 +24,17 @@
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
-import Transaction from '@/components/Transaction.vue'
 import store from '../../store.js'
-
 
 export default {
   name: 'immediate',
   components: {
     NavImmediate,
-    Transaction
   },
-  data() {
-      return{
-          immediateTransactions: [],
-          transactionView: false
-      }
-  },
-   mounted(){
-    this.immediateTransactions = store.getters.getImmediateTransactions
- },
     methods: {
       transactionDetail(transactionId){
-          console.log(`transaction ${transactionId} clicked`)
-          this.transactionView = transactionId
-      },
-      closeOut(){
-          console.log('detail window closed')
-          this.transactionView = false
+        this.$router.push({ path: `/wallets/immediate/${transactionId}` })
+
       },
   },
     computed:{
@@ -59,7 +42,10 @@ export default {
       return (str)=>{
         return str.slice(0,18) + '...'
       }
-      }
+      },
+      immediateTransactions(){ 
+        return store.getters.getImmediateTransactions
+        }
   }
 }
 </script>
