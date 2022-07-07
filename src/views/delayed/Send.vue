@@ -1,8 +1,5 @@
 <template>
     <DelayWarning v-if="warning" v-on:ackWarning="ackWarning"/>
-
-    <Sign v-else-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
-
     <div v-else class="page">
         <NavDelayed/>
         <div class="outer_container">
@@ -54,7 +51,6 @@
 
 <script>
 import NavDelayed from '@/components/NavDelayed'
-import Sign from '@/components/Sign'
 import DelayWarning from './DelayWarning'
 import store from '../../store.js'
 
@@ -62,7 +58,6 @@ export default {
   name: 'delayedSend',
   components: {
     NavDelayed,
-    Sign,
     DelayWarning
   },
     methods: {

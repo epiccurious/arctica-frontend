@@ -1,6 +1,5 @@
   <template>
-  <Sign v-if="constructed" v-on:closeOut="closeOut" :transaction="transaction" />
-<div v-else class="page">
+<div class="page">
     <div class="outer_container">
         <div class="send_head_container">
          <h1>Send Bitcoin</h1>
@@ -49,13 +48,11 @@
 
 
 <script>
-import Sign from '@/components/Sign'
 import store from '../../store.js'
 
 export default {
   name: 'quick2',
   components: {
-    Sign
   },
     methods: {
         continueFn(description, address, amount, fee, customFee){
