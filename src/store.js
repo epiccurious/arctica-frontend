@@ -28,8 +28,13 @@ export default createStore({
     immediateBalance: 0.27847143,
     delayedBalance: 12.05312325,
 
+    //current address for receiving
+    hotAddress: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky',
+    immediateAddress: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky',
+    delayedAddress: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky',
+
     //delayed wallet timelocked
-    timeLock: false
+    timeLock: true
     },
     mutations:{//synchronous, alters data in state (commit)
         setTxId(state, payload){
@@ -120,6 +125,15 @@ export default createStore({
         },
         setTimeLock(state, payload){
             state.timeLock = payload
+        },
+        setDelayedAddress(state, payload){
+            state.delayedAddress = payload
+        },
+        setImmediateAddress(state, payload){
+            state.immediateAddress = payload
+        },
+        setHotAddress(state, payload){
+            state.hotAddress = payload
         }
     },
     actions:{//asynchronous, used for external API calls (dispatch)
@@ -172,6 +186,17 @@ export default createStore({
         getTimeLock(state){
             return state.timeLock
         },
+        getDelayedAddress(state){
+            return state.delayedAddress
+        },
+        getImmediateAddress(state){
+            return state.immediateAddress
+        },
+        getHotAddress(state){
+            return state.hotAddress
+        }
+
+
 
 
     }
