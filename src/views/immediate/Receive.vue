@@ -34,6 +34,7 @@ Todo:
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
+import store from '../../store.js'
 
 export default {
   name: 'immediateReceive',
