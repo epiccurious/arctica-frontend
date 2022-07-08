@@ -29,7 +29,7 @@ export default createStore({
     delayedBalance: 12.05312325,
 
     //delayed wallet timelocked
-    timeLock: true
+    timeLock: false
     },
     mutations:{//synchronous, alters data in state (commit)
         setTxId(state, payload){
