@@ -195,6 +195,16 @@ const routes = [
     component: () => import('../views/delayed/multi/5of5success.vue')
    },
    {
+    path: '/wallets/delayed/broadcast',
+    name: 'delayedBroadcast',
+    component: () => import('../views/delayed/multi/broadcast.vue')
+   },
+   {
+    path: '/wallets/delayed/confirmation',
+    name: 'delayedConfirmation',
+    component: () => import('../views/delayed/multi/confirmation.vue')
+   },
+   {
     path: '/delayed/timemachine/1',
     name: 'TimeMachine1',
     component: () => import('../views/delayed/timemachine/1.vue')

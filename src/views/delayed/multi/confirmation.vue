@@ -17,10 +17,10 @@
 <script>
 import store from '../../../store.js'
 export default{
-    name: 'immediateConfirmation',
+    name: 'delayedConfirmation',
     methods:{
         back(){
-            this.$router.push({ name: 'immediate' })
+            this.$router.push({ name: 'delayed' })
         },
         viewTx(){
             console.log('view tx clicked')
@@ -29,8 +29,8 @@ export default{
     },
     computed:{
         id(){
-           let immediateTransactions = store.getters.getImmediateTransactions
-           return immediateTransactions.length
+           let delayedTransactions = store.getters.getDelayedTransactions
+           return delayedTransactions.length
 
         }
     },
