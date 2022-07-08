@@ -56,7 +56,7 @@ export default {
       },
   data(){
       return{
-          address: 'bc1qyFgK82tfxndmjl237j6xdvvhxrrnfky',
+          address: null,
           warning: null
       }
   },

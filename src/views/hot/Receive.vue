@@ -50,8 +50,11 @@ export default {
   },
   data(){
       return{
-          address: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky'
+          address: null
       }
-  }
+  },
+     mounted(){
+    this.address = store.getters.getHotAddress
+     }
 }
 </script>
