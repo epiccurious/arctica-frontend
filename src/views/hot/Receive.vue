@@ -33,6 +33,7 @@ Todo:
 
 <script>
 import NavHot from '@/components/NavHot'
+import store from '../../store.js'
 
 export default {
   name: 'hotReceive',
