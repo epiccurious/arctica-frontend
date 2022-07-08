@@ -63,13 +63,22 @@ export default {
     methods: {
         continueFn(description, address, amount, fee, customFee){
             console.log('Continue clicked')
-            // eventually the continueFn() should construct and return the PSBT
-            this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
-            if (this.timeLock == false){
-                this.txConstructed(this.transaction)
-            } else {
+            store.commit('setTxId', this.id)
+            store.commit('setTxDescription', description)
+            store.commit('setTxAddress', address)
+            store.commit('setTxAmount', amount)
+            store.commit('setTxFiat', this.fiat_currency)
+            store.commit('setTxDateTime', this.datetime)
+            store.commit('setTxFee', fee)
+            store.commit('setTxCustomFee', customFee)
+            store.commit('setTxStatus', 'unconfirmed')
+            if(this.timeLock == false){            
+                this.transaction = store.getters.getTransaction
+                this.$router.push({ name: 'sign1of5' })}
+            else{
                 this.$router.push({ name: 'TimeMachine1' })
             }
+
             
         },
         txConstructed(transaction){
@@ -102,14 +111,10 @@ export default {
         this.warning = false
       },
     },
-    mounted(){
-        this.delayedBalance = store.getters.getDelayedBalance
-        //get a new internal id for the bitcoin tx about to be created
-        this.id = store.getters.getDelayedTransactions.length + 1
-    },
    data(){
      return{
          id: null,
+         datetime: null,
          highFee: 12,
          mediumFee: 5,
          lowFee: 1,
@@ -122,13 +127,32 @@ export default {
          transaction: {},
          constructed: false,
          multiOutput: false,
-         warning: true,
-         timeLock: true, //this will be set to false once the timelock decays naturally and arctica has verified that the users time machine keys have been published
-         delayedBalance:null,
+         timeLock: null,
+         warning: null
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
-}
+ computed:{
+    delayedBalance(){
+        return store.getters.getDelayedBalance
+    },
+
+ },
+ mounted(){
+    this.timeLock = store.getters.getTimeLock
+    this.transaction = store.getters.getTransaction
+    if(this.timeLock == true){
+        this.warning = true
+    }else{this.warning = false}
+    //get a new internal id for the bitcoin tx about to be created
+    this.id = store.getters.getDelayedTransactions.length + 1
+
+    //set current datetime
+ }
+
+    //  Need a function to deliver dynamic fee estimates for the above data
+ }
+
 </script>
 
 

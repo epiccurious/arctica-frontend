@@ -27,6 +27,9 @@ export default createStore({
     hotBalance: 0.12759374,
     immediateBalance: 0.27847143,
     delayedBalance: 12.05312325,
+
+    //delayed wallet timelocked
+    timeLock: true
     },
     mutations:{//synchronous, alters data in state (commit)
         setTxId(state, payload){
@@ -115,6 +118,9 @@ export default createStore({
         setPrivacyKeysFound(state, payload){
             state.privacyKeyFound = payload
         },
+        setTimeLock(state, payload){
+            state.timeLock = payload
+        }
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -162,6 +168,9 @@ export default createStore({
         },
         getPrivacyKeysFound(state){
             return state.privacyKeyFound
+        },
+        getTimeLock(state){
+            return state.timeLock
         },
 
 
