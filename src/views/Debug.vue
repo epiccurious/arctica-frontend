@@ -6,18 +6,18 @@
     </header>
     <div class="btn_container"> 
 
-        <!-- <div class="switch">
+        <div class="switch">
             Initial Setup Complete (disabled)
             <label class="toggle_switch_label">
-                <input type="checkbox" checked>
+                <input type="checkbox" disabled>
                 <span class="slider"></span>
             </label>
-        </div> -->
+        </div>
 
         <div class="switch">
             Post Setup Tripwire (disabled)
             <label class="toggle_switch_label">
-                <input type="checkbox" checked>
+                <input type="checkbox" disabled>
                 <span class="slider"></span>
             </label>
         </div>
@@ -25,7 +25,7 @@
          <div class="switch">
             Post Setup PII Folder (disabled)
             <label class="toggle_switch_label">
-                <input type="checkbox" checked>
+                <input type="checkbox" disabled>
                 <span class="slider"></span>
             </label>
         </div>
@@ -33,7 +33,7 @@
         <div class="switch">
             Post Setup Duress Password(disabled)
             <label class="toggle_switch_label">
-                <input type="checkbox" checked>
+                <input type="checkbox" disabled>
                 <span class="slider"></span>
             </label>
         </div>
