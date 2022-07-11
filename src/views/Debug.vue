@@ -6,13 +6,13 @@
     </header>
     <div class="btn_container"> 
 
-        <div class="switch">
+        <!-- <div class="switch">
             Initial Setup Complete (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" checked>
                 <span class="slider"></span>
             </label>
-        </div>
+        </div> -->
 
         <div class="switch">
             Post Setup Tripwire (disabled)
@@ -39,9 +39,10 @@
         </div>
 
         <div class="switch">
-            Tripwire Healthy (disabled)
+            Tripwire Healthy
             <label class="toggle_switch_label">
-                <input type="checkbox" checked>
+                <input v-if="this.tripwire == true" v-model="tripwire" @click="tripWireToggle()" type="checkbox" checked>
+                <input v-else-if="this.tripwire == false" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -49,7 +50,6 @@
         <div class="switch">
             Delayed Wallet Timelocked
             <label class="toggle_switch_label">
-                <!-- <input v-model="timelock" @input="timeLockToggle" type="checkbox"> -->
                 <input v-if="this.timelock == true" v-model="timelock" @click="timeLockToggle()" type="checkbox" checked>
                 <input v-else-if="this.timelock == false" v-model="timelock" @click="timeLockToggle()" type="checkbox">
                 <span class="slider"></span>
@@ -78,18 +78,23 @@ export default{
             }
             console.log('timelock', store.getters.getTimeLock)
         },
+        tripWireToggle(){
+            if(this.tripwire === false){
+                store.commit('setTripwireHealthy', true)
+            } else{
+                store.commit('setTripwireHealthy', false)
+            }
+             console.log('tripwire healthy', store.getters.getTripwireHealthy)   
+            },
         test(){
-            console.log('null')
+            console.log('tripwire healthy', store.getters.getTripwireHealthy)
         },
     },
-    computed:{
-    timeLock(){
-        return store.getters.getTimeLock
-    },
-    },
+    computed:{},
     data(){
         return{
-            timelock: store.getters.getTimeLock
+            timelock: store.getters.getTimeLock,
+            tripwire: store.getters.getTripwireHealthy
         }
     }
     }
