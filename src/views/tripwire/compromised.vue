@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import store from '../../store.js'
 
 export default {
   name: 'Compromised',
@@ -35,6 +36,7 @@ export default {
     methods: {
             acknowledge(){
             console.log('user ack, tripwire compromised')
+            store.commit('setTripwireHealthy', true)
             this.$router.push({ name: 'dashboard' })
         },
         warn(){

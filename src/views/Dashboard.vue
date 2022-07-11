@@ -1,5 +1,6 @@
 <template>
-  <div class="page">
+  <Compromised v-if="this.tripwire == false" />
+  <div v-else class="page">
     <Nav />
       <div class="dashboard">
         <div class="head_container">
@@ -49,6 +50,7 @@
 import Nav from '@/components/Nav'
 import { RouterView, RouterLink } from "vue-router";
 import store from '../store.js'
+import Compromised from './tripwire/compromised.vue'
 {
   RouterView;
   RouterLink
@@ -57,7 +59,8 @@ import store from '../store.js'
 export default {
   name: 'Dashboard',
   components: {
-    Nav
+    Nav,
+    Compromised
   },
      mounted(){
     this.hotBalance = store.getters.getHotBalance
@@ -70,7 +73,11 @@ export default {
     immediateBalance: null,
     delayedBalance: null,
   }
- }
+ },
+ computed:{
+  tripwire(){
+    return store.getters.getTripwireHealthy}
+ },
 }
 </script>
 
