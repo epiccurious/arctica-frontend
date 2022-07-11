@@ -134,7 +134,7 @@ export default createStore({
         },
         setHotAddress(state, payload){
             state.hotAddress = payload
-        }
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -194,7 +194,7 @@ export default createStore({
         },
         getHotAddress(state){
             return state.hotAddress
-        }
+        },
 
 
 

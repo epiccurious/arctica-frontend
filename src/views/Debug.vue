@@ -7,7 +7,7 @@
     <div class="btn_container"> 
 
         <div class="switch">
-            Initial Setup Complete
+            Initial Setup Complete (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" checked>
                 <span class="slider"></span>
@@ -15,7 +15,15 @@
         </div>
 
         <div class="switch">
-            Post Setup Complete
+            Post Setup Tripwire (disabled)
+            <label class="toggle_switch_label">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+         <div class="switch">
+            Post Setup PII Folder (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" checked>
                 <span class="slider"></span>
@@ -23,7 +31,7 @@
         </div>
 
         <div class="switch">
-            Tripwire Healthy
+            Post Setup Duress Password(disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" checked>
                 <span class="slider"></span>
@@ -31,7 +39,15 @@
         </div>
 
         <div class="switch">
-            Delayed Wallet Timelocked
+            Tripwire Healthy (disabled)
+            <label class="toggle_switch_label">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
+            Delayed Wallet Timelocked (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" checked>
                 <span class="slider"></span>
@@ -43,10 +59,21 @@
 </template>
 
 <script>
+import store from '../store.js'
+
 export default{
     name: 'Debug',
 
-    methods:{},
+    methods:{
+        timeLockToggle(){
+            
+        }
+    },
+    computed:{
+    timeLock(){
+        return store.getters.getTimeLock
+    },
+ },
 
 }
 
