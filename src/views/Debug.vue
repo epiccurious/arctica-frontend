@@ -6,6 +6,18 @@
     </header>
     <div class="btn_container"> 
 
+        <label>SD inserted</label>
+        <select v-model="sdCard" name="sdCard" id="sdCard">
+            <option @click="setSD()" value="none">None</option>
+            <option @click="setSD()" value="one">One</option>
+            <option @click="setSD()" value="two">Two</option>
+            <option @click="setSD()" value="three">Three</option>
+            <option @click="setSD()" value="four">Four</option>
+            <option @click="setSD()" value="five">Five</option>
+            <option @click="setSD()" value="six">Six</option>
+            <option @click="setSD()" value="seven">Seven</option>
+        </select>
+
         <div class="switch">
             Initial Setup Complete (disabled)
             <label class="toggle_switch_label">
@@ -32,6 +44,14 @@
 
         <div class="switch">
             Post Setup Duress Password(disabled)
+            <label class="toggle_switch_label">
+                <input type="checkbox" disabled>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
+            PSBT Found (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" disabled>
                 <span class="slider"></span>
@@ -87,14 +107,18 @@ export default{
              console.log('tripwire healthy', store.getters.getTripwireHealthy)   
             },
         test(){
-            console.log('tripwire healthy', store.getters.getTripwireHealthy)
+            console.log('current SD', store.getters.getCurrentSD)
         },
+        setSD(){
+            store.commit('setCurrentSD', this.sdCard)
+        }
     },
     computed:{},
     data(){
         return{
             timelock: store.getters.getTimeLock,
-            tripwire: store.getters.getTripwireHealthy
+            tripwire: store.getters.getTripwireHealthy,
+            sdCard: store.getters.getCurrentSD
         }
     }
     }
@@ -149,5 +173,8 @@ input:checked + .slider:before{
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
+}
+select{
+    max-width:20%;
 }
 </style>

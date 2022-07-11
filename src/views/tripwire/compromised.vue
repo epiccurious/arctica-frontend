@@ -3,8 +3,8 @@
 <template>
 <div class="page">
     <header>
-        <h1>Someone has performed a quick withdrawal from SD 5</h1>
-        <h2>If you did not spend this money, you should assume envelope 5 is compromised.</h2> 
+        <h1>Someone has performed a quick withdrawal from SD X</h1>
+        <h2>If you did not spend this money, you should assume envelope X is compromised.</h2> 
         <h2>For your security, all of your funds should now be moved to a fresh Arctica wallet.</h2> 
     </header>
     

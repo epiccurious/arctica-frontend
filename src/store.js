@@ -2,6 +2,9 @@ import { createStore } from 'vuex'
 
 export default createStore({
     state: {
+    //current SD card
+    sdOne: true, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
+
     //post setup complete
 
     //bootup checking for special conditions and allowing for login
@@ -137,6 +140,80 @@ export default createStore({
         setHotAddress(state, payload){
             state.hotAddress = payload
         },
+        setCurrentSD(state, payload){
+            if(payload == 'one'){
+                state.sdOne = true
+                state.sdTwo = false
+                state.sdThree = false
+                state.sdFour = false
+                state.sdFive = false
+                state.sdSix = false
+                state.sdSeven = false
+            }
+            else if(payload == 'two'){
+                state.sdOne = false
+                state.sdTwo = true
+                state.sdThree = false
+                state.sdFour = false
+                state.sdFive = false
+                state.sdSix = false
+                state.sdSeven = false
+            }
+            else if(payload == 'three'){
+                state.sdOne = false
+                state.sdTwo = false
+                state.sdThree = true
+                state.sdFour = false
+                state.sdFive = false
+                state.sdSix = false
+                state.sdSeven = false
+            }
+            else if(payload == 'four'){
+                state.sdOne = false
+                state.sdTwo = false
+                state.sdThree = false
+                state.sdFour = true
+                state.sdFive = false
+                state.sdSix = false
+                state.sdSeven = false
+            }
+            else if(payload == 'five'){
+                state.sdOne = false
+                state.sdTwo = false
+                state.sdThree = false
+                state.sdFour = false
+                state.sdFive = true
+                state.sdSix = false
+                state.sdSeven = false
+            }
+            else if(payload == 'six'){
+                state.sdOne = false
+                state.sdTwo = false
+                state.sdThree = false
+                state.sdFour = false
+                state.sdFive = false
+                state.sdSix = true
+                state.sdSeven = false
+            }
+            else if(payload == 'seven'){
+                state.sdOne = false
+                state.sdTwo = false
+                state.sdThree = false
+                state.sdFour = false
+                state.sdFive = false
+                state.sdSix = false
+                state.sdSeven = true
+            }
+            else{
+                state.sdOne = false
+                state.sdTwo = false
+                state.sdThree = false
+                state.sdFour = false
+                state.sdFive = false
+                state.sdSix = false
+                state.sdSeven = false
+            }
+        }
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -197,6 +274,32 @@ export default createStore({
         getHotAddress(state){
             return state.hotAddress
         },
+        getCurrentSD(state){
+            if(state.sdOne == true){
+                return 'one'
+            }
+            else if(state.sdTwo == true){
+                return 'two'
+            }
+            else if(state.sdThree == true){
+                return 'three'
+            }
+            else if(state.sdFour == true){
+                return 'four'
+            }
+            else if(state.sdFive == true){
+                return 'five'
+            }
+            else if(state.sdSix == true){
+                return 'six'
+            }
+            else if(state.sdSeven == true){
+                return 'seven'
+            }
+            else{
+                return 'none'
+            }
+        }
 
 
 
