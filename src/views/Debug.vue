@@ -47,12 +47,16 @@
         </div>
 
         <div class="switch">
-            Delayed Wallet Timelocked (disabled)
+            Delayed Wallet Timelocked
             <label class="toggle_switch_label">
-                <input type="checkbox" checked>
+                <!-- <input v-model="timelock" @input="timeLockToggle" type="checkbox"> -->
+                <input v-if="this.timelock == true" v-model="timelock" @click="timeLockToggle()" type="checkbox" checked>
+                <input v-else-if="this.timelock == false" v-model="timelock" @click="timeLockToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
+
+        <button @click="test()" class="btn">test</button>
 
     </div> 
 </div>
@@ -66,16 +70,30 @@ export default{
 
     methods:{
         timeLockToggle(){
-            
-        }
+            if(this.timelock === false){
+                store.commit('setTimeLock', true)
+            }
+            else{
+                store.commit('setTimeLock', false)
+            }
+            console.log('timelock', store.getters.getTimeLock)
+        },
+        test(){
+            console.log('null')
+        },
     },
     computed:{
     timeLock(){
         return store.getters.getTimeLock
     },
- },
+    },
+    data(){
+        return{
+            timelock: store.getters.getTimeLock
+        }
+    }
+    }
 
-}
 
 </script>
 
