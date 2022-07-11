@@ -51,9 +51,10 @@
         </div>
 
         <div class="switch">
-            PSBT Found (disabled)
+            PSBT Found
             <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
+                <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
+                <input v-else-if="this.psbtFound == false" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -106,8 +107,16 @@ export default{
             }
              console.log('tripwire healthy', store.getters.getTripwireHealthy)   
             },
+        psbtFoundToggle(){
+            if(this.psbtFound == false){
+                store.commit('setPSBTFound', true)
+            } else{
+                store.commit('setPSBTFound', false)
+            }
+             console.log('PSBT Found', store.getters.getPSBTFound)   
+            },
         test(){
-            console.log('current SD', store.getters.getCurrentSD)
+            console.log('PSBT Found', store.getters.getPSBTFound)
         },
         setSD(){
             store.commit('setCurrentSD', this.sdCard)
@@ -118,7 +127,8 @@ export default{
         return{
             timelock: store.getters.getTimeLock,
             tripwire: store.getters.getTripwireHealthy,
-            sdCard: store.getters.getCurrentSD
+            sdCard: store.getters.getCurrentSD,
+            psbtFound: store.getters.getPSBTFound
         }
     }
     }

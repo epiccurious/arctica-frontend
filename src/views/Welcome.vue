@@ -19,6 +19,7 @@
     <div class="btn_container"> 
         <button @click="login()" class="btn">Log in</Button>
         <button @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
+       
     </div>
   </div>
 </template>
@@ -75,7 +76,7 @@ export default {
           this.readyToWorkFn()
             
           
-        }
+        },
     },
     computed: {},
     data(){
@@ -87,6 +88,7 @@ export default {
         tripwireHealthy:null, 
         timeMachineKeysFound:null, 
         privacyKeysFound:null,
+        currentSD: null
       }
     },
     mounted(){
@@ -96,6 +98,14 @@ export default {
       this.tripwireHealthy = store.getters.getTripwireHealthy
       this.timeMachineKeysFound = store.getters.getTimeMachineKeysFound
       this.privacyKeysFound = store.getters.getPrivacyKeysFound
+      this.currentSD = store.getters.getCurrentSD
+      //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
+      if(this.currentSD != 'one' && this.psbtFound == false){
+        this.$router.push({ name:'Boot' })
+      }
+      else if(this.currentSD == 'none'){
+        this.$router.push({ name: 'Boot' })
+      }
     },
 }
 </script>

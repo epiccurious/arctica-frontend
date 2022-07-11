@@ -43,9 +43,9 @@ export default {
  data(){
      return{
          password1: '',
-         password2: ''
+         password2: '',
      }
- }
+ },
 }
 </script>
 
