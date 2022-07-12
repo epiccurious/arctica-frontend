@@ -6,7 +6,7 @@ export default createStore({
     sdOne: true, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
 
     //post setup complete
-
+    tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
     psbtFound:false, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
 
@@ -223,6 +223,15 @@ export default createStore({
         setManualDecrypt(state, payload){
             state.manualDecrypt = payload
         },
+        setTripwireSetup(state, payload){
+            state.tripwireSetup = payload
+        },
+        setRecoverySetup(state, payload){
+            state.recoverySetup = payload
+        },
+        setDuressSetup(state, payload){
+            state.duressSetup = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -314,6 +323,15 @@ export default createStore({
         },
         getManualDecrypt(state){
             return state.manualDecrypt
+        },
+        getTripwireSetup(state){
+            return state.tripwireSetup
+        },
+        getRecoverySetup(state){
+            return state.recoverySetup
+        },
+        getDuressSetup(state){
+            return state.duressSetup
         },
 
 

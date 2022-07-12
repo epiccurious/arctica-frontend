@@ -19,6 +19,15 @@
         </select>
 
         <div class="switch">
+            PSBT Found
+            <label class="toggle_switch_label">
+                <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
+                <input v-else-if="this.psbtFound == false" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
             Initial Setup Complete (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" disabled>
@@ -54,30 +63,6 @@
         </div>
 
         <div class="switch">
-            Post Setup Tripwire (disabled)
-            <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-         <div class="switch">
-            Post Setup PII Folder (disabled)
-            <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch">
-            Post Setup Duress Password(disabled)
-            <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch">
             Published Time Machine Keys Found
             <label class="toggle_switch_label">
                 <input v-if="this.timeMachineKeysFound == true" v-model="timeMachineKeysFound" @click="timeMachineKeysFoundToggle()" type="checkbox" checked>
@@ -96,19 +81,37 @@
         </div>        
 
         <div class="switch">
-            PSBT Found
+            Tripwire Healthy
             <label class="toggle_switch_label">
-                <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
-                <input v-else-if="this.psbtFound == false" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox">
+                <input v-if="this.tripwire == true" v-model="tripwire" @click="tripWireToggle()" type="checkbox" checked>
+                <input v-else-if="this.tripwire == false" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
 
         <div class="switch">
-            Tripwire Healthy
+            Post Setup Tripwire Completed
             <label class="toggle_switch_label">
-                <input v-if="this.tripwire == true" v-model="tripwire" @click="tripWireToggle()" type="checkbox" checked>
-                <input v-else-if="this.tripwire == false" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
+                <input v-if="this.tripwireSetup == true" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox" checked>
+                <input v-else-if="this.tripwireSetup == false" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+         <div class="switch">
+            Post Setup PII Folder Completed
+            <label class="toggle_switch_label">
+                <input v-if="this.recoverySetup == true" v-model="recoverySetup" @click="recoverySetupToggle()" type="checkbox" checked>
+                <input v-else-if="this.recoverySetup == false" v-model="recoverySetup" @click="recoverySetupToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
+            Post Setup Duress Password Completed
+            <label class="toggle_switch_label">
+                <input v-if="this.duressSetup == true" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox" checked>
+                <input v-else-if="this.duressSetup == false" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -136,6 +139,7 @@ export default{
             }
             console.log('timelock', store.getters.getTimeLock)
         },
+
         tripWireToggle(){
             if(this.tripwire === false){
                 store.commit('setTripwireHealthy', true)
@@ -144,6 +148,7 @@ export default{
             }
              console.log('tripwire healthy', store.getters.getTripwireHealthy)   
             },
+
         psbtFoundToggle(){
             if(this.psbtFound == false){
                 store.commit('setPSBTFound', true)
@@ -152,6 +157,7 @@ export default{
             }
              console.log('PSBT Found', store.getters.getPSBTFound)   
             },
+
         bpsBrickedToggle(){
             if(this.bpsBricked == false){
                 store.commit('setBPSBricked', true)
@@ -172,6 +178,7 @@ export default{
              console.log('Time Machine Keys Found', store.getters.getTimeMachineKeysFound)   
              console.log('time locked', store.getters.getTimeLock)
             },
+
         privacyKeysFoundToggle(){
             if(this.privacyKeysFound == false){
                 store.commit('setPrivacyKeysFound', true)
@@ -183,7 +190,6 @@ export default{
              console.log('Manually decrypted', store.getters.getManualDecrypt)
             },
         
-        },
         manualDecryptToggle(){
                 if(this.manualDecrypt == false){
                 store.commit('setManualDecrypt', true)
@@ -192,12 +198,38 @@ export default{
             }
              console.log('Manually Decrypted', store.getters.getManualDecrypt)   
         },
+        tripWireSetupToggle(){
+                if(this.tripwireSetup == false){
+                store.commit('setTripwireSetup', true)
+            } else{
+                store.commit('setTripwireSetup', false)
+            }
+             console.log('Tripwire Setup Completed', store.getters.getTripwireSetup) 
+        },
+        recoverySetupToggle(){
+                if(this.recoverySetup == false){
+                store.commit('setRecoverySetup', true)
+            } else{
+                store.commit('setRecoverySetup', false)
+            }
+             console.log('Recovery Folder Setup Completed', store.getters.getRecoverySetup) 
+        },
+        duressSetupToggle(){
+                if(this.duressSetup == false){
+                store.commit('setDuressSetup', true)
+            } else{
+                store.commit('setDuressSetup', false)
+            }
+             console.log('Duress Setup Completed', store.getters.getDuressSetup) 
+        },
         test(){
-            console.log('PSBT Found', store.getters.getPSBTFound)
+            console.log('tripwire setup completed', store.getters.getTripwireSetup)
         },
         setSD(){
             store.commit('setCurrentSD', this.sdCard)
         },
+
+    },
     computed:{},
     data(){
         return{
@@ -209,6 +241,9 @@ export default{
             timeMachineKeysFound: store.getters.getTimeMachineKeysFound,
             privacyKeysFound: store.getters.getPrivacyKeysFound,
             manualDecrypt: store.getters.getManualDecrypt,
+            tripwireSetup: store.getters.getTripwireSetup,
+            recoverySetup: store.getters.getRecoverySetup,
+            duressSetup: store.getters.getDuressSetup,
         }
     }
     }
