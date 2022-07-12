@@ -91,19 +91,19 @@
         </div>        
 
         <div class="switch">
-            Tripwire Healthy
+            Post Setup Tripwire Completed
             <label class="toggle_switch_label">
-                <input v-if="this.tripwire == true" v-model="tripwire" @click="tripWireToggle()" type="checkbox" checked>
-                <input v-else-if="this.tripwire == false" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
+                <input v-if="this.tripwireSetup == true" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox" checked>
+                <input v-else-if="this.tripwireSetup == false" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
 
         <div class="switch">
-            Post Setup Tripwire Completed
+            Tripwire Healthy
             <label class="toggle_switch_label">
-                <input v-if="this.tripwireSetup == true" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox" checked>
-                <input v-else-if="this.tripwireSetup == false" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox">
+                <input v-if="this.tripwire == true" v-model="tripwire" @click="tripWireToggle()" type="checkbox" checked>
+                <input v-else-if="this.tripwire == false" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -165,10 +165,12 @@ export default{
         tripWireToggle(){
             if(this.tripwire === false){
                 store.commit('setTripwireHealthy', true)
+                store.commit('setTripwireSetup', true)
             } else{
                 store.commit('setTripwireHealthy', false)
             }
              console.log('tripwire healthy', store.getters.getTripwireHealthy)   
+             console.log('Tripwire Setup complete', store.getters.getTripwireSetup)
             },
 
         psbtFoundToggle(){
