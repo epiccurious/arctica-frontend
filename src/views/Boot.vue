@@ -36,7 +36,9 @@ export default {
   name: 'Boot',
     methods: {
         acknowledge(){
-            console.log('user ack, closing the application')
+            console.log('user ack, simulating transfer CD, PSBT found')
+            store.commit('setPSBTFound', true)
+            console.log('PSBT FOUND', store.getters.getPSBTFound)
             this.$router.push({ name: 'welcome' })
         },
         help(){

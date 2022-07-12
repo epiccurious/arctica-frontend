@@ -28,7 +28,15 @@
         </div>
 
         <div class="switch">
-            Initial Setup Complete (disabled)
+            BTC Core Healthy (disabled)
+            <label class="toggle_switch_label">
+                <input type="checkbox" disabled>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
+            BPS Connection Healthy (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" disabled>
                 <span class="slider"></span>
@@ -112,6 +120,14 @@
             <label class="toggle_switch_label">
                 <input v-if="this.duressSetup == true" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox" checked>
                 <input v-else-if="this.duressSetup == false" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
+            Initial Setup Complete (disabled)
+            <label class="toggle_switch_label">
+                <input type="checkbox" disabled>
                 <span class="slider"></span>
             </label>
         </div>

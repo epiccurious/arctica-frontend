@@ -48,7 +48,7 @@ export default {
             this.$router.push({ name: 'quick1' })
         },
         readyToWorkFn(){
-          if(this.btcCoreHealthy != null && this.timeMachineKeysFound != null && this.privacyKeysFound != null){
+          if(this.btcCoreHealthy != null && this.bpsHealthy != null){
             this.readyToWork = true
             }
             //add more logic to this as the appropriate conditionals come online
@@ -57,15 +57,13 @@ export default {
       debugBoot(){
         store.commit('setBTCCoreHealthy', false)
         this.btcCoreHealthy = store.getters.getBTCCoreHealthy
+        store.commit('setBPSHealthy', false)
+        this.bpsHealthy = store.getters.getBPSHealthy
 
-        store.commit('setTimeMachineKeysFound', false)
-        this.timeMachineKeysFound = store.getters.getTimeMachineKeysFound
 
-        store.commit('setPrivacyKeysFound', false)
-        this.privacyKeysFound = store.getters.getPrivacyKeysFound
       },
         greenLight(){
-          console.log('green light given, this is currently a debug feature only and does nothing except enable you to proceed')
+          console.log('green light given, this is currently a debug feature only and only allows you to proceed for testing')
           this.debugBoot()
           this.readyToWorkFn()
             
@@ -89,6 +87,7 @@ export default {
     mounted(){
       this.psbtFound = store.getters.getPSBTFound
       this.btcCoreHealthy = store.getters.getBTCCoreHealthy
+      this.bpsHealthy = store.getters.getBPSHealthy
       this.tripwireHealthy = store.getters.getTripwireHealthy
 
       //eventually we should check externally for time machine keys here as well
