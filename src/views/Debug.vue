@@ -68,9 +68,10 @@
         </div>
 
         <div class="switch">
-            Published Time Machine Keys Found(disabled)
+            Published Time Machine Keys Found
             <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
+                <input v-if="this.timeMachineKeysFound == true" v-model="timeMachineKeysFound" @click="timeMachineKeysFoundToggle()" type="checkbox" checked>
+                <input v-else-if="this.timeMachineKeysFound == false" v-model="timeMachineKeysFound" @click="timeMachineKeysFoundToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -148,6 +149,15 @@ export default{
             }
              console.log('BPS Bricked', store.getters.getBPSBricked)   
             },
+        timeMachineKeysFoundToggle(){
+            if(this.timeMachineKeysFound == false){
+                store.commit('setTimeMachineKeysFound', true)
+            } else{
+                store.commit('setTimeMachineKeysFound', false)
+            }
+             console.log('Time Machine Keys Found', store.getters.getTimeMachineKeysFound)   
+            },
+        
         }
         ,
         test(){
@@ -164,6 +174,7 @@ export default{
             sdCard: store.getters.getCurrentSD,
             psbtFound: store.getters.getPSBTFound,
             bpsBricked: store.getters.getBPSBricked,
+            timeMachineKeysFound: store.getters.getTimeMachineKeysFound,
         }
     }
     }

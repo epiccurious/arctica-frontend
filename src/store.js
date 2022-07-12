@@ -8,7 +8,7 @@ export default createStore({
     //post setup complete
 
     //bootup checking for special conditions and allowing for login
-    psbtFound:false, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:true, timeMachineKeysFound:null, privacyKeysFound:null,
+    psbtFound:false, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:null,
 
     bpsBricked: false,
     //data for creating a new Transaction
@@ -125,7 +125,7 @@ export default createStore({
             state.tripwireHealthy = payload
         },
         setTimeMachineKeysFound(state, payload){
-            state.timeMachineKeyFound = payload
+            state.timeMachineKeysFound = payload
         },
         setPrivacyKeysFound(state, payload){
             state.privacyKeyFound = payload
@@ -262,7 +262,7 @@ export default createStore({
             return state.tripwireHealthy
         },
         getTimeMachineKeysFound(state){
-            return state.timeMachineKeyFound
+            return state.timeMachineKeysFound
         },
         getPrivacyKeysFound(state){
             return state.privacyKeyFound
