@@ -36,6 +36,24 @@
         </div>
 
         <div class="switch">
+            Published Privacy Keys Found
+            <label class="toggle_switch_label">
+                <input v-if="this.privacyKeysFound == true" v-model="privacyKeysFound" @click="privacyKeysFoundToggle()" type="checkbox" checked>
+                <input v-else-if="this.privacyKeysFound == false" v-model="privacyKeysFound" @click="privacyKeysFoundToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
+            Manually Decrypted
+            <label class="toggle_switch_label">
+                <input v-if="this.manualDecrypt == true" v-model="manualDecrypt" @click="manualDecryptToggle()" type="checkbox" checked>
+                <input v-else-if="this.manualDecrypt == false" v-model="manualDecrypt" @click="manualDecryptToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
             Post Setup Tripwire (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" disabled>
@@ -53,14 +71,6 @@
 
         <div class="switch">
             Post Setup Duress Password(disabled)
-            <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch">
-            Published Privacy Keys Found (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" disabled>
                 <span class="slider"></span>
@@ -162,9 +172,26 @@ export default{
              console.log('Time Machine Keys Found', store.getters.getTimeMachineKeysFound)   
              console.log('time locked', store.getters.getTimeLock)
             },
+        privacyKeysFoundToggle(){
+            if(this.privacyKeysFound == false){
+                store.commit('setPrivacyKeysFound', true)
+                store.commit('setManualDecrypt',true)
+            } else{
+                store.commit('setPrivacyKeysFound', false)
+            }
+             console.log('Privacy Keys Found', store.getters.getPrivacyKeysFound)   
+             console.log('Manually decrypted', store.getters.getManualDecrypt)
+            },
         
-        }
-        ,
+        },
+        manualDecryptToggle(){
+                if(this.manualDecrypt == false){
+                store.commit('setManualDecrypt', true)
+            } else{
+                store.commit('setManualDecrypt', false)
+            }
+             console.log('Manually Decrypted', store.getters.getManualDecrypt)   
+        },
         test(){
             console.log('PSBT Found', store.getters.getPSBTFound)
         },
@@ -180,6 +207,8 @@ export default{
             psbtFound: store.getters.getPSBTFound,
             bpsBricked: store.getters.getBPSBricked,
             timeMachineKeysFound: store.getters.getTimeMachineKeysFound,
+            privacyKeysFound: store.getters.getPrivacyKeysFound,
+            manualDecrypt: store.getters.getManualDecrypt,
         }
     }
     }
@@ -237,5 +266,10 @@ input:checked + .slider:before{
 }
 select{
     max-width:20%;
+}
+.switch{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
 }
 </style>

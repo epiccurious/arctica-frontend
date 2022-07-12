@@ -8,9 +8,10 @@ export default createStore({
     //post setup complete
 
     //bootup checking for special conditions and allowing for login
-    psbtFound:false, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:null,
+    psbtFound:false, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
 
     bpsBricked: false,
+    manualDecrypt: false,
     //data for creating a new Transaction
     id:null, description:null, address:null, amount:null, fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
     //existing transaction history, placeholder hardcodes
@@ -219,6 +220,9 @@ export default createStore({
         setBPSBricked(state, payload){
             state.bpsBricked = payload
         },
+        setManualDecrypt(state, payload){
+            state.manualDecrypt = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -307,6 +311,9 @@ export default createStore({
         },
         getBPSBricked(state){
             return state.bpsBricked
+        },
+        getManualDecrypt(state){
+            return state.manualDecrypt
         },
 
 
