@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 
 export default createStore({
+    //these are currently hardcoded to make testing easier but should eventually all be undefined, null or empty and obtained dynmically from backend
     state: {
     //current SD card
     sdOne: true, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
@@ -8,7 +9,7 @@ export default createStore({
     //post setup complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
-    psbtFound:false, btcCoreHealthy:null, bpsHealthy:null, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
+    psbtFound:false, btcCoreHealthy:true, bpsHealthy:true, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
 
     bpsBricked: false,
     manualDecrypt: false,

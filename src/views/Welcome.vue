@@ -6,7 +6,6 @@
   </header>
     <div class="btn_container"> 
         <button class="btn3">Log in</Button>
-        <button @click="greenLight()" class="btn2">Debug - simulate green light</button>
     </div>
   </div>
 
@@ -46,28 +45,6 @@ export default {
         quickWithdrawal(){
             console.log('quick withdrawal clicked')
             this.$router.push({ name: 'quick1' })
-        },
-        readyToWorkFn(){
-          if(this.btcCoreHealthy != null && this.bpsHealthy != null){
-            this.readyToWork = true
-            }
-            //add more logic to this as the appropriate conditionals come online
-      },
-      //this is a debug fn that simulates checking for all of the conditions required to allow login button to enable
-      debugBoot(){
-        store.commit('setBTCCoreHealthy', false)
-        this.btcCoreHealthy = store.getters.getBTCCoreHealthy
-        store.commit('setBPSHealthy', false)
-        this.bpsHealthy = store.getters.getBPSHealthy
-
-
-      },
-        greenLight(){
-          console.log('green light given, this is currently a debug feature only and only allows you to proceed for testing')
-          this.debugBoot()
-          this.readyToWorkFn()
-            
-          
         },
     },
     computed: {},
@@ -113,6 +90,12 @@ export default {
       if(this.bpsBricked == true){
           this.$router.push({ name: 'BPS_Bricked' })
       }
+
+      //show green light for login if ready to work conditions are found true
+      if(this.bpsHealthy == true && this.btcCoreHealthy == true){
+        this.readyToWork = true
+      }
+
  
     },
 }

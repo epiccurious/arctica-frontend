@@ -28,17 +28,19 @@
         </div>
 
         <div class="switch">
-            BTC Core Healthy (disabled)
+            BTC Core Healthy
             <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
+                <input v-if="this.btcCoreHealthy == true" v-model="btcCoreHealthy" @click="btcCoreHealthyToggle()" type="checkbox" checked>
+                <input v-else-if="this.btcCoreHealthy == false" v-model="btcCoreHealthy" @click="btcCoreHealthyToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
 
         <div class="switch">
-            BPS Connection Healthy (disabled)
+            BPS Connection Healthy
             <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
+                <input v-if="this.bpsHealthy == true" v-model="bpsHealthy" @click="bpsHealthyToggle()" type="checkbox" checked>
+                <input v-else-if="this.bpsHealthy == false" v-model="bpsHealthy" @click="bpsHealthyToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -238,6 +240,22 @@ export default{
             }
              console.log('Duress Setup Completed', store.getters.getDuressSetup) 
         },
+        btcCoreHealthyToggle(){
+                if(this.btcCoreHealthy == false){
+                store.commit('setBTCCoreHealthy', true)
+            } else{
+                store.commit('setBTCCoreHealthy', false)
+            }
+             console.log('BTC core healthy', store.getters.getBTCCoreHealthy) 
+        },
+        bpsHealthyToggle(){
+                if(this.bpsHealthy == false){
+                store.commit('setBPSHealthy', true)
+            } else{
+                store.commit('setBPSHealthy', false)
+            }
+             console.log('BPS healthy', store.getters.getBPSHealthy) 
+        },       
         test(){
             console.log('tripwire setup completed', store.getters.getTripwireSetup)
         },
@@ -260,6 +278,8 @@ export default{
             tripwireSetup: store.getters.getTripwireSetup,
             recoverySetup: store.getters.getRecoverySetup,
             duressSetup: store.getters.getDuressSetup,
+            btcCoreHealthy: store.getters.getBTCCoreHealthy,
+            bpsHealthy: store.getters.getBPSHealthy,
         }
     }
     }
