@@ -48,16 +48,13 @@ export default {
             this.$router.push({ name: 'quick1' })
         },
         readyToWorkFn(){
-          if(this.psbtFound != null && this.btcCoreHealthy != null && this.btcCoreHealthy != null && this.tripwireHealthy != null && this.timeMachineKeysFound != null && this.privacyKeysFound != null){
+          if(this.btcCoreHealthy != null && this.timeMachineKeysFound != null && this.privacyKeysFound != null){
             this.readyToWork = true
             }
             //add more logic to this as the appropriate conditionals come online
       },
       //this is a debug fn that simulates checking for all of the conditions required to allow login button to enable
       debugBoot(){
-        store.commit('setPSBTFound', false)
-        this.psbtFound = store.getters.getPSBTFound
-
         store.commit('setBTCCoreHealthy', false)
         this.btcCoreHealthy = store.getters.getBTCCoreHealthy
 

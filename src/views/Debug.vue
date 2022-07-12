@@ -51,6 +51,22 @@
         </div>
 
         <div class="switch">
+            Published Privacy Keys Found (disabled)
+            <label class="toggle_switch_label">
+                <input type="checkbox" disabled>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
+            Published Time Machine Keys Found(disabled)
+            <label class="toggle_switch_label">
+                <input type="checkbox" disabled>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
             PSBT Found
             <label class="toggle_switch_label">
                 <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
