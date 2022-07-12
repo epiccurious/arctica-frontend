@@ -77,6 +77,15 @@
         </div>
 
         <div class="switch">
+            Delayed Wallet Timelocked
+            <label class="toggle_switch_label">
+                <input v-if="this.timelock == true" v-model="timelock" @click="timeLockToggle()" type="checkbox" checked>
+                <input v-else-if="this.timelock == false" v-model="timelock" @click="timeLockToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>        
+
+        <div class="switch">
             PSBT Found
             <label class="toggle_switch_label">
                 <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
@@ -94,14 +103,6 @@
             </label>
         </div>
 
-        <div class="switch">
-            Delayed Wallet Timelocked
-            <label class="toggle_switch_label">
-                <input v-if="this.timelock == true" v-model="timelock" @click="timeLockToggle()" type="checkbox" checked>
-                <input v-else-if="this.timelock == false" v-model="timelock" @click="timeLockToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
 
         <button @click="test()" class="btn">test</button>
 
@@ -149,13 +150,17 @@ export default{
             }
              console.log('BPS Bricked', store.getters.getBPSBricked)   
             },
+
+            //this function automatically sets timelock to false, assuming that time machine keys have ben found, time lock should be disabled automatically
         timeMachineKeysFoundToggle(){
             if(this.timeMachineKeysFound == false){
                 store.commit('setTimeMachineKeysFound', true)
+                store.commit('setTimeLock', false)
             } else{
                 store.commit('setTimeMachineKeysFound', false)
             }
              console.log('Time Machine Keys Found', store.getters.getTimeMachineKeysFound)   
+             console.log('time locked', store.getters.getTimeLock)
             },
         
         }
