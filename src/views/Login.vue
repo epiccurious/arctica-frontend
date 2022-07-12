@@ -25,11 +25,17 @@
 <!-- Currently, the two passwords inputs just need to match in order for the user to login -->
 
 <script>
+import store from '../store.js'
+
 export default {
   name: 'Login',
     methods: {
         login(){
+            if(this.bpsBricked == true){
+                this.$router.push({ name: 'BPS_Bricked' })
+            }else{
             this.$router.push({ name: 'dashboard' })
+            }
         },
         passwordRecovery(){
             console.log('Password Recovery Clicked')
@@ -44,8 +50,16 @@ export default {
      return{
          password1: '',
          password2: '',
+         bpsBricked: null,
+        
      }
  },
+ mounted(){
+    this.bpsBricked = store.getters.getBPSBricked
+    if(this.bpsBricked == true){
+        this.$router.push({ name: 'BPS_Bricked' })
+    }
+ }
 }
 </script>
 

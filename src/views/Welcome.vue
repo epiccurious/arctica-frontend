@@ -58,9 +58,6 @@ export default {
         store.commit('setBTCCoreHealthy', false)
         this.btcCoreHealthy = store.getters.getBTCCoreHealthy
 
-        store.commit('setTripwireHealthy', false)
-        this.tripwireHealthy = store.getters.getTripwireHealthy
-
         store.commit('setTimeMachineKeysFound', false)
         this.timeMachineKeysFound = store.getters.getTimeMachineKeysFound
 
@@ -85,7 +82,8 @@ export default {
         tripwireHealthy:null, 
         timeMachineKeysFound:null, 
         privacyKeysFound:null,
-        currentSD: null
+        currentSD: null,
+        bpsBricked: null,
       }
     },
     mounted(){
@@ -103,6 +101,11 @@ export default {
       else if(this.currentSD == 'none'){
         this.$router.push({ name: 'Boot' })
       }
+    this.bpsBricked = store.getters.getBPSBricked
+    if(this.bpsBricked == true){
+        this.$router.push({ name: 'BPS_Bricked' })
+    }
+ 
     },
 }
 </script>
