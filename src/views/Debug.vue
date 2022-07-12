@@ -27,6 +27,15 @@
         </div>
 
         <div class="switch">
+            BPS Bricked
+            <label class="toggle_switch_label">
+                <input v-if="this.bpsBricked == true" v-model="bpsBricked" @click="bpsBrickedToggle()" type="checkbox" checked>
+                <input v-else-if="this.bpsBricked == false" v-model="bpsBricked" @click="bpsBrickedToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
             Post Setup Tripwire (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" disabled>
@@ -131,20 +140,30 @@ export default{
             }
              console.log('PSBT Found', store.getters.getPSBTFound)   
             },
+        bpsBrickedToggle(){
+            if(this.bpsBricked == false){
+                store.commit('setBPSBricked', true)
+            } else{
+                store.commit('setBPSBricked', false)
+            }
+             console.log('BPS Bricked', store.getters.getBPSBricked)   
+            },
+        }
+        ,
         test(){
             console.log('PSBT Found', store.getters.getPSBTFound)
         },
         setSD(){
             store.commit('setCurrentSD', this.sdCard)
-        }
-    },
+        },
     computed:{},
     data(){
         return{
             timelock: store.getters.getTimeLock,
             tripwire: store.getters.getTripwireHealthy,
             sdCard: store.getters.getCurrentSD,
-            psbtFound: store.getters.getPSBTFound
+            psbtFound: store.getters.getPSBTFound,
+            bpsBricked: store.getters.getBPSBricked,
         }
     }
     }
