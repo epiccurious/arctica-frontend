@@ -89,9 +89,14 @@ export default {
     mounted(){
       this.psbtFound = store.getters.getPSBTFound
       this.btcCoreHealthy = store.getters.getBTCCoreHealthy
-      this.bpsHealthy = store.getters.getBPSHealthy
       this.tripwireHealthy = store.getters.getTripwireHealthy
+
+      //eventually we should check externally for time machine keys here as well
       this.timeMachineKeysFound = store.getters.getTimeMachineKeysFound
+      if(this.timeMachineKeysFound == true){
+        store.commit('setTimeLock', false)
+      }
+
       this.privacyKeysFound = store.getters.getPrivacyKeysFound
       this.currentSD = store.getters.getCurrentSD
       //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
@@ -101,10 +106,14 @@ export default {
       else if(this.currentSD == 'none'){
         this.$router.push({ name: 'Boot' })
       }
-    this.bpsBricked = store.getters.getBPSBricked
-    if(this.bpsBricked == true){
-        this.$router.push({ name: 'BPS_Bricked' })
-    }
+
+      //check for a good BPS connection
+      this.bpsHealthy = store.getters.getBPSHealthy
+      //below we redirect the user to the BPS bricked screen for manual decryption if they have atleast 5 failed attempts to login and have bricked their BPS public key relationship
+      this.bpsBricked = store.getters.getBPSBricked
+      if(this.bpsBricked == true){
+          this.$router.push({ name: 'BPS_Bricked' })
+      }
  
     },
 }
