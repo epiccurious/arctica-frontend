@@ -126,6 +126,10 @@
             </label>
         </div>
 
+        <!-- this button seems kind of useless, may remove. The only way for us to discern if this variable should be true or false in a real world scenario
+         would be to create a file on the users machine. Potential side effects in certain edge cases where a user tries to boot from SD 1 on a machine
+        they did not use to complete setup. Perhaps better to assume we never know for sure if the user has set up already or not and always present 
+        them with the option, unless they have booted from SD 1-7 in which case this below variable and debug toggle switch will not be necessary. -->
         <div class="switch">
             Initial Setup Complete (disabled)
             <label class="toggle_switch_label">
