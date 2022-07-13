@@ -1,4 +1,4 @@
-<!-- User returns to primary machine for this step -->
+<!-- User returns to primary machine for this step, currently on primary consider changing step 20-->
 
 <template>
 <div class="page">

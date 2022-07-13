@@ -1,3 +1,5 @@
+<!-- consider having user move to secondary machine here until step 50 -->
+
 <template>
 <div class="page">
     <header>
