@@ -22,10 +22,17 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceed')
-            store.commit('setSetupCD', false)
-            this.$router.push({ name: 'Setup23' })
+            this.setupCD = store.getters.getSetupCD
+            if(this.setupCD == false){
+                this.$router.push({ name: 'Setup23' })
+            }
         },
     },
+    data(){
+        return{
+            setupCD: store.getters.getSetupCD
+        }
+    }
 }
 </script>
 

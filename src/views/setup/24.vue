@@ -7,7 +7,7 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkSD()">
                 <label for="checkbox">I have inserted DVD 1.</label>
             </div>
         </form>
@@ -35,6 +35,9 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+        checkSD(){
+            currentSD = store.getters.getCurrentSD
+        }
 
     },
     data(){
