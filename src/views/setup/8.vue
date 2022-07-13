@@ -7,7 +7,7 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox" @click="currentSDToggle()">
+                <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkSD()">
                 <label for="checkbox">I have inserted SD card 5.</label>
             </div>
         </form>
@@ -37,10 +37,8 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-        currentSDToggle(){
-            store.commit('setCurrentSD', 'five')
+        checkSD(){
             this.currentSD = store.getters.getCurrentSD
-            //this function should not be removed as this is the first time setup of SD 5
         }
 
     },

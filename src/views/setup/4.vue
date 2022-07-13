@@ -7,7 +7,7 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox" @click="currentSDToggle()">
+                <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkSD()">
                 <label for="checkbox">I have inserted SD card 1.</label>
                 </div>
         </form>
@@ -31,16 +31,14 @@ export default {
         acknowledge(){
             console.log('user ack, flashing SD 1')
             this.$router.push({ name: 'Setup5' })
-            //eventually need to electronically mark SD 1 with a text file label here
+            //eventually need to electronically mark SD 1 with a text file label here and after doing so update global state
             //eventually need to mark SD 1 with a text file label here that directs secondary machine to jump to step 12 of setup
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-        currentSDToggle(){
-            store.commit('setCurrentSD', 'one')
+        checkSD(){
             this.currentSD = store.getters.getCurrentSD
-            //eventually remove this function, debug only
         }
 
     },
