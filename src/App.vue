@@ -105,6 +105,8 @@
   </nav>
   <!-- The above is a debug menu, will be removed -->
   <router-view/>
+  <hr>
+  <Debug/>
 </div>
 </template>
 
@@ -114,9 +116,13 @@ import { RouterView, RouterLink } from "vue-router";
   RouterView;
   RouterLink
 }
+import Debug from './views/Debug.vue'
 
 export default {
   name: 'App',
+  components: {
+    Debug
+  },
 }
 </script>
 
@@ -135,6 +141,21 @@ export default {
   color: #2c3e50;
   background: #FFFFFF;
 }
+hr {
+       display: block;
+       position: relative;
+       padding: 0;
+       margin: 8px auto;
+       height: 0;
+       width: 100%;
+       max-height: 0;
+       font-size: 1px;
+       line-height: 0;
+       clear: both;
+       border: none;
+       border-top: 1px solid #aaaaaa;
+       border-bottom: 1px solid #ffffff;
+  }
 .btn {
   background: #F7931A;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
