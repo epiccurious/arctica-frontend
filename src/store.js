@@ -6,6 +6,8 @@ export default createStore({
     //current SD card
     sdOne: true, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
 
+    setupCD: false,
+
     //post setup complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
@@ -233,6 +235,9 @@ export default createStore({
         setDuressSetup(state, payload){
             state.duressSetup = payload
         },
+        setSetupCD(state, payload){
+            state.setupCD = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -334,7 +339,9 @@ export default createStore({
         getDuressSetup(state){
             return state.duressSetup
         },
-
+        getSetupCD(state){
+            return state.setupCD
+        },
 
 
 

@@ -14,16 +14,22 @@
 </template>
 
 <script>
+import store from '../../store.js'
 export default {
   name: 'Setup11',
     methods: {
         proceed(){
             console.log('user ack, close application')
+            this.currentSDToggle()
             this.$router.push({ name: 'Setup12' })
+
         },
         acknowledge(){
             console.log('user ack, closing application')
         },
+        currentSDToggle(){
+            store.commit('setCurrentSD', 'one')
+        }
 
     },
     data(){

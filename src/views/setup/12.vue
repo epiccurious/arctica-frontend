@@ -9,7 +9,7 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <input type="checkbox" v-model="checkbox" name="checkbox" @click="setupCDToggle()">
                 <label for="checkbox">I have inserted the setup CD.</label>
             </div>
         </form>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup12',
     methods: {
@@ -35,6 +37,9 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+        setupCDToggle(){
+            store.commit('setSetupCD', true)
+        }
 
     },
     data(){

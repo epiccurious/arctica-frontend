@@ -7,7 +7,7 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <input type="checkbox" v-model="checkbox" name="checkbox" @click="currentSDToggle()">
                 <label for="checkbox">I have inserted SD card 2.</label>
             </div>
         </form>
@@ -32,11 +32,13 @@ export default {
             console.log('user ack, flashing SD 2')
             this.$router.push({ name: 'Setup6' })
             //update state with current SD, once the SD is marked electronically with a txt file this can be replaced with logic that updates state dynamically
-            store.commit('setCurrentSD', 'two')
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+        currentSDToggle(){
+            store.commit('setCurrentSD', 'two')
+        }
 
     },
     data(){

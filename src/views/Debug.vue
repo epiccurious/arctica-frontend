@@ -126,6 +126,15 @@
             </label>
         </div>
 
+        <div class="switch">
+            Setup CD inserted
+            <label class="toggle_switch_label">
+                <input v-if="this.setupCD == true" v-model="setupCD" @click="setupCDToggle()" type="checkbox" checked>
+                <input v-else-if="this.setupCD == false" v-model="setupCD" @click="setupCDToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
         <!-- this button seems kind of useless, may remove. The only way for us to discern if this variable should be true or false in a real world scenario
          would be to create a file on the users machine. Potential side effects in certain edge cases where a user tries to boot from SD 1 on a machine
         they did not use to complete setup. Perhaps better to assume we never know for sure if the user has set up already or not and always present 
@@ -261,6 +270,14 @@ export default{
                 store.commit('setBPSHealthy', false)
             }
              console.log('BPS healthy', store.getters.getBPSHealthy) 
+        },  
+        setupCDToggle(){
+                if(this.setupCD == false){
+                store.commit('setSetupCD', true)
+            } else{
+                store.commit('setSetupCD', false)
+            }
+             console.log('Setup CD inserted', store.getters.getSetupCD) 
         },       
         test(){
             console.log('tripwire setup completed', store.getters.getTripwireSetup)
@@ -286,6 +303,7 @@ export default{
             duressSetup: store.getters.getDuressSetup,
             btcCoreHealthy: store.getters.getBTCCoreHealthy,
             bpsHealthy: store.getters.getBPSHealthy,
+            setupCD: store.getters.getSetupCD,
         }
     }
     }
