@@ -15,13 +15,16 @@
 </template>
 
 <script>
+import store from '../../store.js'
 
 export default {
   name: 'Setup17',
     methods: {
         acknowledge(){
             console.log('user ack, proceed, consider checkbox here?')
+            store.commit('setSetupCD', true)
             this.$router.push({ name: 'Setup18' })
+            //eventually need a step here to check for the electronic label on the setupCD, and update global state, and only allow user to proceed if check successful
         },
 
     },

@@ -14,14 +14,20 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup18',
     methods: {
         acknowledge(){
             console.log('user ack, close application')
+            //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
+            //eventually need a step here to remove the electronic label that redirected user to step 18, added in step 8
+
         },
         proceed(){
             console.log('debug proceed')
+            store.commit('setCurrentSD', 'six')
             this.$router.push({ name: 'Setup19' })
         },
 

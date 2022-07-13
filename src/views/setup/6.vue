@@ -31,7 +31,9 @@ export default {
         acknowledge(){
             console.log('user ack, flashing SD 3')
             this.$router.push({ name: 'Setup7' })
-            //eventually need to electronically mark SD 2 with a text file label here
+            //eventually need to electronically mark SD 3 with a text file label here
+            //eventually need to mark SD 3 with a text file label here that directs secondary machine to jump to step 15 of setup
+
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
