@@ -23,12 +23,16 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup4',
     methods: {
         acknowledge(){
             console.log('user ack, flashing SD 1')
             this.$router.push({ name: 'Setup5' })
+            //update state with current SD, once the SD is marked electronically with a txt file this can be replaced with logic that updates state dynamically
+            store.commit('setCurrentSD', 'one')
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
