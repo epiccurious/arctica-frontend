@@ -39,6 +39,7 @@ export default {
     },
     data(){
         return{
+            checkbox: false,
             currentSD: store.getters.getCurrentSD
         }
     }

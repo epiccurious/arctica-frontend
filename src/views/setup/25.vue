@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.currentSD == 'two'" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'two' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -37,6 +37,7 @@ export default {
         },
         currentSDToggle(){
             store.commit('setCurrentSD', 'two')
+            this.currentSD = store.getters.getCurrentSD
             //eventually remove this function, debug only
         }
 
@@ -44,6 +45,7 @@ export default {
     data(){
         return{
             checkbox: false,
+            currentSD: store.getters.getCurrentSD
         }
     }
 }

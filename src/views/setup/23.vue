@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.currentSD == 'one'" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'one' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -39,6 +39,7 @@ export default {
     },
     data(){
         return{
+            checkbox: false,
             currentSD: store.getters.getCurrentSD
         }
     }
