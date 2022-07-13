@@ -1,3 +1,5 @@
+<!-- this page does not current periodically screen for updats to global state when the user is waiting for readyToWork Greenlight -->
+
 <template>
   <div v-if="readyToWork == false" class="loading">
   <header>
