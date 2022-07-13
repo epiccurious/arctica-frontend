@@ -8,6 +8,7 @@
     </header>
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
+            <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
 
 </div>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+import store from '../../store.js'
 
 export default {
   name: 'Setup51',
@@ -23,8 +25,22 @@ export default {
         acknowledge(){
             console.log('user ack, proceed, close application')
         },
+        proceed(){
+            console.log('debug proceed')
+            this.currentSD = store.getters.getCurrentSD
+            this.primaryMachine = store.getters.getPrimaryMachine
+            if(this.currentSD == 'one' && this.primaryMachine == true){
+                this.$router.push({ name: 'welcome' })
+            }
+        }
 
     },
+    data(){
+        return{
+            currentSD: store.getters.getCurrentSD,
+            primaryMachine: store.getters.getPrimaryMachine
+        }
+    }
 }
 </script>
 
