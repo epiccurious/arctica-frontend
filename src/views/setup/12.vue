@@ -1,4 +1,5 @@
 <!-- User moves to secondary machine at this point -->
+<!-- User will be automatically brought to this screen on secondary machine by a text file present on SD 1 which informs arctica to redirect the user to this page -->
 
 <template>
 <div class="page">

@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="this.currentSD == 'three'" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -31,19 +31,20 @@ export default {
         acknowledge(){
             console.log('user ack, flashing SD 3')
             this.$router.push({ name: 'Setup7' })
-            //update state with current SD, once the SD is marked electronically with a txt file this can be replaced with logic that updates state dynamically
+            //eventually need to electronically mark SD 2 with a text file label here
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
         currentSDToggle(){
             store.commit('setCurrentSD', 'three')
+            this.currentSD = store.getters.getCurrentSD
         }        
 
     },
     data(){
         return{
-            checkbox: false,
+            currentSD: store.getters.getCurrentSD
         }
     }
 }
