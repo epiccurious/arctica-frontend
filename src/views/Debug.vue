@@ -28,7 +28,7 @@
         </div>
 
         <div class="switch">
-            PSBT Found
+            PSBT Found (transfer CD)
             <label class="toggle_switch_label">
                 <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
                 <input v-else-if="this.psbtFound == false" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox">
