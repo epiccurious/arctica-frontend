@@ -19,6 +19,15 @@
         </select>
 
         <div class="switch">
+            Currently on Primary Machine
+            <label class="toggle_switch_label">
+                <input v-if="this.primaryMachine == true" v-model="primaryMachine" @click="primaryMachineToggle()" type="checkbox" checked>
+                <input v-else-if="this.primaryMachine == false" v-model="primaryMachine" @click="primaryMachineToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="switch">
             PSBT Found
             <label class="toggle_switch_label">
                 <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
@@ -278,7 +287,15 @@ export default{
                 store.commit('setSetupCD', false)
             }
              console.log('Setup CD inserted', store.getters.getSetupCD) 
-        },       
+        },    
+        primaryMachineToggle(){
+                if(this.primaryMachine == false){
+                store.commit('setPrimaryMachine', true)
+            } else{
+                store.commit('setPrimaryMachine', false)
+            }
+             console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
+        },    
         test(){
             console.log('tripwire setup completed', store.getters.getTripwireSetup)
         },
@@ -304,6 +321,7 @@ export default{
             btcCoreHealthy: store.getters.getBTCCoreHealthy,
             bpsHealthy: store.getters.getBPSHealthy,
             setupCD: store.getters.getSetupCD,
+            primaryMachine: store.getters.getPrimaryMachine,
         }
     }
     }
