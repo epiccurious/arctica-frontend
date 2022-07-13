@@ -1,13 +1,11 @@
-<!-- this page does not current periodically screen for updats to global state when the user is waiting for readyToWork Greenlight -->
-
 <template>
-  <div v-if="readyToWork == false" class="loading">
+  <div v-if="this.bpsHealthy == false || this.btcCoreHealthy == false" class="loading">
   <header>
     <h1>Welcome to Arctica</h1>
     <h2>Hang Tight. We are checking on a few things.</h2>
   </header>
     <div class="btn_container"> 
-        <button @click="refresh()" class="btn3">Log in</Button>
+        <button class="btn3">Log in</Button>
     </div>
   </div>
 
@@ -42,12 +40,13 @@ export default {
   name: 'Welcome',
     methods: {
         login(){
-            this.btcCoreHealthy = store.getters.getBTCCoreHealthy
-            this.bpsHealthy = store.getters.getBPSHealthy
-            if(this.btcCoreHealthy == true && this.bpsHealthy == true){
+            if(this.currentSD == 'one' && this.bpsBricked != true){
               this.$router.push({ name: 'Login'})
-            }else{
-              this.readyToWork = false
+            }else if(this.bpsBricked == true){
+              this.$router.push({ name: 'BPS_Bricked' })
+            }
+            else{
+              this.$router.push({ name: 'Boot' })
             }
             
         },
@@ -55,64 +54,42 @@ export default {
             console.log('quick withdrawal clicked')
             this.$router.push({ name: 'quick1' })
         },
-        refresh(){
-          this.btcCoreHealthy = store.getters.getBTCCoreHealthy
-          this.bpsHealthy = store.getters.getBPSHealthy
-          if(this.btcCoreHealthy == true && this.bpsHealthy == true){
-            this.readyToWork = true
-          }
-        }
     },
-    computed: {},
-    data(){
-      return{
-        readyToWork: false,
-        psbtFound:null, 
-        btcCoreHealthy:null, 
-        bpsHealthy:null, 
-        tripwireHealthy:null, 
-        timeMachineKeysFound:null, 
-        privacyKeysFound:null,
-        currentSD: null,
-        bpsBricked: null,
+    computed: {
+      psbtFound(){
+        return store.getters.getPSBTFound
+      },
+      btcCoreHealthy(){
+        return store.getters.getBTCCoreHealthy
+      },
+      bpsHealthy(){
+        return store.getters.getBPSHealthy
+      },
+      tripwireHealthy(){
+        return store.getters.getBPSHealthy
+      },
+      timeMachineKeysFound(){
+        return store.getters.getTimeMachineKeysFound
+      },
+      privacyKeysFound(){
+        return store.getters.getPrivacyKeysFound
+      },
+      currentSD(){
+        return store.getters.getCurrentSD
+      },
+      bpsBricked(){
+        return store.getters.getBPSBricked
       }
     },
     mounted(){
-      this.psbtFound = store.getters.getPSBTFound
-      this.btcCoreHealthy = store.getters.getBTCCoreHealthy
-      this.bpsHealthy = store.getters.getBPSHealthy
-      this.tripwireHealthy = store.getters.getTripwireHealthy
-
       //eventually we should check externally for time machine keys here as well
-      this.timeMachineKeysFound = store.getters.getTimeMachineKeysFound
       if(this.timeMachineKeysFound == true){
         store.commit('setTimeLock', false)
       }
-
-      this.privacyKeysFound = store.getters.getPrivacyKeysFound
-      this.currentSD = store.getters.getCurrentSD
       //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
       if(this.currentSD != 'one' && this.psbtFound == false){
         this.$router.push({ name:'Boot' })
       }
-      else if(this.currentSD == 'none'){
-        this.$router.push({ name: 'Boot' })
-      }
-
-      //check for a good BPS connection
-      this.bpsHealthy = store.getters.getBPSHealthy
-      //below we redirect the user to the BPS bricked screen for manual decryption if they have atleast 5 failed attempts to login and have bricked their BPS public key relationship
-      this.bpsBricked = store.getters.getBPSBricked
-      if(this.bpsBricked == true){
-          this.$router.push({ name: 'BPS_Bricked' })
-      }
-
-      //show green light for login if ready to work conditions are found true
-      if(this.bpsHealthy == true && this.btcCoreHealthy == true){
-        this.readyToWork = true
-      }
-
- 
     },
 }
 </script>

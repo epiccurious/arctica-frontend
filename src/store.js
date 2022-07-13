@@ -4,7 +4,7 @@ export default createStore({
     //these are currently hardcoded to make testing easier but should eventually all be undefined, null or empty and obtained dynmically from backend
     state: {
     //current SD card
-    sdOne: true, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
+    sdOne: false, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
 
     setupCD: false, primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
 

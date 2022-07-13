@@ -297,7 +297,7 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('tripwire setup completed', store.getters.getTripwireSetup)
+            console.log('timelocked', store.getters.getTimeLock)
         },
         setSD(){
             store.commit('setCurrentSD', this.sdCard)
