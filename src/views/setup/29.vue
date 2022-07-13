@@ -36,7 +36,7 @@ export default {
             console.log('user trying to proceed without checkbox validation')
         },
         checkSD(){
-            currentSD = store.getters.getCurrentSD
+            this.currentSD = store.getters.getCurrentSD
         }
 
     },

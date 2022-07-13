@@ -8,7 +8,7 @@
         <h3>Progress: 56% complete.</h3>
     </header>
         <div class="btn_container"> 
-            <button v-if="synced" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.btcCoreHealthy == true" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
             <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup50',
   components: {
@@ -30,13 +32,17 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.$router.push({ name: 'Setup51' })
+            this.btcCoreHealthy = store.getters.getBTCCoreHealthy
+            if(this.btcCoreHealthy == true){
+                this.$router.push({ name: 'Setup51' })
+            }
         },
 
     },
     data(){
         return{
-            synced: false,
+            btcCoreHealthy: store.getters.getBTCCoreHealthy
+
         }
     }
 }

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import store from '../..store.js'
+import store from '../../store.js'
 
 export default {
   name: 'Setup31',
@@ -36,7 +36,7 @@ export default {
             console.log('user trying to proceed without checkbox validation')
         },
         checkSD(){
-            currentSD = store.getters.getCurrentSD
+            this.currentSD = store.getters.getCurrentSD
         }
 
     },
