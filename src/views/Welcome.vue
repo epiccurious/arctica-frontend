@@ -5,7 +5,7 @@
     <h2>Hang Tight. We are checking on a few things.</h2>
   </header>
     <div class="btn_container"> 
-        <button class="btn3">Log in</Button>
+        <button @click="refresh()" class="btn3">Log in</Button>
     </div>
   </div>
 
@@ -40,12 +40,26 @@ export default {
   name: 'Welcome',
     methods: {
         login(){
-            this.$router.push({ name: 'Login'})
+            this.btcCoreHealthy = store.getters.getBTCCoreHealthy
+            this.bpsHealthy = store.getters.getBPSHealthy
+            if(this.btcCoreHealthy == true && this.bpsHealthy == true){
+              this.$router.push({ name: 'Login'})
+            }else{
+              this.readyToWork = false
+            }
+            
         },
         quickWithdrawal(){
             console.log('quick withdrawal clicked')
             this.$router.push({ name: 'quick1' })
         },
+        refresh(){
+          this.btcCoreHealthy = store.getters.getBTCCoreHealthy
+          this.bpsHealthy = store.getters.getBPSHealthy
+          if(this.btcCoreHealthy == true && this.bpsHealthy == true){
+            this.readyToWork = true
+          }
+        }
     },
     computed: {},
     data(){
