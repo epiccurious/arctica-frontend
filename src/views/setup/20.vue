@@ -28,7 +28,7 @@ export default {
         proceed(){
             console.log('debug proceed')
             store.commit('setCurrentSD', 'one')
-            this.$router.push({ name: 'Setup21' })
+            this.$router.push({ name: 'Setup22' })
         },
 
     },

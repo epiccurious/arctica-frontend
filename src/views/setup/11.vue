@@ -31,6 +31,7 @@ export default {
         },
         currentSDToggle(){
             store.commit('setCurrentSD', 'one')
+            //eventually remove this function, debug only
         }
 
     },

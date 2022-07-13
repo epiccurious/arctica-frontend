@@ -1,10 +1,12 @@
 <!-- This page is redundant with the instructions on step 20 and can probably be removed -->
+<!-- this page is currently excluded from the setup flow due to its redundancy-->
 
 <template>
 <div class="page">
     <header>
         <h1>SD Card 1</h1>
         <h2>Please insert SD card 1.</h2>
+        <h2>****This page is currently excluded from the setup flow due to it's redundancy****</h2>
     </header> 
     <div class="form_container">
         <form>

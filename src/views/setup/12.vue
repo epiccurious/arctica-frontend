@@ -42,6 +42,7 @@ export default {
         },
         setupCDToggle(){
             store.commit('setSetupCD', true)
+            //this function should not be removed as this is the first time setup of the setup CD
         }
 
     },
