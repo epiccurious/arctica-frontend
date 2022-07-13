@@ -7,12 +7,12 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkSD()">
                 <label for="checkbox">I have inserted SD card 4.</label>
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'four' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup33',
     methods: {
@@ -33,11 +35,15 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+        checkSD(){
+            currentSD = store.getters.getCurrentSD
+        }
 
     },
     data(){
         return{
             checkbox: false,
+            currentSD: store.getters.getCurrentSD
         }
     }
 }
