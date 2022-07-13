@@ -8,7 +8,7 @@
         <form>
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkSD()">
-                <label for="checkbox">I have inserted SD card 6.</label>
+                <label for="checkbox">I have inserted SD card 7.</label>
             </div>
         </form>
         <div class="btn_container"> 
