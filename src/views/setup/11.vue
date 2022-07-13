@@ -15,12 +15,14 @@
 
 <script>
 import store from '../../store.js'
+
 export default {
   name: 'Setup11',
     methods: {
         proceed(){
             console.log('user ack, close application')
             this.currentSDToggle()
+            store.commit('setPrimaryMachine', false)
             this.$router.push({ name: 'Setup12' })
 
         },
@@ -34,7 +36,7 @@ export default {
     },
     data(){
         return{
-            checkbox: false,
+            primaryMachine: store.getters.getPrimaryMachine,
         }
     }
 }

@@ -22,6 +22,7 @@ export default {
             console.log('user ack, close application')
             //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
             //eventually need a step here to remove the electronic label that redirected user to step 19, added in step 9
+            //eventually only allow the user to proceed here if primary machine boolean is true
         },
         proceed(){
             console.log('debug proceed')

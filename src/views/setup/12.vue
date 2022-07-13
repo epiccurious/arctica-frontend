@@ -35,6 +35,7 @@ export default {
             console.log('user ack, loading pubkeys onto setup CD')
             this.$router.push({ name: 'Setup13' })
             //eventually need to add an electronic label in the form of a text file to the setup CD here that will inform arctica's global state when inserted
+            //eventually only allow the user to proceed here if primary machine boolean is false
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

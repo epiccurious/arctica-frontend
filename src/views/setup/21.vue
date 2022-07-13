@@ -1,3 +1,5 @@
+<!-- This page is redundant with the instructions on step 20 and can probably be removed -->
+
 <template>
 <div class="page">
     <header>

@@ -15,11 +15,14 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup22',
     methods: {
         acknowledge(){
             console.log('user ack, proceed')
+            store.commit('setSetupCD', false)
             this.$router.push({ name: 'Setup23' })
         },
     },

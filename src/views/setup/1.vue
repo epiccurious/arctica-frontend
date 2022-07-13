@@ -17,6 +17,7 @@ export default {
         acknowledge(){
             console.log('user ack, starting setup')
             this.$router.push({ name: 'Setup2' })
+            //eventually label the users machine with a text file that designates it as the primary machine here
         },
     },
     data(){
