@@ -21,23 +21,21 @@ export default {
     methods: {
         proceed(){
             console.log('user ack, close application')
-            this.currentSDToggle()
-            store.commit('setPrimaryMachine', false)
-            this.$router.push({ name: 'Setup12' })
-
+            this.currentSD = store.getters.getCurrentSD
+            this.primaryMachine = store.getters.getPrimaryMachine
+            if(this.currentSD == 'one' && this.primaryMachine == false){
+                this.$router.push({ name: 'Setup12' })
+            }
         },
         acknowledge(){
             console.log('user ack, closing application')
         },
-        currentSDToggle(){
-            store.commit('setCurrentSD', 'one')
-            //eventually remove this function, debug only
-        }
 
     },
     data(){
         return{
             primaryMachine: store.getters.getPrimaryMachine,
+            currentSD: store.getters.getCurrentSD
         }
     }
 }

@@ -27,11 +27,18 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            store.commit('setCurrentSD', 'one')
-            this.$router.push({ name: 'Setup22' })
-        },
+            this.currentSD = store.getters.getCurrentSD
+            if(this.currentSD == 'one'){
+                this.$router.push({ name: 'Setup22' })
+        }
+            },
 
     },
+    data(){
+        return{
+            currentSD: store.getters.getCurrentSD
+        }
+    }
 }
 </script>
 

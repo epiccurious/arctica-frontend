@@ -22,13 +22,20 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceed, consider checkbox here?')
-            store.commit('setSetupCD', true)
-            this.$router.push({ name: 'Setup18' })
+            this.setupCD = store.getters.getSetupCD
+            if(this.setupCD == true){
+                this.$router.push({ name: 'Setup18' })
+            }
             //eventually need a step here to check for the electronic label on the setupCD, and update global state, and only allow user to proceed if check successful
             //eventually only allow the user to proceed here if primary machine boolean is true
         },
 
     },
+    data(){
+        return{
+            setupCD: store.getters.getSetupCD
+        }
+    }
 }
 </script>
 

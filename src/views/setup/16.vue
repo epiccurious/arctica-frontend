@@ -30,12 +30,21 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            store.commit('setSetupCD', false)
-            store.commit('setCurrentSD', 'five')
-            store.commit('setPrimaryMachine', true)
-            this.$router.push({ name: 'Setup17' })
+            this.currentSD = store.getters.getCurrentSD
+            this.setupCD = store.getters.getSetupCD
+            this.primaryMachine = store.getters.getPrimaryMachine
+            if(this.currentSD == 'five' && this.primaryMachine == true && this.setupCD == false){
+                this.$router.push({ name: 'Setup17' })
+            }
         },
 
     },
+    data(){
+        return{
+            currentSD: store.getters.getCurrentSD,
+            setupCD: store.getters.getSetupCD,
+            primaryMachine: store.getters.getPrimaryMachine
+        }
+    }
 }
 </script>

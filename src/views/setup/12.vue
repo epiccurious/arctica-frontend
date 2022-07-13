@@ -10,12 +10,12 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox" @click="setupCDToggle()">
+                <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkCD()">
                 <label for="checkbox">I have inserted the setup CD.</label>
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="this.setupCD == true && checkbox" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -40,15 +40,15 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-        setupCDToggle(){
-            store.commit('setSetupCD', true)
-            //this function should not be removed as this is the first time setup of the setup CD
+        checkCD(){
+            this.setupCD = store.getters.getSetupCD
         }
 
     },
     data(){
         return{
             checkbox: false,
+            setupCD: store.getters.getSetupCD
         }
     }
 }
