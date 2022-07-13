@@ -22,15 +22,14 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceed')
-            this.setupCD = store.getters.getSetupCD
             if(this.setupCD == false){
                 this.$router.push({ name: 'Setup23' })
             }
         },
     },
-    data(){
-        return{
-            setupCD: store.getters.getSetupCD
+    computed:{
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }

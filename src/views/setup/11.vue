@@ -21,8 +21,6 @@ export default {
     methods: {
         proceed(){
             console.log('user ack, close application')
-            this.currentSD = store.getters.getCurrentSD
-            this.primaryMachine = store.getters.getPrimaryMachine
             if(this.currentSD == 'one' && this.primaryMachine == false){
                 this.$router.push({ name: 'Setup12' })
             }
@@ -32,10 +30,12 @@ export default {
         },
 
     },
-    data(){
-        return{
-            primaryMachine: store.getters.getPrimaryMachine,
-            currentSD: store.getters.getCurrentSD
+        computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        primaryMachine(){
+            return store.getters.getPrimaryMachine
         }
     }
 }

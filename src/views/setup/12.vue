@@ -10,7 +10,7 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkCD()">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have inserted the setup CD.</label>
             </div>
         </form>
@@ -40,15 +40,15 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-        checkCD(){
-            this.setupCD = store.getters.getSetupCD
-        }
-
     },
     data(){
         return{
             checkbox: false,
-            setupCD: store.getters.getSetupCD
+        }
+    },
+        computed:{
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }

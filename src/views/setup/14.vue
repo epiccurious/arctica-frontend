@@ -27,16 +27,15 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.currentSD = store.getters.getCurrentSD
             if(this.currentSD == 'three'){
                 this.$router.push({ name: 'Setup15' })
             }
         },
 
     },
-    data(){
-        return{
-            currentSD: store.getters.getCurrentSD
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
         }
     }
 }

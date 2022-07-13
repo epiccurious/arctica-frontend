@@ -30,20 +30,21 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.currentSD = store.getters.getCurrentSD
-            this.setupCD = store.getters.getSetupCD
-            this.primaryMachine = store.getters.getPrimaryMachine
             if(this.currentSD == 'five' && this.primaryMachine == true && this.setupCD == false){
                 this.$router.push({ name: 'Setup17' })
             }
         },
 
     },
-    data(){
-        return{
-            currentSD: store.getters.getCurrentSD,
-            setupCD: store.getters.getSetupCD,
-            primaryMachine: store.getters.getPrimaryMachine
+        computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        primaryMachine(){
+            return store.getters.getPrimaryMachine
+        },
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }

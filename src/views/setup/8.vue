@@ -7,7 +7,7 @@
     <div class="form_container">
         <form>
             <div class="checkbox_container">
-                <input type="checkbox" v-model="checkbox" name="checkbox" @click="checkSD()">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have inserted SD card 5.</label>
             </div>
         </form>
@@ -37,15 +37,16 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-        checkSD(){
-            this.currentSD = store.getters.getCurrentSD
-        }
 
     },
     data(){
         return{
             checkbox: false,
-            currentSD: store.getters.getCurrentSD
+        }
+    },
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
         }
     }
 }

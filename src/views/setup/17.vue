@@ -22,7 +22,6 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceed, consider checkbox here?')
-            this.setupCD = store.getters.getSetupCD
             if(this.setupCD == true){
                 this.$router.push({ name: 'Setup18' })
             }
@@ -31,9 +30,9 @@ export default {
         },
 
     },
-    data(){
-        return{
-            setupCD: store.getters.getSetupCD
+    computed:{
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }

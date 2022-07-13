@@ -32,17 +32,15 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.btcCoreHealthy = store.getters.getBTCCoreHealthy
             if(this.btcCoreHealthy == true){
                 this.$router.push({ name: 'Setup51' })
             }
         },
 
     },
-    data(){
-        return{
-            btcCoreHealthy: store.getters.getBTCCoreHealthy
-
+    computed:{
+        btcCoreHealthy(){
+            return store.getters.getBTCCoreHealthy
         }
     }
 }

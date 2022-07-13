@@ -27,18 +27,18 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.currentSD = store.getters.getCurrentSD
-            this.primaryMachine = store.getters.getPrimaryMachine
             if(this.currentSD == 'one' && this.primaryMachine == true){
                 this.$router.push({ name: 'welcome' })
             }
         }
 
     },
-    data(){
-        return{
-            currentSD: store.getters.getCurrentSD,
-            primaryMachine: store.getters.getPrimaryMachine
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        primaryMachine(){
+            return store.getters.getPrimaryMachine
         }
     }
 }
