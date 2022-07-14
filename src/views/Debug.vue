@@ -194,6 +194,7 @@ export default{
         psbtFoundToggle(){
             if(this.psbtFound == false){
                 store.commit('setPSBTFound', true)
+                store.commit('setManualDecrypt', true)
             } else{
                 store.commit('setPSBTFound', false)
             }

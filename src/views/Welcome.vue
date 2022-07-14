@@ -96,10 +96,15 @@ export default {
       if(this.timeMachineKeysFound == true){
         store.commit('setTimeLock', false)
       }
+      //below we redirect user to boot screen if they have no SD inserted
+      if(this.currentSD == 'none'){
+        this.$router.push({ name:'Boot' })
+      }
       //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
       if(this.currentSD != 'one' && this.psbtFound == false){
         this.$router.push({ name:'Boot' })
       }
+
     },
 }
 </script>

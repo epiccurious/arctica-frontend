@@ -16,7 +16,6 @@ the second conditional rendering below appears if the user has booted from SD 2-
     </div>
   </div>
 
-
   <div v-else class="login">
 <header>
   <h1>Welcome to Arctica</h1>
@@ -51,6 +50,9 @@ export default {
         install(){
           console.log('starting installation')
           this.$router.push({ name:'Setup1' })
+        },
+        redirect(){
+          this.$router.push({ name:'welcome' })
         }
     },
   mounted(){
@@ -61,6 +63,14 @@ export default {
     },
     psbtFound(){
       return store.getters.getPSBTFound
+    },
+  },
+  watch: {
+    //whenever current SD changes redirect user to welcome page
+    watchSD(){
+      if(this.currentSD == 'one'){
+        this.redirect()
+      }
     }
   }
 }
