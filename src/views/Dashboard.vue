@@ -12,7 +12,7 @@
             <h2 class="time_decay">Spend Now</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance_overview">{{ hotBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ this.hotBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -23,7 +23,7 @@
             <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance_overview">{{ immediateBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ this.immediateBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -34,7 +34,7 @@
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance_overview">{{ delayedBalance }} BTC</h2>
+            <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
@@ -63,21 +63,30 @@ export default {
     Compromised
   },
      mounted(){
-    this.hotBalance = store.getters.getHotBalance
-    this.immediateBalance = store.getters.getImmediateBalance
-    this.delayedBalance = store.getters.getDelayedBalance
+      this.hotBalance = store.getters.getHotBalance
+      this.immediateBalance = store.getters.getImmediateBalance
+      this.delayedBalance = store.getters.getDelayedBalance
  },
  data(){
   return{
-    hotBalance: null,
-    immediateBalance: null,
-    delayedBalance: null,
+    hotBalance: store.getters.getHotBalance,
+    immediateBalance: store.getters.getImmediateBalance,
+    delayedBalance: store.getters.getDelayedBalance,
   }
  },
  computed:{
   tripwire(){
     return store.getters.getTripwireHealthy}
  },
+ hotBalance(){
+  return store.getters.getHotBalance
+ },
+ immediateBalance(){
+  return store.getters.getImmediateBalane
+ },
+ delayedBalance(){
+  return store.getters.getDelayedBalance
+ }
 }
 </script>
 
