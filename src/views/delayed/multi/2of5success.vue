@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import store from '../../../store.js'
 
 export default {
   name: '2of5success',
@@ -28,11 +29,20 @@ export default {
             console.log('user ack, closing application')
         },
         debug(){
-            console.log('debug proceed moving to 3 of 5')
-            this.$router.push({ name: 'sign3of5' })
+            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
+                this.$router.push({ name: 'sign3of5' })
+            }
         }
 
     },
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        psbtFound(){
+            return store.getters.getPSBTFound
+        }
+    }
 }
 </script>
 

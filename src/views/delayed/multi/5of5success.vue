@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import store from '../../../store.js'
 
 export default {
   name: '5of5success',
@@ -29,10 +30,27 @@ export default {
         },
         debug(){
             console.log('debug proceed moving to broadcast')
-            this.$router.push({ name: 'delayedBroadcast' })
+            if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == true){
+                this.$router.push({ name: 'TimeMachine1' })
+            }
+            else if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == false){
+                this.$router.push({ name: 'delayedBroadcast' })
+            }
+            
         }
 
     },
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        psbtFound(){
+            return store.getters.getPSBTFound
+        },
+        timeLock(){
+            return store.getters.getTimeLock
+        }
+    }
 }
 </script>
 
