@@ -171,6 +171,7 @@ export default{
         timeLockToggle(){
             if(this.timelock === false){
                 store.commit('setTimeLock', true)
+                store.commit('setTimeMachineKeysFound', false)
             }
             else{
                 store.commit('setTimeLock', false)
@@ -226,6 +227,7 @@ export default{
                 store.commit('setManualDecrypt',true)
             } else{
                 store.commit('setPrivacyKeysFound', false)
+                store.commit('setManualDecrypt', false)
             }
              console.log('Privacy Keys Found', store.getters.getPrivacyKeysFound)   
              console.log('Manually decrypted', store.getters.getManualDecrypt)
@@ -304,30 +306,138 @@ export default{
         },
         setPSBT(){
             store.commit('setPSBTFound', this.psbtFound)
+            if(store.getters.getPSBTFound == 'immediate' || store.getters.getPSBTFound == 'delayed'){
+                store.commit('setManualDecrypt', true)
+                console.log('manual decrypt', store.getters.getManualDecrypt)
+            }
             console.log('PSBT Found', store.getters.getPSBTFound)
+            
         }
 
     },
-    computed:{},
-    data(){
-        return{
-            timelock: store.getters.getTimeLock,
-            tripwire: store.getters.getTripwireHealthy,
-            sdCard: store.getters.getCurrentSD,
-            psbtFound: store.getters.getPSBTFound,
-            bpsBricked: store.getters.getBPSBricked,
-            timeMachineKeysFound: store.getters.getTimeMachineKeysFound,
-            privacyKeysFound: store.getters.getPrivacyKeysFound,
-            manualDecrypt: store.getters.getManualDecrypt,
-            tripwireSetup: store.getters.getTripwireSetup,
-            recoverySetup: store.getters.getRecoverySetup,
-            duressSetup: store.getters.getDuressSetup,
-            btcCoreHealthy: store.getters.getBTCCoreHealthy,
-            bpsHealthy: store.getters.getBPSHealthy,
-            setupCD: store.getters.getSetupCD,
-            primaryMachine: store.getters.getPrimaryMachine,
+    computed:{
+        timelock:{
+            get(){
+                return store.getters.getTimeLock
+            },
+            set(newVal){
+                store.commit('setTimeLock', newVal)
+            }
+        },
+        tripwire:{
+            get(){
+                return store.getters.getTripwireHealthy
+            },
+            set(newVal){
+                store.commit('setTripwireHealthy', newVal)
+            }
+        },
+        sdCard:{
+            get(){
+                return store.getters.getCurrentSD
+            },
+            set(newVal){
+                store.commit('setCurrentSD', newVal)
+            }
+        },
+        psbtFound:{
+            get(){
+                return store.getters.getPSBTFound
+            },
+            set(newVal){
+                store.commit('setPSBTFound', newVal)
+            }
+        },
+        bpsBricked:{
+            get(){
+                return store.getters.getBPSBricked
+            },
+            set(newVal){
+                store.commit('setBPSBricked', newVal)
+            }
+        },
+        timeMachineKeysFound:{
+            get(){
+                return store.getters.getTimeMachineKeysFound
+            },
+            set(newVal){
+                store.commit('setTimeMachineKeysFound', newVal)
+            }
+        },
+        privacyKeysFound:{
+            get(){
+                return store.getters.getPrivacyKeysFound
+            },
+            set(newVal){
+                store.commit('setPrivacyKeysFound', newVal)
+            }   
+        },
+        manualDecrypt:{
+            get(){
+                return store.getters.getManualDecrypt
+            },
+            set(newVal){
+                store.commit('setManualDecrypt', newVal)
+            }
+        },
+        tripwireSetup:{
+            get(){
+                return store.getters.getTripwireSetup
+            },
+            set(newVal){
+                store.commit('setTripwireSetup', newVal)
+            }
+        },
+        recoverySetup:{
+            get(){
+                return store.getters.getRecoverySetup
+            },
+            set(newVal){
+                store.commit('setRecoverySetup', newVal)
+            }
+        },
+        duressSetup:{
+            get(){
+                return store.getters.getDuressSetup
+            },
+            set(newVal){
+                store.commit('setDuressSetup', newVal)
+            }
+        },
+        btcCoreHealthy:{
+            get(){
+                return store.getters.getBTCCoreHealthy
+            },
+            set(newVal){
+                store.commit('setBTCCoreHealthy', newVal)
+            }
+        },
+        bpsHealthy:{
+            get(){
+                return store.getters.getBPSHealthy
+            },
+            set(newVal){
+                store.commit('setBPSHealthy',newVal)
+            }
+        },
+        setupCD:{
+            get(){
+                return store.getters.getSetupCD
+            },
+            set(newVal){
+                store.commit('setSetupCD', newVal)
+            }
+        },
+        primaryMachine:{
+            get(){
+                return store.getters.getPrimaryMachine
+            },
+            set(newVal){
+                store.commit('setPrimaryMachine',newVal)
+            }
         }
-    }
+
+    },
     }
 
 

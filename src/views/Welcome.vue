@@ -40,7 +40,10 @@ export default {
   name: 'Welcome',
     methods: {
         login(){
-            if(this.manualDecrypt == true && this.psbtFound != 'none' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+            if(this.psbtFound == 'immediate' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+              this.$router.push({ name:'sign2of2' })
+            }
+            else if(this.psbtFound == 'delayed' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
               this.$router.push({ name:'sign2of2' })
             }
             else if(this.manualDecrypt == true){
