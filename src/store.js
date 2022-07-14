@@ -16,7 +16,7 @@ export default createStore({
     bpsBricked: false,
     manualDecrypt: false,
     //data for creating a new Transaction
-    id:null, description:null, address:null, amount:null, fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
+    id:null, description:null, address:null, balance:null, fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
     //existing transaction history, placeholder hardcodes
       immediateTransactions: [
         {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000987, status: 'Confirmed'},
@@ -57,8 +57,8 @@ export default createStore({
         setTxAddress(state, payload){
             state.address = payload
         },
-        setTxAmount(state,payload){
-            state.amount = payload
+        setTxBalance(state,payload){
+            state.balance = payload
         },
         setTxFiat(state,payload){
             state.fiat_currency = payload
@@ -79,7 +79,7 @@ export default createStore({
             state.id = null
             state.description = null
             state.address = null
-            state.amount = null
+            state.balance = null
             state.fiat_currency = null
             state.datetime = null
             state.fee = null
@@ -247,7 +247,7 @@ export default createStore({
     modules:{},
     getters:{ //get data from state, allows for changing/filtering
         getTransaction(state){
-          let  transaction = {id:state.id, description:state.description, address:state.address, amount:state.amount, fiat_currency:state.fiat_currency, datetime:state.datetime, fee:state.fee, customFee:state.customFee, status:state.status}
+          let  transaction = {id:state.id, description:state.description, address:state.address, balance:state.balance, fiat_currency:state.fiat_currency, datetime:state.datetime, fee:state.fee, customFee:state.customFee, status:state.status}
             return (transaction)
         },
         getHotTransactions(state){

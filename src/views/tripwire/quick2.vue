@@ -13,7 +13,7 @@
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
             <br><label>Amount</label>
-            <br><input v-model="amount" type="float" required placeholder="₿ 0.00">
+            <br><input v-model="balance" type="float" required placeholder="₿ 0.00">
             <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
 
             <div class="balance_calculator">
@@ -40,7 +40,7 @@
     </div>
         <div class="send_button_container">
             <button @click="goBack()" class="btn2">Go back</button>
-            <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
+            <button @click="continueFn(description, address, balance, fee, customFee)" class="btn">Continue</Button>
         </div>
     </div>        
 </div>
@@ -55,9 +55,9 @@ export default {
   components: {
   },
     methods: {
-        continueFn(description, address, amount, fee, customFee){
+        continueFn(description, address, balance, fee, customFee){
             console.log('Continue clicked')
-            this.transaction = {id:100, description:description, address:address, amount:amount, fiat_currency:(20000*amount), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
+            this.transaction = {id:100, description:description, address:address, balance:balance, fiat_currency:(20000*balance), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
             this.txConstructed(this.transaction)
         },
         // eventually the continueFn() should construct and return the PSBT
@@ -69,7 +69,7 @@ export default {
         },
         // selectMax(){
         //     console.log('Select max clicked')
-        //     this.amount = this.quickBalance
+        //     this.balance = this.quickBalance
         // },
 
         //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...
@@ -93,7 +93,7 @@ export default {
          lowFee: 1,
          description: '',
          address: '',
-         amount: '',
+         balance: '',
          fee: 'high',
          customFee: '',
          custom: false,

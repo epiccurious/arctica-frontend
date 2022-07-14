@@ -7,6 +7,7 @@
         <div class="horizontal_btn_container">
             <button @click="viewTx()" class="btn2">View Transaction</button>
             <button @click="back()" class="btn">Back to Wallet</button>
+            <button @click="test()" class="btn">debug</button> 
         </div>
     </div>
 </div>
@@ -25,6 +26,9 @@ export default{
         viewTx(){
             console.log('view tx clicked')
             this.$router.push({path: `${this.id}`})
+        },
+        test(){
+            console.log(store.getters.getHotTransactions)
         }
     },
     computed:{

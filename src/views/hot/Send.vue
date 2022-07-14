@@ -14,7 +14,7 @@
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
             <br><label>Amount</label>
-            <br><input v-model="amount" type="float" required placeholder="₿ 0.00">
+            <br><input v-model="balance" type="float" required placeholder="₿ 0.00">
             <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
 
             <div class="balance_calculator">
@@ -41,7 +41,7 @@
     </div>
         <div class="send_button_container">
             <button @click="addRecipient()" class="btn2">Add another recipient</button>
-            <button @click="continueFn(description, address, amount, fee, customFee)" class="btn">Continue</Button>
+            <button @click="continueFn(description, address, balance, fee, customFee)" class="btn">Continue</Button>
         </div>
     </div>        
 </div>
@@ -58,12 +58,12 @@ export default {
     NavHot,
   },  
     methods: {
-        continueFn(description, address, amount, fee, customFee){
+        continueFn(description, address, balance, fee, customFee){
             console.log('Continue clicked')
             store.commit('setTxId', this.id)
             store.commit('setTxDescription', description)
             store.commit('setTxAddress', address)
-            store.commit('setTxAmount', amount)
+            store.commit('setTxBalance', balance)
             store.commit('setTxFiat', this.fiat_currency)
             store.commit('setTxDateTime', this.datetime)
             store.commit('setTxFee', fee)
@@ -80,7 +80,7 @@ export default {
         },
         // selectMax(){
         //     console.log('Select max clicked')
-        //     this.amount = this.immediateBalance
+        //     this.balance = this.immediateBalance
         // },
 
         //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...
@@ -101,8 +101,9 @@ export default {
          mediumFee: 5,
          lowFee: 1,
          description: '',
+         fiat_currency: 0,
          address: '',
-         amount: '',
+         balance: '',
          fee: 'high',
          customFee: '',
          custom: false,

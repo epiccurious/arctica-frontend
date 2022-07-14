@@ -10,7 +10,7 @@
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ {{ this.transaction.amount }}</h3>
+            <h3>₿ {{ this.transaction.balance }}</h3>
         </div>
 
         <div class="tx_block">
