@@ -37,8 +37,9 @@ export default {
     methods: {
         sign(){
             console.log('signing...')
-            this.signed = true
-            this.$router.push({ name: '1of2success' })
+            if(this.currentSD == 'one' && this.psbtFound == true){
+                this.$router.push({ name: '1of2success' })
+            }
         },
         discard(){
             console.log('discarding PSBT')
@@ -49,6 +50,14 @@ export default {
     data(){
         return{
             transaction: store.getters.getTransaction
+        }
+    },
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        psbtFound(){
+            return store.getters.getPSBTFound
         }
     }
 }
