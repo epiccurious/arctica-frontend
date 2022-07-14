@@ -121,7 +121,7 @@ export default {
          description: '',
          address: '',
          balance: '',
-         fiat_currency: '', //this eventually needs to utilize a live exchange API 
+         fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
          fee: 'high',
          customFee: '',
          custom: false,

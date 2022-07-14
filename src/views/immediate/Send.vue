@@ -101,7 +101,7 @@ export default {
          mediumFee: 5,
          lowFee: 1,
          description: '',
-         fiat_currency: '', //this eventually needs to utilize a live exchange API 
+         fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
          address: '',
          balance: '',
          fee: 'high',
