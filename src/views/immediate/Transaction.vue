@@ -57,7 +57,6 @@ components:{},
 methods:{
     goBack(){
         this.$router.push({ name: 'immediate' })
-        //this function has a bug that seems to break the transactions dashboard, especially when used after send flow completion
     }
 },
   computed:{
