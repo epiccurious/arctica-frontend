@@ -40,7 +40,10 @@ export default {
   name: 'Welcome',
     methods: {
         login(){
-            if(this.manualDecrypt == true){
+            if(this.manualDecrypt == true && this.psbtFound == true && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+              this.$router.push({ name:'sign2of2' })
+            }
+            else if(this.manualDecrypt == true){
               this.$router.push({ name: 'dashboard' })
             }
             else if(this.bpsBricked == true){
@@ -83,6 +86,9 @@ export default {
       },
       bpsBricked(){
         return store.getters.getBPSBricked
+      },
+      primaryMachine(){
+        return store.getters.getPrimaryMachine
       },
       manualDecrypt(){
         if(this.privacyKeysFound == true){
