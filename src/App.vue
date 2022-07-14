@@ -2,8 +2,8 @@
 <div class="page">
   <nav id="nav">Debug Nav bar:
     <router-link :to="{ name: 'Debug' }">Debug(toggles)</router-link> 
-    <router-link :to="{ name: 'Boot' }">Boot</router-link> 
     <router-link :to="{ name: 'welcome' }">Welcome</router-link> 
+    <router-link :to="{ name: 'Boot' }">Boot</router-link> 
     <router-link :to="{ name: 'Login' }">Login</router-link> 
     <router-link :to="{ name: 'BPS_Bricked' }">BPSBricked</router-link> 
     <router-link :to="{ name: 'Recovery' }">Recovery</router-link> 
