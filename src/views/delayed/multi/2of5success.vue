@@ -29,7 +29,7 @@ export default {
             console.log('user ack, closing application')
         },
         debug(){
-            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
+            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound != 'none'){
                 this.$router.push({ name: 'sign3of5' })
             }
         }

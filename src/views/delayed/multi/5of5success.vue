@@ -30,10 +30,10 @@ export default {
         },
         debug(){
             console.log('debug proceed moving to broadcast')
-            if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == true){
+            if(this.currentSD == 'one' && this.psbtFound != 'none' && this.timeLock == true){
                 this.$router.push({ name: 'TimeMachine1' })
             }
-            else if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == false){
+            else if(this.currentSD == 'one' && this.psbtFound != 'none' && this.timeLock == false){
                 this.$router.push({ name: 'delayedBroadcast' })
             }
             

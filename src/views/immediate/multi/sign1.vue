@@ -37,7 +37,7 @@ export default {
     methods: {
         sign(){
             console.log('signing...')
-            if(this.currentSD == 'one' && this.psbtFound == true){
+            if(this.currentSD == 'one' && this.psbtFound != 'none'){
                 this.$router.push({ name: '1of2success' })
             }
         },

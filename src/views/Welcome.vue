@@ -40,7 +40,7 @@ export default {
   name: 'Welcome',
     methods: {
         login(){
-            if(this.manualDecrypt == true && this.psbtFound == true && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+            if(this.manualDecrypt == true && this.psbtFound != 'none' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
               this.$router.push({ name:'sign2of2' })
             }
             else if(this.manualDecrypt == true){
@@ -107,7 +107,7 @@ export default {
         this.$router.push({ name:'Boot' })
       }
       //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
-      if(this.currentSD != 'one' && this.psbtFound == false){
+      if(this.currentSD != 'one' && this.psbtFound == 'none'){
         this.$router.push({ name:'Boot' })
       }
 

@@ -30,7 +30,7 @@ export default {
         },
         debug(){
             console.log('debug proceed moving to broadcast')
-            if(this.currentSD == 'one' && this.psbtFound == true)
+            if(this.currentSD == 'one' && this.psbtFound != 'none')
             this.$router.push({ name: 'immediateBroadcast' }) 
 
         }

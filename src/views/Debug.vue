@@ -27,14 +27,12 @@
             </label>
         </div>
 
-        <div class="switch">
-            PSBT Found (transfer CD)
-            <label class="toggle_switch_label">
-                <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
-                <input v-else-if="this.psbtFound == false" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
+        <label>PSBT Found (transfer CD)</label>
+        <select v-model="psbtFound" name="psbtFound" id="psbtFound">
+            <option @click="setPSBT()" value="none">None</option>
+            <option @click="setPSBT()" value="immediate">Immediate</option>
+            <option @click="setPSBT()" value="delayed">Delayed</option>
+        </select>
 
         <div class="switch">
             BTC Core Healthy
@@ -302,7 +300,12 @@ export default{
         },
         setSD(){
             store.commit('setCurrentSD', this.sdCard)
+            console.log('Current SD', store.getters.getCurrentSD)
         },
+        setPSBT(){
+            store.commit('setPSBTFound', this.psbtFound)
+            console.log('PSBT Found', store.getters.getPSBTFound)
+        }
 
     },
     computed:{},

@@ -35,7 +35,7 @@ export default {
   name: 'Boot',
     methods: {
         acknowledge(){
-            if(this.psbtFound == true){
+            if(this.psbtFound != 'none'){
             console.log('user ack, simulating transfer CD, PSBT found')
             this.$router.push({ name: 'welcome' })
             }

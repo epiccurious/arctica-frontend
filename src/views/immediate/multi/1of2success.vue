@@ -30,7 +30,7 @@ export default {
         },
         debug(){
             console.log('debug proceed')
-            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
+            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound != 'none'){
                 this.$router.push({ name: 'sign2of2' })
             }
         }
