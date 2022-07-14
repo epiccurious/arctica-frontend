@@ -132,7 +132,7 @@ export default createStore({
             state.timeMachineKeysFound = payload
         },
         setPrivacyKeysFound(state, payload){
-            state.privacyKeyFound = payload
+            state.privacyKeysFound = payload
         },
         setTimeLock(state, payload){
             state.timeLock = payload
@@ -287,7 +287,7 @@ export default createStore({
             return state.timeMachineKeysFound
         },
         getPrivacyKeysFound(state){
-            return state.privacyKeyFound
+            return state.privacyKeysFound
         },
         getTimeLock(state){
             return state.timeLock

@@ -40,10 +40,14 @@ export default {
   name: 'Welcome',
     methods: {
         login(){
-            if(this.currentSD == 'one' && this.bpsBricked != true){
-              this.$router.push({ name: 'Login'})
-            }else if(this.bpsBricked == true){
+            if(this.manualDecrypt == true){
+              this.$router.push({ name: 'dashboard' })
+            }
+            else if(this.bpsBricked == true){
               this.$router.push({ name: 'BPS_Bricked' })
+            }
+            else if(this.currentSD == 'one'){
+              this.$router.push({ name: 'Login'})
             }
             else{
               this.$router.push({ name: 'Boot' })
@@ -79,6 +83,12 @@ export default {
       },
       bpsBricked(){
         return store.getters.getBPSBricked
+      },
+      manualDecrypt(){
+        if(this.privacyKeysFound == true){
+          store.commit('setManualDecrypt', true)
+          return store.getters.getManualDecrypt
+        }else{return store.getters.getManualDecrypt}
       }
     },
     mounted(){
