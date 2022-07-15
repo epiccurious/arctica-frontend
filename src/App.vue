@@ -206,6 +206,17 @@ hr {
 .btn5{
     padding:5px;
 }
+.btn6 {
+  background: #DEDEDE;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius:5px;
+  color: #FFFFFF;
+  width: 335px;
+  height: 46px;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 500;
+}
 .btnclose{
     background-color: #FFFFFF;
     width: auto;

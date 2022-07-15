@@ -17,20 +17,22 @@
     </header>
     <div class="btn_container"> 
         <button @click="login()" class="btn">Log in</Button>
-        <button @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
+        <button v-if="tripwireHealthy == true && tripwireSetup == true" @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
+        <button v-else class="btn6">Quick Withdrawal - $500</button>
        
     </div>
   </div>
 </template>
 
 <!-- This screen is where we will eventually:
--check for PSBTs
--ensure Bitcoin Core is synced
--check for a BPS connection
--check the tripwire
--Check for any published time machine keys/privacy keys -->
+-check for a transfer CD & PSBTs (virtual labels and update state)
+-check which SD, if any, is currently inserted (virtual labels update state)
+-ensure Bitcoin Core is synced (update state)
+-check for a BPS connection (update state)
+-check the tripwire (update state)
+-Check for any published time machine keys/privacy keys (update state) -->
 
-<!-- Quick withdrawal button should eventually grey out if the balance has been swept/accessed -->
+<!-- Quick withdrawal button should eventually grey out if the balance has been swept/accessed or is not set up -->
 
 
 <script>
@@ -112,7 +114,10 @@ export default {
         return store.getters.getBPSHealthy
       },
       tripwireHealthy(){
-        return store.getters.getBPSHealthy
+        return store.getters.getTripwireHealthy
+      },
+      tripwireSetup(){
+        return store.getters.getTripwireSetup
       },
       timeMachineKeysFound(){
         return store.getters.getTimeMachineKeysFound
