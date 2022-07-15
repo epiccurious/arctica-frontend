@@ -94,6 +94,11 @@ const routes = [
     component: () => import('../views/immediate/Send.vue')
    },
    {
+    path: '/wallets/immediate/send/transfer',
+    name: 'immediateTransfer',
+    component: () => import('../views/immediate/multi/transfer.vue')
+   },
+   {
     path: '/wallets/immediate/1of2',
     name: 'sign1of2',
     props: true,

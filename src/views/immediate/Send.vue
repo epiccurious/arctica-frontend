@@ -70,7 +70,7 @@ export default {
             store.commit('setTxCustomFee', customFee)
             store.commit('setTxStatus', 'unconfirmed')
             this.transaction = store.getters.getTransaction
-            this.$router.push({name: 'sign1of2'})
+            this.$router.push({name: 'immediateTransfer'})
 
         },
         // eventually the continueFn() should construct and return the PSBT
