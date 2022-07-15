@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>3 of 5 Signing Successful</h1>
-        <h2>Please power off this device. Swap SD 3 for SD 4 and power back on.</h2>
+        <h2>Please power off this device. Switch to a secondary, offline machine and insert SD 4 & the Transfer CD.</h2>
     </header>
     
 
