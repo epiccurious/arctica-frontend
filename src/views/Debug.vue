@@ -6,6 +6,9 @@
     </header>
     <div class="btn_container"> 
 
+        <button @click="reboot()" class="btn">Reboot</button>
+
+
         <label>SD inserted</label>
         <select v-model="sdCard" name="sdCard" id="sdCard">
             <option @click="setSD()" value="none">None</option>
@@ -154,9 +157,6 @@
             </label>
         </div>
 
-
-        <button @click="test()" class="btn">test</button>
-
     </div> 
 </div>
 </template>
@@ -299,6 +299,9 @@ export default{
         },    
         test(){
             console.log('timelocked', store.getters.getTimeLock)
+        },
+        reboot(){
+            this.$router.push({ name: 'welcome' })
         },
         setSD(){
             store.commit('setCurrentSD', this.sdCard)
