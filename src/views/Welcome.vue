@@ -40,21 +40,51 @@ export default {
   name: 'Welcome',
     methods: {
         login(){
-            if(this.psbtFound == 'immediate' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+           //user is returning with an immediate account PSBT that has been signed by 1 SD card
+            if(this.psbtFound == true && this.psbt == '1of2' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == true){
               this.$router.push({ name:'sign2of2' })
             }
-            else if(this.psbtFound == 'delayed' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
-              this.$router.push({ name:'sign2of2' })
+            //user is returning with an immediate account PSBT that has been signed by 2 SD cards
+            else if(this.psbtFound == true && this.psbt == '2of2' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == true){
+              this.$router.push({ name:'immediateBroadcast' })
             }
+            //user is returning with a delayed account PSBT that has been signed by 1 SD card
+            else if(this.psbtFound == true && this.psbt == '1of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+              this.$router.push({ name:'sign2of5' })
+            }
+            //user is returning with a delayed account PSBT that has been signed by 2 SD card
+            else if(this.psbtFound == true && this.psbt == '2of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+              this.$router.push({ name:'sign3of5' })
+            }
+            //user is returning with a delayed account PSBT that has been signed by 3 SD card
+            else if(this.psbtFound == true && this.psbt == '3of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+              this.$router.push({ name:'sign4of5' })
+            }
+            //user is returning with a delayed account PSBT that has been signed by 4 SD card
+            else if(this.psbtFound == true && this.psbt == '4of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+              this.$router.push({ name:'sign5of5' })
+            }
+            //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is enabled
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == false && this.timelock == true){
+              this.$router.push({ name:'TimeMachine1' })
+            }
+            //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is disabled
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == false && this.timelock == false){
+              this.$router.push({ name:'delayedBroadcast' })
+            }
+            //user has manually recovered password using the appropriate amount of SD cards
             else if(this.manualDecrypt == true){
               this.$router.push({ name: 'dashboard' })
             }
+            //user has bricked their relationship with BPS and must manually decrypt
             else if(this.bpsBricked == true){
               this.$router.push({ name: 'BPS_Bricked' })
             }
+            //user is logging in with attic key
             else if(this.currentSD == 'one'){
               this.$router.push({ name: 'Login'})
             }
+            //user does not have SD 1 inserted and/or is trying to login with SD 2-7 and does not have a valid transfer CD inserted
             else{
               this.$router.push({ name: 'Boot' })
             }
@@ -68,6 +98,12 @@ export default {
     computed: {
       psbtFound(){
         return store.getters.getPSBTFound
+      },
+      psbt(){
+        return store.getters.getPSBT
+      },
+      timelock(){
+        return store.getters.getTimeLock
       },
       btcCoreHealthy(){
         return store.getters.getBTCCoreHealthy

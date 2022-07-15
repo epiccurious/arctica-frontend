@@ -37,7 +37,8 @@ export default {
     methods: {
         sign(){
             console.log('signing...')
-            if(this.currentSD == 'one' && this.psbtFound != 'none'){
+            if(this.currentSD == 'one' && this.psbtFound == true){
+                store.commit('setPSBT', '1of2')
                 this.$router.push({ name: '1of2success' })
             }
         },

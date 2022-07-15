@@ -30,7 +30,7 @@ export default {
         },
         debug(){
             console.log('debug proceed moving to 5 of 5')
-            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound != 'none'){
+            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
                 this.$router.push({ name: 'sign5of5' })
             }
         }

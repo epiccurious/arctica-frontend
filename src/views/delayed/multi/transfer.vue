@@ -13,7 +13,7 @@
                 </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="currentSD == 'one' && checkbox && this.psbtFound == 'delayed'" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="currentSD == 'one' && checkbox && this.psbtFound == true" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 

@@ -39,7 +39,8 @@ export default {
     methods: {
         sign(){
             console.log('signing...')
-            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound != 'none'){
+            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
+                store.commit('setPSBT', '5of5')
                 this.$router.push({ name: '5of5success' })
             }
         },

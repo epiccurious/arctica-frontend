@@ -30,12 +30,21 @@
             </label>
         </div>
 
-        <label>PSBT Found (transfer CD)</label>
+        <div class="switch">
+            Transfer CD Inserted (WARNING: setting this to false will clear the PSBT in memory)
+            <label class="toggle_switch_label">
+                <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
+                <input v-else-if="this.psbtFound == false" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- <label>PSBT Found (transfer CD)</label>
         <select v-model="psbtFound" name="psbtFound" id="psbtFound">
             <option @click="setPSBT()" value="none">None</option>
             <option @click="setPSBT()" value="immediate">Immediate</option>
             <option @click="setPSBT()" value="delayed">Delayed</option>
-        </select>
+        </select> -->
 
         <div class="switch">
             BTC Core Healthy
@@ -196,6 +205,8 @@ export default{
                 store.commit('setManualDecrypt', true)
             } else{
                 store.commit('setPSBTFound', false)
+                store.commit('setPSBT', null)
+                store.commit('clearTransaction')
             }
              console.log('PSBT Found', store.getters.getPSBTFound)   
             },
@@ -309,7 +320,7 @@ export default{
         },
         setPSBT(){
             store.commit('setPSBTFound', this.psbtFound)
-            if(store.getters.getPSBTFound == 'immediate' || store.getters.getPSBTFound == 'delayed'){
+            if(store.getters.getPSBTFound == true){
                 store.commit('setManualDecrypt', true)
                 console.log('manual decrypt', store.getters.getManualDecrypt)
             }

@@ -35,7 +35,7 @@ export default {
   name: 'Boot',
     methods: {
         acknowledge(){
-            if(this.psbtFound != 'none'){
+            if(this.psbtFound == true && this.psbt != null){
             console.log('user ack, simulating transfer CD, PSBT found')
             this.$router.push({ name: 'welcome' })
             }
@@ -51,9 +51,6 @@ export default {
           console.log('starting installation')
           this.$router.push({ name:'Setup1' })
         },
-        redirect(){
-          this.$router.push({ name:'welcome' })
-        }
     },
   mounted(){
   },
@@ -64,15 +61,10 @@ export default {
     psbtFound(){
       return store.getters.getPSBTFound
     },
-  },
-  watch: {
-    //whenever current SD changes redirect user to welcome page
-    watchSD(){
-      if(this.currentSD == 'one'){
-        this.redirect()
-      }
+    psbt(){
+      return store.getters.getPSBT
     }
-  }
+  },
 }
 </script>
 

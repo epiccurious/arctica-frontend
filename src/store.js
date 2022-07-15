@@ -11,7 +11,7 @@ export default createStore({
     //post setup complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
-    psbtFound:'none', btcCoreHealthy:true, bpsHealthy:true, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
+    psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
 
     bpsBricked: false,
     manualDecrypt: false,
@@ -118,6 +118,9 @@ export default createStore({
         },
         setPSBTFound(state, payload){
             state.psbtFound = payload
+        },
+        setPSBT(state, payload){
+            state.psbt = payload
         },
         setBTCCoreHealthy(state, payload){
             state.btcCoreHealthy = payload
@@ -273,6 +276,9 @@ export default createStore({
         },
         getPSBTFound(state){
             return state.psbtFound
+        },
+        getPSBT(state){
+            return state.psbt
         },
         getBTCCoreHealthy(state){
             return state.btcCoreHealthy
