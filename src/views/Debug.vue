@@ -166,6 +166,8 @@
             </label>
         </div>
 
+    <button @click="test()" class="btn">Test</button>
+
     </div> 
 </div>
 </template>
@@ -309,7 +311,7 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('timelocked', store.getters.getTimeLock)
+            console.log('psbt status', store.getters.getPSBT)
         },
         reboot(){
             this.$router.push({ name: 'welcome' })

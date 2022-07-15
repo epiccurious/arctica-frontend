@@ -39,10 +39,6 @@ export default {
             console.log('user ack, simulating transfer CD, PSBT found')
             this.$router.push({ name: 'welcome' })
             }
-            else if(this.currentSD == 'one'){
-              console.log('user ack, SD 1 found, proceeding to login')
-              this.$router.push({ name: 'welcome' })
-            }
         },
         help(){
             console.log('fetching help')

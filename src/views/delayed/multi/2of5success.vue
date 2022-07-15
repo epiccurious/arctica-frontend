@@ -8,7 +8,7 @@
 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok (This will close the application)</Button>
-            <button @click="debug()" class="btn2">Debug - proceed</Button>
+            <!-- <button @click="debug()" class="btn2">Debug - proceed</Button> -->
         </div>
 
 
@@ -28,11 +28,11 @@ export default {
         acknowledge(){
             console.log('user ack, closing application')
         },
-        debug(){
-            if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
-                this.$router.push({ name: 'sign3of5' })
-            }
-        }
+        // debug(){
+        //     if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
+        //         this.$router.push({ name: 'sign3of5' })
+        //     }
+        // }
 
     },
     computed:{

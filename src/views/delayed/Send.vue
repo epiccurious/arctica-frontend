@@ -72,14 +72,8 @@ export default {
             store.commit('setTxFee', fee)
             store.commit('setTxCustomFee', customFee)
             store.commit('setTxStatus', 'unconfirmed')
-            if(this.timeLock == false){            
-                this.transaction = store.getters.getTransaction
-                this.$router.push({ name: 'delayedTransfer' })}
-            else{
-                this.$router.push({ name: 'TimeMachine1' })
-            }
-
-            
+            this.transaction = store.getters.getTransaction
+            this.$router.push({ name: 'delayedTransfer' })        
         },
         txConstructed(transaction){
             this.constructed = transaction

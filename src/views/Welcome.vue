@@ -41,7 +41,7 @@ export default {
     methods: {
         login(){
            //user is returning with an immediate account PSBT that has been signed by 1 SD card
-            if(this.psbtFound == true && this.psbt == '1of2' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == true){
+            if(this.psbtFound == true && this.psbt == '1of2' && this.currentSD != 'one' && this.currentSD !='none'){
               this.$router.push({ name:'sign2of2' })
             }
             //user is returning with an immediate account PSBT that has been signed by 2 SD cards
@@ -49,27 +49,27 @@ export default {
               this.$router.push({ name:'immediateBroadcast' })
             }
             //user is returning with a delayed account PSBT that has been signed by 1 SD card
-            else if(this.psbtFound == true && this.psbt == '1of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+            else if(this.psbtFound == true && this.psbt == '1of5' && this.currentSD != 'one' && this.currentSD !='none'){
               this.$router.push({ name:'sign2of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 2 SD card
-            else if(this.psbtFound == true && this.psbt == '2of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+            else if(this.psbtFound == true && this.psbt == '2of5' && this.currentSD != 'one' && this.currentSD !='none'){
               this.$router.push({ name:'sign3of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 3 SD card
-            else if(this.psbtFound == true && this.psbt == '3of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+            else if(this.psbtFound == true && this.psbt == '3of5' && this.currentSD != 'one' && this.currentSD !='none'){
               this.$router.push({ name:'sign4of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 4 SD card
-            else if(this.psbtFound == true && this.psbt == '4of5' && this.currentSD != 'one' && this.currentSD !='none' && this.primaryMachine == false){
+            else if(this.psbtFound == true && this.psbt == '4of5' && this.currentSD != 'one' && this.currentSD !='none'){
               this.$router.push({ name:'sign5of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is enabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == false && this.timelock == true){
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == true && this.timelock == true){
               this.$router.push({ name:'TimeMachine1' })
             }
             //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is disabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == false && this.timelock == false){
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == true && this.timelock == false){
               this.$router.push({ name:'delayedBroadcast' })
             }
             //user has manually recovered password using the appropriate amount of SD cards

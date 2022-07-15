@@ -8,7 +8,7 @@
 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok (This will close the application)</Button>
-            <button @click="debug()" class="btn2">Debug - proceed</Button>
+            <!-- <button @click="debug()" class="btn2">Debug - proceed</Button> -->
         </div>
 
 
@@ -28,16 +28,16 @@ export default {
         acknowledge(){
             console.log('user ack, closing application')
         },
-        debug(){
-            console.log('debug proceed moving to broadcast')
-            if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == true){
-                this.$router.push({ name: 'TimeMachine1' })
-            }
-            else if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == false){
-                this.$router.push({ name: 'delayedBroadcast' })
-            }
+        // debug(){
+        //     console.log('debug proceed moving to broadcast')
+        //     if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == true){
+        //         this.$router.push({ name: 'TimeMachine1' })
+        //     }
+        //     else if(this.currentSD == 'one' && this.psbtFound == true && this.timeLock == false){
+        //         this.$router.push({ name: 'delayedBroadcast' })
+        //     }
             
-        }
+        // }
 
     },
     computed:{
