@@ -74,7 +74,7 @@ export default {
             store.commit('setTxStatus', 'unconfirmed')
             if(this.timeLock == false){            
                 this.transaction = store.getters.getTransaction
-                this.$router.push({ name: 'sign1of5' })}
+                this.$router.push({ name: 'delayedTransfer' })}
             else{
                 this.$router.push({ name: 'TimeMachine1' })
             }

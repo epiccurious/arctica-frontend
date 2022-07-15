@@ -150,6 +150,11 @@ const routes = [
     component: () => import('../views/delayed/Send.vue')
    },
    {
+    path: '/wallets/delayed/send/transfer',
+    name: 'delayedTransfer',
+    component: () => import('../views/delayed/multi/transfer.vue')
+   },
+   {
     path: '/wallets/delayed/1of5',
     name: 'sign1of5',
     component: () => import('../views/delayed/multi/sign1.vue')
