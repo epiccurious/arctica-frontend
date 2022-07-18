@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>SD 5 creation complete</h1>
-        <h2>Please insert SD 6 and reboot this machine.</h2>
+        <h2>Please power off this machine, remove SD 5, insert SD 6, and reboot the device.</h2>
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 

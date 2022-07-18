@@ -164,25 +164,25 @@ export default {
     },
     mounted(){
       //for initial setup only
-      if(this.setup1 == true && this.currentSD == 'one' && this.primaryMachine == false){
+      if(this.setup1 == true && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })
       }
-      else if(this.setup2 == true && this.currentSD == 'two' && this.primaryMachine == false){
+      else if(this.setup2 == true && this.currentSD == 'two'){
         this.$router.push({ name: 'Setup14' })
       }
-      else if(this.setup3 == true && this.currentSD == 'three' && this.primaryMachine == false){
+      else if(this.setup3 == true && this.currentSD == 'three'){
         this.$router.push({ name: 'Setup15' })
       }
       else if(this.setup4 == true && this.currentSD == 'four' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup16' })
       }
-      else if(this.setup5 == true && this.currentSD == 'five' && this.primaryMachine == true){
+      else if(this.setup5 == true && this.currentSD == 'five' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup17' })
       }
-      else if(this.setup6 == true && this.currentSD == 'six' && this.primaryMachine == true){
+      else if(this.setup6 == true && this.currentSD == 'six' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup19' })
       }
-      else if(this.setup7 == true && this.currentSD == 'seven' && this.primaryMachine == true){
+      else if(this.setup7 == true && this.currentSD == 'seven' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup20' })
       }
 

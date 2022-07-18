@@ -1,13 +1,13 @@
+<!-- User moves to secondary machine for this step -->
+
 <template>
 <div class="page">
-<header>
-<h1>SD 4 creation complete</h1>
- <h2>Please remove SD 4 and remove the setup CD.</h2>
- <h2>Return to your primary machine, insert SD 5, and reboot the machine.</h2> 
- </header>
+    <header>
+        <h1>Please insert the setup CD</h1>
+        <h2>Insert the disc labelled 'Setup'.</h2>
+    </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
-            <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
 
 </div>
@@ -19,37 +19,22 @@ import store from '../../store.js'
 
 export default {
   name: 'Setup16',
-  components: {
-    },
     methods: {
         acknowledge(){
-            console.log('user ack, close application')
-            //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
-            //eventually need a step here to remove the electronic label that redirected user to step 16, added in step 7
-            //eventually only allow the user to proceed here if primary machine boolean is true
-        },
-        proceed(){
-            console.log('debug proceed')
-            if(this.currentSD == 'five' && this.primaryMachine == true && this.setupCD == false){
+            console.log('user ack, proceed, consider checkbox here?')
+            if(this.setupCD == true){
                 this.$router.push({ name: 'Setup17' })
             }
+            //eventually need a step here to check for the electronic label on the setupCD, and update global state, and only allow user to proceed if check successful
+            //eventually only allow the user to proceed here if primary machine boolean is true
         },
 
     },
-        computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
-        },
-        primaryMachine(){
-            return store.getters.getPrimaryMachine
-        },
+    computed:{
         setupCD(){
             return store.getters.getSetupCD
         }
-    },
-    data(){
-        store.commit('setSetup4', false) //eventually change this to remove virtual label
-        return{}
     }
 }
 </script>
+

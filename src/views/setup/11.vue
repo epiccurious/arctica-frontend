@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>SD creation successful</h1>
-        <h2>Please insert SD 1 into your secondary machine and reboot the device.</h2>
+        <h2>Please power off this machine, insert SD 1, and reboot the device.</h2>
     </header>   
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok (This will close the application)</Button>

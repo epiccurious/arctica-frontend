@@ -1,10 +1,10 @@
-<!-- consider having user move to secondary machine here until step 50 -->
+<!-- user returns to primary machine at this point -->
 
 <template>
 <div class="page">
     <header>
         <h1>SD 7 creation complete</h1>
-        <h2>Please insert SD 1 and reboot the machine.</h2>
+        <h2>Please return to your primary machine, insert SD 1 and reboot.</h2>
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 

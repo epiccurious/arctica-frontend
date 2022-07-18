@@ -2,7 +2,8 @@
 <div class="page">
     <header>
         <h1>SD 3 creaton complete</h1>
-        <h2>Please insert SD 4 and reboot this machine.</h2>
+         <h2>Please remove SD 3 and remove the setup CD.</h2>
+        <h2>Please move to your secondary machine, insert SD 4 and reboot.</h2>
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 

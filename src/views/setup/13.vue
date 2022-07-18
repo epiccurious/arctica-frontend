@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>SD 1 creation complete</h1>
-        <h2>Please insert SD 2 and reboot this machine.</h2>
+        <h2>Please power off this machine, remove SD 1, insert SD 2, and reboot the device.</h2>
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
@@ -41,7 +41,7 @@ export default {
         },
     },
     data(){
-        store.commit('setSetup1', false)
+        store.commit('setSetup1', false) //eventually change this to remove virtual label
         return{}
     }
 }
