@@ -6,7 +6,17 @@ export default createStore({
     //current SD card
     sdOne: false, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
 
-    setupCD: false, primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
+    setupCD: false, 
+    //setup variables 
+    setup1: false, //file placed on SD 1 at step 4 to jump user to step 12
+    setup2: false, //file placed on SD 2 at step 5 to jump user to step 14
+    setup3: false, //file placed on SD 3 at step 6 to jump user to step 15
+    setup4: false, //file placed on SD 4 at step 7 to jump user to step 16
+    setup5: false, //file placed on SD 5 at step 8 to jump user to step 17
+    setup6: false, //file placed on SD 6 at step 9 to jump user to step 18
+    setup7: false, //file placed on SD 7 at step 10 to jump user to step 19
+    
+    primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
 
     //post setup complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
@@ -243,7 +253,28 @@ export default createStore({
         },
         setPrimaryMachine(state, payload){
             state.primaryMachine = payload
-        }
+        },
+        setSetup1(state,payload){
+            state.setup1 = payload
+        },
+        setSetup2(state,payload){
+            state.setup2 = payload
+        },
+        setSetup3(state,payload){
+            state.setup3 = payload
+        },
+        setSetup4(state,payload){
+            state.setup4 = payload
+        },
+        setSetup5(state,payload){
+            state.setup5 = payload
+        },
+        setSetup6(state,payload){
+            state.setup6 = payload
+        },
+        setSetup7(state,payload){
+            state.setup7 = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -353,7 +384,28 @@ export default createStore({
         },
         getPrimaryMachine(state){
             return state.primaryMachine
-        }
+        },
+        getSetup1(state){
+            return state.setup1
+        },
+        getSetup2(state){
+            return state.setup2
+        },
+        getSetup3(state){
+            return state.setup3
+        },
+        getSetup4(state){
+            return state.setup4
+        },
+        getSetup5(state){
+            return state.setup5
+        },
+        getSetup6(state){
+            return state.setup6
+        },
+        getSetup7(state){
+            return state.setup7
+        },
 
 
 
