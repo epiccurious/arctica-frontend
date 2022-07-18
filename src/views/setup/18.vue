@@ -6,7 +6,6 @@
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
-            <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
 
 </div>
@@ -26,13 +25,6 @@ export default {
             //eventually only allow the user to proceed here if primary machine boolean is true
 
         },
-        proceed(){
-            console.log('debug proceed')
-            if(this.currentSD == 'six'){
-                this.$router.push({ name: 'Setup19' })
-            }
-        },
-
     },
     computed:{
         currentSD(){

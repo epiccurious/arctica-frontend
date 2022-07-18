@@ -1,12 +1,8 @@
-<!-- This page is redundant with the instructions on step 20 and can probably be removed -->
-<!-- this page is currently excluded from the setup flow due to its redundancy-->
-
 <template>
 <div class="page">
     <header>
-        <h1>SD Card 1</h1>
-        <h2>Please insert SD card 1.</h2>
-        <h2>****This page is currently excluded from the setup flow due to it's redundancy****</h2>
+        <h1>Insert the Setup CD</h1>
+        <h2>Please insert the CD labelled "setup"</h2>
     </header> 
     <div class="form_container">
         <form>
@@ -27,6 +23,7 @@
 </template>
 
 <script>
+import store from '../../store.js'
 export default {
   name: 'Setup21',
     methods: {
@@ -40,6 +37,7 @@ export default {
 
     },
     data(){
+        store.commit('setSetup8', false)
         return{
             checkbox: false,
         }

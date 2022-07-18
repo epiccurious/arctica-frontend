@@ -185,6 +185,9 @@ export default {
       else if(this.setup7 == true && this.currentSD == 'seven' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup20' })
       }
+      else if(this.setup8 == true && this.currentSD == 'one' && this.primaryMachine == true){
+        this.$router.push({ name: 'Setup21' })
+      }
 
       //eventually we should check externally for time machine keys here as well
       if(this.timeMachineKeysFound == true){

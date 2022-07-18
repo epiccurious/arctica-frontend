@@ -6,7 +6,6 @@
     </header>   
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok (This will close the application)</Button>
-           <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
 
 </div>
@@ -19,12 +18,6 @@ import store from '../../store.js'
 export default {
   name: 'Setup11',
     methods: {
-        proceed(){
-            console.log('user ack, close application')
-            if(this.currentSD == 'one' && this.primaryMachine == false){
-                this.$router.push({ name: 'Setup12' })
-            }
-        },
         acknowledge(){
             console.log('user ack, closing application')
         },

@@ -6,7 +6,6 @@
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
-            <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
 
 </div>
@@ -24,12 +23,6 @@ export default {
             //eventually need a step here to remove the electronic label that redirected user to step 19, added in step 9
             //eventually only allow the user to proceed here if primary machine boolean is true
         },
-        proceed(){
-            console.log('debug proceed')
-            if(this.currentSD == 'seven'){
-                this.$router.push({ name: 'Setup20' })
-            }
-
     },
     computed:{
         currentSD(){
@@ -40,7 +33,6 @@ export default {
         store.commit('setSetup6', false) //eventually change this to remove virtual label
         return{}
     }
-}
 }
 </script>
 

@@ -15,6 +15,7 @@ export default createStore({
     setup5: false, //file placed on SD 5 at step 8 to jump user to step 17
     setup6: false, //file placed on SD 6 at step 9 to jump user to step 19
     setup7: false, //file placed on SD 7 at step 10 to jump user to step 20
+    setup8: false, //file placed on SD 1 at step 12 to jump user to step 21
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
 
@@ -275,6 +276,9 @@ export default createStore({
         setSetup7(state,payload){
             state.setup7 = payload
         },
+        setSetup8(state,payload){
+            state.setup8 = payload
+        }
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -406,6 +410,9 @@ export default createStore({
         getSetup7(state){
             return state.setup7
         },
+        getSetup8(state){
+            return state.setup8
+        }
 
 
 

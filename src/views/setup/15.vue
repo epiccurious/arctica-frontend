@@ -7,7 +7,6 @@
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
-            <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
 
 </div>
@@ -26,14 +25,7 @@ export default {
             //eventually need a step here to remove the electronic label that redirected user to step 15, added in step 6
             //eventually only allow the user to proceed here if primary machine boolean is false
         },
-        proceed(){
-            console.log('debug proceed')
-            if(this.currentSD == 'four'){
-                this.$router.push({ name: 'Setup16' })
-            }
-
     },
-},
     computed:{
         currentSD(){
             return store.getters.getCurrentSD
