@@ -46,6 +46,10 @@ export default {
         setupCD(){
             return store.getters.getSetupCD
         }
+    },
+    data(){
+        store.commit('setSetup4', false) //eventually change this to remove virtual label
+        return{}
     }
 }
 </script>

@@ -38,7 +38,11 @@ export default {
     computed:{
         currentSD(){
             return store.getters.getCurrentSD
-        }
+        },
+    },
+    data(){
+        store.commit('setSetup1', false)
+        return{}
     }
 }
 </script>

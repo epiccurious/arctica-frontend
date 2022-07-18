@@ -311,7 +311,7 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('psbt status', store.getters.getPSBT)
+            console.log('setup 1', store.getters.getSetup1)
         },
         reboot(){
             this.$router.push({ name: 'welcome' })

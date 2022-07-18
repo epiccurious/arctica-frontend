@@ -37,6 +37,10 @@ export default {
         currentSD(){
             return store.getters.getCurrentSD
         }
+    },
+    data(){
+        store.commit('setSetup3', false) //eventually change this to remove virtual label
+        return{}
     }
 }
 </script>
