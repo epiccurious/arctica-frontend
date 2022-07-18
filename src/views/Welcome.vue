@@ -142,14 +142,39 @@ export default {
       }
     },
     mounted(){
+      //for initial setup only
+      if(this.setup1 == true && this.currentSD == 'one'){
+        this.$router.push({ name: 'Setup12' })
+      }
+      else if(this.setup2 == true && this.currentSD == 'two'){
+        this.$router.push({ name: 'Setup14' })
+      }
+      else if(this.setup3 == true && this.currentSD == 'three'){
+        this.$router.push({ name: 'Setup15' })
+      }
+      else if(this.setup4 == true && this.currentSD == 'four'){
+        this.$router.push({ name: 'Setup16' })
+      }
+      else if(this.setup5 == true && this.currentSD == 'five'){
+        this.$router.push({ name: 'Setup17' })
+      }
+      else if(this.setup6 == true && this.currentSD == 'six'){
+        this.$router.push({ name: 'Setup19' })
+      }
+      else if(this.setup7 == true && this.currentSD == 'seven'){
+        this.$router.push({ name: 'Setup20' })
+      }
+
       //eventually we should check externally for time machine keys here as well
       if(this.timeMachineKeysFound == true){
         store.commit('setTimeLock', false)
       }
+
       //below we redirect user to boot screen if they have no SD inserted
       if(this.currentSD == 'none'){
         this.$router.push({ name:'Boot' })
       }
+      
       //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
       if(this.currentSD != 'one' && this.psbtFound == 'none'){
         this.$router.push({ name:'Boot' })

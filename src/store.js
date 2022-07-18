@@ -13,8 +13,8 @@ export default createStore({
     setup3: false, //file placed on SD 3 at step 6 to jump user to step 15
     setup4: false, //file placed on SD 4 at step 7 to jump user to step 16
     setup5: false, //file placed on SD 5 at step 8 to jump user to step 17
-    setup6: false, //file placed on SD 6 at step 9 to jump user to step 18
-    setup7: false, //file placed on SD 7 at step 10 to jump user to step 19
+    setup6: false, //file placed on SD 6 at step 9 to jump user to step 19
+    setup7: false, //file placed on SD 7 at step 10 to jump user to step 20
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
 
