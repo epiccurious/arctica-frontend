@@ -139,7 +139,28 @@ export default {
           store.commit('setManualDecrypt', true)
           return store.getters.getManualDecrypt
         }else{return store.getters.getManualDecrypt}
-      }
+      },
+      setup1(){
+        return store.getters.getSetup1
+      },
+      setup2(){
+        return store.getters.getSetup2
+      },
+      setup3(){
+        return store.getters.getSetup3
+      },
+      setup4(){
+        return store.getters.getSetup4
+      },
+      setup5(){
+        return store.getters.getSetup5
+      },
+      setup6(){
+        return store.getters.getSetup6
+      },
+      setup7(){
+        return store.getters.getSetup7
+      },
     },
     mounted(){
       //for initial setup only
@@ -174,7 +195,7 @@ export default {
       if(this.currentSD == 'none'){
         this.$router.push({ name:'Boot' })
       }
-      
+
       //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
       if(this.currentSD != 'one' && this.psbtFound == 'none'){
         this.$router.push({ name:'Boot' })
