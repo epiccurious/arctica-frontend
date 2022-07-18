@@ -2,13 +2,12 @@
 <div class="page">
     <header>
         <h1>3 of 5 Signing Successful</h1>
-        <h2>Please power off this device. Switch to a secondary, offline machine and insert SD 4 & the Transfer CD.</h2>
+        <h2>Please power off this device. Switch to a secondary, offline machine and insert SD 4 & the Transfer CD and reboot.</h2>
     </header>
     
 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok (This will close the application)</Button>
-            <!-- <button @click="debug()" class="btn2">Debug - proceed</Button> -->
         </div>
 
 
@@ -28,13 +27,6 @@ export default {
         acknowledge(){
             console.log('user ack, closing application')
         },
-        // debug(){
-        //     console.log('debug proceed moving to 4 of 5')
-        //     if(this.currentSD != 'one' && this.currentSD != 'none' && this.psbtFound == true){
-        //         this.$router.push({ name: 'sign4of5' })
-        //     }
-        // }
-
     },
     computed:{
         currentSD(){
