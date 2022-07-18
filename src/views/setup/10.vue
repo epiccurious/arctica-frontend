@@ -32,6 +32,7 @@ export default {
             console.log('user ack, flashing SD 7')
             this.$router.push({ name: 'Setup11' })
             //eventually need to electronically mark SD 7 with a text file label here
+            store.commit('setSetup7', true) //eventually replace this with virtual label
             //eventually need to mark SD 7 with a text file label here that directs primary machine to jump to step 19 of setup
         },
         warn(){
