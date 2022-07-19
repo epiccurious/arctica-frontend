@@ -1,16 +1,14 @@
 <template>
 <div class="page">
-<header>
-<h1>Package 2 is now complete.</h1>
- <h2>Please remove DVD 2 and SD 2.</h2>
- <h2>Place SD card 2, and backups CD 2 and DVD 2 into Envelope 2.</h2> 
- <h2>This envelope should be stored somewhere secure and easily accessible, like your home safe.</h2>
- </header>
-      <div class="form_container">
+    <header>
+        <h1>Insert the Setup CD</h1>
+        <h2>Please insert the CD labelled "setup"</h2>
+    </header> 
+    <div class="form_container">
         <form>
-            <div class="lg_checkbox_container">
+            <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">My #2 devices have been placed into Envelope 2.</label>
+                <label for="checkbox">I have inserted the setup CD.</label>
             </div>
         </form>
         <div class="btn_container"> 
@@ -19,19 +17,19 @@
         </div>
     </div> 
 
+
 </div>
 
 </template>
 
 <script>
+import store from '../../store.js'
 export default {
-  name: 'Setup29',
-  components: {
-    },
+  name: 'Setup35a',
     methods: {
         acknowledge(){
-            console.log('user ack, package 2 completed')
-            this.$router.push({ name: 'Setup30' })
+            console.log('user ack, moving all info from setup CD to SD 4')
+            this.$router.push({ name: 'Setup35b' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -45,3 +43,4 @@ export default {
     }
 }
 </script>
+

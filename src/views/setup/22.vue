@@ -1,10 +1,8 @@
-<!-- Consider adding a hyperlink to 'destroy it at this time' that walks user through proper CD destruction steps -->
-
 <template>
 <div class="page">
     <header>
         <h1>Remove the 'Setup' CD</h1>
-        <h2>The setup CD is no longer needed. Please remove it from the machine and destroy it at this time.</h2>
+        <h2>Please remove the Setup CD at this time.</h2>
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 

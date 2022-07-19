@@ -1,18 +1,18 @@
 <template>
 <div class="page">
     <header>
-        <h1>Insert the Setup CD</h1>
-        <h2>Please insert the CD labelled "setup"</h2>
+        <h1>CD 2 Backup</h1>
+        <h2>Please remove the Setup CD and insert CD 2.</h2>
     </header> 
     <div class="form_container">
         <form>
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have inserted the Setup CD.</label>
+                <label for="checkbox">I have inserted CD 2.</label>
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'two' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -24,23 +24,27 @@
 
 <script>
 import store from '../../store.js'
+
 export default {
-  name: 'Setup21',
+  name: 'Setup27b',
     methods: {
         acknowledge(){
-            console.log('user ack, moving all info from setup CD to SD 1')
-            this.$router.push({ name: 'Setup22' })
+            console.log('user ack, moving info from SD 2 to CD 2')
+            this.$router.push({ name: 'Setup28' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-
     },
     data(){
-        store.commit('setSetup8', false) //eventually change this to remove virtual label
-        store.commit('setSetup15', true) //eventually change this to add virtual label
+        store.commit('setSetup9', false) //eventually change this to remove virtual label
         return{
             checkbox: false,
+        }
+    },
+        computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
         }
     }
 }

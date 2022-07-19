@@ -1,18 +1,18 @@
 <template>
 <div class="page">
     <header>
-        <h1>CD 7 Backup</h1>
-        <h2>Please insert CD 7.</h2>
+        <h1>Insert the Setup CD</h1>
+        <h2>Please insert the CD labelled "setup"</h2>
     </header> 
     <div class="form_container">
         <form>
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have inserted CD 7.</label>
+                <label for="checkbox">I have inserted the setup CD.</label>
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.currentSD == 'seven' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -24,26 +24,21 @@
 
 <script>
 import store from '../../store.js'
-
 export default {
-  name: 'Setup47',
+  name: 'Setup47a',
     methods: {
         acknowledge(){
-            console.log('user ack, moving info from SD 7 to CD 7')
-            this.$router.push({ name: 'Setup48' })
+            console.log('user ack, moving all info from setup CD to SD 7')
+            this.$router.push({ name: 'Setup47b' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+
     },
     data(){
         return{
             checkbox: false,
-        }
-    },
-    computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
         }
     }
 }

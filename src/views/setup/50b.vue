@@ -20,7 +20,7 @@
 import store from '../../store.js'
 
 export default {
-  name: 'Setup50',
+  name: 'Setup50b',
   components: {
     },
     methods: {
@@ -42,6 +42,10 @@ export default {
         btcCoreHealthy(){
             return store.getters.getBTCCoreHealthy
         }
+    },
+    data(){
+        store.commit('setSetup15', false) //eventually change this to remove virtual label
+        return{}
     }
 }
 </script>

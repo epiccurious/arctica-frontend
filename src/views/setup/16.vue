@@ -34,7 +34,7 @@ export default {
         setupCD(){
             return store.getters.getSetupCD
         }
-    }
+    },
 }
 </script>
 

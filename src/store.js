@@ -16,6 +16,14 @@ export default createStore({
     setup6: false, //file placed on SD 6 at step 9 to jump user to step 19
     setup7: false, //file placed on SD 7 at step 10 to jump user to step 20
     setup8: false, //file placed on SD 1 at step 12 to jump user to step 21
+    setup9: false, //file placed on SD 2 at step 14 to jump user to step 27a
+    setup10: false, //file placed on SD 3 at step 15 to jump user to step 31a
+    setup11: false, //file placed on SD 4 at step 17 to jump user to step 35a
+    setup12: false, //file placed on SD 5 at step 18 to jump user to step 39a
+    setup13: false, //file placed on SD 6 at step 19 to jump user to step 43a
+    setup14: false, //file placed on SD 7 at step 20 to jump user to step 47a
+    setup15: false, //file placed on SD 1 at step 21 to jump user to step 50b...returns user to blockchain sync
+
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
 
@@ -278,7 +286,28 @@ export default createStore({
         },
         setSetup8(state,payload){
             state.setup8 = payload
-        }
+        },
+        setSetup9(state,payload){
+            state.setup9 = payload
+        },
+        setSetup10(state,payload){
+            state.setup10 = payload
+        },
+        setSetup11(state,payload){
+            state.setup11 = payload
+        },
+        setSetup12(state,payload){
+            state.setup12 = payload
+        },
+        setSetup13(state,payload){
+            state.setup13 = payload
+        },
+        setSetup14(state,payload){
+            state.setup14 = payload
+        },
+        setSetup15(state,payload){
+            state.setup15 = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -412,7 +441,28 @@ export default createStore({
         },
         getSetup8(state){
             return state.setup8
-        }
+        },
+        getSetup9(state){
+            return state.setup9
+        },
+        getSetup10(state){
+            return state.setup10
+        },
+        getSetup11(state){
+            return state.setup11
+        },
+        getSetup12(state){
+            return state.setup12
+        },
+        getSetup13(state){
+            return state.setup13
+        },
+        getSetup14(state){
+            return state.setup14
+        },
+        getSetup15(state){
+            return state.setup15
+        },
 
 
 

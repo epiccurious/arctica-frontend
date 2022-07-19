@@ -400,9 +400,14 @@ const routes = [
     component: () => import('../views/setup/26.vue')
    },
    {
-    path: '/setup/27',
-    name: 'Setup27',
-    component: () => import('../views/setup/27.vue')
+    path: '/setup/27a',
+    name: 'Setup27a',
+    component: () => import('../views/setup/27a.vue')
+   },
+   {
+    path: '/setup/27b',
+    name: 'Setup27b',
+    component: () => import('../views/setup/27b.vue')
    },
    {
     path: '/setup/28',
@@ -420,9 +425,14 @@ const routes = [
     component: () => import('../views/setup/30.vue')
    },
    {
-    path: '/setup/31',
-    name: 'Setup31',
-    component: () => import('../views/setup/31.vue')
+    path: '/setup/31a',
+    name: 'Setup31a',
+    component: () => import('../views/setup/31a.vue')
+   },
+   {
+    path: '/setup/31b',
+    name: 'Setup31b',
+    component: () => import('../views/setup/31b.vue')
    },
    {
     path: '/setup/32',
@@ -440,9 +450,14 @@ const routes = [
     component: () => import('../views/setup/34.vue')
    },
    {
-    path: '/setup/35',
-    name: 'Setup35',
-    component: () => import('../views/setup/35.vue')
+    path: '/setup/35a',
+    name: 'Setup35a',
+    component: () => import('../views/setup/35a.vue')
+   },
+   {
+    path: '/setup/35b',
+    name: 'Setup35b',
+    component: () => import('../views/setup/35b.vue')
    },
    {
     path: '/setup/36',
@@ -460,9 +475,14 @@ const routes = [
     component: () => import('../views/setup/38.vue')
    },
    {
-    path: '/setup/39',
-    name: 'Setup39',
-    component: () => import('../views/setup/39.vue')
+    path: '/setup/39a',
+    name: 'Setup39a',
+    component: () => import('../views/setup/39a.vue')
+   },
+   {
+    path: '/setup/39b',
+    name: 'Setup39b',
+    component: () => import('../views/setup/39b.vue')
    },
    {
     path: '/setup/40',
@@ -480,9 +500,14 @@ const routes = [
     component: () => import('../views/setup/42.vue')
    },
    {
-    path: '/setup/43',
-    name: 'Setup43',
-    component: () => import('../views/setup/43.vue')
+    path: '/setup/43a',
+    name: 'Setup43a',
+    component: () => import('../views/setup/43a.vue')
+   },
+   {
+    path: '/setup/43b',
+    name: 'Setup43b',
+    component: () => import('../views/setup/43b.vue')
    },
    {
     path: '/setup/44',
@@ -500,9 +525,14 @@ const routes = [
     component: () => import('../views/setup/46.vue')
    },
    {
-    path: '/setup/47',
-    name: 'Setup47',
-    component: () => import('../views/setup/47.vue')
+    path: '/setup/47a',
+    name: 'Setup47a',
+    component: () => import('../views/setup/47a.vue')
+   },
+   {
+    path: '/setup/47b',
+    name: 'Setup47b',
+    component: () => import('../views/setup/47b.vue')
    },
    {
     path: '/setup/48',
@@ -515,9 +545,14 @@ const routes = [
     component: () => import('../views/setup/49.vue')
    },
    {
-    path: '/setup/50',
-    name: 'Setup50',
-    component: () => import('../views/setup/50.vue')
+    path: '/setup/50a',
+    name: 'Setup50a',
+    component: () => import('../views/setup/50a.vue')
+   },
+   {
+    path: '/setup/50b',
+    name: 'Setup50b',
+    component: () => import('../views/setup/50b.vue')
    },
    {
     path: '/setup/51',
