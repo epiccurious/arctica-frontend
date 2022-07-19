@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'Setup49',
+  name: 'Setup49a',
   components: {
     },
     methods: {
