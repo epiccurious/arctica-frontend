@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import store from '../../store.js'
 export default {
   name: 'Setup27a',
     methods: {

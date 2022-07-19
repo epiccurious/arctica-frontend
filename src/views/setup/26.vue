@@ -17,7 +17,6 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, close application')
-            //eventually need a step here to remove the electronic label that redirected user to step 26, added in step 10
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
