@@ -161,6 +161,30 @@ export default {
       setup7(){
         return store.getters.getSetup7
       },
+      setup8(){
+        return store.getters.getSetup8
+      },
+      setup9(){
+        return store.getters.getSetup9
+      },
+      setup10(){
+        return store.getters.getSetup10
+      },
+      setup11(){
+        return store.getters.getSetup11
+      },
+      setup12(){
+        return store.getters.getSetup12
+      },
+      setup13(){
+        return store.getters.getSetup13
+      },
+      setup14(){
+        return store.getters.getSetup14
+      },
+      setup15(){
+        return store.getters.getSetup15
+      },
     },
     mounted(){
       //for initial setup only
@@ -187,6 +211,27 @@ export default {
       }
       else if(this.setup8 == true && this.currentSD == 'one' && this.primaryMachine == true){
         this.$router.push({ name: 'Setup21' })
+      }
+      else if(this.setup9 == true && this.currentSD == 'two' && this.primaryMachine == true){
+        this.$router.push({ name: 'Setup27a' })
+      }
+      else if(this.setup10 == true && this.currentSD == 'three' && this.primaryMachine == true){
+        this.$router.push({ name: 'Setup31a' })
+      }
+      else if(this.setup11 == true && this.currentSD == 'four' && this.primaryMachine == false){
+        this.$router.push({ name: 'Setup35a' })
+      }
+      else if(this.setup12 == true && this.currentSD == 'five' && this.primaryMachine == false){
+        this.$router.push({ name: 'Setup39a' })
+      }
+      else if(this.setup13 == true && this.currentSD == 'six' && this.primaryMachine == false){
+        this.$router.push({ name: 'Setup43a' })
+      }
+      else if(this.setup14 == true && this.currentSD == 'seven' && this.primaryMachine == false){
+        this.$router.push({ name: 'Setup47a' })
+      }
+      else if(this.setup15 == true && this.currentSD == 'one' && this.primaryMachine == true){
+        this.$router.push({ name: 'Setup50a' })
       }
 
       //eventually we should check externally for time machine keys here as well
