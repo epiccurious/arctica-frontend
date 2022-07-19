@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="checkbox && this.setupCD == true" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -41,6 +41,11 @@ export default {
         store.commit('setSetup15', true) //eventually change this to add virtual label
         return{
             checkbox: false,
+        }
+    },
+    computed:{
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }
