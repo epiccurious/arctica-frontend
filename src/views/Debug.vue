@@ -39,6 +39,15 @@
             </label>
         </div>
 
+        <div class="switch">
+            Setup CD inserted
+            <label class="toggle_switch_label">
+                <input v-if="this.setupCD == true" v-model="setupCD" @click="setupCDToggle()" type="checkbox" checked>
+                <input v-else-if="this.setupCD == false" v-model="setupCD" @click="setupCDToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
         <!-- <label>PSBT Found (transfer CD)</label>
         <select v-model="psbtFound" name="psbtFound" id="psbtFound">
             <option @click="setPSBT()" value="none">None</option>
@@ -141,15 +150,6 @@
             <label class="toggle_switch_label">
                 <input v-if="this.duressSetup == true" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox" checked>
                 <input v-else-if="this.duressSetup == false" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch">
-            Setup CD inserted
-            <label class="toggle_switch_label">
-                <input v-if="this.setupCD == true" v-model="setupCD" @click="setupCDToggle()" type="checkbox" checked>
-                <input v-else-if="this.setupCD == false" v-model="setupCD" @click="setupCDToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>

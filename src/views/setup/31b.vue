@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.currentSD == 'three' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'three' && checkbox && this.setupCD == false" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -45,6 +45,9 @@ export default {
     computed:{
         currentSD(){
             return store.getters.getCurrentSD
+        },
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }

@@ -231,7 +231,7 @@ export default {
         this.$router.push({ name: 'Setup47a' })
       }
       else if(this.setup15 == true && this.currentSD == 'one' && this.primaryMachine == true){
-        this.$router.push({ name: 'Setup50a' })
+        this.$router.push({ name: 'Setup50b' })
       }
 
       //eventually we should check externally for time machine keys here as well

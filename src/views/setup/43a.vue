@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="checkbox && this.setupCD == true" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import store from '../../store.js'
 export default {
   name: 'Setup43a',
     methods: {
@@ -38,6 +39,11 @@ export default {
     data(){
         return{
             checkbox: false,
+        }
+    },
+    computed:{
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }

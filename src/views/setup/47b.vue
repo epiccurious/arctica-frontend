@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>CD 7 Backup</h1>
-        <h2>Please insert CD 7.</h2>
+        <h2>Please remove the Setup CD and insert CD 7.</h2>
     </header> 
     <div class="form_container">
         <form>
@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.currentSD == 'seven' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'seven' && checkbox && this.setupCD == false" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -45,6 +45,9 @@ export default {
     computed:{
         currentSD(){
             return store.getters.getCurrentSD
+        },
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }
