@@ -15,7 +15,8 @@
             <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
-    </div> 
+    </div>
+</div> 
 
 </template>
 

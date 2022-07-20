@@ -98,7 +98,8 @@
     <router-link :to="{ name: 'Setup47a' }">Setup-47a</router-link>
     <router-link :to="{ name: 'Setup47b' }">Setup-47b</router-link>
     <router-link :to="{ name: 'Setup48' }">Setup-48</router-link>
-    <router-link :to="{ name: 'Setup49' }">Setup-49</router-link>
+    <router-link :to="{ name: 'Setup49a' }">Setup-49a</router-link>
+    <router-link :to="{ name: 'Setup49b' }">Setup-49b</router-link>
     <router-link :to="{ name: 'Setup50a' }">Setup-50a</router-link>
     <router-link :to="{ name: 'Setup50b' }">Setup-50b</router-link>
     <router-link :to="{ name: 'Setup51' }">Setup-51</router-link>
