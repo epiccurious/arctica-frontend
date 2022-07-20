@@ -1,0 +1,23 @@
+FEATURES
+
+-FEATURE: Transaction pages need search and filter functionality
+
+-FEATURE: Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
+
+-FEATURE: currency conversions via external API
+    -after implementing currency conversion, a watcher or a two way bind that allows users to input either fiat currency or satoshi value on send page
+
+-FEATURE: add some functionality to the settings page
+
+-FEATURE: Dyanmic Decays (countdown timer) across the application
+
+-FEATURE: dyanmic tripwire warning display (name is currently a placeholder)
+
+-FEATURE: rework placeholder text in setup for where a user should store each package of sds and backups
+
+BUGS
+
+-BUG: Fix select max button on send page which reloads the page (or remounts the app?) when clicked if other forms have any inputs.
+    -forms should be stored in local storage for persistance perhaps? Might not want to do this for privacy reasons
+
+
