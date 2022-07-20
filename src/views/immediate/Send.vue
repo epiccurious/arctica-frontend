@@ -78,12 +78,12 @@ export default {
             console.log('Add recipient clicked')
             this.multiOutput = true
         },
-        // selectMax(){
-        //     console.log('Select max clicked')
-        //     this.balance = this.immediateBalance
-        // },
-
-        //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...
+        //there is currently a bug where this function (clicking the button) reloads the page (remounts the app?) whenever there is data in one of the 
+        //other forms
+        selectMax(){
+            console.log('Select max clicked')
+            this.balance = this.immediateBalance
+        },
         customEnable(){
             console.log('Custom Fee Selected')
             this.custom = true
