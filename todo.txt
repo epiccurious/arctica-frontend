@@ -15,9 +15,13 @@ FEATURES
 
 -FEATURE: rework placeholder text in setup for where a user should store each package of sds and backups
 
+-FEATURE: Add a screen for destroying the setup CD after multisig signing flow complete
+
 BUGS
 
 -BUG: Fix select max button on send page which reloads the page (or remounts the app?) when clicked if other forms have any inputs.
     -forms should be stored in local storage for persistance perhaps? Might not want to do this for privacy reasons
+
+-BUG: Transaction card does not import and display description
 
 

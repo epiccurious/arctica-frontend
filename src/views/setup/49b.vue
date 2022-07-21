@@ -2,13 +2,13 @@
 <div class="page">
     <header>
         <h1>Destroy Setup CD</h1>
-        <h2>Your Setup CD is no longer needed. Please <a href="#">destroy</a> it now. </h2>
+        <h2>Your Setup CD is no longer needed. Please <a class="blue_link" href="#">destroy</a> it now. </h2>
     </header> 
     <div class="form_container">
         <form>
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have properly destroyed my setup CD.</label>
+                <label for="checkbox">I have <a class="blue_link" href="#">destroyed</a> my setup CD.</label>
             </div>
         </form>
         <div class="btn_container"> 
@@ -40,9 +40,4 @@ export default {
     }
 </script>
 
-<style scoped>
-a{
-
-}
-</style>
 
