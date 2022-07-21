@@ -10,7 +10,6 @@
         <div class="btn_container"> 
             <button v-if="this.btcCoreHealthy == true" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
-            <button @click="proceed()" class="btn2">Continue (debug only)</Button>   <!--  remove this eventually -->
         </div>
 </div>
 
@@ -26,17 +25,11 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, sync complete')
+            this.$router.push({ name: 'Setup51' })
         },
         warn(){
             console.log('user trying to proceed without completed sync')
         },
-        proceed(){
-            console.log('debug proceed')
-            if(this.btcCoreHealthy == true){
-                this.$router.push({ name: 'Setup51' })
-            }
-        },
-
     },
     computed:{
         btcCoreHealthy(){
