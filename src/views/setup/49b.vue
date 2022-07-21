@@ -26,6 +26,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceeding')
+            this.$router.push({ name: 'Setup50a' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -38,4 +39,10 @@ export default {
     },
     }
 </script>
+
+<style scoped>
+a{
+
+}
+</style>
 
