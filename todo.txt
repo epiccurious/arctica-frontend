@@ -1,29 +1,29 @@
-FEATURES
+__FEATURES__
 
--FEATURE: Transaction pages need search and filter functionality
+-**FEATURE**: Transaction pages need search and filter functionality
 
--FEATURE: Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
+-**FEATURE**: Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
 
--FEATURE: currency conversions via external API
+-**FEATURE**: currency conversions via external API
     -after implementing currency conversion, a watcher or a two way bind that allows users to input either fiat currency or satoshi value on send page
 
--FEATURE: add some functionality to the settings page
+-**FEATURE**: add some functionality to the settings page
 
--FEATURE: Dyanmic Decays (countdown timer) across the application
+-**FEATURE**: Dyanmic Decays (countdown timer) across the application
 
--FEATURE: dyanmic tripwire warning display (name is currently a placeholder)
+-**FEATURE**: dyanmic tripwire warning display (name is currently a placeholder)
 
--FEATURE: rework placeholder text in setup for where a user should store each package of sds and backups
+-**FEATURE**: rework placeholder text in setup for where a user should store each package of sds and backups
 
--FEATURE: Add a screen for destroying the setup CD after multisig signing flow complete
+-**FEATURE**: Add a screen for destroying the setup CD after multisig signing flow complete
 
--FEATURE: Make suggested password shown at initial setup dynamic
+-**FEATURE**: Make suggested password shown at initial setup dynamic
 
-BUGS
+__BUGS__
 
--BUG: Fix select max button on send page which reloads the page (or remounts the app?) when clicked if other forms have any inputs.
+-**BUG**: Fix select max button on send page which reloads the page (or remounts the app?) when clicked if other forms have any inputs.
     -forms should be stored in local storage for persistance perhaps? Might not want to do this for privacy reasons
 
--BUG: Transaction card does not import and display description
+-**BUG**: Transaction card does not import and display description
 
 
