@@ -17,6 +17,8 @@ FEATURES
 
 -FEATURE: Add a screen for destroying the setup CD after multisig signing flow complete
 
+-FEATURE: Make suggested password shown at initial setup dynamic
+
 BUGS
 
 -BUG: Fix select max button on send page which reloads the page (or remounts the app?) when clicked if other forms have any inputs.
