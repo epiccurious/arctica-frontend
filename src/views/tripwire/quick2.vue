@@ -5,7 +5,7 @@
          <h1>Send Bitcoin</h1>
          </div>
     <div class="send_container">
-        <form class="send_form">
+        <div class="send_form">
             <label>Description</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
@@ -36,7 +36,7 @@
             <br><label v-if="custom == true">Sats per Byte</label>
             <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
 
-        </form>
+        </div>
     </div>
         <div class="send_button_container">
             <button @click="goBack()" class="btn2">Go back</button>
@@ -67,12 +67,10 @@ export default {
               goBack(){
             this.$router.push({ name: 'welcome' })
         },
-        // selectMax(){
-        //     console.log('Select max clicked')
-        //     this.balance = this.quickBalance
-        // },
-
-        //selectMax() is currently disabled because there is a bug where it reloads the page when clicked...
+        selectMax(){
+            console.log('Select max clicked')
+            this.balance = this.quickBalance
+        },
         customEnable(){
             console.log('Custom Fee Selected')
             this.custom = true
@@ -103,9 +101,11 @@ export default {
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
-          mounted(){
-    this.quickBalance = store.getters.getQuickBalance
- },
+ computed:{
+    quickBalance(){
+        return store.getters.getQuickBalance
+    }
+ }
 }
 </script>
 
