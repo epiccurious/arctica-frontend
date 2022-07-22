@@ -6,7 +6,7 @@
          <h1>Send Bitcoin</h1>
          </div>
     <div class="send_container">
-        <form class="send_form">
+        <div class="send_form">
             <label>Description</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
@@ -37,7 +37,7 @@
             <br><label v-if="custom == true">Sats per Byte</label>
             <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
 
-        </form>
+        </div>
     </div>
         <div class="send_button_container">
             <button @click="addRecipient()" class="btn2">Add another recipient</button>
@@ -78,8 +78,6 @@ export default {
             console.log('Add recipient clicked')
             this.multiOutput = true
         },
-        //there is currently a bug where this function (clicking the button) reloads the page (remounts the app?) whenever there is data in one of the 
-        //other forms
         selectMax(){
             console.log('Select max clicked')
             this.balance = this.hotBalance
@@ -101,9 +99,9 @@ export default {
          mediumFee: 5,
          lowFee: 1,
          description: '',
+         balance: '',
          fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
          address: '',
-         balance: '',
          fee: 'high',
          customFee: '',
          custom: false,

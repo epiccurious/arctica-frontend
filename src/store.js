@@ -317,6 +317,9 @@ export default createStore({
           let  transaction = {id:state.id, description:state.description, address:state.address, balance:state.balance, fiat_currency:state.fiat_currency, datetime:state.datetime, fee:state.fee, customFee:state.customFee, status:state.status}
             return (transaction)
         },
+        getTxBalance(state){
+            return state.balance
+        },
         getHotTransactions(state){
             return state.hotTransactions
         },

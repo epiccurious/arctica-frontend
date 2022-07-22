@@ -6,7 +6,7 @@
          <h1>Send Bitcoin</h1>
          </div>
     <div class="send_container">
-        <form class="send_form">
+        <div class="send_form">
             <label>Description</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
@@ -37,7 +37,7 @@
             <br><label v-if="custom == true">Sats per Byte</label>
             <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
 
-        </form>
+        </div>
     </div>
         <div class="send_button_container">
             <button @click="addRecipient()" class="btn2">Add another recipient</button>
