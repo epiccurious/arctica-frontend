@@ -6,7 +6,7 @@
             <button class="btnclose" @click="goBack()"><img src="@/assets/X.png"></button>
         </header>
          <div class="description_block">
-            <input type="text" placeholder="Enter a description...">
+            <input v-model="this.transaction.description" type="text" placeholder="Enter a description...">
         </div>
 
         <div class="tx_block">
