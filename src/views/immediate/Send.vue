@@ -78,8 +78,6 @@ export default {
             console.log('Add recipient clicked')
             this.multiOutput = true
         },
-        //there is currently a bug where this function (clicking the button) reloads the page (remounts the app?) whenever there is data in one of the 
-        //other forms
         selectMax(){
             console.log('Select max clicked')
             this.balance = this.immediateBalance
