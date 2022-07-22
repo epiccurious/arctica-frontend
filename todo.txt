@@ -21,6 +21,4 @@ __FEATURES__
 
 __BUGS__
 
--**BUG**: Transaction card does not import and display description
-
 
