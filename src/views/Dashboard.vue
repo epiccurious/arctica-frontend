@@ -75,7 +75,7 @@ export default {
   }
  },
  computed:{
-  tripwire(){
+ tripwire(){
     return store.getters.getTripwireTripped}
  },
  hotBalance(){

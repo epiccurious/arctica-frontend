@@ -188,7 +188,7 @@ export default{
         setTripwire(){
             store.commit('setTripwireTripped', this.tripwire)
             this.tripwire = store.getters.getTripwireTripped
-            if(this.tripwire != true)
+            if(this.tripwire != 'none')
             {console.log('the following tripwire is tripped', this.tripwire)}
             else{
                 console.log('tripwire is healthy')
