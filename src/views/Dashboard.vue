@@ -1,5 +1,5 @@
 <template>
-  <Compromised v-if="this.tripwire == false" />
+  <Compromised v-if="this.tripwire != true" />
   <div v-else class="page">
     <Nav />
       <div class="dashboard">

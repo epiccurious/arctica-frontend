@@ -3,8 +3,8 @@
 <template>
 <div class="page">
     <header>
-        <h1>Someone has performed a quick withdrawal from SD X</h1>
-        <h2>If you did not spend this money, you should assume envelope X is compromised.</h2> 
+        <h1>Someone has performed a quick withdrawal from SD {{ this.tripped }}</h1>
+        <h2>If you did not spend this money, you should assume envelope {{ this.tripped }} is compromised.</h2> 
         <h2>For your security, all of your funds should now be moved to a fresh Arctica wallet.</h2> 
     </header>
     
@@ -36,7 +36,8 @@ export default {
     methods: {
             acknowledge(){
             console.log('user ack, tripwire compromised')
-            store.commit('setTripwireHealthy', true)
+            //this currently just turns off the debug switch for tripwire1, needs to be more dyanmic eventually
+            store.commit('setTripwire1Healthy', true)
             this.$router.push({ name: 'dashboard' })
         },
         warn(){
@@ -47,6 +48,48 @@ export default {
     data(){
         return{
             checkbox: false,
+            tripped: '',
+        }
+    },
+    computed:{
+        tripwire1(){
+            return store.getters.getTripwire1Healthy
+        },
+        tripwire2(){
+            return store.getters.getTripwire2Healthy
+        },
+        tripwire3(){
+            return store.getters.getTripwire3Healthy
+        },
+        tripwire4(){
+            return store.getters.getTripwire4Healthy
+        },
+        tripwire5(){
+            return store.getters.getTripwire5Healthy
+        },
+        tripwire6(){
+            return store.getters.getTripwire6Healthy
+        },
+        tripwire7(){
+            return store.getters.getTripwire7Healthy
+        },
+        
+    },
+    mounted(){
+                if(this.tripwire1 == false){
+            this.tripped = 'one'
+        }else if(this.tripwire2 == false){
+            this.tripped = 'two'
+        }else if(this.tripwire3 == false){
+            this.tripped = 'three'
+        }else if(this.tripwire4 == false){
+            this.tripped = 'four'
+        }else if(this.tripwire5 == false){
+            this.tripped = 'five'
+        }else if(this.tripwire6 == false){
+            this.tripped = 'six'
+        }else if(this.tripwire7 == false){
+            this.tripped = 'seven'
         }
     }
 }

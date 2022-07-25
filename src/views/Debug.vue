@@ -131,7 +131,7 @@
             Tripwire Healthy
             <label class="toggle_switch_label">
                 <input v-if="this.tripwire == true" v-model="tripwire" @click="tripWireToggle()" type="checkbox" checked>
-                <input v-else-if="this.tripwire == false" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
+                <input v-else-if="this.tripwire != true" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -189,15 +189,15 @@ export default{
             }
             console.log('timelock', store.getters.getTimeLock)
         },
-
+        //this toggle only changes tripwire 1
         tripWireToggle(){
-            if(this.tripwire === false){
-                store.commit('setTripwireHealthy', true)
+            if(this.tripwire != true){
+                store.commit('setTripwire1Healthy', true)
                 store.commit('setTripwireSetup', true)
             } else{
-                store.commit('setTripwireHealthy', false)
+                store.commit('setTripwire1Healthy', false)
             }
-             console.log('tripwire healthy', store.getters.getTripwireHealthy)   
+             console.log('tripwire 1 healthy', store.getters.getTripwire1Healthy)   
              console.log('Tripwire Setup complete', store.getters.getTripwireSetup)
             },
 
@@ -311,21 +311,8 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('SD debug 1', store.getters.getSetup1)
-            console.log('SD debug 2', store.getters.getSetup2)
-            console.log('SD debug 3', store.getters.getSetup3)
-            console.log('SD debug 4', store.getters.getSetup4)
-            console.log('SD debug 5', store.getters.getSetup5)
-            console.log('SD debug 6', store.getters.getSetup6)
-            console.log('SD debug 7', store.getters.getSetup7)
-            console.log('SD debug 8', store.getters.getSetup8)
-            console.log('SD debug 9', store.getters.getSetup9)
-            console.log('SD debug 10', store.getters.getSetup10)
-            console.log('SD debug 11', store.getters.getSetup11)
-            console.log('SD debug 12', store.getters.getSetup12)
-            console.log('SD debug 13', store.getters.getSetup13)
-            console.log('SD debug 14', store.getters.getSetup14)
-            console.log('SD debug 15', store.getters.getSetup15)
+            console.log('tripwire1:' ,store.getters.getTripwire1Healthy)
+            console.log('tripwire healthy:', store.getters.getTripwireHealthy)
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
@@ -356,10 +343,10 @@ export default{
         },
         tripwire:{
             get(){
-                return store.getters.getTripwireHealthy
+                return store.getters.getTripwire1Healthy
             },
             set(newVal){
-                store.commit('setTripwireHealthy', newVal)
+                store.commit('setTripwire1Healthy', newVal)
             }
         },
         sdCard:{
