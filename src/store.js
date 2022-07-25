@@ -30,7 +30,17 @@ export default createStore({
     //post setup complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
-    psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, tripwireHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
+    psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
+
+    //tripwires
+    tripwireHealthy:true,
+    tripwire1Healthy: true,
+    tripwire2Healthy: true,
+    tripwire3Healthy: true,
+    tripwire4Healthy: true,
+    tripwire5Healthy: true,
+    tripwire6Healthy: true,
+    tripwire7Healthy: true,
 
     bpsBricked: false,
     manualDecrypt: false,
@@ -148,6 +158,34 @@ export default createStore({
             state.bpsHealthy = payload
         },
         setTripwireHealthy(state, payload){
+            state.tripwireHealthy = payload
+        },
+        setTripwire1Healthy(state, payload){
+            state.tripwire1Healthy = payload
+            state.tripwireHealthy = payload
+        },
+        setTripwire2Healthy(state, payload){
+            state.tripwire2Healthy = payload
+            state.tripwireHealthy = payload
+        },
+        setTripwire3Healthy(state, payload){
+            state.tripwire3Healthy = payload
+            state.tripwireHealthy = payload
+        },
+        setTripwire4Healthy(state, payload){
+            state.tripwire4Healthy = payload
+            state.tripwireHealthy = payload
+        },
+        setTripwire5Healthy(state, payload){
+            state.tripwire5Healthy = payload
+            state.tripwireHealthy = payload
+        },
+        setTripwire6Healthy(state, payload){
+            state.tripwire6Healthy = payload
+            state.tripwireHealthy = payload
+        },
+        setTripwire7Healthy(state, payload){
+            state.tripwire7Healthy = payload
             state.tripwireHealthy = payload
         },
         setTimeMachineKeysFound(state, payload){
@@ -354,7 +392,14 @@ export default createStore({
             return state.bpsHealthy
         },
         getTripwireHealthy(state){
-            return state.tripwireHealthy
+            return state.tripwireHealthy, 
+            'tripwire1:', state.tripwire1Healthy, 
+            'tripwire2:', state.tripwire2Healthy, 
+            'tripwire3:', state.tripwire3Healthy, 
+            'tripwire4:', state.tripwire4Healthy, 
+            'tripwire5:', state.tripwire5Healthy, 
+            'tripwire6:', state.tripwire6Healthy, 
+            'tripwire7:', state.tripwire7Healthy
         },
         getTimeMachineKeysFound(state){
             return state.timeMachineKeysFound
