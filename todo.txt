@@ -1,6 +1,6 @@
 __FEATURES__
 
--**FEATURE**: Transaction pages need search and filter functionality
+-**FEATURE**: Make suggested password shown at initial setup dynamic
 
 -**FEATURE**: Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
 
@@ -17,7 +17,9 @@ __FEATURES__
 
 -**FEATURE**: Add a screen for destroying the setup CD after multisig signing flow complete
 
--**FEATURE**: Make suggested password shown at initial setup dynamic
+-**FEATURE**: Transaction pages need search and filter functionality?
+
+-**FEATURE**: Address book?
 
 __BUGS__
 

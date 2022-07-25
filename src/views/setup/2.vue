@@ -48,13 +48,18 @@ export default {
             this.passwordSetup = false
             this.password1 = ''
             this.password2 = ''
-        }
+        },
+        // selectWords(){
+        //     firstWord = wordList[Math.random()*2048 | 0]
+        //     secondWord = wordList[Math.random()*2048 | 0]
+        // }
     },
      data(){
      return{
          password1: '',
          password2: '',
-         passwordSetup: false
+         passwordSetup: false,
+         suggested: '',
      }
  }
 }
