@@ -18,5 +18,3 @@ __FEATURES__
 -**FEATURE**: Address book?
 
 __BUGS__
-
-
