@@ -17,7 +17,7 @@
     </header>
     <div class="btn_container"> 
         <button @click="login()" class="btn">Log in</Button>
-        <button v-if="tripwireHealthy == true && tripwireSetup == true" @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
+        <button v-if="tripwireTripped == 'none' && tripwireSetup == true" @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
         <button v-else class="btn6">Quick Withdrawal - $500</button>
        
     </div>
@@ -113,8 +113,8 @@ export default {
       bpsHealthy(){
         return store.getters.getBPSHealthy
       },
-      tripwireHealthy(){
-        return store.getters.getTripwireHealthy
+      tripwireTripped(){
+        return store.getters.getTripwireTripped
       },
       tripwireSetup(){
         return store.getters.getTripwireSetup

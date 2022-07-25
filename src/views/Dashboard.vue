@@ -1,5 +1,5 @@
 <template>
-  <Compromised v-if="this.tripwire != true" />
+  <Compromised v-if="this.tripwire != 'none'" />
   <div v-else class="page">
     <Nav />
       <div class="dashboard">
@@ -76,7 +76,7 @@ export default {
  },
  computed:{
   tripwire(){
-    return store.getters.getTripwireHealthy}
+    return store.getters.getTripwireTripped}
  },
  hotBalance(){
   return store.getters.getHotBalance

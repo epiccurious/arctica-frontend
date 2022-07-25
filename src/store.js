@@ -30,17 +30,7 @@ export default createStore({
     //post setup complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
-    psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, timeMachineKeysFound:false, privacyKeysFound:false,
-
-    //tripwires, setting 1-7 will also set first boolean to the same payload
-    tripwireHealthy:true,
-    tripwire1Healthy: true,
-    tripwire2Healthy: true,
-    tripwire3Healthy: true,
-    tripwire4Healthy: true,
-    tripwire5Healthy: true,
-    tripwire6Healthy: true,
-    tripwire7Healthy: true,
+    psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, tripwireTripped:'none', timeMachineKeysFound:false, privacyKeysFound:false,
 
     bpsBricked: false,
     manualDecrypt: false,
@@ -157,36 +147,8 @@ export default createStore({
         setBPSHealthy(state, payload){
             state.bpsHealthy = payload
         },
-        setTripwireHealthy(state, payload){
-            state.tripwireHealthy = payload
-        },
-        setTripwire1Healthy(state, payload){
-            state.tripwire1Healthy = payload
-            state.tripwireHealthy = payload
-        },
-        setTripwire2Healthy(state, payload){
-            state.tripwire2Healthy = payload
-            state.tripwireHealthy = payload
-        },
-        setTripwire3Healthy(state, payload){
-            state.tripwire3Healthy = payload
-            state.tripwireHealthy = payload
-        },
-        setTripwire4Healthy(state, payload){
-            state.tripwire4Healthy = payload
-            state.tripwireHealthy = payload
-        },
-        setTripwire5Healthy(state, payload){
-            state.tripwire5Healthy = payload
-            state.tripwireHealthy = payload
-        },
-        setTripwire6Healthy(state, payload){
-            state.tripwire6Healthy = payload
-            state.tripwireHealthy = payload
-        },
-        setTripwire7Healthy(state, payload){
-            state.tripwire7Healthy = payload
-            state.tripwireHealthy = payload
+        setTripwireTripped(state, payload){
+            state.tripwireTripped = payload
         },
         setTimeMachineKeysFound(state, payload){
             state.timeMachineKeysFound = payload
@@ -288,6 +250,9 @@ export default createStore({
         },
         setTripwireSetup(state, payload){
             state.tripwireSetup = payload
+            if(payload === false){
+                state.tripwireTripped = 'none'
+            }
         },
         setRecoverySetup(state, payload){
             state.recoverySetup = payload
@@ -391,52 +356,8 @@ export default createStore({
         getBPSHealthy(state){
             return state.bpsHealthy
         },
-        getTripwireHealthy(state){
-            if(state.tripwire1Healthy == false){
-                return 'tripwire1'
-            }
-            else if(state.tripwire2Healthy == false){
-                return 'tripwire2'
-            }
-            else if(state.tripwire3Healthy == false){
-                return 'tripwire3'
-            }
-            else if(state.tripwire4Healthy == false){
-                return 'tripwire4'
-            }
-            else if(state.tripwire5Healthy == false){
-                return 'tripwire5'
-            }
-            else if(state.tripwire6Healthy == false){
-                return 'tripwire6'
-            }
-            else if(state.tripwire7Healthy == false){
-                return 'tripwire7'
-            }
-            else{
-                return true
-            }
-        },
-        getTripwire1Healthy(state){
-            return state.tripwire1Healthy
-        },
-        getTripwire2Healthy(state){
-            return state.tripwire2Healthy
-        },
-        getTripwire3Healthy(state){
-            return state.tripwire3Healthy
-        },
-        getTripwire4Healthy(state){
-            return state.tripwire4Healthy
-        },
-        getTripwire5Healthy(state){
-            return state.tripwire5Healthy
-        },
-        getTripwire6Healthy(state){
-            return state.tripwire6Healthy
-        },
-        getTripwire7Healthy(state){
-            return state.tripwire7Healthy
+        getTripwireTripped(state){
+            return state.tripwireTripped
         },
         getTimeMachineKeysFound(state){
             return state.timeMachineKeysFound

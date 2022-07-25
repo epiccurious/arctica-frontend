@@ -48,13 +48,6 @@
             </label>
         </div>
 
-        <!-- <label>PSBT Found (transfer CD)</label>
-        <select v-model="psbtFound" name="psbtFound" id="psbtFound">
-            <option @click="setPSBT()" value="none">None</option>
-            <option @click="setPSBT()" value="immediate">Immediate</option>
-            <option @click="setPSBT()" value="delayed">Delayed</option>
-        </select> -->
-
         <div class="switch">
             BTC Core Healthy
             <label class="toggle_switch_label">
@@ -127,14 +120,17 @@
             </label>
         </div>
 
-        <div class="switch">
-            Tripwire Healthy
-            <label class="toggle_switch_label">
-                <input v-if="this.tripwire == true" v-model="tripwire" @click="tripWireToggle()" type="checkbox" checked>
-                <input v-else-if="this.tripwire != true" v-model="tripwire" @click="tripWireToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
+        <label>Tripped Tripwire</label>
+        <select v-model="tripwire" name="tripwire" id="tripwire">
+            <option @click="setTripwire()" value="none">None</option>
+            <option @click="setTripwire()" value="one">One</option>
+            <option @click="setTripwire()" value="two">Two</option>
+            <option @click="setTripwire()" value="three">Three</option>
+            <option @click="setTripwire()" value="four">Four</option>
+            <option @click="setTripwire()" value="five">Five</option>
+            <option @click="setTripwire()" value="six">Six</option>
+            <option @click="setTripwire()" value="seven">Seven</option>
+        </select>
 
          <div class="switch">
             Post Setup PII Folder Completed
@@ -189,18 +185,15 @@ export default{
             }
             console.log('timelock', store.getters.getTimeLock)
         },
-        //this toggle only changes tripwire 1
-        tripWireToggle(){
-            if(this.tripwire != true){
-                store.commit('setTripwire1Healthy', true)
-                store.commit('setTripwireSetup', true)
-            } else{
-                store.commit('setTripwire1Healthy', false)
+        setTripwire(){
+            store.commit('setTripwireTripped', this.tripwire)
+            this.tripwire = store.getters.getTripwireTripped
+            if(this.tripwire != true)
+            {console.log('the following tripwire is tripped', this.tripwire)}
+            else{
+                console.log('tripwire is healthy')
             }
-             console.log('tripwire 1 healthy', store.getters.getTripwire1Healthy)   
-             console.log('Tripwire Setup complete', store.getters.getTripwireSetup)
-            },
-
+        },
         psbtFoundToggle(){
             if(this.psbtFound == false){
                 store.commit('setPSBTFound', true)
@@ -311,8 +304,7 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('tripwire1:' ,store.getters.getTripwire1Healthy)
-            console.log('tripwire healthy:', store.getters.getTripwireHealthy)
+            console.log('tripwire tripped:' ,store.getters.getTripwireTripped)
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
@@ -343,10 +335,10 @@ export default{
         },
         tripwire:{
             get(){
-                return store.getters.getTripwire1Healthy
+                return store.getters.getTripwireTripped
             },
             set(newVal){
-                store.commit('setTripwire1Healthy', newVal)
+                store.commit('setTripwireTripped', newVal)
             }
         },
         sdCard:{
