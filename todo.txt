@@ -9,8 +9,6 @@ __FEATURES__
 
 -**FEATURE**: Dyanmic Decays (countdown timer) across the application
 
--**FEATURE**: dyanmic tripwire warning display (name is currently a placeholder)
-
 -**FEATURE**: rework placeholder text in setup for where a user should store each package of sds and backups
 
 -**FEATURE**: Add a screen for destroying the setup CD after multisig signing flow complete
