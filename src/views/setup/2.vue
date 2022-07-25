@@ -20,6 +20,7 @@
                 <div class="btn_container"> 
                     <button v-if="password1 == password2 && password1 != '' && password2 != '' " @click="acknowledge()" class="btn">Continue</Button>
                     <button v-else @click="warn()" class="btn3">Continue</Button>
+                    <button @click="selectWords()" class="btn2">Get New Words</button>
                 </div>
                 </div>
     
