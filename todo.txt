@@ -11,8 +11,6 @@ __FEATURES__
 
 -**FEATURE**: rework placeholder text in setup for where a user should store each package of sds and backups
 
--**FEATURE**: Add a screen for destroying the setup CD after multisig signing flow complete
-
 -**FEATURE**: Transaction pages need search and filter functionality?
 
 -**FEATURE**: Address book?
