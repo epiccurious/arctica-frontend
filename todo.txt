@@ -17,4 +17,8 @@ __FEATURES__
 
 -**FEATURE**: Address book?
 
+-**FEATURE**: Implement post setup prompts on login/dashboard after initial setup
+
+-**FEATURE**: Add screens and utility tool for converting SD 2-7 into an attic key (sd one)
+
 __BUGS__
