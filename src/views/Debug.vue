@@ -111,15 +111,6 @@
             </label>
         </div>        
 
-        <div class="switch">
-            Post Setup Tripwire Completed
-            <label class="toggle_switch_label">
-                <input v-if="this.tripwireSetup == true" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox" checked>
-                <input v-else-if="this.tripwireSetup == false" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-
         <label>Tripped Tripwire</label>
         <select v-model="tripwire" name="tripwire" id="tripwire">
             <option @click="setTripwire()" value="none">None</option>
@@ -131,6 +122,15 @@
             <option @click="setTripwire()" value="six">Six</option>
             <option @click="setTripwire()" value="seven">Seven</option>
         </select>
+        
+        <div class="switch">
+            Post Setup Tripwire Completed
+            <label class="toggle_switch_label">
+                <input v-if="this.tripwireSetup == true" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox" checked>
+                <input v-else-if="this.tripwireSetup == false" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
 
          <div class="switch">
             Post Setup PII Folder Completed

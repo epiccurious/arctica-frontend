@@ -575,7 +575,7 @@ const routes = [
     component: () => import('../views/post-setup/tripwire2.vue')
    },
    {
-    path: '/duress/setup/2',
+    path: '/duress/setup',
     name: 'duressPostSetup1',
     component: () => import('../views/post-setup/duress1.vue')
    },

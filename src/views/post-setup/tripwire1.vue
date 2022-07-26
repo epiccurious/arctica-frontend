@@ -15,6 +15,7 @@
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
+            <button @click="skip()" class="btn2">Skip - Debug (reccomended)</button>
         </div>
     </div> 
 
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import store from '../../store.js'
 export default {
   name: 'tripwirePostSetup1',
   components: {
@@ -35,6 +37,10 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+        skip(){
+            store.commit('setTripwireSetup', true)
+            this.$router.push({ name: 'dashboard' })
+        }
 
     },
     data(){

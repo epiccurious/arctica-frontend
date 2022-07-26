@@ -1,5 +1,7 @@
 <template>
+  <!-- Show the compromised component if the user has a tripped tripwire -->
   <Compromised v-if="this.tripwire != 'none'" />
+  <!-- Show the main dashboard -->
   <div v-else class="page">
     <Nav />
       <div class="dashboard">
@@ -43,6 +45,7 @@
           </div>
       </div>
   </div>
+  <button @click="test()">Test</button>
 </template>
 
 
@@ -60,18 +63,40 @@ export default {
   name: 'Dashboard',
   components: {
     Nav,
-    Compromised
+    Compromised,
   },
      mounted(){
       this.hotBalance = store.getters.getHotBalance
       this.immediateBalance = store.getters.getImmediateBalance
       this.delayedBalance = store.getters.getDelayedBalance
+      this.duressSetup = store.getters.getDuressSetup
+      this.recoverySetup = store.getters.getRecoverySetup
+      this.tripwireSetup = store.getters.getTripwireSetup
+
+      //below are the post setup redirects for first time users that have only completed initial setup
+      if(this.recoverySetup == false){
+        this.$router.push({ name: 'piiPostSetup1' })
+      }
+      else if(this.duressSetup == false){
+        this.$router.push({ name: 'duressPostSetup1' })
+      }
+      else if(this.tripwireSetup == false){
+        this.$router.push({ name: 'tripwirePostSetup1' })
+      }
  },
  data(){
   return{
     hotBalance: store.getters.getHotBalance,
     immediateBalance: store.getters.getImmediateBalance,
     delayedBalance: store.getters.getDelayedBalance,
+  }
+ },
+ methods:{
+  test(){
+    console.log('post setup recovery:', this.recoverySetup)
+    console.log('post setup duress:', this.duressSetup)
+    console.log('post setup tripwire:', this.tripwireSetup)
+    console.log('tripwire', this.tripwire)
   }
  },
  computed:{
@@ -82,10 +107,19 @@ export default {
   return store.getters.getHotBalance
  },
  immediateBalance(){
-  return store.getters.getImmediateBalane
+  return store.getters.getImmediateBalance
  },
  delayedBalance(){
   return store.getters.getDelayedBalance
+ },
+ tripwireSetup(){
+  return store.getters.getTripwireSetup
+ },
+ recoverySetup(){
+  return store.getters.getRecoverySetup
+ },
+ duressSetup(){
+  return store.getters.getDuressSetup
  }
 }
 </script>
