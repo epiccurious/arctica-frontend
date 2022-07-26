@@ -22,7 +22,7 @@
         <div class="btn_container"> 
             <button v-if="checkbox && password1 == password2 && password1 != '' && password2 != '' " @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
-            <button @click="skip()" class="btn2">Skip - (Debug) reccomended</button>
+            <button @click="skip()" class="btn2">Skip - Debug (reccomended)</button>
         </div>
     </div> 
 

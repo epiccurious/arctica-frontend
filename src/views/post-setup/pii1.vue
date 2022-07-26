@@ -15,7 +15,7 @@
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
-            <button class="btn2" @click="skip()">Skip (debug - reccomended)</button>
+            <button class="btn2" @click="skip()">Skip - Debug (reccomended)</button>
         </div>
     </div> 
 

@@ -24,6 +24,10 @@ export default {
         acknowledge(){
             console.log('user ack, proceeding to login')
             this.$router.push({ name: 'welcome' })
+
+            store.commit('setDuressSetup', false)
+            store.commit('setRecoverySetup', false)
+            store.commit('setTripwireSetup', false)
         },
 
     },
