@@ -61,16 +61,6 @@ const routes = [
     component: () => import('../views/hot/sign.vue')
    },
    {
-    path: '/wallets/hot/sign-multi',
-    name: 'hotSignMultioutput',
-    component: () => import('../views/hot/signMultioutput.vue')
-   },
-   {
-    path: '/wallets/hot/broadcast-multi',
-    name: 'hotBroadcastMultioutput',
-    component: () => import('../views/hot/broadcastMultioutput.vue')
-   },
-   {
     path: '/wallets/hot/broadcast',
     name: 'hotBroadcast',
     component: () => import('../views/hot/broadcast.vue')
@@ -79,6 +69,16 @@ const routes = [
     path: '/wallets/hot/confirmation',
     name: 'hotConfirmation',
     component: () => import('../views/hot/confirmation.vue')
+   },
+   {
+    path: '/wallets/hot/sign-multi',
+    name: 'hotSignMultioutput',
+    component: () => import('../views/hot/signMultioutput.vue')
+   },
+   {
+    path: '/wallets/hot/broadcast-multi',
+    name: 'hotBroadcastMultioutput',
+    component: () => import('../views/hot/broadcastMultioutput.vue')
    },
    {
     path: '/wallets/hot/receive',
