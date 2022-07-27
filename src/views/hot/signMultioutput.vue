@@ -97,15 +97,15 @@ export default {
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius:5px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 .btn8{
     background: #DEDEDE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius:5px;  
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 .output_wrap{
     display:flex;
