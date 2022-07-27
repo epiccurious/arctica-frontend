@@ -1,6 +1,12 @@
 __FEATURES__
 
 -**FEATURE**: Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
+    -WIP
+    -Add functionality and create a page design for the 'add a recipient' button on the send page
+    -need global state variable that holds an array of multioutput transactions when necessary
+    -need welcome page logic that sends users to seperate signing flow for immeditae and delayed account multi output txs OR...
+    -potentially eventually just replace the old signing flows with the new multi output component instead of doing two of everything...(this is probably the best approach, pagination will be greyed out)
+    -need to add multi output support to both immediate and delayed accounts, currently only testing with hot account
 
 -**FEATURE**: currency conversions via external API
     -after implementing currency conversion, a watcher or a two way bind that allows users to input either fiat currency or satoshi value on send page
