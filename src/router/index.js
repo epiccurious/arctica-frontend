@@ -66,6 +66,11 @@ const routes = [
     component: () => import('../views/hot/signMultioutput.vue')
    },
    {
+    path: '/wallets/hot/broadcast-multi',
+    name: 'hotBroadcastMultioutput',
+    component: () => import('../views/hot/broadcastMultioutput.vue')
+   },
+   {
     path: '/wallets/hot/broadcast',
     name: 'hotBroadcast',
     component: () => import('../views/hot/broadcast.vue')

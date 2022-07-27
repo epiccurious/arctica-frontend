@@ -1,11 +1,11 @@
 <template>
 <div class="page">
     <div class="display_block">
-        <h1>Approve Transaction for Signing</h1>
+        <h1>Ready to Send?</h1>
         <div class="output_wrap">
             <div class="output_multi" v-for="tx in transaction" :key="tx.id">
-                <img v-if="this.x == tx.id - 1" class="selected" src="@/assets/checkmark_grey.png">
-                <img v-else src="@/assets/checkmark_grey.png">
+                <img v-if="this.x == tx.id - 1" class="selected" src="@/assets/checkmark_green.png">
+                <img v-else src="@/assets/checkmark_green.png">
             </div>
         </div>
         <div class="tx_block">
@@ -27,7 +27,7 @@
             <button v-if="this.x == 0" class="btn8"><img src="@/assets/carat_left.png"></button>
             <button v-else @click="backward()" class="btn7"><img src="@/assets/carat_left.png"></button>
             <div class="interior_horizontal_btn_container">
-                <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
+                <button @click="broadcast()" class="btn">Send</button>
                 <button @click="discard()" class="btn2">Discard</button>
             </div>
             <button v-if="this.x == this.transaction.length - 1" class="btn8"><img src="@/assets/carat_right.png"></button>
@@ -44,12 +44,13 @@
 import store from '../../store.js'
 
 export default {
-    name: 'hotSignMultioutput',
+    name: 'hotBroadcastMultioutput',
+    components: {},
     methods: {
-        sign(){
-            console.log('signing...')
-            this.signed = true
-            this.$router.push({ name: 'hotBroadcastMultioutput' })
+        broadcast(){
+            console.log('broadcasting...')
+            this.$router.push({name: 'hotConfirmation'}) 
+            store.commit('pushHotTransaction', this.transaction)
         },
         discard(){
             console.log('discarding PSBT')
