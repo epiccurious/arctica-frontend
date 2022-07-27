@@ -44,7 +44,7 @@
 import store from '../../store.js'
 
 export default {
-    name: 'hotSignMulti',
+    name: 'hotSignMultioutput',
     methods: {
         sign(){
             console.log('signing...')

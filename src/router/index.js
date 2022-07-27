@@ -62,8 +62,8 @@ const routes = [
    },
    {
     path: '/wallets/hot/sign-multi',
-    name: 'hotSignMulti',
-    component: () => import('../views/hot/signMulti.vue')
+    name: 'hotSignMultioutput',
+    component: () => import('../views/hot/signMultioutput.vue')
    },
    {
     path: '/wallets/hot/broadcast',
