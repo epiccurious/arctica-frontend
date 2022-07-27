@@ -26,7 +26,7 @@
         <div class="horizontal_btn_container">
             <button v-if="this.x == 0" class="btn8"><img src="@/assets/carat_left.png"></button>
             <button v-else @click="backward()" class="btn7"><img src="@/assets/carat_left.png"></button>
-            <div>
+            <div class="interior_horizontal_btn_container">
                 <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
                 <button @click="discard()" class="btn2">Discard</button>
             </div>
@@ -82,6 +82,7 @@ export default {
     justify-content: center;
     align-content: center;
     align-items: center;
+    margin-top: 2%;
 }
 .horizontal_btn_container{
     display:flex;
@@ -89,15 +90,22 @@ export default {
     align-items: center;
     justify-content: space-between;
 }
+.btn2{
+    margin-top: 2%;
+}
 .btn7{
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius:5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .btn8{
     background: #DEDEDE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius:5px;  
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .output_wrap{
     display:flex;
