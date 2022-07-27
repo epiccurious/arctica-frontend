@@ -18,6 +18,7 @@
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'hot' }">Hot</router-link>
     <router-link :to="{ name: 'hotSend' }">HotSend</router-link>
+    <router-link :to="{ name: 'hotSignMulti' }">Hot-Sign-Multi</router-link>
     <router-link :to="{ name: 'hotReceive' }">HotReceive</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'immediateSend' }">ImmediateSend</router-link>
