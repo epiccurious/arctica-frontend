@@ -1,7 +1,6 @@
 __FEATURES__
 
--**FEATURE**: Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
-    -WIP
+-**FEATURE** (WIP): Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
     -Add functionality and create a page design for the 'add a recipient' button on the send page
     -need global state variable that holds an array of multioutput transactions when necessary
     -need welcome page logic that sends users to seperate signing flow for immeditae and delayed account multi output txs OR...
@@ -21,7 +20,7 @@ __FEATURES__
 
 -**FEATURE**: Address book?
 
--**FEATURE**: Flesh out post setup screens with more logic (may require a working BPS to finish)
+-**FEATURE**: Flesh out post setup screens with complete logic (may require a working BPS to finish)
 
 -**FEATURE**: Add screens and utility tool for converting SD 2-7 into an attic key (sd one)
 
