@@ -24,4 +24,9 @@ __FEATURES__
 
 -**FEATURE**: Address book Maybe v2?
 
+-**FEATURE**: Manual recovery screens & process & make decay dynamic
+
+-**FEATURE**: handle spending threshold decays
+
+**FEATURE**: error correct forms (validate information in cases where appropriate)
 __BUGS__

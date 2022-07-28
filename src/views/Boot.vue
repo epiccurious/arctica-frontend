@@ -7,7 +7,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
   <div v-if="this.currentSD == 'none' || this.currentSD == 'one'" class="login">
 <header>
   <h1>Welcome to Arctica</h1>
-  <h2>Please insert SD 1 and reboot this machine.</h2>
+  <h2>If you have already set up Arctica, please insert SD 1 and reboot this machine.</h2>
   <h2>If you have not yet setup Arctica click install.</h2>
 </header>
     <div class="btn_container"> 

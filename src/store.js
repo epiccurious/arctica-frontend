@@ -38,7 +38,7 @@ export default createStore({
     id:null, description:null, address:null, balance:null, fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
 
     //multioutput logic, for testing, may remove
-    psbtArr: [],
+    // psbtArr: [],
     //existing transaction history, placeholder hardcodes
       immediateTransactions: [
         {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000987, status: 'Confirmed', description: ''},
@@ -109,9 +109,9 @@ export default createStore({
             state.status = null
         },
         //below is for testing, may remove
-        pushPSBTArr(state, payload){
-             psbtArr.push(payload)
-        },
+        // pushPSBTArr(state, payload){
+        //      psbtArr.push(payload)
+        // },
         setHotTransactions(state, payload){
             state.hotTransactions = payload
         },
@@ -331,9 +331,9 @@ export default createStore({
             return state.balance
         },
         //below is for testing, may remove
-        getPSBTArr(state){
-            return state.psbtArr
-        },
+        // getPSBTArr(state){
+        //     return state.psbtArr
+        // },
         getHotTransactions(state){
             return state.hotTransactions
         },
