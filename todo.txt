@@ -43,8 +43,6 @@ __FEATURES__
 
 __BUGS__
 
-**BUG**: Refine verbiage used during install for SDs 1-7 (currently says 'SD creation complete' 3 seperate times, need more dilleniation)
-
 **BUG**: Change instances of 'reboot this machine/device' to 'power on this machine' or something more clear. 
 
 **BUG**: Always refer to the machine in question during setup? (probably not necessary)
