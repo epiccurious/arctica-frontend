@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>SD Card 1</h1>
-        <h2>Please swap over to your primary device, insert SD card 1 and reboot the machine.</h2>
+        <h2>Please swap over to your primary machine, power it off, insert SD card 1 and power on the machine.</h2>
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok (this will close the application)</Button>

@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>1 of 5 Signing Successful</h1>
-        <h2>Please power off this device. Swap SD 1 for SD 2 and reboot this machine.</h2>
+        <h2>Please power off this machine. Swap SD 1 for SD 2 and power on this machine.</h2>
     </header>
     
 

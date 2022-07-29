@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>5 of 5 Signing Successful</h1>
-        <h2>Please power off this device. Return to your primary machine, insert SD 1 & the Transfer CD and reboot.</h2>
+        <h2>Please power off this machine. Return to your primary machine, insert SD 1 & the Transfer CD and power on the primary machine.</h2>
     </header>
     
 

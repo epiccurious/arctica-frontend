@@ -5,7 +5,7 @@ Time Machine Key obtained from the meeting.-->
 <div class="page">
     <header>
         <h1>Once you've received your Time Machine Key...</h1>
-        <h2>Please insert the SD card you were given and reboot this machine</h2>
+        <h2>Please power off your primary machine, insert the SD card you were given and power on the machine</h2>
     </header>
     
 
