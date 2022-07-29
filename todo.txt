@@ -29,4 +29,25 @@ __FEATURES__
 -**FEATURE**: handle spending threshold decays
 
 **FEATURE**: error correct forms (validate information in cases where appropriate)
+
+**FEATURE**: a document for Time Machine Protocol (accessed via hyperlink)
+
+**FEATURE**: a document for duress protocol (accessed via hyperlink)
+
+**FEATURE**: A hosted tutorial video showing how to label devices at setup
+
+**FEATURE**: A tutorial for flashing linux on the first device?
+
+**FEATURE**: More clear instructions on how to sweep funds when tripwire is compromised or when shelf life is approaching (currently istall assumes user is brand new)
+
 __BUGS__
+
+**BUG**: Refine verbiage used during install for SDs 1-7 (currently says 'SD creation complete' 3 seperate times, need more dilleniation)
+
+**BUG**: Change instances of 'reboot this machine/device' to 'power on this machine' or something more clear. 
+
+**BUG**: Always refer to the machine in question during setup? (probably not necessary)
+
+**BUG**: Primary machine boolean is not always enforced (possibly no way around this, we cannot enforce secondary/primary machine relationship other than through suggestion)
+
+**BUG**: Make time machine protocol more clear in terms of "steal from you" (make user understand its referring to the rest of their funds not just the 10k)
