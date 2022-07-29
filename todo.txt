@@ -7,8 +7,6 @@ __FEATURES__
         -potentially eventually just replace the old signing flows with the new multi output component instead of doing two of everything...(this is probably the best approach, pagination will be greyed out)
     -need to add multi output support to both immediate and delayed accounts, currently only testing with hot account
 
--**FEATURE**: add some functionality to the settings page
-
 -**FEATURE**: Dyanmic Decays (countdown timer) across the application
     -Manual recovery screens & process & make decay dynamic here
 
@@ -40,6 +38,8 @@ __FEATURES__
     -after implementing currency conversion, a watcher or a two way bind that allows users to input either fiat currency or satoshi value on send page
 
 -**FEATURE**: Address book Maybe v2?
+
+-**FEATURE**: add some functionality to the settings page (maybe v2?)
 
 __BUGS__
 
