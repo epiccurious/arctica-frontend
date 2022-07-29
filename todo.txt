@@ -40,7 +40,7 @@ __FEATURES__
 
 **FEATURE**: A tutorial for destroying the set up CD and transfer CDs (user not currently instructed to destroy transfer CDs...I think)
 
-**FEATURE**: More clear instructions on how to sweep funds when tripwire is compromised or when shelf life is approaching (currently istall assumes user is brand new)
+**FEATURE**: More clear instructions on how to sweep funds when tripwire is compromised or when shelf life is approaching (currently install assumes user is brand new and tripped tripwire instructs user to sweep funds without guidance)
 
 __BUGS__
 
