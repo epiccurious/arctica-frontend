@@ -40,7 +40,7 @@
         </div>
 
         <div class="switch">
-            Setup CD inserted
+            Set up CD inserted
             <label class="toggle_switch_label">
                 <input v-if="this.setupCD == true" v-model="setupCD" @click="setupCDToggle()" type="checkbox" checked>
                 <input v-else-if="this.setupCD == false" v-model="setupCD" @click="setupCDToggle()" type="checkbox">
@@ -122,9 +122,9 @@
             <option @click="setTripwire()" value="six">Six</option>
             <option @click="setTripwire()" value="seven">Seven</option>
         </select>
-        
+
         <div class="switch">
-            Post Setup Tripwire Completed
+            Post Set up Tripwire Completed
             <label class="toggle_switch_label">
                 <input v-if="this.tripwireSetup == true" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox" checked>
                 <input v-else-if="this.tripwireSetup == false" v-model="tripwireSetup" @click="tripWireSetupToggle()" type="checkbox">
@@ -133,7 +133,7 @@
         </div>
 
          <div class="switch">
-            Post Setup PII Folder Completed
+            Post Set up PII Folder Completed
             <label class="toggle_switch_label">
                 <input v-if="this.recoverySetup == true" v-model="recoverySetup" @click="recoverySetupToggle()" type="checkbox" checked>
                 <input v-else-if="this.recoverySetup == false" v-model="recoverySetup" @click="recoverySetupToggle()" type="checkbox">
@@ -142,7 +142,7 @@
         </div>
 
         <div class="switch">
-            Post Setup Duress Password Completed
+            Post Set up Duress Password Completed
             <label class="toggle_switch_label">
                 <input v-if="this.duressSetup == true" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox" checked>
                 <input v-else-if="this.duressSetup == false" v-model="duressSetup" @click="duressSetupToggle()" type="checkbox">
@@ -152,10 +152,10 @@
 
         <!-- this button seems kind of useless, may remove. The only way for us to discern if this variable should be true or false in a real world scenario
          would be to create a file on the users machine. Potential side effects in certain edge cases where a user tries to boot from SD 1 on a machine
-        they did not use to complete setup. Perhaps better to assume we never know for sure if the user has set up already or not and always present 
+        they did not use to complete set up. Perhaps better to assume we never know for sure if the user has set up already or not and always present 
         them with the option, unless they have booted from SD 1-7 in which case this below variable and debug toggle switch will not be necessary. -->
         <div class="switch">
-            Initial Setup Complete (disabled)
+            Initial Set up Complete (disabled)
             <label class="toggle_switch_label">
                 <input type="checkbox" disabled>
                 <span class="slider"></span>
@@ -253,7 +253,7 @@ export default{
             } else{
                 store.commit('setTripwireSetup', false)
             }
-             console.log('Tripwire Setup Completed', store.getters.getTripwireSetup) 
+             console.log('Tripwire Set up Completed', store.getters.getTripwireSetup) 
         },
         recoverySetupToggle(){
                 if(this.recoverySetup == false){
@@ -261,7 +261,7 @@ export default{
             } else{
                 store.commit('setRecoverySetup', false)
             }
-             console.log('Recovery Folder Setup Completed', store.getters.getRecoverySetup) 
+             console.log('Recovery Folder Set up Completed', store.getters.getRecoverySetup) 
         },
         duressSetupToggle(){
                 if(this.duressSetup == false){
@@ -269,7 +269,7 @@ export default{
             } else{
                 store.commit('setDuressSetup', false)
             }
-             console.log('Duress Setup Completed', store.getters.getDuressSetup) 
+             console.log('Duress Set up Completed', store.getters.getDuressSetup) 
         },
         btcCoreHealthyToggle(){
                 if(this.btcCoreHealthy == false){
@@ -293,7 +293,7 @@ export default{
             } else{
                 store.commit('setSetupCD', false)
             }
-             console.log('Setup CD inserted', store.getters.getSetupCD) 
+             console.log('Set up CD inserted', store.getters.getSetupCD) 
         },    
         primaryMachineToggle(){
                 if(this.primaryMachine == false){

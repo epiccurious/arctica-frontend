@@ -73,7 +73,7 @@ export default {
       this.recoverySetup = store.getters.getRecoverySetup
       this.tripwireSetup = store.getters.getTripwireSetup
 
-      //below are the post setup redirects for first time users that have only completed initial setup
+      //below are the post set up redirects for first time users that have only completed initial set up
       if(this.recoverySetup == false){
         this.$router.push({ name: 'piiPostSetup1' })
       }
@@ -93,9 +93,9 @@ export default {
  },
  methods:{
   test(){
-    console.log('post setup recovery:', this.recoverySetup)
-    console.log('post setup duress:', this.duressSetup)
-    console.log('post setup tripwire:', this.tripwireSetup)
+    console.log('post set up recovery:', this.recoverySetup)
+    console.log('post set up duress:', this.duressSetup)
+    console.log('post set up tripwire:', this.tripwireSetup)
     console.log('tripwire', this.tripwire)
   }
  },

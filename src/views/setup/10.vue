@@ -33,7 +33,7 @@ export default {
             this.$router.push({ name: 'Setup11' })
             //eventually need to electronically mark SD 7 with a text file label here
             store.commit('setSetup7', true) //eventually replace this with virtual label
-            //eventually need to mark SD 7 with a text file label here that directs primary machine to jump to step 19 of setup
+            //eventually need to mark SD 7 with a text file label here that directs primary machine to jump to step 19 of set up
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

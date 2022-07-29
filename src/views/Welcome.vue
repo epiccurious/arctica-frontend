@@ -187,7 +187,7 @@ export default {
       },
     },
     mounted(){
-      //for initial setup only
+      //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })
       }

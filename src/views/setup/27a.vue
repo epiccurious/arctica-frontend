@@ -1,14 +1,14 @@
 <template>
 <div class="page">
     <header>
-        <h1>Insert the Setup CD</h1>
-        <h2>Please insert the CD labelled "setup"</h2>
+        <h1>Insert the Set up CD</h1>
+        <h2>Please insert the CD labelled "set up"</h2>
     </header> 
     <div class="form_container">
         <form>
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have inserted the setup CD.</label>
+                <label for="checkbox">I have inserted the set up CD.</label>
             </div>
         </form>
         <div class="btn_container"> 
@@ -28,7 +28,7 @@ export default {
   name: 'Setup27a',
     methods: {
         acknowledge(){
-            console.log('user ack, moving all info from setup CD to SD 2')
+            console.log('user ack, moving all info from set up CD to SD 2')
             this.$router.push({ name: 'Setup27b' })
         },
         warn(){

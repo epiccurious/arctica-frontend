@@ -3,8 +3,8 @@
 <template>
 <div class="page">
     <header>
-        <h1>Please insert the setup CD</h1>
-        <h2>Insert the disc labelled 'Setup'.</h2>
+        <h1>Please insert the set up CD</h1>
+        <h2>Insert the disc labelled 'Set up'.</h2>
     </header> 
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 

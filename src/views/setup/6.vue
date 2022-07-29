@@ -33,7 +33,7 @@ export default {
             this.$router.push({ name: 'Setup7' })
             //eventually need to electronically mark SD 3 with a text file label here
             store.commit('setSetup3', true) //eventually replace this with virtual label
-            //eventually need to mark SD 3 with a text file label here that directs secondary machine to jump to step 15 of setup
+            //eventually need to mark SD 3 with a text file label here that directs secondary machine to jump to step 15 of set up
 
         },
         warn(){

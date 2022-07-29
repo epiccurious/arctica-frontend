@@ -1,7 +1,7 @@
 <template>
 <div class="page">
     <header>
-        <h1>Congratulations. You have successfully completed setup.</h1>
+        <h1>Congratulations. You have successfully completed set up.</h1>
         <h2>Now we must wait for Bitcoin Core to finish it's initial sync.</h2>
         <h2>This computer should remain on and unlocked until the time chain has finished it's sync.</h2> 
         <h2>This can take anywhere from a few hours to a few weeks depending on your internet connection.</h2>

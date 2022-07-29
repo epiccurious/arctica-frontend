@@ -7,7 +7,7 @@ export default createStore({
     sdOne: false, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
 
     setupCD: false, 
-    //setup variables 
+    //set up variables 
     setup1: false, //file placed on SD 1 at step 4 to jump user to step 12
     setup2: false, //file placed on SD 2 at step 5 to jump user to step 14
     setup3: false, //file placed on SD 3 at step 6 to jump user to step 15
@@ -27,7 +27,7 @@ export default createStore({
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
 
-    //post setup complete
+    //post set up complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
     psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, tripwireTripped:'none', timeMachineKeysFound:false, privacyKeysFound:false,
@@ -39,6 +39,7 @@ export default createStore({
 
     //multioutput logic, for testing, may remove
     // psbtArr: [],
+
     //existing transaction history, placeholder hardcodes
       immediateTransactions: [
         {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000987, status: 'Confirmed', description: ''},

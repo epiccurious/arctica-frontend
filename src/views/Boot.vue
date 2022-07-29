@@ -8,7 +8,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
 <header>
   <h1>Welcome to Arctica</h1>
   <h2>If you have already set up Arctica, please insert SD 1 and reboot this machine.</h2>
-  <h2>If you have not yet setup Arctica click install.</h2>
+  <h2>If you have not yet set up Arctica click install.</h2>
 </header>
     <div class="btn_container"> 
         <button @click="install()" class="btn">Install</Button>
@@ -17,7 +17,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
   </div>
 
   <div v-else class="login">
-<header>
+<header> 
   <h1>Welcome to Arctica</h1>
   <h2>Please insert a transfer CD.</h2>
   <h2>If you do not have a transfer CD, please insert SD 1 and reboot this machine.</h2>

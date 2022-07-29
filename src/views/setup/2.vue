@@ -3,7 +3,7 @@
 
 
   <header v-else>
-<h1>Let's setup your password</h1>
+<h1>Let's set up your password</h1>
  <h2>Select two words which are easy for you to remember, such as an adjective and a noun.</h2> 
  <h2>You should not write these words down.</h2> 
      <h2>Below is an example which you can use if you like</h2>

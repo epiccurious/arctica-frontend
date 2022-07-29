@@ -1,14 +1,14 @@
 <template>
 <div class="page">
     <header>
-        <h1>Remove the 'Setup' CD</h1>
-        <h2>Please remove the Setup CD at this time.</h2>
+        <h1>Remove the 'Set up' CD</h1>
+        <h2>Please remove the Set up CD at this time.</h2>
     </header> 
         <div class="form_container">
             <form>
                 <div class="checkbox_container">
                     <input type="checkbox" v-model="checkbox" name="checkbox">
-                    <label for="checkbox">I have removed the Setup CD.</label>
+                    <label for="checkbox">I have removed the Set up CD.</label>
                 </div>
             </form>
         </div>

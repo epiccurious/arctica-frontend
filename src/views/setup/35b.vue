@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>CD 4 Backup</h1>
-        <h2>Please remove the Setup CD and insert CD 4.</h2>
+        <h2>Please remove the Set up CD and insert CD 4.</h2>
     </header> 
     <div class="form_container">
         <form>
