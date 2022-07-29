@@ -13,22 +13,21 @@ __FEATURES__
 -**FEATURE**: add some functionality to the settings page
 
 -**FEATURE**: Dyanmic Decays (countdown timer) across the application
+    -Manual recovery screens & process & make decay dynamic here
 
 -**FEATURE**: rework placeholder text in setup for where a user should store each package of sds and backups
 
 -**FEATURE**: Transaction pages need search and filter functionality?
 
--**FEATURE**: Flesh out post setup screens with complete logic (may require a working BPS to finish)
+-**FEATURE**: Flesh out post setup screens with complete logic (may require a working BPS to completely finish)
 
 -**FEATURE**: Add screens and utility tool for converting SD 2-7 into an attic key (sd one)
 
 -**FEATURE**: Address book Maybe v2?
 
--**FEATURE**: Manual recovery screens & process & make decay dynamic
-
 -**FEATURE**: handle spending threshold decays
 
-**FEATURE**: error correct forms (validate information in cases where appropriate)
+**FEATURE**: error correct forms (validate information in cases where appropriate such as length of phone numbers, min char for passwords etc)
 
 **FEATURE**: a document for Time Machine Protocol (accessed via hyperlink)
 

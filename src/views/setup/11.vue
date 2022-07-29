@@ -1,7 +1,7 @@
 <template>
 <div class="page">
     <header>
-        <h1>SD creation successful</h1>
+        <h1>SD initial flash successful</h1>
         <h2>Please power off this machine, insert SD 1, and reboot the device.</h2>
     </header>   
         <div class="btn_container"> 
