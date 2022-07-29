@@ -43,8 +43,6 @@ __FEATURES__
 
 __BUGS__
 
-**BUG**: Always refer to the machine in question during setup? (probably not necessary)
-
 **BUG**: Primary machine boolean is not always enforced (possibly no way around this, we cannot enforce secondary/primary machine relationship other than through suggestion)
 
 **BUG**: Make time machine protocol more clear in terms of "steal from you" (make user understand its referring to the rest of their funds not just the 10k)
