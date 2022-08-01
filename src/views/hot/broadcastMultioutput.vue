@@ -51,8 +51,8 @@ export default {
     methods: {
         broadcast(){
             console.log('broadcasting...')
+            store.commit('pushHotTransaction', this.tx)
             this.$router.push({name: 'hotConfirmation'}) 
-            store.commit('pushHotTransaction', this.transaction)
         },
         discard(){
             console.log('discarding PSBT')
@@ -75,6 +75,10 @@ export default {
     computed:{
         transaction(){
             return store.getters.getPSBTArr
+        },
+        //this is a mess, need to rework how the state is handled, above is the multioutput array, below is the single output tx
+        tx(){
+            return store.getters.getTransaction
         }
     }
     }
