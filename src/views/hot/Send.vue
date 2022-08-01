@@ -12,11 +12,11 @@
 
             <div v-for="y in x" :key="y" class="multioutput-wrapper">
             
-            <br><label v-if="this.x > 1">Output {{ y }} of {{ this.x }} Address</label>
+            <br><div v-if="this.x > 1" class="remove_button"><label>Recipient {{ y }} of {{ this.x }} Address <button v-if="y > 1" @click="removeRecipient()" class="btn7"><img src="../../assets/X.png"></button></label></div> 
             <label v-else>Address</label>
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
-            <br><label v-if="this.x > 1">Ouput {{ y }} of {{ this.x }} Amount</label>
+            <br><label v-if="this.x > 1">Recipient {{ y }} of {{ this.x }} Amount</label>
             <label v-else>Amount</label>
             <br><input v-model="balance" type="float" required placeholder="₿ 0.00">
             <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
@@ -27,11 +27,9 @@
                 <h3>₿ {{ hotBalance }}</h3>
                 </div>
                 <div class="balance_right">
-                    <button @click="selectMax()" class="btn4">Select Max</button>
+                    <button @click="selectMax()" class="btn4">Select Max</button> 
                 </div>
             </div>
-
-            <button v-if="y > 1" @click="removeRecipient()" class="btn2">Remove recipient</button>
 
             </div>
             
@@ -48,7 +46,7 @@
         </div>
     </div>
         <div class="send_button_container">
-            <button @click="addRecipient()" class="btn2">Add another recipient</button>
+            <button @click="addRecipient()" class="btn2">Add another recipient (bugged)</button>
             <button @click="continueFn(description, address, balance, fee, customFee)" class="btn">Continue</Button>
         </div>
     </div>        
@@ -106,6 +104,12 @@ export default {
         },
     },
    data(){
+    for (this.y in this.x){
+        this.balance[this.y] = ''
+    }
+    for (this.y in this.x){
+        this.address[this.y] = ''
+    }
      return{
          id: null,
          datetime: null,
@@ -113,9 +117,9 @@ export default {
          mediumFee: 5,
          lowFee: 1,
          description: '',
-         balance: '',
+         balance: [],
          fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
-         address: '',
+         address: [],
          fee: 'high',
          customFee: '',
          custom: false,
@@ -147,9 +151,5 @@ export default {
 h2{
     font-size:15px;
     line-height: 18px;
-}
-.vert_stack{
-    display:flex;
-    flex-direction: column;
 }
   </style>

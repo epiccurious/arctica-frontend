@@ -304,7 +304,7 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('tripwire tripped:' ,store.getters.getTripwireTripped)
+            console.log('here is your multi outputs:' ,store.getters.getTransaction)
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
