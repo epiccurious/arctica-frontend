@@ -72,7 +72,7 @@ export default {
             this.transaction = store.getters.getTransaction
             store.commit('pushPSBTArr', this.transaction)
             //testing multioutput above
-            this.$router.push({name: 'hotSign'})
+            this.$router.push({name: 'hotSignMultioutput'})
 
         },
         // eventually the continueFn() should construct the PSBT
