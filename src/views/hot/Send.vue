@@ -10,10 +10,14 @@
             <label>Description</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
-            <br><label>Address</label>
+            <div v-for="y in x" :key="y" class="multioutput-wrapper">
+            
+            <br><label v-if="this.x > 1">Output {{ y }} of {{ this.x }} Address</label>
+            <label v-else>Address</label>
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
-            <br><label>Amount</label>
+            <br><label v-if="this.x > 1">Ouput {{ y }} of {{ this.x }} Amount</label>
+            <label v-else>Amount</label>
             <br><input v-model="balance" type="float" required placeholder="₿ 0.00">
             <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
 
@@ -25,6 +29,10 @@
                 <div class="balance_right">
                     <button @click="selectMax()" class="btn4">Select Max</button>
                 </div>
+            </div>
+
+            <button v-if="y > 1" @click="removeRecipient()" class="btn2">Remove recipient</button>
+
             </div>
             
             <br><label>Fee</label>
@@ -78,7 +86,11 @@ export default {
         // eventually the continueFn() should construct the PSBT
         addRecipient(){
             console.log('Add recipient clicked')
-            this.multiOutput = true
+            this.x = this.x + 1
+        },
+        removeRecipient(){
+            console.log('remove recipient clicked')
+            this.x = this.x - 1
         },
         selectMax(){
             console.log('Select max clicked')
@@ -109,7 +121,7 @@ export default {
          custom: false,
          transaction: {},
          constructed: false,
-         multiOutput: false,
+         x: 1,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
@@ -135,5 +147,9 @@ export default {
 h2{
     font-size:15px;
     line-height: 18px;
+}
+.vert_stack{
+    display:flex;
+    flex-direction: column;
 }
   </style>
