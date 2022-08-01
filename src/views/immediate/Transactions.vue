@@ -11,8 +11,8 @@
           <h3>{{ transaction.datetime }}</h3>
           </div>
           <div class="transaction_container_right">
-            <h2 class="balance">₿ -{{ transaction.balance.toLocaleString('en-US') }} sats</h2>
-            <h3 class="fiat_currency">$ -{{ transaction.fiat_currency.toLocaleString('en-US') }}</h3>
+            <h2 class="balance">- ₿ {{ transaction.balance.toLocaleString('en-US') }} sats</h2>
+            <h3 class="fiat_currency">- $ {{ transaction.fiat_currency.toLocaleString('en-US') }}</h3>
           </div>
         </div>
       </div>

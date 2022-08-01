@@ -63,7 +63,7 @@ export default {
             store.commit('setTxId', this.id)
             store.commit('setTxDescription', description)
             store.commit('setTxAddress', address)
-            store.commit('setTxBalance', balance)
+            store.commit('setTxBalance', balance*100000000)
             store.commit('setTxFiat', this.fiat_currency)
             store.commit('setTxDateTime', this.datetime)
             store.commit('setTxFee', fee)
