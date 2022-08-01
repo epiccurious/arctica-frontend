@@ -70,7 +70,7 @@ export default {
             store.commit('setTxCustomFee', customFee)
             store.commit('setTxStatus', 'unconfirmed')
             this.transaction = store.getters.getTransaction
-            // store.commit('pushPSBTArr', this.transaction)
+            store.commit('pushPSBTArr', this.transaction)
             //testing multioutput above
             this.$router.push({name: 'hotSign'})
 
