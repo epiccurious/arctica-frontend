@@ -24,13 +24,15 @@
         </div>
 
         <div class="horizontal_btn_container">
-            <button v-if="this.x == 0" class="btn8"><img src="@/assets/carat_left.png"></button>
+            <button v-if="this.transaction.length == 1" hidden class="btn8"><img src="@/assets/carat_left.png"></button>
+            <button v-else-if="this.x == 0" class="btn8"><img src="@/assets/carat_left.png"></button>
             <button v-else @click="backward()" class="btn7"><img src="@/assets/carat_left.png"></button>
             <div class="interior_horizontal_btn_container">
                 <button @click="broadcast()" class="btn">Send</button>
                 <button @click="discard()" class="btn2">Discard</button>
             </div>
-            <button v-if="this.x == this.transaction.length - 1" class="btn8"><img src="@/assets/carat_right.png"></button>
+            <button v-if="this.transaction.length == 1" hidden class="btn8"><img src="@/assets/carat_right.png"></button>
+            <button v-else-if="this.x == this.transaction.length - 1" class="btn8"><img src="@/assets/carat_right.png"></button>
             <button v-else @click="forward()" class="btn7"><img src="@/assets/carat_right.png"></button>
             
         </div>

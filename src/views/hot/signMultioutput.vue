@@ -24,13 +24,15 @@
         </div>
 
         <div class="horizontal_btn_container">
-            <button v-if="this.x == 0" class="btn8"><img src="@/assets/carat_left.png"></button>
+            <button v-if="this.transaction.length == 1" hidden class="btn8"><img src="@/assets/carat_left.png"></button>
+            <button v-else-if="this.x == 0" class="btn8"><img src="@/assets/carat_left.png"></button>
             <button v-else @click="backward()" class="btn7"><img src="@/assets/carat_left.png"></button>
             <div class="interior_horizontal_btn_container">
                 <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
                 <button @click="discard()" class="btn2">Discard</button>
             </div>
-            <button v-if="this.x == this.transaction.length - 1" class="btn8"><img src="@/assets/carat_right.png"></button>
+            <button v-if="this.transaction.length == 1" hidden class="btn8"><img src="@/assets/carat_right.png"></button>
+            <button v-else-if="this.x == this.transaction.length - 1" class="btn8"><img src="@/assets/carat_right.png"></button>
             <button v-else @click="forward()" class="btn7"><img src="@/assets/carat_right.png"></button>
             
         </div>
@@ -65,19 +67,13 @@ export default {
     },
     data(){
         return{
-            transaction: [
-        {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000987, status: 'Confirmed', description: ''},
-        {id: 2, address: 'bc1qu7cr0hyc4xfnk3fh0cdce43fnzfwdtq5a089vs', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-09:30', fee: 0.00001247, status: 'Confirmed', description: ''},
-        {id: 3, address: 'bc1prd9haet4clzacme9gnpgxknj04480xemzh2wt3', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-10T12:00:00-04:10', fee: 0.00000408, status: 'Unconfirmed', description: ''},
-         {id: 4, address: 'bc1prd9haet4clzacme9gnpgxknj04480xemzh2wt3', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-10T12:00:00-04:10', fee: 0.00000408, status: 'Unconfirmed', description: ''}
-    ],
             x: 0
         }
     },
     computed:{
-        // transaction(){
-        //     return store.getters.getPSBTArr
-        // }
+        transaction(){
+            return store.getters.getPSBTArr
+        }
     }
 }
 </script>
