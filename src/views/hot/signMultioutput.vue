@@ -56,6 +56,7 @@ export default {
         discard(){
             console.log('discarding PSBT')
             store.commit('clearTransaction')
+            store.commit('clearPSBTArr')
             this.$router.push({name: 'hot'}) 
         },
         forward(){
