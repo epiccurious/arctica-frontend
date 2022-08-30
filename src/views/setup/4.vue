@@ -12,7 +12,7 @@
                 </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="currentSD == 'one' && checkbox" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup4',
     methods: {
@@ -32,7 +34,10 @@ export default {
             invoke('create_bootable_usb').then((response) => console.log(response))
             invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
-            this.$router.push({ path: '/setup/5' })
+            this.$router.push({ name: 'Setup5' })
+            //eventually need to electronically mark SD 1 with a text file label here and after doing so update global state
+            store.commit('setSetup1', true) //eventually replace this with virtual label
+            //eventually need to mark SD 1 with a text file label here that directs secondary machine to jump to step 12 of set up
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -43,7 +48,12 @@ export default {
         return{
             checkbox: false,
         }
-    }
+    },
+    computed: {
+        currentSD(){
+            return store.getters.getCurrentSD
+        }
+    },
 }
 </script>
 

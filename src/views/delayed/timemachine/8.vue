@@ -38,16 +38,13 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, proceeding to immediate signing flow')
-            // this.$router.push({ path: '/' })
-            // this button needs to send the user to a preconstructed transaction which they then sign
-
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
         goBack(){
             console.log('user aborting time machine protocol')
-            this.$router.push({ path: '/wallets' })
+            this.$router.push({ name: 'dashboard' })
         }
 
     },

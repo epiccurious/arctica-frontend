@@ -1,6 +1,6 @@
 <template>
     <div class="nav_container"> 
-        <div id="menu_container">
+        <div class="menu_container">
             <div class="wallet_overview">
                     <img src="@/assets/Wallet.png"/>
                     <div class="description_balance">
@@ -36,6 +36,7 @@
 
 <script>
 import { RouterView, RouterLink } from "vue-router";
+import store from '../store.js'
 {
   RouterView;
   RouterLink
@@ -67,74 +68,19 @@ export default{
             }
         }
     },
-    inject: ['hotBalance']
+     mounted(){
+    this.hotBalance = store.getters.getHotBalance
+ },
+    data(){
+        return{
+            hotBalance: null
+        }
+    }
 }
 </script>
 
 <style scoped>
-#menu_container{ 
-    display:flex;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items: center;
-    align-content:center;
-}
-.wallet_overview{
-    display:flex;
-    flex-direction: row;
-}
-.middle_menu{
-    display:flex;
-    flex-direction: row;
-}
-.wallet_tab{
-    padding:28px;
-    font-weight:600;
-}
-.send_tab{
-    padding:28px;
-    font-weight:600;
-}
-.receive_tab{
-    padding:28px;
-    font-weight:600;
-}
-.wallet_tab_selected{
-    padding:28px;
-    color:#F7931A;
-    border-style: solid; 
-    border-width: 0px 0px 5px 0px;
-    border-color: #F7931A;
-    font-weight:600;
-}
-.receive_tab_selected{
-    padding:28px;
-    color:#F7931A;
-    border-style: solid; 
-    border-width: 0px 0px 5px 0px;
-    border-color: #F7931A;
-    font-weight:600;
-}
-.send_tab_selected{
-    padding:28px;
-    color:#F7931A;
-    border-style: solid; 
-    border-width: 0px 0px 5px 0px;
-    border-color: #F7931A;
-    font-weight:600;
-}
-.description_balance{
-    padding-left: 20px;
-}
 img{
     align-self: center;
-}.description{
-    color: #777777;
-    line-height:16px;
-}
-.balance{
-    line-height: 15.73px;
-    color:#000000;
-
 }
 </style>

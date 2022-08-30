@@ -15,6 +15,7 @@
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
+            <button class="btn2" @click="skip()">Skip - Debug (reccomended)</button>
         </div>
     </div> 
 
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import store from '../../store.js'
 export default {
   name: 'piiPostSetup1',
   components: {
@@ -30,11 +32,15 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, initiating pii')
-            this.$router.push({ path: '/recovery/setup/2' })
+            this.$router.push({ name: 'piiPostSetup2' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
+        skip(){
+            store.commit('setRecoverySetup', true)
+            this.$router.push({ name: 'dashboard' })
+        }
 
     },
     data(){

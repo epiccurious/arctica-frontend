@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Welcome from '../views/Welcome.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes = [
   {
@@ -13,7 +14,6 @@ const routes = [
     path: '/boot',
     name: 'Boot',
     component: () => import('../views/Boot.vue')
-     
    },
   {
     path: '/login',
@@ -24,19 +24,16 @@ const routes = [
     path: '/login/bricked',
     name: 'BPS_Bricked',
     component: () => import('../views/Manual_Login/BPS_Bricked.vue')
-     
    },
    {
     path: '/login/recovery',
     name: 'Recovery',
     component: () => import('../views/Manual_Login/Recovery.vue')
-     
    },
    {
     path: '/login/recovery_initiate',
     name: 'RecoveryInitiate',
     component: () => import('../views/Manual_Login/Recovery_initiate.vue')
-     
    },
   {
     path: '/wallets',
@@ -47,13 +44,41 @@ const routes = [
     path: '/wallets/hot',
     name: 'hot',
     component: () => import('../views/hot/Transactions.vue')
-     
+   },
+   {
+    path: '/wallets/hot/:id',
+    name: 'hotTransaction',
+    component: () => import('../views/hot/Transaction.vue')
    },
    {
     path: '/wallets/hot/send',
     name: 'hotSend',
     component: () => import('../views/hot/Send.vue')
-     
+   },
+   {
+    path: '/wallets/hot/sign',
+    name: 'hotSign',
+    component: () => import('../views/hot/sign.vue')
+   },
+   {
+    path: '/wallets/hot/broadcast',
+    name: 'hotBroadcast',
+    component: () => import('../views/hot/broadcast.vue')
+   },
+   {
+    path: '/wallets/hot/confirmation',
+    name: 'hotConfirmation',
+    component: () => import('../views/hot/confirmation.vue')
+   },
+   {
+    path: '/wallets/hot/sign-multi',
+    name: 'hotSignMultioutput',
+    component: () => import('../views/hot/signMultioutput.vue')
+   },
+   {
+    path: '/wallets/hot/broadcast-multi',
+    name: 'hotBroadcastMultioutput',
+    component: () => import('../views/hot/broadcastMultioutput.vue')
    },
    {
     path: '/wallets/hot/receive',
@@ -67,31 +92,137 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "dashboard" */ '../views/immediate/Transactions.vue')
-     
+   },
+   {
+    path: '/wallets/immediate/:id',
+    name: 'immediateTransaction',
+    component: () => import('../views/immediate/Transaction.vue')
    },
    {
     path: '/wallets/immediate/send',
     name: 'immediateSend',
     component: () => import('../views/immediate/Send.vue')
-     
+   },
+   {
+    path: '/wallets/immediate/send/transfer',
+    name: 'immediateTransfer',
+    component: () => import('../views/immediate/multi/transfer.vue')
+   },
+   {
+    path: '/wallets/immediate/1of2',
+    name: 'sign1of2',
+    props: true,
+    component: () => import('../views/immediate/multi/sign1.vue')
+   },
+   {
+    path: '/wallets/immediate/2of2',
+    name: 'sign2of2',
+    component: () => import('../views/immediate/multi/sign2.vue')
+   },
+   {
+    path: '/wallets/immediate/1of2success',
+    name: '1of2success',
+    component: () => import('../views/immediate/multi/1of2success.vue')
+   },
+   {
+    path: '/wallets/immediate/2of2success',
+    name: '2of2success',
+    component: () => import('../views/immediate/multi/2of2success.vue')
+   },
+   {
+    path: '/wallets/immediate/broadcast',
+    name: 'immediateBroadcast',
+    component: () => import('../views/immediate/multi/broadcast.vue')
+   },
+   {
+    path: '/wallets/immediate/confirmation',
+    name: 'immediateConfirmation',
+    component: () => import('../views/immediate/multi/confirmation.vue')
    },
    {
     path: '/wallets/immediate/receive',
     name: 'immediateReceive',
     component: () => import('../views/immediate/Receive.vue')
-     
    },
    {
     path: '/wallets/delayed',
     name: 'delayed',
     component: () => import('../views/delayed/Transactions.vue')
-     
+   },
+   {
+    path: '/wallets/delayed/:id',
+    name: 'delayedTransaction',
+    component: () => import('../views/delayed/Transaction.vue')
    },
    {
     path: '/wallets/delayed/send',
     name: 'delayedSend',
     component: () => import('../views/delayed/Send.vue')
-     
+   },
+   {
+    path: '/wallets/delayed/send/transfer',
+    name: 'delayedTransfer',
+    component: () => import('../views/delayed/multi/transfer.vue')
+   },
+   {
+    path: '/wallets/delayed/1of5',
+    name: 'sign1of5',
+    component: () => import('../views/delayed/multi/sign1.vue')
+   },
+   {
+    path: '/wallets/delayed/2of5',
+    name: 'sign2of5',
+    component: () => import('../views/delayed/multi/sign2.vue')
+   },
+   {
+    path: '/wallets/delayed/3of5',
+    name: 'sign3of5',
+    component: () => import('../views/delayed/multi/sign3.vue')
+   },
+   {
+    path: '/wallets/delayed/4of5',
+    name: 'sign4of5',
+    component: () => import('../views/delayed/multi/sign4.vue')
+   },
+   {
+    path: '/wallets/delayed/5of5',
+    name: 'sign5of5',
+    component: () => import('../views/delayed/multi/sign5.vue')
+   },
+   {
+    path: '/wallets/delayed/1of5success',
+    name: '1of5success',
+    component: () => import('../views/delayed/multi/1of5success.vue')
+   },
+   {
+    path: '/wallets/delayed/2of5success',
+    name: '2of5success',
+    component: () => import('../views/delayed/multi/2of5success.vue')
+   },
+   {
+    path: '/wallets/delayed/3of5success',
+    name: '3of5success',
+    component: () => import('../views/delayed/multi/3of5success.vue')
+   },
+   {
+    path: '/wallets/delayed/4of5success',
+    name: '4of5success',
+    component: () => import('../views/delayed/multi/4of5success.vue')
+   },
+   {
+    path: '/wallets/delayed/5of5success',
+    name: '5of5success',
+    component: () => import('../views/delayed/multi/5of5success.vue')
+   },
+   {
+    path: '/wallets/delayed/broadcast',
+    name: 'delayedBroadcast',
+    component: () => import('../views/delayed/multi/broadcast.vue')
+   },
+   {
+    path: '/wallets/delayed/confirmation',
+    name: 'delayedConfirmation',
+    component: () => import('../views/delayed/multi/confirmation.vue')
    },
    {
     path: '/delayed/timemachine/1',
@@ -142,7 +273,6 @@ const routes = [
     path: '/wallets/delayed/receive',
     name: 'delayedReceive',
     component: () => import('../views/delayed/Receive.vue')
-     
    },
   {
    path: '/settings',
@@ -280,9 +410,14 @@ const routes = [
     component: () => import('../views/setup/26.vue')
    },
    {
-    path: '/setup/27',
-    name: 'Setup27',
-    component: () => import('../views/setup/27.vue')
+    path: '/setup/27a',
+    name: 'Setup27a',
+    component: () => import('../views/setup/27a.vue')
+   },
+   {
+    path: '/setup/27b',
+    name: 'Setup27b',
+    component: () => import('../views/setup/27b.vue')
    },
    {
     path: '/setup/28',
@@ -300,9 +435,14 @@ const routes = [
     component: () => import('../views/setup/30.vue')
    },
    {
-    path: '/setup/31',
-    name: 'Setup31',
-    component: () => import('../views/setup/31.vue')
+    path: '/setup/31a',
+    name: 'Setup31a',
+    component: () => import('../views/setup/31a.vue')
+   },
+   {
+    path: '/setup/31b',
+    name: 'Setup31b',
+    component: () => import('../views/setup/31b.vue')
    },
    {
     path: '/setup/32',
@@ -320,9 +460,14 @@ const routes = [
     component: () => import('../views/setup/34.vue')
    },
    {
-    path: '/setup/35',
-    name: 'Setup35',
-    component: () => import('../views/setup/35.vue')
+    path: '/setup/35a',
+    name: 'Setup35a',
+    component: () => import('../views/setup/35a.vue')
+   },
+   {
+    path: '/setup/35b',
+    name: 'Setup35b',
+    component: () => import('../views/setup/35b.vue')
    },
    {
     path: '/setup/36',
@@ -340,9 +485,14 @@ const routes = [
     component: () => import('../views/setup/38.vue')
    },
    {
-    path: '/setup/39',
-    name: 'Setup39',
-    component: () => import('../views/setup/39.vue')
+    path: '/setup/39a',
+    name: 'Setup39a',
+    component: () => import('../views/setup/39a.vue')
+   },
+   {
+    path: '/setup/39b',
+    name: 'Setup39b',
+    component: () => import('../views/setup/39b.vue')
    },
    {
     path: '/setup/40',
@@ -360,9 +510,14 @@ const routes = [
     component: () => import('../views/setup/42.vue')
    },
    {
-    path: '/setup/43',
-    name: 'Setup43',
-    component: () => import('../views/setup/43.vue')
+    path: '/setup/43a',
+    name: 'Setup43a',
+    component: () => import('../views/setup/43a.vue')
+   },
+   {
+    path: '/setup/43b',
+    name: 'Setup43b',
+    component: () => import('../views/setup/43b.vue')
    },
    {
     path: '/setup/44',
@@ -380,9 +535,14 @@ const routes = [
     component: () => import('../views/setup/46.vue')
    },
    {
-    path: '/setup/47',
-    name: 'Setup47',
-    component: () => import('../views/setup/47.vue')
+    path: '/setup/47a',
+    name: 'Setup47a',
+    component: () => import('../views/setup/47a.vue')
+   },
+   {
+    path: '/setup/47b',
+    name: 'Setup47b',
+    component: () => import('../views/setup/47b.vue')
    },
    {
     path: '/setup/48',
@@ -390,14 +550,24 @@ const routes = [
     component: () => import('../views/setup/48.vue')
    },
    {
-    path: '/setup/49',
-    name: 'Setup49',
-    component: () => import('../views/setup/49.vue')
+    path: '/setup/49a',
+    name: 'Setup49a',
+    component: () => import('../views/setup/49a.vue')
    },
    {
-    path: '/setup/50',
-    name: 'Setup50',
-    component: () => import('../views/setup/50.vue')
+    path: '/setup/49b',
+    name: 'Setup49b',
+    component: () => import('../views/setup/49b.vue')
+   },
+   {
+    path: '/setup/50a',
+    name: 'Setup50a',
+    component: () => import('../views/setup/50a.vue')
+   },
+   {
+    path: '/setup/50b',
+    name: 'Setup50b',
+    component: () => import('../views/setup/50b.vue')
    },
    {
     path: '/setup/51',
@@ -415,7 +585,7 @@ const routes = [
     component: () => import('../views/post-setup/tripwire2.vue')
    },
    {
-    path: '/duress/setup/2',
+    path: '/duress/setup',
     name: 'duressPostSetup1',
     component: () => import('../views/post-setup/duress1.vue')
    },
@@ -451,10 +621,23 @@ const routes = [
    },
 
 
+   //debug menu for toggling global variables
+   {
+    path: '/debug',
+    name: 'Debug',
+    component: () => import('../views/Debug.vue')
+   },
+
+   //404 not found catchall
+   {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound,
+   },
+
+
 ]
 
-
-//need path for delayed wallet -> time machine protocol
 //remember to use lazy loading to optimize...
 //remember to use code splitting for dynamic routes to optimize...
 //consider prefetch for transaction history to optimize...

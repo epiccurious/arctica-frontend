@@ -25,13 +25,13 @@
 
 <script>
 export default {
-  name: 'Setup49',
+  name: 'Setup49a',
   components: {
     },
     methods: {
         acknowledge(){
             console.log('user ack, package 7 completed')
-            this.$router.push({ path: '/setup/50' })
+            this.$router.push({ name: 'Setup49b' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

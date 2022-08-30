@@ -1,14 +1,17 @@
 <template>
 <div class="page">
-    <header>
-        <h1>SD Card 2</h1>
-        <h2>Please remove SD card 1 and insert SD card 2.</h2>
-    </header> 
-    <div class="form_container">
+<header>
+<h1>Package 1 is now complete.</h1>
+ <h2>Please remove DVD 1 and SD 1.</h2>
+ <h2>Place SD card 1, and backups CD 1 and DVD 1 into Envelope 1.</h2> 
+ <h2>This envelope should be stored somewhere secure and easily accessible, like your attic.</h2>
+ <h2>SD card 1 should be what you use first when you want to spend bitcoin.</h2>
+ </header>
+      <div class="form_container">
         <form>
-            <div class="checkbox_container">
+            <div class="lg_checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have inserted SD card 2.</label>
+                <label for="checkbox">My #1 devices have been placed into Envelope 1.</label>
             </div>
         </form>
         <div class="btn_container"> 
@@ -17,7 +20,6 @@
         </div>
     </div> 
 
-
 </div>
 
 </template>
@@ -25,10 +27,12 @@
 <script>
 export default {
   name: 'Setup25',
+  components: {
+    },
     methods: {
         acknowledge(){
-            console.log('user ack, loading descriptor from DVD 1 onto SD 2')
-            this.$router.push({ path: '/setup/26' })
+            console.log('user ack, attic key and #1 package complete')
+            this.$router.push({ name: 'Setup26' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -42,4 +46,3 @@ export default {
     }
 }
 </script>
-

@@ -29,7 +29,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, closing popup')
-            this.$router.push({ path: '/wallets' })
+            this.$router.push({ name: 'dashboard' })
         },
 
     },

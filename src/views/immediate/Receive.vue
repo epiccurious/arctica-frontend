@@ -34,6 +34,7 @@ Todo:
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
+import store from '../../store.js'
 
 export default {
   name: 'immediateReceive',
@@ -51,16 +52,12 @@ export default {
   },
   data(){
       return{
-          address: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky'
+          address: null
       }
-  }
+  },
+     mounted(){
+    this.address = store.getters.getImmediateAddress
+     }
 }
 </script>
 
-
-<style scoped>
-h1{
-  margin-top: 50px;
-  padding:10px;
-}
-  </style>

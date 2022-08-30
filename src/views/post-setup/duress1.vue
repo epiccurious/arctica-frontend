@@ -4,7 +4,7 @@
 <header>
     <h1>Let's create a duress password</h1>
     <h2>When you attempt to login with this password, it will activate Arctica's <a class="blue_link" href="#">Duress Protocol</a>.</h2>
-    <h2 id="strong">Entering your Duress Password at the Login screen will automatically send Bitcoin.</h2>
+    <h2 class="strong_text">Entering your Duress Password at the Login screen will automatically send Bitcoin.</h2>
  </header>
       <div class="form_container">
         <form>
@@ -22,6 +22,7 @@
         <div class="btn_container"> 
             <button v-if="checkbox && password1 == password2 && password1 != '' && password2 != '' " @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
+            <button @click="skip()" class="btn2">Skip - Debug (reccomended)</button>
         </div>
     </div> 
 
@@ -31,6 +32,7 @@
 
 <script>
 import Duress2 from './duress2'
+import store from '../../store.js'
 
 export default {
   name: 'duressPostSetup1',
@@ -50,6 +52,10 @@ export default {
             this.passwordSetup = false
             this.password1 = ''
             this.password2 = ''
+        },
+        skip(){
+            store.commit('setDuressSetup', true)
+            this.$router.push({ name: 'dashboard' })
         }
 
     },
@@ -63,9 +69,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-#strong{
-    font-weight:800;
-}
-</style>

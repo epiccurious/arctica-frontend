@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'two' && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -23,21 +23,27 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup28',
     methods: {
         acknowledge(){
             console.log('user ack, moving info from SD 2 to DVD 2')
-            this.$router.push({ path: '/setup/29' })
+            this.$router.push({ name: 'Setup29' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-
     },
     data(){
         return{
             checkbox: false,
+        }
+    },
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
         }
     }
 }

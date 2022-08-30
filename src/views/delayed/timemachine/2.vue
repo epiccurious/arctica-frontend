@@ -30,7 +30,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, gathering contact phone number')
-            this.$router.push({ path: '/delayed/timemachine/3' })
+            this.$router.push({ name: 'TimeMachine3' })
         },
         warn(){
             console.log('user trying to proceed but phone numbers do no match')

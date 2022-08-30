@@ -1,0 +1,50 @@
+__FEATURES__
+
+-**FEATURE**: Dyanmic Decays (countdown timer) across the application
+    -Manual recovery screens & process & make decay dynamic here
+
+-**FEATURE**: handle spending threshold decays
+
+-**FEATURE**: rework placeholder text in setup for where a user should store each package of sds and backups
+
+-**FEATURE**: Flesh out post setup screens with complete logic (may require a working BPS to completely finish)
+
+-**FEATURE**: Add screens and utility tool for converting SD 2-7 into an attic key (sd one)
+
+**FEATURE**: error correct forms (validate information in cases where appropriate such as length of phone numbers, min char for passwords etc)
+
+**FEATURE**: a document for Time Machine Protocol (accessed via hyperlink)
+
+**FEATURE**: a document for duress protocol (accessed via hyperlink)
+
+**FEATURE**: A hosted tutorial video or photo showing how to label devices at setup
+
+**FEATURE**: A tutorial for flashing linux on the first device?
+
+**FEATURE**: A tutorial for destroying the set up CD and transfer CDs (user not currently instructed to destroy transfer CDs...I think)
+
+**FEATURE**: More clear instructions on how to sweep funds when tripwire is compromised or when shelf life is approaching
+    -extending soft shelf life
+    -(currently install assumes user is brand new and tripped tripwire instructs user to sweep funds without guidance)
+
+-**FEATURE** (WIP) (V2?): Add support for multi output transactions (pagination in signing flow & functionality to the 'add another recipient' button on send page)
+    -Add functionality and create a page design for the 'add a recipient' button on the send page
+    -need global state variable that holds an array of multioutput transactions
+    -need welcome page logic that sends users to seperate signing flow for immeditae and delayed account multi output txs OR...
+        -potentially eventually just replace the old signing flows with the new multi output component instead of doing two of everything...(this is probably the best approach, pagination will be greyed out)
+    -need to add multi output support to both immediate and delayed accounts, currently only testing with hot account
+
+
+-**FEATURE**: (V2) currency conversions via external API
+    -after implementing currency conversion, a watcher or a two way bind that allows users to input either fiat currency or satoshi value on send page
+
+-**FEATURE**: (V2) Address book Maybe?
+
+-**FEATURE**: (V2) add some functionality to the settings page (maybe v2?)
+
+-**FEATURE**: (V2) Transaction pages need search and filter functionality
+
+__BUGS__
+
+**BUG**: Primary machine boolean is not always enforced (possibly no way around this, we cannot enforce secondary/primary machine relationship other than through suggestion)
+

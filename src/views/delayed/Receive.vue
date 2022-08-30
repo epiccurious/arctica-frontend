@@ -33,6 +33,7 @@
 <script>
 import NavDelayed from '@/components/NavDelayed'
 import DelayWarning from './DelayWarning'
+import store from '../../store.js'
 
 export default {
   name: 'delayedReceive',
@@ -48,24 +49,23 @@ export default {
         newAddress(){
           console.log('New address clicked')
         },
-                ackWarning(){
-        console.log('user acks time machine protocol')
-        this.warning = false
+        ackWarning(){
+          console.log('user acks time machine protocol')
+          this.warning = false
       },
       },
   data(){
       return{
-          address: 'bc1qyFgK82tfxndmjl237j6xdvvhxrrnfky',
-          warning: true,
+          address: null,
+          warning: null
       }
-  }
+  },
+   mounted(){
+    this.timeLock = store.getters.getTimeLock
+    this.address = store.getters.getDelayedAddress
+    if(this.timeLock == true){
+        this.warning = true
+    }else{this.warning = false}
+   },
 }
 </script>
-
-
-<style scoped>
-h1{
-  margin-top: 50px;
-  padding:10px;
-}
-  </style>

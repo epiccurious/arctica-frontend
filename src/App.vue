@@ -1,8 +1,12 @@
 <template>
 <div class="page">
-  <nav id="nav">Debug Nav bar:
-    <router-link :to="{ name: 'Boot' }">Boot</router-link> 
+  <router-view/>
+  <hr>
+  <Debug/>
+   <nav id="nav">Debug Nav bar:
+    <router-link :to="{ name: 'Debug' }">Debug(toggles)</router-link> 
     <router-link :to="{ name: 'welcome' }">Welcome</router-link> 
+    <router-link :to="{ name: 'Boot' }">Boot</router-link> 
     <router-link :to="{ name: 'Login' }">Login</router-link> 
     <router-link :to="{ name: 'BPS_Bricked' }">BPSBricked</router-link> 
     <router-link :to="{ name: 'Recovery' }">Recovery</router-link> 
@@ -14,12 +18,23 @@
     <router-link :to="{ name: 'settings' }">Settings</router-link>
     <router-link :to="{ name: 'hot' }">Hot</router-link>
     <router-link :to="{ name: 'hotSend' }">HotSend</router-link>
+    <router-link :to="{ name: 'hotSignMultioutput' }">Hot-Sign-Multioutput</router-link>
     <router-link :to="{ name: 'hotReceive' }">HotReceive</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'immediateSend' }">ImmediateSend</router-link>
     <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
+    <router-link :to="{ name: 'sign1of5' }">Sign(1of5)</router-link>
+    <router-link :to="{ name: '1of5success' }">1of5-success</router-link>
+    <router-link :to="{ name: 'sign2of5' }">Sign(2of5)</router-link>
+    <router-link :to="{ name: '2of5success' }">2of5-success</router-link>
+    <router-link :to="{ name: 'sign3of5' }">Sign(3of5)</router-link>
+    <router-link :to="{ name: '3of5success' }">3of5-success</router-link>
+    <router-link :to="{ name: 'sign4of5' }">Sign(4of5)</router-link>
+    <router-link :to="{ name: '4of5success' }">4of5-success</router-link>
+    <router-link :to="{ name: 'sign5of5' }">Sign(5of5)</router-link>
+    <router-link :to="{ name: '5of5success' }">5of5-success</router-link>
     <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
     <router-link :to="{ name: 'TimeMachine1' }">Time-Machine-1</router-link>
     <router-link :to="{ name: 'TimeMachine2' }">Time-Machine-2</router-link>
@@ -56,30 +71,38 @@
     <router-link :to="{ name: 'Setup24' }">Setup-24</router-link>
     <router-link :to="{ name: 'Setup25' }">Setup-25</router-link>
     <router-link :to="{ name: 'Setup26' }">Setup-26</router-link>
-    <router-link :to="{ name: 'Setup27' }">Setup-27</router-link>
+    <router-link :to="{ name: 'Setup27a' }">Setup-27a</router-link>
+    <router-link :to="{ name: 'Setup27b' }">Setup-27b</router-link>
     <router-link :to="{ name: 'Setup28' }">Setup-28</router-link>
     <router-link :to="{ name: 'Setup29' }">Setup-29</router-link>
     <router-link :to="{ name: 'Setup30' }">Setup-30</router-link>
-    <router-link :to="{ name: 'Setup31' }">Setup-31</router-link>
+    <router-link :to="{ name: 'Setup31a' }">Setup-31a</router-link>
+    <router-link :to="{ name: 'Setup31b' }">Setup-31b</router-link>
     <router-link :to="{ name: 'Setup32' }">Setup-32</router-link>
     <router-link :to="{ name: 'Setup33' }">Setup-33</router-link>
     <router-link :to="{ name: 'Setup34' }">Setup-34</router-link>
-    <router-link :to="{ name: 'Setup35' }">Setup-35</router-link>
+    <router-link :to="{ name: 'Setup35a' }">Setup-35a</router-link>
+    <router-link :to="{ name: 'Setup35b' }">Setup-35b</router-link>
     <router-link :to="{ name: 'Setup36' }">Setup-36</router-link>
     <router-link :to="{ name: 'Setup37' }">Setup-37</router-link>
     <router-link :to="{ name: 'Setup38' }">Setup-38</router-link>
-    <router-link :to="{ name: 'Setup39' }">Setup-39</router-link>
+    <router-link :to="{ name: 'Setup39a' }">Setup-39a</router-link>
+    <router-link :to="{ name: 'Setup39b' }">Setup-39b</router-link>
     <router-link :to="{ name: 'Setup40' }">Setup-40</router-link>
     <router-link :to="{ name: 'Setup41' }">Setup-41</router-link>
     <router-link :to="{ name: 'Setup42' }">Setup-42</router-link>
-    <router-link :to="{ name: 'Setup43' }">Setup-43</router-link>
+    <router-link :to="{ name: 'Setup43a' }">Setup-43a</router-link>
+    <router-link :to="{ name: 'Setup43b' }">Setup-43b</router-link>
     <router-link :to="{ name: 'Setup44' }">Setup-44</router-link>
     <router-link :to="{ name: 'Setup45' }">Setup-45</router-link>
     <router-link :to="{ name: 'Setup46' }">Setup-46</router-link>
-    <router-link :to="{ name: 'Setup47' }">Setup-47</router-link>
+    <router-link :to="{ name: 'Setup47a' }">Setup-47a</router-link>
+    <router-link :to="{ name: 'Setup47b' }">Setup-47b</router-link>
     <router-link :to="{ name: 'Setup48' }">Setup-48</router-link>
-    <router-link :to="{ name: 'Setup49' }">Setup-49</router-link>
-    <router-link :to="{ name: 'Setup50' }">Setup-50</router-link>
+    <router-link :to="{ name: 'Setup49a' }">Setup-49a</router-link>
+    <router-link :to="{ name: 'Setup49b' }">Setup-49b</router-link>
+    <router-link :to="{ name: 'Setup50a' }">Setup-50a</router-link>
+    <router-link :to="{ name: 'Setup50b' }">Setup-50b</router-link>
     <router-link :to="{ name: 'Setup51' }">Setup-51</router-link>
     <router-link :to="{ name: 'tripwirePostSetup1' }">Tripwire-Post-Setup-1</router-link>
     <router-link :to="{ name: 'tripwirePostSetup2' }">Tripwire-Post-Setup-2</router-link>
@@ -89,7 +112,6 @@
     <router-link :to="{ name: 'piiPostSetup3' }">Recovery-Post-Setup-3</router-link>
   </nav>
   <!-- The above is a debug menu, will be removed -->
-  <router-view/>
 </div>
 </template>
 
@@ -99,20 +121,13 @@ import { RouterView, RouterLink } from "vue-router";
   RouterView;
   RouterLink
 }
+import Debug from './views/Debug.vue'
 
 export default {
   name: 'App',
-  data(){
-    return{
-
-    }
+  components: {
+    Debug
   },
-  provide: {
-      quickBalance: 0.000052,
-      hotBalance: 0.12759374,
-      immediateBalance: 0.27847143,
-      delayedBalance: 12.05312325,
-  }
 }
 </script>
 
@@ -131,6 +146,21 @@ export default {
   color: #2c3e50;
   background: #FFFFFF;
 }
+hr {
+       display: block;
+       position: relative;
+       padding: 0;
+       margin: 8px auto;
+       height: 0;
+       width: 100%;
+       max-height: 0;
+       font-size: 1px;
+       line-height: 0;
+       clear: both;
+       border: none;
+       border-top: 1px solid #aaaaaa;
+       border-bottom: 1px solid #ffffff;
+  }
 .btn {
   background: #F7931A;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -181,6 +211,17 @@ export default {
 .btn5{
     padding:5px;
 }
+.btn6 {
+  background: #DEDEDE;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius:5px;
+  color: #FFFFFF;
+  width: 335px;
+  height: 46px;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 500;
+}
 .btnclose{
     background-color: #FFFFFF;
     width: auto;
@@ -205,6 +246,15 @@ export default {
   align-items: center;
   padding: 0px;
   gap: 21px;
+}
+.btn_approve{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.horizontal_btn_container{
+    margin-top: 2%;
 }
 #nav{
   margin-top:60px;
@@ -325,13 +375,57 @@ header{
   border-width: 0px 0px 1px 0px;
   border-color: #DEDEDE;
   width: 80%;
+  margin-top: 40px;
+  padding:10px;
 }
 .receive_head_container{
   width: 30%;
+  margin-top: 40px;
+  padding:10px;
 }
 .send_head_container{
 margin: 0 auto;
 width: 44%;
+margin-top: 40px;
+padding:10px;
+}
+.balance_overview{
+  color:#404040;
+  text-align:right;
+}
+.wallet_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.wallet_container_left{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  width:50%;
+}
+.wallet_container_right{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items:center;
+  align-content:center;
+  width:50%;
+}
+.carat{
+  margin-top:0.5%;
+}
+.wallet_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
 }
 h1{
     font-family: 'Inter';
@@ -366,6 +460,15 @@ h3{
   width:60%;
   margin-left:20%;
 }
+.settings_dashboard{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width:40%;
+  margin-left:30%;
+}
 .display_block{
     display:flex;
     flex-direction:column;
@@ -374,6 +477,27 @@ h3{
     margin: 0 auto;
     padding: 4%;
     width: 40%;
+}
+.description_block{
+    display:flex;
+    align-self:center;
+    justify-self:center;
+    width:100%;
+}
+.footer_block{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content:center;
+    align-items:center;
+    width:90%;
+}
+.transaction_head{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+    
 }
 .tx_block{
     display:flex;
@@ -478,5 +602,123 @@ h3{
     color:#000000;
     font-size:14px;
     line-height: 17px;
+}
+.transaction_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.transaction_container:hover{
+    cursor:pointer
+}
+.transaction_container_left{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  width:50%;
+}
+.transaction_container_right{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items:center;
+  align-content:center;
+  width:50%;
+}
+.settings_container{
+  display:flex;
+  flex-direction: row;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px;
+  border-color: #DEDEDE;
+  width: 80%;
+}
+.item_container_left{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  width:50%;
+}
+.item_container_right{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items:center;
+  align-content:center;
+  width:50%;
+}
+.menu_container{ 
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    align-content:center;
+}
+
+.wallet_overview{
+    display:flex;
+    flex-direction: row;
+}
+.middle_menu{
+    display:flex;
+    flex-direction: row;
+}
+.wallet_tab{
+    padding:28px;
+    font-weight:600;
+}
+.send_tab{
+    padding:28px;
+    font-weight:600;
+}
+.receive_tab{
+    padding:28px;
+    font-weight:600;
+}
+.wallet_tab_selected{
+    padding:28px;
+    color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
+    font-weight:600;
+}
+.receive_tab_selected{
+    padding:28px;
+    color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
+    font-weight:600;
+}
+.send_tab_selected{
+    padding:28px;
+    color:#F7931A;
+    border-style: solid; 
+    border-width: 0px 0px 5px 0px;
+    border-color: #F7931A;
+    font-weight:600;
+}
+.description_balance{
+    padding-left: 20px;
+}
+.description{
+    color: #777777;
+    line-height:16px;
+}
+.balance{
+    line-height: 15.73px;
+    color:#000000;
+
+}
+.loading{
+  cursor:wait;
+}
+.strong_text{
+    font-weight:800;
 }
 </style>

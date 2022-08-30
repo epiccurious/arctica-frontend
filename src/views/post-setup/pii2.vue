@@ -48,7 +48,7 @@ export default {
         },
         proceed(){
             console.log('debug proceed')
-            this.$router.push({ path: '/recovery/setup/3' })
+            this.$router.push({ name: 'piiPostSetup3' })
         },
         onPickFile(){
             this.$refs.fileInput.click()

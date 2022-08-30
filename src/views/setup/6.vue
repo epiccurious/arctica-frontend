@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="this.currentSD == 'three' && checkbox" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -23,12 +23,18 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
   name: 'Setup6',
     methods: {
         acknowledge(){
             console.log('user ack, flashing SD 3')
-            this.$router.push({ path: '/setup/7' })
+            this.$router.push({ name: 'Setup7' })
+            //eventually need to electronically mark SD 3 with a text file label here
+            store.commit('setSetup3', true) //eventually replace this with virtual label
+            //eventually need to mark SD 3 with a text file label here that directs secondary machine to jump to step 15 of set up
+
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -38,6 +44,11 @@ export default {
     data(){
         return{
             checkbox: false,
+        }
+    },
+        computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
         }
     }
 }

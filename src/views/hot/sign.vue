@@ -1,13 +1,7 @@
-<!-- This component should only show for transactions with more than one output! -->
-
 <template>
-<Broadcast v-if="signed" v-on:closeOut="closeOut" :transaction="transaction" />
-<div v-else class="page">
-    <div id="back_button">
-        <button class="btnclose" @click="$emit('closeOut')"><img src="@/assets/carat_left.png">Back</button>
-    </div>
+<div class="page">
     <div class="display_block">
-        <h1>Approve X Transactions for Signing</h1>
+        <h1>Approve Transaction for Signing</h1>
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
             <h2>To</h2>
@@ -16,7 +10,7 @@
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ {{ this.transaction.amount }}</h3>
+            <h3>₿ {{ this.transaction.balance }}</h3>
         </div>
 
         <div class="tx_block">
@@ -24,9 +18,9 @@
             <h3>₿ {{ this.transaction.fee }}</h3>
         </div>
 
-        <div class="btn_container">
+        <div class="horizontal_btn_container">
             <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
-            <button @click="$emit('closeOut')" class="btn2">Discard</button>
+            <button @click="discard()" class="btn2">Discard</button>
         </div>
         
 
@@ -36,31 +30,31 @@
 
 
 <script>
-import Broadcast from '@/components/Broadcast'
+import store from '../../store.js'
 
 export default {
-    props: ['transaction'],
-    components: {
-    Broadcast
-  },
+    name: 'hotSign',
     methods: {
         sign(){
             console.log('signing...')
             this.signed = true
-        }
+            this.$router.push({ name: 'hotBroadcast' })
+        },
+        discard(){
+            console.log('discarding PSBT')
+            store.commit('clearTransaction')
+            this.$router.push({name: 'hot'}) 
+        },
     },
     data(){
         return{
-            signed: false
+            transaction: store.getters.getTransaction
         }
     }
 }
 </script>
 
 <style scoped>
-.btn_container{
-    margin-top: 2%;
-}
 .btn{
     display:flex;
     justify-content: center;

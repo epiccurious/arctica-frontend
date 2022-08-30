@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>CD 3 Backup</h1>
-        <h2>Please insert CD 3.</h2>
+        <h2>Please remove the Set up CD and insert CD 3.</h2>
     </header> 
     <div class="form_container">
         <form>
@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 'three' && checkbox && this.setupCD == false" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -23,21 +23,31 @@
 </template>
 
 <script>
+import store from '../../store.js'
+
 export default {
-  name: 'Setup31',
+  name: 'Setup31b',
     methods: {
         acknowledge(){
             console.log('user ack, moving info from SD 3 to CD 3')
-            this.$router.push({ path: '/setup/32' })
+            this.$router.push({ name: 'Setup32' })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-
     },
     data(){
+        store.commit('setSetup10', false) //eventually change this to remove virtual label
         return{
             checkbox: false,
+        }
+    },
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        setupCD(){
+            return store.getters.getSetupCD
         }
     }
 }

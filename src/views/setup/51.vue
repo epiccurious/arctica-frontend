@@ -1,10 +1,10 @@
-<!-- User returns to primary machine for this step -->
+<!-- User returns to primary machine for this step, currently on primary consider changing step 20-->
 
 <template>
 <div class="page">
     <header>
         <h1>Initial Sync Complete</h1>
-        <h2>Reboot from SD 1 to log in to your wallet.</h2>
+        <h2>You may now log in to your wallet.</h2>
     </header>
         <div class="btn_container"> 
             <button @click="acknowledge()" class="btn">Ok</Button> 
@@ -15,16 +15,30 @@
 </template>
 
 <script>
+import store from '../../store.js'
 
 export default {
   name: 'Setup51',
   components: {},
     methods: {
         acknowledge(){
-            console.log('user ack, proceed, close application')
+            console.log('user ack, proceeding to login')
+            this.$router.push({ name: 'welcome' })
+
+            store.commit('setDuressSetup', false)
+            store.commit('setRecoverySetup', false)
+            store.commit('setTripwireSetup', false)
         },
 
     },
+    computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
+        primaryMachine(){
+            return store.getters.getPrimaryMachine
+        }
+    }
 }
 </script>
 

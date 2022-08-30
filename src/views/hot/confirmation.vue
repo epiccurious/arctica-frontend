@@ -4,7 +4,7 @@
         <img src="@/assets/Circle_arrow_up.png">
         <h1>Transaction Sent. </h1>
         <h2>It usually takes about 30 minutes to be finalized.</h2>
-        <div class="btn_container">
+        <div class="horizontal_btn_container">
             <button @click="viewTx()" class="btn2">View Transaction</button>
             <button @click="back()" class="btn">Back to Wallet</button>
         </div>
@@ -15,29 +15,24 @@
 
 
 <script>
+import store from '../../store.js'
 export default{
+    name: 'hotConfirmation',
     methods:{
         back(){
-            if(this.$route.name === 'immediateSend'){
-                this.$router.push({ path: '/wallets/immediate' })
-            }
-            else if(this.$route.name === 'delayedSend'){
-                this.$router.push({ path: '/wallets/delayed' })
-            }
-            else if(this.$route.name ==='hotSend'){
-                this.$router.push({ path: '/wallets/hot' })
-            }
-            else{this.$router.push({ path: '/wallets' })}
+            this.$router.push({ name: 'hot' })
         },
         viewTx(){
             console.log('view tx clicked')
+            this.$router.push({path: `${this.id}`})
+        },
+    },
+    computed:{
+        id(){
+           let hotTransactions = store.getters.getHotTransactions
+           return hotTransactions.length
+
         }
-    }
+    },
 }
 </script>
-
-<style scoped>
-.btn_container{
-    margin-top: 2%;
-}
-</style>

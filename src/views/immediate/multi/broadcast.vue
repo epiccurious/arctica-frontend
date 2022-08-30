@@ -1,6 +1,5 @@
 <template>
-<Confirmation v-if="sent" />
-<div v-else class="page">
+<div class="page">
     <div class="display_block">
         <h1>Ready to send?</h1>
         <img src="@/assets/checkmark_green.png">
@@ -11,7 +10,7 @@
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ {{ this.transaction.amount }}</h3>
+            <h3>₿ {{ this.transaction.balance }}</h3>
         </div>
 
         <div class="tx_block">
@@ -19,9 +18,9 @@
             <h3>₿ {{ this.transaction.fee }}</h3>
         </div>
 
-        <div class="btn_container">
+        <div class="horizontal_btn_container">
             <button @click="broadcast(this.transaction)" class="btn">Send</button>
-            <button @click="$emit('closeOut')" class="btn2">Discard</button>
+            <button @click="discard()" class="btn2">Discard</button>
         </div>
         
 
@@ -31,29 +30,27 @@
 
 
 <script>
-import Confirmation from '@/components/Confirmation'
+import store from '../../../store.js'
 
 export default {
-    props: ['transaction'],
-    components: {
-        Confirmation
-    },
+    name: 'immediateBroadcast',
+    components: {},
     methods: {
         broadcast(){
             console.log('broadcasting...')
-            this.sent = true
-        }
+            this.$router.push({ name: 'immediateConfirmation' }) 
+            store.commit('pushImmediateTransaction', this.transaction)
+        },
+        discard(){
+            console.log('discarding PSBT')
+            store.commit('clearTransaction')
+            this.$router.push({ name: 'immediate' }) 
+        },
     },
-    data(){
-        return{
-        sent: false
+    computed:{
+        transaction(){
+            return store.getters.getTransaction
         }
     }
 }
 </script>
-
-<style scoped>
-.btn_container{
-    margin-top: 2%;
-}
-</style>

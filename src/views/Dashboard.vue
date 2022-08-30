@@ -1,5 +1,8 @@
 <template>
-  <div class="page">
+  <!-- Show the compromised component if the user has a tripped tripwire -->
+  <Compromised v-if="this.tripwire != 'none'" />
+  <!-- Show the main dashboard -->
+  <div v-else class="page">
     <Nav />
       <div class="dashboard">
         <div class="head_container">
@@ -11,7 +14,7 @@
             <h2 class="time_decay">Spend Now</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance">{{ hotBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ this.hotBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -22,7 +25,7 @@
             <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance">{{ immediateBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ this.immediateBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -33,7 +36,7 @@
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance">{{ delayedBalance }} BTC</h2>
+            <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
@@ -42,12 +45,15 @@
           </div>
       </div>
   </div>
+  <button @click="test()">Test</button>
 </template>
 
 
 <script>
 import Nav from '@/components/Nav'
 import { RouterView, RouterLink } from "vue-router";
+import store from '../store.js'
+import Compromised from './tripwire/compromised.vue'
 {
   RouterView;
   RouterLink
@@ -56,61 +62,74 @@ import { RouterView, RouterLink } from "vue-router";
 export default {
   name: 'Dashboard',
   components: {
-    Nav
+    Nav,
+    Compromised,
   },
-    inject: ['hotBalance', 'immediateBalance', 'delayedBalance']
+     mounted(){
+      this.hotBalance = store.getters.getHotBalance
+      this.immediateBalance = store.getters.getImmediateBalance
+      this.delayedBalance = store.getters.getDelayedBalance
+      this.duressSetup = store.getters.getDuressSetup
+      this.recoverySetup = store.getters.getRecoverySetup
+      this.tripwireSetup = store.getters.getTripwireSetup
+
+      //below are the post set up redirects for first time users that have only completed initial set up
+      if(this.recoverySetup == false){
+        this.$router.push({ name: 'piiPostSetup1' })
+      }
+      else if(this.duressSetup == false){
+        this.$router.push({ name: 'duressPostSetup1' })
+      }
+      else if(this.tripwireSetup == false){
+        this.$router.push({ name: 'tripwirePostSetup1' })
+      }
+ },
+ data(){
+  return{
+    hotBalance: store.getters.getHotBalance,
+    immediateBalance: store.getters.getImmediateBalance,
+    delayedBalance: store.getters.getDelayedBalance,
+  }
+ },
+ methods:{
+  test(){
+    console.log('post set up recovery:', this.recoverySetup)
+    console.log('post set up duress:', this.duressSetup)
+    console.log('post set up tripwire:', this.tripwireSetup)
+    console.log('tripwire', this.tripwire)
+  }
+ },
+ computed:{
+ tripwire(){
+    return store.getters.getTripwireTripped}
+ },
+ hotBalance(){
+  return store.getters.getHotBalance
+ },
+ immediateBalance(){
+  return store.getters.getImmediateBalance
+ },
+ delayedBalance(){
+  return store.getters.getDelayedBalance
+ },
+ tripwireSetup(){
+  return store.getters.getTripwireSetup
+ },
+ recoverySetup(){
+  return store.getters.getRecoverySetup
+ },
+ duressSetup(){
+  return store.getters.getDuressSetup
+ }
 }
 </script>
 
 <style scoped>
-h1{
-  margin-top: 50px;
-  padding:10px;
-  line-height: 25px;
-
-}
 h2{
   color:#000000;
 }
 .time_decay{
   color:#777777;
 }
-.balance{
-  color:#404040;
-  text-align:right;
-}
-.wallet_container{
-  display:flex;
-  flex-direction: row;
-  border-style: solid; 
-  border-width: 0px 0px 1px 0px;
-  border-color: #DEDEDE;
-  width: 80%;
-}
-.wallet_container_left{
-  display:flex;
-  flex-direction: column;
-  align-items:flex-start;
-  width:50%;
-}
-.wallet_container_right{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items:center;
-  align-content:center;
-  width:50%;
-}
-.carat{
-  margin-top:0.5%;
-}
-.wallet_container{
-  display:flex;
-  flex-direction: row;
-  border-style: solid; 
-  border-width: 0px 0px 1px 0px;
-  border-color: #DEDEDE;
-  width: 80%;
-}
+
 </style>

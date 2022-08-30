@@ -3,11 +3,11 @@
 
 
   <header v-else>
-<h1>Let's setup your password</h1>
+<h1>Let's set up your password</h1>
  <h2>Select two words which are easy for you to remember, such as an adjective and a noun.</h2> 
  <h2>You should not write these words down.</h2> 
      <h2>Below is an example which you can use if you like</h2>
-     <h4>Granite Sparkle</h4> <!-- this needs to eventually come from a word list -->
+     <h4>{{  firstWord  }} {{  secondWord  }}</h4> <!-- this needs to eventually come from a word list -->
 
             <div class="form_container">
                 <form>
@@ -20,6 +20,7 @@
                 <div class="btn_container"> 
                     <button v-if="password1 == password2 && password1 != '' && password2 != '' " @click="acknowledge()" class="btn">Continue</Button>
                     <button v-else @click="warn()" class="btn3">Continue</Button>
+                    <button @click="selectWords()" class="btn2">Get New Words</button>
                 </div>
                 </div>
     
@@ -29,6 +30,7 @@
 
 <script>
 import Setup2A from './2A'
+import wordlist from '../../wordlist.js'
 
 export default {
   name: 'Setup2',
@@ -48,13 +50,19 @@ export default {
             this.passwordSetup = false
             this.password1 = ''
             this.password2 = ''
+        },
+        selectWords(){
+            this.firstWord = wordlist[Math.random()*2048 | 0]
+            this.secondWord = wordlist[Math.random()*2048 | 0]
         }
     },
      data(){
      return{
          password1: '',
          password2: '',
-         passwordSetup: false
+         passwordSetup: false,
+         firstWord: wordlist[Math.random()*2048 | 0],
+         secondWord: wordlist[Math.random()*2048 | 0],
      }
  }
 }

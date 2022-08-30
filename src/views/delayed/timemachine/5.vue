@@ -31,7 +31,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, saving the document')
-            this.$router.push({ path: '/wallets' })
+            this.$router.push({ name: 'dashboard' })
         },
 
     },

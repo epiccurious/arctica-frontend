@@ -2,7 +2,7 @@
   <div class="login">
     <header>
       <h1>Welcome to Arctica</h1>
-      <h2>Let's beging the setup process.</h2>
+      <h2>Let's beging the set up process.</h2>
     </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Get Started</Button>
@@ -15,8 +15,9 @@ export default {
   name: 'Setup1',
     methods: {
         acknowledge(){
-            console.log('user ack, starting setup')
-            this.$router.push({ path: '/setup/2' })
+            console.log('user ack, starting set up')
+            this.$router.push({ name: 'Setup2' })
+            //eventually label the users machine with a text file that designates it as the primary machine here
         },
     },
     data(){
