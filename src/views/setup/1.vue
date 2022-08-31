@@ -2,7 +2,7 @@
   <div class="login">
     <header>
       <h1>Welcome to Arctica</h1>
-      <h2>Let's beging the set up process.</h2>
+      <h2>Let's begin the set up process.</h2>
     </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Get Started</Button>
