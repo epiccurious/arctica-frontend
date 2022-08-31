@@ -15,9 +15,12 @@ export default {
   name: 'Setup1',
     methods: {
         acknowledge(){
+            const invoke = window.__TAURI__.invoke
             console.log('user ack, starting set up')
+            invoke('make_bitcoin_dotfile').then((response) => console.log(response))
+            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
             this.$router.push({ name: 'Setup2' })
-            //eventually label the users machine with a text file that designates it as the primary machine here
+            //eventually label the users machine with a text file that designates it as the primary machine here (maybe?)
         },
     },
     data(){
