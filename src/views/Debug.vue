@@ -304,7 +304,9 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('here is your multi outputs:' ,store.getters.getTransaction)
+            const invoke = window.__TAURI__.invoke
+            invoke('test_function').then((response) => console.log(response))
+            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
