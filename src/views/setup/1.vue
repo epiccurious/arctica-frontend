@@ -14,11 +14,11 @@
 export default {
   name: 'Setup1',
     methods: {
-        acknowledge(){
+       async acknowledge(){
             //create local machine bitcoin dotfile
             const invoke = window.__TAURI__.invoke
             console.log('user ack, starting set up')
-            invoke('make_bitcoin_dotfile').then((response) => console.log(response))
+            await invoke('make_bitcoin_dotfile').then((response) => console.log(response))
             invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
             //navigate to next step of setup

@@ -49,7 +49,7 @@ export default {
           const invoke = window.__TAURI__.invoke
           invoke('obtain_tails').then((response) => console.log(response))
           invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
-
+          
           //need to await a response that download is complete here before proceeding to below
           this.$router.push({ name:'Setup1' })
         },
