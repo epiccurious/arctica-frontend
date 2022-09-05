@@ -29,6 +29,7 @@ export default {
   name: 'Setup4',
     methods: {
         async acknowledge() {
+
             const invoke = window.__TAURI__.invoke
             console.log('user ack, flashing SD 1')
             await invoke('create_bootable_usb').then((response) => console.log(response))
@@ -59,3 +60,9 @@ export default {
 }
 </script>
 
+<style scoped>
+.btn:active {
+    cursor:wait;
+}
+
+</style>
