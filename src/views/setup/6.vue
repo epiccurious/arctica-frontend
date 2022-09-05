@@ -28,8 +28,14 @@ import store from '../../store.js'
 export default {
   name: 'Setup6',
     methods: {
-        acknowledge(){
+        async acknowledge(){
+            const invoke = window.__TAURI__.invoke
             console.log('user ack, flashing SD 3')
+            await invoke('create_bootable_usb').then((response) => console.log(response))
+            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
+
+            //need to create persistence
+            
             this.$router.push({ name: 'Setup7' })
             //eventually need to electronically mark SD 3 with a text file label here
             store.commit('setSetup3', true) //eventually replace this with virtual label
