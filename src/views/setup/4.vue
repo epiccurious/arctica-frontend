@@ -29,6 +29,9 @@ export default {
   name: 'Setup4',
     methods: {
         async acknowledge() {
+            //start loading cursor animation
+            const element = document.querySelector('.page')
+            element.classList.add('.loading')
 
             const invoke = window.__TAURI__.invoke
             console.log('user ack, flashing SD 1')
@@ -36,6 +39,9 @@ export default {
             invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
             //need to create persistence
+
+            //stop loading cursor animation
+            element.classList.remove('.loading')
 
             this.$router.push({ name: 'Setup5' })
             //eventually need to electronically mark SD 1 with a text file label here and after doing so update global state
@@ -61,8 +67,5 @@ export default {
 </script>
 
 <style scoped>
-.btn:active {
-    cursor:wait;
-}
 
 </style>
