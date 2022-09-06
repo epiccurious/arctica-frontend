@@ -2,6 +2,7 @@
 <div class="page">
     <header>
         <h1>Time to set up your keys...</h1>
+        <h3>WARNING: All devices, including this computer, will be wiped during setup. Make absolutely sure you are only using dedicated devices that do not contain important information.</h3>
         <h2>Label 8 CD's "CD 1" through "CD 7", and label the final one "set up".</h2> 
         <h2>Label 7 DVDs "DVD 1" through "DVD 7".</h2> 
         <h2>Label 7 SD cards "1" through "7".</h2>
@@ -49,3 +50,10 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    h3{
+        font-weight: 900;
+        color: red;
+    }
+</style>
