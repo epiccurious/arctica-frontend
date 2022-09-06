@@ -718,6 +718,9 @@ h3{
 .loading{
   cursor:wait;
 }
+html.waiting{
+  cursor:wait;
+}
 .strong_text{
     font-weight:800;
 }
