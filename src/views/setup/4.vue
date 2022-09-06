@@ -29,19 +29,18 @@ export default {
   name: 'Setup4',
     methods: {
         async acknowledge() {
-            //start loading cursor animation
-            const element = document.querySelector('.page')
-            element.classList.add('.loading')
 
             const invoke = window.__TAURI__.invoke
             console.log('user ack, flashing SD 1')
             await invoke('create_bootable_usb').then((response) => console.log(response))
             invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
-            //need to create persistence
+            //need to create persistence here
 
-            //stop loading cursor animation
-            element.classList.remove('.loading')
+            //need to create virtual label here
+
+            //need to install arctica here
+
 
             this.$router.push({ name: 'Setup5' })
             //eventually need to electronically mark SD 1 with a text file label here and after doing so update global state
