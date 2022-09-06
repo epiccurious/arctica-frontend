@@ -44,14 +44,14 @@ export default {
             console.log('fetching help')
         },
         async install(){
-          document.page.style.cursor = 'wait'
+          document.getElementsByClassName("page").classlist.add("loading")
           //begin install
           //obtain latest tails image
           const invoke = window.__TAURI__.invoke
           await setTimeout(invoke('obtain_tails').then((response) => console.log(response)), 1000)
           invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
-          document.page.style.cursor = 'default'
+          document.getElementsByClassName("page").classlist.remove("loading")
           
           //need to await a response that download is complete here before proceeding to below
           this.$router.push({ name:'Setup1' })
