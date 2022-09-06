@@ -48,7 +48,7 @@ export default {
           //begin install
           //obtain latest tails image
           const invoke = window.__TAURI__.invoke
-          await setTimeout(invoke('obtain_tails').then((response) => console.log(response)), 1000)
+          await invoke('obtain_tails').then((response) => console.log(response))
           invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
           document.getElementByClassName("page").classlist.remove("loading")
