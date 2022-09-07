@@ -12,7 +12,7 @@
                 </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="currentSD == 'one' && checkbox" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -57,14 +57,5 @@ export default {
             checkbox: false,
         }
     },
-    computed: {
-        currentSD(){
-            return store.getters.getCurrentSD
-        }
-    },
 }
 </script>
-
-<style scoped>
-
-</style>
