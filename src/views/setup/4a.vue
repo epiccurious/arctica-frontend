@@ -26,7 +26,7 @@
 import store from '../../store.js'
 
 export default {
-  name: 'Setup4',
+  name: 'Setup4a',
     methods: {
         async acknowledge() {
 
@@ -42,7 +42,7 @@ export default {
             //need to install arctica here
 
 
-            this.$router.push({ name: 'Setup4a' })
+            this.$router.push({ name: 'Setup5' })
             //eventually need to electronically mark SD 1 with a text file label here and after doing so update global state
             store.commit('setSetup1', true) //eventually replace this with virtual label
             //eventually need to mark SD 1 with a text file label here that directs secondary machine to jump to step 12 of set up
