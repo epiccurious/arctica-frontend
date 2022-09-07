@@ -50,6 +50,7 @@
     <router-link :to="{ name: 'Setup3' }">Setup-3</router-link>
     <router-link :to="{ name: 'Setup4' }">Setup-4</router-link>
     <router-link :to="{ name: 'Setup4a' }">Setup-4a</router-link>
+    <router-link :to="{ name: 'Setup4b' }">Setup-4b</router-link>
     <router-link :to="{ name: 'Setup5' }">Setup-5</router-link>
     <router-link :to="{ name: 'Setup6' }">Setup-6</router-link>
     <router-link :to="{ name: 'Setup7' }">Setup-7</router-link>
