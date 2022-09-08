@@ -305,8 +305,10 @@ export default{
         },    
         test(){
             const invoke = window.__TAURI__.invoke
-            invoke('test_function').then((response) => console.log(response))
-            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
+            invoke('test_function').then((res) => {
+                const jsonResult = JSON.parse(res)
+                console.log(jsonResult)
+            })
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
