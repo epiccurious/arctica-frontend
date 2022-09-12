@@ -10,6 +10,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
   <h2>If you have already set up Arctica, please insert SD 1 and restart this machine.</h2>
   <h2>If you have not yet set up Arctica click install.</h2>
 </header>
+    <div v-if="loading">Loading some data, please wait</div>
     <div class="btn_container"> 
         <button @click="install()" class="btn">Install</Button>
         <button @click="help()" class="btn2">I need help</button>
@@ -44,16 +45,20 @@ export default {
             console.log('fetching help')
         },
         async install(){
+          this.loading = true;
           //begin install
           //obtain latest tails image
           const invoke = window.__TAURI__.invoke
-          await setTimeout(invoke('obtain_tails').then((res) => console.log(JSON.parse(res))), 10000)
+          await setTimeout( () => {
+            invoke('obtain_tails')
+            .then((res) => console.log(JSON.parse(res))) }
+            , 10000 )
           // invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
           
           //need to await a response that download is complete here before proceeding to below
           this.$router.push({ name:'Setup1' })
         },
-    },
+        },
   mounted(){
   },
   computed:{
@@ -66,6 +71,10 @@ export default {
     psbt(){
       return store.getters.getPSBT
     }
+  },
+  data: {
+    someData: [],
+    loading: false
   },
 }
 </script>
