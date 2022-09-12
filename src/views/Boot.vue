@@ -55,14 +55,15 @@ export default {
           const invoke = window.__TAURI__.invoke
           setTimeout( () => {
             invoke('obtain_tails')
-            .then((res) => console.log(JSON.parse(res))) }
+            .then((res) => console.log(JSON.parse(res))) 
+            this.loading = false;
+            this.$router.push({ name:'Setup1' })
+          }
             , 10000 )
           // invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
           
           //need to await a response that download is complete here before proceeding to below
           //hide loader
-          this.loading = false;
-          this.$router.push({ name:'Setup1' })
         },
         },
   mounted(){
