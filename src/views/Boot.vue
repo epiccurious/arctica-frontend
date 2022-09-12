@@ -72,9 +72,10 @@ export default {
       return store.getters.getPSBT
     }
   },
-  data: {
-    someData: [],
+  data() {
+    return {someData: [],
     loading: false
+    }
   },
 }
 </script>
