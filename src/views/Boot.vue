@@ -4,13 +4,14 @@ or directs them to the 'i need help' section which can walk them through restori
 the second conditional rendering below appears if the user has booted from SD 2-7 but does not have a transfer CD with a PSBT inserted into the machine.  -->
 
 <template>
+  <div v-if="this.loading">Loading some data, please wait</div>
+  <div v-else>
   <div v-if="this.currentSD == 'none' || this.currentSD == 'one'" class="login">
 <header>
   <h1>Welcome to Arctica</h1>
   <h2>If you have already set up Arctica, please insert SD 1 and restart this machine.</h2>
   <h2>If you have not yet set up Arctica click install.</h2>
 </header>
-    <div v-if="loading">Loading some data, please wait</div>
     <div class="btn_container"> 
         <button @click="install()" class="btn">Install</Button>
         <button @click="help()" class="btn2">I need help</button>
@@ -28,6 +29,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
         <button @click="help()" class="btn2">I need help</button>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -44,18 +46,21 @@ export default {
         help(){
             console.log('fetching help')
         },
-        async install(){
+        install(){
+          //show loader
           this.loading = true;
+
           //begin install
           //obtain latest tails image
           const invoke = window.__TAURI__.invoke
-          await setTimeout( () => {
+          setTimeout( () => {
             invoke('obtain_tails')
             .then((res) => console.log(JSON.parse(res))) }
             , 10000 )
           // invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
           
           //need to await a response that download is complete here before proceeding to below
+          //hide loader
           this.loading = false;
           this.$router.push({ name:'Setup1' })
         },
