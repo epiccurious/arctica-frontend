@@ -31,7 +31,6 @@ the second conditional rendering below appears if the user has booted from SD 2-
         <button @click="help()" class="btn2">I need help</button>
     </div>
   </div>
-</div>
 </template>
 
 <script>
