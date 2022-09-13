@@ -1,12 +1,12 @@
 <template>
-<h1>Loading...Please wait.</h1>
+    <h1>Loading...Please wait.</h1>
 
-<h2>This may take a few minutes.</h2>
+    <h2>This may take a few minutes.</h2>
 </template>
 
 <script>
 export default{
-    name: 'loading',
+    name: 'Loader',
     props: {
         text: String,
     },

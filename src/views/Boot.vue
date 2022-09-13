@@ -5,7 +5,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
 
 <template>
     <div v-if="this.loading">
-    <loading/>
+      <Loader/>
     </div>
   <div v-else>
   <div v-if="this.currentSD == 'none' || this.currentSD == 'one'" class="login">
@@ -36,10 +36,10 @@ the second conditional rendering below appears if the user has booted from SD 2-
 
 <script>
 import store from '../store.js'
-import loading from '@/components/loading'
+import Loader from '@/components/loader'
 export default {
   name: 'Boot',
-  components: loading,
+  components: Loading,
     methods: {
         acknowledge(){
             if(this.psbtFound == true && this.psbt != null){
