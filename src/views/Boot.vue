@@ -3,11 +3,11 @@ or directs them to the 'i need help' section which can walk them through restori
 
 the second conditional rendering below appears if the user has booted from SD 2-7 but does not have a transfer CD with a PSBT inserted into the machine.  -->
 
-<template>
-    <div v-if="this.loading">
-      <Loader/>
-    </div>
-  <div v-else>
+<template v-if="this.loading == true">
+  <Loader/>
+</template>
+
+<template v-else>
   <div v-if="this.currentSD == 'none' || this.currentSD == 'one'" class="login">
 <header>
   <h1>Welcome to Arctica</h1>
