@@ -39,7 +39,7 @@ import store from '../store.js'
 import Loader from '@/components/loader'
 export default {
   name: 'Boot',
-  components: Loading,
+  components: Loader,
     methods: {
         acknowledge(){
             if(this.psbtFound == true && this.psbt != null){
