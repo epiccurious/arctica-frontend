@@ -3,17 +3,18 @@ or directs them to the 'i need help' section which can walk them through restori
 
 the second conditional rendering below appears if the user has booted from SD 2-7 but does not have a transfer CD with a PSBT inserted into the machine.  -->
 
-<template v-if="this.loading == true">
+<template>
+<div v-if="this.loading == true">
   <Loader/>
-</template>
+</div>
 
-<template v-else>
+<div v-else>
   <div v-if="this.currentSD == 'none' || this.currentSD == 'one'" class="login">
-<header>
-  <h1>Welcome to Arctica</h1>
-  <h2>If you have already set up Arctica, please insert SD 1 and restart this machine.</h2>
-  <h2>If you have not yet set up Arctica click install.</h2>
-</header>
+    <header>
+      <h1>Welcome to Arctica</h1>
+      <h2>If you have already set up Arctica, please insert SD 1 and restart this machine.</h2>
+      <h2>If you have not yet set up Arctica click install.</h2>
+    </header>
     <div class="btn_container"> 
         <button @click="install()" class="btn">Install</Button>
         <button @click="help()" class="btn2">I need help</button>
@@ -21,16 +22,17 @@ the second conditional rendering below appears if the user has booted from SD 2-
   </div>
 
   <div v-else class="login">
-<header> 
-  <h1>Welcome to Arctica</h1>
-  <h2>Please insert a transfer CD.</h2>
-  <h2>If you do not have a transfer CD, please insert SD 1 and reboot this machine.</h2>
-</header>
+    <header> 
+      <h1>Welcome to Arctica</h1>
+      <h2>Please insert a transfer CD.</h2>
+      <h2>If you do not have a transfer CD, please insert SD 1 and reboot this machine.</h2>
+    </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
         <button @click="help()" class="btn2">I need help</button>
     </div>
   </div>
+</div>
 </template>
 
 <script>
