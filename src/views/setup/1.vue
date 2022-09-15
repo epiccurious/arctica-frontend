@@ -14,17 +14,19 @@
 export default {
   name: 'Setup1',
     methods: {
-       async acknowledge(){
-            //create local machine bitcoin dotfile
-            const invoke = window.__TAURI__.invoke
-            console.log('user ack, starting set up')
-            await invoke('make_bitcoin_dotfile').then((response) => console.log(response))
-            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
+       acknowledge(){
+          //show loader
+          this.loading = true;
 
-            //navigate to next step of setup
-            this.$router.push({ name: 'Setup2' })
-
-            //eventually label the users machine with a text file that designates it as the primary machine here (maybe?)
+          //create bitcoin dotfile on local machine
+          const invoke = window.__TAURI__.invoke
+          setTimeout( () => {
+            invoke('make_bitcoin_dotfile')
+            .then((res) => console.log(JSON.parse(res))) 
+            this.loading = false;
+            this.$router.push({ name:'Setup2' })
+          }
+            , 3000 )           
         },
     },
     data(){
