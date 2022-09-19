@@ -61,7 +61,7 @@ export default {
           //obtain latest tails image
           const invoke = window.__TAURI__.invoke
           setTimeout( () => {
-            invoke('install_kvm','obtain_ubuntu')
+            invoke('obtain_ubuntu')
             .then((res) => console.log(JSON.parse(res))) 
             this.loading = false;
             this.$router.push({ name:'Setup1' })
