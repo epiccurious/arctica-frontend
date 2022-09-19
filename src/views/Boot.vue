@@ -66,7 +66,7 @@ export default {
             this.loading = false;
             this.$router.push({ name:'Setup1' })
           }
-            , 20000 )
+            , 100000 )
           // invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
           
           //need to await a response that download is complete here before proceeding to below
