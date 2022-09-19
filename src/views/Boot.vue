@@ -63,14 +63,14 @@ export default {
           setTimeout( () => {
             invoke('obtain_ubuntu')
             .then((res) => console.log(JSON.parse(res))) 
+            //hide loader
             this.loading = false;
+            //send user to next step
             this.$router.push({ name:'Setup1' })
           }
             , 100000 )
-          // invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
           
           //need to await a response that download is complete here before proceeding to below
-          //hide loader
         },
         },
   mounted(){
