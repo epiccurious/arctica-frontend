@@ -32,7 +32,7 @@ export default {
 
             const invoke = window.__TAURI__.invoke
             console.log('user ack, flashing SD 1')
-            await invoke('create_bootable').then((response) => console.log(response))
+            await invoke('create_bootable_usb').then((response) => console.log(response))
             invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
             //need to create persistence here
