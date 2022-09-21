@@ -68,7 +68,7 @@ export default {
             //send user to next step
             this.$router.push({ name:'Setup1' })
           }
-            , 250000 )
+            , 300000 )
           
           //need to await a response that download is complete here before proceeding to below
         },
