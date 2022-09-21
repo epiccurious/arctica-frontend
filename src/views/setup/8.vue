@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+  <div v-if="this.loading == true">
+  <Loader/>
+  </div>
+<div v-else class="page">
         <header>
         <h1>SD Card 5</h1>
         <h2>Please remove SD card 4 & insert SD card 5.</h2>
@@ -24,22 +27,32 @@
 
 <script>
 import store from '../../store.js'
-
+import Loader from '@/components/loader'
 export default {
   name: 'Setup8',
+  components: {
+    Loader,
+  },
     methods: {
-       async acknowledge(){
-            const invoke = window.__TAURI__.invoke
-            console.log('user ack, flashing SD 5')
-            await invoke('create_bootable_usb').then((response) => console.log(response))
-            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
+        acknowledge() {
 
-            //need to create persistence
-            
-            this.$router.push({ name: 'Setup9' })
-            //eventually need to electronically mark SD 5 with a text file label here
+            //show loader
+            this.loading = true
+
+            const invoke = window.__TAURI__.invoke
+            console.log('user ack, flashing SD 4')
+
+            setTimeout( () => {
+            invoke('create_bootable_usb')
+            .then((res) => console.log(JSON.parse(res))) 
+
+            //remove loader
+            this.loading = false;
+
             store.commit('setSetup5', true) //eventually replace this with virtual label
-            //eventually need to mark SD 5 with a text file label here that directs primary machine to jump to step 18 of set up
+            this.$router.push({ name:'Setup9' })
+            }
+            , 10000 )   
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
