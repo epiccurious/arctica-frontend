@@ -42,10 +42,10 @@ export default {
 
             const invoke = window.__TAURI__.invoke
             console.log('user ack, flashing SD 7')
-
-            setTimeout( () => {
             invoke('create_bootable_usb')
             .then((res) => console.log(JSON.parse(res))) 
+
+            setTimeout( () => {
 
             //remove loader
             this.loading = false;

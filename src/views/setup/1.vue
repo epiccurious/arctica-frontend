@@ -28,9 +28,9 @@ export default {
 
           //create bitcoin dotfile on local machine
           const invoke = window.__TAURI__.invoke
+          invoke('make_bitcoin_dotfile')
+          .then((res) => console.log(JSON.parse(res))) 
           setTimeout( () => {
-            invoke('make_bitcoin_dotfile')
-            .then((res) => console.log(JSON.parse(res))) 
             this.loading = false;
             this.$router.push({ name:'Setup2' })
           }
