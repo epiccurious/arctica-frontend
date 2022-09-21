@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+  <div v-if="this.loading == true">
+  <Loader/>
+  </div>
+<div v-else class="page">
         <header>
         <h1>SD Card 2</h1>
         <h2>Please remove SD card 1 & insert SD card 2.</h2>
@@ -23,10 +26,14 @@
 </template>
 
 <script>
+import Loader from '@/components/loader'
 import store from '../../store.js'
 
 export default {
   name: 'Setup5',
+  components: {
+    Loader,
+  },
     methods: {
     acknowledge() {
 
@@ -47,8 +54,7 @@ export default {
         this.$router.push({ name:'Setup6' })
         }
         , 10000 )   
-                 },
-                 
+    },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
