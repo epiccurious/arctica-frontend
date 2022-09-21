@@ -58,26 +58,6 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-acknowledge() {
-
-        //show loader
-        this.loading = true
-
-        const invoke = window.__TAURI__.invoke
-        console.log('user ack, flashing SD 3')
-
-        setTimeout( () => {
-        invoke('create_bootable_usb')
-        .then((res) => console.log(JSON.parse(res))) 
-
-        //remove loader
-        this.loading = false;
-
-        store.commit('setSetup3', true) //eventually replace this with virtual label
-        this.$router.push({ name:'Setup7' })
-        }
-        , 10000 )   
-    },
     },
     data(){
         return{
