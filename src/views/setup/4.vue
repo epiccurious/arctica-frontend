@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+  <div v-if="this.loading == true">
+  <Loader/>
+  </div>
+<div v-else class="page">
     <header>
         <h1>SD Card 1</h1>
         <h2>Please insert SD card 1.</h2>
@@ -23,10 +26,14 @@
 </template>
 
 <script>
+import Loader from '@/components/loader'
 import store from '../../store.js'
 
 export default {
   name: 'Setup4',
+  components: {
+    Loader,
+  },
     methods: {
         acknowledge() {
 
