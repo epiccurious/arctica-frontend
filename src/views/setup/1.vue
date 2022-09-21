@@ -1,5 +1,9 @@
 <template>
-  <div class="login">
+  <div v-if="this.loading == true">
+  <Loader/>
+</div>
+
+  <div v-else class="login">
     <header>
       <h1>Welcome to Arctica</h1>
       <h2>Let's begin the set up process.</h2>
@@ -11,8 +15,12 @@
 </template>
 
 <script>
+import Loader from '@/components/loader'
 export default {
   name: 'Setup1',
+  components: {
+    Loader,
+  },
     methods: {
        acknowledge(){
           //show loader

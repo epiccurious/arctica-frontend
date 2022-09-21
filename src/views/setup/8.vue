@@ -49,6 +49,7 @@ export default {
     data(){
         return{
             checkbox: false,
+            loading: false
         }
     },
     computed:{

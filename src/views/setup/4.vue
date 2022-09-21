@@ -28,24 +28,25 @@ import store from '../../store.js'
 export default {
   name: 'Setup4',
     methods: {
-        async acknowledge() {
+        acknowledge() {
+
+            //show loader
+            this.loading = true
 
             const invoke = window.__TAURI__.invoke
             console.log('user ack, flashing SD 1')
-            await invoke('create_bootable_usb').then((response) => console.log(response))
-            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
 
-            //need to create persistence here
+            setTimeout( () => {
+            invoke('create_bootable_usb')
+            .then((res) => console.log(JSON.parse(res))) 
 
-            //need to create virtual label here
+            //remove loader
+            this.loading = false;
 
-            //need to install arctica here
-
-
-            this.$router.push({ name: 'Setup5' })
-            //eventually need to electronically mark SD 1 with a text file label here and after doing so update global state
             store.commit('setSetup1', true) //eventually replace this with virtual label
-            //eventually need to mark SD 1 with a text file label here that directs secondary machine to jump to step 12 of set up
+            this.$router.push({ name:'Setup5' })
+          }
+            , 10000 )   
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -55,6 +56,7 @@ export default {
     data(){
         return{
             checkbox: false,
+            loading: false,
         }
     },
 }

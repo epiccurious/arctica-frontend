@@ -28,23 +28,27 @@ import store from '../../store.js'
 export default {
   name: 'Setup5',
     methods: {
-        acknowledge(){
-          //show loader
-          this.loading = true;
+    acknowledge() {
 
-            const invoke = window.__TAURI__.invoke
-            console.log('user ack, flashing SD 2')
-            invoke('create_bootable_usb').then((response) => console.log(response))
-            invoke('print_rust', {data: 'inputed data'}).then((response) => console.log(response))
+        //show loader
+        this.loading = true
 
-            //remove loader
-            this.loading = false;
+        const invoke = window.__TAURI__.invoke
+        console.log('user ack, flashing SD 2')
 
-             //eventually replace this with virtual label that marks SD 2 with a text file to jump to step 14 of setup upon reboot
-            store.commit('setSetup2', true)
+        setTimeout( () => {
+        invoke('create_bootable_usb')
+        .then((res) => console.log(JSON.parse(res))) 
 
-            this.$router.push({ name: 'Setup6' })            
-        },
+        //remove loader
+        this.loading = false;
+
+        store.commit('setSetup2', true) //eventually replace this with virtual label
+        this.$router.push({ name:'Setup6' })
+        }
+        , 10000 )   
+                 },
+                 
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
