@@ -41,18 +41,18 @@ export default {
             this.loading = true
 
             const invoke = window.__TAURI__.invoke
-            console.log('user ack, flashing SD 1')
             invoke('create_bootable_usb')
             .then((res) => console.log(JSON.parse(res))) 
-            
+
             setTimeout( () => {
             //remove loader
-            this.loading = false;
+            this.loading = false
 
             store.commit('setSetup1', true) //eventually replace this with virtual label
+
             this.$router.push({ name:'Setup5' })
           }
-            , 10000 )   
+            , 100000 )   
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
