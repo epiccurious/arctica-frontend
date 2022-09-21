@@ -60,9 +60,9 @@ export default {
           //begin install
           //obtain latest tails image
           const invoke = window.__TAURI__.invoke
+          invoke('obtain_ubuntu')
+          .then((res) => console.log(JSON.parse(res))) 
           setTimeout( () => {
-            invoke('obtain_ubuntu')
-            .then((res) => console.log(JSON.parse(res))) 
             //hide loader
             this.loading = false;
             //send user to next step
