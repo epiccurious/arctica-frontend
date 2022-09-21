@@ -1,7 +1,7 @@
 <template>
   <div v-if="this.loading == true">
   <Loader/>
-</div>
+  </div>
 
   <div v-else class="login">
     <header>
