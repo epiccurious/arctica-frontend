@@ -41,9 +41,13 @@ export default {
             this.loading = true
 
             const invoke = window.__TAURI__.invoke
-            setTimeout( () => {
+            setTimeout(()=>{
             invoke('create_bootable_usb')
             .then((res) => console.log(JSON.parse(res)))
+            } , 1000)
+
+
+            setTimeout( () => {
             this.loading = false
             store.commit('setSetup1', true) //eventually replace this with virtual label
             this.$router.push({ name:'Setup5' })
