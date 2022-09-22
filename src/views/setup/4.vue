@@ -1,6 +1,7 @@
 <template>
   <div v-if="this.loading == true">
   <Loader/>
+  {{test}}
   </div>
 <div v-else class="page">
     <header>
@@ -12,6 +13,7 @@
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have inserted SD card 1.</label>
+                {{test}}
                 </div>
         </form>
         <div class="btn_container"> 
@@ -28,6 +30,7 @@
 <script>
 import Loader from '@/components/loader'
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup4',
@@ -36,19 +39,17 @@ export default {
   },
     methods: {
         acknowledge() {
-
             //show loader
             this.loading = true
-
-            const invoke = window.__TAURI__.invoke
-            setTimeout( () => {
-            invoke('create_bootable_usb')
-            .then((res) => console.log(JSON.parse(res)))
+            this.test = "txt"
+            invoke('create_bootable_usb', {number: this.test}).then(() => {
+                this.test = "teste"
+                invoke('print_rust', {data: this.test})
+            })
             this.loading = false
-            store.commit('setSetup1', true) //eventually replace this with virtual label
-            this.$router.push({ name:'Setup5' })
-          }
-            , 100000 )   
+            this.test = "test3"
+            store.commit('setSetup1', true) //eventually replace this with  virtual label
+            this.$router.push({ name:'Setup5' })                
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -59,6 +60,7 @@ export default {
         return{
             checkbox: false,
             loading: false,
+            test: "test"
         }
     },
 }
