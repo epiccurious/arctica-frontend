@@ -46,6 +46,7 @@ export default {
                 this.test = "teste"
                 invoke('print_rust', {data: this.test})
             })
+
             this.loading = false
             this.test = "test3"
             store.commit('setSetup1', true) //eventually replace this with  virtual label
