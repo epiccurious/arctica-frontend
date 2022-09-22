@@ -37,15 +37,14 @@ export default {
     methods: {
         acknowledge() {
 
-            //show loader
-            this.loading = true
-
             const invoke = window.__TAURI__.invoke
             setTimeout(()=>{
-            invoke('create_bootable_usb')
-            .then((res) => console.log(JSON.parse(res)))
+                //show loader
+            this.loading = true
             } , 1000)
 
+            invoke('create_bootable_usb')
+            .then((res) => console.log(JSON.parse(res)))
 
             setTimeout( () => {
             this.loading = false
