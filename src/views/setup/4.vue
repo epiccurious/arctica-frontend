@@ -44,10 +44,11 @@ export default {
             this.test = "txt"
             invoke('create_bootable_usb', {number: this.test}).then(() => {
                 this.test = "teste"
+                this.loading = false
                 invoke('print_rust', {data: this.test})
             })
 
-            this.loading = false
+            
             this.test = "test3"
             store.commit('setSetup1', true) //eventually replace this with  virtual label
             this.$router.push({ name:'Setup5' })                
