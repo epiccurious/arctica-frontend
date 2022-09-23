@@ -16,6 +16,8 @@
 
 <script>
 import Loader from '@/components/loader'
+const invoke = window.__TAURI__.invoke
+
 export default {
   name: 'Setup1',
   components: {
@@ -27,16 +29,12 @@ export default {
           this.loading = true;
 
           //create bitcoin dotfile on local machine
-          const invoke = window.__TAURI__.invoke
-          invoke('make_bitcoin_dotfile')
-          .then((res) => console.log(JSON.parse(res))) 
-          setTimeout( () => {
+          invoke('make_bitcoin_dotfile').then(() =>{
             this.loading = false;
             this.$router.push({ name:'Setup2' })
-          }
-            , 3000 )           
+          })
         },
-    },
+      },
     data(){
         return{
           loading: false,
