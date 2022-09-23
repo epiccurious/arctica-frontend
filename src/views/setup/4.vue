@@ -1,7 +1,6 @@
 <template>
   <div v-if="this.loading == true">
   <Loader/>
-  {{test}}
   </div>
 <div v-else class="page">
     <header>
@@ -13,7 +12,6 @@
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have inserted SD card 1.</label>
-                {{test}}
                 </div>
         </form>
         <div class="btn_container"> 
