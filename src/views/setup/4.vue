@@ -39,7 +39,6 @@ export default {
         acknowledge() {
             //show loader
             this.loading = true
-            this.test = "txt"
             invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
                 this.loading = false
                 store.commit('setSetup1', true) //eventually replace this with  virtual label
