@@ -40,12 +40,11 @@ export default {
             //show loader
             this.loading = true
             this.test = "txt"
-            invoke('create_bootable_usb', {number: this.test}).then(() => {
-                this.test = "teste"
+            invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
                 this.loading = false
                 store.commit('setSetup1', true) //eventually replace this with  virtual label
                 this.$router.push({ name:'Setup5' })   
-                invoke('print_rust', {data: this.test})
+                invoke('print_rust', {data: this.sd})
             })
              
         },
@@ -58,7 +57,8 @@ export default {
         return{
             checkbox: false,
             loading: false,
-            test: "test"
+            sd: "sdOne",
+            setupStep: 'setup1'
         }
     },
 }
