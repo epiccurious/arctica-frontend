@@ -38,6 +38,8 @@ the second conditional rendering below appears if the user has booted from SD 2-
 <script>
 import store from '../store.js'
 import Loader from '@/components/loader'
+const invoke = window.__TAURI__.invoke
+
 export default {
   name: 'Boot',
   components: {
@@ -59,19 +61,15 @@ export default {
 
           //begin install
           //obtain latest tails image
-          const invoke = window.__TAURI__.invoke
-          invoke('obtain_ubuntu')
-          .then((res) => console.log(JSON.parse(res))) 
-          setTimeout( () => {
-            //hide loader
+          invoke('obtain_ubuntu').then(()=> {
             this.loading = false;
             //send user to next step
             this.$router.push({ name:'Setup1' })
-          }
-            , 300000 )
-          
-          //need to await a response that download is complete here before proceeding to below
+          })
+
         },
+
+
         },
   mounted(){
   },
