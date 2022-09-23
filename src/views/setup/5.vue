@@ -43,9 +43,9 @@ export default {
         invoke('create_bootable_usb').then(()=>{
             //remove loader
             this.loading = false;
-            store.commit('setSetup1', true) //eventually replace this with  virtual label
+            store.commit('setSetup2', true) //eventually replace this with  virtual label
             //send user to next step
-            this.$router.push({ name:'Setup5' }) 
+            this.$router.push({ name:'Setup6' }) 
         })   
         },
         warn(){

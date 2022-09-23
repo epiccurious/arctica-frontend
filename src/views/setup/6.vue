@@ -28,6 +28,7 @@
 <script>
 import Loader from '@/components/loader'
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup6',
@@ -35,26 +36,17 @@ export default {
     Loader,
   },
     methods: {
-    acknowledge() {
-
+        acknowledge() {
         //show loader
         this.loading = true
-
-        const invoke = window.__TAURI__.invoke
-        console.log('user ack, flashing SD 3')
-        invoke('create_bootable_usb')
-        .then((res) => console.log(JSON.parse(res))) 
-        
-        setTimeout( () => {
-
-        //remove loader
-        this.loading = false;
-
-        store.commit('setSetup3', true) //eventually replace this with virtual label
-        this.$router.push({ name:'Setup7' })
-        }
-        , 10000 )   
-    },
+        invoke('create_bootable_usb').then(()=>{
+            //remove loader
+            this.loading = false;
+            store.commit('setSetup3', true) //eventually replace this with  virtual label
+            //send user to next step
+            this.$router.push({ name:'Setup7' }) 
+        })   
+        },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
