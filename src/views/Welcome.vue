@@ -37,6 +37,7 @@
 
 <script>
 import store from '../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Welcome',
@@ -187,6 +188,7 @@ export default {
       },
     },
     mounted(){
+
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })
