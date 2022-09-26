@@ -36,17 +36,17 @@ export default {
   components: {
     Loader,
   },
-    methods: {
-    acknowledge() {
-        //show loader
-        this.loading = true
-        invoke('create_bootable_usb').then(()=>{
-            //remove loader
-            this.loading = false;
-            store.commit('setSetup2', true) //eventually replace this with  virtual label
-            //send user to next step
-            this.$router.push({ name:'Setup6' }) 
-        })   
+  methods: {
+        acknowledge() {
+            //show loader
+            this.loading = true
+            invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
+                this.loading = false
+                store.commit('setSetup2', true) //eventually replace this with  virtual label
+                this.$router.push({ name:'Setup6' })   
+                invoke('print_rust', {data: this.sd})
+            })
+             
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -57,6 +57,8 @@ export default {
         return{
             checkbox: false,
             loading: false,
+            sd: "2",
+            setupStep: '2'
         }
     },
     computed:{
