@@ -188,8 +188,8 @@ export default {
     },
     mounted(){
       const invoke = window.__TAURI__.invoke
-      invoke('read').then(() => {
-                invoke('print_rust', {})
+      invoke('read').then((res) => {
+                invoke('debug_output', {data: res} )
             })
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
