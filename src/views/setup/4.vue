@@ -56,8 +56,8 @@ export default {
         return{
             checkbox: false,
             loading: false,
-            sd: "sdNumber",
-            setupStep: 'setupStep'
+            sd: "1",
+            setupStep: '1'
         }
     },
 }
