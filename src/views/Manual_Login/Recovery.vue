@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import store from '../store.js'
+
 export default {
   name: 'Recovery',
     methods: {
@@ -23,6 +25,11 @@ export default {
             console.log('user ack, closing the application')
             this.$router.push({ name: 'RecoveryInitiate' })
         },
+    },
+    computed: {
+      numberToRecover(){
+        return store.getters.getNumberToRecover
+      },
     },
 }
 </script>

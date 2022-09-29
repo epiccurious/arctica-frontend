@@ -4,7 +4,7 @@
   <div class="page">
     <header>
       <h1>Manual Recovery Initiated.</h1>
-      <h2>Please insert your next available SD card.</h2>
+      <h2>Please insert a transfer CD.</h2>
     </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
