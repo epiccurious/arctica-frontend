@@ -34,6 +34,7 @@ export default createStore({
 
     bpsBricked: false,
     manualDecrypt: false,
+    numberToRecover: 5,
     
     //data for creating a new Transaction
     id:null, description:null, address:[], balance:[], fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
@@ -264,6 +265,9 @@ export default createStore({
         setManualDecrypt(state, payload){
             state.manualDecrypt = payload
         },
+        setNumberToRecover(state, payload){
+            state.numberToRecover = payload
+        },
         setTripwireSetup(state, payload){
             state.tripwireSetup = payload
             if(payload === false){
@@ -428,6 +432,9 @@ export default createStore({
         },
         getManualDecrypt(state){
             return state.manualDecrypt
+        },
+        getNumberToRecover(state){
+            return state.numberToRecover
         },
         getTripwireSetup(state){
             return state.tripwireSetup

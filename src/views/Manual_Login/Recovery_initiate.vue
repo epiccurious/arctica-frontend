@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import store from '../store.js'
+
 export default {
   name: 'RecoveryInitiate',
     methods: {
@@ -24,6 +26,11 @@ export default {
             console.log('fetching help')
         }
     },
-}
+    computed: {
+      numberToRecover(){
+        return store.getters.getNumberToRecover
+      },
+    },
+  }
 </script>
 
