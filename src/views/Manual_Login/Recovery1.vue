@@ -1,5 +1,3 @@
-<!-- This page will dynamically display the current number of SD cards needed to decrypt as well as a countdown to the remaining priacy key decay schedules -->
-<!-- Need to add screens to this flow prompting for each SD required to decrypt, then toggle manual decrypt state variable once complete to allow hard login -->
 <template>
   <div class="page">
     <header>
@@ -31,6 +29,18 @@ export default {
       numberToRecover(){
         return store.getters.getNumberToRecover
       },
+      
+    },
+    mounted(){
+      if(this.numberToRecover >= this.recoveryStep){
+        this.recoveryComplete = true
+      }
+    },
+    data(){
+      return{
+        recoveryStep: 1,
+        recoveryComplete: false
+      }
     },
   }
 </script>

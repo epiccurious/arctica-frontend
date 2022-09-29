@@ -60,11 +60,6 @@ const routes = [
     name: 'Recovery4',
     component: () => import('../views/Manual_Login/Recovery4.vue')
    },
-   {
-    path: '/login/recovery5',
-    name: 'Recovery5',
-    component: () => import('../views/Manual_Login/Recovery5.vue')
-   },
   {
     path: '/wallets',
     name: 'dashboard',

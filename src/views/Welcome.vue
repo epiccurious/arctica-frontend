@@ -187,10 +187,10 @@ export default {
       },
     },
     mounted(){
-      const invoke = window.__TAURI__.invoke
-      invoke('read').then((res) => {
-                invoke('debug_output', {data: res} )
-            })
+      // const invoke = window.__TAURI__.invoke
+      // invoke('read').then((res) => {
+      //           invoke('debug_output', {data: res} )
+      //       })
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })

@@ -1,10 +1,8 @@
-<!-- This page will dynamically display the current number of SD cards needed to decrypt as well as a countdown to the remaining priacy key decay schedules -->
-<!-- Need to add screens to this flow prompting for each SD required to decrypt, then toggle manual decrypt state variable once complete to allow hard login -->
 <template>
   <div class="page">
     <header>
       <h1>Manual Recovery In Progress.</h1>
-      <h2>Please insert your next available SD card.</h2>
+      <h2>Please power off this machine, insert your next available SD card and reboot.</h2>
     </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
@@ -32,6 +30,17 @@ export default {
       numberToRecover(){
         return store.getters.getNumberToRecover
       },
+    },
+    mounted(){
+      if(this.numberToRecover >= this.recoveryStep){
+        this.recoveryComplete = true
+      }
+    },
+    data(){
+      return{
+        recoveryStep: 4,
+        recoveryComplete: false
+      }
     },
   }
 </script>
