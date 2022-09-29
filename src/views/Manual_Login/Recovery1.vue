@@ -2,7 +2,7 @@
   <div class="page">
     <header>
       <h1>Manual Recovery In Progress.</h1>
-      <h2>Please insert your next available SD card.</h2>
+      <h2>Please power off this machine, insert your next available SD card and reboot.</h2>
     </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import store from '../store.js'
+import store from '../../store.js'
 
 export default {
   name: 'Recovery1',
