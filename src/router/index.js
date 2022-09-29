@@ -36,6 +36,11 @@ const routes = [
     component: () => import('../views/Manual_Login/Recovery_initiate.vue')
    },
    {
+    path: '/login/recovery_success',
+    name: 'RecoverySuccess',
+    component: () => import('../views/Manual_Login/Recovery_success.vue')
+   },
+   {
     path: '/login/recovery1',
     name: 'Recovery1',
     component: () => import('../views/Manual_Login/Recovery1.vue')
