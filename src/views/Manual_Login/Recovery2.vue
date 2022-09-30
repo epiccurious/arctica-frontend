@@ -12,36 +12,38 @@
 </template>
 
 <script>
-import store from '../../store.js'
-
-export default {
-  name: 'Recovery2',
-    methods: {
-        acknowledge(){
-            console.log('user ack, recovery initiating')
-            //here we need to append the key shard to the transfer CD as well as a config var that instructs the next SD card how many key shards we have collected 
-            //eventually add logic to auto redirect arctica when config var is found on transfer cd
-        },
-        help(){
-            console.log('fetching help')
-        }
-    },
-    computed: {
-      numberToRecover(){
-        return store.getters.getNumberToRecover
+  import store from '../../store.js'
+  
+  export default {
+    name: 'Recovery2',
+      methods: {
+          acknowledge(){
+              console.log('user ack, recovery initiating')
+              store.commit('setRecoveryStep', 3) //eventually replace this with  virtual label
+              //here we need to append the key shard to the transfer CD as well as a config var that instructs the next SD card how many key shards we have collected
+          },
+          help(){
+              console.log('fetching help')
+          }
       },
-    },
-    mounted(){
-      if(this.numberToRecover >= this.recoveryStep){
-        this.recoveryComplete = true
-      }
-    },
-    data(){
-      return{
-        recoveryStep: 2,
-        recoveryComplete: false
-      }
-    },
-  }
-</script>
-
+      computed: {
+        numberToRecover(){
+          return store.getters.getNumberToRecover
+        },
+        recoveryStep(){
+          return store.getters.getRecoveryStep
+        },
+        
+      },
+      mounted(){
+        if(this.numberToRecover >= this.recoveryStep){
+          this.recoveryComplete = true
+        }
+      },
+      data(){
+        return{
+          recoveryComplete: false
+        }
+      },
+    }
+  </script>
