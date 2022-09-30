@@ -34,7 +34,11 @@ export default createStore({
 
     bpsBricked: false,
     manualDecrypt: false,
+    //numberToRecover should eventually dynamically decay as privacy keys are published to the blockchain
     numberToRecover: 5,
+    //recoveryStep designates how many SD cards the user has accessed to manually decrypt. The keys will be placed onto a transfer CD and eventually arctica should
+    //manually redirect the user at the welcome screen to the appropriate recovery screen when the transfer CD is found with a recoveryStep config var
+    recoveryStep: 0,
     
     //data for creating a new Transaction
     id:null, description:null, address:[], balance:[], fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
@@ -268,6 +272,9 @@ export default createStore({
         setNumberToRecover(state, payload){
             state.numberToRecover = payload
         },
+        setRecoveryStep(state, payload){
+            state.recoveryStep = payload
+        },      
         setTripwireSetup(state, payload){
             state.tripwireSetup = payload
             if(payload === false){
@@ -435,6 +442,9 @@ export default createStore({
         },
         getNumberToRecover(state){
             return state.numberToRecover
+        },
+        getRecoveryStep(state){
+            return state.recoveryStep
         },
         getTripwireSetup(state){
             return state.tripwireSetup

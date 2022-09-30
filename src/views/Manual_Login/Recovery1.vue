@@ -19,6 +19,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, recovery initiating')
+            store.commit('setRecoveryStep', 1) //eventually replace this with  virtual label
             //here we need to append the key shard to the transfer CD as well as a config var that instructs the next SD card how many key shards we have collected
         },
         help(){
@@ -29,6 +30,9 @@ export default {
       numberToRecover(){
         return store.getters.getNumberToRecover
       },
+      recoveryStep(){
+        return store.getters.getRecoveryStep
+      },
       
     },
     mounted(){
@@ -38,7 +42,6 @@ export default {
     },
     data(){
       return{
-        recoveryStep: 1,
         recoveryComplete: false
       }
     },
