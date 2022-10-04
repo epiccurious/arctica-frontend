@@ -271,6 +271,9 @@ export default createStore({
         },
         setNumberToRecover(state, payload){
             state.numberToRecover = payload
+            if(payload === 5){
+                state.privacyKeysFound = false
+            }
         },
         setRecoveryStep(state, payload){
             state.recoveryStep = payload
