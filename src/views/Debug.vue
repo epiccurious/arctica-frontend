@@ -84,6 +84,16 @@
             </label>
         </div>
 
+        <label>Number to Recover</label>
+        <select v-model="numberToRecover" name="numberToRecover" id="numberToRecover">
+            <option @click="setNumberToRecover()" value=0>Zero</option>
+            <option @click="setNumberToRecover()" value=1>One</option>
+            <option @click="setNumberToRecover()" value=2>Two</option>
+            <option @click="setNumberToRecover()" value=3>Three</option>
+            <option @click="setNumberToRecover()" value=4>Four</option>
+            <option @click="setNumberToRecover()" value=5>Five</option>
+        </select>
+
         <div class="switch">
             Manually Decrypted
             <label class="toggle_switch_label">
@@ -317,6 +327,10 @@ export default{
             store.commit('setCurrentSD', this.sdCard)
             console.log('Current SD', store.getters.getCurrentSD)
         },
+        setNumberToRecover(){
+            store.commit('setNumberToRecover', this.numberToRecover)
+            console.log('Number of privacy keys to manually decrypt', store.getters.getNumberToRecover)
+        },
         setPSBT(){
             store.commit('setPSBTFound', this.psbtFound)
             if(store.getters.getPSBTFound == true){
@@ -351,6 +365,14 @@ export default{
             },
             set(newVal){
                 store.commit('setCurrentSD', newVal)
+            }
+        },
+        numberToRecover:{
+            get(){
+                return store.getters.getNumberToRecover
+            },
+            set(newVal){
+                store.commit('setNumberToRecover', newVal)
             }
         },
         psbtFound:{
