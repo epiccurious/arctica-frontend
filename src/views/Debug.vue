@@ -315,7 +315,7 @@ export default{
         },    
         test(){
             const invoke = window.__TAURI__.invoke
-            invoke('test_function').then((res) => {
+            invoke('read').then((res) => {
                 const jsonResult = JSON.parse(res)
                 console.log(jsonResult)
             })
