@@ -36,6 +36,8 @@
 
 
 <script>
+import { valueToNode } from '@babel/types'
+import { nextTick } from 'process'
 import store from '../store.js'
 
 export default {
@@ -189,8 +191,10 @@ export default {
     mounted(){
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
-                invoke('debug_output', {data: res} )
-            })
+                  // dictionary = dict(subString.split("=") for subString in res.split(";"))
+                  //need to turn res into a dictionary here and feed it to setConfig
+                  store.commit('setConfig', dictionary )
+                })
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })
