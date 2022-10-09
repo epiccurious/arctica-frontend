@@ -314,11 +314,7 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            const invoke = window.__TAURI__.invoke
-            invoke('read').then((res) => {
-                const jsonResult = JSON.parse(res)
-                console.log(jsonResult)
-            })
+            console.log('test')
         },
         reboot(){
             this.$router.push({ name: 'welcome' })

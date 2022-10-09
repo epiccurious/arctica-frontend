@@ -191,9 +191,13 @@ export default {
     mounted(){
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
-                  // dictionary = dict(subString.split("=") for subString in res.split(";"))
-                  //need to turn res into a dictionary here and feed it to setConfig
-                  store.commit('setConfig', dictionary )
+          const partsArray = res.split('\n')
+          const partsArray1 = partsArray.split('=')
+          for(i in partsArray1){
+            store.commit('setConfig', partsArray1[i], partsArray1[i + 1])
+          }
+        //need to turn res into a dictionary here and feed it to setConfig
+        store.commit('setConfig', dictionary )
                 })
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
