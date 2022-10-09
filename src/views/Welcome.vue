@@ -196,9 +196,7 @@ export default {
           for(i in partsArray1){
             store.commit('setConfig', partsArray1[i], partsArray1[i + 1])
           }
-        //need to turn res into a dictionary here and feed it to setConfig
-        store.commit('setConfig', dictionary )
-                })
+        })
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })
