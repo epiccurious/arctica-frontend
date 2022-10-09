@@ -189,14 +189,14 @@ export default {
       },
     },
     mounted(){
-      const invoke = window.__TAURI__.invoke
-      invoke('read').then((res) => {
-          const partsArray = res.split('\n')
-          const partsArray1 = partsArray.split('=')
-          for(i in partsArray1){
-            store.commit('setConfig', partsArray1[i], partsArray1[i + 1])
-          }
-        })
+      // const invoke = window.__TAURI__.invoke
+      // invoke('read').then((res) => {
+      //     const resArray = res.split('\n')
+      //     const partsArray = resArray.split('=')
+      //     for(i in partsArray){
+      //       store.commit('setConfig', partsArray[i], partsArray[i + 1])
+      //     }
+      //   })
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })
