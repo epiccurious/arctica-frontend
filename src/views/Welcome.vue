@@ -36,8 +36,6 @@
 
 
 <script>
-// import { valueToNode } from '@babel/types'
-// import { nextTick } from 'process'
 import store from '../store.js'
 
 export default {
