@@ -190,9 +190,9 @@ export default {
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
           const resArray = res.split('\n')
-          invoke('print_rust', {resArray})
+          invoke('print_rust', {data: resArray})
           const partsArray = resArray.split('=')
-          invoke('print_rust', {partsArray})
+          invoke('print_rust', {data: partsArray})
           // for(let i = 0; i < partsArray.length; i ++){
           //   store.commit('setConfig', partsArray[i], partsArray[i + 1])
           // }
