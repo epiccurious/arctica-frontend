@@ -191,7 +191,7 @@ export default {
       invoke('read').then((res) => {
           const resArray = res.split('\n')
           const partsArray = resArray.split('=')
-          for(i=0; i<partsArray.length; i ++){
+          for(let i = 0; i < partsArray.length; i ++){
             store.commit('setConfig', partsArray[i], partsArray[i + 1])
           }
         })
