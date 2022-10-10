@@ -86,9 +86,9 @@ export default createStore({
         setTxId(state, payload){
             state.id = payload;
         },
-        setConfig(state,key,value){
-            state.config[key] = value
-        },
+        // setConfig(state,key,value){
+        //     state.config[key] = value
+        // },
         setTxDescription(state, payload){
             state.description = payload
         },
@@ -358,9 +358,9 @@ export default createStore({
         getTxBalance(state){
             return state.balance
         },
-        getConfig(state){
-            return state.config
-        },
+        // getConfig(state){
+        //     return state.config
+        // },
         //below is for testing, may remove
         getPSBTArr(state){
             return state.psbtArr
