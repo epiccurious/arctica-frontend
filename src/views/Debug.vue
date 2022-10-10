@@ -314,7 +314,9 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            console.log('test')
+            const invoke = window.__TAURI__.invoke
+            let config = store.getters.getConfig
+            invoke('print_rust', config)
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
