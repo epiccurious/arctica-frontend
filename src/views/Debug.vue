@@ -315,7 +315,7 @@ export default{
         },    
         test(){
             const invoke = window.__TAURI__.invoke
-            let config = store.getters.getConfig
+            let config = String(store.getters.getConfig)
             invoke('print_rust', {data: config})
         },
         reboot(){
