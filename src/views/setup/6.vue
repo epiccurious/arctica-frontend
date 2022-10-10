@@ -60,11 +60,6 @@ export default {
             setupStep: '3'
         }
     },
-        computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
-        }
-    }
 }
 </script>
 

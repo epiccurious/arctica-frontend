@@ -11,14 +11,14 @@
 
         <label>SD inserted</label>
         <select v-model="sdCard" name="sdCard" id="sdCard">
-            <option @click="setSD()" value="none">None</option>
-            <option @click="setSD()" value="one">One</option>
-            <option @click="setSD()" value="two">Two</option>
-            <option @click="setSD()" value="three">Three</option>
-            <option @click="setSD()" value="four">Four</option>
-            <option @click="setSD()" value="five">Five</option>
-            <option @click="setSD()" value="six">Six</option>
-            <option @click="setSD()" value="seven">Seven</option>
+            <option @click="setSD()" value= 0>None</option>
+            <option @click="setSD()" value= 1>One</option>
+            <option @click="setSD()" value= 2>Two</option>
+            <option @click="setSD()" value= 3>Three</option>
+            <option @click="setSD()" value= 4>Four</option>
+            <option @click="setSD()" value= 5>Five</option>
+            <option @click="setSD()" value= 6>Six</option>
+            <option @click="setSD()" value= 7>Seven</option>
         </select>
 
         <div class="switch">

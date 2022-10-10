@@ -29,9 +29,6 @@ export default {
         },
     },
     computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
-        },
         psbtFound(){
             return store.getters.getPSBTFound
         }

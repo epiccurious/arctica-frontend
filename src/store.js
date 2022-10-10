@@ -4,7 +4,8 @@ export default createStore({
     //these are currently hardcoded to make testing easier but should eventually all be undefined, null or empty and obtained dynmically from backend
     state: {
     //current SD card
-    sdOne: false, sdTwo: false, sdThree: false, sdFour: false, sdFive: false, sdSix: false, sdSeven: false,
+    currentSD: 0,
+    //a current sd of 0 designates no inserted valid card
 
     setupCD: false, 
     //set up variables 
@@ -198,78 +199,7 @@ export default createStore({
             state.hotAddress = payload
         },
         setCurrentSD(state, payload){
-            if(payload == 'one'){
-                state.sdOne = true
-                state.sdTwo = false
-                state.sdThree = false
-                state.sdFour = false
-                state.sdFive = false
-                state.sdSix = false
-                state.sdSeven = false
-            }
-            else if(payload == 'two'){
-                state.sdOne = false
-                state.sdTwo = true
-                state.sdThree = false
-                state.sdFour = false
-                state.sdFive = false
-                state.sdSix = false
-                state.sdSeven = false
-            }
-            else if(payload == 'three'){
-                state.sdOne = false
-                state.sdTwo = false
-                state.sdThree = true
-                state.sdFour = false
-                state.sdFive = false
-                state.sdSix = false
-                state.sdSeven = false
-            }
-            else if(payload == 'four'){
-                state.sdOne = false
-                state.sdTwo = false
-                state.sdThree = false
-                state.sdFour = true
-                state.sdFive = false
-                state.sdSix = false
-                state.sdSeven = false
-            }
-            else if(payload == 'five'){
-                state.sdOne = false
-                state.sdTwo = false
-                state.sdThree = false
-                state.sdFour = false
-                state.sdFive = true
-                state.sdSix = false
-                state.sdSeven = false
-            }
-            else if(payload == 'six'){
-                state.sdOne = false
-                state.sdTwo = false
-                state.sdThree = false
-                state.sdFour = false
-                state.sdFive = false
-                state.sdSix = true
-                state.sdSeven = false
-            }
-            else if(payload == 'seven'){
-                state.sdOne = false
-                state.sdTwo = false
-                state.sdThree = false
-                state.sdFour = false
-                state.sdFive = false
-                state.sdSix = false
-                state.sdSeven = true
-            }
-            else{
-                state.sdOne = false
-                state.sdTwo = false
-                state.sdThree = false
-                state.sdFour = false
-                state.sdFive = false
-                state.sdSix = false
-                state.sdSeven = false
-            }
+            state.currentSD = payload
         },
         setBPSBricked(state, payload){
             state.bpsBricked = payload
@@ -381,30 +311,7 @@ export default createStore({
             return state.hotAddress
         },
         getCurrentSD(state){
-            if(state.sdOne == true){
-                return 'one'
-            }
-            else if(state.sdTwo == true){
-                return 'two'
-            }
-            else if(state.sdThree == true){
-                return 'three'
-            }
-            else if(state.sdFour == true){
-                return 'four'
-            }
-            else if(state.sdFive == true){
-                return 'five'
-            }
-            else if(state.sdSix == true){
-                return 'six'
-            }
-            else if(state.sdSeven == true){
-                return 'seven'
-            }
-            else{
-                return 'none'
-            }
+           return state.currentSD
         },
         getBPSBricked(state){
             return state.bpsBricked

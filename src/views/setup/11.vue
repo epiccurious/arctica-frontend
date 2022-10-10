@@ -24,9 +24,6 @@ export default {
 
     },
         computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
-        },
         primaryMachine(){
             return store.getters.getPrimaryMachine
         }

@@ -26,9 +26,6 @@ export default {
         },
     },
     computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
-        }
     },
     data(){
         store.commit('setSetupStep', 9) //eventually change this to add a virtual label

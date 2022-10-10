@@ -43,35 +43,35 @@ export default {
     methods: {
         login(){
            //user is returning with an immediate account PSBT that has been signed by 1 SD card
-            if(this.psbtFound == true && this.psbt == '1of2' && this.currentSD != 'one' && this.currentSD !='none'){
+            if(this.psbtFound == true && this.psbt == '1of2' && this.currentSD != 1 && this.currentSD != 0){
               this.$router.push({ name:'sign2of2' })
             }
             //user is returning with an immediate account PSBT that has been signed by 2 SD cards
-            else if(this.psbtFound == true && this.psbt == '2of2' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == true){
+            else if(this.psbtFound == true && this.psbt == '2of2' && this.currentSD == 1 && this.currentSD != 0 && this.primaryMachine == true){
               this.$router.push({ name:'immediateBroadcast' })
             }
             //user is returning with a delayed account PSBT that has been signed by 1 SD card
-            else if(this.psbtFound == true && this.psbt == '1of5' && this.currentSD != 'one' && this.currentSD !='none'){
+            else if(this.psbtFound == true && this.psbt == '1of5' && this.currentSD != 1 && this.currentSD != 0){
               this.$router.push({ name:'sign2of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 2 SD card
-            else if(this.psbtFound == true && this.psbt == '2of5' && this.currentSD != 'one' && this.currentSD !='none'){
+            else if(this.psbtFound == true && this.psbt == '2of5' && this.currentSD != 1 && this.currentSD != 0){
               this.$router.push({ name:'sign3of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 3 SD card
-            else if(this.psbtFound == true && this.psbt == '3of5' && this.currentSD != 'one' && this.currentSD !='none'){
+            else if(this.psbtFound == true && this.psbt == '3of5' && this.currentSD != 1 && this.currentSD != 0){
               this.$router.push({ name:'sign4of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 4 SD card
-            else if(this.psbtFound == true && this.psbt == '4of5' && this.currentSD != 'one' && this.currentSD !='none'){
+            else if(this.psbtFound == true && this.psbt == '4of5' && this.currentSD != 1 && this.currentSD !=0){
               this.$router.push({ name:'sign5of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is enabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == true && this.timelock == true){
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.primaryMachine == true && this.timelock == true){
               this.$router.push({ name:'TimeMachine1' })
             }
             //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is disabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 'one' && this.currentSD !='none' && this.primaryMachine == true && this.timelock == false){
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.primaryMachine == true && this.timelock == false){
               this.$router.push({ name:'delayedBroadcast' })
             }
             //user has manually recovered password using the appropriate amount of SD cards
@@ -83,7 +83,7 @@ export default {
               this.$router.push({ name: 'BPS_Bricked' })
             }
             //user is logging in with attic key
-            else if(this.currentSD == 'one'){
+            else if(this.currentSD == 1){
               this.$router.push({ name: 'Login'})
             }
             //user does not have SD 1 inserted and/or is trying to login with SD 2-7 and does not have a valid transfer CD inserted
@@ -156,49 +156,49 @@ export default {
           // }
         })
       //for initial set up only
-      if(this.setupStep == 1 && this.currentSD == 'one'){
+      if(this.setupStep == 1 && this.currentSD == 1){
         this.$router.push({ name: 'Setup12' })
       }
-      else if(this.setupStep == 2 && this.currentSD == 'two'){
+      else if(this.setupStep == 2 && this.currentSD == 2){
         this.$router.push({ name: 'Setup14' })
       }
-      else if(this.setupStep == 3 && this.currentSD == 'three'){
+      else if(this.setupStep == 3 && this.currentSD == 3){
         this.$router.push({ name: 'Setup15' })
       }
-      else if(this.setupStep == 4 && this.currentSD == 'four' && this.primaryMachine == false){
+      else if(this.setupStep == 4 && this.currentSD == 4 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup16' })
       }
-      else if(this.setupStep == 5 && this.currentSD == 'five' && this.primaryMachine == false){
+      else if(this.setupStep == 5 && this.currentSD == 5 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup18' })
       }
-      else if(this.setupStep == 6 && this.currentSD == 'six' && this.primaryMachine == false){
+      else if(this.setupStep == 6 && this.currentSD == 6 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup19' })
       }
-      else if(this.setupStep == 7 && this.currentSD == 'seven' && this.primaryMachine == false){
+      else if(this.setupStep == 7 && this.currentSD == 7 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup20' })
       }
-      else if(this.setupStep == 8 && this.currentSD == 'one' && this.primaryMachine == true){
+      else if(this.setupStep == 8 && this.currentSD == 1 && this.primaryMachine == true){
         this.$router.push({ name: 'Setup21' })
       }
-      else if(this.setupStep == 9 && this.currentSD == 'two' && this.primaryMachine == true){
+      else if(this.setupStep == 9 && this.currentSD == 2 && this.primaryMachine == true){
         this.$router.push({ name: 'Setup27a' })
       }
-      else if(this.setupStep == 10 && this.currentSD == 'three' && this.primaryMachine == true){
+      else if(this.setupStep == 10 && this.currentSD == 3 && this.primaryMachine == true){
         this.$router.push({ name: 'Setup31a' })
       }
-      else if(this.setupStep == 11 && this.currentSD == 'four' && this.primaryMachine == false){
+      else if(this.setupStep == 11 && this.currentSD == 4 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup35a' })
       }
-      else if(this.setupStep == 12 && this.currentSD == 'five' && this.primaryMachine == false){
+      else if(this.setupStep == 12 && this.currentSD == 5 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup39a' })
       }
-      else if(this.setupStep == 13 && this.currentSD == 'six' && this.primaryMachine == false){
+      else if(this.setupStep == 13 && this.currentSD == 6 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup43a' })
       }
-      else if(this.setupStep == 14 && this.currentSD == 'seven' && this.primaryMachine == false){
+      else if(this.setupStep == 14 && this.currentSD == 7 && this.primaryMachine == false){
         this.$router.push({ name: 'Setup47a' })
       }
-      else if(this.setupStep == 15 && this.currentSD == 'one' && this.primaryMachine == true){
+      else if(this.setupStep == 15 && this.currentSD == 1 && this.primaryMachine == true){
         this.$router.push({ name: 'Setup50b' })
       }
 
@@ -208,12 +208,12 @@ export default {
       }
 
       //below we redirect user to boot screen if they have no SD inserted
-      if(this.currentSD == 'none'){
+      if(this.currentSD == 0){
         this.$router.push({ name:'Boot' })
       }
 
       //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
-      if(this.currentSD != 'one' && this.psbtFound == 'none'){
+      if(this.currentSD != 1 && this.psbtFound == 'none'){
         this.$router.push({ name:'Boot' })
       }
 

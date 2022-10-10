@@ -26,11 +26,6 @@ export default {
             //eventually only allow the user to proceed here if primary machine boolean is false
         },
     },
-    computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
-        },
-    },
     data(){
         
         store.commit('setSetupStep', 8) //eventually change this to add a virtual label
