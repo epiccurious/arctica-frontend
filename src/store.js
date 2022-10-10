@@ -24,7 +24,7 @@ export default createStore({
     setup14: false, //file placed on SD 7 at step 20 to jump user to step 47a
     setup15: false, //file placed on SD 1 at step 21 to jump user to step 50b...returns user to blockchain sync
 
-    config:{},
+    config:{'test': 'success'},
 
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
