@@ -190,10 +190,12 @@ export default {
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
           const resArray = res.split('\n')
+          invoke('print_rust', {resArray})
           const partsArray = resArray.split('=')
-          for(let i = 0; i < partsArray.length; i ++){
-            store.commit('setConfig', partsArray[i], partsArray[i + 1])
-          }
+          invoke('print_rust', {partsArray})
+          // for(let i = 0; i < partsArray.length; i ++){
+          //   store.commit('setConfig', partsArray[i], partsArray[i + 1])
+          // }
         })
       //for initial set up only
       if(this.setup1 == true && this.currentSD == 'one'){
