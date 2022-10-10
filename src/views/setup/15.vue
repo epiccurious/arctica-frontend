@@ -32,8 +32,7 @@ export default {
         }
     },
     data(){
-        store.commit('setSetup3', false) //eventually change this to remove virtual label
-        store.commit('setSetup10', true) //eventually change this to add virtual label
+        store.commit('setSetupStep', 10) //eventually change this to add virtual label
         return{}
     }
 }

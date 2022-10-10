@@ -37,7 +37,7 @@ export default {
         },
     },
     data(){
-        store.commit('setSetup10', false) //eventually change this to remove virtual label
+        //remove virtual label here
         return{
             checkbox: false,
         }

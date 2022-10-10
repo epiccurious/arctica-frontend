@@ -185,6 +185,9 @@ export default {
       setup15(){
         return store.getters.getSetup15
       },
+      setupStep(){
+        return store.getters.getSetupStep
+      }
     },
     mounted(){
       const invoke = window.__TAURI__.invoke
@@ -198,49 +201,49 @@ export default {
           // }
         })
       //for initial set up only
-      if(this.setup1 == true && this.currentSD == 'one'){
+      if(this.setupStep == 1 && this.currentSD == 'one'){
         this.$router.push({ name: 'Setup12' })
       }
-      else if(this.setup2 == true && this.currentSD == 'two'){
+      else if(this.setupStep == 2 && this.currentSD == 'two'){
         this.$router.push({ name: 'Setup14' })
       }
-      else if(this.setup3 == true && this.currentSD == 'three'){
+      else if(this.setupStep == 3 && this.currentSD == 'three'){
         this.$router.push({ name: 'Setup15' })
       }
-      else if(this.setup4 == true && this.currentSD == 'four' && this.primaryMachine == false){
+      else if(this.setupStep == 4 && this.currentSD == 'four' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup16' })
       }
-      else if(this.setup5 == true && this.currentSD == 'five' && this.primaryMachine == false){
+      else if(this.setupStep == 5 && this.currentSD == 'five' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup18' })
       }
-      else if(this.setup6 == true && this.currentSD == 'six' && this.primaryMachine == false){
+      else if(this.setupStep == 6 && this.currentSD == 'six' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup19' })
       }
-      else if(this.setup7 == true && this.currentSD == 'seven' && this.primaryMachine == false){
+      else if(this.setupStep == 7 && this.currentSD == 'seven' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup20' })
       }
-      else if(this.setup8 == true && this.currentSD == 'one' && this.primaryMachine == true){
+      else if(this.setupStep == 8 && this.currentSD == 'one' && this.primaryMachine == true){
         this.$router.push({ name: 'Setup21' })
       }
-      else if(this.setup9 == true && this.currentSD == 'two' && this.primaryMachine == true){
+      else if(this.setupStep == 9 && this.currentSD == 'two' && this.primaryMachine == true){
         this.$router.push({ name: 'Setup27a' })
       }
-      else if(this.setup10 == true && this.currentSD == 'three' && this.primaryMachine == true){
+      else if(this.setupStep == 10 && this.currentSD == 'three' && this.primaryMachine == true){
         this.$router.push({ name: 'Setup31a' })
       }
-      else if(this.setup11 == true && this.currentSD == 'four' && this.primaryMachine == false){
+      else if(this.setupStep == 11 && this.currentSD == 'four' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup35a' })
       }
-      else if(this.setup12 == true && this.currentSD == 'five' && this.primaryMachine == false){
+      else if(this.setupStep == 12 && this.currentSD == 'five' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup39a' })
       }
-      else if(this.setup13 == true && this.currentSD == 'six' && this.primaryMachine == false){
+      else if(this.setupStep == 13 && this.currentSD == 'six' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup43a' })
       }
-      else if(this.setup14 == true && this.currentSD == 'seven' && this.primaryMachine == false){
+      else if(this.setupStep == 14 && this.currentSD == 'seven' && this.primaryMachine == false){
         this.$router.push({ name: 'Setup47a' })
       }
-      else if(this.setup15 == true && this.currentSD == 'one' && this.primaryMachine == true){
+      else if(this.setupStep == 15 && this.currentSD == 'one' && this.primaryMachine == true){
         this.$router.push({ name: 'Setup50b' })
       }
 

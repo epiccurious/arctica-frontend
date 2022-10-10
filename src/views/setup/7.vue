@@ -41,7 +41,7 @@ export default {
             this.loading = true
             invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
                 this.loading = false
-                store.commit('setSetup4', true) //eventually replace this with  virtual label
+                store.commit('setSetupStep', this.setupStep) //eventually replace this with  virtual label
                 this.$router.push({ name:'Setup8' })   
                 invoke('print_rust', {data: this.sd})
             })

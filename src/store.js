@@ -23,6 +23,7 @@ export default createStore({
     setup13: false, //file placed on SD 6 at step 19 to jump user to step 43a
     setup14: false, //file placed on SD 7 at step 20 to jump user to step 47a
     setup15: false, //file placed on SD 1 at step 21 to jump user to step 50b...returns user to blockchain sync
+    setupStep: 0,
 
     config:{'test': 'success'},
 
@@ -346,6 +347,9 @@ export default createStore({
         setSetup15(state,payload){
             state.setup15 = payload
         },
+        setSetupStep(state, payload){
+            state.setupStep = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -516,6 +520,9 @@ export default createStore({
         },
         getSetup15(state){
             return state.setup15
+        },
+        getSetupStep(state){
+            return state.setupStep
         },
 
 
