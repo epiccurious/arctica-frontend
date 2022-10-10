@@ -314,9 +314,10 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         test(){
-            const invoke = window.__TAURI__.invoke
-            let config = String(store.getters.getConfig)
-            invoke('print_rust', {data: config})
+            // const invoke = window.__TAURI__.invoke
+            // let config = String(store.getters.getConfig)
+            // invoke('print_rust', {data: config})
+            console.log(store.getters.getCurrentSD)
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
