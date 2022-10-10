@@ -140,51 +140,6 @@ export default {
           return store.getters.getManualDecrypt
         }else{return store.getters.getManualDecrypt}
       },
-      setup1(){
-        return store.getters.getSetup1
-      },
-      setup2(){
-        return store.getters.getSetup2
-      },
-      setup3(){
-        return store.getters.getSetup3
-      },
-      setup4(){
-        return store.getters.getSetup4
-      },
-      setup5(){
-        return store.getters.getSetup5
-      },
-      setup6(){
-        return store.getters.getSetup6
-      },
-      setup7(){
-        return store.getters.getSetup7
-      },
-      setup8(){
-        return store.getters.getSetup8
-      },
-      setup9(){
-        return store.getters.getSetup9
-      },
-      setup10(){
-        return store.getters.getSetup10
-      },
-      setup11(){
-        return store.getters.getSetup11
-      },
-      setup12(){
-        return store.getters.getSetup12
-      },
-      setup13(){
-        return store.getters.getSetup13
-      },
-      setup14(){
-        return store.getters.getSetup14
-      },
-      setup15(){
-        return store.getters.getSetup15
-      },
       setupStep(){
         return store.getters.getSetupStep
       }

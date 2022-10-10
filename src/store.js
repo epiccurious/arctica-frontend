@@ -8,6 +8,7 @@ export default createStore({
 
     setupCD: false, 
     //set up variables 
+    //these setup variables are deprecated, eventually remove
     setup1: false, //file placed on SD 1 at step 4 to jump user to step 12
     setup2: false, //file placed on SD 2 at step 5 to jump user to step 14
     setup3: false, //file placed on SD 3 at step 6 to jump user to step 15
@@ -23,6 +24,7 @@ export default createStore({
     setup13: false, //file placed on SD 6 at step 19 to jump user to step 43a
     setup14: false, //file placed on SD 7 at step 20 to jump user to step 47a
     setup15: false, //file placed on SD 1 at step 21 to jump user to step 50b...returns user to blockchain sync
+    //use this setup variable instead, eventually remove above notes
     setupStep: 0,
 
     config:{'test': 'success'},
@@ -302,51 +304,6 @@ export default createStore({
         setPrimaryMachine(state, payload){
             state.primaryMachine = payload
         },
-        setSetup1(state,payload){
-            state.setup1 = payload
-        },
-        setSetup2(state,payload){
-            state.setup2 = payload
-        },
-        setSetup3(state,payload){
-            state.setup3 = payload
-        },
-        setSetup4(state,payload){
-            state.setup4 = payload
-        },
-        setSetup5(state,payload){
-            state.setup5 = payload
-        },
-        setSetup6(state,payload){
-            state.setup6 = payload
-        },
-        setSetup7(state,payload){
-            state.setup7 = payload
-        },
-        setSetup8(state,payload){
-            state.setup8 = payload
-        },
-        setSetup9(state,payload){
-            state.setup9 = payload
-        },
-        setSetup10(state,payload){
-            state.setup10 = payload
-        },
-        setSetup11(state,payload){
-            state.setup11 = payload
-        },
-        setSetup12(state,payload){
-            state.setup12 = payload
-        },
-        setSetup13(state,payload){
-            state.setup13 = payload
-        },
-        setSetup14(state,payload){
-            state.setup14 = payload
-        },
-        setSetup15(state,payload){
-            state.setup15 = payload
-        },
         setSetupStep(state, payload){
             state.setupStep = payload
         },
@@ -475,51 +432,6 @@ export default createStore({
         },
         getPrimaryMachine(state){
             return state.primaryMachine
-        },
-        getSetup1(state){
-            return state.setup1
-        },
-        getSetup2(state){
-            return state.setup2
-        },
-        getSetup3(state){
-            return state.setup3
-        },
-        getSetup4(state){
-            return state.setup4
-        },
-        getSetup5(state){
-            return state.setup5
-        },
-        getSetup6(state){
-            return state.setup6
-        },
-        getSetup7(state){
-            return state.setup7
-        },
-        getSetup8(state){
-            return state.setup8
-        },
-        getSetup9(state){
-            return state.setup9
-        },
-        getSetup10(state){
-            return state.setup10
-        },
-        getSetup11(state){
-            return state.setup11
-        },
-        getSetup12(state){
-            return state.setup12
-        },
-        getSetup13(state){
-            return state.setup13
-        },
-        getSetup14(state){
-            return state.setup14
-        },
-        getSetup15(state){
-            return state.setup15
         },
         getSetupStep(state){
             return state.setupStep
