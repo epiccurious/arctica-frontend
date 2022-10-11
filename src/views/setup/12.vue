@@ -32,7 +32,7 @@ export default {
   name: 'Setup12',
     methods: {
         acknowledge(){
-            invoke('write', {name: 'setupStep', value: this.setupStep}).then(() => {
+            invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
                 this.$router.push({ name:'Setup13' }) 
                 //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
                 //eventually need to load all pubkeys onto setup CD 
@@ -54,6 +54,12 @@ export default {
             return store.getters.getSetupCD
         },
 
+    },
+    mounted() {
+        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
+                //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
+                //eventually need to load all pubkeys onto setup CD 
+            })
     }
 }
 </script>
