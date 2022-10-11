@@ -146,8 +146,10 @@ export default {
     },
     mounted(){
       const invoke = window.__TAURI__.invoke
+      let ans = invoke('read')
+      store.commit('setTest', ans)
       invoke('read').then((res) => {
-        store.commit('setTest', res)
+        return res
           // let resArray = res.split("\n")
           // let partsArray = resArray.split("=")
           // if(partsArray[0] == 'sdNumber'){
