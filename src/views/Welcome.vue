@@ -150,7 +150,7 @@ export default {
           let resArray = res.split("\n")
           let partsArray = resArray.split("=")
           if(partsArray[0] == 'sdNumber'){
-            store.commit('setCurrentSD', partsArray[1])
+            store.commit('setCurrentSD', 1)
           }
           // const resArray = res.split('\n')
           // invoke('print_rust', {data: String(res)})
