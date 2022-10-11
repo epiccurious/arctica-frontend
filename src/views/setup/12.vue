@@ -26,15 +26,18 @@
 
 <script>
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup12',
     methods: {
         acknowledge(){
             console.log('user ack, loading pubkeys onto set up CD')
-            this.$router.push({ name: 'Setup13' })
-            //eventually need to add an electronic label in the form of a text file to the set up CD here that will inform arctica's global state when inserted
-            //eventually only allow the user to proceed here if primary machine boolean is false
+            invoke('asyncWrite', {'setupStep': this.setupStep}).then(() => {
+                this.$router.push({ name:'Setup13' })   
+            })
+
+            //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -42,6 +45,7 @@ export default {
     },
     data(){
         return{
+            setupStep: 8,
             checkbox: false,
         }
     },

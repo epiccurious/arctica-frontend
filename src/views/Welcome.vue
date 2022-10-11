@@ -153,9 +153,12 @@ export default {
             let it = resArray[i].split("=")
             //check config for current SD
             if (it[0] == 'sdNumber'){
-              store.commit('setCurrentSD', parseFloat(it[1]))
+              store.commit('setCurrentSD', parseInt(it[1]))
             }
             //check config for current setup step
+            else if(it[0] == 'setupStep'){
+              store.commit('setSetupStep', parseInt(it[1]))
+            }
           }
         })
         

@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import store from '../../store.js'
-
 export default {
   name: 'Setup13',
     methods: {
@@ -26,11 +24,6 @@ export default {
             //eventually only allow the user to proceed here if primary machine boolean is false
         },
     },
-    data(){
-        
-        store.commit('setSetupStep', 8) //eventually change this to add a virtual label
-        return{}
-    }
 }
 </script>
 
