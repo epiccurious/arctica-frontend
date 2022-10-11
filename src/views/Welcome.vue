@@ -147,12 +147,17 @@ export default {
     mounted(){
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
-          const resArray = res.split('\n')
-          invoke('print_rust', {data: String(resArray)})
-          const partsArray = resArray.split('=')
-          invoke('print_rust', {data: String(partsArray)})
+          let resArray = res.split("\n")
+          let partsArray = resArray.split("=")
+          if(partsArray[0] == 'sdNumber'){
+            store.commit('setCurrentSD', partsArray[1])
+          }
+          // const resArray = res.split('\n')
+          // invoke('print_rust', {data: String(res)})
+          // const partsArray = resArray.split('=')
+          // invoke('print_rust', {data: String(partsArray)})
           // for(let i = 0; i < partsArray.length; i ++){
-          //   store.commit('setConfig', partsArray[i], partsArray[i + 1])
+          //   
           // }
         })
       //for initial set up only
