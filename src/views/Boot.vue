@@ -73,7 +73,10 @@ export default {
         },
   mounted(){
     if(this.setupStep !=0){
-      this.$router.push({name:'Welcome'})
+      this.$router.push({name:'welcome'})
+    }
+    else if(this.currentSD == 1){
+      this.$router.push({name:'welcome'})
     }
   },
   computed:{
@@ -89,9 +92,6 @@ export default {
     psbt(){
       return store.getters.getPSBT
     },
-    testVar(){
-      return store.getters.getTest
-    }
   },
   data() {
     return {someData: [],
