@@ -32,12 +32,12 @@ export default {
   name: 'Setup12',
     methods: {
         acknowledge(){
-            console.log('user ack, loading pubkeys onto set up CD')
             invoke('setup_step', {name: 'setupStep', value: this.setupStep}).then(() => {
-                this.$router.push({ name:'Setup13' })   
+                this.$router.push({ name:'Setup13' }) 
+                //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
+                //eventually need to load all pubkeys onto setup CD 
             })
 
-            //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
