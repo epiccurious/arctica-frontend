@@ -146,8 +146,8 @@ export default {
     },
     mounted(){
       const invoke = window.__TAURI__.invoke
-      let ans = invoke('read').then((res) => {
-        return res
+      invoke('read').then((res) => {
+        store.commit('setTest', res)
           // let resArray = res.split("\n")
           // let partsArray = resArray.split("=")
           // if(partsArray[0] == 'sdNumber'){
@@ -161,7 +161,7 @@ export default {
           //   
           // }
         })
-        store.commit('setTest', ans)
+        
       //for initial set up only
       if(this.setupStep == 1 && this.currentSD == 1){
         this.$router.push({ name: 'Setup12' })
