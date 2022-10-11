@@ -148,8 +148,15 @@ export default {
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
           let resArray = res.split("\n")
-          let partsArray = resArray.split("=")
-          store.commit('setTest', String(partsArray))
+          store.commit('setTest', String(resArray))
+          for(let i = 0; i < resArray.length; i ++){
+            let it = resArray[i].split("=")
+            if (it[0] == 'sdNumber' && it[1] == '1'){
+              store.commit('setCurrentSD', 1)
+            }
+
+          }
+          
           // if(partsArray[0] == 'sdNumber'){
           //   store.commit('setCurrentSD', 1)
           // }
