@@ -56,7 +56,7 @@ export default {
 
     },
     mounted() {
-        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
+        invoke('write', {name: 'setupStep', value: this.setupStep}).then(() => {
                 //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
                 //eventually need to load all pubkeys onto setup CD 
             })
