@@ -9,7 +9,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
 </div>
 
 <div v-else>
-  <div v-if="this.currentSD == 0 || this.currentSD == 1" class="login">
+  <div v-if="this.currentSD == 0" class="login">
     <header>
       <h1>Welcome to Arctica</h1>
       <h2>If you have already set up Arctica, please insert SD 1 and restart this machine.</h2>
@@ -72,10 +72,16 @@ export default {
 
         },
   mounted(){
+    if(this.setupStep !=0){
+      this.$router.push({name:'Welcome'})
+    }
   },
   computed:{
     currentSD(){
       return store.getters.getCurrentSD
+    },
+    setupStep(){
+      return store.getters.getSetupStep
     },
     psbtFound(){
       return store.getters.getPSBTFound
