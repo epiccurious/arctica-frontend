@@ -28,7 +28,7 @@ export default createStore({
     //use this setup variable instead, eventually remove above notes
     setupStep: 0,
 
-    config:{'test': 'success'},
+    test: '',
 
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
@@ -90,8 +90,8 @@ export default createStore({
         setTxId(state, payload){
             state.id = payload;
         },
-        setConfig(state,key,value){
-            state.config[key] = value
+        setTest(state,value){
+            state.test = value
         },
         setTxDescription(state, payload){
             state.description = payload
@@ -249,8 +249,8 @@ export default createStore({
         getTxBalance(state){
             return state.balance
         },
-        getConfig(state){
-            return state.config
+        getTest(state){
+            return state.test
         },
         //below is for testing, may remove
         getPSBTArr(state){
