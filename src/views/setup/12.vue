@@ -6,6 +6,8 @@
         <h1>Please insert the set up CD</h1>
         <h2>Insert the set up CD to continue.</h2>
         <h2>testing: {{this.test}}</h2>
+        <h2>name: {{this.name}}</h2>
+        <h2>value: {{this.setupStep}}</h2>
     </header>   
     <div class="form_container">
         <form>
@@ -39,6 +41,7 @@ export default {
                 //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
                 //eventually need to load all pubkeys onto setup CD 
             })
+            store.commit('setTest', 'function is done')
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
