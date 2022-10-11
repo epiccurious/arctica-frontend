@@ -27,7 +27,6 @@
 
 <script>
 import Loader from '@/components/loader'
-import store from '../../store.js'
 const invoke = window.__TAURI__.invoke
 
 export default {
