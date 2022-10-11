@@ -146,9 +146,7 @@ export default {
     },
     mounted(){
       const invoke = window.__TAURI__.invoke
-      let ans = invoke('read')
-      store.commit('setTest', ans)
-      invoke('read').then((res) => {
+      let ans = invoke('read').then((res) => {
         return res
           // let resArray = res.split("\n")
           // let partsArray = resArray.split("=")
@@ -163,6 +161,7 @@ export default {
           //   
           // }
         })
+        store.commit('setTest', ans)
       //for initial set up only
       if(this.setupStep == 1 && this.currentSD == 1){
         this.$router.push({ name: 'Setup12' })
