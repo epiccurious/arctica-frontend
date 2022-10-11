@@ -151,22 +151,12 @@ export default {
           store.commit('setTest', String(resArray))
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
-            if (it[0] == 'sdNumber' && it[1] == '1'){
-              store.commit('setCurrentSD', 1)
+            //check config for current SD
+            if (it[0] == 'sdNumber'){
+              store.commit('setCurrentSD', parseFloat(it[1]))
             }
-
+            //check config for current setup step
           }
-          
-          // if(partsArray[0] == 'sdNumber'){
-          //   store.commit('setCurrentSD', 1)
-          // }
-          // const resArray = res.split('\n')
-          // invoke('print_rust', {data: String(res)})
-          // const partsArray = resArray.split('=')
-          // invoke('print_rust', {data: String(partsArray)})
-          // for(let i = 0; i < partsArray.length; i ++){
-          //   
-          // }
         })
         
       //for initial set up only
