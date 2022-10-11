@@ -10,21 +10,21 @@ export default createStore({
     setupCD: false, 
     //set up variables 
     //these setup variables are deprecated, eventually remove
-    setup1: false, //file placed on SD 1 at step 4 to jump user to step 12
-    setup2: false, //file placed on SD 2 at step 5 to jump user to step 14
-    setup3: false, //file placed on SD 3 at step 6 to jump user to step 15
-    setup4: false, //file placed on SD 4 at step 7 to jump user to step 16
-    setup5: false, //file placed on SD 5 at step 8 to jump user to step 17
-    setup6: false, //file placed on SD 6 at step 9 to jump user to step 19
-    setup7: false, //file placed on SD 7 at step 10 to jump user to step 20
-    setup8: false, //file placed on SD 1 at step 12 to jump user to step 21
-    setup9: false, //file placed on SD 2 at step 14 to jump user to step 27a
-    setup10: false, //file placed on SD 3 at step 15 to jump user to step 31a
-    setup11: false, //file placed on SD 4 at step 17 to jump user to step 35a
-    setup12: false, //file placed on SD 5 at step 18 to jump user to step 39a
-    setup13: false, //file placed on SD 6 at step 19 to jump user to step 43a
-    setup14: false, //file placed on SD 7 at step 20 to jump user to step 47a
-    setup15: false, //file placed on SD 1 at step 21 to jump user to step 50b...returns user to blockchain sync
+    setup1: false, //file placed on SD 1 at step 4 to jump user to step 12 done
+    setup2: false, //file placed on SD 2 at step 5 to jump user to step 14 done
+    setup3: false, //file placed on SD 3 at step 6 to jump user to step 15 done
+    setup4: false, //file placed on SD 4 at step 7 to jump user to step 16 done
+    setup5: false, //file placed on SD 5 at step 8 to jump user to step 17 done
+    setup6: false, //file placed on SD 6 at step 9 to jump user to step 19 done
+    setup7: false, //file placed on SD 7 at step 10 to jump user to step 20 done
+    setup8: false, //file placed on SD 1 at step 12 to jump user to step 21 done
+    setup9: false, //file placed on SD 2 at step 14 to jump user to step 27a last sd 2
+    setup10: false, //file placed on SD 3 at step 15 to jump user to step 31a last sd 3
+    setup11: false, //file placed on SD 4 at step 17 to jump user to step 35a last sd 4
+    setup12: false, //file placed on SD 5 at step 18 to jump user to step 39a last sd 5
+    setup13: false, //file placed on SD 6 at step 19 to jump user to step 43a last sd 6
+    setup14: false, //file placed on SD 7 at step 20 to jump user to step 47a last sd 7
+    setup15: false, //file placed on SD 1 at step 21 to jump user to step 50b last sd 1
     //use this setup variable instead, eventually remove above notes
     setupStep: 0,
 
