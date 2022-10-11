@@ -33,7 +33,7 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, loading pubkeys onto set up CD')
-            invoke('setup_step', {setup: this.setupStep}).then(() => {
+            invoke('setup_step', {name: 'setupStep', value: this.setupStep}).then(() => {
                 this.$router.push({ name:'Setup13' })   
             })
 
