@@ -5,7 +5,6 @@
     <header>
         <h1>Please insert the set up CD</h1>
         <h2>Insert the set up CD to continue.</h2>
-        <h2>test: {{this.testing}}</h2>
     </header>   
     <div class="form_container">
         <form>
@@ -33,8 +32,6 @@ export default {
   name: 'Setup12',
     methods: {
         acknowledge(){
-            store.commit('setTest', 'function is firing')
-            //this invoke is not working properly
             invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
                 this.$router.push({ name:'Setup13' }) 
                 //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
@@ -59,9 +56,6 @@ export default {
         setupCD(){
             return store.getters.getSetupCD
         },
-        testing(){
-            return store.getters.getTest
-        }
 
     },
 }
