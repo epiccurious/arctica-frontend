@@ -17,6 +17,7 @@
 
 <script>
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup50b',
@@ -37,8 +38,17 @@ export default {
         }
     },
     data(){
-        //remove virtual label here
-        return{}
-    }
+        return{
+            setupStep: '0',
+        }
+    },
+    mounted(){
+        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
+            console.log('success')
+            })
+            .catch((e) => {
+                store.commit('setTest', e)
+            })
+    },
 }
 </script>
