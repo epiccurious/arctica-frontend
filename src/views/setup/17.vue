@@ -14,6 +14,7 @@
 
 <script>
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup17',
@@ -22,22 +23,20 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, close application')
-            //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
-            //eventually need a step here to remove the electronic label that redirected user to step 16, added in step 7
-            //eventually only allow the user to proceed here if primary machine boolean is true
         },
     },
-        computed:{
-        primaryMachine(){
-            return store.getters.getPrimaryMachine
-        },
-        setupCD(){
-            return store.getters.getSetupCD
-        }
+    mounted(){
+        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
+            console.log('success')
+            })
+            .catch((e) => {
+                store.commit('setTest', e)
+            })
     },
     data(){
-        store.commit('setSetupStep', 11) //eventually change this to add virtual label
-        return{}
+        return{
+            setupStep: '11',
+        }
     }
 }
 </script>
