@@ -45,7 +45,7 @@ export default {
     data(){
         return{
             checkbox: false,
-            setupStep: 0,
+            setupStep: '0',
         }
     },
     computed:{

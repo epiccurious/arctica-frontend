@@ -34,7 +34,7 @@ export default {
     },
     data(){
         return{
-            setupStep: 9,
+            setupStep: '9',
         }
     }
 }
