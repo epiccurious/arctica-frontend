@@ -21,7 +21,7 @@ export default createStore({
     // setup10 var placed on SD 3 at step 15 to jump user to step 31a last sd 3, setupStep set to 0 at step 33 done
     // setup11 var placed on SD 4 at step 17 to jump user to step 35a last sd 4, setupStep set to 0 at step 37 done
     // setup12 var placed on SD 5 at step 18 to jump user to step 39a last sd 5, setupStep set to 0 at step 41 done
-    // setup13 var placed on SD 6 at step 19 to jump user to step 43a last sd 6
+    // setup13 var placed on SD 6 at step 19 to jump user to step 43a last sd 6, setupStep set to 0 at step 45 done 
     // setup14 var placed on SD 7 at step 20 to jump user to step 47a last sd 7
     // setup15 var placed on SD 1 at step 21 to jump user to step 50b last sd 1
     setupStep: 0,
