@@ -26,6 +26,7 @@ export default {
     },
     mounted(){
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
+            console.log('success')
             })
             .catch((e) => {
                 store.commit('setTest', e)
