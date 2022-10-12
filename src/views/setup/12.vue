@@ -47,7 +47,6 @@ export default {
     },
     data(){
         return{
-            name: 'setupStep',
             setupStep: '8',
             checkbox: false,
         }

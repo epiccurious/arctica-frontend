@@ -28,7 +28,7 @@ export default createStore({
     //use this setup variable instead, eventually remove above notes
     setupStep: 0,
 
-    test: 'nothing has happened yet.',
+    test: 'nothing yet.',
 
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
