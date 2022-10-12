@@ -5,6 +5,7 @@
         <h2>This is for testing only.</h2>
     </header>
     <div class="btn_container"> 
+        <h2>debug output: {{this.testVar}}</h2>
 
         <button @click="reboot()" class="btn">Reboot</button>
 
@@ -342,6 +343,9 @@ export default{
 
     },
     computed:{
+        testVar(){
+            return store.getters.getTest
+        },
         timelock:{
             get(){
                 return store.getters.getTimeLock
