@@ -1,29 +1,28 @@
 import { createStore } from 'vuex'
 
 export default createStore({
-    //these are currently hardcoded to make testing easier but should eventually all be undefined, null or empty and obtained dynmically from backend
+    //some of these are currently hardcoded to make testing easier but should eventually all be undefined, null or empty and obtained dynmically from backend
     state: {
-    //current SD card
     currentSD: 0,
     //a current sd of 0 designates no inserted valid card
 
     setupCD: false, 
     //setupStep variables 
-    // setup1 var placed on SD 1 at step 4 to jump user to step 12 
-    // setup2 var placed on SD 2 at step 5 to jump user to step 14 
-    // setup3 var placed on SD 3 at step 6 to jump user to step 15 
-    // setup4 var placed on SD 4 at step 7 to jump user to step 16 
-    // setup5 var placed on SD 5 at step 8 to jump user to step 17 
-    // setup6 var placed on SD 6 at step 9 to jump user to step 19 
-    // setup7 var placed on SD 7 at step 10 to jump user to step 20
-    // setup8 var placed on SD 1 at step 12 to jump user to step 21 
-    // setup9 var placed on SD 2 at step 14 to jump user to step 27a, last sd 2, setupStep set to 0 at step 29
-    // setup10 var placed on SD 3 at step 15 to jump user to step 31a last sd 3, setupStep set to 0 at step 33 
-    // setup11 var placed on SD 4 at step 17 to jump user to step 35a last sd 4, setupStep set to 0 at step 37 
-    // setup12 var placed on SD 5 at step 18 to jump user to step 39a last sd 5, setupStep set to 0 at step 41 
-    // setup13 var placed on SD 6 at step 19 to jump user to step 43a last sd 6, setupStep set to 0 at step 45 
-    // setup14 var placed on SD 7 at step 20 to jump user to step 47a last sd 7, setupStep set to 0 at step 49a 
-    // setup15 var placed on SD 1 at step 21 to jump user to step 50b last sd 1, setupStep set to 0 at step 50b 
+    // setupStep 1 placed on SD 1 at step 4 to jump user to step 12 
+    // setupStep 2 placed on SD 2 at step 5 to jump user to step 14 
+    // setupStep 3 placed on SD 3 at step 6 to jump user to step 15 
+    // setupStep 4 placed on SD 4 at step 7 to jump user to step 16 
+    // setupStep 5 placed on SD 5 at step 8 to jump user to step 17 
+    // setupStep 6 placed on SD 6 at step 9 to jump user to step 19 
+    // setupStep 7 placed on SD 7 at step 10 to jump user to step 20
+    // setupStep 8 placed on SD 1 at step 12 to jump user to step 21 
+    // setupStep 9 placed on SD 2 at step 14 to jump user to step 27a, last sd 2, setupStep set to 0 at step 29
+    // setupStep 10 placed on SD 3 at step 15 to jump user to step 31a last sd 3, setupStep set to 0 at step 33 
+    // setupStep 11 placed on SD 4 at step 17 to jump user to step 35a last sd 4, setupStep set to 0 at step 37 
+    // setupStep 12 placed on SD 5 at step 18 to jump user to step 39a last sd 5, setupStep set to 0 at step 41 
+    // setupStep 13 placed on SD 6 at step 19 to jump user to step 43a last sd 6, setupStep set to 0 at step 45 
+    // setupStep 14 placed on SD 7 at step 20 to jump user to step 47a last sd 7, setupStep set to 0 at step 49a 
+    // setupStep 15 placed on SD 1 at step 21 to jump user to step 50b last sd 1, setupStep set to 0 at step 50b 
     setupStep: 0,
 
     test: 'nothing yet.',
