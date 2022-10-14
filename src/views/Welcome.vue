@@ -153,23 +153,23 @@ export default {
             //check config for current SD
             if (it[0] == 'sdNumber'){
               store.commit('setCurrentSD', parseInt(it[1]))
+              this.currentSD == store.getters.getCurrentSD
             }
             //check config for current setup step
             else if(it[0] == 'setupStep'){
               store.commit('setSetupStep', parseInt(it[1]))
+              this.setupStep == store.getters.getSetupStep
             }
           }
         })
       //mount internal disk and symlink .bitcoin folders if on SD 1
-      if(this.currentSD == 1){
+      if(this.currentSD == 1 && this.setupStep == 0){
         invoke('mount_internal').then((res)=> {
         store.commit('setTest', 'success')
         console.log(res)
       })
       }
-        
-      //for initial set up only
-      if(this.setupStep == 1 && this.currentSD == 1){
+      else if(this.setupStep == 1 && this.currentSD == 1){
         this.$router.push({ name: 'Setup12' })
       }
       else if(this.setupStep == 2 && this.currentSD == 2){
