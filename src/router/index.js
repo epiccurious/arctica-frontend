@@ -645,14 +645,6 @@ const routes = [
     component: () => import('../views/tripwire/compromised.vue')
    },
 
-
-   //debug menu for toggling global variables
-   {
-    path: '/debug',
-    name: 'Debug',
-    component: () => import('../views/Debug.vue')
-   },
-
    //404 not found catchall
    {
     path: '/:catchAll(.*)',
