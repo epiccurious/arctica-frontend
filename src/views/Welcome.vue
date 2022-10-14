@@ -155,6 +155,7 @@ export default {
           store.commit('setTest', `${this.test}; resArray: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
+            store.commit('setTest', `${this.test}; i: ${i} resArray splitted: ${it}`)
             //check config for current SD
             if (it[0] == 'sdNumber'){
               store.commit('setCurrentSD', parseInt(it[1]))
