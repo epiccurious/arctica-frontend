@@ -30,7 +30,7 @@ export default {
             console.log('success')
             })
             .catch((e) => {
-                store.commit('setTest', e)
+                store.commit('setTest', `async write error: ${e}`)
             })
     },
     data(){

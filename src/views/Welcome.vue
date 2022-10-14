@@ -160,13 +160,20 @@ export default {
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
             }
-          }
-        })
+        }
+      })
+        .catch((e) => {
+          store.commit('setTest', `read config error: ${e}`)
+    })
+
       //mount internal disk and symlink .bitcoin folders if on SD 1
       if(this.currentSD == 1 && this.setupStep == 0){
         invoke('mount_internal').then((res)=> {
         store.commit('setTest', 'success')
         console.log(res)
+      })
+      .catch((e)=> {
+        store.commit('setTest', `mount internal error: ${e}`)
       })
       }
       else if(this.setupStep == 1 && this.currentSD == 1){

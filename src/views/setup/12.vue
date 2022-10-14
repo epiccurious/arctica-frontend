@@ -38,7 +38,7 @@ export default {
                 //eventually need to load all pubkeys onto setup CD 
             })
             .catch((e) => {
-                store.commit('setTest', e)
+                store.commit('setTest', `async write error: ${e}`)
             })
         },
         warn(){

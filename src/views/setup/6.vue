@@ -43,6 +43,9 @@ export default {
                 this.$router.push({ name:'Setup7' })   
                 invoke('print_rust', {data: this.sd})
             })
+            .catch((e) => {
+          store.commit('setTest', `create bootable error: ${e}`)
+            })
              
         },
         warn(){

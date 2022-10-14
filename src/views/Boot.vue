@@ -66,6 +66,9 @@ export default {
             //send user to next step
             this.$router.push({ name:'Setup1' })
           })
+          .catch((e) => {
+          store.commit('setTest', `obtain ubuntu error: ${e}`)
+    })
 
         },
 
