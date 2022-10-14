@@ -150,6 +150,7 @@ export default {
     mounted(){
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
+          store.commit('setTest', `${this.test}; invoking read`)
           let resArray = res.split("\n")
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
@@ -173,7 +174,7 @@ export default {
           console.log(res)
         })
         .catch((e)=> {
-          store.commit('setTest', `mount internal error: ${e}`)
+          store.commit('setTest', `${this.test}; mount internal error: ${e}`)
         })
         }
 
@@ -240,9 +241,7 @@ export default {
         }
         })
           .catch((e) => {
-            store.commit('setTest', `read config error: ${e}`)
-            //below we redirect user to boot screen since we can assume no config means no SD inserted...maybe redundant?
-            this.$router.push({ name:'Boot' })
+            store.commit('setTest', `${this.test}; read config error: ${e}`)
       })
 
     },
