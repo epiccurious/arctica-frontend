@@ -150,7 +150,7 @@ export default {
     mounted(){
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
-          store.commit('setTest', `${this.test}; invoking read`)
+          store.commit('setTest', `${this.test}; invoking read: ${res}`)
           let resArray = res.split("\n")
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
@@ -158,13 +158,13 @@ export default {
             if (it[0] == 'sdNumber'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
-              store.commit('setTest', `${this.test}; sd number set`)
+              store.commit('setTest', `${this.test}; sd number set: ${this.currentSD}`)
             }
             //check config for current setup step
             else if(it[0] == 'setupStep'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
-              store.commit('setTest', `${this.test}; setup Step set`)
+              store.commit('setTest', `${this.test}; setup Step set: ${this.setupStep}`)
             }
         }
         //mount internal disk and symlink .bitcoin folders if on SD 1
