@@ -171,7 +171,7 @@ export default {
       //mount internal disk and symlink .bitcoin folders if on SD 1
       if(this.currentSD == 1 && this.setupStep == 0){
         invoke('mount_internal').then((res)=> {
-        store.commit('setTest', 'success')
+        store.commit('setTest', `${this.test} mount internal finished`)
         console.log(res)
       })
       .catch((e)=> {
