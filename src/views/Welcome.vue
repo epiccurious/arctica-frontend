@@ -163,81 +163,84 @@ export default {
               store.commit('setTest', `${this.test}; setup Step set`)
             }
         }
+        //mount internal disk and symlink .bitcoin folders if on SD 1
+        if(this.currentSD == 1 && this.setupStep == 0){
+          invoke('mount_internal').then((res)=> {
+          store.commit('setTest', `${this.test} mount internal finished`)
+          console.log(res)
+        })
+        .catch((e)=> {
+          store.commit('setTest', `mount internal error: ${e}`)
+        })
+        }
+
+        //set up step redirects
+        else if(this.setupStep == 1 && this.currentSD == 1){
+          this.$router.push({ name: 'Setup12' })
+        }
+        else if(this.setupStep == 2 && this.currentSD == 2){
+          this.$router.push({ name: 'Setup14' })
+        }
+        else if(this.setupStep == 3 && this.currentSD == 3){
+          this.$router.push({ name: 'Setup15' })
+        }
+        else if(this.setupStep == 4 && this.currentSD == 4 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup16' })
+        }
+        else if(this.setupStep == 5 && this.currentSD == 5 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup18' })
+        }
+        else if(this.setupStep == 6 && this.currentSD == 6 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup19' })
+        }
+        else if(this.setupStep == 7 && this.currentSD == 7 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup20' })
+        }
+        else if(this.setupStep == 8 && this.currentSD == 1 && this.primaryMachine == true){
+          this.$router.push({ name: 'Setup21' })
+        }
+        else if(this.setupStep == 9 && this.currentSD == 2 && this.primaryMachine == true){
+          this.$router.push({ name: 'Setup27a' })
+        }
+        else if(this.setupStep == 10 && this.currentSD == 3 && this.primaryMachine == true){
+          this.$router.push({ name: 'Setup31a' })
+        }
+        else if(this.setupStep == 11 && this.currentSD == 4 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup35a' })
+        }
+        else if(this.setupStep == 12 && this.currentSD == 5 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup39a' })
+        }
+        else if(this.setupStep == 13 && this.currentSD == 6 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup43a' })
+        }
+        else if(this.setupStep == 14 && this.currentSD == 7 && this.primaryMachine == false){
+          this.$router.push({ name: 'Setup47a' })
+        }
+        else if(this.setupStep == 15 && this.currentSD == 1 && this.primaryMachine == true){
+          this.$router.push({ name: 'Setup50b' })
+        }
+
+        //eventually we should check externally for time machine keys here as well
+        if(this.timeMachineKeysFound == true){
+          store.commit('setTimeLock', false)
+        }
+
+        //below we redirect user to boot screen if they have no SD inserted, this may not be possible inside of the promise if there is no config present
+        if(this.currentSD == 0){
+          this.$router.push({ name:'Boot' })
+        }
+
+        //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
+        if(this.currentSD != 1 && this.psbtFound == 'none'){
+          this.$router.push({ name:'Boot' })
+        }
+        })
+          .catch((e) => {
+            store.commit('setTest', `read config error: ${e}`)
+            //below we redirect user to boot screen since we can assume no config means no SD inserted...maybe redundant?
+            this.$router.push({ name:'Boot' })
       })
-        .catch((e) => {
-          store.commit('setTest', `read config error: ${e}`)
-    })
-
-      //mount internal disk and symlink .bitcoin folders if on SD 1
-      if(this.currentSD == 1 && this.setupStep == 0){
-        invoke('mount_internal').then((res)=> {
-        store.commit('setTest', `${this.test} mount internal finished`)
-        console.log(res)
-      })
-      .catch((e)=> {
-        store.commit('setTest', `mount internal error: ${e}`)
-      })
-      }
-      else if(this.setupStep == 1 && this.currentSD == 1){
-        this.$router.push({ name: 'Setup12' })
-      }
-      else if(this.setupStep == 2 && this.currentSD == 2){
-        this.$router.push({ name: 'Setup14' })
-      }
-      else if(this.setupStep == 3 && this.currentSD == 3){
-        this.$router.push({ name: 'Setup15' })
-      }
-      else if(this.setupStep == 4 && this.currentSD == 4 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup16' })
-      }
-      else if(this.setupStep == 5 && this.currentSD == 5 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup18' })
-      }
-      else if(this.setupStep == 6 && this.currentSD == 6 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup19' })
-      }
-      else if(this.setupStep == 7 && this.currentSD == 7 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup20' })
-      }
-      else if(this.setupStep == 8 && this.currentSD == 1 && this.primaryMachine == true){
-        this.$router.push({ name: 'Setup21' })
-      }
-      else if(this.setupStep == 9 && this.currentSD == 2 && this.primaryMachine == true){
-        this.$router.push({ name: 'Setup27a' })
-      }
-      else if(this.setupStep == 10 && this.currentSD == 3 && this.primaryMachine == true){
-        this.$router.push({ name: 'Setup31a' })
-      }
-      else if(this.setupStep == 11 && this.currentSD == 4 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup35a' })
-      }
-      else if(this.setupStep == 12 && this.currentSD == 5 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup39a' })
-      }
-      else if(this.setupStep == 13 && this.currentSD == 6 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup43a' })
-      }
-      else if(this.setupStep == 14 && this.currentSD == 7 && this.primaryMachine == false){
-        this.$router.push({ name: 'Setup47a' })
-      }
-      else if(this.setupStep == 15 && this.currentSD == 1 && this.primaryMachine == true){
-        this.$router.push({ name: 'Setup50b' })
-      }
-
-      //eventually we should check externally for time machine keys here as well
-      if(this.timeMachineKeysFound == true){
-        store.commit('setTimeLock', false)
-      }
-
-      //below we redirect user to boot screen if they have no SD inserted
-      if(this.currentSD == 0){
-        this.$router.push({ name:'Boot' })
-      }
-
-      //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
-      if(this.currentSD != 1 && this.psbtFound == 'none'){
-        this.$router.push({ name:'Boot' })
-      }
 
     },
 }
