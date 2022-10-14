@@ -152,21 +152,26 @@ export default {
       invoke('read').then((res) => {
           store.commit('setTest', `${this.test}; invoking read: ${res}`)
           let resArray = res.split("\n")
+          store.commit('setTest', `${this.test}; resArray: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
             //check config for current SD
             if (it[0] == 'sdNumber'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
-              store.commit('setTest', `${this.test}; sd number set: ${this.currentSD}`)
+              store.commit('setTest', `${this.test}; i: ${i}; sd number set: ${this.currentSD}`)
             }
             //check config for current setup step
             else if(it[0] == 'setupStep'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
-              store.commit('setTest', `${this.test}; setup Step set: ${this.setupStep}`)
+              store.commit('setTest', `${this.test}; i: ${i}; setup Step set: ${this.setupStep}`)
+            }
+            else{
+              continue
             }
         }
+        store.commit('setTest', `${this.test}; for loop terminated`)
         //mount internal disk and symlink .bitcoin folders if on SD 1 and not in intial install
         if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
