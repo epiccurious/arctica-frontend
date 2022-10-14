@@ -146,10 +146,6 @@ export default {
     },
     mounted(){
       const invoke = window.__TAURI__.invoke
-      invoke('mount_internal').then((res)=> {
-        store.commit('setTest', 'success')
-        console.log(res)
-      })
       invoke('read').then((res) => {
           let resArray = res.split("\n")
           for(let i = 0; i < resArray.length; i ++){
@@ -164,6 +160,13 @@ export default {
             }
           }
         })
+      //mount internal disk and symlink .bitcoin folders if on SD 1
+      if(this.currentSD == 1){
+        invoke('mount_internal').then((res)=> {
+        store.commit('setTest', 'success')
+        console.log(res)
+      })
+      }
         
       //for initial set up only
       if(this.setupStep == 1 && this.currentSD == 1){
