@@ -154,11 +154,13 @@ export default {
             if (it[0] == 'sdNumber'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
+              store.commit('setTest', `${this.test}; sd number set`)
             }
             //check config for current setup step
             else if(it[0] == 'setupStep'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
+              store.commit('setTest', `${this.test}; setup Step set`)
             }
         }
       })

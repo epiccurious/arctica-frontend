@@ -25,7 +25,7 @@ export default createStore({
     // setupStep 15 placed on SD 1 at step 21 to jump user to step 50b last sd 1, setupStep set to 0 at step 50b 
     setupStep: 0,
 
-    test: 'nothing yet.',
+    test: '',
 
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
