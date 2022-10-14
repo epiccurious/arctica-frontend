@@ -22,6 +22,8 @@
             <option @click="setSD()" value= 7>Seven</option>
         </select>
 
+        <h2>setup Step Loaded: {{this.setupStep}}</h2>
+
         <div class="switch">
             Currently on Primary Machine
             <label class="toggle_switch_label">
@@ -345,6 +347,9 @@ export default{
     computed:{
         testVar(){
             return store.getters.getTest
+        },
+        setupStep(){
+            return store.getters.getSetupStep
         },
         timelock:{
             get(){
