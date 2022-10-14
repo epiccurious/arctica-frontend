@@ -134,6 +134,9 @@ export default {
       primaryMachine(){
         return store.getters.getPrimaryMachine
       },
+      test(){
+        return store.getters.getTest
+      },
       manualDecrypt(){
         if(this.privacyKeysFound == true){
           store.commit('setManualDecrypt', true)
