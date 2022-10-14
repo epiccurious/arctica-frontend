@@ -146,9 +146,12 @@ export default {
     },
     mounted(){
       const invoke = window.__TAURI__.invoke
+      invoke('mount_internal').then((res)=> {
+        store.commit('setTest', 'success')
+        console.log(res)
+      })
       invoke('read').then((res) => {
           let resArray = res.split("\n")
-          store.commit('setTest', String(resArray))
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
             //check config for current SD
