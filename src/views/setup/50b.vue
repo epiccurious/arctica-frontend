@@ -35,7 +35,10 @@ export default {
     computed:{
         btcCoreHealthy(){
             return store.getters.getBTCCoreHealthy
-        }
+        },
+        test(){
+      return store.getters.getTest
+    }
     },
     data(){
         return{
@@ -49,11 +52,6 @@ export default {
             .catch((e) => {
                 store.commit('setTest', `${this.test}\n async write error: ${e}`)
             })
-    },
-    computed: {
-        test(){
-      return store.getters.getTest
-    }
     },
 }
 </script>
