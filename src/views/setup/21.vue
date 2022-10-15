@@ -43,7 +43,7 @@ export default {
             console.log('success')
             })
             .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
+                store.commit('setTest', `${this.test}\n async write error: ${e}`)
             })
     },
     data(){
@@ -55,6 +55,9 @@ export default {
     computed:{
         setupCD(){
             return store.getters.getSetupCD
+        },
+        test(){
+            return store.getters.getTest
         }
     }
 }

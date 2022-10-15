@@ -45,7 +45,7 @@ export default {
                 invoke('print_rust', {data: this.sd})
             })
             .catch((e) => {
-          store.commit('setTest', `create bootable error: ${e}`)
+          store.commit('setTest', `${this.test}\n create bootable error: ${e}`)
             })
              
         },
@@ -61,6 +61,11 @@ export default {
             sd: "6",
             setupStep: '6'
         }
+    },
+    computed: {
+        test(){
+      return store.getters.getTest
+    }
     },
 }
 </script>

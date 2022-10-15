@@ -67,7 +67,7 @@ export default {
             this.$router.push({ name:'Setup1' })
           })
           .catch((e) => {
-          store.commit('setTest', `obtain ubuntu error: ${e}`)
+          store.commit('setTest', `${this.test}\n obtain ubuntu error: ${e}`)
     })
 
         },
@@ -87,6 +87,9 @@ export default {
     psbt(){
       return store.getters.getPSBT
     },
+    test(){
+      return store.getters.getTest
+    }
   },
   data() {
     return {someData: [],

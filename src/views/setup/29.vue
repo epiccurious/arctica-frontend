@@ -52,8 +52,13 @@ export default {
             console.log('success')
             })
             .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
+                store.commit('setTest', `${this.test}\n async write error: ${e}`)
             })
+    },
+    computed: {
+        test(){
+      return store.getters.getTest
+    }
     },
 }
 </script>

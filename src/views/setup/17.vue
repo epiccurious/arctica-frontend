@@ -30,13 +30,18 @@ export default {
             console.log('success')
             })
             .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
+                store.commit('setTest', `${this.test}\n async write error: ${e}`)
             })
     },
     data(){
         return{
             setupStep: '11',
         }
+    },
+    computed: {
+        test(){
+      return store.getters.getTest
     }
+    },
 }
 </script>
