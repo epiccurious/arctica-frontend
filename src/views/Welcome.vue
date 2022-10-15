@@ -150,9 +150,9 @@ export default {
     mounted(){
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
-          store.commit('setTest', `${this.test}\n invoking read: ${res}`)
+          store.commit('setTest', `${this.test} \n invoking read: ${res}`)
           let resArray = res.split("\n")
-          store.commit('setTest', `${this.test}\n` + `resArray: ${resArray}`)
+          store.commit('setTest', `${this.test} \n resArray: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
             store.commit('setTest', `${this.test}\n resarray index number: ${i} \n resArray splitted result: ${it} \n index 0 upper case: ${it[0].toUpperCase()} \n index 1 ${it[1]}`)
