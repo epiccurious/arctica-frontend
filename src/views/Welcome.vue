@@ -169,7 +169,7 @@ export default {
               store.commit('setTest', `${this.test}; it 0: ${it[0]} it 1: ${it[1]}; setup Step set: ${this.setupStep}`)
             }
             else{
-              continue
+              store.commit('setTest', `${this.test}; it 0: ${it[0]} it 1: ${it[1]}; fall back inside for loop triggered`)
             }
         }
         store.commit('setTest', `${this.test}; for loop terminated`)
