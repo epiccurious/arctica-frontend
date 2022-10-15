@@ -150,37 +150,55 @@ export default {
     mounted(){
       const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
-          store.commit('setTest', `${this.test}\n invoking read: ${res}`)
+          store.commit('setTest', `${this.test}
+           invoking read: ${res}`)
           let resArray = res.split("\n")
-          store.commit('setTest', `${this.test}\n resArray: ${resArray}`)
+          store.commit('setTest', `${this.test}
+           resArray: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
-            store.commit('setTest', `${this.test}\n resarray index number: ${i} \n resArray splitted result: ${it} \n index 0 upper case: ${it[0].toUpperCase()} \n index 1 ${it[1]}`)
+            store.commit('setTest', `${this.test}
+             resarray index number: ${i}
+             resArray splitted result: ${it}
+              index 0 upper case: ${it[0].toUpperCase()}
+               index 1 ${it[1]}`)
             //check config for current SD
             if (it[0].toUpperCase() == 'SDNUMBER'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
-              store.commit('setTest', `${this.test}\n res array splitted index 0: ${it[0]} \n res array splitted index 1: ${it[1]} \n sd number successfully set to: ${this.currentSD}`)
+              store.commit('setTest', `${this.test}
+               res array splitted index 0: ${it[0]}
+                res array splitted index 1: ${it[1]}
+                 sd number successfully set to: ${this.currentSD}`)
             }
             //check config for current setup step
             else if(it[0].toUpperCase() == 'SETUPSTEP'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
-              store.commit('setTest', `${this.test}\n res array splitted index 0: ${it[0]} \n res array splitted index 1: ${it[1]} \n setup Step successfully set to: ${this.setupStep}`)
+              store.commit('setTest', `${this.test}
+               res array splitted index 0: ${it[0]}
+                res array splitted index 1: ${it[1]}
+                 setup Step successfully set to: ${this.setupStep}`)
             }
             else{
-              store.commit('setTest', `${this.test}\n res array splitted index 0: ${it[0]} \n res array splitted index 1: ${it[1]} \n fall back inside for loop triggered`)
+              store.commit('setTest', `${this.test}
+               res array splitted index 0: ${it[0]}
+                res array splitted index 1: ${it[1]}
+                 fall back inside for loop triggered`)
             }
         }
-        store.commit('setTest', `${this.test}\n for loop terminated`)
+        store.commit('setTest', `${this.test}
+         for loop terminated`)
         //mount internal disk and symlink .bitcoin folders if on SD 1 and not in intial install
         if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
-          store.commit('setTest', `${this.test}\n invoking mount internal`)
+          store.commit('setTest', `${this.test}
+           invoking mount internal`)
           console.log(res)
         })
         .catch((e)=> {
-          store.commit('setTest', `${this.test}\n mount internal error: ${e}`)
+          store.commit('setTest', `${this.test}
+           mount internal error: ${e}`)
         })
         }
 
@@ -247,7 +265,8 @@ export default {
         }
         })
           .catch((e) => {
-            store.commit('setTest', `${this.test}\n read config error: ${e}`)
+            store.commit('setTest', `${this.test}
+             read config error: ${e}`)
       })
 
     },
