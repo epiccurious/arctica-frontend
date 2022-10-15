@@ -155,21 +155,21 @@ export default {
           store.commit('setTest', `${this.test}\n resArray: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
-            store.commit('setTest', `${this.test}\n i: ${i} resArray splitted: ${it}`)
+            store.commit('setTest', `${this.test}\n resarray index number: ${i} \n resArray splitted result: ${it} \n index 0 upper case: ${it[0].toUpperCase()} \n index 1 ${it[1]}`)
             //check config for current SD
             if (it[0].toUpperCase() == 'SDNUMBER'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
-              store.commit('setTest', `${this.test}\n it 0: ${it[0]} it 1: ${it[1]}\n sd number set: ${this.currentSD}`)
+              store.commit('setTest', `${this.test}\n res array splitted index 0: ${it[0]} \n res array splitted index 1: ${it[1]} \n sd number successfully set to: ${this.currentSD}`)
             }
             //check config for current setup step
             else if(it[0].toUpperCase() == 'SETUPSTEP'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
-              store.commit('setTest', `${this.test}\n it 0: ${it[0]} it 1: ${it[1]}\n setup Step set: ${this.setupStep}`)
+              store.commit('setTest', `${this.test}\n res array splitted index 0: ${it[0]} \n res array splitted index 1: ${it[1]} \n setup Step successfully set to: ${this.setupStep}`)
             }
             else{
-              store.commit('setTest', `${this.test}\n it 0: ${it[0]} it 1: ${it[1]}\n fall back inside for loop triggered`)
+              store.commit('setTest', `${this.test}\n res array splitted index 0: ${it[0]} \n res array splitted index 1: ${it[1]} \n fall back inside for loop triggered`)
             }
         }
         store.commit('setTest', `${this.test}\n for loop terminated`)
