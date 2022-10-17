@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup13',
