@@ -1,14 +1,13 @@
 <template>
 <div class="page">
     <header>
-        <h1>Debug toggles</h1>
-        <h2>This is for testing only.</h2>
+        <h1>Debug Console:</h1>
     </header>
+
     <h2>debug output:</h2>
         <h2 v-for="item in this.test" :key="item">{{item}}</h2>
     <div class="btn_container"> 
         <button @click="reboot()" class="btn">Reboot</button>
-
 
         <label>SD inserted</label>
         <select v-model="sdCard" name="sdCard" id="sdCard">
@@ -176,6 +175,8 @@
         </div>
 
     <button @click="testPrint()" class="btn">Test</button>
+
+    <h2>Current Route: {{this.$route.name}}</h2>
 
     </div> 
 </div>
