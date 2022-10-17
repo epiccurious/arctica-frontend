@@ -155,21 +155,21 @@ export default {
           store.commit('setTest', `resArray: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
-            store.commit('setTest', `resarray index number: ${i} resArray splitted result: ${it} index 0 upper case: ${it[0].toUpperCase()} index 1 ${it[1]}`)
+            store.commit('setTest', `for loop number: ${i+1} response Array splitted result: ${it} index 0 key: ${it[0].toUpperCase()} index 1 value: ${it[1]}`)
             //check config for current SD
             if (it[0].toUpperCase() == 'SDNUMBER'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
-              store.commit('setTest', `res array splitted index 0: ${it[0]} res array splitted index 1: ${it[1]} sd number successfully set to: ${this.currentSD}`)
+              store.commit('setTest', `SD NUMBER successfully set to: ${this.currentSD}; response array splitted index 0: ${it[0]} res array splitted index 1: ${it[1]}`)
             }
             //check config for current setup step
             else if(it[0].toUpperCase() == 'SETUPSTEP'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
-              store.commit('setTest', `res array splitted index 0: ${it[0]} res array splitted index 1: ${it[1]} setup Step successfully set to: ${this.setupStep}`)
+              store.commit('setTest', `SETUP STEP successfully set to: ${this.setupStep}; response array splitted index 0: ${it[0]} respone array splitted index 1: ${it[1]}`)
             }
             else{
-              store.commit('setTest', `res array splitted index 0: ${it[0]} res array splitted index 1: ${it[1]} fall back inside for loop triggered`)
+              store.commit('setTest', `fall back inside for loop triggered; response array splitted index 0: ${it[0]} response array splitted index 1: ${it[1]}`)
             }
         }
         store.commit('setTest', `for loop terminated`)
