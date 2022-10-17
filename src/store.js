@@ -85,7 +85,7 @@ export default createStore({
     },
     mutations:{//synchronous, alters data in state (commit)
         setTest(state,value){
-            state.test = test.push(value)
+            state.test.push(value)
         },
         setTxId(state, payload){
             state.id = payload;
