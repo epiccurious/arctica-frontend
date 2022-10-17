@@ -5,7 +5,8 @@
         <h2>This is for testing only.</h2>
     </header>
     <div class="btn_container"> 
-        <h2 v-for="item in this.test" :key="item">{{item}}</h2>
+        <h2>debug output:</h2>
+        <h2 v-for="item in this.test" :key="item">{{this.test.item}}</h2>
 
         <button @click="reboot()" class="btn">Reboot</button>
 
