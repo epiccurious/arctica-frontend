@@ -185,7 +185,7 @@ export default {
         }
 
         //set up step redirects
-        else if(this.setupStep == 1 && this.currentSD == 1){
+        if(this.setupStep == 1 && this.currentSD == 1){
           this.$router.push({ name: 'Setup12' })
         }
         else if(this.setupStep == 2 && this.currentSD == 2){

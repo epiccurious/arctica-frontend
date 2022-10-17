@@ -25,8 +25,7 @@ export default {
             //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
         },
         mounted(){
-      const invoke = window.__TAURI__.invoke
-      invoke('read_setup_cd').then((res) => {
+        invoke('read_setup_cd').then((res) => {
           store.commit('setTest', `invoking read_setup_cd: ${res}`)
           let resArray = res.split("\n")
           store.commit('setTest', `response Array: ${resArray}`)
