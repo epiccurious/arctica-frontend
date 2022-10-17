@@ -14,7 +14,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.setupCD == true && checkbox" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -32,14 +32,13 @@ export default {
   name: 'Setup12',
     methods: {
         acknowledge(){
-            invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
-                this.$router.push({ name:'Setup13' }) 
-                //eventually need to add an electronic label to the set up CD here that will inform arctica's global state when inserted
+            invoke('create_setup_cd').then(()=>{
+                    this.$router.push({ name:'Setup13' }) 
+                }).catch((e)=>{
+                    store.commit('setTest', `create setup cd error: ${e}`)
+                })
                 //eventually need to load all pubkeys onto setup CD 
-            })
-            .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
-            })
+                //maybe push this step out to the next screen to load pubkey on 
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
@@ -52,14 +51,17 @@ export default {
         }
     },
         computed:{
-        setupCD(){
-            return store.getters.getSetupCD
-        },
         test(){
             return store.getters.getTest
         }
-
     },
+    mounted(){
+        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
+            })
+            .catch((e) => {
+                store.commit('setTest', `async write error: ${e}`)
+            })
+    }
 }
 </script>
 
