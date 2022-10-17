@@ -7,7 +7,7 @@
     <div class="btn_container"> 
         <h2>debug output:</h2>
         <h2>{{this.test}}</h2>
-        <!-- <h2 v-for="item in this.test" :key="item">{{item}}</h2> -->
+        <h2 v-for="item in this.test" :key="item">{{item}}</h2>
 
         <button @click="reboot()" class="btn">Reboot</button>
 
@@ -177,7 +177,7 @@
             </label>
         </div>
 
-    <button @click="test()" class="btn">Test</button>
+    <button @click="testPrint()" class="btn">Test</button>
 
     </div> 
 </div>
@@ -318,10 +318,7 @@ export default{
             }
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
-        test(){
-            // const invoke = window.__TAURI__.invoke
-            // let config = String(store.getters.getConfig)
-            // invoke('print_rust', {data: config})
+        testPrint(){
             console.log(store.getters.getCurrentSD)
         },
         reboot(){
@@ -347,7 +344,7 @@ export default{
 
     },
     computed:{
-        testVar(){
+        test(){
             return store.getters.getTest
         },
         setupStep(){
