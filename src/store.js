@@ -25,7 +25,7 @@ export default createStore({
     // setupStep 15 placed on SD 1 at step 21 to jump user to step 50b last sd 1, setupStep set to 0 at step 50b 
     setupStep: 0,
 
-    test: '',
+    test: [],
 
     
     primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
@@ -84,11 +84,11 @@ export default createStore({
     timeLock: true
     },
     mutations:{//synchronous, alters data in state (commit)
+        setTest(state,value){
+            state.test = test.push(value)
+        },
         setTxId(state, payload){
             state.id = payload;
-        },
-        setTest(state,value){
-            state.test = value
         },
         setTxDescription(state, payload){
             state.description = payload
