@@ -176,8 +176,7 @@ export default {
         //mount internal disk and symlink .bitcoin folders if on SD 1 and not in intial install
         if(this.currentSD == 1){
           invoke('mount_internal').then((res)=> {
-          store.commit('setTest', `invoking mount internal`)
-          console.log(res)
+          store.commit('setTest', `invoking mount internal ${res}`)
         })
         .catch((e)=> {
           store.commit('setTest', `mount internal error: ${e}`)

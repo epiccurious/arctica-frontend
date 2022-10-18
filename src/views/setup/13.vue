@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+  <div v-if="this.loading == true">
+  <Loader/>
+</div>
+<div v-else class="page">
     <header>
         <h1>SD 1 creation complete</h1>
         <h2>Please power off this machine, remove SD 1, insert SD 2, and power on the machine.</h2>
@@ -14,10 +17,14 @@
 
 <script>
 import store from '../../store.js'
+import Loader from '@/components/loader'
 const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup13',
+  components: {
+    Loader,
+  },
     methods: {
         acknowledge(){
             console.log('user ack, close application')
@@ -25,8 +32,10 @@ export default {
             //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
         },
         mounted(){
+          this.loading = true
         invoke('read_setup_cd').then((res) => {
           store.commit('setTest', `invoking read_setup_cd: ${res}`)
+          this.loading = false
           let resArray = res.split("\n")
           store.commit('setTest', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
@@ -47,6 +56,11 @@ export default {
         })
         }
     },
+    data(){
+      return{
+        loading: false,
+      }
+    }
 }
 </script>
 

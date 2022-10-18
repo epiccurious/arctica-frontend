@@ -1,7 +1,10 @@
 <!-- User will be automatically brought to this screen by a text file present on SD 1 which informs arctica to redirect the user to this page (state variable setup1)-->
 
 <template>
-<div class="page">
+<div v-if="this.loading == true">
+  <Loader/>
+</div>
+<div v-else class="page">
     <header>
         <h1>Please insert the set up CD</h1>
         <h2>Insert the set up CD to continue.</h2>
@@ -26,13 +29,20 @@
 
 <script>
 import store from '../../store.js'
+import Loader from '@/components/loader'
 const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup12',
+  components: {
+    Loader,
+  },
     methods: {
         acknowledge(){
-            invoke('create_setup_cd').then(()=>{
+            this.loading = true
+            invoke('create_setup_cd').then((res)=>{
+                    store.commit('setTest', `invoking create setup cd ${res}`)
+                    this.loading = false
                     this.$router.push({ name:'Setup13' }) 
                 }).catch((e)=>{
                     store.commit('setTest', `create setup cd error: ${e}`)
@@ -48,6 +58,7 @@ export default {
         return{
             setupStep: '8',
             checkbox: false,
+            loading: false,
         }
     },
         computed:{
