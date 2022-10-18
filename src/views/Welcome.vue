@@ -150,7 +150,7 @@ export default {
     },
     mounted(){
       invoke('read').then((res) => {
-          store.commit('setTest', `invoking read: ${res}`)
+          store.commit('setTest', `invoking read config: ${res}`)
           let resArray = res.split("\n")
           store.commit('setTest', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
@@ -172,7 +172,7 @@ export default {
               store.commit('setTest', `fall back inside for loop triggered; key: ${it[0].toUpperCase()} value: ${it[1]}`)
             }
         }
-        store.commit('setTest', `exiting config read for loop`)
+        store.commit('setTest', `exiting config read config`)
         //mount internal disk and symlink .bitcoin folders if on SD 1 and not in intial install
         if(this.currentSD == 1){
           invoke('mount_internal').then((res)=> {
