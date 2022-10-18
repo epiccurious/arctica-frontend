@@ -317,7 +317,11 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         testPrint(){
-            console.log(store.getters.getCurrentSD)
+            invoke('test_function').then((res) => {
+                store.commit('setTest', `test print: ${res}`)
+            }).catch((e)=>{
+                store.commit('setTest', `test print error: ${e}`)
+            })
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
