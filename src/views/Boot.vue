@@ -61,7 +61,9 @@ export default {
 
           //begin install
           //obtain latest tails image
+          store.commit('setTest', 'Obtaining and Creating modified ubuntu ISO')
           invoke('obtain_ubuntu').then(()=> {
+            store.commit('setTest', 'ubuntu iso created successfully')
             this.loading = false;
             //send user to next step
             this.$router.push({ name:'Setup1' })
