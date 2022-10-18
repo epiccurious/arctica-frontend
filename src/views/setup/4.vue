@@ -39,10 +39,11 @@ export default {
         acknowledge() {
             //show loader
             this.loading = true
-            invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
+            store.commit('setTest', 'creating SD 1')
+            invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then((res) => {
+                store.commit('setTest', `create bootable SD 1 successful: ${res}`)
                 this.loading = false
                 this.$router.push({ name:'Setup5' })   
-                invoke('print_rust', {data: this.sd})
             })
             .catch((e) => {
           store.commit('setTest', `create bootable error: ${e}`)
