@@ -7,6 +7,7 @@
     <h2>debug output:</h2>
         <h2 v-for="item in this.test" :key="item">{{item}}</h2>
     <div class="btn_container"> 
+        <h2>Current Route: {{this.$route.name}}</h2>
         <button @click="reboot()" class="btn">Reboot</button>
 
         <label>SD inserted</label>
@@ -175,8 +176,6 @@
         </div>
 
     <button @click="testPrint()" class="btn">Test</button>
-
-    <h2>Current Route: {{this.$route.name}}</h2>
 
     </div> 
 </div>
