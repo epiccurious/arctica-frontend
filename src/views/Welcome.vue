@@ -37,6 +37,7 @@
 
 <script>
 import store from '../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Welcome',
@@ -148,7 +149,6 @@ export default {
       }
     },
     mounted(){
-      const invoke = window.__TAURI__.invoke
       invoke('read').then((res) => {
           store.commit('setTest', `invoking read: ${res}`)
           let resArray = res.split("\n")
