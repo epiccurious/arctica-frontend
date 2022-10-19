@@ -30,7 +30,6 @@ import store from '../../store.js'
 import Loader from '@/components/loader'
 const invoke = window.__TAURI__.invoke
 
-
 export default {
   name: 'Setup5',
   components: {
@@ -38,12 +37,13 @@ export default {
   },
   methods: {
         acknowledge() {
-            //show loader
             this.loading = true
+            store.commit('setTest', 'Creating SD 2')
             invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
+                store.commit('setTest', `SD card initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
+                store.commit('setTest', `create bootable SD 2 successful: ${res}`)
                 this.loading = false
                 this.$router.push({ name:'Setup6' })   
-                invoke('print_rust', {data: this.sd})
             })
             .catch((e) => {
           store.commit('setTest', `create bootable error: ${e}`)

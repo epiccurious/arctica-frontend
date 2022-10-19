@@ -37,12 +37,13 @@ export default {
   },
   methods: {
         acknowledge() {
-            //show loader
+            store.commit('setTest', 'Creating SD 6')
             this.loading = true
             invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
+                store.commit('setTest', `SD card initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
+                store.commit('setTest', `create bootable SD 6 successful: ${res}`)
                 this.loading = false
                 this.$router.push({ name:'Setup10' })   
-                invoke('print_rust', {data: this.sd})
             })
             .catch((e) => {
           store.commit('setTest', `create bootable error: ${e}`)
