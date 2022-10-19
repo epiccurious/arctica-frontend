@@ -39,9 +39,9 @@ export default {
         acknowledge() {
             store.commit('setTest', 'Creating SD 5')
             this.loading = true
-            invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then((res) => {
+            invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
                 store.commit('setTest', `SD card initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
-                store.commit('setTest', `create bootable SD 5 successful: ${res}`)
+                store.commit('setTest', `create bootable SD 5 successful`)
                 this.loading = false
                 this.$router.push({ name:'Setup9' })   
             })
