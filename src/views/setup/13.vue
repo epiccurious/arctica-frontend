@@ -43,7 +43,7 @@ export default {
             let it = resArray[i].split("=")
             store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             //check for setup CD
-            if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUppercase() == 'SETUPCD'){
+            if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
               store.commit('setSetupCD', true)
               store.commit('setTest', `Set up CD detected`)
             }
