@@ -31,6 +31,7 @@ export default {
             //eventualy create bitcoin wallet here and export pubkey to setupCD
             //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
         },
+      },
         mounted(){
           this.loading = true
         invoke('read_setup_cd').then((res) => {
@@ -54,8 +55,7 @@ export default {
         .catch((e)=> {
           store.commit('setTest', `error reading setup CD: ${e}`)
         })
-        }
-    },
+        },
     data(){
       return{
         loading: false,
