@@ -30,6 +30,8 @@ export default {
         acknowledge(){
             console.log('user ack, moving all info from set up CD to SD 4')
             this.$router.push({ name: 'Setup35b' })
+        //load descriptors into ramdisk
+        //load descriptors onto SD 4
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

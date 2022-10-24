@@ -31,6 +31,7 @@ export default {
         acknowledge(){
             console.log('user ack, moving info from SD 6 to DVD 6')
             this.$router.push({ name: 'Setup45' })
+            //fully backup SD 6
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

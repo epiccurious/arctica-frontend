@@ -33,6 +33,9 @@ export default {
             console.log('user ack, moving all info from set up CD to SD 1')
             this.$router.push({ name: 'Setup22' })
         },
+        //import all of the pubkeys on the setupCD here and create the descriptors
+        //load descriptors into ramdisk
+        //load descriptors onto SD 1
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
