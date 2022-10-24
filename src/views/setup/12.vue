@@ -47,8 +47,7 @@ export default {
                 }).catch((e)=>{
                     store.commit('setTest', `create setup cd error: ${e}`)
                 })
-                //eventually need to load all pubkeys onto setup CD 
-                //maybe push this step out to the next screen to load pubkey on 
+                //need to create bitcoin wallets here for SD 1 and export all pubkeys onto setup CD                 
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

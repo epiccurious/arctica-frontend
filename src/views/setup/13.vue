@@ -28,8 +28,6 @@ export default {
     methods: {
         acknowledge(){
             console.log('user ack, close application')
-            //eventualy create bitcoin wallet here and export pubkey to setupCD
-            //eventually need to check electronic SD label and update global state here, only allow user to proceed if correct SD is inserted
         },
       },
         mounted(){

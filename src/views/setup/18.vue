@@ -30,6 +30,8 @@ export default {
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
             })
+        //need to create bitcoin wallets here for SD 5 and export all pubkeys onto setup CD                 
+
     },
     data(){
         return{
