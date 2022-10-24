@@ -37,18 +37,18 @@ export default {
         invoke('read_setup_cd').then((res) => {
           store.commit('setTest', `invoking read_setup_cd: ${res}`)
           this.loading = false
-          let resArray = String(res.split("\n"))
+          let resArray = res.split("\n")
           store.commit('setTest', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
-            store.commit('setTest', `for loop number: ${i+1}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
+            store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             //check for setup CD
-            if (it[0].toUpperCase() == 'TYPE' && it[1].toUppercase() == 'SETUPCD'){
+            if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUppercase() == 'SETUPCD'){
               store.commit('setSetupCD', true)
               store.commit('setTest', `Set up CD detected`)
             }
             else{
-              store.commit('setTest', `fall back inside for loop triggered; key: ${it[0].toUpperCase()} value: ${it[1].toUpperCase()}`)
+              store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
             }
         }
     })

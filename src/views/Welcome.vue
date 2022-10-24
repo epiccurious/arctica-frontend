@@ -151,25 +151,25 @@ export default {
     mounted(){
       invoke('read').then((res) => {
           store.commit('setTest', `invoking read config: ${res}`)
-          let resArray = String(res.split("\n"))
+          let resArray = res.split("\n")
           store.commit('setTest', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
             store.commit('setTest', `for loop number: ${i+1}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
             //check config for current SD
-            if (it[0].toUpperCase() == 'SDNUMBER'){
+            if (String(it[0]).toUpperCase() == 'SDNUMBER'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
-              store.commit('setTest', `SD NUMBER successfully set to: ${this.currentSD}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
+              store.commit('setTest', `SD NUMBER successfully set to: ${this.currentSD}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
             //check config for current setup step
-            else if(it[0].toUpperCase() == 'SETUPSTEP'){
+            else if(String(it[0]).toUpperCase() == 'SETUPSTEP'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
-              store.commit('setTest', `SETUP STEP successfully set to: ${this.setupStep}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
+              store.commit('setTest', `SETUP STEP successfully set to: ${this.setupStep}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
             else{
-              store.commit('setTest', `fall back inside for loop triggered; key: ${it[0].toUpperCase()} value: ${it[1]}`)
+              store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
         }
         store.commit('setTest', `exiting config read`)
