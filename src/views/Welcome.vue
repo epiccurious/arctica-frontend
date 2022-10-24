@@ -149,6 +149,14 @@ export default {
       }
     },
     mounted(){
+      //creating ramdisk for sensitive data
+      invoke('create_ramdisk').then((res)=>{
+        store.commit('setTest', `creating ramdisk ${res}`)
+      })
+      .catch((e)=>{
+        store.commit('setTest', `error creating ramdisk ${e}`)
+      })
+      //reading config values 
       invoke('read').then((res) => {
           store.commit('setTest', `invoking read config: ${res}`)
           let resArray = res.split("\n")
