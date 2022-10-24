@@ -151,7 +151,7 @@ export default {
     mounted(){
       invoke('read').then((res) => {
           store.commit('setTest', `invoking read config: ${res}`)
-          let resArray = res.split("\n")
+          let resArray = String(res.split("\n"))
           store.commit('setTest', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")

@@ -37,7 +37,7 @@ export default {
         invoke('read_setup_cd').then((res) => {
           store.commit('setTest', `invoking read_setup_cd: ${res}`)
           this.loading = false
-          let resArray = res.split("\n")
+          let resArray = String(res.split("\n"))
           store.commit('setTest', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
