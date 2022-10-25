@@ -48,6 +48,7 @@ export default {
         }
     },
     mounted(){
+        //update sd card setupstep to 0
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             console.log('success')
             })
