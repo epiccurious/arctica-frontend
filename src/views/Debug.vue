@@ -318,11 +318,15 @@ export default{
              console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
         },    
         testPrint(){
-            invoke('test_function').then((res) => {
-                store.commit('setTest', `test print: ${res}`)
+            invoke('combine_shards').then((res) => {
+                store.commit('setTest', `combining shards: ${res}`)
             }).catch((e)=>{
-                store.commit('setTest', `test print error: ${e}`)
+                store.commit('setTest', `error combining shards: ${e}`)
             })
+            invoke('unpack').then((res)=>{
+                store.commit('setTest', `unpacking sensitive info: ${res}`)
+            }).catch((e)=>{
+                store.commit('setTest', `error unpacking: ${e}`)})
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
