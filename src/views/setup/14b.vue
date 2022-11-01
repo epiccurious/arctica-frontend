@@ -36,7 +36,7 @@ export default {
         //this should not proceed until the user inserts the setupCD, need to add a screen here
 
         //copy everything from the setup CD to ramdisk
-        invoke('copy_setup_cd').then(() => {
+        invoke('copy_setup_cd').then((res) => {
             store.commit('setTest', `reading setup CD ${res}`)
             })
             .catch((e) => {
@@ -44,7 +44,7 @@ export default {
             })
 
         //install wodim & ssss
-        invoke('install_sd_deps').then(() => {
+        invoke('install_sd_deps').then((res) => {
             store.commit('setTest', `installing SD dependencies ${res}`)
             })
             .catch((e) => {
@@ -73,8 +73,8 @@ export default {
             })
 
         //update setupstep state on sd card
-        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
-            store.commit('setTest', `config set to new values setupStep: ${this.setupStep}`)
+        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
+            store.commit('setTest', `config set to new values setupStep: ${this.setupStep} res:${res}`)
             this.loading = false
             })
             .catch((e) => {
