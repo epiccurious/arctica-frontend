@@ -370,9 +370,14 @@ const routes = [
     component: () => import('../views/setup/13.vue')
    },
    {
-    path: '/setup/14',
-    name: 'Setup14',
-    component: () => import('../views/setup/14.vue')
+    path: '/setup/14a',
+    name: 'Setup14a',
+    component: () => import('../views/setup/14a.vue')
+   },
+   {
+    path: '/setup/14b',
+    name: 'Setup14b',
+    component: () => import('../views/setup/14b.vue')
    },
    {
     path: '/setup/15',

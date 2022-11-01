@@ -57,7 +57,8 @@
     <router-link :to="{ name: 'Setup11' }">Setup-11</router-link>
     <router-link :to="{ name: 'Setup12' }">Setup-12</router-link>
     <router-link :to="{ name: 'Setup13' }">Setup-13</router-link>
-    <router-link :to="{ name: 'Setup14' }">Setup-14</router-link>
+    <router-link :to="{ name: 'Setup14a' }">Setup-14a</router-link>
+    <router-link :to="{ name: 'Setup14b' }">Setup-14b</router-link>
     <router-link :to="{ name: 'Setup15' }">Setup-15</router-link>
     <router-link :to="{ name: 'Setup16' }">Setup-16</router-link>
     <router-link :to="{ name: 'Setup17' }">Setup-17</router-link>
