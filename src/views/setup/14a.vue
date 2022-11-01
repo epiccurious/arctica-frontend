@@ -50,7 +50,7 @@ export default {
             //check for setup CD
             if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
               store.commit('setSetupCD', true)
-              store.commit('setTest', `Set up CD detected`)
+              store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
             }
             else{
               store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
@@ -66,6 +66,7 @@ export default {
         }
         else{
           this.loading = false
+          store.commit('setTest', `setupCD boolean not true`)
         }
 
         },
@@ -79,6 +80,11 @@ export default {
             loading: false,
         }
     },
+    computed:{
+      setupCD(){
+        return store.getters.getSetupCD
+      }
+    }
 }
 </script>
 
