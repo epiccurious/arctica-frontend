@@ -39,10 +39,9 @@ export default {
   },
     methods: {
         acknowledge(){
-            this.loading = true
+        this.loading = true
         invoke('read_setup_cd').then((res) => {
           store.commit('setTest', `invoking read_setup_cd: ${res}`)
-          this.loading = false
           let resArray = res.split("\n")
           store.commit('setTest', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
@@ -62,7 +61,11 @@ export default {
           store.commit('setTest', `error reading setup CD: ${e}`)
         })
         if(this.setupCD == true){
+            this.loading = false
             this.$router.push({ name:'Setup14b' }) 
+        }
+        else{
+          this.loading = false
         }
 
         },
