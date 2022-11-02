@@ -51,6 +51,9 @@ export default {
             if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
               store.commit('setSetupCD', true)
               store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
+              this.loading = false
+              this.$router.push({ name:'Setup14b' })
+              break
             }
             else{
               store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
@@ -60,17 +63,8 @@ export default {
         .catch((e)=> {
           store.commit('setTest', `error reading setup CD: ${e}`)
         })
-        function proceed(){
-          if(this.setupCD == true){
-            this.loading = false
-            this.$router.push({ name:'Setup14b' }) 
-        }
-        else{
-          store.commit('setTest', 'problem with setupCD verification, cannot proceed')
-        }
-        }
-        setTimeout(proceed, 3000);
         },
+
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
