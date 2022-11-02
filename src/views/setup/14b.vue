@@ -68,6 +68,7 @@ export default {
         //refresh setup CD with latest .iso 
         invoke('refresh_setup_cd').then((res)=>{
                 store.commit('setTest', `refreshing setup CD ${res}`)
+                this.loading = false
             }).catch((e)=>{
                 store.commit('setTest', `refresh setup CD error ${e}`)
             })
@@ -75,7 +76,6 @@ export default {
         //update setupstep state on sd card
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
             store.commit('setTest', `config set to new values setupStep: ${this.setupStep} res:${res}`)
-            this.loading = false
             })
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
