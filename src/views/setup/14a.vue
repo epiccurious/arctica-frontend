@@ -60,15 +60,16 @@ export default {
         .catch((e)=> {
           store.commit('setTest', `error reading setup CD: ${e}`)
         })
-        if(this.setupCD == true){
+        function proceed(){
+          if(this.setupCD == true){
             this.loading = false
             this.$router.push({ name:'Setup14b' }) 
         }
         else{
-          this.loading = false
-          store.commit('setTest', `setupCD boolean not true`)
+          store.commit('setTest', 'problem with setupCD verification, cannot proceed')
         }
-
+        }
+        setTimeout(proceed, 3000);
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
