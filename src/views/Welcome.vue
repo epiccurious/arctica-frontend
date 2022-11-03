@@ -199,7 +199,7 @@ export default {
           this.$router.push({ name: 'Setup14a' })
         }
         else if(this.setupStep == 3 && this.currentSD == 3){
-          this.$router.push({ name: 'Setup15' })
+          this.$router.push({ name: 'Setup15a' })
         }
         else if(this.setupStep == 4 && this.currentSD == 4 && this.primaryMachine == false){
           this.$router.push({ name: 'Setup16' })

@@ -33,8 +33,6 @@ export default {
     },
     mounted(){
         this.loading = true
-        //this should not proceed until the user inserts the setupCD, need to add a screen here
-
         //copy everything from the setup CD to ramdisk
         invoke('copy_setup_cd').then((res) => {
             store.commit('setTest', `reading setup CD ${res}`)
