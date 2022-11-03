@@ -69,7 +69,8 @@ export default {
             }).catch((e) => {
                 store.commit('setTest', `error creating descriptors: ${e}`)
             })
-
+        //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
+        
         //unpack() the encrypted dir on SD 1 and copy descriptors in ramdisk to the tarball
 
         //make sure sensitive contains everything it should before packup()
