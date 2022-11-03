@@ -31,7 +31,7 @@ export default {
             console.log('user ack, moving all info from set up CD to SD 2')
             this.$router.push({ name: 'Setup27b' })
         //copy setupCD to ramdisk
-        //load descriptors onto SD 2
+        //copy descriptors onto SD 2 encrypted dir, see setup 22 for example
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
