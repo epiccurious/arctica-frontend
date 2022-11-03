@@ -1,40 +1,83 @@
-<!-- User moves to secondary machine for this step -->
-
 <template>
-<div class="page">
-    <header>
-        <h1>Please insert the set up CD</h1>
-        <h2>Insert the disc labelled 'Set up'.</h2>
-    </header> 
-        <div class="btn_container"> 
-            <button @click="acknowledge()" class="btn">Ok</Button> 
-        </div>
-
-</div>
-
-</template>
-
-<script>
-import store from '../../store.js'
-
-export default {
-  name: 'Setup16',
-    methods: {
-        acknowledge(){
-            console.log('user ack, proceed, consider checkbox here?')
-            if(this.setupCD == true){
-                this.$router.push({ name: 'Setup17' })
-            }
-            //eventually need a step here to check for the electronic label on the setupCD, and update global state, and only allow user to proceed if check successful
-            //eventually only allow the user to proceed here if primary machine boolean is true
-        },
-
+<div v-if="this.loading == true">
+    <Loader/>
+  </div>
+  <div v-else class="page">
+      <header>
+          <h1>Please insert the set up CD</h1>
+          <h2>Insert the set up CD to continue.</h2>
+      </header>   
+      <div class="form_container">
+          <form>
+              <div class="checkbox_container">
+                  <input type="checkbox" v-model="checkbox" name="checkbox">
+                  <label for="checkbox">I have inserted the set up CD.</label>
+              </div>
+          </form>
+          <div class="btn_container"> 
+              <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
+              <button v-else @click="warn()" class="btn3">Continue</Button>
+          </div>
+      </div> 
+  
+  
+  </div>
+  
+  </template>
+  
+  <script>
+  import store from '../../store.js'
+  import Loader from '@/components/loader'
+  const invoke = window.__TAURI__.invoke
+  
+  export default {
+    name: 'Setup16',
+    components: {
+      Loader,
     },
-    computed:{
+      methods: {
+          acknowledge(){
+          this.loading = true
+          invoke('read_setup_cd').then((res) => {
+            store.commit('setTest', `invoking read_setup_cd: ${res}`)
+            let resArray = res.split("\n")
+            store.commit('setTest', `response Array: ${resArray}`)
+            for(let i = 0; i < resArray.length; i ++){
+              let it = resArray[i].split("=")
+              store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+              //check for setup CD
+              if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
+                store.commit('setSetupCD', true)
+                store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
+                this.loading = false
+                this.$router.push({ name:'Setup17' })
+                break
+              }
+              else{
+                store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+              }
+          }
+      })
+          .catch((e)=> {
+            store.commit('setTest', `error reading setup CD: ${e}`)
+          })
+          },
+  
+          warn(){
+              console.log('user trying to proceed without checkbox validation')
+          },
+      },
+      data(){
+          return{
+              checkbox: false,
+              loading: false,
+          }
+      },
+      computed:{
         setupCD(){
-            return store.getters.getSetupCD
+          return store.getters.getSetupCD
         }
-    },
-}
-</script>
-
+      }
+  }
+  </script>
+  
