@@ -55,9 +55,6 @@ export default {
           store.commit('setTest', `error reading setup CD: ${e}`)
         })
         },
-        //import all of the pubkeys on the setupCD here and create the descriptors
-        //load descriptors into ramdisk
-        //load descriptors onto SD 1
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },

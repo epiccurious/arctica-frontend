@@ -70,7 +70,7 @@ export default {
                 store.commit('setTest', `error creating descriptors: ${e}`)
             })
 
-        //unpack() here, encrypted dir on SD 1 and copy descriptor to the tarball
+        //unpack() the encrypted dir on SD 1 and copy descriptors in ramdisk to the tarball
 
         //make sure sensitive contains everything it should before packup()
 
