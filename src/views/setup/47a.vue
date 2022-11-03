@@ -30,7 +30,7 @@ export default {
         acknowledge(){
             console.log('user ack, moving all info from set up CD to SD 7')
             this.$router.push({ name: 'Setup47b' })
-        //load descriptors into ramdisk
+        //copy setupCD to ramdisk
         //load descriptors onto SD 7
         },
         warn(){
