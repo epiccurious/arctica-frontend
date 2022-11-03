@@ -22,7 +22,7 @@ export default createStore({
     // setupStep 12 placed on SD 5 at step 18 to jump user to step 39a last sd 5, setupStep set to 0 at step 41 
     // setupStep 13 placed on SD 6 at step 19 to jump user to step 43a last sd 6, setupStep set to 0 at step 45 
     // setupStep 14 placed on SD 7 at step 20 to jump user to step 47a last sd 7, setupStep set to 0 at step 49a 
-    // setupStep 15 placed on SD 1 at step 21 to jump user to step 50b last sd 1, setupStep set to 0 at step 50b 
+    // setupStep 15 placed on SD 1 at step 22 to jump user to step 50b last sd 1, setupStep set to 0 at step 50b 
     setupStep: 0,
 
     test: [],

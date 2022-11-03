@@ -30,8 +30,30 @@ export default {
   name: 'Setup21',
     methods: {
         acknowledge(){
-            console.log('user ack, moving all info from set up CD to SD 1')
-            this.$router.push({ name: 'Setup22' })
+        this.loading = true
+        invoke('read_setup_cd').then((res) => {
+            store.commit('setTest', `invoking read_setup_cd: ${res}`)
+            let resArray = res.split("\n")
+            store.commit('setTest', `response Array: ${resArray}`)
+            for(let i = 0; i < resArray.length; i ++){
+                let it = resArray[i].split("=")
+                store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+                //check for setup CD
+                if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
+                    store.commit('setSetupCD', true)
+                    store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
+                    this.loading = false
+                    this.$router.push({ name:'Setup22' })
+                    break
+                }
+                else{
+                    store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+                }
+            }
+         })
+        .catch((e)=> {
+          store.commit('setTest', `error reading setup CD: ${e}`)
+        })
         },
         //import all of the pubkeys on the setupCD here and create the descriptors
         //load descriptors into ramdisk
@@ -41,18 +63,9 @@ export default {
         },
 
     },
-    mounted(){
-        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
-            console.log('success')
-            })
-            .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
-            })
-    },
     data(){
         return{
             checkbox: false,
-            setupStep: '15',
         }
     },
     computed:{
