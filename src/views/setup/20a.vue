@@ -1,0 +1,85 @@
+<!-- User will be automatically brought to this screen by a text file present on SD 7 which informs arctica to redirect the user to this page (state variable setup2)-->
+
+<template>
+<div v-if="this.loading == true">
+  <Loader/>
+</div>
+<div v-else class="page">
+    <header>
+        <h1>Please insert the set up CD</h1>
+        <h2>Insert the set up CD to continue.</h2>
+    </header>   
+    <div class="form_container">
+        <form>
+            <div class="checkbox_container">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <label for="checkbox">I have inserted the set up CD.</label>
+            </div>
+        </form>
+        <div class="btn_container"> 
+            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-else @click="warn()" class="btn3">Continue</Button>
+        </div>
+    </div> 
+
+
+</div>
+
+</template>
+
+<script>
+import store from '../../store.js'
+import Loader from '@/components/loader'
+const invoke = window.__TAURI__.invoke
+
+export default {
+  name: 'Setup20a',
+  components: {
+    Loader,
+  },
+    methods: {
+        acknowledge(){
+        this.loading = true
+        invoke('read_setup_cd').then((res) => {
+          store.commit('setTest', `invoking read_setup_cd: ${res}`)
+          let resArray = res.split("\n")
+          store.commit('setTest', `response Array: ${resArray}`)
+          for(let i = 0; i < resArray.length; i ++){
+            let it = resArray[i].split("=")
+            store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+            //check for setup CD
+            if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
+              store.commit('setSetupCD', true)
+              store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
+              this.loading = false
+              this.$router.push({ name:'Setup20b' })
+              break
+            }
+            else{
+              store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+            }
+        }
+    })
+        .catch((e)=> {
+          store.commit('setTest', `error reading setup CD: ${e}`)
+        })
+        },
+
+        warn(){
+            console.log('user trying to proceed without checkbox validation')
+        },
+    },
+    data(){
+        return{
+            checkbox: false,
+            loading: false,
+        }
+    },
+    computed:{
+      setupCD(){
+        return store.getters.getSetupCD
+      }
+    }
+}
+</script>
+
