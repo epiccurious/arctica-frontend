@@ -47,7 +47,7 @@
                   store.commit('setTest', `create wallet error ${e}`)
               })
   
-          //distribute 2 shards onto sd 2 from setupCD dir
+          //distribute 2 shards onto sd from setupCD dir
           invoke('distribute_2_shards').then((res)=>{
                   store.commit('setTest', `distributing 2 shards to SD card ${res}`)
               }).catch((e)=>{
