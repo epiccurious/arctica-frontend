@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+    <div v-if="this.loading ==true">
+    <Loader />
+    </div>
+    <div v-else class="page">
     <header>
         <h1>Insert the Set up CD</h1>
         <h2>Please insert the CD labelled "set up"</h2>
@@ -24,10 +27,14 @@
 
 <script>
 import store from '../../store.js'
+import Loader from '@/components/loader'
 const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup21',
+  components: {
+    Loader,
+  },
     methods: {
         acknowledge(){
         this.loading = true

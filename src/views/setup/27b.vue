@@ -31,6 +31,8 @@ export default {
         acknowledge(){
             console.log('user ack, moving info from SD 2 to CD 2')
             this.$router.push({ name: 'Setup28' })
+            //copy setupCD to ramdisk
+            //copy descriptors onto SD 2 encrypted dir, see setup 22 for example
             //fully backup SD 2 here
         },
         warn(){
@@ -47,9 +49,6 @@ export default {
         currentSD(){
             return store.getters.getCurrentSD
         },
-        setupCD(){
-            return store.getters.getSetupCD
-        }
     }
 }
 </script>

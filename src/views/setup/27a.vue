@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+    <div v-if="this.loading ==true">
+    <Loader />
+    </div>
+    <div v-else class="page">
     <header>
         <h1>Insert the Set up CD</h1>
         <h2>Please insert the CD labelled "set up"</h2>
@@ -24,16 +27,43 @@
 
 <script>
 import store from '../../store.js'
+import Loader from '@/components/loader'
+const invoke = window.__TAURI__.invoke
+
 export default {
   name: 'Setup27a',
+  components: {
+    Loader
+  },
     methods: {
-        acknowledge(){
-            console.log('user ack, moving all info from set up CD to SD 2')
-            this.$router.push({ name: 'Setup27b' })
-        //read setupCD example on setup 21
         //copy setupCD to ramdisk
         //copy descriptors onto SD 2 encrypted dir, see setup 22 for example
-        },
+        acknowledge(){
+        this.loading = true
+        invoke('read_setup_cd').then((res) => {
+            store.commit('setTest', `invoking read_setup_cd: ${res}`)
+            let resArray = res.split("\n")
+            store.commit('setTest', `response Array: ${resArray}`)
+            for(let i = 0; i < resArray.length; i ++){
+                let it = resArray[i].split("=")
+                store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+                //check for setup CD
+                if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
+                    store.commit('setSetupCD', true)
+                    store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
+                    this.loading = false
+                    this.$router.push({ name: 'Setup27b' })
+                    break
+                }
+                else{
+                    store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+                }
+            }
+         })
+        .catch((e)=> {
+          store.commit('setTest', `error reading setup CD: ${e}`)
+        })
+    },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
@@ -42,6 +72,7 @@ export default {
     data(){
         return{
             checkbox: false,
+            loading: false
         }
     },
     computed:{
