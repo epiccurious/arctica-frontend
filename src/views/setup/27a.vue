@@ -36,8 +36,6 @@ export default {
     Loader
   },
     methods: {
-        //copy setupCD to ramdisk
-        //copy descriptors onto SD 2 encrypted dir, see setup 22 for example
         acknowledge(){
         this.loading = true
         invoke('read_setup_cd').then((res) => {

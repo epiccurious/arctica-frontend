@@ -25,6 +25,9 @@
 </template>
 
 <script>
+import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
+
 export default {
   name: 'Setup25',
   components: {
@@ -39,9 +42,19 @@ export default {
         },
 
     },
+    mounted(){
+        //update the setup step
+        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
+            store.commit('setTest', `async writing setupstep ${this.setupStep}: ${res} `)
+            })
+            .catch((e) => {
+                store.commit('setTest', `async write error: ${e}`)
+            })
+    },
     data(){
         return{
             checkbox: false,
+            setupStep: 15,
         }
     }
 }

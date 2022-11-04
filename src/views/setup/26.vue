@@ -12,9 +12,6 @@
 </template>
 
 <script>
-import store from '../../store.js'
-const invoke = window.__TAURI__.invoke
-
 export default {
   name: 'Setup26',
     methods: {
@@ -24,20 +21,6 @@ export default {
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
-    },
-    mounted(){
-        //update the setup step
-        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
-            store.commit('setTest', `async writing setupstep ${this.setupStep}: ${res} `)
-            })
-            .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
-            })
-    },
-    data(){
-        return{
-            setupStep: 15,
-        }
     },
     }
 </script>
