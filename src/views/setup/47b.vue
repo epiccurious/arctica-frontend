@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.currentSD == 7 && checkbox && this.setupCD == false" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.currentSD == 7 && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 

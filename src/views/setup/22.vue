@@ -16,7 +16,7 @@
             </form>
         </div>
         <div class="btn_container"> 
-            <button v-if="checkbox && this.setupCD == false" @click="acknowledge()" class="btn">Ok</Button> 
+            <button v-if="checkbox == false" @click="acknowledge()" class="btn">Ok</Button> 
             <button v-else  @click="warn()" class="btn3">Ok</button>
         </div>
 
@@ -86,11 +86,13 @@ export default {
             })        
 
         //copy the descriptors in ramdisk to sensitive dir
-        invoke('copy_descriptor').then((res) => {
-            store.commit('setTest', `copying descriptor from setupCD dump to sensitive dir ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error copying descriptor: ${e}`)
-            })           
+        //THIS STEP IS NOT NEEDED HERE BECAUSE CREATE DESCRIPTOR HANDLES THE COPYING
+        //THIS IS A PLACEHOLDER FOR FLOW IN 27A
+        // invoke('copy_descriptor').then((res) => {
+        //     store.commit('setTest', `copying descriptor from setupCD dump to sensitive dir ${res}`)
+        //     }).catch((e) => {
+        //         store.commit('setTest', `error copying descriptor: ${e}`)
+        //     })           
         //make sure sensitive contains everything it should before packup()
         invoke('packup').then((res) => {
             store.commit('setTest', `packing up sensitive info ${res}`)
