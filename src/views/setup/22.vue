@@ -51,7 +51,6 @@ export default {
     data(){
         return{
             checkbox: false,
-            setupStep: 15,
             loading: false
         }
     },
@@ -105,14 +104,8 @@ export default {
             this.loading = false
             }).catch((e)=>{
                 store.commit('setTest', `refresh setup CD error ${e}`)
-            })     
-        //update the setup step
-        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
-            console.log('success')
-            })
-            .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
-            })
+            })   
+        //maybe do an async write here on other pages? TBD  
     },
 }
 </script>
