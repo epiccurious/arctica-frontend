@@ -1,6 +1,9 @@
 <template>
-<div class="page">
-    <header>
+    <div v-if="this.loading ==true">
+    <Loader />
+    </div>
+    <div v-else class="page">
+        <header>
         <h1>DVD 1 Backup</h1>
         <h2>Please remove CD 1 and insert DVD 1.</h2>
     </header> 
@@ -24,14 +27,32 @@
 
 <script>
 import store from '../../store.js'
+import Loader from '@/components/loader'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup24',
+  components: {
+        Loader,
+      },
     methods: {
         acknowledge(){
-            console.log('user ack, moving all info from SD 1 to DVD 1')
+            this.loading = true
+        //make a backup dir and fill it with a backup of the current SD card
+        invoke('create_backup').then((res) => {
+            store.commit('setTest', `creating and filling backup dir ${res}`)
+            }).catch((e) => {
+                store.commit('setTest', `error creating and filling backup dir: ${e}`)
+            })
+        //make and burn backup ISO
+        invoke('make_backup').then((res) => {
+            this.loading = false
+            store.commit('setTest', `making and burning backup iso ${res}`)
             this.$router.push({ name: 'Setup25' })
-        },
+            }).catch((e) => {
+                store.commit('setTest', `error making and burning backup iso: ${e}`)
+            })
+                    },
         warn(){
             console.log('user trying to proceed without checkbox validation')
         },
@@ -39,6 +60,7 @@ export default {
     data(){
         return{
             checkbox: false,
+            loading: false,
         }
     },
         computed:{
