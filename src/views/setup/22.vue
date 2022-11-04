@@ -99,20 +99,13 @@ export default {
             }).catch((e) => {
                 store.commit('setTest', `error packing up sensitive info: ${e}`)
             })        
-            
-        //install wodim & ssss
-        invoke('install_sd_deps').then((res) => {
-            store.commit('setTest', `installing SD dependencies ${res}`)
-            //refresh setup CD with latest .iso 
-            invoke('refresh_setup_cd').then((res)=>{
-                store.commit('setTest', `refreshing setup CD ${res}`)
-                this.loading = false
+        //refresh setup CD with latest .iso 
+        invoke('refresh_setup_cd').then((res)=>{
+            store.commit('setTest', `refreshing setup CD ${res}`)
+            this.loading = false
             }).catch((e)=>{
                 store.commit('setTest', `refresh setup CD error ${e}`)
-            })
-        }).catch((e) => {
-            store.commit('setTest', `install SD deps error: ${e}`)
-        })        
+            })     
         //update the setup step
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             console.log('success')
