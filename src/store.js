@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 
 export default createStore({
-    //some of these are currently hardcoded to make testing easier but should eventually all be undefined, null or empty and obtained dynmically from backend
+    //some of these are currently hardcoded for testing, but should eventually all be undefined, false, null or empty and obtained dynmically from backend
     state: {
     currentSD: 0,
     //a current sd of 0 designates no inserted valid card
