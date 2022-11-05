@@ -38,13 +38,7 @@ export default {
     methods: {
         acknowledge(){
             this.loading = true
-        //make a backup dir and fill it with a backup of the current SD card
-        invoke('create_backup').then((res) => {
-            store.commit('setTest', `creating and filling backup dir ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error creating and filling backup dir: ${e}`)
-            })
-        //make and burn backup ISO
+        //burn backup ISO
         invoke('make_backup').then((res) => {
             this.loading = false
             store.commit('setTest', `making and burning backup iso ${res}`)
