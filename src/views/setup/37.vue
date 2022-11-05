@@ -56,10 +56,5 @@ export default {
                 store.commit('setTest', `async write error: ${e}`)
             })
     },
-    computed: {
-        test(){
-      return store.getters.getTest
-    }
-    },
 }
 </script>
