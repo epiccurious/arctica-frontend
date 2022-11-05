@@ -19,9 +19,6 @@ export default {
             console.log('user ack, close application')
         },
     },
-    data(){
-        return{}
-    },
     }
 </script>
 
