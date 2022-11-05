@@ -84,14 +84,6 @@ export default {
                 store.commit('setTest', `error unpacking sensitive info: ${e}`)
             })        
 
-        //copy the descriptors in ramdisk to sensitive dir
-        //THIS STEP IS NOT NEEDED HERE BECAUSE CREATE DESCRIPTOR HANDLES THE COPYING
-        //THIS IS A PLACEHOLDER FOR FLOW IN 27A
-        // invoke('copy_descriptor').then((res) => {
-        //     store.commit('setTest', `copying descriptor from setupCD dump to sensitive dir ${res}`)
-        //     }).catch((e) => {
-        //         store.commit('setTest', `error copying descriptor: ${e}`)
-        //     })           
         //make sure sensitive contains everything it should before packup()
         invoke('packup').then((res) => {
             store.commit('setTest', `packing up sensitive info ${res}`)
@@ -105,7 +97,6 @@ export default {
             }).catch((e)=>{
                 store.commit('setTest', `refresh setup CD error ${e}`)
             })   
-        //maybe do an async write here on other pages? TBD  
     },
 }
 </script>
