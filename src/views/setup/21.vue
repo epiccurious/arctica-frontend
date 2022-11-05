@@ -50,7 +50,7 @@ export default {
                     store.commit('setSetupCD', true)
                     store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
                     this.loading = false
-                    this.$router.push({ name:'Setup22' })
+                    this.$router.push({ name:'Setup23' })
                     break
                 }
                 else{

@@ -435,11 +435,6 @@ const routes = [
     component: () => import('../views/setup/21.vue')
    },
    {
-    path: '/setup/22',
-    name: 'Setup22',
-    component: () => import('../views/setup/22.vue')
-   },
-   {
     path: '/setup/23',
     name: 'Setup23',
     component: () => import('../views/setup/23.vue')
