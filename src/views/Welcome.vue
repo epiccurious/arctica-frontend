@@ -182,7 +182,22 @@ export default {
         }
         store.commit('setTest', `exiting config read`)
         //mount internal disk and symlink .bitcoin folders if on SD 1 and not in intial install
-        if(this.currentSD == 1){
+        if(this.currentSD == 1 && this.setupStep == 0){
+          invoke('mount_internal').then((res)=> {
+              store.commit('setTest', `invoking mount internal ${res}`)
+              invoke('start_bitcoind').then((res)=> {
+                store.commit('setTest', `starting bitcoin daemon ${res}`)
+              })
+              .catch((e)=> {
+                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+              })
+          })
+        .catch((e)=> {
+          store.commit('setTest', `mount internal error: ${e}`)
+          })
+
+        }        
+        else if(this.currentSD == 1){
           invoke('mount_internal').then((res)=> {
           store.commit('setTest', `invoking mount internal ${res}`)
         })

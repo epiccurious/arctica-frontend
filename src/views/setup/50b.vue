@@ -5,6 +5,7 @@
         <h2>Now we must wait for Bitcoin Core to finish it's initial sync.</h2>
         <h2>This computer should remain on and unlocked until the time chain has finished it's sync.</h2> 
         <h2>This can take anywhere from a few hours to a few weeks depending on your internet connection.</h2>
+        <h3>PLACEHOLDER PROGRESS BAR</h3>
         <h3>Progress: 56% complete.</h3>
     </header>
         <div class="btn_container"> 
