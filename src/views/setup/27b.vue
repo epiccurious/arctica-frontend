@@ -66,13 +66,6 @@ export default {
                 store.commit('setTest', `error reading setup CD: ${e}`)
             })
 
-        //copy the descriptors in ramdisk to sensitive dir
-        invoke('copy_descriptor').then((res) => {
-            store.commit('setTest', `copying descriptor from setupCD dump to sensitive dir ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error copying descriptor: ${e}`)
-            })    
-
         //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
         invoke('extract_masterkey').then((res) => {
             store.commit('setTest', `extracting masterkey from setupCD dump ${res}`)
@@ -85,7 +78,14 @@ export default {
             store.commit('setTest', `unpacking sensitive info ${res}`)
             }).catch((e) => {
                 store.commit('setTest', `error unpacking sensitive info: ${e}`)
-            })        
+            })       
+
+        //copy the descriptors in ramdisk to sensitive dir
+        invoke('copy_descriptor').then((res) => {
+            store.commit('setTest', `copying descriptor from setupCD dump to sensitive dir ${res}`)
+            }).catch((e) => {
+                store.commit('setTest', `error copying descriptor: ${e}`)
+            })     
        
         //make sure sensitive contains everything it should before packup()
         invoke('packup').then((res) => {
