@@ -36,7 +36,7 @@ export default createStore({
     psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, tripwireTripped:'none', timeMachineKeysFound:false, privacyKeysFound:false,
 
     bpsBricked: false,
-    manualDecrypt: false,
+    decrypted: false,
     //numberToRecover should eventually dynamically decay as privacy keys are published to the blockchain
     numberToRecover: 5,
     //recoveryStep designates how many SD cards the user has accessed to manually decrypt. The keys will be placed onto a transfer CD and eventually arctica should
@@ -201,8 +201,8 @@ export default createStore({
         setBPSBricked(state, payload){
             state.bpsBricked = payload
         },
-        setManualDecrypt(state, payload){
-            state.manualDecrypt = payload
+        setDecrypted(state, payload){
+            state.decrypted = payload
         },
         setNumberToRecover(state, payload){
             state.numberToRecover = payload
@@ -313,8 +313,8 @@ export default createStore({
         getBPSBricked(state){
             return state.bpsBricked
         },
-        getManualDecrypt(state){
-            return state.manualDecrypt
+        getDecrypted(state){
+            return state.decrypted
         },
         getNumberToRecover(state){
             return state.numberToRecover

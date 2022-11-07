@@ -100,8 +100,8 @@
         <div class="switch">
             Manually Decrypted
             <label class="toggle_switch_label">
-                <input v-if="this.manualDecrypt == true" v-model="manualDecrypt" @click="manualDecryptToggle()" type="checkbox" checked>
-                <input v-else-if="this.manualDecrypt == false" v-model="manualDecrypt" @click="manualDecryptToggle()" type="checkbox">
+                <input v-if="this.decrypted == true" v-model="decrypted" @click="manualDecryptToggle()" type="checkbox" checked>
+                <input v-else-if="this.decrypted == false" v-model="decrypted" @click="manualDecryptToggle()" type="checkbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -211,7 +211,7 @@ export default{
         psbtFoundToggle(){
             if(this.psbtFound == false){
                 store.commit('setPSBTFound', true)
-                store.commit('setManualDecrypt', true)
+                store.commit('setDecrypted', true)
             } else{
                 store.commit('setPSBTFound', false)
                 store.commit('setPSBT', null)
@@ -244,22 +244,22 @@ export default{
         privacyKeysFoundToggle(){
             if(this.privacyKeysFound == false){
                 store.commit('setPrivacyKeysFound', true)
-                store.commit('setManualDecrypt',true)
+                store.commit('setDecrypted',true)
             } else{
                 store.commit('setPrivacyKeysFound', false)
-                store.commit('setManualDecrypt', false)
+                store.commit('setDecrypted', false)
             }
              console.log('Privacy Keys Found', store.getters.getPrivacyKeysFound)   
-             console.log('Manually decrypted', store.getters.getManualDecrypt)
+             console.log('Manually decrypted', store.getters.getDecrypted)
             },
         
         manualDecryptToggle(){
-                if(this.manualDecrypt == false){
-                store.commit('setManualDecrypt', true)
+                if(this.decrypted == false){
+                store.commit('setDecrypted', true)
             } else{
-                store.commit('setManualDecrypt', false)
+                store.commit('setDecrypted', false)
             }
-             console.log('Manually Decrypted', store.getters.getManualDecrypt)   
+             console.log('Manually Decrypted', store.getters.getDecrypted)   
         },
         tripWireSetupToggle(){
                 if(this.tripwireSetup == false){
@@ -342,8 +342,8 @@ export default{
         setPSBT(){
             store.commit('setPSBTFound', this.psbtFound)
             if(store.getters.getPSBTFound == true){
-                store.commit('setManualDecrypt', true)
-                console.log('manual decrypt', store.getters.getManualDecrypt)
+                store.commit('setDecrypted', true)
+                console.log('manual decrypt', store.getters.getDecrypted)
             }
             console.log('PSBT Found', store.getters.getPSBTFound)
             
@@ -421,12 +421,12 @@ export default{
                 store.commit('setPrivacyKeysFound', newVal)
             }   
         },
-        manualDecrypt:{
+        decrypted:{
             get(){
-                return store.getters.getManualDecrypt
+                return store.getters.getDecrypted
             },
             set(newVal){
-                store.commit('setManualDecrypt', newVal)
+                store.commit('setDecrypted', newVal)
             }
         },
         tripwireSetup:{

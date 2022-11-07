@@ -76,14 +76,14 @@ export default {
               this.$router.push({ name:'delayedBroadcast' })
             }
             //user has manually recovered password using the appropriate amount of SD cards
-            else if(this.manualDecrypt == true){
+            else if(this.decrypted == true){
               this.$router.push({ name: 'dashboard' })
             }
             //user has bricked their relationship with BPS and must manually decrypt
             else if(this.bpsBricked == true){
               this.$router.push({ name: 'BPS_Bricked' })
             }
-            //user is logging in with attic key
+            //user is logging in with attic key, this is at at the very end of the logic loop here intentionally
             else if(this.currentSD == 1){
               this.$router.push({ name: 'Login'})
             }
@@ -138,11 +138,11 @@ export default {
       test(){
         return store.getters.getTest
       },
-      manualDecrypt(){
+      decrypted(){
         if(this.privacyKeysFound == true){
-          store.commit('setManualDecrypt', true)
-          return store.getters.getManualDecrypt
-        }else{return store.getters.getManualDecrypt}
+          store.commit('setDecrypted', true)
+          return store.getters.getDecrypted
+        }else{return store.getters.getDecrypted}
       },
       setupStep(){
         return store.getters.getSetupStep
