@@ -8,12 +8,13 @@
       <h1>In order to manually recover you will need access to 2-3 additional SD cards.</h1>
         <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
+    <!-- Eventually every option below this point needs to be fetching privacy keys from blockchain and adding them to shards dir -->
     <div v-else-if="this.numberToRecover == 4" class="btn_container"> 
       <h1>In order to manually recover you will need access to 1-2 additional SD cards.</h1>
       <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
     <div v-else-if="this.numberToRecover == 3" class="btn_container">
-      <h1>In order to manually recover you will need access to 1-2 additional SD cards.</h1>
+      <h1>In order to manually recover you will need access to 1 additional SD card.</h1>
         <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
     <div v-else-if="this.numberToRecover == 2 || this.numberToRecover == 1">
