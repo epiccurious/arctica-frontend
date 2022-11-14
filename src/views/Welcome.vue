@@ -158,7 +158,7 @@ export default {
       })
       //check for masterkey
       invoke('check_for_masterkey').then((res)=>{
-        if(res == 'Output { status: ExitStatus(unix_wait_status(0)), stdout: "masterkey found\n", stderr: "" }'){
+        if(res == 'masterkey found'){
           store.commit('setTest', `checking for masterkey: ${res}`)
           store.commit('setTest', 'masterkey found!')
         }
