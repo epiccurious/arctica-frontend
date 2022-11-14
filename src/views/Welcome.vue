@@ -156,6 +156,12 @@ export default {
       .catch((e)=>{
         store.commit('setTest', `error creating ramdisk ${e}`)
       })
+      //check for masterkey
+      invoke('check_for_masterkey').then((res)=>{
+        store.commit('setTest', `checking for masterkey: ${res}`)
+      }).catch((e)=>{
+        store.commit('setTest',  `error checking for masterkey ${e}`)
+      })
       //reading config values 
       invoke('read').then((res) => {
           store.commit('setTest', `invoking read config: ${res}`)
@@ -185,6 +191,7 @@ export default {
         if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
               store.commit('setTest', `invoking mount internal ${res}`)
+              //start bitcoind
               invoke('start_bitcoind').then((res)=> {
                 store.commit('setTest', `starting bitcoin daemon ${res}`)
               })
@@ -196,7 +203,8 @@ export default {
           store.commit('setTest', `mount internal error: ${e}`)
           })
 
-        }        
+        }    
+        //mount internal fallback    
         else if(this.currentSD == 1){
           invoke('mount_internal').then((res)=> {
           store.commit('setTest', `invoking mount internal ${res}`)
