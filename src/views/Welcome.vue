@@ -161,6 +161,7 @@ export default {
         if(res == 'masterkey found'){
           store.commit('setTest', `checking for masterkey: ${res}`)
           store.commit('setTest', 'masterkey found!')
+          store.commit('setDecrypted', true)
         }
         else{
           store.commit('setTest', `checking for masterkey: ${res}`)

@@ -98,7 +98,7 @@
         </select>
 
         <div class="switch">
-            Manually Decrypted
+            Decrypted
             <label class="toggle_switch_label">
                 <input v-if="this.decrypted == true" v-model="decrypted" @click="manualDecryptToggle()" type="checkbox" checked>
                 <input v-else-if="this.decrypted == false" v-model="decrypted" @click="manualDecryptToggle()" type="checkbox">
