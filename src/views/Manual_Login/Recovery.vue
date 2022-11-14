@@ -3,46 +3,23 @@
 <template>
   <div class="page">
     <header>
-      <h1>How many SD cards do you have access to?</h1>
     </header>
-    <div v-if="this.numberToRecover == 5" class="btn_container"> 
-        <button @click="acknowledge()" class="btn">I have 5 SD cards</Button>
-        <button class="btn3">I have 4 SD cards</Button>
-        <h2 class="strong_text">Unlocks in 67 days.</h2>
-        <button class="btn3">I have 3 SD cards</Button>
-        <h2 class="strong_text">Unlocks in 97 days.</h2>
-        <button class="btn3">I have 2 SD cards</button>
-        <h2 class="strong_text">Unlocks in 127 days.</h2>
-        <button class="btn3">I have 1 SD card</button>
-        <h2 class="strong_text">Unlocks in 157 days.</h2>
+    <div v-if="this.numberToRecover == 5" class="btn_container">
+      <h1>In order to manually recover you will need access to 2-3 additional SD cards.</h1>
+        <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
     <div v-else-if="this.numberToRecover == 4" class="btn_container"> 
-      <button @click="acknowledge()" class="btn">I have 4 SD cards</Button>
-        <button class="btn3">I have 3 SD cards</Button>
-        <h2 class="strong_text">Unlocks in 30 days.</h2>
-        <button class="btn3">I have 2 SD cards</button>
-        <h2 class="strong_text">Unlocks in 60 days.</h2>
-        <button class="btn3">I have 1 SD card</button>
-        <h2 class="strong_text">Unlocks in 90 days.</h2>
+      <h1>In order to manually recover you will need access to 1-2 additional SD cards.</h1>
+      <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
-    <div v-else-if="this.numberToRecover == 3" class="btn_container"> 
-        <button @click="acknowledge()" class="btn">I have 3 SD cards</Button>
-        <button class="btn3">I have 2 SD cards</button>
-        <h2 class="strong_text">Unlocks in 30 days.</h2>
-        <button class="btn3">I have 1 SD card</button>
-        <h2 class="strong_text">Unlocks in 60 days.</h2>
+    <div v-else-if="this.numberToRecover == 3" class="btn_container">
+      <h1>In order to manually recover you will need access to 1-2 additional SD cards.</h1>
+        <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
-    <div v-else-if="this.numberToRecover == 2" class="btn_container"> 
-        <button @click="acknowledge()" class="btn">I have 2 SD cards</Button>
-        <button class="btn3">I have 1 SD card</button>
-        <h2 class="strong_text">Unlocks in 30 days.</h2>
-    </div>
-    <div v-else-if="this.numberToRecover == 1" class="btn_container"> 
-        <button @click="acknowledge()" class="btn">I have 1 SD card</Button>
-    </div>
-    <div v-else class="btn_container"> 
-        <h2 class="strong_text">Your privacy keys have expired.</h2>
-        <h2> You no longer need to decrypt your devices.</h2>
+    <div v-else-if="this.numberToRecover == 2 || this.numberToRecover == 1">
+      <h1>Enough of your privacy keys have decayed for you to login with just SD 1.</h1>
+      <button @click="acknowledge()" class="btn">Log in</Button>
+    You 
     </div>
   
   </div>
