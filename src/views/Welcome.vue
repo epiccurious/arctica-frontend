@@ -160,10 +160,12 @@ export default {
       invoke('check_for_masterkey').then((res)=>{
         if(res.stdout == 'masterkey found'){
           store.commit('setTest', `checking for masterkey: ${res}`)
+          store.commit('setTest',  `res stdout = ${res.stdout}`)
           store.commit('setTest', 'masterkey found!')
         }
         else{
           store.commit('setTest', `checking for masterkey: ${res}`)
+          store.commit('setTest', `res stdout = ${res.stdout}`)
           store.commit('setTest', `res not parsing correctly or masterkey not found`)  
         }
         
