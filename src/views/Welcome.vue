@@ -77,7 +77,15 @@ export default {
             }
             //user has manually recovered password using the appropriate amount of SD cards
             else if(this.decrypted == true){
-              this.$router.push({ name: 'dashboard' })
+              //unpacking sensitive dir
+              invoke('unpack').then((res)=>{
+                store.commit('setTest', `unpacking sensitive dir ${res}`)
+                this.$router.push({ name: 'dashboard' })
+              })
+              .catch((e)=>{
+                store.commit('setTest', `error unpacking sensitive dir ${e}`)
+              })
+              
             }
             //user has bricked their relationship with BPS and must manually decrypt
             else if(this.bpsBricked == true){
@@ -165,7 +173,7 @@ export default {
         }
         else{
           store.commit('setTest', `checking for masterkey: ${res}`)
-          store.commit('setTest', `res not parsing correctly or masterkey not found`)  
+          store.commit('setTest', `masterkey not found`)  
         }
         
       }).catch((e)=>{
