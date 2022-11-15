@@ -28,20 +28,7 @@ export default {
       numberToRecover(){
         return store.getters.getNumberToRecover
       },
-      recoveryStep(){
-        return store.getters.getRecoveryStep
-      },
       
-    },
-    mounted(){
-      if(this.numberToRecover >= this.recoveryStep){
-        this.recoveryComplete = true
-      }
-    },
-    data(){
-      return{
-        recoveryComplete: false
-      }
     },
   }
 </script>
