@@ -3,6 +3,7 @@
     <header>
       <h1>Manual Recovery Success.</h1>
       <h2>You may now log in to your account without the use of a BPS.</h2>
+      <h2>Your transfer CD will hold your masterkey for login. Keep it safe.</h2>
       <h2>Please insert SD 1 and your transfer CD and reboot this machine.</h2>
     </header>
     <div class="btn_container"> 
@@ -24,6 +25,9 @@ export default {
         help(){
             console.log('fetching help')
         }
+    },
+    mounted(){
+
     },
     computed: {
       numberToRecover(){

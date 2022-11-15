@@ -1,7 +1,7 @@
 <!-- this page conditionally renders if the user does not currently have any Arctica SD inserted (in which case they are prompted to install Arctica software)
 or directs them to the 'i need help' section which can walk them through restoring an attic SD. 
 
-the second conditional rendering below appears if the user has booted from SD 2-7 but does not have a transfer CD with a PSBT inserted into the machine.  -->
+the second conditional rendering below appears if the user has booted from SD 2-7 and needs to insert a transfer CD or a recovery CD. -->
 
 <template>
 <div v-if="this.loading == true">
@@ -61,8 +61,25 @@ export default {
                 if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'RECOVERYCD'){
                     store.commit('setRecoveryCD', true)
                     store.commit('setTest', `Recovery CD detected, boolean set to true ${store.getters.getRecoveryCD}`)
-                    this.loading = false
-                    break
+                    //calculate numbertorecover differential based on how many shards are on recoverycd
+                    invoke('calculate_number_of_shards').then((res)=> {
+                      store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
+                      let number = Int(res)
+                      //send the user to recovery_additional if they have not yet met numbertorecover threshold
+                      if(this.numberToRecover > number){
+                        this.loading = false
+                        this.$router.push({ name: 'recoveryAdditional' })
+                      }
+                      //if, for some reason, the number of shards exceeds the decryption threshold, send user to success screen
+                      //combine shards at recovery success screen
+                      else{
+                        this.loading = false
+                        this.$router.push({ name: 'recoverySuccess' })
+                      }
+                    })
+                    .catch((e) => {
+                      store.commit('setTest', `error calculating shards on recovery cd: ${e}`)
+                    })
                 }
                 //check for transfer CD
                 //assume user is trying to sign a PSBT
@@ -70,32 +87,13 @@ export default {
                     store.commit('setTransferCD', true)
                     store.commit('setTest', `Transfer CD detected, boolean set to true ${store.getters.getTransferCD}`)
                     this.loading = false
+                    this.$router.push({ name: 'welcome' })
                     break
                 }
                 //either no cd is inserted or user hit the button too fast
                 else{
                     store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
                 }
-            // //user is trying to sign a psbt
-            // if(this.psbtFound == true && this.psbt != null){
-            // console.log('user ack, simulating transfer CD, PSBT found')
-            // this.$router.push({ name: 'welcome' })
-            // }
-            // //user is trying to manually decrypt
-            // else if(true){
-            //   //dump recovery cd to ramdisk
-            //   invoke('copy_recovery_cd').then((res)=> {
-            //     store.commit('setTest', `copying recovery CD into ramdisk: ${res} `)
-            //   })
-            //   .catch((e) => {
-            //     store.commit('setTest', `obtain ubuntu error: ${e}`)
-            //   })
-            // //this is where we need to send the user to recovery_additional if they have not yet met numbertorecover threshold inside of the shards dir
-            // //need to count number of shards in shards dir and compare to numbertorecover variable
-            // //if numbertorecover is < = number of shards in shards dir then send user to recovery_success
-            // //else send them to recovery additional to collect more shards
-
-            // }
         }
       })
     },
@@ -133,8 +131,8 @@ export default {
     psbtFound(){
       return store.getters.getPSBTFound
     },
-    psbt(){
-      return store.getters.getPSBT
+    numberToRecover(){
+      return store.getters.getNumberToRecover
     },
     test(){
       return store.getters.getTest
