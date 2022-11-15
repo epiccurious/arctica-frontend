@@ -45,7 +45,7 @@ export default {
         store.commit('setTest', `collecting shards and refreshing recovery cd: ${res}`)
         invoke('calculate_number_of_shards').then((res)=> {
           store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
-          let number = Int(res)
+          let number = parseInt(res)
           //send the user to recovery_additional if they have not yet met numbertorecover threshold
           if(this.numberToRecover > number){
             this.loading = false
@@ -72,11 +72,6 @@ export default {
     loading: true
     }
   },
-  computed:{
-    numberToRecover(){
-      return store.getters.getNumberToRecover
-    },
-  }
   }
 </script>
 

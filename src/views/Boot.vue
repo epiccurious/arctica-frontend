@@ -64,13 +64,13 @@ export default {
                     //calculate numbertorecover differential based on how many shards are on recoverycd
                     invoke('calculate_number_of_shards').then((res)=> {
                       store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
-                      let number = Int(res)
+                      let number = parseInt(res)
                       //send the user to recovery_additional if they have not yet met numbertorecover threshold
                       if(this.numberToRecover > number){
                         this.loading = false
                         this.$router.push({ name: 'recoveryAdditional' })
                       }
-                      //if, for some reason, the number of shards exceeds the decryption threshold, send user to success screen
+                      //if the number of shards exceeds the decryption threshold, send user to success screen
                       //combine shards at recovery success screen
                       else{
                         this.loading = false
@@ -139,7 +139,7 @@ export default {
     }
   },
   data() {
-    return {someData: [],
+    return {
     loading: false
     }
   },
