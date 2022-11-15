@@ -39,8 +39,8 @@
       methods: {
           acknowledge(){
           this.loading = true
-          invoke('read_setup_cd').then((res) => {
-            store.commit('setTest', `invoking read_setup_cd: ${res}`)
+          invoke('read_cd').then((res) => {
+            store.commit('setTest', `invoking read_cd: ${res}`)
             let resArray = res.split("\n")
             store.commit('setTest', `response Array: ${resArray}`)
             for(let i = 0; i < resArray.length; i ++){
