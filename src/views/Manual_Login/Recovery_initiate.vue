@@ -1,5 +1,4 @@
 <!-- This page will dynamically display the current number of SD cards needed to decrypt as well as a countdown to the remaining priacy key decay schedules -->
-<!-- Need to add screens to this flow prompting for each SD required to decrypt, then toggle manual decrypt state variable once complete to allow hard login -->
 <template>
   <div class="page">
     <header>
@@ -15,12 +14,19 @@
 
 <script>
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'RecoveryInitiate',
     methods: {
         acknowledge(){
-            console.log('user ack, recovery initiating')
+          //creating recovery cd
+          invoke('create_recovery_cd').then((res)=>{
+            store.commit('setTest', `creating recovery cd ${res}`)
+          })
+          .catch((e)=>{
+            store.commit('setTest', `error creating recovery cd ${e}`)
+          })
         },
         help(){
             console.log('fetching help')

@@ -15,12 +15,10 @@
 import store from '../../store.js'
 
 export default {
-  name: 'Recovery1',
+  name: 'RecoveryAdditional',
     methods: {
         acknowledge(){
             console.log('user ack, recovery initiating')
-            store.commit('setRecoveryStep', 2) //eventually replace this with  virtual label
-            //here we need to append the key shard to the transfer CD as well as a config var that instructs the next SD card how many key shards we have collected
         },
         help(){
             console.log('fetching help')

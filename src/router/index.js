@@ -41,24 +41,9 @@ const routes = [
     component: () => import('../views/Manual_Login/Recovery_success.vue')
    },
    {
-    path: '/login/recovery1',
-    name: 'Recovery1',
-    component: () => import('../views/Manual_Login/Recovery1.vue')
-   },
-   {
-    path: '/login/recovery2',
-    name: 'Recovery2',
-    component: () => import('../views/Manual_Login/Recovery2.vue')
-   },
-   {
-    path: '/login/recovery3',
-    name: 'Recovery3',
-    component: () => import('../views/Manual_Login/Recovery3.vue')
-   },
-   {
-    path: '/login/recovery4',
-    name: 'Recovery4',
-    component: () => import('../views/Manual_Login/Recovery4.vue')
+    path: '/login/recovery_additional',
+    name: 'RecoveryAdditional',
+    component: () => import('../views/Manual_Login/Recovery_additional.vue')
    },
   {
     path: '/wallets',

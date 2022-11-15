@@ -1,4 +1,4 @@
-<!-- This page will dynamically display the current number of SD cards needed to decrypt as well as a countdown to the remaining priacy key decay schedules -->
+<!-- This page will dynamically display the current number of SD cards needed to decrypt as well as a countdown to the remaining privacy key decay schedules -->
 
 <template>
   <div class="page">
