@@ -17,11 +17,8 @@
       <h1>In order to manually recover you will need access to 1 additional SD card.</h1>
         <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
-    <div v-else-if="this.numberToRecover == 2 || this.numberToRecover == 1">
-      <h1>Enough of your privacy keys have decayed for you to login with just SD 1.</h1>
-      <button @click="acknowledge()" class="btn">Log in</Button>
-    You 
-    </div>
+
+    <!-- if number to recover is < 3, user can log in using only SD 1 -->
   
   </div>
 </template>
@@ -34,33 +31,14 @@
       methods: {
           acknowledge(){
               console.log('user ack, recovery initiating')
-              store.commit('setRecoveryStep', 1) //eventually replace this with  virtual label
-              //here we need to append the key shard to the transfer CD as well as a config var that instructs the next SD card how many key shards we have collected
               this.$router.push({ name: 'RecoveryInitiate' })
           },
-          help(){
-              console.log('fetching help')
-          }
       },
       computed: {
         numberToRecover(){
           return store.getters.getNumberToRecover
         },
-        recoveryStep(){
-          return store.getters.getRecoveryStep
-        },
-        
-      },
-      mounted(){
-        if(this.numberToRecover >= this.recoveryStep){
-          this.recoveryComplete = true
-        }
-      },
-      data(){
-        return{
-          recoveryComplete: false
-        }
-      },
+      }
     }
   </script>
 
