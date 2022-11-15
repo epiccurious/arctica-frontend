@@ -6,7 +6,9 @@ export default createStore({
     currentSD: 0,
     //a current sd of 0 designates no inserted valid card
 
-    setupCD: false, 
+    setupCD: false,
+    recoveryCD: false,
+    transferCD: false,
     //setupStep variables 
     // setupStep 1 placed on SD 1 at step 4 to jump user to step 12 
     // setupStep 2 placed on SD 2 at step 5 to jump user to step 14 
@@ -222,6 +224,12 @@ export default createStore({
         setSetupCD(state, payload){
             state.setupCD = payload
         },
+        setRecoveryCD(state, payload){
+            state.recoveryCD = payload
+        },
+        setTransferCD(state, payload){
+            state.transferCD = payload
+        },
         setPrimaryMachine(state, payload){
             state.primaryMachine = payload
         },
@@ -324,6 +332,12 @@ export default createStore({
         },
         getSetupCD(state){
             return state.setupCD
+        },
+        getRecoveryCD(state){
+            return state.recoveryCD
+        },
+        getTransferCD(state){
+            return state.transferCD
         },
         getPrimaryMachine(state){
             return state.primaryMachine

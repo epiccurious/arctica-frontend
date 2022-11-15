@@ -48,6 +48,7 @@ export default {
     methods: {
         acknowledge(){
           this.loading = true
+          //read the config file of the inserted CD
           invoke('read_cd').then((res) => {
             store.commit('setTest', `invoking read_cd: ${res}`)
             let resArray = res.split("\n")
@@ -55,19 +56,23 @@ export default {
             for(let i = 0; i < resArray.length; i ++){
                 let it = resArray[i].split("=")
                 store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
-                //check for setup CD
+                //check for recovery CD
+                //assume user is attempting to manually decrypt
                 if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'RECOVERYCD'){
                     store.commit('setRecoveryCD', true)
                     store.commit('setTest', `Recovery CD detected, boolean set to true ${store.getters.getRecoveryCD}`)
                     this.loading = false
                     break
                 }
+                //check for transfer CD
+                //assume user is trying to sign a PSBT
                 else if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'TRANSFERCD'){
                     store.commit('setTransferCD', true)
                     store.commit('setTest', `Transfer CD detected, boolean set to true ${store.getters.getTransferCD}`)
                     this.loading = false
                     break
                 }
+                //either no cd is inserted or user hit the button too fast
                 else{
                     store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
                 }
