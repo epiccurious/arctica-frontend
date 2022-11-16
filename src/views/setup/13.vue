@@ -30,15 +30,15 @@ export default {
             console.log('user ack, close application')
         },
       },
-        mounted(){
-          this.loading = true
+    mounted(){
+      this.loading = true
       invoke('packup').then((res)=>{
         store.commit('setTest', `invoking packup: ${res}`)
         this.loading = false
       }).catch((e)=>{
         store.commit('setTest', `error with pack up: ${e}`)
       })
-        },
+    },
     data(){
       return{
         loading: false,
