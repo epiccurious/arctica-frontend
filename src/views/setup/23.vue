@@ -73,44 +73,40 @@ export default {
         //copy everything from the setup CD to ramdisk
         invoke('copy_setup_cd').then((res) => {
             store.commit('setTest', `reading setup CD ${res}`)
+            //create the descriptors and export to the setupCD
+            invoke('create_descriptor').then((res) => {
+                store.commit('setTest', `creating descriptors ${res}`)
+                //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
+                invoke('extract_masterkey').then((res) => {
+                            store.commit('setTest', `extracting masterkey from setupCD dump ${res}`)
+                            //unpack() the encrypted dir on SD 1
+                            invoke('unpack').then((res) => {
+                                store.commit('setTest', `unpacking sensitive info ${res}`)
+                                //make sure sensitive contains everything it should before packup()
+                                invoke('packup').then((res) => {
+                                            store.commit('setTest', `packing up sensitive info ${res}`)
+                                                    //refresh setup CD with latest .iso 
+                                                    invoke('refresh_setup_cd').then((res)=>{
+                                                        store.commit('setTest', `refreshing setup CD ${res}`)
+                                                        this.loading = false
+                                                        }).catch((e)=>{
+                                                            store.commit('setTest', `refresh setup CD error ${e}`)
+                                                        })  
+                                            }).catch((e) => {
+                                                store.commit('setTest', `error packing up sensitive info: ${e}`)
+                                            })        
+                                }).catch((e) => {
+                                    store.commit('setTest', `error unpacking sensitive info: ${e}`)
+                                }) 
+                            }).catch((e) => {
+                                store.commit('setTest', `error extracting masterkey: ${e}`)
+                            })
+                }).catch((e) => {
+                    store.commit('setTest', `error creating descriptors: ${e}`)
+                })
             }).catch((e) => {
                 store.commit('setTest', `error reading setup CD: ${e}`)
-            })
-
-        //create the descriptors and export to the setupCD
-        invoke('create_descriptor').then((res) => {
-            store.commit('setTest', `creating descriptors ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error creating descriptors: ${e}`)
-            })
-
-        //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
-        invoke('extract_masterkey').then((res) => {
-            store.commit('setTest', `extracting masterkey from setupCD dump ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error extracting masterkey: ${e}`)
-            })
-
-        //unpack() the encrypted dir on SD 1
-        invoke('unpack').then((res) => {
-            store.commit('setTest', `unpacking sensitive info ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error unpacking sensitive info: ${e}`)
-            })        
-
-        //make sure sensitive contains everything it should before packup()
-        invoke('packup').then((res) => {
-            store.commit('setTest', `packing up sensitive info ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error packing up sensitive info: ${e}`)
-            })        
-        //refresh setup CD with latest .iso 
-        invoke('refresh_setup_cd').then((res)=>{
-            store.commit('setTest', `refreshing setup CD ${res}`)
-            this.loading = false
-            }).catch((e)=>{
-                store.commit('setTest', `refresh setup CD error ${e}`)
-            })   
+            }) 
     },
 }
 </script>

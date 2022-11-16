@@ -62,44 +62,40 @@ export default {
         //copy everything from the setup CD to ramdisk
         invoke('copy_setup_cd').then((res) => {
             store.commit('setTest', `reading setup CD ${res}`)
+            //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
+            invoke('extract_masterkey').then((res) => {
+                store.commit('setTest', `extracting masterkey from setupCD dump ${res}`)
+                //unpack() the encrypted dir on SD 1
+                invoke('unpack').then((res) => {
+                            store.commit('setTest', `unpacking sensitive info ${res}`)
+                            //copy the descriptors in ramdisk to sensitive dir
+                            invoke('copy_descriptor').then((res) => {
+                                store.commit('setTest', `copying descriptor from setupCD dump to sensitive dir ${res}`)
+                                //make sure sensitive contains everything it should before packup()
+                                invoke('packup').then((res) => {
+                                    store.commit('setTest', `packing up sensitive info ${res}`)
+                                    //refresh setup CD with latest .iso 
+                                    invoke('refresh_setup_cd').then((res)=>{
+                                        store.commit('setTest', `refreshing setup CD ${res}`)
+                                        this.loading = false
+                                        }).catch((e)=>{
+                                            store.commit('setTest', `refresh setup CD error ${e}`)
+                                        })   
+                                    }).catch((e) => {
+                                        store.commit('setTest', `error packing up sensitive info: ${e}`)
+                                    })        
+                                }).catch((e) => {
+                                    store.commit('setTest', `error copying descriptor: ${e}`)
+                                })     
+                            }).catch((e) => {
+                                store.commit('setTest', `error unpacking sensitive info: ${e}`)
+                            })       
+                }).catch((e) => {
+                    store.commit('setTest', `error extracting masterkey: ${e}`)
+                })
             }).catch((e) => {
                 store.commit('setTest', `error reading setup CD: ${e}`)
             })
-
-        //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
-        invoke('extract_masterkey').then((res) => {
-            store.commit('setTest', `extracting masterkey from setupCD dump ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error extracting masterkey: ${e}`)
-            })
-
-        //unpack() the encrypted dir on SD 1
-        invoke('unpack').then((res) => {
-            store.commit('setTest', `unpacking sensitive info ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error unpacking sensitive info: ${e}`)
-            })       
-
-        //copy the descriptors in ramdisk to sensitive dir
-        invoke('copy_descriptor').then((res) => {
-            store.commit('setTest', `copying descriptor from setupCD dump to sensitive dir ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error copying descriptor: ${e}`)
-            })     
-       
-        //make sure sensitive contains everything it should before packup()
-        invoke('packup').then((res) => {
-            store.commit('setTest', `packing up sensitive info ${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `error packing up sensitive info: ${e}`)
-            })        
-        //refresh setup CD with latest .iso 
-        invoke('refresh_setup_cd').then((res)=>{
-            store.commit('setTest', `refreshing setup CD ${res}`)
-            this.loading = false
-            }).catch((e)=>{
-                store.commit('setTest', `refresh setup CD error ${e}`)
-            })   
     },
     data(){
         return{
