@@ -31,11 +31,7 @@ export default {
         },
 
     },
-    computed:{
-        primaryMachine(){
-            return store.getters.getPrimaryMachine
-        }
-    }
+
 }
 </script>
 

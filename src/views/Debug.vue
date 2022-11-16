@@ -24,14 +24,6 @@
 
         <h2>setup Step Loaded: {{this.setupStep}}</h2>
 
-        <div class="switch">
-            Currently on Primary Machine
-            <label class="toggle_switch_label">
-                <input v-if="this.primaryMachine == true" v-model="primaryMachine" @click="primaryMachineToggle()" type="checkbox" checked>
-                <input v-else-if="this.primaryMachine == false" v-model="primaryMachine" @click="primaryMachineToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
 
         <div class="switch">
             Transfer CD Inserted (WARNING: setting this to false will clear the PSBT in memory)
@@ -308,15 +300,7 @@ export default{
                 store.commit('setSetupCD', false)
             }
              console.log('Set up CD inserted', store.getters.getSetupCD) 
-        },    
-        primaryMachineToggle(){
-                if(this.primaryMachine == false){
-                store.commit('setPrimaryMachine', true)
-            } else{
-                store.commit('setPrimaryMachine', false)
-            }
-             console.log('Currently on Primary machine', store.getters.getPrimaryMachine) 
-        },    
+        },     
         testPrint(){
             invoke('combine_shards').then((res) => {
                 store.commit('setTest', `combining shards: ${res}`)
@@ -477,14 +461,6 @@ export default{
                 store.commit('setSetupCD', newVal)
             }
         },
-        primaryMachine:{
-            get(){
-                return store.getters.getPrimaryMachine
-            },
-            set(newVal){
-                store.commit('setPrimaryMachine',newVal)
-            }
-        }
 
     },
     }

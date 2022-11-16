@@ -30,8 +30,6 @@ export default createStore({
     test: [],
 
     
-    primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
-
     //post set up complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
@@ -230,9 +228,6 @@ export default createStore({
         setTransferCD(state, payload){
             state.transferCD = payload
         },
-        setPrimaryMachine(state, payload){
-            state.primaryMachine = payload
-        },
         setSetupStep(state, payload){
             state.setupStep = payload
         },
@@ -338,9 +333,6 @@ export default createStore({
         },
         getTransferCD(state){
             return state.transferCD
-        },
-        getPrimaryMachine(state){
-            return state.primaryMachine
         },
         getSetupStep(state){
             return state.setupStep
