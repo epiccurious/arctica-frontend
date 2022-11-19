@@ -106,6 +106,7 @@ export default {
 
           //begin install
           //obtain latest tails image
+          store.commit('setLoadMessage', 'Creating custom Ubuntu ISO...')
           store.commit('setTest', 'Obtaining and Creating modified ubuntu ISO')
           invoke('obtain_ubuntu').then(()=> {
             store.commit('setTest', 'ubuntu iso created successfully')

@@ -29,6 +29,8 @@ export default createStore({
 
     test: [],
 
+    loadMessage: '',
+
     
     //post set up complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
@@ -83,6 +85,9 @@ export default createStore({
     mutations:{//synchronous, alters data in state (commit)
         setTest(state,value){
             state.test.push(value)
+        },
+        setLoadMessage(state,payload){
+            state.loadMessage = payload
         },
         setTxId(state, payload){
             state.id = payload;
@@ -245,6 +250,9 @@ export default createStore({
         },
         getTest(state){
             return state.test
+        },
+        getLoadMessage(state){
+            return state.loadMessage
         },
         //below is for testing, may remove
         getPSBTArr(state){
