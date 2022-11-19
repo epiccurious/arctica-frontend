@@ -39,6 +39,7 @@
       methods: {
           acknowledge(){
           this.loading = true
+          store.commit('setLoadMessage', 'Reading Setup CD...')
           invoke('read_cd').then((res) => {
             store.commit('setTest', `invoking read_cd: ${res}`)
             let resArray = res.split("\n")

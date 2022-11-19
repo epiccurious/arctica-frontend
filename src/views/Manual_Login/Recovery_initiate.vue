@@ -33,6 +33,7 @@ export default {
     methods: {
         acknowledge(){
           this.loading=true
+          store.commit('setLoadMessage', 'creating recovery cd...')
           //creating recovery cd
           invoke('create_recovery_cd').then((res)=>{
             store.commit('setTest', `creating recovery cd ${res}`)

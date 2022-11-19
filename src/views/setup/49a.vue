@@ -29,8 +29,6 @@ const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup49a',
-  components: {
-    },
     methods: {
         acknowledge(){
             console.log('user ack, package 7 completed')

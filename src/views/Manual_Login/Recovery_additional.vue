@@ -41,8 +41,10 @@ export default {
     },
     mounted(){
       //collecting shards and refreshing recovery cd
+      store.commit('setLoadMessage', 'collecting privacy key shards...')
       invoke('collect_shards').then((res)=>{
         store.commit('setTest', `collecting shards and refreshing recovery cd: ${res}`)
+        store.commit('setLoadMessage', 'calculating target number of shards...')
         invoke('calculate_number_of_shards').then((res)=> {
           store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
           let number = parseInt(res)

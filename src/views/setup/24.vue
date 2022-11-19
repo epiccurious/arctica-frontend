@@ -38,6 +38,7 @@ export default {
     methods: {
         acknowledge(){
             this.loading = true
+            store.commit('setLoadMessage', 'Making backup...')
         //burn backup ISO
         invoke('make_backup').then((res) => {
             this.loading = false
