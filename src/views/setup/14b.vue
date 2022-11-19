@@ -33,49 +33,49 @@ export default {
     },
     mounted(){
         this.loading = true
+        store.commit('setLoadMessage', 'Copying the setup CD...')
         //copy everything from the setup CD to ramdisk
         invoke('copy_setup_cd').then((res) => {
             store.commit('setTest', `reading setup CD ${res}`)
+            store.commit('setLoadMessage', 'Creating Bitcoin Wallet...')
+            //create xpriv and xpub
+            invoke('create_wallet').then((res)=>{
+                    store.commit('setTest', `creating simulated wallet ${res}`)
+                    store.commit('setLoadMessage', 'Distributing privacy keys...')
+                    //distribute 2 shards onto sd 2 from setupCD dir
+                    invoke('distribute_2_shards').then((res)=>{
+                            store.commit('setTest', `distributing 2 shards to SD card ${res}`)
+                            store.commit('setLoadMessage', 'Installing dependencies...')
+                            //install wodim & ssss
+                            invoke('install_sd_deps').then((res) => {
+                                    store.commit('setTest', `installing SD dependencies ${res}`)
+                                    store.commit('setLoadMessage', 'Refreshing setup CD...')
+                                        //refresh setup CD with latest .iso 
+                                        invoke('refresh_setup_cd').then((res)=>{
+                                            store.commit('setTest', `refreshing setup CD ${res}`)
+                                            store.commit('setLoadMessage', 'Updating application state...')
+                                            //update setupstep state on sd card
+                                            invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
+                                                store.commit('setTest', `config set to new values setupStep: ${this.setupStep} res:${res}`)
+                                                this.loading = false
+                                                }).catch((e) => {
+                                                    store.commit('setTest', `async write error: ${e}`)
+                                                })
+                                        }).catch((e)=>{
+                                            store.commit('setTest', `refresh setup CD error ${e}`)
+                                            })
+                                }).catch((e) => {
+                                    store.commit('setTest', `install SD deps error: ${e}`)
+                                })
+                        }).catch((e)=>{
+                            store.commit('setTest', `distributing 2 shards error ${e}`)
+                        })
+                }).catch((e)=>{
+                    store.commit('setTest', `create wallet error ${e}`)
+                })
             }).catch((e) => {
                 store.commit('setTest', `error reading setup CD: ${e}`)
             })
-
-        //create xpriv and xpub
-        invoke('create_wallet').then((res)=>{
-                store.commit('setTest', `creating simulated wallet ${res}`)
-            }).catch((e)=>{
-                store.commit('setTest', `create wallet error ${e}`)
-            })
-
-        //distribute 2 shards onto sd 2 from setupCD dir
-        invoke('distribute_2_shards').then((res)=>{
-                store.commit('setTest', `distributing 2 shards to SD card ${res}`)
-            }).catch((e)=>{
-                store.commit('setTest', `distributing 2 shards error ${e}`)
-            })
-            
-        //install wodim & ssss
-        invoke('install_sd_deps').then((res) => {
-                store.commit('setTest', `installing SD dependencies ${res}`)
-                    //refresh setup CD with latest .iso 
-                    invoke('refresh_setup_cd').then((res)=>{
-                        store.commit('setTest', `refreshing setup CD ${res}`)
-                        this.loading = false
-                    }).catch((e)=>{
-                        store.commit('setTest', `refresh setup CD error ${e}`)
-                        })
-            }).catch((e) => {
-                store.commit('setTest', `install SD deps error: ${e}`)
-            })
-
-
-        //update setupstep state on sd card
-        invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
-            store.commit('setTest', `config set to new values setupStep: ${this.setupStep} res:${res}`)
-            }).catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
-            })
-
             },
     data(){
         return{

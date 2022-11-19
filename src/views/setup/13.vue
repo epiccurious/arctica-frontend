@@ -32,6 +32,7 @@ export default {
       },
     mounted(){
       this.loading = true
+      store.commit('setLoadMessage', 'Packing up sensitive info...')
       invoke('packup').then((res)=>{
         store.commit('setTest', `invoking packup: ${res}`)
         this.loading = false

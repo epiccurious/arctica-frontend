@@ -40,6 +40,7 @@ export default {
     methods: {
         acknowledge(){
         this.loading = true
+        store.commit('setLoadMessage', 'Reading the setup CD...')
         invoke('read_cd').then((res) => {
           store.commit('setTest', `invoking read_cd: ${res}`)
           let resArray = res.split("\n")
@@ -57,6 +58,7 @@ export default {
             }
             else{
               store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+              this.loading=false
             }
         }
     })

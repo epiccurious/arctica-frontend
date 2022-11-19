@@ -40,20 +40,22 @@ export default {
     methods: {
         acknowledge(){
             this.loading = true
+            store.commit('setLoadMessage', 'Creating Bitcoin wallet...')
             //need to create bitcoin wallets here for SD 1 and export all pubkeys onto setup CD                 
             invoke('create_wallet').then((res)=>{
                 store.commit('setTest', `creating simulated wallet ${res}`)
+                store.commit('setLoadMessage', 'Creating setup CD...')
+                //create the setup CD
+                invoke('create_setup_cd').then((res)=>{
+                        store.commit('setTest', `invoking create setup cd ${res}`)
+                        this.loading = false
+                        this.$router.push({ name:'Setup13' }) 
+                    }).catch((e)=>{
+                        store.commit('setTest', `create setup cd error: ${e}`)
+                    })
             }).catch((e)=>{
                 store.commit('setTest', `create wallet error ${e}`)
             })
-            //create the setup CD
-            invoke('create_setup_cd').then((res)=>{
-                    store.commit('setTest', `invoking create setup cd ${res}`)
-                    this.loading = false
-                    this.$router.push({ name:'Setup13' }) 
-                }).catch((e)=>{
-                    store.commit('setTest', `create setup cd error: ${e}`)
-                })
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')

@@ -37,8 +37,8 @@ export default {
   },
   methods: {
         acknowledge() {
-            store.commit('setTest', 'Creating SD 7')
             this.loading = true
+            store.commit('setLoadMessage', 'Creating SD 7...')
             invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then(() => {
                 store.commit('setTest', `SD card initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
                 store.commit('setTest', `create bootable SD 7 successful`)
