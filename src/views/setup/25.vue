@@ -54,7 +54,7 @@ export default {
     data(){
         return{
             checkbox: false,
-            setupStep: 15,
+            setupStep: '15',
         }
     }
 }

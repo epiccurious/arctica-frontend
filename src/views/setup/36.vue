@@ -38,14 +38,15 @@ export default {
     methods: {
         acknowledge(){
             this.loading = true
-        //burn backup ISO
-        invoke('make_backup').then((res) => {
-            this.loading = false
-            store.commit('setTest', `making and burning backup iso ${res}`)
-            this.$router.push({ name: 'Setup37' })
-            }).catch((e) => {
-                store.commit('setTest', `error making and burning backup iso: ${e}`)
-            })
+            store.commit('setLoadMessage', 'creating backup...')
+            //burn backup ISO
+            invoke('make_backup').then((res) => {
+                this.loading = false
+                store.commit('setTest', `making and burning backup iso ${res}`)
+                this.$router.push({ name: 'Setup37' })
+                }).catch((e) => {
+                    store.commit('setTest', `error making and burning backup iso: ${e}`)
+                })
                     },
         warn(){
             console.log('user trying to proceed without checkbox validation')

@@ -48,7 +48,7 @@ export default {
               this.$router.push({ name:'sign2of2' })
             }
             //user is returning with an immediate account PSBT that has been signed by 2 SD cards
-            else if(this.psbtFound == true && this.psbt == '2of2' && this.currentSD == 1 && this.currentSD != 0 && this.primaryMachine == true){
+            else if(this.psbtFound == true && this.psbt == '2of2' && this.currentSD == 1 && this.currentSD != 0){
               this.$router.push({ name:'immediateBroadcast' })
             }
             //user is returning with a delayed account PSBT that has been signed by 1 SD card
@@ -68,11 +68,11 @@ export default {
               this.$router.push({ name:'sign5of5' })
             }
             //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is enabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.primaryMachine == true && this.timelock == true){
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.timelock == true){
               this.$router.push({ name:'TimeMachine1' })
             }
             //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is disabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.primaryMachine == true && this.timelock == false){
+            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.timelock == false){
               this.$router.push({ name:'delayedBroadcast' })
             }
             //user has manually recovered password using the appropriate amount of SD cards
@@ -139,9 +139,6 @@ export default {
       },
       bpsBricked(){
         return store.getters.getBPSBricked
-      },
-      primaryMachine(){
-        return store.getters.getPrimaryMachine
       },
       test(){
         return store.getters.getTest
@@ -251,40 +248,40 @@ export default {
         else if(this.setupStep == 3 && this.currentSD == 3){
           this.$router.push({ name: 'Setup15a' })
         }
-        else if(this.setupStep == 4 && this.currentSD == 4 && this.primaryMachine == false){
+        else if(this.setupStep == 4 && this.currentSD == 4){
           this.$router.push({ name: 'Setup16' })
         }
-        else if(this.setupStep == 5 && this.currentSD == 5 && this.primaryMachine == false){
+        else if(this.setupStep == 5 && this.currentSD == 5){
           this.$router.push({ name: 'Setup18a' })
         }
-        else if(this.setupStep == 6 && this.currentSD == 6 && this.primaryMachine == false){
+        else if(this.setupStep == 6 && this.currentSD == 6){
           this.$router.push({ name: 'Setup19a' })
         }
-        else if(this.setupStep == 7 && this.currentSD == 7 && this.primaryMachine == false){
+        else if(this.setupStep == 7 && this.currentSD == 7){
           this.$router.push({ name: 'Setup20a' })
         }
-        else if(this.setupStep == 8 && this.currentSD == 1 && this.primaryMachine == true){
+        else if(this.setupStep == 8 && this.currentSD == 1){
           this.$router.push({ name: 'Setup21' })
         }
-        else if(this.setupStep == 9 && this.currentSD == 2 && this.primaryMachine == true){
+        else if(this.setupStep == 9 && this.currentSD == 2){
           this.$router.push({ name: 'Setup27a' })
         }
-        else if(this.setupStep == 10 && this.currentSD == 3 && this.primaryMachine == true){
+        else if(this.setupStep == 10 && this.currentSD == 3){
           this.$router.push({ name: 'Setup31a' })
         }
-        else if(this.setupStep == 11 && this.currentSD == 4 && this.primaryMachine == false){
+        else if(this.setupStep == 11 && this.currentSD == 4){
           this.$router.push({ name: 'Setup35a' })
         }
-        else if(this.setupStep == 12 && this.currentSD == 5 && this.primaryMachine == false){
+        else if(this.setupStep == 12 && this.currentSD == 5){
           this.$router.push({ name: 'Setup39a' })
         }
-        else if(this.setupStep == 13 && this.currentSD == 6 && this.primaryMachine == false){
+        else if(this.setupStep == 13 && this.currentSD == 6){
           this.$router.push({ name: 'Setup43a' })
         }
-        else if(this.setupStep == 14 && this.currentSD == 7 && this.primaryMachine == false){
+        else if(this.setupStep == 14 && this.currentSD == 7){
           this.$router.push({ name: 'Setup47a' })
         }
-        else if(this.setupStep == 15 && this.currentSD == 1 && this.primaryMachine == true){
+        else if(this.setupStep == 15 && this.currentSD == 1){
           this.$router.push({ name: 'Setup50b' })
         }
 

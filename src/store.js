@@ -29,9 +29,9 @@ export default createStore({
 
     test: [],
 
-    
-    primaryMachine: true, //eventually anytime this primary machine boolean is false networking on the device should be turned off...maybe backend job only?
+    loadMessage: '',
 
+    
     //post set up complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
@@ -85,6 +85,9 @@ export default createStore({
     mutations:{//synchronous, alters data in state (commit)
         setTest(state,value){
             state.test.push(value)
+        },
+        setLoadMessage(state,payload){
+            state.loadMessage = payload
         },
         setTxId(state, payload){
             state.id = payload;
@@ -230,9 +233,6 @@ export default createStore({
         setTransferCD(state, payload){
             state.transferCD = payload
         },
-        setPrimaryMachine(state, payload){
-            state.primaryMachine = payload
-        },
         setSetupStep(state, payload){
             state.setupStep = payload
         },
@@ -250,6 +250,9 @@ export default createStore({
         },
         getTest(state){
             return state.test
+        },
+        getLoadMessage(state){
+            return state.loadMessage
         },
         //below is for testing, may remove
         getPSBTArr(state){
@@ -338,9 +341,6 @@ export default createStore({
         },
         getTransferCD(state){
             return state.transferCD
-        },
-        getPrimaryMachine(state){
-            return state.primaryMachine
         },
         getSetupStep(state){
             return state.setupStep

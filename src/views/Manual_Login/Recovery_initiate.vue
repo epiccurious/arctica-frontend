@@ -1,28 +1,44 @@
-<!-- This page will dynamically display the current number of SD cards needed to decrypt as well as a countdown to the remaining priacy key decay schedules -->
 <template>
-  <div class="page">
+  <div v-if="this.loading == true">
+  <Loader/>
+  </div>
+  <div v-else-if="this.cdfinished=true" class="page">
     <header>
       <h1>Manual Recovery Initiated.</h1>
-      <h2>Please insert a transfer CD.</h2>
+      <h2>Please insert a blank transfer CD.</h2>
     </header>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
         <button @click="help()" class="btn2">I need help</button>
     </div>
   </div>
+  <div v-else class="page">
+    <header>
+      <h1>Recovery disk created</h1>
+      <h2>Please power off this machine, insert your next available SD card and reboot.</h2>
+    </header>
+  </div>
 </template>
 
 <script>
 import store from '../../store.js'
+import Loader from '@/components/loader'
 const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'RecoveryInitiate',
+  components: {
+    Loader,
+  },
     methods: {
         acknowledge(){
+          this.loading=true
+          store.commit('setLoadMessage', 'creating recovery cd...')
           //creating recovery cd
           invoke('create_recovery_cd').then((res)=>{
             store.commit('setTest', `creating recovery cd ${res}`)
+            this.loading=false
+            this.cdfinished=true
           })
           .catch((e)=>{
             store.commit('setTest', `error creating recovery cd ${e}`)
@@ -32,10 +48,11 @@ export default {
             console.log('fetching help')
         }
     },
-    computed: {
-      numberToRecover(){
-        return store.getters.getNumberToRecover
-      },
+    data(){
+        return{
+            loading: false,
+            cdfinished: false,
+        }
     },
   }
 </script>

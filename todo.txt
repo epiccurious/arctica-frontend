@@ -46,5 +46,4 @@ __FEATURES__
 
 __BUGS__
 
-**BUG**: Primary machine boolean is not always enforced (possibly no way around this, we cannot enforce secondary/primary machine relationship other than through suggestion)
 
