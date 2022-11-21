@@ -1,5 +1,5 @@
 <!-- This page will dynamically display the current number of SD cards needed to decrypt as well as a countdown to the remaining privacy key decay schedules -->
-
+<!-- Revisit this entire flow after dynamic privacy key decay is implemented. Right now it probably will only work for 5 privacy key threshold -->
 <template>
   <div class="page">
     <header>
