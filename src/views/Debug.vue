@@ -302,15 +302,11 @@ export default{
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
         testPrint(){
-            invoke('combine_shards').then((res) => {
-                store.commit('setTest', `combining shards: ${res}`)
+            invoke('calculate_shard_test').then((res) => {
+                store.commit('setTest', `calculating shards: ${res}`)
             }).catch((e)=>{
-                store.commit('setTest', `error combining shards: ${e}`)
+                store.commit('setTest', `error calculating shards: ${e}`)
             })
-            invoke('unpack').then((res)=>{
-                store.commit('setTest', `unpacking sensitive info: ${res}`)
-            }).catch((e)=>{
-                store.commit('setTest', `error unpacking: ${e}`)})
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
