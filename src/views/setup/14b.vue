@@ -43,7 +43,7 @@ export default {
                     store.commit('setTest', `creating simulated wallet ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 2 shards onto sd 2 from setupCD dir
-                    invoke('distribute_2_shards').then((res)=>{
+                    invoke('distribute_shards_sd2').then((res)=>{
                             store.commit('setTest', `distributing 2 shards to SD card ${res}`)
                             store.commit('setLoadMessage', 'Installing dependencies...')
                             //install wodim & ssss

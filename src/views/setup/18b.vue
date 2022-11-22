@@ -43,7 +43,7 @@
                     store.commit('setTest', `creating simulated wallet ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 1 shard onto sd 5 from setupCD dir
-                    invoke('distribute_1_shard').then((res)=>{
+                    invoke('distribute_shards_sd5').then((res)=>{
                             store.commit('setTest', `distributing 1 shard to SD card ${res}`)
                             store.commit('setLoadMessage', 'Installing dependencies...')
                             //install wodim & ssss
