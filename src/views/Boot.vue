@@ -35,7 +35,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
         </form>
     <div class="btn_container"> 
         <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
-        <button v-else class="btn3">Continue</Button>
+        <button v-else class="btn3">Proceed</Button>
         <button @click="help()" class="btn2">I need help</button>
     </div>
   </div>
@@ -75,14 +75,14 @@ export default {
                       if(this.numberToRecover > res){
                         store.commit('setTest', 'Need more shards, sending to recovery additional')
                         this.loading = false
-                        this.$router.push({ name: 'recoveryAdditional' })
+                        this.$router.push({ name: 'RecoveryAdditional' })
                       }
                       //if the number of shards exceeds the decryption threshold, send user to success screen
                       //combine shards at recovery success screen
                       else{
                         store.commit('setTest', 'shard threshold met, sending to recovery success')
                         this.loading = false
-                        this.$router.push({ name: 'recoverySuccess' })
+                        this.$router.push({ name: 'RecoverySuccess' })
                       }
                     })
                     .catch((e) => {
