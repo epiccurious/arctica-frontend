@@ -1,10 +1,12 @@
 <template>
-    <div class="loader_container">
+  <div class="page">
+    <header>
       <h1>Loading...Please wait.</h1>
 
       <h2>This may take a few minutes.</h2>
 
       <h2>{{ this.loadMessage }}</h2>
+    </header>
   </div>
 </template>
 
@@ -13,9 +15,6 @@ import store from '../store.js'
 
 export default{
     name: 'Loader',
-    props: {
-        text: String,
-    },
     computed: {
       loadMessage(){
         return store.getters.getLoadMessage
@@ -23,13 +22,3 @@ export default{
     }
 }
 </script>
-
-<style scoped>
-.loader-container{
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-}
-
-</style>
