@@ -1,9 +1,11 @@
 <template>
-    <h1>Loading...Please wait.</h1>
+    <div class="loader_container">
+      <h1>Loading...Please wait.</h1>
 
-    <h2>This may take a few minutes.</h2>
+      <h2>This may take a few minutes.</h2>
 
-    <h2>{{ this.loadMessage }}</h2>
+      <h2>{{ this.loadMessage }}</h2>
+  </div>
 </template>
 
 <script>
@@ -21,3 +23,13 @@ export default{
     }
 }
 </script>
+
+<style scoped>
+.loader-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+</style>
