@@ -27,8 +27,15 @@ the second conditional rendering below appears if the user has booted from SD 2-
       <h2>Please insert a transfer CD.</h2>
       <h2>If you do not have a transfer CD, please insert SD 1 and reboot this machine.</h2>
     </header>
+    <form>
+            <div class="checkbox_container">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <label for="checkbox">I have inserted a transfer CD.</label>
+                </div>
+        </form>
     <div class="btn_container"> 
-        <button @click="acknowledge()" class="btn">Ok</Button>
+        <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+        <button v-else class="btn3">Continue</Button>
         <button @click="help()" class="btn2">I need help</button>
     </div>
   </div>
@@ -64,15 +71,16 @@ export default {
                     //calculate numbertorecover differential based on how many shards are on recoverycd
                     invoke('calculate_number_of_shards').then((res)=> {
                       store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
-                      let number = parseInt(res)
                       //send the user to recovery_additional if they have not yet met numbertorecover threshold
-                      if(this.numberToRecover > number){
+                      if(this.numberToRecover > res){
+                        store.commit('setTest', 'Need more shards, sending to recovery additional')
                         this.loading = false
                         this.$router.push({ name: 'recoveryAdditional' })
                       }
                       //if the number of shards exceeds the decryption threshold, send user to success screen
                       //combine shards at recovery success screen
                       else{
+                        store.commit('setTest', 'shard threshold met, sending to recovery success')
                         this.loading = false
                         this.$router.push({ name: 'recoverySuccess' })
                       }
@@ -129,9 +137,6 @@ export default {
     setupStep(){
       return store.getters.getSetupStep
     },
-    psbtFound(){
-      return store.getters.getPSBTFound
-    },
     numberToRecover(){
       return store.getters.getNumberToRecover
     },
@@ -141,7 +146,8 @@ export default {
   },
   data() {
     return {
-    loading: false
+    loading: false,
+    checkbox: false
     }
   },
 }

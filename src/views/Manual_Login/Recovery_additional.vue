@@ -47,9 +47,8 @@ export default {
         store.commit('setLoadMessage', 'calculating target number of shards...')
         invoke('calculate_number_of_shards').then((res)=> {
           store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
-          let number = parseInt(res)
           //send the user to recovery_additional if they have not yet met numbertorecover threshold
-          if(this.numberToRecover > number){
+          if(this.numberToRecover > res){
             this.loading = false
           }
           //if the number of shards exceeds the decryption threshold, send user to success screen

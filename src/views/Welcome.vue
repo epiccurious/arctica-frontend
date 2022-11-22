@@ -296,7 +296,7 @@ export default {
         }
 
         //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
-        if(this.currentSD != 1 && this.psbtFound == 'none'){
+        if(this.currentSD != 1){
           this.$router.push({ name:'Boot' })
         }
         })
