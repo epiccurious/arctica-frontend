@@ -237,68 +237,79 @@ export default {
           store.commit('setTest', `mount internal error: ${e}`)
         })
         }
-
+        //redirects
         //set up step redirects
         if(this.setupStep == 1 && this.currentSD == 1){
+          store.commit('setTest', 'setup step 1 found, redirecting user to setup12')
           this.$router.push({ name: 'Setup12' })
         }
         else if(this.setupStep == 2 && this.currentSD == 2){
+          store.commit('setTest', 'setup step 2 found, redirecting user to setup14a')
           this.$router.push({ name: 'Setup14a' })
         }
         else if(this.setupStep == 3 && this.currentSD == 3){
+          store.commit('setTest', 'setup step 3 found, redirecting user to setup15a')
           this.$router.push({ name: 'Setup15a' })
         }
         else if(this.setupStep == 4 && this.currentSD == 4){
+          store.commit('setTest', 'setup step 4 found, redirecting user to setup16')
           this.$router.push({ name: 'Setup16' })
         }
         else if(this.setupStep == 5 && this.currentSD == 5){
+          store.commit('setTest', 'setup step 5 found, redirecting user to setup18a')
           this.$router.push({ name: 'Setup18a' })
         }
         else if(this.setupStep == 6 && this.currentSD == 6){
+          store.commit('setTest', 'setup step 6 found, redirecting user to setup19a')
           this.$router.push({ name: 'Setup19a' })
         }
         else if(this.setupStep == 7 && this.currentSD == 7){
+          store.commit('setTest', 'setup step 7 found, redirecting user to setup20a')
           this.$router.push({ name: 'Setup20a' })
         }
         else if(this.setupStep == 8 && this.currentSD == 1){
+          store.commit('setTest', 'setup step 8 found, redirecting user to setup21')
           this.$router.push({ name: 'Setup21' })
         }
         else if(this.setupStep == 9 && this.currentSD == 2){
+          store.commit('setTest', 'setup step 9 found, redirecting user to setup27a')
           this.$router.push({ name: 'Setup27a' })
         }
         else if(this.setupStep == 10 && this.currentSD == 3){
+          store.commit('setTest', 'setup step 10 found, redirecting user to setup31a')
           this.$router.push({ name: 'Setup31a' })
         }
         else if(this.setupStep == 11 && this.currentSD == 4){
+          store.commit('setTest', 'setup step 11 found, redirecting user to setup35a')
           this.$router.push({ name: 'Setup35a' })
         }
         else if(this.setupStep == 12 && this.currentSD == 5){
+          store.commit('setTest', 'setup step 12 found, redirecting user to setup39a')
           this.$router.push({ name: 'Setup39a' })
         }
         else if(this.setupStep == 13 && this.currentSD == 6){
+          store.commit('setTest', 'setup step 13 found, redirecting user to setup43a')
           this.$router.push({ name: 'Setup43a' })
         }
         else if(this.setupStep == 14 && this.currentSD == 7){
+          store.commit('setTest', 'setup step 14 found, redirecting user to setup47a')
           this.$router.push({ name: 'Setup47a' })
         }
         else if(this.setupStep == 15 && this.currentSD == 1){
+          store.commit('setTest', 'setup step 15 found, redirecting user to setup50b')
           this.$router.push({ name: 'Setup50b' })
         }
+        //redirect user to boot screen if they have SD 2-7 or no SD inserted
+        else if(this.currentSD != 1){
+          store.commit('setTest', 'SD card 1 not detected, redirecting to boot screen')
+          this.$router.push({ name:'Boot' })
+        }
 
-        //eventually we should check externally for time machine keys here as well
+        //eventually check externally for time machine keys here
         if(this.timeMachineKeysFound == true){
           store.commit('setTimeLock', false)
         }
 
-        //below we redirect user to boot screen if they have no SD inserted, this may not be possible inside of the promise if there is no config present
-        if(this.currentSD == 0){
-          this.$router.push({ name:'Boot' })
-        }
-
-        //below we redirect the user to the boot screen if they do not have SD 1 inserted AND there is also no PSBT currently present on a transfer CD
-        if(this.currentSD != 1){
-          this.$router.push({ name:'Boot' })
-        }
         })
           .catch((e) => {
             store.commit('setTest', `read config error: ${e}`)
