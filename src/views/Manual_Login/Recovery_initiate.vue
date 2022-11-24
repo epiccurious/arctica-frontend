@@ -2,7 +2,14 @@
   <div v-if="this.loading == true">
   <Loader/>
   </div>
-  <div v-else-if="this.cdfinished=false" class="page">
+  <div v-else-if="this.cdfinished=true" class="page">
+    <header>
+      <h1>Recovery disk created</h1>
+      <h2>Please power off this machine, insert your next available SD card and reboot.</h2>
+    </header>
+  </div>
+   
+  <div v-else class="page">
     <header>
       <h1>Manual Recovery Initiated.</h1>
       <h2>Please insert a blank transfer CD.</h2>
@@ -12,20 +19,15 @@
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have inserted a transfer CD.</label>
-                </div>
+            </div>
         </form>
-    <div class="btn_container"> 
+      <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
         <button @click="help()" class="btn2">I need help</button>
+      </div>
     </div>
-            </div>
   </div>
-  <div v-else class="page">
-    <header>
-      <h1>Recovery disk created</h1>
-      <h2>Please power off this machine, insert your next available SD card and reboot.</h2>
-    </header>
-  </div>
+
 </template>
 
 <script>
