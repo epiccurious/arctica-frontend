@@ -46,7 +46,7 @@ export default {
                 invoke('make_backup').then((res) => {
                     this.loading = false
                     store.commit('setTest', `making and burning backup iso ${res}`)
-                    this.$router.push({ name: 'Setup32' })
+                    this.$router.push({ name: 'Setup40' })
                     }).catch((e) => {
                         store.commit('setTest', `error making and burning backup iso: ${e}`)
                     })
