@@ -85,6 +85,7 @@ export default {
                         this.$router.push({ name: 'RecoverySuccess' })
                       }
                     })
+                    this.loading = false
                     .catch((e) => {
                       store.commit('setTest', `error calculating shards on recovery cd: ${e}`)
                     })

@@ -2,15 +2,23 @@
   <div v-if="this.loading == true">
   <Loader/>
   </div>
-  <div v-else-if="this.cdfinished=true" class="page">
+  <div v-else-if="this.cdfinished=false" class="page">
     <header>
       <h1>Manual Recovery Initiated.</h1>
       <h2>Please insert a blank transfer CD.</h2>
     </header>
+    <div class="form_container">
+        <form>
+            <div class="checkbox_container">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <label for="checkbox">I have inserted a transfer CD.</label>
+                </div>
+        </form>
     <div class="btn_container"> 
         <button @click="acknowledge()" class="btn">Ok</Button>
         <button @click="help()" class="btn2">I need help</button>
     </div>
+            </div>
   </div>
   <div v-else class="page">
     <header>
@@ -42,6 +50,7 @@ export default {
           })
           .catch((e)=>{
             store.commit('setTest', `error creating recovery cd ${e}`)
+            this.loading=false
           })
         },
         help(){
@@ -52,6 +61,7 @@ export default {
         return{
             loading: false,
             cdfinished: false,
+            checkbox: false,
         }
     },
   }
