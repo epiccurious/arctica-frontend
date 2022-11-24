@@ -49,11 +49,19 @@ export default {
     mounted(){
         //update sd card setupstep to 0
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
-            console.log('success')
+            store.commit('setTest', `updating setupStep to ${this.setupStep}`)
             })
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
             })
+        //start the bitcoin daemon
+        invoke('start_bitcoind').then((res) => {
+            store.commit('setTest', `Starting the Bitcoin daemon ${res}`)
+            })
+            .catch((e) => {
+                store.commit('setTest', `error starting the bitcoin daemon: ${e}`)
+            })
+
     },
 }
 </script>
