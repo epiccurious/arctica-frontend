@@ -27,16 +27,18 @@ the second conditional rendering below appears if the user has booted from SD 2-
       <h2>Please insert a transfer CD.</h2>
       <h2>If you do not have a transfer CD, please insert SD 1 and reboot this machine.</h2>
     </header>
-    <form>
-            <div class="checkbox_container">
+    <div class="form_container">
+      <form>
+              <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
                 <label for="checkbox">I have inserted a transfer CD.</label>
-                </div>
-        </form>
-    <div class="btn_container"> 
-        <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
-        <button v-else class="btn3">Proceed</Button>
-        <button @click="help()" class="btn2">I need help</button>
+              </div>
+          </form>
+      <div class="btn_container"> 
+          <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+          <button v-else class="btn3">Proceed</Button>
+          <button @click="help()" class="btn2">I need help</button>
+      </div>
     </div>
   </div>
 </div>
@@ -85,6 +87,7 @@ export default {
                         this.$router.push({ name: 'RecoverySuccess' })
                       }
                     })
+                    //fallback in case user did not insert correct disc
                     this.loading = false
                     .catch((e) => {
                       store.commit('setTest', `error calculating shards on recovery cd: ${e}`)

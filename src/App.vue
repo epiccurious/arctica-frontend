@@ -10,6 +10,9 @@
     <router-link :to="{ name: 'BPS_Bricked' }">BPSBricked</router-link> 
     <router-link :to="{ name: 'Recovery' }">Recovery</router-link> 
     <router-link :to="{ name: 'RecoveryInitiate' }">RecoveryInitiate</router-link> 
+    <router-link :to="{ name: 'RecoveryAdditional' }">RecoveryAdditional</router-link> 
+    <router-link :to="{ name: 'RecoveryEvaluate' }">RecoveryEvaluate</router-link> 
+    <router-link :to="{ name: 'RecoverySuccess' }">RecoverySuccess</router-link> 
     <router-link :to="{ name: 'quick1' }">Quick1</router-link> 
     <router-link :to="{ name: 'quick2' }">Quick2</router-link> 
     <router-link :to="{ name: 'Compromised' }">TripwireCompromised</router-link> 
