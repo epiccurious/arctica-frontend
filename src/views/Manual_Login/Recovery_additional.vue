@@ -2,11 +2,8 @@
   <div v-if="this.loading== true" class="page">
     <header>
       <h1>Manual Recovery In Progress.</h1>
+      <h2>Please Wait...</h2>
     </header>
-    <div class="btn_container"> 
-        <button @click="acknowledge()" class="btn">Ok</Button>
-        <button @click="help()" class="btn2">I need help</button>
-    </div>
   </div>
 
   <div v-else class="page">

@@ -40,7 +40,7 @@ export default {
       
     },
     mounted(){
-        invoke('calculate_number_of_shards').then((res)=> {
+        invoke('calculate_number_of_shards_ramdisk').then((res)=> {
           store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
           //send the user to recovery_additional if they have not yet met numbertorecover threshold
           if(this.numberToRecover > res){

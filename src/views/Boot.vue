@@ -71,7 +71,7 @@ export default {
                     store.commit('setRecoveryCD', true)
                     store.commit('setTest', `Recovery CD detected, boolean set to true ${store.getters.getRecoveryCD}`)
                     //calculate numbertorecover differential based on how many shards are on recoverycd
-                    invoke('calculate_number_of_shards').then((res)=> {
+                    invoke('calculate_number_of_shards_cd').then((res)=> {
                       store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
                       //send the user to recovery_additional if they have not yet met numbertorecover threshold
                       if(this.numberToRecover > res){
