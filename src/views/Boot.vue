@@ -87,8 +87,6 @@ export default {
                         this.$router.push({ name: 'RecoverySuccess' })
                       }
                     })
-                    //fallback in case user did not insert correct disc
-                    this.loading = false
                     .catch((e) => {
                       store.commit('setTest', `error calculating shards on recovery cd: ${e}`)
                     })
@@ -106,6 +104,7 @@ export default {
                 else{
                     store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
                 }
+                this.loading = false
         }
       })
     },
