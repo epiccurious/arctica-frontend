@@ -60,6 +60,7 @@ export default {
           //read the config file of the inserted CD
           invoke('read_cd').then((res) => {
             store.commit('setTest', `invoking read_cd: ${res}`)
+            store.commit('setLoadMessage', 'reading CD...')
             let resArray = res.split("\n")
             store.commit('setTest', `response Array: ${resArray}`)
             for(let i = 0; i < resArray.length; i ++){
