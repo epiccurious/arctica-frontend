@@ -68,9 +68,9 @@ export default {
                 store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
                 //check for recovery CD
                 //assume user is attempting to manually decrypt
-                if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'RECOVERYCD'){
-                    store.commit('setRecoveryCD', true)
-                    store.commit('setTest', `Recovery CD detected, boolean set to true ${store.getters.getRecoveryCD}`)
+                if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'TRANSFERCD'){
+                    store.commit('setTransferCD', true)
+                    store.commit('setTest', `Recovery CD detected, boolean set to true ${store.getters.getTransferCD}`)
                     //calculate numbertorecover differential based on how many shards are on recoverycd
                     invoke('calculate_number_of_shards_cd').then((res)=> {
                       store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)

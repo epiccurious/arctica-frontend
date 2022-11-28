@@ -12,6 +12,7 @@
                     <br><label>Confirm Password</label>
                    <br><input v-model="password2" type="password" required placeholder="Your secret password">
                 </form>
+
                 <div class="btn_container"> 
                     <button v-if="password1 == password2 && password1 != '' && password2 != '' " @click="login()" class="btn">Continue</Button>
                     <button v-else @click="warn()" class="btn3">Continue</Button>
@@ -51,6 +52,7 @@ export default {
          password1: '',
          password2: '',
          bpsBricked: null,
+         checkbox: false,
         
      }
  },
