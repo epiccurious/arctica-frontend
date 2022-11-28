@@ -77,6 +77,7 @@ export default {
             }
             //user has manually recovered password using the appropriate amount of SD cards
             else if(this.decrypted == true){
+              store.commit('setTest', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
               //unpacking sensitive dir
               invoke('unpack').then((res)=>{
                 store.commit('setTest', `unpacking sensitive dir ${res}`)
