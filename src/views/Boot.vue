@@ -92,15 +92,6 @@ export default {
                       store.commit('setTest', `error calculating shards on recovery cd: ${e}`)
                     })
                 }
-                //check for transfer CD
-                //assume user is trying to sign a PSBT
-                else if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'TRANSFERCD'){
-                    store.commit('setTransferCD', true)
-                    store.commit('setTest', `Transfer CD detected, boolean set to true ${store.getters.getTransferCD}`)
-                    this.loading = false
-                    this.$router.push({ name: 'welcome' })
-                    break
-                }
                 //either no cd is inserted or user hit the button too fast
                 else{
                     store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)

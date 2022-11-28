@@ -46,7 +46,7 @@ export default {
   },
     methods: {
         login(){
-            if(checkbox == true){
+            if(this.checkbox == true){
                 this.loading = true
                 store.commit('setLoadMessage', 'Reading CD...')
                 store.commit('setTest', 'checking inserted CD for masterkey')
