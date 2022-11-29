@@ -74,6 +74,19 @@ export default {
         }
     },
     mounted(){
+        invoke('mount_internal').then((res)=> {
+            store.commit('setTest', `invoking mount internal ${res}`)
+            //start bitcoind
+            invoke('start_bitcoind').then((res)=> {
+            store.commit('setTest', `starting bitcoin daemon ${res}`)
+            })
+            .catch((e)=> {
+            store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+            })
+        })
+        .catch((e)=> {
+            store.commit('setTest', `mount internal error: ${e}`)
+            })
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             })
             .catch((e) => {
