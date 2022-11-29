@@ -87,18 +87,18 @@ export default {
     mounted(){
         //mount and symlink internal .bitcoin dirs
         invoke('mount_internal').then((res)=> {
-            store.commit('setTest', `invoking mount internal ${res}`)
-            //start bitcoind
-            invoke('start_bitcoind').then((res)=> {
-            store.commit('setTest', `starting bitcoin daemon ${res}`)
-            })
-            .catch((e)=> {
-            store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
-            })
-        })
+              store.commit('setTest', `invoking mount internal ${res}`)
+              //start bitcoind with networking disabled
+              invoke('start_bitcoind_network_off').then((res)=> {
+                store.commit('setTest', `starting bitcoin daemon with networking disabled: ${res}`)
+              })
+              .catch((e)=> {
+                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+              })
+          })
         .catch((e)=> {
-            store.commit('setTest', `mount internal error: ${e}`)
-            })
+          store.commit('setTest', `mount internal error: ${e}`)
+          })
           }
 }
 </script>
