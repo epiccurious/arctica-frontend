@@ -213,7 +213,7 @@ export default {
         }
         store.commit('setTest', `exiting config read`)
         //mount internal disk and symlink .bitcoin folders if user has completed initial setup and booted from an SD card
-        if(this.currentSD != 0 && this.setupStep == 0){
+        if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
               store.commit('setTest', `invoking mount internal ${res}`)
               //start bitcoind
@@ -227,8 +227,22 @@ export default {
         .catch((e)=> {
           store.commit('setTest', `mount internal error: ${e}`)
           })
-
-        }    
+        //start bitcoind without networking enabled if the user is booted on SD 2-7
+        } else if(this.currentSD != 0 && this.setupStep == 0){
+          invoke('mount_internal').then((res)=> {
+              store.commit('setTest', `invoking mount internal ${res}`)
+              //start bitcoind
+              invoke('start_bitcoind_network_off').then((res)=> {
+                store.commit('setTest', `starting bitcoin daemon with networking disabled: ${res}`)
+              })
+              .catch((e)=> {
+                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+              })
+          })
+        .catch((e)=> {
+          store.commit('setTest', `mount internal error: ${e}`)
+          })
+        }
         //redirects
         //set up step redirects
         if(this.setupStep == 1 && this.currentSD == 1){

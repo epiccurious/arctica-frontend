@@ -54,6 +54,8 @@ export default {
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
             })
+        //remove networkactive=0 from the bitcoin.conf
+        
         //start the bitcoin daemon
         invoke('start_bitcoind').then((res) => {
             store.commit('setTest', `Starting the Bitcoin daemon ${res}`)
