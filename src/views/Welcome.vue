@@ -212,8 +212,8 @@ export default {
             }
         }
         store.commit('setTest', `exiting config read`)
-        //mount internal disk and symlink .bitcoin folders if on SD 1 and not in intial install
-        if(this.currentSD == 1 && this.setupStep == 0){
+        //mount internal disk and symlink .bitcoin folders if user has completed initial setup and booted from an SD card
+        if(this.currentSD != 0 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
               store.commit('setTest', `invoking mount internal ${res}`)
               //start bitcoind
@@ -229,15 +229,6 @@ export default {
           })
 
         }    
-        //mount internal fallback    
-        else if(this.currentSD == 1){
-          invoke('mount_internal').then((res)=> {
-          store.commit('setTest', `invoking mount internal ${res}`)
-        })
-        .catch((e)=> {
-          store.commit('setTest', `mount internal error: ${e}`)
-        })
-        }
         //redirects
         //set up step redirects
         if(this.setupStep == 1 && this.currentSD == 1){
