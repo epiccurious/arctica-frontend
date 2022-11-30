@@ -302,11 +302,23 @@ export default{
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
         testPrint(){
-            invoke('calculate_shard_test').then((res) => {
-                store.commit('setTest', `calculating shards: ${res}`)
-            }).catch((e)=>{
-                store.commit('setTest', `error calculating shards: ${e}`)
-            })
+        //Will error out if bitcoin core is not running
+        invoke('generate_key').then((res)=>{
+            store.commit('setTest', `Generating Key: ${res} IIIIIIIII`)
+        })
+        .catch((e)=>{
+        store.commit('setTest', `error creating key ${e}`)
+        })
+
+        //Will error out if bitcoin core is not running
+        // invoke('generate_wallet').then((res)=>{
+        //     store.commit('setTest', `Generating Wallet: ${res} IIIIIIIII`)
+        // })
+
+        //Will error out if there is no wallet
+        // invoke('get_address_high_wallet').then((res)=>{
+        //     store.commit('setTest', `iiiiiii: ${res} iiiiiiiii`)
+        // })
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
