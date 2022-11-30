@@ -306,12 +306,12 @@ export default{
         invoke('generate_wallet').then((res)=>{
             store.commit('setTest', `Generating Wallet: ${res} IIIIIIIII`)
             //Will error out if there is no wallet
-            invoke('get_address_high_wallet').then((res)=>{
-                store.commit('setTest', `Getting Address High Wallet: ${res} iiiiiiiii`)
-            })
-            .catch((e)=>{
-            store.commit('setTest', `error getting address high wallet ${e}`)
-            })
+            // invoke('get_address_high_wallet').then((res)=>{
+            //     store.commit('setTest', `Getting Address High Wallet: ${res} iiiiiiiii`)
+            // })
+            // .catch((e)=>{
+            // store.commit('setTest', `error getting address high wallet ${e}`)
+            // })
         })
         .catch((e)=>{
         store.commit('setTest', `error creating wallet ${e}`)
