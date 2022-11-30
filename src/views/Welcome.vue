@@ -155,16 +155,6 @@ export default {
       }
     },
     mounted(){
-      //Will error out if bitcoin core is not running
-      invoke('generate_wallet').then((res)=>{
-        store.commit('setTest', `IIIIIII: ${res} IIIIIIIII`)
-      })
-
-      //Will error out if there is no wallet
-      invoke('get_address_high_wallet').then((res)=>{
-        store.commit('setTest', `iiiiiii: ${res} iiiiiiiii`)
-      })
-
       //creating ramdisk for sensitive data
       invoke('create_ramdisk').then((res)=>{
         store.commit('setTest', `creating ramdisk ${res}`)
