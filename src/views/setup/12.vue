@@ -41,9 +41,10 @@ export default {
         acknowledge(){
             this.loading = true
             store.commit('setLoadMessage', 'Creating Bitcoin wallet...')
-            //need to create bitcoin wallets here for SD 1 and export all pubkeys onto setup CD                 
+            //need to create bitcoin wallets here for SD 1 and export all pubkeys onto setup CD    
+            //eventually replace this simulated wallet with generate_wallet()
             invoke('create_wallet').then((res)=>{
-                store.commit('setTest', `creating simulated wallet ${res}`)
+                store.commit('setTest', `Generating Wallet: ${res} IIIIIIIII`)
                 store.commit('setLoadMessage', 'Creating setup CD...')
                 //create the setup CD
                 invoke('create_setup_cd').then((res)=>{
@@ -53,9 +54,10 @@ export default {
                     }).catch((e)=>{
                         store.commit('setTest', `create setup cd error: ${e}`)
                     })
-            }).catch((e)=>{
-                store.commit('setTest', `create wallet error ${e}`)
             })
+        .catch((e)=>{
+        store.commit('setTest', `error generating wallet ${e}`)
+        })             
         },
         warn(){
             console.log('user trying to proceed without checkbox validation')
