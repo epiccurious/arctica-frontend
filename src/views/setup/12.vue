@@ -41,9 +41,7 @@ export default {
         acknowledge(){
             this.loading = true
             store.commit('setLoadMessage', 'Creating Bitcoin wallet...')
-            //need to create bitcoin wallets here for SD 1 and export all pubkeys onto setup CD    
-            //eventually replace this simulated wallet with generate_wallet()
-            invoke('create_wallet').then((res)=>{
+            invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
                 store.commit('setTest', `Generating Wallet: ${res} IIIIIIIII`)
                 store.commit('setLoadMessage', 'Creating setup CD...')
                 //create the setup CD
@@ -65,6 +63,7 @@ export default {
     },
     data(){
         return{
+            currentSD: '1',
             setupStep: '8',
             checkbox: false,
             loading: false,
