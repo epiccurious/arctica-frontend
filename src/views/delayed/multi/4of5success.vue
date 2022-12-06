@@ -4,11 +4,6 @@
         <h1>4 of 5 Signing Successful</h1>
         <h2>Please power off this machine. Swap SD 4 for SD 5 and power on this machine.</h2>
     </header>
-    
-
-        <div class="btn_container"> 
-            <button @click="acknowledge()" class="btn">Ok (This will close the application)</Button>
-        </div>
 
 
 

@@ -9,12 +9,6 @@ Time Machine Key obtained from the meeting.-->
     </header>
     
 
-        <div class="btn_container"> 
-            <button @click="acknowledge()" class="btn">Ok</Button>
-        </div>
-
-
-
 </div>
 
 </template>
