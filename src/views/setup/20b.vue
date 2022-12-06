@@ -7,9 +7,6 @@
         <h1>SD 7 creation complete</h1>
         <h2>Please return to your primary machine, power it  off, insert SD 1 and power on the machine.</h2>
         </header> 
-            <div class="btn_container"> 
-                <button @click="acknowledge()" class="btn">Ok</Button> 
-            </div>
     
     </div>
     
@@ -26,11 +23,6 @@
       components: {
         Loader,
       },
-        methods: {
-            acknowledge(){
-                console.log('user ack, close application')
-            },
-        },
         mounted(){
         this.loading = true
         store.commit('setLoadMessage', 'Copying the setup CD...')

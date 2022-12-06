@@ -58,6 +58,7 @@ export default {
           })
         },
         help(){
+            //placeholder
             console.log('fetching help')
         }
     },

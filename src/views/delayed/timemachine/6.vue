@@ -7,8 +7,9 @@ Time Machine Key obtained from the meeting.-->
         <h1>Once you've received your Time Machine Key...</h1>
         <h2>Please power off your primary machine, insert the SD card you were given and power on the machine</h2>
     </header>
-    
-
+        <div class="btn_container"> 
+            <button @click="acknowledge()" class="btn">Ok</Button>
+        </div>
 </div>
 
 </template>

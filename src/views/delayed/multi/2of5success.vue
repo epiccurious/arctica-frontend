@@ -17,11 +17,6 @@ export default {
   name: '2of5success',
   components: {
     },
-    methods: {
-        acknowledge(){
-            console.log('user ack, closing application')
-        },
-    },
     computed:{
         psbtFound(){
             return store.getters.getPSBTFound

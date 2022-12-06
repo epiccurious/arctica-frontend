@@ -8,9 +8,6 @@
          <h2>Please remove SD 3 and remove the set up CD.</h2>
         <h2>Please move to your secondary machine and power it off, insert SD 4 and power on the machine.</h2>
         </header> 
-            <div class="btn_container"> 
-                <button @click="acknowledge()" class="btn">Ok</Button> 
-            </div>
     
     </div>
     
@@ -27,11 +24,6 @@
       components: {
         Loader,
       },
-        methods: {
-            acknowledge(){
-                console.log('user ack, close application')
-            },
-        },
         mounted(){
         this.loading = true
         store.commit('setLoadMessage', 'Copying the setup CD...')

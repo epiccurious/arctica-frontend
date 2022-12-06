@@ -23,11 +23,6 @@ export default {
   components: {
     Loader,
   },
-    methods: {
-        acknowledge(){
-            console.log('user ack, close application')
-        },
-    },
     mounted(){
         this.loading = true
         store.commit('setLoadMessage', 'Copying the setup CD...')
