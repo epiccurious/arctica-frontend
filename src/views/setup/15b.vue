@@ -40,8 +40,8 @@
             store.commit('setTest', `reading setup CD ${res}`)
             store.commit('setLoadMessage', 'Creating Bitcoin Wallet...')
             //create xpriv and xpub
-            invoke('create_wallet').then((res)=>{
-                    store.commit('setTest', `creating simulated wallet ${res}`)
+            invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
+                    store.commit('setTest', `Generating Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 2 shards onto sd 3 from setupCD dir
                     invoke('distribute_shards_sd3').then((res)=>{
@@ -80,6 +80,7 @@
             },
         data(){
             return{
+                currentSD: '3',
                 setupStep: '10',
                 loading: false,
             }
