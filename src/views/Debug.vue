@@ -3,8 +3,6 @@
     <header>
         <h1>Debug Console:</h1>
     </header>
-
-    <h2>debug output:</h2>
         <h2 v-for="item in this.test" :key="item">{{item}}</h2>
     <div class="btn_container"> 
         <h2>Current Route: {{this.$route.name}}</h2>
