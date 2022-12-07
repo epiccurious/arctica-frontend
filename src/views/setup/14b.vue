@@ -53,9 +53,9 @@ export default {
                                                 invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
                                                     store.commit('setTest', `config set to new values setupStep: ${this.setupStep} res:${res}`)
                                                     this.loading = false
-                                                    }).catch((e) => {
-                                                        store.commit('setTest', `async write error: ${e}`)
-                                                    })
+                                                }).catch((e) => {
+                                                    store.commit('setTest', `async write error: ${e}`)
+                                                })
                                             }).catch((e) => {
                                                     store.commit('setTest', `packup error: ${e}`)
                                                 })
