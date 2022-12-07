@@ -40,7 +40,7 @@ export default {
             this.loading = true
             store.commit('setLoadMessage', 'creating backup...')
             //burn backup ISO
-            invoke('make_backup').then((res) => {
+            invoke('make_backup', {number: "7"}).then((res) => {
                 this.loading = false
                 store.commit('setTest', `making and burning backup iso ${res}`)
                 this.$router.push({ name: 'Setup49a' })
