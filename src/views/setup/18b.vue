@@ -65,16 +65,16 @@
                                 }).catch((e) => {
                                     store.commit('setTest', `install SD deps error: ${e}`)
                                 })
-                        }).catch((e)=>{
-                            store.commit('setTest', `distributing 2 shards error ${e}`)
-                        })
-                }).catch((e)=>{
-                    store.commit('setTest', `create wallet error ${e}`)
-                })
-            }).catch((e) => {
-                store.commit('setTest', `error reading setup CD: ${e}`)
+                    }).catch((e)=>{
+                        store.commit('setTest', `distributing 2 shards error: ${e}`)
+                    })
+            }).catch((e)=>{
+                store.commit('setTest', `create wallet error ${e}`)
             })
-            },
+        }).catch((e) => {
+            store.commit('setTest', `error reading setup CD: ${e}`)
+        })
+        },
         data(){
             return{
                 currentSD: '5',
