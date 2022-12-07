@@ -155,28 +155,6 @@ export default {
       }
     },
     mounted(){
-      //creating ramdisk for sensitive data
-      invoke('create_ramdisk').then((res)=>{
-        store.commit('setTest', `creating ramdisk ${res}`)
-      })
-      .catch((e)=>{
-        store.commit('setTest', `error creating ramdisk ${e}`)
-      })
-      //check for masterkey
-      invoke('check_for_masterkey').then((res)=>{
-        if(res == 'masterkey found'){
-          store.commit('setTest', `checking for masterkey: ${res}`)
-          store.commit('setTest', 'masterkey found!')
-          store.commit('setDecrypted', true)
-        }
-        else{
-          store.commit('setTest', `checking for masterkey: ${res}`)
-          store.commit('setTest', `masterkey not found`)  
-        }
-        
-      }).catch((e)=>{
-        store.commit('setTest',  `error checking for masterkey ${e}`)
-      })
       //reading config values 
       invoke('read').then((res) => {
           store.commit('setTest', `invoking read config: ${res}`)
@@ -202,6 +180,31 @@ export default {
             }
         }
         store.commit('setTest', `exiting config read`)
+        //if the user has completed the initial flash of the first 7 sd cards (config is present) create ramdisk and check for masterkey
+        if(this.currentSD != 0){
+          //creating ramdisk for sensitive data
+          invoke('create_ramdisk').then((res)=>{
+            store.commit('setTest', `creating ramdisk ${res}`)
+          })
+          .catch((e)=>{
+            store.commit('setTest', `error creating ramdisk ${e}`)
+          })
+          //check for masterkey
+          invoke('check_for_masterkey').then((res)=>{
+            if(res == 'masterkey found'){
+              store.commit('setTest', `checking for masterkey: ${res}`)
+              store.commit('setTest', 'masterkey found!')
+              store.commit('setDecrypted', true)
+            }
+            else{
+              store.commit('setTest', `checking for masterkey: ${res}`)
+              store.commit('setTest', `masterkey not found`)  
+            }
+            
+          }).catch((e)=>{
+            store.commit('setTest',  `error checking for masterkey ${e}`)
+          })
+        }
         //mount internal disk and symlink .bitcoin folders if user has completed initial setup and booted from an SD card
         if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
