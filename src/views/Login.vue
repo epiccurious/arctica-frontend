@@ -50,8 +50,11 @@ export default {
                 this.loading = true
                 store.commit('setLoadMessage', 'Reading CD...')
                 store.commit('setTest', 'checking inserted CD for masterkey')
-                invoke('retrieve_masterkey').then((res) => {
-                    if(res == 'masterkey found'){
+                invoke('copy_cd_to_ramdisk').then((res) => {
+                    store.commit('setTest', `copying CD to ramdisk: ${res}`)
+                    store.commit('setLoadMessage', 'checking for masterkey...')
+                    invoke('check_for_masterkey').then((res) => {
+                        if(res == 'masterkey found'){
                         invoke('unpack').then((res) => {
                         this.loading = false
                         store.commit('setTest', `successfully unpacked, sending user to dashboard: ${res}`)
@@ -66,9 +69,13 @@ export default {
                         store.commit('setTest', 'no masterkey was found on the CD')
                         this.loading = false
                     }
+                    })
+                        .catch((e) => {
+                        store.commit('setTest', `error checking for masterkey ${e}`)
+                    })
                 })
                 .catch((e) => {
-                    store.commit('setTest', `error retrieving masterkey from CD ${e}`)
+                    store.commit('setTest', `error copying CD to ramdisk ${e}`)
                 })
             }
             //use this condition for when user has a bricked bps relationship but has not indicated they already have a transfer CD with a masterkey 
