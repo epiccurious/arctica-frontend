@@ -27,7 +27,7 @@ export default {
         this.loading = true
         store.commit('setLoadMessage', 'Copying the setup CD...')
         //copy everything from the setup CD to ramdisk
-        invoke('copy_setup_cd').then((res) => {
+        invoke('copy_cd_to_ramdisk').then((res) => {
             store.commit('setTest', `reading setup CD ${res}`)
             store.commit('setLoadMessage', 'Creating Bitcoin Wallet...')
             //create xpriv and xpub
