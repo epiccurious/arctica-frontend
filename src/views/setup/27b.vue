@@ -64,11 +64,7 @@ export default {
         //copy everything from the setup CD to ramdisk
         invoke('copy_setup_cd').then((res) => {
             store.commit('setTest', `reading setup CD ${res}`)
-            store.commit('setLoadMessage', 'Extracting Master Privacy Key...')
-            //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
-            invoke('extract_masterkey').then((res) => {
-                store.commit('setTest', `extracting masterkey from setupCD dump ${res}`)
-                store.commit('setLoadMessage', 'Unpacking sensitive data...')
+            store.commit('setLoadMessage', 'Unpacking sensitive data...')
                 //unpack() the encrypted dir 
                 invoke('unpack').then((res) => {
                             store.commit('setTest', `unpacking sensitive info ${res}`)
@@ -97,9 +93,6 @@ export default {
                             }).catch((e) => {
                                 store.commit('setTest', `error unpacking sensitive info: ${e}`)
                             })       
-                }).catch((e) => {
-                    store.commit('setTest', `error extracting masterkey: ${e}`)
-                })
             }).catch((e) => {
                 store.commit('setTest', `error reading setup CD: ${e}`)
             })

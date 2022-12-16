@@ -79,11 +79,7 @@ export default {
             //create the descriptors and export to the setupCD
             invoke('create_descriptor').then((res) => {
                 store.commit('setTest', `creating descriptors ${res}`)
-                store.commit('setLoadMessage', 'Extracting Master Privacy Key...')
-                //extract masterkey from setupCD dump and place it inside /mnt/ramdisk
-                invoke('extract_masterkey').then((res) => {
-                            store.commit('setTest', `extracting masterkey from setupCD dump ${res}`)
-                            store.commit('setLoadMessage', 'Unpacking sensitive data...')
+                store.commit('setLoadMessage', 'Unpacking sensitive data...')
                             //unpack() the encrypted dir on SD 1
                             invoke('unpack').then((res) => {
                                 store.commit('setTest', `unpacking sensitive info ${res}`)
@@ -104,9 +100,6 @@ export default {
                                             })        
                                 }).catch((e) => {
                                     store.commit('setTest', `error unpacking sensitive info: ${e}`)
-                                }) 
-                            }).catch((e) => {
-                                store.commit('setTest', `error extracting masterkey: ${e}`)
                             })
                 }).catch((e) => {
                     store.commit('setTest', `error creating descriptors: ${e}`)
