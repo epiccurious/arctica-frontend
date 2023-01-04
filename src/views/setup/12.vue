@@ -44,6 +44,7 @@ export default {
             invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
                 store.commit('setTest', `Generating Wallet: ${res} IIIIIIIII`)
                 //create 4 simulated time machine key pairs
+                //eventually this will be where user receives 4 time machine pubkeys from BPS
                 invoke('generate_store_simulated_time_machine_key_pair', {number: '1'}).then((res)=>{
                     store.commit('setTest', `Generating simulated time machine key pair 1: ${res}`)
                     invoke('generate_store_simulated_time_machine_key_pair', {number: '2'}).then((res)=>{
@@ -53,6 +54,7 @@ export default {
                             invoke('generate_store_simulated_time_machine_key_pair', {number: '4'}).then((res)=>{
                                 store.commit('setTest', `Generating simulated time machine key pair 4: ${res}`)
                                 store.commit('setLoadMessage', 'Creating setup CD...')
+                                //create & burn setup CD
                                 invoke('create_setup_cd').then((res)=>{
                                     store.commit('setTest', `invoking create setup cd ${res}`)
                                     this.loading = false
