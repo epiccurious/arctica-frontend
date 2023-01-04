@@ -43,18 +43,43 @@ export default {
             store.commit('setLoadMessage', 'Creating Bitcoin wallet...')
             invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
                 store.commit('setTest', `Generating Wallet: ${res} IIIIIIIII`)
-                store.commit('setLoadMessage', 'Creating setup CD...')
-                //create the setup CD
-                invoke('create_setup_cd').then((res)=>{
-                        store.commit('setTest', `invoking create setup cd ${res}`)
-                        this.loading = false
-                        this.$router.push({ name:'Setup13' }) 
-                    }).catch((e)=>{
-                        store.commit('setTest', `create setup cd error: ${e}`)
+                //create 4 simulated time machine key pairs
+                invoke('generate_store_simulated_time_machine_key_pair', {number: '1'}).then((res)=>{
+                    store.commit('setTest', `Generating simulated time machine key pair 1: ${res}`)
+                    invoke('generate_store_simulated_time_machine_key_pair', {number: '2'}).then((res)=>{
+                        store.commit('setTest', `Generating simulated time machine key pair 2: ${res}`)
+                        invoke('generate_store_simulated_time_machine_key_pair', {number: '3'}).then((res)=>{
+                            store.commit('setTest', `Generating simulated time machine key pair 3: ${res}`)
+                            invoke('generate_store_simulated_time_machine_key_pair', {number: '4'}).then((res)=>{
+                                store.commit('setTest', `Generating simulated time machine key pair 4: ${res}`)
+                                store.commit('setLoadMessage', 'Creating setup CD...')
+                                invoke('create_setup_cd').then((res)=>{
+                                    store.commit('setTest', `invoking create setup cd ${res}`)
+                                    this.loading = false
+                                    this.$router.push({ name:'Setup13' }) 
+                                }).catch((e)=>{
+                                    store.commit('setTest', `create setup cd error: ${e}`)
+                                })
+
+                            })
+                            .catch((e)=>{
+                                store.commit('setTest', `error generating time machine key pair 4 ${e}`)
+                            })  
+                        })
+                        .catch((e)=>{
+                            store.commit('setTest', `error generating time machine key pair 3 ${e}`)
+                        })  
                     })
-            })
-        .catch((e)=>{
-        store.commit('setTest', `error generating wallet ${e}`)
+                    .catch((e)=>{
+                        store.commit('setTest', `error generating time machine key pair 2 ${e}`)
+                    })  
+                })
+                })
+                .catch((e)=>{
+                    store.commit('setTest', `error generating time machine key pair 1 ${e}`)
+                })  
+            .catch((e)=>{
+                store.commit('setTest', `error generating wallet ${e}`)
         })             
         },
         warn(){
