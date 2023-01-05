@@ -300,8 +300,10 @@ export default{
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
         testPrint(){
-        invoke('test_function').then((res)=>{
+        invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
             store.commit('setTest', `invoking test function: ${res}`)
+            store.commit('setTest', `generating key: ${this.keynumber}`)
+            this.keynumber = this.keynumber+1
 
         .catch((e)=>{
         store.commit('setTest', `error invoking test function: ${e}`)
@@ -329,6 +331,11 @@ export default{
             
         }
 
+    },
+    data(){
+        return{
+            keynumber: 2
+        }
     },
     computed:{
         test(){
