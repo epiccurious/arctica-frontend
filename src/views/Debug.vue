@@ -300,15 +300,25 @@ export default{
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
         testPrint(){
-        invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
-            store.commit('setTest', `invoking test function: ${res}`)
-            store.commit('setTest', `generating key: ${this.keynumber}`)
-            this.keynumber = this.keynumber+1
-
-        .catch((e)=>{
-        store.commit('setTest', `error invoking test function: ${e}`)
-        })
-        })
+            //create ramdisk
+            invoke('create_ramdisk').then((res) => {
+                store.commit('setTest', `creating ramdisk ${res}`)
+                store.commit('setLoadMessage', 'Creating ramdisk...')
+                invoke('copy_cd_to_ramdisk').then((res) => {
+                    store.commit('setTest', `reading setup CD ${res}`)
+                    store.commit('setLoadMessage', 'Creating Descriptors...')
+                    //create the descriptors and export to the setupCD
+                    invoke('create_descriptor').then((res) => {
+                        store.commit('setTest', `creating descriptors ${res}`)
+                    }).catch((e) => {
+                            store.commit('setTest', `error creating descriptors: ${e}`)
+                    })
+                }).catch((e) => {
+                    store.commit('setTest', `error reading setup CD: ${e}`)
+                }) 
+            }).catch((e) => {
+                    store.commit('setTest', `error creating ramdisk: ${e}`)
+            }) 
         },
         reboot(){
             this.$router.push({ name: 'welcome' })
@@ -332,6 +342,7 @@ export default{
         }
 
     },
+    //this is for testing with testPrint()
     data(){
         return{
             keynumber: 2
