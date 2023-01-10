@@ -165,7 +165,10 @@
             </label>
         </div>
 
-    <button @click="testPrint()" class="btn">Test</button>
+    <button @click="testPrint()" class="btn">Create Descriptors</button>
+    <br></br>
+    <button @click="generateKeys()" class="btn">Gen Keys</button>
+    
 
     </div> 
 </div>
@@ -299,6 +302,16 @@ export default{
             }
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
+        generateKeys(){
+        invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
+            store.commit('setTest', `invoking test function: ${res}`)
+            store.commit('setTest', `generating key: ${this.keynumber}`)
+        .catch((e)=>{
+        store.commit('setTest', `error invoking test function: ${e}`)
+        })
+        })
+        this.keynumber++;
+        },
         testPrint(){
             //create ramdisk
             invoke('create_ramdisk').then((res) => {
