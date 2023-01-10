@@ -306,13 +306,13 @@ export default{
         generateKeys(){
             //this is a debug function used to create keys 2-7 on SD 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
-            store.commit('setTest', `invoking test function: ${res}`)
-            store.commit('setTest', `generating key: ${this.keynumber}`)
+            store.commit('setTest', `invoking generate store keypair: ${res}`)
+            store.commit('setTest', `generating key: ${this.keynumber-1}`)
         .catch((e)=>{
         store.commit('setTest', `error invoking test function: ${e}`)
         })
         })
-        this.keynumber++;
+        this.keynumber++
         },
         createDescriptors(){
             //this is a debug function used to create descriptors when testing locally instead of on an SD card
