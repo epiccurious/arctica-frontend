@@ -165,8 +165,9 @@
             </label>
         </div>
 
-    <button @click="testPrint()" class="btn">Create Descriptors</button>
-    <br></br>
+    
+    <button @click="createDescriptors()" class="btn">Create Descriptors</button>
+    <br>
     <button @click="generateKeys()" class="btn">Gen Keys</button>
     
 
@@ -303,6 +304,7 @@ export default{
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
         generateKeys(){
+            //this is a debug function used to create keys 2-7 on SD 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
             store.commit('setTest', `invoking test function: ${res}`)
             store.commit('setTest', `generating key: ${this.keynumber}`)
@@ -312,7 +314,8 @@ export default{
         })
         this.keynumber++;
         },
-        testPrint(){
+        createDescriptors(){
+            //this is a debug function used to create descriptors when testing locally instead of on an SD card
             //create ramdisk
             invoke('create_ramdisk').then((res) => {
                 store.commit('setTest', `creating ramdisk ${res}`)
