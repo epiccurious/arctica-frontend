@@ -316,24 +316,31 @@ export default{
         },
         createDescriptors(){
             //this is a debug function used to create descriptors when testing locally instead of on an SD card
-            //create ramdisk
-            invoke('create_ramdisk').then((res) => {
-                store.commit('setTest', `creating ramdisk ${res}`)
-                store.commit('setLoadMessage', 'Creating ramdisk...')
-                invoke('copy_cd_to_ramdisk').then((res) => {
-                    store.commit('setTest', `reading setup CD ${res}`)
-                    store.commit('setLoadMessage', 'Creating Descriptors...')
-                    //create the descriptors and export to the setupCD
-                    invoke('create_descriptor').then((res) => {
-                        store.commit('setTest', `creating descriptors ${res}`)
+            //start bitcoind
+            invoke('start_bitcoind_network_off').then((res) => {
+                store.commit('setTest', `starting bitcoin daemon with networking off: ${res}`)
+                //create ramdisk
+                invoke('create_ramdisk').then((res) => {
+                    store.commit('setTest', `creating ramdisk ${res}`)
+                    store.commit('setLoadMessage', 'Creating ramdisk...')
+                    //copy CD contents to ramdisk
+                    invoke('copy_cd_to_ramdisk').then((res) => {
+                        store.commit('setTest', `reading setup CD ${res}`)
+                        store.commit('setLoadMessage', 'Creating Descriptors...')
+                        //create the descriptors and export to the setupCD
+                        invoke('create_descriptor').then((res) => {
+                            store.commit('setTest', `creating descriptors ${res}`)
+                        }).catch((e) => {
+                                store.commit('setTest', `error creating descriptors: ${e}`)
+                        })
                     }).catch((e) => {
-                            store.commit('setTest', `error creating descriptors: ${e}`)
-                    })
+                        store.commit('setTest', `error reading setup CD: ${e}`)
+                    }) 
                 }).catch((e) => {
-                    store.commit('setTest', `error reading setup CD: ${e}`)
+                        store.commit('setTest', `error creating ramdisk: ${e}`)
                 }) 
             }).catch((e) => {
-                    store.commit('setTest', `error creating ramdisk: ${e}`)
+                    store.commit('setTest', `error starting bitcoin core: ${e}`)
             }) 
         },
         reboot(){
