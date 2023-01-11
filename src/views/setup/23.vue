@@ -71,43 +71,56 @@ export default {
     },
     mounted(){
         this.loading = true
-        store.commit('setLoadMessage', 'Copying Setup CD...')
-        //copy everything from the setup CD to ramdisk
-        invoke('copy_cd_to_ramdisk').then((res) => {
-            store.commit('setTest', `reading setup CD ${res}`)
-            store.commit('setLoadMessage', 'Creating Descriptors...')
-            //create the descriptors and export to the setupCD
-            invoke('create_descriptor').then((res) => {
-                store.commit('setTest', `creating descriptors ${res}`)
-                store.commit('setLoadMessage', 'Unpacking sensitive data...')
-                            //unpack() the encrypted dir on SD 1
-                            invoke('unpack').then((res) => {
-                                store.commit('setTest', `unpacking sensitive info ${res}`)
-                                store.commit('setLoadMessage', 'Packing up sensitive data...')
-                                //make sure sensitive contains everything it should before packup()
-                                invoke('packup').then((res) => {
-                                            store.commit('setTest', `packing up sensitive info ${res}`)
-                                            store.commit('setLoadMessage', 'Refreshing Setup CD...')
-                                                    //refresh setup CD with latest .iso 
-                                                    invoke('refresh_setup_cd').then((res)=>{
-                                                        store.commit('setTest', `refreshing setup CD ${res}`)
-                                                        this.loading = false
-                                                        }).catch((e)=>{
-                                                            store.commit('setTest', `refresh setup CD error ${e}`)
-                                                        })  
-                                            }).catch((e) => {
-                                                store.commit('setTest', `error packing up sensitive info: ${e}`)
+        //mount and symlink internal .bitcoin dirs
+        invoke('mount_internal').then((res)=> {
+              store.commit('setTest', `invoking mount internal ${res}`)
+            //start bitcoind with networking disabled
+            invoke('start_bitcoind_network_off').then((res)=> {
+                store.commit('setTest', `starting bitcoin daemon with networking disabled: ${res}`)
+                store.commit('setLoadMessage', 'Copying Setup CD...')
+                //copy everything from the setup CD to ramdisk
+                invoke('copy_cd_to_ramdisk').then((res) => {
+                    store.commit('setTest', `reading setup CD ${res}`)
+                    store.commit('setLoadMessage', 'Creating Descriptors...')
+                    //create the descriptors and export to the setupCD
+                    invoke('create_descriptor').then((res) => {
+                        store.commit('setTest', `creating descriptors ${res}`)
+                        store.commit('setLoadMessage', 'Unpacking sensitive data...')
+                                    //unpack() the encrypted dir on SD 1
+                                    invoke('unpack').then((res) => {
+                                        store.commit('setTest', `unpacking sensitive info ${res}`)
+                                        store.commit('setLoadMessage', 'Packing up sensitive data...')
+                                        //make sure sensitive contains everything it should before packup()
+                                        invoke('packup').then((res) => {
+                                                    store.commit('setTest', `packing up sensitive info ${res}`)
+                                                    store.commit('setLoadMessage', 'Refreshing Setup CD...')
+                                                            //refresh setup CD with latest .iso 
+                                                            invoke('refresh_setup_cd').then((res)=>{
+                                                                store.commit('setTest', `refreshing setup CD ${res}`)
+                                                                this.loading = false
+                                                            }).catch((e)=>{
+                                                                store.commit('setTest', `refresh setup CD error ${e}`)
+                                                                })  
+                                        }).catch((e) => {
+                                            store.commit('setTest', `error packing up sensitive info: ${e}`)
                                             })        
-                                }).catch((e) => {
-                                    store.commit('setTest', `error unpacking sensitive info: ${e}`)
-                            })
+                                    }).catch((e) => {
+                                        store.commit('setTest', `error unpacking sensitive info: ${e}`)
+                                        })
+                    }).catch((e) => {
+                        store.commit('setTest', `error creating descriptors: ${e}`)
+                        })
                 }).catch((e) => {
-                    store.commit('setTest', `error creating descriptors: ${e}`)
-                })
-            }).catch((e) => {
-                store.commit('setTest', `error reading setup CD: ${e}`)
-            }) 
-    },
+                    store.commit('setTest', `error reading setup CD: ${e}`)
+                    }) 
+            }).catch((e)=> {
+                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+              })
+        }).catch((e)=> {
+            store.commit('setTest', `mount internal error: ${e}`)
+            })
+    }
+            
 }
 </script>
 
