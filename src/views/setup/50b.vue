@@ -54,15 +54,21 @@ export default {
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
             })
-        //remove networkactive=0 from the bitcoin.conf
         
-        //start the bitcoin daemon
-        invoke('start_bitcoind').then((res) => {
-            store.commit('setTest', `Starting the Bitcoin daemon ${res}`)
-            })
-            .catch((e) => {
-                store.commit('setTest', `error starting the bitcoin daemon: ${e}`)
-            })
+        invoke('mount_internal').then((res) => {
+            store.commit('setTest', `Mounting internal drive ${res}`)
+            //start the bitcoin daemon
+            invoke('start_bitcoind').then((res) => {
+                store.commit('setTest', `Starting the Bitcoin daemon ${res}`)
+                })
+                .catch((e) => {
+                    store.commit('setTest', `error starting the bitcoin daemon: ${e}`)
+                })
+        })
+        .catch((e) => {
+            store.commit('setTest', `error mounting internal drive: ${e}`)
+        })
+
 
     },
 }
