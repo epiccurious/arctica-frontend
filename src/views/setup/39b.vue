@@ -76,7 +76,14 @@ export default {
                                 //make sure sensitive contains everything it should before packup()
                                 invoke('packup').then((res) => {
                                     store.commit('setTest', `packing up sensitive info ${res}`)
-                                    this.loading = false
+                                    store.commit('setLoadMessage', 'Ejecting CD...')
+                                    //Ejecting CD
+                                    invoke('eject_cd').then((res)=>{
+                                        store.commit('setTest', `ejecting CD ${res}`)
+                                        this.loading = false
+                                        }).catch((e)=>{
+                                            store.commit('setTest', `ejecting CD error ${e}`)
+                                        })   
                                     }).catch((e) => {
                                         store.commit('setTest', `error packing up sensitive info: ${e}`)
                                     })        
