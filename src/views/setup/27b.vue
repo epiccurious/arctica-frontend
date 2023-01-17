@@ -76,14 +76,7 @@ export default {
                                 //make sure sensitive contains everything it should before packup()
                                 invoke('packup').then((res) => {
                                     store.commit('setTest', `packing up sensitive info ${res}`)
-                                    store.commit('setLoadMessage', 'Refreshing Setup CD...')
-                                    //refresh setup CD with latest .iso 
-                                    invoke('refresh_setup_cd').then((res)=>{
-                                        store.commit('setTest', `refreshing setup CD ${res}`)
-                                        this.loading = false
-                                        }).catch((e)=>{
-                                            store.commit('setTest', `refresh setup CD error ${e}`)
-                                        })   
+                                    this.loading = false
                                     }).catch((e) => {
                                         store.commit('setTest', `error packing up sensitive info: ${e}`)
                                     })        
