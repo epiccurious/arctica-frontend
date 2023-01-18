@@ -25,7 +25,7 @@
             <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance_overview">{{ this.immediateBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ immediateBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -36,7 +36,7 @@
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
+            <h2 class="balance_overview">{{ delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
