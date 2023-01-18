@@ -69,7 +69,14 @@ export default{
         }
     },
              mounted(){
-    this.delayedBalance = store.getters.getDelayedBalance
+            invoke('get_balance_high_wallet').then((res)=>{
+            store.commit('setTest', `getting balance for high wallet: ${res}`)
+            store.commit('setDelayedBalance', `${res}`)
+            this.delayedBalance = store.getters.getDelayedBalance
+          })
+          .catch((e)=>{
+            store.commit('setTest', `error getting new high wallet address ${e}`)
+          })
  },
     data(){
         return{

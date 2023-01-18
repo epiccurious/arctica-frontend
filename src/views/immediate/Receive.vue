@@ -43,17 +43,17 @@ export default {
     NavImmediate,
   },
   methods:{
-        async copy(s){
-        await navigator.clipboard.writeText(s)
+        async copy(address){
+        await navigator.clipboard.writeText(address)
         alert('Copied Address!')
         },
         newAddress(){
             invoke('get_address_med_wallet').then((res)=>{
-            store.commit('setTest', `getting address for med wallet: ${res}`)
+            store.commit('setTest', `getting new address for med wallet: ${res}`)
             this.address = res
           })
           .catch((e)=>{
-            store.commit('setTest', `error getting med wallet address ${e}`)
+            store.commit('setTest', `error getting new med wallet address ${e}`)
           })
         },
   },
