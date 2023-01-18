@@ -66,7 +66,10 @@ export default{
             } else{
                 return false
             }
-        }
+        },
+        immediateBalance(){
+        return store.getters.getImmediateBalance
+        },
     },
          mounted(){
             invoke('get_balance_med_wallet').then((res)=>{
@@ -77,11 +80,6 @@ export default{
           .catch((e)=>{
             store.commit('setTest', `error getting new high wallet address ${e}`)
           })
- },
- computed:{
-    immediateBalance(){
-    return store.getters.getImmediateBalance
-    },
  },
 }
 </script>
