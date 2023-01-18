@@ -45,7 +45,6 @@
           </div>
       </div>
   </div>
-  <button @click="test()">Test</button>
 </template>
 
 

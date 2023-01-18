@@ -75,7 +75,6 @@ export default{
             invoke('get_balance_med_wallet').then((res)=>{
             store.commit('setTest', `getting balance for med wallet: ${res}`)
             store.commit('setImmediateBalance', `${res}`)
-            this.immediateBalance = store.getters.getImmediateBalance
           })
           .catch((e)=>{
             store.commit('setTest', `error getting new high wallet address ${e}`)
