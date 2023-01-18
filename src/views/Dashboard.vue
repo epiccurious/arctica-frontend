@@ -71,7 +71,6 @@ export default {
       invoke('get_balance_med_wallet').then((res)=>{
         store.commit('setTest', `getting balance for med wallet: ${res}`)
         store.commit('setImmediateBalance', `${res}`)
-        this.immediateBalance = store.getters.getImmediateBalance
       })
       .catch((e)=>{
         store.commit('setTest', `error getting new high wallet address ${e}`)
@@ -79,12 +78,10 @@ export default {
       invoke('get_balance_high_wallet').then((res)=>{
         store.commit('setTest', `getting balance for high wallet: ${res}`)
         store.commit('setDelayedBalance', `${res}`)
-        this.delayedBalance = store.getters.getDelayedBalance
       })
       .catch((e)=>{
         store.commit('setTest', `error getting new high wallet address ${e}`)
       })
-      this.hotBalance = store.getters.getHotBalance
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
       this.tripwireSetup = store.getters.getTripwireSetup
@@ -100,13 +97,6 @@ export default {
         this.$router.push({ name: 'tripwirePostSetup1' })
       }
  },
- data(){
-  return{
-    hotBalance: store.getters.getHotBalance,
-    immediateBalance: store.getters.getImmediateBalance,
-    delayedBalance: store.getters.getDelayedBalance,
-  }
- },
  methods:{
   test(){
     console.log('post set up recovery:', this.recoverySetup)
@@ -118,9 +108,6 @@ export default {
  computed:{
  tripwire(){
     return store.getters.getTripwireTripped}
- },
- hotBalance(){
-  return store.getters.getHotBalance
  },
  immediateBalance(){
   return store.getters.getImmediateBalance

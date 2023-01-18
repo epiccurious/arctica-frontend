@@ -78,11 +78,11 @@ export default{
             store.commit('setTest', `error getting new high wallet address ${e}`)
           })
  },
-    data(){
-        return{
-            immediateBalance: null
-        }
-    }
+ computed:{
+    immediateBalance(){
+    return store.getters.getImmediateBalance
+    },
+ },
 }
 </script>
 

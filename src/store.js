@@ -68,10 +68,10 @@ export default createStore({
         {id: 3, address: 'bc1prd9haet4clzacme9gnpgxknj04480xemzh2wt3', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-10T12:00:00-04:10', fee: 0.00000408, status: 'Unconfirmed', description: ''}
     ],
     //various wallet balances
-    quickBalance: 0.000052,
-    hotBalance: 0.12759374,
-    immediateBalance: 0.27847143,
-    delayedBalance: 12.05312325,
+    quickBalance: null,
+    hotBalance: null,
+    immediateBalance: null,
+    delayedBalance: null,
 
     //current address for receiving
     hotAddress: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky',
