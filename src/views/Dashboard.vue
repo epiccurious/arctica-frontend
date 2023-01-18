@@ -8,7 +8,7 @@
         <div class="head_container">
           <h1>Wallets</h1>
         </div>
-        <router-link class="wallet_container" :to="{ name: 'hot' }">
+        <!-- <router-link class="wallet_container" :to="{ name: 'hot' }">
             <div class="wallet_container_left">
             <h2>Hot Wallet</h2>
             <h2 class="time_decay">Spend Now</h2>
@@ -17,7 +17,7 @@
               <h2 class="balance_overview">{{ this.hotBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
-        </router-link> 
+        </router-link>  -->
 
         <router-link class="wallet_container" :to="{ name: 'immediate' }">
             <div class="wallet_container_left">
@@ -54,6 +54,8 @@ import Nav from '@/components/Nav'
 import { RouterView, RouterLink } from "vue-router";
 import store from '../store.js'
 import Compromised from './tripwire/compromised.vue'
+const invoke = window.__TAURI__.invoke
+
 {
   RouterView;
   RouterLink
@@ -66,9 +68,23 @@ export default {
     Compromised,
   },
      mounted(){
+      invoke('get_balance_med_wallet').then((res)=>{
+        store.commit('setTest', `getting balance for med wallet: ${res}`)
+        store.commit('setImmediateBalance', `${res}`)
+        this.immediateBalance = store.getters.getImmediateBalance
+      })
+      .catch((e)=>{
+        store.commit('setTest', `error getting new high wallet address ${e}`)
+      })
+      invoke('get_balance_high_wallet').then((res)=>{
+        store.commit('setTest', `getting balance for high wallet: ${res}`)
+        store.commit('setDelayedBalance', `${res}`)
+        this.delayedBalance = store.getters.getDelayedBalance
+      })
+      .catch((e)=>{
+        store.commit('setTest', `error getting new high wallet address ${e}`)
+      })
       this.hotBalance = store.getters.getHotBalance
-      this.immediateBalance = store.getters.getImmediateBalance
-      this.delayedBalance = store.getters.getDelayedBalance
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
       this.tripwireSetup = store.getters.getTripwireSetup
