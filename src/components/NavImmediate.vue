@@ -36,6 +36,7 @@
 <script>
 import { RouterView, RouterLink } from "vue-router";
 import store from '../store.js'
+const invoke = window.__TAURI__.invoke
 {
   RouterView;
   RouterLink
