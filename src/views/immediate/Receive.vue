@@ -47,7 +47,13 @@ export default {
         alert('Copied Address!')
         },
         newAddress(){
-            console.log('new address clicked')
+            invoke('get_address_med_wallet').then((res)=>{
+            store.commit('setTest', `getting address for med wallet: ${res}`)
+            this.address = res
+          })
+          .catch((e)=>{
+            store.commit('setTest', `error getting med wallet address ${e}`)
+          })
         },
   },
   data(){
@@ -56,7 +62,13 @@ export default {
       }
   },
      mounted(){
-    this.address = store.getters.getImmediateAddress
+        invoke('get_address_med_wallet').then((res)=>{
+            store.commit('setTest', `getting address for med wallet: ${res}`)
+            this.address = res
+          })
+          .catch((e)=>{
+            store.commit('setTest', `error getting med wallet address ${e}`)
+          })
      }
 }
 </script>
