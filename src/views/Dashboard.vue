@@ -67,12 +67,18 @@ export default {
     Compromised,
   },
      mounted(){
-      invoke('get_balance_med_wallet').then((res)=>{
-        store.commit('setTest', `getting balance for med wallet: ${res}`)
-        store.commit('setImmediateBalance', `${res}`)
+      invoke('init_med_wallet').then((res)=> {
+        store.commit('setTest', `initializing med wallet ${res}`)
+        invoke('get_balance_med_wallet').then((res)=>{
+          store.commit('setTest', `getting balance for med wallet: ${res}`)
+          store.commit('setImmediateBalance', `${res}`)
+        })
+        .catch((e)=>{
+        store.commit('setTest', `error getting new med wallet address ${e}`)
+      })
       })
       .catch((e)=>{
-        store.commit('setTest', `error getting new high wallet address ${e}`)
+        store.commit('setTest', `error initializing med wallet address ${e}`)
       })
       invoke('get_balance_high_wallet').then((res)=>{
         store.commit('setTest', `getting balance for high wallet: ${res}`)
