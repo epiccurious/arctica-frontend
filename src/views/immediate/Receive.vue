@@ -7,7 +7,7 @@
          </div>
         <div class="receive_container">
             <div class="receive_top">
-                <img src="@/assets/placeholderQR.png">
+                <!-- <img src="@/assets/placeholderQR.png"> -->
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
@@ -43,17 +43,17 @@ export default {
     NavImmediate,
   },
   methods:{
-        async copy(address){
-        await navigator.clipboard.writeText(address)
+        async copy(s){
+        await navigator.clipboard.writeText(s)
         alert('Copied Address!')
         },
         newAddress(){
             invoke('get_address_med_wallet').then((res)=>{
-            store.commit('setTest', `getting new address for med wallet: ${res}`)
+            store.commit('setTest', `getting new address for immediate wallet: ${res}`)
             this.address = res
           })
           .catch((e)=>{
-            store.commit('setTest', `error getting new med wallet address ${e}`)
+            store.commit('setTest', `error getting new immediate wallet address ${e}`)
           })
         },
   },
@@ -64,11 +64,11 @@ export default {
   },
      mounted(){
         invoke('get_address_med_wallet').then((res)=>{
-            store.commit('setTest', `getting address for med wallet: ${res}`)
+            store.commit('setTest', `getting address for immediate wallet: ${res}`)
             this.address = res
           })
           .catch((e)=>{
-            store.commit('setTest', `error getting med wallet address ${e}`)
+            store.commit('setTest', `error getting immediate wallet address ${e}`)
           })
      }
 }

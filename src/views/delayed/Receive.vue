@@ -8,7 +8,7 @@
        </div>
         <div class="receive_container">
             <div class="receive_top">
-                <img src="@/assets/placeholderQR.png">
+                <!-- <img src="@/assets/placeholderQR.png"> -->
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
@@ -47,7 +47,13 @@ export default {
           alert('Copied Address!')
         },
         newAddress(){
-          console.log('New address clicked')
+            invoke('get_address_high_wallet').then((res)=>{
+            store.commit('setTest', `getting new address for delayed wallet: ${res}`)
+            this.address = res
+          })
+          .catch((e)=>{
+            store.commit('setTest', `error getting new delayed wallet address ${e}`)
+          })
         },
         ackWarning(){
           console.log('user acks time machine protocol')
@@ -61,6 +67,13 @@ export default {
       }
   },
    mounted(){
+    invoke('get_address_high_wallet').then((res)=>{
+        store.commit('setTest', `getting address for delayed wallet: ${res}`)
+        this.address = res
+        })
+        .catch((e)=>{
+        store.commit('setTest', `error getting delayed wallet address ${e}`)
+        })
     this.timeLock = store.getters.getTimeLock
     this.address = store.getters.getDelayedAddress
     if(this.timeLock == true){

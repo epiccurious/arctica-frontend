@@ -25,7 +25,7 @@
             <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance_overview">{{ this.immediateBalance }} BTC</h2>
+              <h2 class="balance_overview">{{ immediateBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -36,7 +36,7 @@
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
+            <h2 class="balance_overview">{{ delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
@@ -68,31 +68,31 @@ export default {
   },
      mounted(){
       invoke('init_med_wallet').then((res)=> {
-        store.commit('setTest', `initializing med wallet ${res}`)
+        store.commit('setTest', `initializing immediate wallet ${res}`)
         invoke('get_balance_med_wallet').then((res)=>{
-          store.commit('setTest', `getting balance for med wallet: ${res}`)
+          store.commit('setTest', `getting balance for immediate wallet: ${res}`)
           store.commit('setImmediateBalance', `${res}`)
         })
         .catch((e)=>{
-        store.commit('setTest', `error getting med wallet balance ${e}`)
+        store.commit('setTest', `error getting immediate wallet balance ${e}`)
         })
       })
       .catch((e)=>{
-        store.commit('setTest', `error initializing med wallet ${e}`)
+        store.commit('setTest', `error initializing immediate wallet ${e}`)
       })
 
       invoke('init_high_wallet').then((res)=> {
-        store.commit('setTest', `initializing high wallet ${res}`)
+        store.commit('setTest', `initializing delayed wallet ${res}`)
         invoke('get_balance_high_wallet').then((res)=>{
-          store.commit('setTest', `getting balance for high wallet: ${res}`)
+          store.commit('setTest', `getting balance for delayed wallet: ${res}`)
           store.commit('setDelayedBalance', `${res}`)
         })
         .catch((e)=>{
-        store.commit('setTest', `error getting high wallet balance ${e}`)
+        store.commit('setTest', `error getting delayed wallet balance ${e}`)
         })
       })
       .catch((e)=>{
-        store.commit('setTest', `error initializing high wallet ${e}`)
+        store.commit('setTest', `error initializing delayed wallet ${e}`)
       })
 
       this.duressSetup = store.getters.getDuressSetup
@@ -110,14 +110,12 @@ export default {
         this.$router.push({ name: 'tripwirePostSetup1' })
       }
  },
- methods:{
-  test(){
-    console.log('post set up recovery:', this.recoverySetup)
-    console.log('post set up duress:', this.duressSetup)
-    console.log('post set up tripwire:', this.tripwireSetup)
-    console.log('tripwire', this.tripwire)
-  }
- },
+   data(){
+      return{
+          immediateBalance: null,
+          delayedBalance: null,
+      }
+  },
  computed:{
  tripwire(){
     return store.getters.getTripwireTripped}
