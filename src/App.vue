@@ -593,7 +593,6 @@ h3{
 .receive_address{
     font-size:16px;
     line-height: 20px;
-    text-transform: uppercase;
     font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
     color: #777777;
     word-wrap: break-word;
