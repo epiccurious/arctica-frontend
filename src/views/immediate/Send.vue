@@ -27,14 +27,13 @@
                 </div>
             </div>
             
-            <br><label>Fee</label>
-            <br><label v-if="custom == false">Sats per Byte</label>
-            <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
+            <br><label>Fee (Sats per Byte)</label>
+            <br><input v-if="custom == true" v-model="fee" type="integer" placeholder="Sats per Byte">
             <div class="checkbox_container">
-                    <input type="checkbox" v-model="custom" name="checkbox">
+                    <input type="checkbox" v-model="custom" name="checkbox" checked>
                     <label for="checkbox">Use a reccomended fee (disabled)</label>
                 </div>
-            <br><select v-if="custom == true" v-model="fee" name="fee" id="fee" required>
+            <br><select v-if="custom == false" v-model="fee" name="fee" id="fee" required>
                 <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
                 <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
                 <option @click="customDisable()" value="low">Low Priority {{ lowFee }} sat/Byte</option>
@@ -104,7 +103,7 @@ export default {
          fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
          address: '',
          balance: null,
-         fee: 'high',
+         fee: null,
          customFee: '',
          custom: true,
          transaction: {},
