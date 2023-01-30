@@ -7,7 +7,7 @@
          </div>
     <div class="send_container">
         <div class="send_form">
-            <label>Description</label>
+            <label>Description (disabled)</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?">
 
             <br><label>Address</label>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             
-            <br><label>Fee</label>
+            <br><label>Fee (custom fee disabled)</label>
             <br><select v-model="fee" name="fee" id="fee" required>
                 <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
                 <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
@@ -40,8 +40,8 @@
         </div>
     </div>
         <div class="send_button_container">
-            <button @click="addRecipient()" class="btn2">Add another recipient</button>
-            <button @click="continueFn(description, address, balance, fee, customFee)" class="btn">Continue</Button>
+            <button @click="addRecipient()" class="btn2">Add another recipient (disabled)</button>
+            <button @click="continueFn(address, balance, fee)" class="btn">Continue</Button>
         </div>
     </div>        
 </div>
@@ -51,6 +51,7 @@
 <script>
 import NavImmediate from '@/components/NavImmediate'
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'immediateSend',
@@ -58,7 +59,7 @@ export default {
     NavImmediate,
   },  
     methods: {
-        continueFn(description, address, balance, fee, customFee){
+        continueFn(address, balance, fee){
             invoke('generate_psbt_med_wallet', {recipient: address, amount: balance, fee: fee}).then((res) => {
                 store.commit('setTest', `Generating PSBT: ${res}`)
                 this.$router.push({name: 'immediateTransfer'})
@@ -79,6 +80,7 @@ export default {
         },
         customEnable(){
             console.log('Custom Fee Selected')
+            this.customeFee = 0
             this.custom = true
         },
         customDisable(){
