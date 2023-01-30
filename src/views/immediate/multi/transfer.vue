@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>Please insert a Transfer CD</h1>
-        <h2>This is a blank CD or DVD that you will destroy after sending your transaction.</h2>
+        <h2>This is a blank CD(RW) that you will destroy after sending your transaction.</h2>
     </header>
     
     <div class="form_container">

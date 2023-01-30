@@ -59,18 +59,13 @@ export default {
   },  
     methods: {
         continueFn(description, address, balance, fee, customFee){
-            console.log('Continue clicked')
-            store.commit('setTxId', this.id)
-            store.commit('setTxDescription', description)
-            store.commit('setTxAddress', address)
-            store.commit('setTxBalance', balance)
-            store.commit('setTxFiat', this.fiat_currency)
-            store.commit('setTxDateTime', this.datetime)
-            store.commit('setTxFee', fee)
-            store.commit('setTxCustomFee', customFee)
-            store.commit('setTxStatus', 'unconfirmed')
-            this.transaction = store.getters.getTransaction
-            this.$router.push({name: 'immediateTransfer'})
+            invoke('generate_psbt_med_wallet', {recipient: address, amount: balance, fee: fee}).then((res) => {
+                store.commit('setTest', `Generating PSBT: ${res}`)
+                this.$router.push({name: 'immediateTransfer'})
+            })
+            .catch((e) => {
+          store.commit('setTest', `Error generating PSBT: ${e}`)
+            })
 
         },
         // eventually the continueFn() should construct and return the PSBT
