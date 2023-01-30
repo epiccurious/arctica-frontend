@@ -98,7 +98,7 @@ export default {
          description: '',
          fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
          address: '',
-         balance: '',
+         balance: null,
          fee: 'high',
          customFee: '',
          custom: false,
