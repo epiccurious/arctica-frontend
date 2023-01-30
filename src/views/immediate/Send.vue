@@ -8,7 +8,7 @@
     <div class="send_container">
         <div class="send_form">
             <label>Description (disabled)</label>
-            <br><input v-model="description" type="text" placeholder="What is this transaction for?">
+            <br><input v-model="description" type="text" placeholder="What is this transaction for?" disabled="disabled">
 
             <br><label>Address</label>
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
@@ -27,15 +27,20 @@
                 </div>
             </div>
             
-            <br><label>Fee (custom fee disabled)</label>
-            <br><select v-model="fee" name="fee" id="fee" required>
+            <br><label>Fee</label>
+            <br><label v-if="custom == false">Sats per Byte</label>
+            <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
+            <div class="checkbox_container">
+                    <input type="checkbox" v-model="custom" name="checkbox">
+                    <label for="checkbox">Use a reccomended fee (disabled)</label>
+                </div>
+            <br><select v-if="custom == true" v-model="fee" name="fee" id="fee" required>
                 <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
                 <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
                 <option @click="customDisable()" value="low">Low Priority {{ lowFee }} sat/Byte</option>
                 <option @click="customEnable()" value="custom">Custom (Advanced)</option>
             </select>
-            <br><label v-if="custom == true">Sats per Byte</label>
-            <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
+
 
         </div>
     </div>
@@ -101,11 +106,12 @@ export default {
          balance: null,
          fee: 'high',
          customFee: '',
-         custom: false,
+         custom: true,
          transaction: {},
          constructed: false,
          multiOutput: false,
          immediateBalance: null,
+         checkbox: true,
      }
     //  Need a function to deliver dynamic fee estimates for the above data
  },
