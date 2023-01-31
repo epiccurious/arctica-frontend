@@ -169,6 +169,8 @@
     <button @click="createDescriptors()" class="btn">Create Descriptors</button>
     <br>
     <button @click="generateKeys()" class="btn">Gen Keys</button>
+    <br> 
+    <button @click="spendPolicy()" class="btn">Spend Policy</button>
     
 
     </div> 
@@ -303,6 +305,15 @@ export default{
             }
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
+        spend_policy(){
+            //this is a debug function used to print the keychain policy 
+        invoke('test_function',).then((res)=>{
+            store.commit('setTest', `obtaining spend policy: ${res}`)
+        .catch((e)=>{
+        store.commit('setTest', `error obtaining spend policy: ${e}`)
+        })
+        })
+    },
         generateKeys(){
             //this is a debug function used to create keys 2-7 on SD 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
