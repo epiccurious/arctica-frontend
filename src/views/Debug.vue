@@ -305,7 +305,7 @@ export default{
             }
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
-        spend_policy(){
+        spendPolicy(){
             //this is a debug function used to print the keychain policy 
         invoke('test_function',).then((res)=>{
             store.commit('setTest', `obtaining spend policy: ${res}`)
