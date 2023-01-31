@@ -23,7 +23,7 @@
                 <h3>₿ {{ immediateBalance }}</h3>
                 </div>
                 <div class="balance_right">
-                    <button @click="selectMax()" class="btn4">Select Max</button>
+                    <button @click="selectMax()" class="btn4">Select Max (disabled)</button>
                 </div>
             </div>
             
@@ -99,8 +99,6 @@ export default {
          balance: null,
          fee: null,
          custom: true,
-         transaction: {},
-         constructed: false,
          multiOutput: false,
          immediateBalance: null,
          checkbox: true,
@@ -108,13 +106,7 @@ export default {
     //  Need a function to deliver dynamic fee estimates for the above data
  },
  mounted(){
-    this.transaction = store.getters.getTransaction
     this.immediateBalance = store.getters.getImmediateBalance
-
-    //get a new internal id for the bitcoin tx about to be created
-    this.id = store.getters.getImmediateTransactions.length + 1
-
-    //set current datetime
  }
 }
 </script>
