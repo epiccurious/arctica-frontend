@@ -30,21 +30,20 @@
             <br><label>Fee (Sats per Byte)</label>
             <br><input v-if="custom == true" v-model="fee" type="integer" placeholder="Sats per Byte">
             <div class="checkbox_container">
-                    <input type="checkbox" v-model="custom" name="checkbox" checked>
+                    <input type="checkbox" v-model="custom" name="checkbox">
                     <label for="checkbox">Use a reccomended fee (disabled)</label>
                 </div>
             <br><select v-if="custom == false" v-model="fee" name="fee" id="fee" required>
-                <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
-                <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
-                <option @click="customDisable()" value="low">Low Priority {{ lowFee }} sat/Byte</option>
-                <option @click="customEnable()" value="custom">Custom (Advanced)</option>
+                <option @click="setFee(highFee)" value="high">High Priority {{ highFee }} sat/Byte</option>
+                <option @click="setFee(mediumFee)" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
+                <option @click="setFee(lowFee)" value="low">Low Priority {{ lowFee }} sat/Byte</option>
             </select>
 
 
         </div>
     </div>
         <div class="send_button_container">
-            <button @click="addRecipient()" class="btn2">Add another recipient (disabled)</button>
+            <button @click="addRecipient()" class="btn2">Add another recipient (fee estimates are placeholders)</button>
             <button @click="continueFn(address, balance, fee)" class="btn">Continue</Button>
         </div>
     </div>        
@@ -82,15 +81,10 @@ export default {
             console.log('Select max clicked')
             this.balance = this.immediateBalance
         },
-        customEnable(){
-            console.log('Custom Fee Selected')
-            this.customeFee = 0
-            this.custom = true
-        },
-        customDisable(){
-            console.log('Custom Fee Deselected')
-            this.custom = false
-        },
+        //real time fee estimates currently disabled, hard coded values provided below
+        setFee(input){
+            this.fee = input
+        }
     },
    data(){
      return{
@@ -104,7 +98,6 @@ export default {
          address: '',
          balance: null,
          fee: null,
-         customFee: '',
          custom: true,
          transaction: {},
          constructed: false,
