@@ -337,6 +337,8 @@ select{
 .checkbox_container{
     display:flex;
     flex-direction: row;
+    align-items: center;
+    justify-items:center;
     width:100%;
 }
 .lg_checkbox_container{
