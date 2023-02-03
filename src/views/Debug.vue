@@ -171,7 +171,8 @@
     <button @click="generateKeys()" class="btn">Gen Keys</button>
     <br> 
     <button @click="spendPolicy()" class="btn">Spend Policy</button>
-    
+    <br> 
+    <button @click="getTransctionHIstory()()" class="btn">Transaction History</button>
 
     </div> 
 </div>
@@ -305,24 +306,35 @@ export default{
             }
              console.log('Set up CD inserted', store.getters.getSetupCD) 
         },     
+        getTransctionHIstory(){
+            //this is a debug function used to print the immediate wallet transaction history vec
+            invoke('get_transactions_med_wallet').then((res)=>{
+                store.commit('setTest', `obtaining transaction history for immediate wallet: ${res}`)
+            })
+            .catch((e)=>{
+                store.commit('setTest', `error obtaining transactions for immediate wallet: ${e}`)
+            })
+        },
         spendPolicy(){
             //this is a debug function used to print the keychain policy 
-        invoke('test_function',).then((res)=>{
+        invoke('test_function').then((res)=>{
             store.commit('setTest', `obtaining spend policy: ${res}`)
+        })
         .catch((e)=>{
         store.commit('setTest', `error obtaining spend policy: ${e}`)
         })
-        })
+
     },
         generateKeys(){
             //this is a debug function used to create keys 2-7 on SD 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
             store.commit('setTest', `invoking generate store keypair: ${res}`)
             store.commit('setTest', `generating key: ${this.keynumber-1}`)
+                    })
         .catch((e)=>{
         store.commit('setTest', `error invoking test function: ${e}`)
         })
-        })
+
         this.keynumber++
         },
         createDescriptors(){
