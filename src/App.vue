@@ -596,6 +596,7 @@ h3{
     font-size:16px;
     line-height: 20px;
     font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
+    text-transform: uppercase;
     color: #777777;
     word-wrap: break-word;
     align-self:center;
