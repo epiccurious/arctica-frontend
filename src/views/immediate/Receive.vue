@@ -30,7 +30,8 @@
 <!-- 
 Todo:
 -Images are distorted here...why!?
--download QR button not yet implemented -->
+-download QR button not yet implemented
+-Copy Address button works in native webview but not inside tauri -->
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
