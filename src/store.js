@@ -42,7 +42,7 @@ export default createStore({
     numberToRecover: 5,
     
     //data for creating a new Transaction
-    id:null, description:null, address:[], balance:[], fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
+    address:[], balance:[], fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
 
     //multioutput logic, for testing, initialize as empty after testing
     psbtArr: [
@@ -73,11 +73,6 @@ export default createStore({
     immediateBalance: null,
     delayedBalance: null,
 
-    //current address for receiving
-    hotAddress: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky',
-    immediateAddress: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky',
-    delayedAddress: 'bc1qyfgj82tfxndmjl237j6xdvvhxrrnfky',
-
     //delayed wallet timelocked
     timeLock: true
     },
@@ -87,44 +82,6 @@ export default createStore({
         },
         setLoadMessage(state,payload){
             state.loadMessage = payload
-        },
-        setTxId(state, payload){
-            state.id = payload;
-        },
-        setTxDescription(state, payload){
-            state.description = payload
-        },
-        setTxAddress(state, payload){
-            state.address = payload
-        },
-        setTxBalance(state,payload){
-            state.balance = payload
-        },
-        setTxFiat(state,payload){
-            state.fiat_currency = payload
-        },
-        setTxDateTime(state, payload){
-            state.datetime = payload
-        },
-        setTxFee(state, payload){
-            state.fee = payload
-        },
-        setTxCustomFee(state, payload){
-            state.customFee = payload
-        },
-        setTxStatus(state, payload){
-            state.status = payload
-        },
-        clearTransaction(state){
-            state.id = null
-            state.description = null
-            state.address = []
-            state.balance = []
-            state.fiat_currency = null
-            state.datetime = null
-            state.fee = null
-            state.customFee = null
-            state.status = null
         },
         //below is for testing, may remove
         pushPSBTArr(state, payload){
@@ -187,15 +144,6 @@ export default createStore({
         setTimeLock(state, payload){
             state.timeLock = payload
         },
-        setDelayedAddress(state, payload){
-            state.delayedAddress = payload
-        },
-        setImmediateAddress(state, payload){
-            state.immediateAddress = payload
-        },
-        setHotAddress(state, payload){
-            state.hotAddress = payload
-        },
         setCurrentSD(state, payload){
             state.currentSD = payload
         },
@@ -237,13 +185,6 @@ export default createStore({
     },
     modules:{},
     getters:{ //get data from state, allows for changing/filtering
-        getTransaction(state){
-          let  transaction = {id:state.id, description:state.description, address:state.address, balance:state.balance, fiat_currency:state.fiat_currency, datetime:state.datetime, fee:state.fee, customFee:state.customFee, status:state.status}
-            return (transaction)
-        },
-        getTxBalance(state){
-            return state.balance
-        },
         getTest(state){
             return state.test
         },
@@ -298,15 +239,6 @@ export default createStore({
         },
         getTimeLock(state){
             return state.timeLock
-        },
-        getDelayedAddress(state){
-            return state.delayedAddress
-        },
-        getImmediateAddress(state){
-            return state.immediateAddress
-        },
-        getHotAddress(state){
-            return state.hotAddress
         },
         getCurrentSD(state){
            return state.currentSD
