@@ -8,7 +8,10 @@
         <div class="head_container">
           <h1>Wallets</h1>
         </div>
-        <!-- <router-link class="wallet_container" :to="{ name: 'hot' }">
+
+<!-- the below code adds a display for a single sig hot wallet I had created for testing but this is deprecated and all assets 
+can be removed once immediate wallet is functional -->
+            <!-- <router-link class="wallet_container" :to="{ name: 'hot' }">
             <div class="wallet_container_left">
             <h2>Hot Wallet</h2>
             <h2 class="time_decay">Spend Now</h2>
@@ -30,7 +33,8 @@
             </div>
         </router-link> 
 
-        <router-link class="wallet_container" :to="{ name: 'delayed' }">
+<!-- Commenting out the link here as delayed wallet is not currently functional         -->
+        <!-- <router-link class="wallet_container" :to="{ name: 'delayed' }"> -->
           <div class="wallet_container_left">
           <h2>Delayed Wallet</h2>
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
@@ -39,7 +43,7 @@
             <h2 class="balance_overview">{{ delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
-        </router-link> 
+        <!-- </router-link>  -->
           <div class="decay_timer">
             <h2 class="time_decay">Approximate time until next decay: 1 year & 162 days</h2>
           </div>
