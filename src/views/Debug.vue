@@ -22,34 +22,6 @@
 
         <h2>setup Step Loaded: {{this.setupStep}}</h2>
 
-
-        <div class="switch">
-            Transfer CD Inserted (WARNING: setting this to false will clear the PSBT in memory)
-            <label class="toggle_switch_label">
-                <input v-if="this.psbtFound == true" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox" checked>
-                <input v-else-if="this.psbtFound == false" v-model="psbtFound" @click="psbtFoundToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch">
-            Set up CD inserted
-            <label class="toggle_switch_label">
-                <input v-if="this.setupCD == true" v-model="setupCD" @click="setupCDToggle()" type="checkbox" checked>
-                <input v-else-if="this.setupCD == false" v-model="setupCD" @click="setupCDToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch">
-            BTC Core Healthy
-            <label class="toggle_switch_label">
-                <input v-if="this.btcCoreHealthy == true" v-model="btcCoreHealthy" @click="btcCoreHealthyToggle()" type="checkbox" checked>
-                <input v-else-if="this.btcCoreHealthy == false" v-model="btcCoreHealthy" @click="btcCoreHealthyToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-
         <div class="switch">
             BPS Connection Healthy
             <label class="toggle_switch_label">
@@ -86,15 +58,6 @@
             <option @click="setNumberToRecover()" value=4>Four</option>
             <option @click="setNumberToRecover()" value=5>Five</option>
         </select>
-
-        <div class="switch">
-            Decrypted
-            <label class="toggle_switch_label">
-                <input v-if="this.decrypted == true" v-model="decrypted" @click="manualDecryptToggle()" type="checkbox" checked>
-                <input v-else-if="this.decrypted == false" v-model="decrypted" @click="manualDecryptToggle()" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
 
         <div class="switch">
             Published Time Machine Keys Found
@@ -172,7 +135,7 @@
     <br> 
     <button @click="spendPolicy()" class="btn">Spend Policy</button>
     <br> 
-    <button @click="getTransctionHIstory()()" class="btn">Transaction History</button>
+    <button @click="getTransctionHistory()()" class="btn">Transaction History</button>
 
     </div> 
 </div>
@@ -205,18 +168,6 @@ export default{
                 console.log('tripwire is healthy')
             }
         },
-        psbtFoundToggle(){
-            if(this.psbtFound == false){
-                store.commit('setPSBTFound', true)
-                store.commit('setDecrypted', true)
-            } else{
-                store.commit('setPSBTFound', false)
-                store.commit('setPSBT', null)
-                store.commit('clearTransaction')
-            }
-             console.log('PSBT Found', store.getters.getPSBTFound)   
-            },
-
         bpsBrickedToggle(){
             if(this.bpsBricked == false){
                 store.commit('setBPSBricked', true)
@@ -250,14 +201,6 @@ export default{
              console.log('Manually decrypted', store.getters.getDecrypted)
             },
         
-        manualDecryptToggle(){
-                if(this.decrypted == false){
-                store.commit('setDecrypted', true)
-            } else{
-                store.commit('setDecrypted', false)
-            }
-             console.log('Manually Decrypted', store.getters.getDecrypted)   
-        },
         tripWireSetupToggle(){
                 if(this.tripwireSetup == false){
                 store.commit('setTripwireSetup', true)
@@ -297,16 +240,8 @@ export default{
                 store.commit('setBPSHealthy', false)
             }
              console.log('BPS healthy', store.getters.getBPSHealthy) 
-        },  
-        setupCDToggle(){
-                if(this.setupCD == false){
-                store.commit('setSetupCD', true)
-            } else{
-                store.commit('setSetupCD', false)
-            }
-             console.log('Set up CD inserted', store.getters.getSetupCD) 
-        },     
-        getTransctionHIstory(){
+        },   
+        getTransctionHistory(){
             //this is a debug function used to print the immediate wallet transaction history vec
             invoke('get_transactions_med_wallet').then((res)=>{
                 store.commit('setTest', `obtaining transaction history for immediate wallet: ${res}`)
@@ -377,15 +312,6 @@ export default{
             store.commit('setNumberToRecover', this.numberToRecover)
             console.log('Number of privacy keys to manually decrypt', store.getters.getNumberToRecover)
         },
-        setPSBT(){
-            store.commit('setPSBTFound', this.psbtFound)
-            if(store.getters.getPSBTFound == true){
-                store.commit('setDecrypted', true)
-                console.log('manual decrypt', store.getters.getDecrypted)
-            }
-            console.log('PSBT Found', store.getters.getPSBTFound)
-            
-        }
 
     },
     //this is for testing with testPrint()
@@ -433,14 +359,6 @@ export default{
                 store.commit('setNumberToRecover', newVal)
             }
         },
-        psbtFound:{
-            get(){
-                return store.getters.getPSBTFound
-            },
-            set(newVal){
-                store.commit('setPSBTFound', newVal)
-            }
-        },
         bpsBricked:{
             get(){
                 return store.getters.getBPSBricked
@@ -464,14 +382,6 @@ export default{
             set(newVal){
                 store.commit('setPrivacyKeysFound', newVal)
             }   
-        },
-        decrypted:{
-            get(){
-                return store.getters.getDecrypted
-            },
-            set(newVal){
-                store.commit('setDecrypted', newVal)
-            }
         },
         tripwireSetup:{
             get(){
@@ -497,14 +407,6 @@ export default{
                 store.commit('setDuressSetup', newVal)
             }
         },
-        btcCoreHealthy:{
-            get(){
-                return store.getters.getBTCCoreHealthy
-            },
-            set(newVal){
-                store.commit('setBTCCoreHealthy', newVal)
-            }
-        },
         bpsHealthy:{
             get(){
                 return store.getters.getBPSHealthy
@@ -513,15 +415,6 @@ export default{
                 store.commit('setBPSHealthy',newVal)
             }
         },
-        setupCD:{
-            get(){
-                return store.getters.getSetupCD
-            },
-            set(newVal){
-                store.commit('setSetupCD', newVal)
-            }
-        },
-
     },
     }
 
