@@ -74,7 +74,7 @@ export default{
     },
              mounted(){
             invoke('get_balance_high_wallet').then((res)=>{
-            store.commit('setTest', `getting balance for high wallet: ${res}`)
+            store.commit('setTest', `getting balance for delayed wallet: ${res}`)
             store.commit('setDelayedBalance', `${res}`)
           })
           .catch((e)=>{
