@@ -9,7 +9,8 @@
         <div class="receive_container">
             <div class="receive_top">
                 <!-- <img src="@/assets/placeholderQR.png"> -->
-                <h2 class="receive_address">{{ address }}</h2>
+                
+                <h2 class="receive_address">Delayed wallet is not yet implemented</h2>
             </div>
             <div class="receive_bottom">
                 <div @click="copy(address)" id="copy">
