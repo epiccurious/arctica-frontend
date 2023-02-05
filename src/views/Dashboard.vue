@@ -33,8 +33,7 @@ can be removed once immediate wallet is functional -->
             </div>
         </router-link> 
 
-<!-- Commenting out the link here as delayed wallet is not currently functional         -->
-        <!-- <router-link class="wallet_container" :to="{ name: 'delayed' }"> -->
+        <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet</h2>
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
@@ -43,7 +42,7 @@ can be removed once immediate wallet is functional -->
             <h2 class="balance_overview">{{ delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
-        <!-- </router-link>  -->
+        </router-link> 
           <div class="decay_timer">
             <h2 class="time_decay">Approximate time until next decay: 1 year & 162 days</h2>
           </div>
