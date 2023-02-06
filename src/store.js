@@ -70,8 +70,8 @@ export default createStore({
     //various wallet balances
     quickBalance: null,
     hotBalance: null,
-    immediateBalance: null,
-    delayedBalance: null,
+    immediateBalance: 0,
+    delayedBalance: 0,
 
     //delayed wallet timelocked
     timeLock: true

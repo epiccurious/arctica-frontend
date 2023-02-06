@@ -70,19 +70,31 @@ export default {
     Compromised,
   },
      mounted(){
-      invoke('init_med_wallet').then((res)=> {
-        store.commit('setTest', `initializing immediate wallet ${res}`)
-        invoke('get_balance_med_wallet').then((res)=>{
-          store.commit('setTest', `getting balance for immediate wallet: ${res}`)
-          store.commit('setImmediateBalance', `${res}`)
+      invoke('sync_med_wallet').then((res)=> {
+        store.commit('setTest', `Syncing immediate wallet ${res}`)
+        invoke('init_med_wallet').then((res)=> {
+          store.commit('setTest', `initializing immediate wallet ${res}`)
+          invoke('get_balance_med_wallet').then((res)=>{
+            store.commit('setTest', `getting balance for immediate wallet: ${res}`)
+            store.commit('setImmediateBalance', `${res}`)
+            invoke('get_transactions_med_wallet').then((res)=>{
+              store.commit('setTest', `getting transactions for immediate wallet: ${res}`)
+            }).catch((e)=>{
+              store.commit('setTest', `error getting transactions for immediate wallet: ${e}`)
+            })
+          }).catch((e)=>{
+          store.commit('setTest', `error getting immediate wallet balance ${e}`)
+          })
         })
         .catch((e)=>{
-        store.commit('setTest', `error getting immediate wallet balance ${e}`)
+          store.commit('setTest', `error initializing immediate wallet ${e}`)
         })
+
+      }).catch((e)=>{
+        store.commit('setTest', `error syncing immediate wallet:${e}`)
       })
-      .catch((e)=>{
-        store.commit('setTest', `error initializing immediate wallet ${e}`)
-      })
+      
+      
 
       invoke('init_high_wallet').then((res)=> {
         store.commit('setTest', `initializing delayed wallet ${res}`)

@@ -533,6 +533,11 @@ h3{
     align-content:center;
     padding:5px;
 }
+.refresh_container{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
 .icons{
     display:flex;
     padding: 5px;
