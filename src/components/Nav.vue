@@ -20,6 +20,9 @@ import { RouterView, RouterLink } from "vue-router";
   RouterLink
 }
 import { RefreshIcon } from '@bitcoin-design/bitcoin-icons-vue/filled'
+import store from '../store.js'
+const invoke = window.__TAURI__.invoke
+
 
 export default{
     name: 'Nav',
