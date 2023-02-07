@@ -223,6 +223,19 @@ export default {
               //start bitcoind with networking enabled
               invoke('start_bitcoind').then((res)=> {
                 store.commit('setTest', `starting bitcoin daemon ${res}`)
+                //note: this conditional is nested within the previous conditional
+                //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
+                if(this.decrypted == true){
+                  store.commit('setTest', `decrypted state value is set to true, syncing med wallet...`)
+                  invoke('sync_med_wallet').then((res)=>{
+                    store.commit('setTest', `syncing immediate wallet: ${res}`)
+                    this.$router.push({ name: 'dashboard' })
+                  }).catch((e)=>{
+                    store.commit('setTest', `error syncing wallet:${e}`)
+                  })
+                }else{
+                  store.commit('setTest', 'decrypted state value is set to false')
+                }
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
@@ -231,16 +244,6 @@ export default {
           .catch((e)=> {
             store.commit('setTest', `mount internal error: ${e}`)
             })
-            //note: this conditional is nested within the previous conditional
-            //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
-            if(this.decrypted == true){
-              invoke('sync_med_wallet').then((res)=>{
-                store.commit('setTest', `syncing immediate wallet: ${res}`)
-                this.$router.push({ name: 'dashboard' })
-              }).catch((e)=>{
-                store.commit('setTest', `error syncing wallet:${e}`)
-              })
-            }
 
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
