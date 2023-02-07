@@ -116,6 +116,7 @@
     <router-link :to="{ name: 'piiPostSetup1' }">Recovery-Post-Setup-1</router-link>
     <router-link :to="{ name: 'piiPostSetup2' }">Recovery-Post-Setup-2</router-link>
     <router-link :to="{ name: 'piiPostSetup3' }">Recovery-Post-Setup-3</router-link>
+    <router-link :to="{ name: 'Error' }">Error-Screen</router-link>
   </nav>
   <!-- The above is a debug menu, will be removed -->
 </div>

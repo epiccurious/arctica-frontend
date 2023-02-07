@@ -11,6 +11,11 @@ const routes = [
     component: Welcome
   },
   {
+    path: '/error',
+    name: 'Error',
+    component: () => import('../views/Error.vue')
+   },
+  {
     path: '/boot',
     name: 'Boot',
     component: () => import('../views/Boot.vue')

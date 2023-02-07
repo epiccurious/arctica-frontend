@@ -29,6 +29,7 @@ export default createStore({
     test: [],
 
     loadMessage: '',
+    errorMessage: '',
 
     
     //post set up complete
@@ -82,6 +83,9 @@ export default createStore({
         },
         setLoadMessage(state,payload){
             state.loadMessage = payload
+        },
+        setErrorMessage(state,payload){
+            state.errorMessage = payload
         },
         //below is for testing, may remove
         pushPSBTArr(state, payload){
@@ -190,6 +194,9 @@ export default createStore({
         },
         getLoadMessage(state){
             return state.loadMessage
+        },
+        getErrorMessage(state){
+            return state.errorMessage
         },
         //below is for testing, may remove
         getPSBTArr(state){
