@@ -64,7 +64,7 @@ export default {
                                 this.loading = false
                                 this.$router.push({ name: 'dashboard' })
                             }).catch((e)=>{
-                            store.commit('setTest', `Error syncing immediate wallet: ${res}`)
+                            store.commit('setTest', `Error syncing immediate wallet: ${e}`)
                             })
                         })
                         .catch((e) => {
