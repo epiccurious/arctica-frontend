@@ -76,12 +76,17 @@ export default {
               this.$router.push({ name:'delayedBroadcast' })
             }
             //user has manually recovered password using the appropriate amount of SD cards
-            else if(this.decrypted == true){
+            else if(this.decrypted == true && this.currentSD == 1){
               store.commit('setTest', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
               //unpacking sensitive dir
               invoke('unpack').then((res)=>{
                 store.commit('setTest', `unpacking sensitive dir ${res}`)
-                this.$router.push({ name: 'dashboard' })
+                invoke('sync_med_wallet').then((res)=>{
+                  store.commit('setTest', `syncing immediate wallet: ${res}`)
+                  this.$router.push({ name: 'dashboard' })
+                }).catch((e)=>{
+                  store.commit('setTest', `Error syncing immediate wallet: ${res}`)
+                  })
               })
               .catch((e)=>{
                 store.commit('setTest', `error unpacking sensitive dir ${e}`)
@@ -195,7 +200,13 @@ export default {
               store.commit('setTest', `checking for masterkey: ${res}`)
               store.commit('setTest', 'masterkey found!')
               store.commit('setDecrypted', true)
-            }
+              //unpack sensitive since the masterkey is already in ramdisk
+              invoke('unpack').then((res)=>{
+                store.commit('setTest', `unpacking sensitive: ${res}`)
+              }).catch((e)=>{
+                store.commit(('setTest', `error unpacking sensitive: ${e}`))
+                })
+              }
             else{
               store.commit('setTest', `checking for masterkey: ${res}`)
               store.commit('setTest', `masterkey not found`)  
@@ -217,9 +228,20 @@ export default {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
               })
           })
-        .catch((e)=> {
-          store.commit('setTest', `mount internal error: ${e}`)
-          })
+          .catch((e)=> {
+            store.commit('setTest', `mount internal error: ${e}`)
+            })
+            //note: this conditional is nested within the previous conditional
+            //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
+            if(this.decrypted == true){
+              invoke('sync_med_wallet').then((res)=>{
+                store.commit('setTest', `syncing immediate wallet: ${res}`)
+                this.$router.push({ name: 'dashboard' })
+              }).catch((e)=>{
+                store.commit('setTest', `error syncing wallet:${e}`)
+              })
+            }
+
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
@@ -236,6 +258,8 @@ export default {
           store.commit('setTest', `mount internal error: ${e}`)
           })
         }
+
+
         //redirects
         //set up step redirects
         if(this.setupStep == 1 && this.currentSD == 1){
