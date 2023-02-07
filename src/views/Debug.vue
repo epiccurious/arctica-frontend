@@ -159,16 +159,10 @@ export default{
             else{
                 store.commit('setTimeLock', false)
             }
-            console.log('timelock', store.getters.getTimeLock)
         },
         setTripwire(){
             store.commit('setTripwireTripped', this.tripwire)
             this.tripwire = store.getters.getTripwireTripped
-            if(this.tripwire != 'none')
-            {console.log('the following tripwire is tripped:', this.tripwire)}
-            else{
-                console.log('tripwire is healthy')
-            }
         },
         bpsBrickedToggle(){
             if(this.bpsBricked == false){
@@ -176,7 +170,6 @@ export default{
             } else{
                 store.commit('setBPSBricked', false)
             }
-             console.log('BPS Bricked', store.getters.getBPSBricked)   
             },
 
             //this function automatically sets timelock to false, assuming that time machine keys have ben found, time lock should be disabled automatically
@@ -187,8 +180,6 @@ export default{
             } else{
                 store.commit('setTimeMachineKeysFound', false)
             }
-             console.log('Time Machine Keys Found', store.getters.getTimeMachineKeysFound)   
-             console.log('time locked', store.getters.getTimeLock)
             },
 
         privacyKeysFoundToggle(){
@@ -199,8 +190,6 @@ export default{
                 store.commit('setPrivacyKeysFound', false)
                 store.commit('setDecrypted', false)
             }
-             console.log('Privacy Keys Found', store.getters.getPrivacyKeysFound)   
-             console.log('Manually decrypted', store.getters.getDecrypted)
             },
         
         tripWireSetupToggle(){
@@ -209,7 +198,6 @@ export default{
             } else{
                 store.commit('setTripwireSetup', false)
             }
-             console.log('Tripwire Set up Completed', store.getters.getTripwireSetup) 
         },
         recoverySetupToggle(){
                 if(this.recoverySetup == false){
@@ -217,7 +205,6 @@ export default{
             } else{
                 store.commit('setRecoverySetup', false)
             }
-             console.log('Recovery Folder Set up Completed', store.getters.getRecoverySetup) 
         },
         duressSetupToggle(){
                 if(this.duressSetup == false){
@@ -225,7 +212,6 @@ export default{
             } else{
                 store.commit('setDuressSetup', false)
             }
-             console.log('Duress Set up Completed', store.getters.getDuressSetup) 
         },
         btcCoreHealthyToggle(){
                 if(this.btcCoreHealthy == false){
@@ -233,7 +219,6 @@ export default{
             } else{
                 store.commit('setBTCCoreHealthy', false)
             }
-             console.log('BTC core healthy', store.getters.getBTCCoreHealthy) 
         },
         bpsHealthyToggle(){
                 if(this.bpsHealthy == false){

@@ -10,7 +10,6 @@ export default{
     },
     methods: {
         onClick(){
-            console.log('button clicked')
         }
     },
 }

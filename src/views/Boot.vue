@@ -103,7 +103,6 @@ export default {
       })
     },
         help(){
-            console.log('fetching help')
         },
         install(){
           //show loader
