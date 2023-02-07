@@ -68,7 +68,10 @@ export default {
                 this.$router.push({name: 'immediateTransfer'})
             })
             .catch((e) => {
-          store.commit('setTest', `Error generating PSBT: ${e}`)
+                //eventually need to add front end feedback here rather than send to fatal error screen
+                store.commit('setTest', `Error generating PSBT: ${e}`)
+                store.commit('setErrorMessage', 'Error generating PSBT. Error code ImmediateSend1')
+                this.$router.push({ name: 'Error' })
             })
 
         },

@@ -55,6 +55,8 @@ export default {
           })
           .catch((e)=>{
             store.commit('setTest', `error getting new immediate wallet address ${e}`)
+            store.commit('setErrorMessage', 'Error getting new wallet address. Error code ImmediateReceive1')
+            this.$router.push({ name: 'Error' })
           })
         },
   },
@@ -70,6 +72,8 @@ export default {
           })
           .catch((e)=>{
             store.commit('setTest', `error getting immediate wallet address ${e}`)
+            store.commit('setErrorMessage', 'Error getting new wallet address. Error code ImmediateReceive2')
+            this.$router.push({ name: 'Error' })
           })
      }
 }
