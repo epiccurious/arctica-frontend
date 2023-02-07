@@ -46,7 +46,9 @@ export default {
                 this.$router.push({ name:'Setup9' })   
             })
             .catch((e) => {
-          store.commit('setTest', `create bootable error: ${e}`)
+            store.commit('setTest', `create bootable error: ${e}`)
+            store.commit('setErrorMessage', 'Error creating bootable. Error code Setup8-1')
+            this.$router.push({ name:'Error' })
             })
              
         },

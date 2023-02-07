@@ -55,24 +55,38 @@
                                                     this.loading = false
                                                 }).catch((e) => {
                                                     store.commit('setTest', `async write error: ${e}`)
+                                                    store.commit('setErrorMessage', 'Error with async write Error code Setup19b-1')
+                                                    this.$router.push({ name:'Error' })
                                                 })
                                             }).catch((e) => {
                                                     store.commit('setTest', `packup error: ${e}`)
+                                                    store.commit('setErrorMessage', 'Error packing up Error code Setup19b-2')
+                                                    this.$router.push({ name:'Error' })
                                                 })
                                         }).catch((e)=>{
                                             store.commit('setTest', `refresh setup CD error: ${e}`)
+                                            store.commit('setErrorMessage', 'Error refreshing setup CD Error code Setup19b-3')
+                                            this.$router.push({ name:'Error' })
                                             })
                                 }).catch((e) => {
                                     store.commit('setTest', `install SD deps error: ${e}`)
+                                    store.commit('setErrorMessage', 'Error installing SD dependencies Error code Setup19b-4')
+                                    this.$router.push({ name:'Error' })
                                 })
                     }).catch((e)=>{
                         store.commit('setTest', `distributing 2 shards error: ${e}`)
+                        store.commit('setErrorMessage', 'Error distributing 2 shards Error code Setup19b-5')
+                        this.$router.push({ name:'Error' })
                     })
             }).catch((e)=>{
                 store.commit('setTest', `create wallet error ${e}`)
+                store.commit('setErrorMessage', 'Error creating wallet Error code Setup19b-6')
+                this.$router.push({ name:'Error' })
             })
         }).catch((e) => {
             store.commit('setTest', `error reading setup CD: ${e}`)
+            store.commit('setErrorMessage', 'Error reading setup CD Error code Setup19b-7')
+            this.$router.push({ name:'Error' })
         })
         },
         data(){

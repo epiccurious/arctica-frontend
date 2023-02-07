@@ -65,6 +65,8 @@ export default {
     })
         .catch((e)=> {
           store.commit('setTest', `error reading setup CD: ${e}`)
+          store.commit('setErrorMessage', 'Error reading setup CD Error code Setup18a-1')
+          this.$router.push({ name:'Error' })
         })
         },
 
@@ -93,10 +95,14 @@ export default {
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+                store.commit('setErrorMessage', 'Error starting bitcoin daemon Error code Setup18a-2')
+                this.$router.push({ name:'Error' })
               })
           })
         .catch((e)=> {
           store.commit('setTest', `mount internal error: ${e}`)
+          store.commit('setErrorMessage', 'Error mounting internal disk Error code Setup18a-3')
+          this.$router.push({ name:'Error' })
           })
           }
 }

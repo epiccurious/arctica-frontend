@@ -30,6 +30,8 @@ export default {
         this.loading = false
       }).catch((e)=>{
         store.commit('setTest', `error with pack up: ${e}`)
+        store.commit('setErrorMessage', 'Error packing up. Error code Setup13-1')
+        this.$router.push({ name:'Error' })
       })
     },
     data(){

@@ -61,27 +61,39 @@ export default {
                                     this.$router.push({ name:'Setup13' }) 
                                 }).catch((e)=>{
                                     store.commit('setTest', `create setup cd error: ${e}`)
+                                    store.commit('setErrorMessage', 'Error creating setup CD. Error code Setup12-1')
+                                    this.$router.push({ name:'Error' })
                                 })
 
                             })
                             .catch((e)=>{
                                 store.commit('setTest', `error generating time machine key pair 4 ${e}`)
+                                store.commit('setErrorMessage', 'Error creating time machine key. Error code Setup12-2')
+                                this.$router.push({ name:'Error' })
                             })  
                         })
                         .catch((e)=>{
                             store.commit('setTest', `error generating time machine key pair 3 ${e}`)
+                            store.commit('setErrorMessage', 'Error creating time machine key. Error code Setup12-3')
+                            this.$router.push({ name:'Error' })
                         })  
                     })
                     .catch((e)=>{
                         store.commit('setTest', `error generating time machine key pair 2 ${e}`)
+                        store.commit('setErrorMessage', 'Error creating time machine key. Error code Setup12-4')
+                        this.$router.push({ name:'Error' })
                     })  
                 })
                 })
                 .catch((e)=>{
                     store.commit('setTest', `error generating time machine key pair 1 ${e}`)
+                    store.commit('setErrorMessage', 'Error creating time machine key. Error code Setup12-5')
+                    this.$router.push({ name:'Error' })
                 })  
             .catch((e)=>{
                 store.commit('setTest', `error generating wallet ${e}`)
+                store.commit('setErrorMessage', 'Error generating wallet. Error code Setup12-6')
+                this.$router.push({ name:'Error' })
         })             
         },
         warn(){
@@ -111,15 +123,21 @@ export default {
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+                store.commit('setErrorMessage', 'Error starting bitcoin daemon. Error code Setup12-7')
+                this.$router.push({ name:'Error' })
               })
           })
         .catch((e)=> {
-          store.commit('setTest', `mount internal error: ${e}`)
+            store.commit('setTest', `mount internal error: ${e}`)
+            store.commit('setErrorMessage', 'Error mounting internal. Error code Setup12-8')
+            this.$router.push({ name:'Error' })
           })
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             })
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
+                store.commit('setErrorMessage', 'Error with async write. Error code Setup12-9')
+                this.$router.push({ name:'Error' })
             })
     }
 }
