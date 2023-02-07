@@ -57,7 +57,7 @@ export default {
                         if(res == 'masterkey found'){
                         store.commit('setTest', 'Masterkey Found in Ramdisk')
                         invoke('unpack').then((res) => {
-                            store.commit('setTest', `successfully unpacked, sending user to dashboard: ${res}`)
+                            store.commit('setTest', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'syncing wallets...')
                             invoke('sync_med_wallet').then((res)=>{
                                 store.commit('setTest', `syncing immediate wallet: ${res}`)
