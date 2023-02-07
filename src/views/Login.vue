@@ -55,20 +55,27 @@ export default {
                     store.commit('setLoadMessage', 'checking for masterkey...')
                     invoke('check_for_masterkey').then((res) => {
                         if(res == 'masterkey found'){
+                        store.commit('setTest', 'Masterkey Found in Ramdisk')
                         invoke('unpack').then((res) => {
-                        this.loading = false
-                        store.commit('setTest', `successfully unpacked, sending user to dashboard: ${res}`)
-                        this.$router.push({ name: 'dashboard' })
+                            store.commit('setTest', `successfully unpacked, sending user to dashboard: ${res}`)
+                            store.commit('setLoadMessage', 'syncing wallets...')
+                            invoke('sync_med_wallet').then((res)=>{
+                                store.commit('setTest', `syncing immediate wallet: ${res}`)
+                                this.loading = false
+                                this.$router.push({ name: 'dashboard' })
+                            }).catch((e)=>{
+                            store.commit('setTest', `Error syncing immediate wallet: ${res}`)
+                            })
                         })
                         .catch((e) => {
                         store.commit('setTest', `error unpacking: ${e}`)
                         this.loading = false
                         })
-                    }
-                    else{
-                        store.commit('setTest', 'no masterkey was found on the CD')
-                        this.loading = false
-                    }
+                        }
+                        else{
+                            store.commit('setTest', 'no masterkey was found on the CD')
+                            this.loading = false
+                        }
                     })
                         .catch((e) => {
                         store.commit('setTest', `error checking for masterkey ${e}`)
