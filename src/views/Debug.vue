@@ -135,6 +135,8 @@
     <br> 
     <button @click="spendPolicy()" class="btn">Spend Policy</button>
     <br> 
+    <button @click="syncWallet()()" class="btn">Sync Wallet</button>
+    <br> 
     <button @click="getTransctionHistory()()" class="btn">Transaction History</button>
 
     </div> 
@@ -241,6 +243,14 @@ export default{
             }
              console.log('BPS healthy', store.getters.getBPSHealthy) 
         },   
+        syncWallet(){
+            //this is a debug function used to sync the immediate wallet, for testing after a completed rescan
+            invoke('sync_med_wallet').then((res)=>{
+                store.commit('setTest', `syncing immediate wallet:${res}`)
+            }).catch((e)=>{
+                store.commit('setTest', `error syncing immediate wallet: ${e}`)
+            })
+        },
         getTransctionHistory(){
             //this is a debug function used to print the immediate wallet transaction history vec
             invoke('get_transactions_med_wallet').then((res)=>{

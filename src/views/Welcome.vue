@@ -217,7 +217,9 @@ export default {
             store.commit('setTest',  `error checking for masterkey ${e}`)
           })
         }
-        //mount internal disk and symlink .bitcoin folders if user has completed initial setup and booted from an SD card
+        //if user has completed initial setup and booted from an SD card, mount internal disk and symlink .bitcoin folders..
+        //we MAY be better off removing this as if decrypted was true we assumed the ramdisk already exists above and thus we could probably also assume 
+        //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
         if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
               store.commit('setTest', `invoking mount internal ${res}`)
@@ -239,9 +241,7 @@ export default {
                 }
               })
               .catch((e)=> {
-                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
-                //daemon may already be running so attempt to sync here as well
-                
+                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)                
               })
           })
           .catch((e)=> {
