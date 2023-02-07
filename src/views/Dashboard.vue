@@ -79,28 +79,35 @@ export default {
               store.commit('setTest', `getting transactions for immediate wallet: ${res}`)
             }).catch((e)=>{
               store.commit('setTest', `error getting transactions for immediate wallet: ${e}`)
+              store.commit('setErrorMessage', 'Error getting transaction history for Immediate Wallet. Error code Dashboard1')
+              this.$router.push({ name: 'Error' })
             })
           }).catch((e)=>{
           store.commit('setTest', `error getting immediate wallet balance ${e}`)
+          store.commit('setErrorMessage', 'Error getting balance for Immediate Wallet. Error code Dashboard2')
+          this.$router.push({ name: 'Error' })
           })
         })
         .catch((e)=>{
           store.commit('setTest', `error initializing immediate wallet ${e}`)
+          store.commit('setErrorMessage', 'Error initializing Immediate Wallet. Error code Dashboard3')
+          this.$router.push({ name: 'Error' })
         })
             
-      invoke('init_high_wallet').then((res)=> {
-        store.commit('setTest', `initializing delayed wallet ${res}`)
-        invoke('get_balance_high_wallet').then((res)=>{
-          store.commit('setTest', `getting balance for delayed wallet: ${res}`)
-          store.commit('setDelayedBalance', `${res}`)
-        })
-        .catch((e)=>{
-        store.commit('setTest', `error getting delayed wallet balance ${e}`)
-        })
-      })
-      .catch((e)=>{
-        store.commit('setTest', `error initializing delayed wallet ${e}`)
-      })
+      //temporarily commenting out until work begins on delayed wallet features
+      // invoke('init_high_wallet').then((res)=> {
+      //   store.commit('setTest', `initializing delayed wallet ${res}`)
+      //   invoke('get_balance_high_wallet').then((res)=>{
+      //     store.commit('setTest', `getting balance for delayed wallet: ${res}`)
+      //     store.commit('setDelayedBalance', `${res}`)
+      //   })
+      //   .catch((e)=>{
+      //   store.commit('setTest', `error getting delayed wallet balance ${e}`)
+      //   })
+      // })
+      // .catch((e)=>{
+      //   store.commit('setTest', `error initializing delayed wallet ${e}`)
+      // })
 
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
