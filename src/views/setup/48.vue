@@ -46,6 +46,8 @@ export default {
                 this.$router.push({ name: 'Setup49a' })
                 }).catch((e) => {
                     store.commit('setTest', `error making and burning backup iso: ${e}`)
+                    store.commit('setErrorMessage', 'Error making backup iso Error code Setup48-1')
+                    this.$router.push({ name:'Error' })
                 })
                     },
         warn(){

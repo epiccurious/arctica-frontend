@@ -54,6 +54,8 @@ export default {
             })
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
+                store.commit('setErrorMessage', 'Error with async write Error code Setup41-1')
+                this.$router.push({ name:'Error' })
             })
     },
 }

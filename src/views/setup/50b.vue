@@ -53,6 +53,8 @@ export default {
             })
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)
+                store.commit('setErrorMessage', 'Error with async write Error code Setup50b-1')
+                this.$router.push({ name:'Error' })
             })
         
         invoke('mount_internal').then((res) => {
@@ -63,10 +65,14 @@ export default {
                 })
                 .catch((e) => {
                     store.commit('setTest', `error starting the bitcoin daemon: ${e}`)
+                    store.commit('setErrorMessage', 'Error starting Bitcoin Daemon Error code Setup50b-2')
+                    this.$router.push({ name:'Error' })
                 })
         })
         .catch((e) => {
             store.commit('setTest', `error mounting internal drive: ${e}`)
+            store.commit('setErrorMessage', 'Error mounting internal Error code Setup50b-3')
+            this.$router.push({ name:'Error' })
         })
 
 
