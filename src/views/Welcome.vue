@@ -86,10 +86,14 @@ export default {
                   this.$router.push({ name: 'dashboard' })
                 }).catch((e)=>{
                   store.commit('setTest', `Error syncing immediate wallet: ${e}`)
+                  store.commit('setErrorMessage', 'Error Syncing Immediate Wallet. Error code Welcome2')
+                  this.$router.push({ name: 'Error' })
                   })
               })
               .catch((e)=>{
                 store.commit('setTest', `error unpacking sensitive dir ${e}`)
+                store.commit('setErrorMessage', 'Error unpacking sensitive from welcome. Error code Welcome1')
+                this.$router.push({ name: 'Error' })
               })
               
             }
@@ -198,6 +202,8 @@ export default {
                 store.commit('setTest', `unpacking sensitive: ${res}`)
               }).catch((e)=>{
                 store.commit(('setTest', `error unpacking sensitive: ${e}`))
+                store.commit('setErrorMessage', 'Error unpacking sensitive. Error code Welcome8')
+                this.$router.push({ name: 'Error' })  
                 })
               }
             else{
@@ -210,11 +216,15 @@ export default {
               })
               .catch((e)=>{
                 store.commit('setTest', `error creating ramdisk ${e}`)
+                store.commit('setErrorMessage', 'Error creating ramdisk. Error code Welcome9')
+                this.$router.push({ name: 'Error' }) 
               })  
             }
             
           }).catch((e)=>{
             store.commit('setTest',  `error checking for masterkey ${e}`)
+            store.commit('setErrorMessage', 'Error checking for masterkey. Error code Welcome10')
+            this.$router.push({ name: 'Error' }) 
           })
         }
         //if user has completed initial setup and booted from an SD card, mount internal disk and symlink .bitcoin folders..
@@ -235,17 +245,23 @@ export default {
                     this.$router.push({ name: 'dashboard' })
                   }).catch((e)=>{
                     store.commit('setTest', `error syncing wallet:${e}`)
+                    store.commit('setErrorMessage', 'Error Syncing Immediate Wallet. Error code Welcome7')
+                    this.$router.push({ name: 'Error' })  
                   })
                 }else{
                   store.commit('setTest', 'decrypted state value is set to false')
                 }
               })
               .catch((e)=> {
-                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)                
+                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)    
+                store.commit('setErrorMessage', 'Error Starting Bitcoin Daemon. Error code Welcome6')
+                this.$router.push({ name: 'Error' })            
               })
           })
           .catch((e)=> {
             store.commit('setTest', `mount internal error: ${e}`)
+            store.commit('setErrorMessage', 'Error Mounting internal. Error code Welcome5')
+            this.$router.push({ name: 'Error' })
             })
 
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
@@ -258,10 +274,14 @@ export default {
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+                store.commit('setErrorMessage', 'Error starting bitcoin daemon with networking disabled. Error code Welcome3')
+                this.$router.push({ name: 'Error' })
               })
           })
         .catch((e)=> {
           store.commit('setTest', `mount internal error: ${e}`)
+          store.commit('setErrorMessage', 'Error Mounting internal. Error code Welcome4')
+          this.$router.push({ name: 'Error' })
           })
         }
 
@@ -342,6 +362,7 @@ export default {
         })
           .catch((e) => {
             store.commit('setTest', `read config error: ${e}`)
+
       })
 
     },
