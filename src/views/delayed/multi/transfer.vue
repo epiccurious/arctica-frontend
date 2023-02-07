@@ -33,11 +33,9 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, proceeding to sign')
             this.$router.push({ name: 'sign1of5' })
         },
                 warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
 
     },

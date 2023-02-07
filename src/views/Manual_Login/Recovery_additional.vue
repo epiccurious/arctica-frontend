@@ -32,10 +32,8 @@ export default {
   name: 'RecoveryAdditional',
     methods: {
         acknowledge(){
-            console.log('user ack, recovery initiating')
         },
         help(){
-            console.log('fetching help')
         }
     },
     computed: {

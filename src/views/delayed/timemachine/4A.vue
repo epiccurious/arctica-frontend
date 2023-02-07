@@ -19,7 +19,6 @@ export default {
   name: 'TimeMachine4A',
     methods: {
         acknowledge(){
-            console.log('user ack, proceeding to immediate receive tab')
             this.$router.push({ name: 'immediateReceive' })
         },
 

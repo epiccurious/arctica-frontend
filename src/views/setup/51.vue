@@ -22,7 +22,6 @@ export default {
   components: {},
     methods: {
         acknowledge(){
-            console.log('user ack, proceeding to login')
             this.$router.push({ name: 'welcome' })
 
             store.commit('setDuressSetup', false)

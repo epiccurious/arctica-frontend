@@ -31,11 +31,9 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, initiating tripwire')
             this.$router.push({ name: 'tripwirePostSetup2' })
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
         skip(){
             store.commit('setTripwireSetup', true)

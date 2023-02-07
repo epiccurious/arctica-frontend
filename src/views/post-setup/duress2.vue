@@ -28,10 +28,8 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, password confirmed')
         },
         warn(){
-            console.log('user trying to proceed without password match, need form correction')
         },
     },
      data(){

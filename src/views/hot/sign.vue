@@ -36,12 +36,10 @@ export default {
     name: 'hotSign',
     methods: {
         sign(){
-            console.log('signing...')
             this.signed = true
             this.$router.push({ name: 'hotBroadcast' })
         },
         discard(){
-            console.log('discarding PSBT')
             store.commit('clearTransaction')
             this.$router.push({name: 'hot'}) 
         },

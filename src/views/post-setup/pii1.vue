@@ -31,11 +31,9 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, initiating pii')
             this.$router.push({ name: 'piiPostSetup2' })
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
         skip(){
             store.commit('setRecoverySetup', true)

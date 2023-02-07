@@ -38,14 +38,12 @@ export default {
     //import PSBT eventually...
     methods: {
         sign(){
-            console.log('signing...')
             if(this.currentSD != 1 && this.currentSD != 0 && this.psbtFound == true){
                 store.commit('setPSBT', '5of5')
                 this.$router.push({ name: '5of5success' })
             }
         },
         discard(){
-            console.log('discarding PSBT')
             store.commit('clearTransaction')
             this.$router.push({ name: 'delayed' })
         }

@@ -30,7 +30,6 @@
     name: 'Recovery',
       methods: {
           acknowledge(){
-              console.log('user ack, recovery initiating')
               this.$router.push({ name: 'RecoveryInitiate' })
           },
       },

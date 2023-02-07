@@ -37,12 +37,10 @@ export default {
     components: {},
     methods: {
         broadcast(){
-            console.log('broadcasting...')
             this.$router.push({ name: 'delayedConfirmation' }) 
             store.commit('pushDelayedTransaction', this.transaction)
         },
         discard(){
-            console.log('discarding PSBT')
             store.commit('clearTransaction')
             this.$router.push({ name: 'delayed' }) 
         },

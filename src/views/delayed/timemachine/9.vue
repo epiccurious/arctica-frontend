@@ -27,7 +27,6 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, closing popup')
             this.$router.push({ name: 'delayed' })
             //update a global delayed wallet unlocked variable here
         },

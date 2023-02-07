@@ -105,11 +105,9 @@ export default {
                 }
         },
         passwordRecovery(){
-            console.log('Password Recovery Clicked')
             this.$router.push({ name: 'Recovery' })
         },
         warn(){
-            console.log('user trying to proceed without password match, need form correction')
         },
     },
  computed: {},

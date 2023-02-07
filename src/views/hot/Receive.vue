@@ -46,7 +46,6 @@ export default {
         alert('Copied Address!')
         },
         newAddress(){
-            console.log('new address clicked')
         },
   },
   data(){

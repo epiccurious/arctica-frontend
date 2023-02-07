@@ -71,7 +71,6 @@ export default {
         },
 
         warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
     },
     data(){

@@ -41,10 +41,8 @@ export default {
           alert('Copied Address!')
         },
         markComplete(){
-          console.log('Tripwire marked complete')
         },
         postpone(){
-            console.log('User postponing tripwire funding')
         }
       },
   data(){

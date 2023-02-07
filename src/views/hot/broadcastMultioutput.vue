@@ -50,12 +50,10 @@ export default {
     components: {},
     methods: {
         broadcast(){
-            console.log('broadcasting...')
             store.commit('pushHotTransaction', this.tx)
             this.$router.push({name: 'hotConfirmation'}) 
         },
         discard(){
-            console.log('discarding PSBT')
             store.commit('clearTransaction')
             store.commit('clearPSBTArr')
             this.$router.push({name: 'hot'}) 

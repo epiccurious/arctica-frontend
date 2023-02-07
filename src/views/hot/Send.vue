@@ -65,7 +65,6 @@ export default {
   },  
     methods: {
         continueFn(description, address, balance, fee, customFee){
-            console.log('Continue clicked')
             store.commit('setTxId', this.id)
             store.commit('setTxDescription', description)
             store.commit('setTxAddress', address)
@@ -83,23 +82,18 @@ export default {
         },
         // eventually the continueFn() should construct the PSBT
         addRecipient(){
-            console.log('Add recipient clicked')
             this.x = this.x + 1
         },
         removeRecipient(){
-            console.log('remove recipient clicked')
             this.x = this.x - 1
         },
         selectMax(){
-            console.log('Select max clicked')
             this.balance = this.hotBalance
         },
         customEnable(){
-            console.log('Custom Fee Selected')
             this.custom = true
         },
         customDisable(){
-            console.log('Custom Fee Deselected')
             this.custom = false
         },
     },

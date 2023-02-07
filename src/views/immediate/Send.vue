@@ -77,11 +77,9 @@ export default {
         },
         // eventually the continueFn() should construct and return the PSBT
         addRecipient(){
-            console.log('Add recipient clicked')
             this.multiOutput = true
         },
         selectMax(){
-            console.log('Select max clicked')
             this.balance = this.immediateBalance
         },
         //real time fee estimates currently disabled, hard coded values provided below

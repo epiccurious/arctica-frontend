@@ -24,7 +24,6 @@ export default{
             this.$router.push({ name: 'delayed' })
         },
         viewTx(){
-            console.log('view tx clicked')
             this.$router.push({path: `${this.id}`})
         }
     },

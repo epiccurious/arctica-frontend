@@ -33,11 +33,9 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, package 2 completed')
             this.$router.push({ name: 'Setup30' })
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
 
     },
@@ -50,7 +48,6 @@ export default {
     mounted(){
         //update sd card setupstep to 0
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
-            console.log('success')
             })
             .catch((e) => {
                 store.commit('setTest', `async write error: ${e}`)

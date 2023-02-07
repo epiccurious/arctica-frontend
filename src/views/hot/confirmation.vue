@@ -23,7 +23,6 @@ export default{
             this.$router.push({ name: 'hot' })
         },
         viewTx(){
-            console.log('view tx clicked')
             this.$router.push({path: `${this.id}`})
         },
     },

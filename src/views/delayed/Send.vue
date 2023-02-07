@@ -62,7 +62,6 @@ export default {
   },
     methods: {
         continueFn(description, address, balance, fee, customFee){
-            console.log('Continue clicked')
             store.commit('setTxId', this.id)
             store.commit('setTxDescription', description)
             store.commit('setTxAddress', address)
@@ -79,27 +78,21 @@ export default {
             this.constructed = transaction
         },
         addRecipient(){
-            console.log('Add recipient clicked')
             this.multiOutput = true
         },
         selectMax(){
-            console.log('Select max clicked')
             this.balance = this.delayedBalance
         },
         customEnable(){
-            console.log('Custom Fee Selected')
             this.custom = true
         },
         customDisable(){
-            console.log('Custom Fee Deselected')
             this.custom = false
         },
         closeOut(){
-          console.log('sign window closed')
           this.constructed = false
       },
         ackWarning(){
-        console.log('user acks time machine protocol')
         this.warning = false
       },
     },

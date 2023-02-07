@@ -56,7 +56,6 @@ export default {
   },
     methods: {
         continueFn(description, address, balance, fee, customFee){
-            console.log('Continue clicked')
             this.transaction = {id:100, description:description, address:address, balance:balance, fiat_currency:(20000*balance), datetime:'07oct20221000', fee:fee, customFee:customFee, status: 'unconfirmed'}
             this.txConstructed(this.transaction)
         },
@@ -68,19 +67,15 @@ export default {
             this.$router.push({ name: 'welcome' })
         },
         selectMax(){
-            console.log('Select max clicked')
             this.balance = this.quickBalance
         },
         customEnable(){
-            console.log('Custom Fee Selected')
             this.custom = true
         },
         customDisable(){
-            console.log('Custom Fee Deselected')
             this.custom = false
         },
         closeOut(){
-          console.log('sign window closed')
           this.constructed = false
       },
     },

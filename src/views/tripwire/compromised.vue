@@ -35,12 +35,10 @@ export default {
     },
     methods: {
             acknowledge(){
-            console.log('user ack, tripwire compromised')
             store.commit('setTripwireTripped', 'none')
             this.$router.push({ name: 'dashboard' })
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
 
     },

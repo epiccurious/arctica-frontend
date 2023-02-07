@@ -112,7 +112,6 @@ export default {
             
         },
         quickWithdrawal(){
-            console.log('quick withdrawal clicked')
             this.$router.push({ name: 'quick1' })
         },
     },

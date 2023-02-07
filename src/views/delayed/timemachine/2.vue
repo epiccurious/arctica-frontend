@@ -29,11 +29,9 @@ export default {
   name: 'TimeMachine2',
     methods: {
         acknowledge(){
-            console.log('user ack, gathering contact phone number')
             this.$router.push({ name: 'TimeMachine3' })
         },
         warn(){
-            console.log('user trying to proceed but phone numbers do no match')
         },
 
 

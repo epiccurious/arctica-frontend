@@ -39,14 +39,11 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, moving to confirm password')
             this.passwordSetup = true
         },
         warn(){
-            console.log('user trying to proceed without password match, need form correction')
         },
         goBack(){
-            console.log('user wants new password')
             this.passwordSetup = false
             this.password1 = ''
             this.password2 = ''

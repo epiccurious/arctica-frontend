@@ -30,10 +30,8 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, submitting pii')
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
 
     },

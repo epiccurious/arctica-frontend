@@ -19,7 +19,6 @@ export default {
   name: 'TimeMachine3A',
     methods: {
         acknowledge(){
-            console.log('user ack')
             this.$router.push({ name: 'dashboard' })
         },
 

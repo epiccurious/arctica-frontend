@@ -29,19 +29,14 @@
 export default {
   name: 'piiPostSetup2A',
     methods: {
-        acknowledge(){
-            console.log('user ack, recovery folder finished, proceeding')
-            
+        acknowledge(){            
         },
         warn(){
-            console.log('user trying to proceed without name and/or image')
         },
         addMember(){
-            console.log('adding a family member')
             this.addExtra = true
         },
         proceed(){
-            console.log('debug proceed')
             this.$router.push({ name: 'piiPostSetup3' })
         },
         onPickFile(){

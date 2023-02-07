@@ -37,13 +37,10 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, proceeding to immediate signing flow')
         },
         warn(){
-            console.log('user trying to proceed without checkbox validation')
         },
         goBack(){
-            console.log('user aborting time machine protocol')
             this.$router.push({ name: 'dashboard' })
         }
 

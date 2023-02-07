@@ -26,11 +26,9 @@ export default {
     },
     methods: {
         acknowledge(){
-            console.log('user ack, sync complete')
             this.$router.push({ name: 'Setup51' })
         },
         warn(){
-            console.log('user trying to proceed without completed sync')
         },
     },
     computed:{

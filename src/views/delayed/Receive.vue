@@ -58,7 +58,6 @@ export default {
           })
         },
         ackWarning(){
-          console.log('user acks time machine protocol')
           this.warning = false
       },
       },

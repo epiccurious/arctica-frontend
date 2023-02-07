@@ -29,10 +29,8 @@ export default {
   },
     methods: {
         acknowledge(){
-            console.log('user ack')
         },
         help(){
-            console.log('fetching help')
         }
     },
     mounted(){

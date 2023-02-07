@@ -226,7 +226,6 @@ export default{
             } else{
                 store.commit('setBPSHealthy', false)
             }
-             console.log('BPS healthy', store.getters.getBPSHealthy) 
         },   
         syncWallet(){
             //this is a debug function used to sync the immediate wallet, for testing after a completed rescan
@@ -301,11 +300,9 @@ export default{
         },
         setSD(){
             store.commit('setCurrentSD', this.sdCard)
-            console.log('Current SD', store.getters.getCurrentSD)
         },
         setNumberToRecover(){
             store.commit('setNumberToRecover', this.numberToRecover)
-            console.log('Number of privacy keys to manually decrypt', store.getters.getNumberToRecover)
         },
 
     },

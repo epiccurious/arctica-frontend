@@ -49,12 +49,10 @@ export default {
     name: 'hotSignMultioutput',
     methods: {
         sign(){
-            console.log('signing...')
             this.signed = true
             this.$router.push({ name: 'hotBroadcastMultioutput' })
         },
         discard(){
-            console.log('discarding PSBT')
             store.commit('clearTransaction')
             store.commit('clearPSBTArr')
             this.$router.push({name: 'hot'}) 
