@@ -29,8 +29,8 @@ export default{
     components: { RefreshIcon },
     methods: {
         sync(){
-        invoke('sync_med_wallet').then((res)=> {
-            store.commit('setTest', `Syncing immediate wallet ${res}`)
+        // invoke('sync_med_wallet').then((res)=> {
+        //     store.commit('setTest', `Syncing immediate wallet ${res}`)
             invoke('init_med_wallet').then((res)=> {
                 store.commit('setTest', `initializing immediate wallet ${res}`)
                 invoke('get_balance_med_wallet').then((res)=>{
@@ -48,9 +48,9 @@ export default{
             store.commit('setTest', `error initializing immediate wallet ${e}`)
             })
 
-        }).catch((e)=>{
-            store.commit('setTest', `error syncing immediate wallet:${e}`)
-        })
+        // }).catch((e)=>{
+        //     store.commit('setTest', `error syncing immediate wallet:${e}`)
+        // })
         }
     },
     computed: {
