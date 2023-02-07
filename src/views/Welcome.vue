@@ -187,13 +187,6 @@ export default {
         store.commit('setTest', `exiting config read`)
         //if the user has completed the initial flash of the first 7 sd cards (config is present) create ramdisk and check for masterkey
         if(this.currentSD != 0){
-          //creating ramdisk for sensitive data
-          invoke('create_ramdisk').then((res)=>{
-            store.commit('setTest', `creating ramdisk ${res}`)
-          })
-          .catch((e)=>{
-            store.commit('setTest', `error creating ramdisk ${e}`)
-          })
           //check for masterkey
           invoke('check_for_masterkey').then((res)=>{
             if(res == 'masterkey found'){
@@ -209,7 +202,15 @@ export default {
               }
             else{
               store.commit('setTest', `checking for masterkey: ${res}`)
-              store.commit('setTest', `masterkey not found`)  
+              store.commit('setTest', `masterkey not found`)
+              //creating ramdisk for sensitive data
+              //if the masterkey is not found we can assume that ramdisk probably does not already exist.
+              invoke('create_ramdisk').then((res)=>{
+                store.commit('setTest', `creating ramdisk ${res}`)
+              })
+              .catch((e)=>{
+                store.commit('setTest', `error creating ramdisk ${e}`)
+              })  
             }
             
           }).catch((e)=>{
@@ -239,6 +240,8 @@ export default {
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+                //daemon may already be running so attempt to sync here as well
+                
               })
           })
           .catch((e)=> {
