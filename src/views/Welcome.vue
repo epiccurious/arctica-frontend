@@ -3,6 +3,10 @@
   <header>
     <h1>Welcome to Arctica</h1>
     <h2>Hang Tight. We are checking on a few things.</h2>
+    <div v-if="this.btcCoreHealthy == false">
+    <h2>Bitcoin Core Must Finish Syncing</h2>
+    <h2>Progress: {{ syncProgress }}%</h2>
+  </div>
   </header>
     <div class="btn_container"> 
         <button class="btn3">Log in</Button>
@@ -159,6 +163,11 @@ export default {
         return store.getters.getSetupStep
       }
     },
+    data(){
+        return{
+            syncProgress: 0
+        }
+    },
     mounted(){
       //reading config values 
       invoke('read').then((res) => {
@@ -234,6 +243,25 @@ export default {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
                 //note: this conditional is nested within the previous conditional
                 //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
+                    //check sync status of chain every 10 seconds
+                    while (this.btcCoreHealthy == false) {
+                        setTimeout(invoke('sync_status').then((res) => {
+                            store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
+                            let percentage = Math.floor(res)
+                            if(percentage != 100) {
+                            store.commit('setDebug', 'Not fully synced')
+                            this.syncProgress = percentage
+                            } else{
+                                store.commit('setBTCCoreHealthy', true)
+                            }
+                        }).catch((e) =>{
+                            store.commit('setDebug', `error checking sync status: ${e}`)
+                            store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
+                            this.$router.push({ name:'Error' })
+                        })
+                        ), 10000
+                    }
+
                 if(this.decrypted == true){
                   store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
                   invoke('sync_med_wallet').then((res)=>{
