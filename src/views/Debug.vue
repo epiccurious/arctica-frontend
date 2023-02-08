@@ -236,7 +236,7 @@ export default{
             }).catch((e)=>{
                 store.commit('setDebug', `error checking sync status ${e}`)
             })
-        }
+        },
         
         syncWallet(){
             //this is a debug function used to sync the immediate wallet, for testing after a completed rescan
