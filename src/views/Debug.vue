@@ -138,6 +138,8 @@
     <button @click="syncWallet()()" class="btn">Sync Wallet</button>
     <br> 
     <button @click="getTransctionHistory()()" class="btn">Transaction History</button>
+    <br> 
+    <button @click="checkSync()()" class="btn">Sync Status</button>
 
     </div> 
 </div>
@@ -227,6 +229,15 @@ export default{
                 store.commit('setBPSHealthy', false)
             }
         },   
+        checkSync(){
+        //this is a debug function used to check the sync of the bitcoin blockchain
+            invoke('sync_status').then((res)=>{
+                store.commit('setDebug', `sync status: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `error checking sync status ${e}`)
+            })
+        }
+        
         syncWallet(){
             //this is a debug function used to sync the immediate wallet, for testing after a completed rescan
             invoke('sync_med_wallet').then((res)=>{

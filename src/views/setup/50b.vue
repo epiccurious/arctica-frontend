@@ -5,8 +5,7 @@
         <h2>Now we must wait for Bitcoin Core to finish it's initial sync.</h2>
         <h2>This computer should remain on and unlocked until the time chain has finished it's sync.</h2> 
         <h2>This can take anywhere from a few hours to a few weeks depending on your internet connection.</h2>
-        <h3>PLACEHOLDER PROGRESS BAR</h3>
-        <h3>Progress: 56% complete.</h3>
+        <h3>Progress: {{ syncProgress }}% complete.</h3>
     </header>
         <div class="btn_container"> 
             <button v-if="this.btcCoreHealthy == true" @click="acknowledge()" class="btn">Proceed</Button>
@@ -39,6 +38,7 @@ export default {
     data(){
         return{
             setupStep: '0',
+            syncProgress: 0
         }
     },
     mounted(){
@@ -69,6 +69,24 @@ export default {
             store.commit('setErrorMessage', `Error mounting internal Error code: Setup50b-3 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
+        //check sync status of chain every 10 seconds
+        while (this.btcCoreHealthy == false) {
+            setTimeout(invoke('sync_status').then((res) => {
+                store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
+                let percentage = Math.floor(res)
+                if(percentage != 100) {
+                store.commit('setDebug', 'Not fully synced')
+                this.syncProgress = percentage
+                } else{
+                    store.commit('setBTCCoreHealthy', true)
+                }
+            }).catch((e) =>{
+                store.commit('setDebug', `error checking sync status: ${e}`)
+                store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
+                this.$router.push({ name:'Error' })
+            })
+            ), 10000
+        }
 
 
     },

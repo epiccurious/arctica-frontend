@@ -35,7 +35,7 @@ export default createStore({
     //post set up complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
-    psbtFound:false, psbt:null, btcCoreHealthy:true, bpsHealthy:true, tripwireTripped:'none', timeMachineKeysFound:false, privacyKeysFound:false,
+    psbtFound:false, psbt:null, btcCoreHealthy:false, bpsHealthy:true, tripwireTripped:'none', timeMachineKeysFound:false, privacyKeysFound:false,
 
     bpsBricked: false,
     decrypted: false,
