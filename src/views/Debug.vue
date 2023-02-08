@@ -3,7 +3,7 @@
     <header>
         <h1>Debug Console:</h1>
     </header>
-        <h2 v-for="item in this.test" :key="item">{{item}}</h2>
+        <h2 v-for="item in this.debug" :key="item">{{item}}</h2>
     <div class="btn_container"> 
         <h2>Current Route: {{this.$route.name}}</h2>
         <button @click="reboot()" class="btn">Reboot</button>
@@ -313,8 +313,8 @@ export default{
         }
     },
     computed:{
-        test(){
-            return store.getters.getTest
+        debug(){
+            return store.getters.getDebug
         },
         setupStep(){
             return store.getters.getSetupStep

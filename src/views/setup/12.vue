@@ -107,11 +107,6 @@ export default {
             loading: false,
         }
     },
-        computed:{
-        test(){
-            return store.getters.getTest
-        }
-    },
     mounted(){
         //mount and symlink internal .bitcoin dirs
         invoke('mount_internal').then((res)=> {

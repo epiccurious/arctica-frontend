@@ -64,10 +64,5 @@ export default {
             setupStep: '1'
         }
     },
-    computed: {
-        test(){
-      return store.getters.getTest
-    }
-    },
 }
 </script>

@@ -95,12 +95,7 @@ export default {
             setupStep: '9',
             loading: false,
         }
-    },
-    computed: {
-        test(){
-      return store.getters.getTest
     }
-    },
 }
 </script>
 

@@ -138,9 +138,6 @@ export default {
     numberToRecover(){
       return store.getters.getNumberToRecover
     },
-    test(){
-      return store.getters.getTest
-    }
   },
   data() {
     return {

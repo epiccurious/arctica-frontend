@@ -35,9 +35,6 @@ export default {
         btcCoreHealthy(){
             return store.getters.getBTCCoreHealthy
         },
-        test(){
-      return store.getters.getTest
-    }
     },
     data(){
         return{

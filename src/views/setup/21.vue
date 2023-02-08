@@ -80,9 +80,6 @@ export default {
         setupCD(){
             return store.getters.getSetupCD
         },
-        test(){
-            return store.getters.getTest
-        }
     }
 }
 </script>

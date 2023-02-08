@@ -149,9 +149,6 @@ export default {
       bpsBricked(){
         return store.getters.getBPSBricked
       },
-      test(){
-        return store.getters.getTest
-      },
       decrypted(){
         if(this.privacyKeysFound == true){
           store.commit('setDecrypted', true)
