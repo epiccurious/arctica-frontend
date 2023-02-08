@@ -162,6 +162,24 @@ export default {
       setupStep(){
         return store.getters.getSetupStep
       },
+      syncStatus(){
+        while (this.btcCoreHealthy == false) {
+          invoke('sync_status').then((res) => {
+            store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
+            let percentage = Math.floor(res)
+            if(percentage != 100) {
+              store.commit('setDebug', 'Not fully synced')
+              this.syncProgress = percentage
+            } else{
+                store.commit('setBTCCoreHealthy', true)
+            }
+          }).catch((e) =>{
+              store.commit('setDebug', `error checking sync status: ${e}`)
+              store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
+              this.$router.push({ name:'Error' })
+            })
+        }
+      }
     },
     data(){
         return{
@@ -243,22 +261,6 @@ export default {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
                 //note: this conditional is nested within the previous conditional
                 //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
-                while (this.btcCoreHealthy == false) {
-                  invoke('sync_status').then((res) => {
-                  store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
-                  let percentage = Math.floor(res)
-                  if(percentage != 100) {
-                  store.commit('setDebug', 'Not fully synced')
-                  this.syncProgress = percentage
-                  } else{
-                      store.commit('setBTCCoreHealthy', true)
-                  }
-                  }).catch((e) =>{
-                      store.commit('setDebug', `error checking sync status: ${e}`)
-                      store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
-                      this.$router.push({ name:'Error' })
-                  })
-                }
                 if(this.decrypted == true && this.btcCoreHealthy == true){
                   store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
                   invoke('sync_med_wallet').then((res)=>{
@@ -284,7 +286,6 @@ export default {
             store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
             this.$router.push({ name: 'Error' })
             })
-
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
