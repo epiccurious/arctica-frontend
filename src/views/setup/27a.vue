@@ -40,29 +40,29 @@ export default {
         this.loading = true
         store.commit('setLoadMessage', 'Reading Setup CD...')
         invoke('read_cd').then((res) => {
-            store.commit('setTest', `invoking read_cd: ${res}`)
+            store.commit('setDebug', `invoking read_cd: ${res}`)
             let resArray = res.split("\n")
-            store.commit('setTest', `response Array: ${resArray}`)
+            store.commit('setDebug', `response Array: ${resArray}`)
             for(let i = 0; i < resArray.length; i ++){
                 let it = resArray[i].split("=")
-                store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+                store.commit('setDebug', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
                 //check for setup CD
                 if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'SETUPCD'){
                     store.commit('setSetupCD', true)
-                    store.commit('setTest', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
+                    store.commit('setDebug', `Set up CD detected, boolean set to true ${store.getters.getSetupCD}`)
                     this.loading = false
                     this.$router.push({ name: 'Setup27b' })
                     break
                 }
                 else{
-                    store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+                    store.commit('setDebug', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
                 }
             }
         //fallback in case user did not insert correct disc
         this.loading = false
          })
         .catch((e)=> {
-          store.commit('setTest', `error reading setup CD: ${e}`)
+          store.commit('setDebug', `error reading setup CD: ${e}`)
           store.commit('setErrorMessage', `Error reading setup CD Error code: Setup27a-1 Response: ${e}`)
         this.$router.push({ name:'Error' })
         })

@@ -36,25 +36,25 @@ export default {
     mounted(){
       //copying recovery cd to ramdisk
       invoke('copy_recovery_cd').then((res)=>{
-        store.commit('setTest', `copying recovery cd ${res}`)
+        store.commit('setDebug', `copying recovery cd ${res}`)
         //combine shards into masterkey
         invoke('combine_shards').then((res)=>{
-            store.commit('setTest', `combining shards in ramdisk ${res}`)
+            store.commit('setDebug', `combining shards in ramdisk ${res}`)
             //refresh cd with masterkey and a new config designator: transfercd
             invoke('convert_to_transfer_cd').then((res)=>{
-              store.commit('setTest', `converting cd to a transfer cd: ${res}`)
+              store.commit('setDebug', `converting cd to a transfer cd: ${res}`)
               this.loading=false
             })
             .catch((e)=>{
-              store.commit('setTest', `error converting to transfer cd ${e}`)
+              store.commit('setDebug', `error converting to transfer cd ${e}`)
             })
           })
           .catch((e)=>{
-            store.commit('setTest', `error combining shards ${e}`)
+            store.commit('setDebug', `error combining shards ${e}`)
           })
       })
       .catch((e)=>{
-        store.commit('setTest', `error copying recovery cd ${e}`)
+        store.commit('setDebug', `error copying recovery cd ${e}`)
       })
     },
     data() {

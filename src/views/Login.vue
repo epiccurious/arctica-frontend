@@ -49,48 +49,48 @@ export default {
             if(this.checkbox == true){
                 this.loading = true
                 store.commit('setLoadMessage', 'Reading CD...')
-                store.commit('setTest', 'checking inserted CD for masterkey')
+                store.commit('setDebug', 'checking inserted CD for masterkey')
                 invoke('copy_cd_to_ramdisk').then((res) => {
-                    store.commit('setTest', `copying CD to ramdisk: ${res}`)
+                    store.commit('setDebug', `copying CD to ramdisk: ${res}`)
                     store.commit('setLoadMessage', 'checking for masterkey...')
                     invoke('check_for_masterkey').then((res) => {
                         if(res == 'masterkey found'){
-                        store.commit('setTest', 'Masterkey Found in Ramdisk')
+                        store.commit('setDebug', 'Masterkey Found in Ramdisk')
                         invoke('unpack').then((res) => {
-                            store.commit('setTest', `successfully unpacked: ${res}`)
+                            store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'syncing wallets...')
                             invoke('sync_med_wallet').then((res)=>{
-                                store.commit('setTest', `syncing immediate wallet: ${res}`)
+                                store.commit('setDebug', `syncing immediate wallet: ${res}`)
                                 this.loading = false
                                 this.$router.push({ name: 'dashboard' })
                             }).catch((e)=>{
-                            store.commit('setTest', `Error syncing immediate wallet: ${e}`)
+                            store.commit('setDebug', `Error syncing immediate wallet: ${e}`)
                             store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Login1 Response: ${e}`)
                             this.$router.push({ name: 'Error' }) 
                             })
                         })
                         .catch((e) => {
-                        store.commit('setTest', `error unpacking: ${e}`)
+                        store.commit('setDebug', `error unpacking: ${e}`)
                         store.commit('setErrorMessage', `Error unpacking sensitive Error code: Login2 Response: ${e}`)
                         this.$router.push({ name: 'Error' }) 
                         })
                         }
                         else{
                             //eventually need to add front end feedback here prompting the user on what to do next rather than send to fatal error screen
-                            store.commit('setTest', 'no masterkey was found on the CD')
-                            store.commit('setErrorMessage', `Error copying CD to Ramdisk Error code: Login5 Response: ${e}`)
+                            store.commit('setDebug', 'no masterkey was found on the CD')
+                            store.commit('setErrorMessage', `Error no masterkey found on CD Error code: Login5 No Response Message`)
                             this.$router.push({ name: 'Error' }) 
                         }
                     })
                         .catch((e) => {
-                        store.commit('setTest', `error checking for masterkey ${e}`)
+                        store.commit('setDebug', `error checking for masterkey ${e}`)
                         store.commit('setErrorMessage', `Error Checking for masterkey Error code: Login3 Response: ${e}`)
                         this.$router.push({ name: 'Error' }) 
                     })
                 })
                 .catch((e) => {
                     //eventually need to add front end feedback here prompting the user on what to do next rather than send to fatal error screen
-                    store.commit('setTest', `error copying CD to ramdisk ${e}`)
+                    store.commit('setDebug', `error copying CD to ramdisk ${e}`)
                     store.commit('setErrorMessage', `Error copying CD to Ramdisk Error code: Login4 Response: ${e}`)
                     this.$router.push({ name: 'Error' }) 
                 })

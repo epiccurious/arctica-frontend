@@ -26,7 +26,7 @@ export default createStore({
     // setupStep 15 placed on SD 1 at step 25 to jump user to step 50b last sd 1, setupStep set to 0 at step 50b 
     setupStep: 0,
 
-    test: [],
+    debug: [],
 
     loadMessage: '',
     errorMessage: '',
@@ -78,8 +78,8 @@ export default createStore({
     timeLock: true
     },
     mutations:{//synchronous, alters data in state (commit)
-        setTest(state,value){
-            state.test.push(value)
+        setDebug(state,value){
+            state.debug.push(value)
         },
         setLoadMessage(state,payload){
             state.loadMessage = payload
@@ -189,8 +189,8 @@ export default createStore({
     },
     modules:{},
     getters:{ //get data from state, allows for changing/filtering
-        getTest(state){
-            return state.test
+        getDebug(state){
+            return state.debug
         },
         getLoadMessage(state){
             return state.loadMessage

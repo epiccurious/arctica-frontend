@@ -50,11 +50,11 @@ export default {
         },
         newAddress(){
             invoke('get_address_high_wallet').then((res)=>{
-            store.commit('setTest', `getting new address for delayed wallet: ${res}`)
+            store.commit('setDebug', `getting new address for delayed wallet: ${res}`)
             this.address = res
           })
           .catch((e)=>{
-            store.commit('setTest', `error getting new delayed wallet address ${e}`)
+            store.commit('setDebug', `error getting new delayed wallet address ${e}`)
           })
         },
         ackWarning(){
@@ -69,11 +69,11 @@ export default {
   },
    mounted(){
     invoke('get_address_high_wallet').then((res)=>{
-        store.commit('setTest', `getting address for delayed wallet: ${res}`)
+        store.commit('setDebug', `getting address for delayed wallet: ${res}`)
         this.address = res
         })
         .catch((e)=>{
-        store.commit('setTest', `error getting delayed wallet address ${e}`)
+        store.commit('setDebug', `error getting delayed wallet address ${e}`)
         })
     this.timeLock = store.getters.getTimeLock
     this.address = store.getters.getDelayedAddress

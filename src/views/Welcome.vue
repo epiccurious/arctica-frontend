@@ -77,21 +77,21 @@ export default {
             }
             //user has manually recovered password using the appropriate amount of SD cards
             else if(this.decrypted == true && this.currentSD == 1){
-              store.commit('setTest', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
+              store.commit('setDebug', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
               //unpacking sensitive dir
               invoke('unpack').then((res)=>{
-                store.commit('setTest', `unpacking sensitive dir ${res}`)
+                store.commit('setDebug', `unpacking sensitive dir ${res}`)
                 invoke('sync_med_wallet').then((res)=>{
-                  store.commit('setTest', `syncing immediate wallet: ${res}`)
+                  store.commit('setDebug', `syncing immediate wallet: ${res}`)
                   this.$router.push({ name: 'dashboard' })
                 }).catch((e)=>{
-                  store.commit('setTest', `Error syncing immediate wallet: ${e}`)
+                  store.commit('setDebug', `Error syncing immediate wallet: ${e}`)
                   store.commit('setErrorMessage', `Error Syncing Immediate Wallet. Error code: Welcome2 Response: ${e}`)
                   this.$router.push({ name: 'Error' })
                   })
               })
               .catch((e)=>{
-                store.commit('setTest', `error unpacking sensitive dir ${e}`)
+                store.commit('setDebug', `error unpacking sensitive dir ${e}`)
                 store.commit('setErrorMessage', `Error unpacking sensitive from welcome. Error code: Welcome1 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
               })
@@ -165,63 +165,63 @@ export default {
     mounted(){
       //reading config values 
       invoke('read').then((res) => {
-          store.commit('setTest', `invoking read config: ${res}`)
+          store.commit('setDebug', `invoking read config: ${res}`)
           let resArray = res.split("\n")
-          store.commit('setTest', `response Array: ${resArray}`)
+          store.commit('setDebug', `response Array: ${resArray}`)
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
-            store.commit('setTest', `for loop number: ${i+1}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
+            store.commit('setDebug', `for loop number: ${i+1}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
             //check config for current SD
             if (String(it[0]).toUpperCase() == 'SDNUMBER'){
               store.commit('setCurrentSD', parseInt(it[1]))
               this.currentSD == store.getters.getCurrentSD
-              store.commit('setTest', `SD NUMBER successfully set to: ${this.currentSD}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+              store.commit('setDebug', `SD NUMBER successfully set to: ${this.currentSD}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
             //check config for current setup step
             else if(String(it[0]).toUpperCase() == 'SETUPSTEP'){
               store.commit('setSetupStep', parseInt(it[1]))
               this.setupStep == store.getters.getSetupStep
-              store.commit('setTest', `SETUP STEP successfully set to: ${this.setupStep}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+              store.commit('setDebug', `SETUP STEP successfully set to: ${this.setupStep}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
             else{
-              store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+              store.commit('setDebug', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
         }
-        store.commit('setTest', `exiting config read`)
+        store.commit('setDebug', `exiting config read`)
         //if the user has completed the initial flash of the first 7 sd cards (config is present) create ramdisk and check for masterkey
         if(this.currentSD != 0){
           //check for masterkey
           invoke('check_for_masterkey').then((res)=>{
             if(res == 'masterkey found'){
-              store.commit('setTest', `checking for masterkey: ${res}`)
-              store.commit('setTest', 'masterkey found!')
+              store.commit('setDebug', `checking for masterkey: ${res}`)
+              store.commit('setDebug', 'masterkey found!')
               store.commit('setDecrypted', true)
               //unpack sensitive since the masterkey is already in ramdisk
               invoke('unpack').then((res)=>{
-                store.commit('setTest', `unpacking sensitive: ${res}`)
+                store.commit('setDebug', `unpacking sensitive: ${res}`)
               }).catch((e)=>{
-                store.commit(('setTest', `error unpacking sensitive: ${e}`))
+                store.commit(('setDebug', `error unpacking sensitive: ${e}`))
                 store.commit('setErrorMessage', `Error unpacking sensitive Error code: Welcome8 Response: ${e}`)
                 this.$router.push({ name: 'Error' })  
                 })
               }
             else{
-              store.commit('setTest', `checking for masterkey: ${res}`)
-              store.commit('setTest', `masterkey not found`)
+              store.commit('setDebug', `checking for masterkey: ${res}`)
+              store.commit('setDebug', `masterkey not found`)
               //creating ramdisk for sensitive data
               //if the masterkey is not found we can assume that ramdisk probably does not already exist.
               invoke('create_ramdisk').then((res)=>{
-                store.commit('setTest', `creating ramdisk ${res}`)
+                store.commit('setDebug', `creating ramdisk ${res}`)
               })
               .catch((e)=>{
-                store.commit('setTest', `error creating ramdisk ${e}`)
+                store.commit('setDebug', `error creating ramdisk ${e}`)
                 store.commit('setErrorMessage', `Error creating ramdisk. Error code: Welcome9 Response: ${e}`)
                 this.$router.push({ name: 'Error' }) 
               })  
             }
             
           }).catch((e)=>{
-            store.commit('setTest',  `error checking for masterkey ${e}`)
+            store.commit('setDebug',  `error checking for masterkey ${e}`)
             store.commit('setErrorMessage', `Error checking for masterkey. Error code: Welcome10 Response: ${e}`)
             this.$router.push({ name: 'Error' }) 
           })
@@ -231,34 +231,34 @@ export default {
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
         if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
-              store.commit('setTest', `invoking mount internal ${res}`)
+              store.commit('setDebug', `invoking mount internal ${res}`)
               //start bitcoind with networking enabled
               invoke('start_bitcoind').then((res)=> {
-                store.commit('setTest', `starting bitcoin daemon ${res}`)
+                store.commit('setDebug', `starting bitcoin daemon ${res}`)
                 //note: this conditional is nested within the previous conditional
                 //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
                 if(this.decrypted == true){
-                  store.commit('setTest', `decrypted state value is set to true, syncing med wallet...`)
+                  store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
                   invoke('sync_med_wallet').then((res)=>{
-                    store.commit('setTest', `syncing immediate wallet: ${res}`)
+                    store.commit('setDebug', `syncing immediate wallet: ${res}`)
                     this.$router.push({ name: 'dashboard' })
                   }).catch((e)=>{
-                    store.commit('setTest', `error syncing wallet:${e}`)
+                    store.commit('setDebug', `error syncing wallet:${e}`)
                     store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Welcome7 Response: ${e}`)
                     this.$router.push({ name: 'Error' })  
                   })
                 }else{
-                  store.commit('setTest', 'decrypted state value is set to false')
+                  store.commit('setDebug', 'decrypted state value is set to false')
                 }
               })
               .catch((e)=> {
-                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)    
+                store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)    
                 store.commit('setErrorMessage', `Error Starting Bitcoin Daemon Error code: Welcome6 Response: ${e}`)
                 this.$router.push({ name: 'Error' })            
               })
           })
           .catch((e)=> {
-            store.commit('setTest', `mount internal error: ${e}`)
+            store.commit('setDebug', `mount internal error: ${e}`)
             store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
             this.$router.push({ name: 'Error' })
             })
@@ -266,19 +266,19 @@ export default {
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
-              store.commit('setTest', `invoking mount internal ${res}`)
+              store.commit('setDebug', `invoking mount internal ${res}`)
               //start bitcoind with networking disabled
               invoke('start_bitcoind_network_off').then((res)=> {
-                store.commit('setTest', `starting bitcoin daemon with networking disabled: ${res}`)
+                store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
               })
               .catch((e)=> {
-                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+                store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)
                 store.commit('setErrorMessage', `Error starting bitcoin daemon with networking disabled. Error code: Welcome3 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
               })
           })
         .catch((e)=> {
-          store.commit('setTest', `mount internal error: ${e}`)
+          store.commit('setDebug', `mount internal error: ${e}`)
           store.commit('setErrorMessage', `Error Mounting internal Error code: Welcome4 Response: ${e}`)
           this.$router.push({ name: 'Error' })
           })
@@ -288,68 +288,68 @@ export default {
         //redirects
         //set up step redirects
         if(this.setupStep == 1 && this.currentSD == 1){
-          store.commit('setTest', 'setup step 1 found, redirecting user to setup12')
+          store.commit('setDebug', 'setup step 1 found, redirecting user to setup12')
           this.$router.push({ name: 'Setup12' })
         }
         else if(this.setupStep == 2 && this.currentSD == 2){
-          store.commit('setTest', 'setup step 2 found, redirecting user to setup14a')
+          store.commit('setDebug', 'setup step 2 found, redirecting user to setup14a')
           this.$router.push({ name: 'Setup14a' })
         }
         else if(this.setupStep == 3 && this.currentSD == 3){
-          store.commit('setTest', 'setup step 3 found, redirecting user to setup15a')
+          store.commit('setDebug', 'setup step 3 found, redirecting user to setup15a')
           this.$router.push({ name: 'Setup15a' })
         }
         else if(this.setupStep == 4 && this.currentSD == 4){
-          store.commit('setTest', 'setup step 4 found, redirecting user to setup16')
+          store.commit('setDebug', 'setup step 4 found, redirecting user to setup16')
           this.$router.push({ name: 'Setup16' })
         }
         else if(this.setupStep == 5 && this.currentSD == 5){
-          store.commit('setTest', 'setup step 5 found, redirecting user to setup18a')
+          store.commit('setDebug', 'setup step 5 found, redirecting user to setup18a')
           this.$router.push({ name: 'Setup18a' })
         }
         else if(this.setupStep == 6 && this.currentSD == 6){
-          store.commit('setTest', 'setup step 6 found, redirecting user to setup19a')
+          store.commit('setDebug', 'setup step 6 found, redirecting user to setup19a')
           this.$router.push({ name: 'Setup19a' })
         }
         else if(this.setupStep == 7 && this.currentSD == 7){
-          store.commit('setTest', 'setup step 7 found, redirecting user to setup20a')
+          store.commit('setDebug', 'setup step 7 found, redirecting user to setup20a')
           this.$router.push({ name: 'Setup20a' })
         }
         else if(this.setupStep == 8 && this.currentSD == 1){
-          store.commit('setTest', 'setup step 8 found, redirecting user to setup21')
+          store.commit('setDebug', 'setup step 8 found, redirecting user to setup21')
           this.$router.push({ name: 'Setup21' })
         }
         else if(this.setupStep == 9 && this.currentSD == 2){
-          store.commit('setTest', 'setup step 9 found, redirecting user to setup27a')
+          store.commit('setDebug', 'setup step 9 found, redirecting user to setup27a')
           this.$router.push({ name: 'Setup27a' })
         }
         else if(this.setupStep == 10 && this.currentSD == 3){
-          store.commit('setTest', 'setup step 10 found, redirecting user to setup31a')
+          store.commit('setDebug', 'setup step 10 found, redirecting user to setup31a')
           this.$router.push({ name: 'Setup31a' })
         }
         else if(this.setupStep == 11 && this.currentSD == 4){
-          store.commit('setTest', 'setup step 11 found, redirecting user to setup35a')
+          store.commit('setDebug', 'setup step 11 found, redirecting user to setup35a')
           this.$router.push({ name: 'Setup35a' })
         }
         else if(this.setupStep == 12 && this.currentSD == 5){
-          store.commit('setTest', 'setup step 12 found, redirecting user to setup39a')
+          store.commit('setDebug', 'setup step 12 found, redirecting user to setup39a')
           this.$router.push({ name: 'Setup39a' })
         }
         else if(this.setupStep == 13 && this.currentSD == 6){
-          store.commit('setTest', 'setup step 13 found, redirecting user to setup43a')
+          store.commit('setDebug', 'setup step 13 found, redirecting user to setup43a')
           this.$router.push({ name: 'Setup43a' })
         }
         else if(this.setupStep == 14 && this.currentSD == 7){
-          store.commit('setTest', 'setup step 14 found, redirecting user to setup47a')
+          store.commit('setDebug', 'setup step 14 found, redirecting user to setup47a')
           this.$router.push({ name: 'Setup47a' })
         }
         else if(this.setupStep == 15 && this.currentSD == 1){
-          store.commit('setTest', 'setup step 15 found, redirecting user to setup50b')
+          store.commit('setDebug', 'setup step 15 found, redirecting user to setup50b')
           this.$router.push({ name: 'Setup50b' })
         }
         //redirect user to boot screen if they have SD 2-7 or no SD inserted
         else if(this.currentSD != 1){
-          store.commit('setTest', 'SD card 1 not detected, redirecting to boot screen')
+          store.commit('setDebug', 'SD card 1 not detected, redirecting to boot screen')
           this.$router.push({ name:'Boot' })
         }
 
@@ -360,7 +360,7 @@ export default {
 
         })
           .catch((e) => {
-            store.commit('setTest', `read config error: ${e}`)
+            store.commit('setDebug', `read config error: ${e}`)
 
       })
 

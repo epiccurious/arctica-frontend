@@ -47,28 +47,28 @@ export default {
     mounted(){
         //update sd card setupstep to 0
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
-            store.commit('setTest', `updating setupStep to ${this.setupStep}`)
+            store.commit('setDebug', `updating setupStep to ${this.setupStep}`)
             })
             .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
+                store.commit('setDebug', `async write error: ${e}`)
                 store.commit('setErrorMessage', `Error with async write Error code: Setup50b-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
         
         invoke('mount_internal').then((res) => {
-            store.commit('setTest', `Mounting internal drive ${res}`)
+            store.commit('setDebug', `Mounting internal drive ${res}`)
             //start the bitcoin daemon
             invoke('start_bitcoind').then((res) => {
-                store.commit('setTest', `Starting the Bitcoin daemon ${res}`)
+                store.commit('setDebug', `Starting the Bitcoin daemon ${res}`)
                 })
                 .catch((e) => {
-                    store.commit('setTest', `error starting the bitcoin daemon: ${e}`)
+                    store.commit('setDebug', `error starting the bitcoin daemon: ${e}`)
                     store.commit('setErrorMessage', `Error starting Bitcoin Daemon Error code: Setup50b-2 Response: ${e}`)
                     this.$router.push({ name:'Error' })
                 })
         })
         .catch((e) => {
-            store.commit('setTest', `error mounting internal drive: ${e}`)
+            store.commit('setDebug', `error mounting internal drive: ${e}`)
             store.commit('setErrorMessage', `Error mounting internal Error code: Setup50b-3 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })

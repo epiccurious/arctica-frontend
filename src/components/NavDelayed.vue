@@ -74,11 +74,11 @@ export default{
     },
              mounted(){
             invoke('get_balance_high_wallet').then((res)=>{
-            store.commit('setTest', `getting balance for delayed wallet: ${res}`)
+            store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
             store.commit('setDelayedBalance', `${res}`)
           })
           .catch((e)=>{
-            store.commit('setTest', `error getting new high wallet address ${e}`)
+            store.commit('setDebug', `error getting new high wallet address ${e}`)
           })
  },
 }

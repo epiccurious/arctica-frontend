@@ -40,13 +40,13 @@ export default {
             this.loading = true
             store.commit('setLoadMessage', 'Creating SD 6...')
             invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then((res) => {
-                store.commit('setTest', `SD card initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
-                store.commit('setTest', `create bootable SD 6 completed: ${res}`)
+                store.commit('setDebug', `SD card initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
+                store.commit('setDebug', `create bootable SD 6 completed: ${res}`)
                 this.loading = false
                 this.$router.push({ name:'Setup10' })   
             })
             .catch((e) => {
-            store.commit('setTest', `create bootable error: ${e}`)
+            store.commit('setDebug', `create bootable error: ${e}`)
             store.commit('setErrorMessage', `Error creating bootable Error code: Setup9-1 Response: ${e}`)
             this.$router.push({ name:'Error' })
             })

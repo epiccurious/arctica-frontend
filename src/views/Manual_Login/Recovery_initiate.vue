@@ -48,12 +48,12 @@ export default {
           store.commit('setLoadMessage', 'creating recovery cd...')
           //creating recovery cd
           invoke('create_recovery_cd').then((res)=>{
-            store.commit('setTest', `creating recovery cd ${res}`)
+            store.commit('setDebug', `creating recovery cd ${res}`)
             this.loading=false
             this.cdfinished=true
           })
           .catch((e)=>{
-            store.commit('setTest', `error creating recovery cd ${e}`)
+            store.commit('setDebug', `error creating recovery cd ${e}`)
             this.loading=false
           })
         },

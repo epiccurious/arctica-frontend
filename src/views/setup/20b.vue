@@ -28,63 +28,63 @@
         store.commit('setLoadMessage', 'Copying the setup CD...')
         //copy everything from the setup CD to ramdisk
         invoke('copy_cd_to_ramdisk').then((res) => {
-            store.commit('setTest', `reading setup CD ${res}`)
+            store.commit('setDebug', `reading setup CD ${res}`)
             store.commit('setLoadMessage', 'Creating Bitcoin Wallet...')
             //create xpriv and xpub
             invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
-                    store.commit('setTest', `Generating Wallet: ${res}`)
+                    store.commit('setDebug', `Generating Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 1 shard onto sd 7 from setupCD dir
                     invoke('distribute_shards_sd7').then((res)=>{
-                            store.commit('setTest', `distributing 1 shard to SD card ${res}`)
+                            store.commit('setDebug', `distributing 1 shard to SD card ${res}`)
                             store.commit('setLoadMessage', 'Installing dependencies...')
                             //install wodim & ssss
                             invoke('install_sd_deps').then((res) => {
-                                    store.commit('setTest', `installing SD dependencies ${res}`)
+                                    store.commit('setDebug', `installing SD dependencies ${res}`)
                                     store.commit('setLoadMessage', 'Refreshing setup CD...')
                                         //refresh setup CD with latest .iso 
                                         invoke('refresh_setup_cd').then((res)=>{
-                                            store.commit('setTest', `refreshing setup CD: ${res}`)
+                                            store.commit('setDebug', `refreshing setup CD: ${res}`)
                                             store.commit('setLoadMessage', 'Packing up sensitive info...')
                                             invoke('packup').then((res)=>{
-                                                store.commit('setTest', `packing up sensitive info: ${res}`)
+                                                store.commit('setDebug', `packing up sensitive info: ${res}`)
                                                 store.commit('setLoadMessage', 'Updating application state...')
                                                 //update setupstep state on sd card
                                                 invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
-                                                    store.commit('setTest', `config set to new values setupStep: ${this.setupStep} res:${res}`)
+                                                    store.commit('setDebug', `config set to new values setupStep: ${this.setupStep} res:${res}`)
                                                     this.loading = false
                                                 }).catch((e) => {
-                                                    store.commit('setTest', `async write error: ${e}`)
+                                                    store.commit('setDebug', `async write error: ${e}`)
                                                     store.commit('setErrorMessage', `Error with async write Error code: Setup20b-1 Response: ${e}`)
                                                     this.$router.push({ name:'Error' })
                                                 })
                                             }).catch((e) => {
-                                                    store.commit('setTest', `packup error: ${e}`)
+                                                    store.commit('setDebug', `packup error: ${e}`)
                                                     store.commit('setErrorMessage', `Error packing up Error code: Setup20b-2 Response: ${e}`)
                                                     this.$router.push({ name:'Error' })
                                                 })
                                         }).catch((e)=>{
-                                            store.commit('setTest', `refresh setup CD error: ${e}`)
+                                            store.commit('setDebug', `refresh setup CD error: ${e}`)
                                             store.commit('setErrorMessage', `Error refreshing setup CD Error code: Setup20b-3 Response: ${e}`)
                                             this.$router.push({ name:'Error' })
                                             })
                                 }).catch((e) => {
-                                    store.commit('setTest', `install SD deps error: ${e}`)
+                                    store.commit('setDebug', `install SD deps error: ${e}`)
                                     store.commit('setErrorMessage', `Error installing SD dependencies Error code: Setup20b-4 Response: ${e}`)
                                     this.$router.push({ name:'Error' })
                                 })
                     }).catch((e)=>{
-                        store.commit('setTest', `distributing 2 shards error: ${e}`)
+                        store.commit('setDebug', `distributing 2 shards error: ${e}`)
                         store.commit('setErrorMessage', `Error distributing 2 shards Error code: Setup20b-5 Response: ${e}`)
                         this.$router.push({ name:'Error' })
                     })
             }).catch((e)=>{
-                store.commit('setTest', `create wallet error ${e}`)
+                store.commit('setDebug', `create wallet error ${e}`)
                 store.commit('setErrorMessage', `Error creating wallet Error code: Setup20b-6 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
         }).catch((e) => {
-            store.commit('setTest', `error reading setup CD: ${e}`)
+            store.commit('setDebug', `error reading setup CD: ${e}`)
             store.commit('setErrorMessage', `Error reading setup CD Error code: Setup20b-7 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })

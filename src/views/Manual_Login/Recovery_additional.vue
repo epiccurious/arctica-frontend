@@ -46,12 +46,12 @@ export default {
       //collecting shards and refreshing recovery cd
       store.commit('setLoadMessage', 'collecting privacy key shards...')
       invoke('collect_shards').then((res)=>{
-        store.commit('setTest', `collecting shards and refreshing recovery cd: ${res}`)
+        store.commit('setDebug', `collecting shards and refreshing recovery cd: ${res}`)
         this.loading=false
         this.$router.push({ name:'RecoveryEvaluate' })
       })
       .catch((e)=>{
-        store.commit('setTest', `error collecting shards ${e}`)
+        store.commit('setDebug', `error collecting shards ${e}`)
       })
     },
     data() {

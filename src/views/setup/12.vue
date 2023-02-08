@@ -42,56 +42,56 @@ export default {
             this.loading = true
             store.commit('setLoadMessage', 'Creating Bitcoin wallet...')
             invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
-                store.commit('setTest', `Generating Wallet: ${res} IIIIIIIII`)
+                store.commit('setDebug', `Generating Wallet: ${res} IIIIIIIII`)
                 //create 4 simulated time machine key pairs
                 //eventually this will be where user receives 4 time machine pubkeys from BPS
                 invoke('generate_store_simulated_time_machine_key_pair', {number: '1'}).then((res)=>{
-                    store.commit('setTest', `Generating simulated time machine key pair 1: ${res}`)
+                    store.commit('setDebug', `Generating simulated time machine key pair 1: ${res}`)
                     invoke('generate_store_simulated_time_machine_key_pair', {number: '2'}).then((res)=>{
-                        store.commit('setTest', `Generating simulated time machine key pair 2: ${res}`)
+                        store.commit('setDebug', `Generating simulated time machine key pair 2: ${res}`)
                         invoke('generate_store_simulated_time_machine_key_pair', {number: '3'}).then((res)=>{
-                            store.commit('setTest', `Generating simulated time machine key pair 3: ${res}`)
+                            store.commit('setDebug', `Generating simulated time machine key pair 3: ${res}`)
                             invoke('generate_store_simulated_time_machine_key_pair', {number: '4'}).then((res)=>{
-                                store.commit('setTest', `Generating simulated time machine key pair 4: ${res}`)
+                                store.commit('setDebug', `Generating simulated time machine key pair 4: ${res}`)
                                 store.commit('setLoadMessage', 'Creating setup CD...')
                                 //create & burn setup CD
                                 invoke('create_setup_cd').then((res)=>{
-                                    store.commit('setTest', `invoking create setup cd ${res}`)
+                                    store.commit('setDebug', `invoking create setup cd ${res}`)
                                     this.loading = false
                                     this.$router.push({ name:'Setup13' }) 
                                 }).catch((e)=>{
-                                    store.commit('setTest', `create setup cd error: ${e}`)
+                                    store.commit('setDebug', `create setup cd error: ${e}`)
                                     store.commit('setErrorMessage', `Error creating setup CD Error code: Setup12-1 Response: ${e}`)
                                     this.$router.push({ name:'Error' })
                                 })
 
                             })
                             .catch((e)=>{
-                                store.commit('setTest', `error generating time machine key pair 4 ${e}`)
+                                store.commit('setDebug', `error generating time machine key pair 4 ${e}`)
                                 store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-2 Response: ${e}`)
                                 this.$router.push({ name:'Error' })
                             })  
                         })
                         .catch((e)=>{
-                            store.commit('setTest', `error generating time machine key pair 3 ${e}`)
+                            store.commit('setDebug', `error generating time machine key pair 3 ${e}`)
                             store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-3 Response: ${e}`)
                             this.$router.push({ name:'Error' })
                         })  
                     })
                     .catch((e)=>{
-                        store.commit('setTest', `error generating time machine key pair 2 ${e}`)
+                        store.commit('setDebug', `error generating time machine key pair 2 ${e}`)
                         store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-4 Response: ${e}`)
                         this.$router.push({ name:'Error' })
                     })  
                 })
                 })
                 .catch((e)=>{
-                    store.commit('setTest', `error generating time machine key pair 1 ${e}`)
+                    store.commit('setDebug', `error generating time machine key pair 1 ${e}`)
                     store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-5 Response: ${e}`)
                     this.$router.push({ name:'Error' })
                 })  
             .catch((e)=>{
-                store.commit('setTest', `error generating wallet ${e}`)
+                store.commit('setDebug', `error generating wallet ${e}`)
                 store.commit('setErrorMessage', `Error generating wallet Error code: Setup12-6 Response: ${e}`)
                 this.$router.push({ name:'Error' })
         })             
@@ -115,26 +115,26 @@ export default {
     mounted(){
         //mount and symlink internal .bitcoin dirs
         invoke('mount_internal').then((res)=> {
-              store.commit('setTest', `invoking mount internal ${res}`)
+              store.commit('setDebug', `invoking mount internal ${res}`)
               //start bitcoind with networking disabled
               invoke('start_bitcoind_network_off').then((res)=> {
-                store.commit('setTest', `starting bitcoin daemon with networking disabled: ${res}`)
+                store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
               })
               .catch((e)=> {
-                store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
+                store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)
                 store.commit('setErrorMessage', `Error starting bitcoin daemon Error code: Setup12-7 Response: ${e}`)
                 this.$router.push({ name:'Error' })
               })
           })
         .catch((e)=> {
-            store.commit('setTest', `mount internal error: ${e}`)
+            store.commit('setDebug', `mount internal error: ${e}`)
             store.commit('setErrorMessage', `Error mounting internal Error code: Setup12-8 Response: ${e}`)
             this.$router.push({ name:'Error' })
           })
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             })
             .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
+                store.commit('setDebug', `async write error: ${e}`)
                 store.commit('setErrorMessage', `Error with async write Error code: Setup12-9 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })

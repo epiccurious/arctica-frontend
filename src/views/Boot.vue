@@ -59,44 +59,44 @@ export default {
           this.loading = true
           //read the config file of the inserted CD
           invoke('read_cd').then((res) => {
-            store.commit('setTest', `invoking read_cd: ${res}`)
+            store.commit('setDebug', `invoking read_cd: ${res}`)
             store.commit('setLoadMessage', 'reading CD...')
             let resArray = res.split("\n")
-            store.commit('setTest', `response Array: ${resArray}`)
+            store.commit('setDebug', `response Array: ${resArray}`)
             for(let i = 0; i < resArray.length; i ++){
                 let it = resArray[i].split("=")
-                store.commit('setTest', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+                store.commit('setDebug', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
                 //check for recovery CD
                 //assume user is attempting to manually decrypt
                 if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'TRANSFERCD'){
                     store.commit('setTransferCD', true)
-                    store.commit('setTest', `Recovery CD detected, boolean set to true ${store.getters.getTransferCD}`)
+                    store.commit('setDebug', `Recovery CD detected, boolean set to true ${store.getters.getTransferCD}`)
                     //calculate numbertorecover differential based on how many shards are on recoverycd
                     invoke('calculate_number_of_shards_cd').then((res)=> {
-                      store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
+                      store.commit('setDebug', `calculating number of shards on recovery cd: number = ${res}`)
                       //send the user to recovery_additional if they have not yet met numbertorecover threshold
                       if(this.numberToRecover > res){
-                        store.commit('setTest', 'Need more shards, sending to recovery additional')
+                        store.commit('setDebug', 'Need more shards, sending to recovery additional')
                         this.loading = false
                         this.$router.push({ name: 'RecoveryAdditional' })
                       }
                       //if the number of shards exceeds the decryption threshold, send user to success screen
                       //combine shards at recovery success screen
                       else{
-                        store.commit('setTest', 'shard threshold met, sending to recovery success')
+                        store.commit('setDebug', 'shard threshold met, sending to recovery success')
                         this.loading = false
                         this.$router.push({ name: 'RecoverySuccess' })
                       }
                     })
                     .catch((e) => {
-                      store.commit('setTest', `error calculating shards on recovery cd: ${e}`)
+                      store.commit('setDebug', `error calculating shards on recovery cd: ${e}`)
                       store.commit('setErrorMessage', `Error calculating shard count on disk Error code: Boot1 Response: ${e}`)
                       this.$router.push({ name: 'Error' })
                     })
                 }
                 //either no cd is inserted or user hit the button too fast
                 else{
-                    store.commit('setTest', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+                    store.commit('setDebug', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
                 }
                 this.loading = false
         }
@@ -111,15 +111,15 @@ export default {
           //begin install
           //obtain latest tails image
           store.commit('setLoadMessage', 'Creating custom Ubuntu ISO...')
-          store.commit('setTest', 'Obtaining and Creating modified ubuntu ISO')
+          store.commit('setDebug', 'Obtaining and Creating modified ubuntu ISO')
           invoke('init_iso').then(()=> {
-            store.commit('setTest', 'ubuntu iso created successfully')
+            store.commit('setDebug', 'ubuntu iso created successfully')
             this.loading = false;
             //send user to next step
             this.$router.push({ name:'Setup1' })
           })
           .catch((e) => {
-          store.commit('setTest', `obtain ubuntu error: ${e}`)
+          store.commit('setDebug', `obtain ubuntu error: ${e}`)
           store.commit('setErrorMessage', `Error Obtaining Ubuntu ISO. Error code: Boot2 Response: ${e}`)
           this.$router.push({ name: 'Error' })
     })

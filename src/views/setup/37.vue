@@ -50,7 +50,7 @@ export default {
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             })
             .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
+                store.commit('setDebug', `async write error: ${e}`)
                 store.commit('setErrorMessage', `Error with async write Error code: Setup37-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })

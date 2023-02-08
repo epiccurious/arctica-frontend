@@ -230,38 +230,38 @@ export default{
         syncWallet(){
             //this is a debug function used to sync the immediate wallet, for testing after a completed rescan
             invoke('sync_med_wallet').then((res)=>{
-                store.commit('setTest', `syncing immediate wallet:${res}`)
+                store.commit('setDebug', `syncing immediate wallet:${res}`)
             }).catch((e)=>{
-                store.commit('setTest', `error syncing immediate wallet: ${e}`)
+                store.commit('setDebug', `error syncing immediate wallet: ${e}`)
             })
         },
         getTransctionHistory(){
             //this is a debug function used to print the immediate wallet transaction history vec
             invoke('get_transactions_med_wallet').then((res)=>{
-                store.commit('setTest', `obtaining transaction history for immediate wallet: ${res}`)
+                store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
             })
             .catch((e)=>{
-                store.commit('setTest', `error obtaining transactions for immediate wallet: ${e}`)
+                store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
             })
         },
         spendPolicy(){
             //this is a debug function used to print the keychain policy 
         invoke('test_function').then((res)=>{
-            store.commit('setTest', `obtaining spend policy: ${res}`)
+            store.commit('setDebug', `obtaining spend policy: ${res}`)
         })
         .catch((e)=>{
-        store.commit('setTest', `error obtaining spend policy: ${e}`)
+        store.commit('setDebug', `error obtaining spend policy: ${e}`)
         })
 
     },
         generateKeys(){
             //this is a debug function used to create keys 2-7 on SD 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
-            store.commit('setTest', `invoking generate store keypair: ${res}`)
-            store.commit('setTest', `generating key: ${this.keynumber-1}`)
+            store.commit('setDebug', `invoking generate store keypair: ${res}`)
+            store.commit('setDebug', `generating key: ${this.keynumber-1}`)
                     })
         .catch((e)=>{
-        store.commit('setTest', `error invoking test function: ${e}`)
+        store.commit('setDebug', `error invoking test function: ${e}`)
         })
 
         this.keynumber++
@@ -270,29 +270,29 @@ export default{
             //this is a debug function used to create descriptors when testing locally instead of on an SD card
             //start bitcoind
             invoke('start_bitcoind_network_off').then((res) => {
-                store.commit('setTest', `starting bitcoin daemon with networking off: ${res}`)
+                store.commit('setDebug', `starting bitcoin daemon with networking off: ${res}`)
                 //create ramdisk
                 invoke('create_ramdisk').then((res) => {
-                    store.commit('setTest', `creating ramdisk ${res}`)
+                    store.commit('setDebug', `creating ramdisk ${res}`)
                     store.commit('setLoadMessage', 'Creating ramdisk...')
                     //copy CD contents to ramdisk
                     invoke('copy_cd_to_ramdisk').then((res) => {
-                        store.commit('setTest', `reading setup CD ${res}`)
+                        store.commit('setDebug', `reading setup CD ${res}`)
                         store.commit('setLoadMessage', 'Creating Descriptors...')
                         //create the descriptors and export to the setupCD
                         invoke('create_descriptor').then((res) => {
-                            store.commit('setTest', `creating descriptors ${res}`)
+                            store.commit('setDebug', `creating descriptors ${res}`)
                         }).catch((e) => {
-                                store.commit('setTest', `error creating descriptors: ${e}`)
+                                store.commit('setDebug', `error creating descriptors: ${e}`)
                         })
                     }).catch((e) => {
-                        store.commit('setTest', `error reading setup CD: ${e}`)
+                        store.commit('setDebug', `error reading setup CD: ${e}`)
                     }) 
                 }).catch((e) => {
-                        store.commit('setTest', `error creating ramdisk: ${e}`)
+                        store.commit('setDebug', `error creating ramdisk: ${e}`)
                 }) 
             }).catch((e) => {
-                    store.commit('setTest', `error starting bitcoin core: ${e}`)
+                    store.commit('setDebug', `error starting bitcoin core: ${e}`)
             }) 
         },
         reboot(){

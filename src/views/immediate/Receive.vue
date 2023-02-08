@@ -50,11 +50,11 @@ export default {
         },
         newAddress(){
             invoke('get_address_med_wallet').then((res)=>{
-            store.commit('setTest', `getting new address for immediate wallet: ${res}`)
+            store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
           })
           .catch((e)=>{
-            store.commit('setTest', `error getting new immediate wallet address ${e}`)
+            store.commit('setDebug', `error getting new immediate wallet address ${e}`)
             store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
             this.$router.push({ name: 'Error' })
           })
@@ -67,11 +67,11 @@ export default {
   },
      mounted(){
         invoke('get_address_med_wallet').then((res)=>{
-            store.commit('setTest', `getting address for immediate wallet: ${res}`)
+            store.commit('setDebug', `getting address for immediate wallet: ${res}`)
             this.address = res
           })
           .catch((e)=>{
-            store.commit('setTest', `error getting immediate wallet address ${e}`)
+            store.commit('setDebug', `error getting immediate wallet address ${e}`)
             store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive2 Response: ${e}`)
             this.$router.push({ name: 'Error' })
           })

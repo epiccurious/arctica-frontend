@@ -42,10 +42,10 @@ export default {
             //burn backup ISO
             invoke('make_backup', {number: "6"}).then((res) => {
                 this.loading = false
-                store.commit('setTest', `making and burning backup iso ${res}`)
+                store.commit('setDebug', `making and burning backup iso ${res}`)
                 this.$router.push({ name: 'Setup45' })
                 }).catch((e) => {
-                    store.commit('setTest', `error making and burning backup iso: ${e}`)
+                    store.commit('setDebug', `error making and burning backup iso: ${e}`)
                     store.commit('setErrorMessage', `Error making backup Error code: Setup44-1 Response: ${e}`)
                     this.$router.push({ name:'Error' })
                 })

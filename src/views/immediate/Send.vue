@@ -64,12 +64,12 @@ export default {
     methods: {
         continueFn(address, balance, fee){
             invoke('generate_psbt_med_wallet', {recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
-                store.commit('setTest', `Generating PSBT: ${res}`)
+                store.commit('setDebug', `Generating PSBT: ${res}`)
                 this.$router.push({name: 'immediateTransfer'})
             })
             .catch((e) => {
                 //eventually need to add front end feedback here rather than send to fatal error screen
-                store.commit('setTest', `Error generating PSBT: ${e}`)
+                store.commit('setDebug', `Error generating PSBT: ${e}`)
                 store.commit('setErrorMessage', `Error generating PSBT. Error code: ImmediateSend1 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
             })

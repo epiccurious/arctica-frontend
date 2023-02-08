@@ -26,10 +26,10 @@ export default {
       this.loading = true
       store.commit('setLoadMessage', 'Packing up sensitive info...')
       invoke('packup').then((res)=>{
-        store.commit('setTest', `invoking packup: ${res}`)
+        store.commit('setDebug', `invoking packup: ${res}`)
         this.loading = false
       }).catch((e)=>{
-        store.commit('setTest', `error with pack up: ${e}`)
+        store.commit('setDebug', `error with pack up: ${e}`)
         store.commit('setErrorMessage', `Error packing up Error code: Setup13-1 Response: ${e}`)
         this.$router.push({ name:'Error' })
       })

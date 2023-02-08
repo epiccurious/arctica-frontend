@@ -43,10 +43,10 @@ export default {
     mounted(){
         //update the setup step
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
-            store.commit('setTest', `async writing setupstep ${this.setupStep}: ${res} `)
+            store.commit('setDebug', `async writing setupstep ${this.setupStep}: ${res} `)
             })
             .catch((e) => {
-                store.commit('setTest', `async write error: ${e}`)
+                store.commit('setDebug', `async write error: ${e}`)
                 store.commit('setErrorMessage', `Error with async write Error code: Setup25-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })

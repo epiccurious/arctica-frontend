@@ -30,23 +30,23 @@ export default {
     },
     mounted(){
         invoke('calculate_number_of_shards_ramdisk').then((res)=> {
-          store.commit('setTest', `calculating number of shards on recovery cd: number = ${res}`)
-          store.commit('setTest', `number to recover is: ${this.numberToRecover}`)
+          store.commit('setDebug', `calculating number of shards on recovery cd: number = ${res}`)
+          store.commit('setDebug', `number to recover is: ${this.numberToRecover}`)
           //send the user to recovery_additional if they have not yet met numbertorecover threshold
           if(this.numberToRecover <= res){
-            store.commit('setTest', 'shard threshold met, sending to recovery success')
+            store.commit('setDebug', 'shard threshold met, sending to recovery success')
             this.loading = false
             this.$router.push({ name: 'recoverySuccess' })
           }
           //if the number of shards exceeds the decryption threshold, send user to success screen
           //combine shards at recovery success screen
           else{
-            store.commit('setTest', 'more shards needs, instructing user to proceed to next SD')
+            store.commit('setDebug', 'more shards needs, instructing user to proceed to next SD')
             this.loading = false
           }
         })
         .catch((e) => {
-          store.commit('setTest', `error calculating shards on recovery cd: ${e}`)
+          store.commit('setDebug', `error calculating shards on recovery cd: ${e}`)
         })
       },
     data() {
