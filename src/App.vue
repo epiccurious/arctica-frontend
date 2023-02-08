@@ -584,7 +584,7 @@ h3{
     align-items: center;
     align-content: center;
     justify-content: center;
-    width:35%;
+    width:55%;
     margin: 25px auto;
 }
 .receive_top{
