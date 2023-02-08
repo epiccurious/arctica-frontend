@@ -86,13 +86,13 @@ export default {
                   this.$router.push({ name: 'dashboard' })
                 }).catch((e)=>{
                   store.commit('setTest', `Error syncing immediate wallet: ${e}`)
-                  store.commit('setErrorMessage', 'Error Syncing Immediate Wallet. Error code Welcome2')
+                  store.commit('setErrorMessage', `Error Syncing Immediate Wallet. Error code: Welcome2 Response: ${e}`)
                   this.$router.push({ name: 'Error' })
                   })
               })
               .catch((e)=>{
                 store.commit('setTest', `error unpacking sensitive dir ${e}`)
-                store.commit('setErrorMessage', 'Error unpacking sensitive from welcome. Error code Welcome1')
+                store.commit('setErrorMessage', `Error unpacking sensitive from welcome. Error code: Welcome1 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
               })
               
@@ -201,7 +201,7 @@ export default {
                 store.commit('setTest', `unpacking sensitive: ${res}`)
               }).catch((e)=>{
                 store.commit(('setTest', `error unpacking sensitive: ${e}`))
-                store.commit('setErrorMessage', 'Error unpacking sensitive. Error code Welcome8')
+                store.commit('setErrorMessage', `Error unpacking sensitive Error code: Welcome8 Response: ${e}`)
                 this.$router.push({ name: 'Error' })  
                 })
               }
@@ -215,14 +215,14 @@ export default {
               })
               .catch((e)=>{
                 store.commit('setTest', `error creating ramdisk ${e}`)
-                store.commit('setErrorMessage', 'Error creating ramdisk. Error code Welcome9')
+                store.commit('setErrorMessage', `Error creating ramdisk. Error code: Welcome9 Response: ${e}`)
                 this.$router.push({ name: 'Error' }) 
               })  
             }
             
           }).catch((e)=>{
             store.commit('setTest',  `error checking for masterkey ${e}`)
-            store.commit('setErrorMessage', 'Error checking for masterkey. Error code Welcome10')
+            store.commit('setErrorMessage', `Error checking for masterkey. Error code: Welcome10 Response: ${e}`)
             this.$router.push({ name: 'Error' }) 
           })
         }
@@ -244,7 +244,7 @@ export default {
                     this.$router.push({ name: 'dashboard' })
                   }).catch((e)=>{
                     store.commit('setTest', `error syncing wallet:${e}`)
-                    store.commit('setErrorMessage', 'Error Syncing Immediate Wallet. Error code Welcome7')
+                    store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Welcome7 Response: ${e}`)
                     this.$router.push({ name: 'Error' })  
                   })
                 }else{
@@ -253,13 +253,13 @@ export default {
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)    
-                store.commit('setErrorMessage', 'Error Starting Bitcoin Daemon. Error code Welcome6')
+                store.commit('setErrorMessage', `Error Starting Bitcoin Daemon Error code: Welcome6 Response: ${e}`)
                 this.$router.push({ name: 'Error' })            
               })
           })
           .catch((e)=> {
             store.commit('setTest', `mount internal error: ${e}`)
-            store.commit('setErrorMessage', 'Error Mounting internal. Error code Welcome5')
+            store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
             this.$router.push({ name: 'Error' })
             })
 
@@ -273,13 +273,13 @@ export default {
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
-                store.commit('setErrorMessage', 'Error starting bitcoin daemon with networking disabled. Error code Welcome3')
+                store.commit('setErrorMessage', `Error starting bitcoin daemon with networking disabled. Error code: Welcome3 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
               })
           })
         .catch((e)=> {
           store.commit('setTest', `mount internal error: ${e}`)
-          store.commit('setErrorMessage', 'Error Mounting internal. Error code Welcome4')
+          store.commit('setErrorMessage', `Error Mounting internal Error code: Welcome4 Response: ${e}`)
           this.$router.push({ name: 'Error' })
           })
         }

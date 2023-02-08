@@ -70,7 +70,7 @@ export default {
             .catch((e) => {
                 //eventually need to add front end feedback here rather than send to fatal error screen
                 store.commit('setTest', `Error generating PSBT: ${e}`)
-                store.commit('setErrorMessage', 'Error generating PSBT. Error code ImmediateSend1')
+                store.commit('setErrorMessage', `Error generating PSBT. Error code: ImmediateSend1 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
             })
 

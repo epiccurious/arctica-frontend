@@ -49,12 +49,12 @@ export default {
                     this.$router.push({ name: 'Setup40' })
                     }).catch((e) => {
                         store.commit('setTest', `error making and burning backup iso: ${e}`)
-                        store.commit('setErrorMessage', 'Error making backup Error code Setup39b-1')
+                        store.commit('setErrorMessage', `Error making backup Error code: Setup39b-1 Response: ${e}`)
                         this.$router.push({ name:'Error' })
                     })
                 }).catch((e) => {
                     store.commit('setTest', `error creating and filling backup dir: ${e}`)
-                    store.commit('setErrorMessage', 'Error creating backup Error code Setup39b-2')
+                    store.commit('setErrorMessage', `Error creating backup Error code: Setup39b-2 Response: ${e}`)
                     this.$router.push({ name:'Error' })
                 })
                     },
@@ -86,27 +86,27 @@ export default {
                                         this.loading = false
                                         }).catch((e)=>{
                                             store.commit('setTest', `ejecting CD error ${e}`)
-                                            store.commit('setErrorMessage', 'Error ejecting CD Error code Setup39b-3')
+                                            store.commit('setErrorMessage', `Error ejecting CD Error code: Setup39b-3 Response: ${e}`)
                                             this.$router.push({ name:'Error' })
                                         })   
                                     }).catch((e) => {
                                         store.commit('setTest', `error packing up sensitive info: ${e}`)
-                                        store.commit('setErrorMessage', 'Error packing up Error code Setup39b-4')
+                                        store.commit('setErrorMessage', `Error packing up Error code: Setup39b-4 Response: ${e}`)
                                         this.$router.push({ name:'Error' })
                                     })        
                                 }).catch((e) => {
                                     store.commit('setTest', `error copying descriptor: ${e}`)
-                                    store.commit('setErrorMessage', 'Error packing up Error code Setup39b-5')
+                                    store.commit('setErrorMessage', `Error packing up Error code Setup39b-5 Response: ${e}`)
                                     this.$router.push({ name:'Error' })
                                 })     
                             }).catch((e) => {
                                 store.commit('setTest', `error unpacking sensitive info: ${e}`)
-                                store.commit('setErrorMessage', 'Error packing up Error code Setup39b-6')
+                                store.commit('setErrorMessage', `Error packing up Error code: Setup39b-6 Response: ${e}`)
                                 this.$router.push({ name:'Error' })
                             })       
             }).catch((e) => {
                 store.commit('setTest', `error reading setup CD: ${e}`)
-                store.commit('setErrorMessage', 'Error reading setup CD Error code Setup39b-7')
+                store.commit('setErrorMessage', `Error reading setup CD Error code: Setup39b-7 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
     },

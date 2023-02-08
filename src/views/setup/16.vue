@@ -64,7 +64,7 @@
       })
           .catch((e)=> {
             store.commit('setTest', `error reading setup CD: ${e}`)
-            store.commit('setErrorMessage', 'Error reading setup CD Error code Setup16-3')
+            store.commit('setErrorMessage', `Error reading setup CD Error code: Setup16-3 Response: ${e}`)
             this.$router.push({ name:'Error' })
           })
           },
@@ -93,13 +93,13 @@
               })
               .catch((e)=> {
                 store.commit('setTest', `error starting bitcoin daemon error: ${e}`)
-                store.commit('setErrorMessage', 'Error starting bitcoin daemon Error code Setup16-1')
+                store.commit('setErrorMessage', `Error starting bitcoin daemon Error code: Setup16-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
               })
           })
         .catch((e)=> {
           store.commit('setTest', `mount internal error: ${e}`)
-          store.commit('setErrorMessage', 'Error mounting internal Error code Setup16-2')
+          store.commit('setErrorMessage', `Error mounting internal Error code: Setup16-2 Response: ${e}`)
           this.$router.push({ name:'Error' })
           })
           }

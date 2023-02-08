@@ -63,7 +63,7 @@ export default {
          })
         .catch((e)=> {
             store.commit('setTest', `error reading setup CD: ${e}`)
-            store.commit('setErrorMessage', 'Error wreading setup CD Error code Setup39a-1')
+            store.commit('setErrorMessage', `Error wreading setup CD Error code: Setup39a-1 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
     },

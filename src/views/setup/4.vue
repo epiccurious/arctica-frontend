@@ -47,7 +47,7 @@ export default {
             })
             .catch((e) => {
                 store.commit('setTest', `create bootable error: ${e}`)
-                store.commit('setErrorMessage', 'Error creating bootable. Error code Setup4-1')
+                store.commit('setErrorMessage', `Error creating bootable Error code: Setup4-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
              

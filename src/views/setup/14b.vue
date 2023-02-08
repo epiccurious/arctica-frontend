@@ -55,37 +55,37 @@ export default {
                                                     this.loading = false
                                                 }).catch((e) => {
                                                     store.commit('setTest', `async write error: ${e}`)
-                                                    store.commit('setErrorMessage', 'Error with async write Error code Setup14b-1')
+                                                    store.commit('setErrorMessage', `Error with async write Error code: Setup14b-1 Response: ${e}`)
                                                     this.$router.push({ name:'Error' })
                                                 })
                                             }).catch((e) => {
                                                     store.commit('setTest', `packup error: ${e}`)
-                                                    store.commit('setErrorMessage', 'Error packing up Error code Setup14b-2')
+                                                    store.commit('setErrorMessage', `Error packing up Error code: Setup14b-2 Response: ${e}`)
                                                     this.$router.push({ name:'Error' })
                                                 })
                                         }).catch((e)=>{
                                             store.commit('setTest', `refresh setup CD error: ${e}`)
-                                            store.commit('setErrorMessage', 'Error refreshing setup CD Error code Setup14b-3')
+                                            store.commit('setErrorMessage', `Error refreshing setup CD Error code: Setup14b-3 Response: ${e}`)
                                             this.$router.push({ name:'Error' })
                                             })
                                 }).catch((e) => {
                                     store.commit('setTest', `install SD deps error: ${e}`)
-                                    store.commit('setErrorMessage', 'Error installing SD dependencies Error code Setup14b-4')
+                                    store.commit('setErrorMessage', `Error installing SD dependencies Error code: Setup14b-4 Response: ${e}`)
                                     this.$router.push({ name:'Error' })
                                 })
                     }).catch((e)=>{
                         store.commit('setTest', `distributing 2 shards error: ${e}`)
-                        store.commit('setErrorMessage', 'Error distributing 2 shards Error code Setup14b-5')
+                        store.commit('setErrorMessage', `Error distributing 2 shards Error code: Setup14b-5 Response: ${e}`)
                         this.$router.push({ name:'Error' })
                     })
             }).catch((e)=>{
                 store.commit('setTest', `create wallet error ${e}`)
-                store.commit('setErrorMessage', 'Error creating wallet Error code Setup14b-6')
+                store.commit('setErrorMessage', `Error creating wallet Error code: Setup14b-6 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
         }).catch((e) => {
             store.commit('setTest', `error reading setup CD: ${e}`)
-            store.commit('setErrorMessage', 'Error reading setup CD Error code Setup14b-7')
+            store.commit('setErrorMessage', `Error reading setup CD Error code: Setup14b-7 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
         },

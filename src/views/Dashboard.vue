@@ -79,18 +79,18 @@ export default {
               store.commit('setTest', `getting transactions for immediate wallet: ${res}`)
             }).catch((e)=>{
               store.commit('setTest', `error getting transactions for immediate wallet: ${e}`)
-              store.commit('setErrorMessage', 'Error getting transaction history for Immediate Wallet. Error code Dashboard1')
+              store.commit('setErrorMessage', `Error getting transaction history for Immediate Wallet. Error code: Dashboard1 Response: ${e}`)
               this.$router.push({ name: 'Error' })
             })
           }).catch((e)=>{
           store.commit('setTest', `error getting immediate wallet balance ${e}`)
-          store.commit('setErrorMessage', 'Error getting balance for Immediate Wallet. Error code Dashboard2')
+          store.commit('setErrorMessage', `Error getting balance for Immediate Wallet Error code: Dashboard2 Response: ${e}`)
           this.$router.push({ name: 'Error' })
           })
         })
         .catch((e)=>{
           store.commit('setTest', `error initializing immediate wallet ${e}`)
-          store.commit('setErrorMessage', 'Error initializing Immediate Wallet. Error code Dashboard3')
+          store.commit('setErrorMessage', `Error initializing Immediate Wallet Error code: Dashboard3 Response: ${e}`)
           this.$router.push({ name: 'Error' })
         })
             

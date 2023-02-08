@@ -65,33 +65,33 @@ export default {
                                 this.$router.push({ name: 'dashboard' })
                             }).catch((e)=>{
                             store.commit('setTest', `Error syncing immediate wallet: ${e}`)
-                            store.commit('setErrorMessage', 'Error Syncing Immediate Wallet. Error code Login1')
+                            store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Login1 Response: ${e}`)
                             this.$router.push({ name: 'Error' }) 
                             })
                         })
                         .catch((e) => {
                         store.commit('setTest', `error unpacking: ${e}`)
-                        store.commit('setErrorMessage', 'Error unpacking sensitive. Error code Login2')
+                        store.commit('setErrorMessage', `Error unpacking sensitive Error code: Login2 Response: ${e}`)
                         this.$router.push({ name: 'Error' }) 
                         })
                         }
                         else{
                             //eventually need to add front end feedback here prompting the user on what to do next rather than send to fatal error screen
                             store.commit('setTest', 'no masterkey was found on the CD')
-                            store.commit('setErrorMessage', 'Error copying CD to Ramdisk Error code Login5')
+                            store.commit('setErrorMessage', `Error copying CD to Ramdisk Error code: Login5 Response: ${e}`)
                             this.$router.push({ name: 'Error' }) 
                         }
                     })
                         .catch((e) => {
                         store.commit('setTest', `error checking for masterkey ${e}`)
-                        store.commit('setErrorMessage', 'Error Checking for masterkey. Error code Login3')
+                        store.commit('setErrorMessage', `Error Checking for masterkey Error code: Login3 Response: ${e}`)
                         this.$router.push({ name: 'Error' }) 
                     })
                 })
                 .catch((e) => {
                     //eventually need to add front end feedback here prompting the user on what to do next rather than send to fatal error screen
                     store.commit('setTest', `error copying CD to ramdisk ${e}`)
-                    store.commit('setErrorMessage', 'Error copying CD to Ramdisk Error code Login4')
+                    store.commit('setErrorMessage', `Error copying CD to Ramdisk Error code: Login4 Response: ${e}`)
                     this.$router.push({ name: 'Error' }) 
                 })
             }

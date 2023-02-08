@@ -90,7 +90,7 @@ export default {
                     })
                     .catch((e) => {
                       store.commit('setTest', `error calculating shards on recovery cd: ${e}`)
-                      store.commit('setErrorMessage', 'Error calculating shard count on disk. Error code Boot1')
+                      store.commit('setErrorMessage', `Error calculating shard count on disk Error code: Boot1 Response: ${e}`)
                       this.$router.push({ name: 'Error' })
                     })
                 }
@@ -120,7 +120,7 @@ export default {
           })
           .catch((e) => {
           store.commit('setTest', `obtain ubuntu error: ${e}`)
-          store.commit('setErrorMessage', 'Error Obtaining Ubuntu ISO. Error code Boot2')
+          store.commit('setErrorMessage', `Error Obtaining Ubuntu ISO. Error code: Boot2 Response: ${e}`)
           this.$router.push({ name: 'Error' })
     })
 
