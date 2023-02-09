@@ -136,6 +136,7 @@ export default {
                 })
                 , 5000)
         }
+
     },
     computed: {
       psbtFound(){
@@ -288,7 +289,8 @@ export default {
             })
 
             while (this.btcCoreHealthy == false) {
-              await checkSync()
+              store.commit('setDebug', 'firing checksync()')
+              checkSync()
             }
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
