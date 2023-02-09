@@ -70,7 +70,9 @@ export default {
             store.commit('setErrorMessage', `Error mounting internal Error code: Setup50b-3 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
+
         listen('progress', (event) =>{
+            store.commit('setDebug', `listening for event syncProgress. Even payload ${event.payload}`)
               let percentage = Math.floor(event.payload)
               this.syncProgress = percentage
             })
