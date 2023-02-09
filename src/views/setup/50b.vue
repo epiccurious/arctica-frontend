@@ -17,6 +17,7 @@
 
 <script>
 import store from '../../store.js'
+import { listen } from '@tauri-apps/api/event'
 const invoke = window.__TAURI__.invoke
 
 export default {
@@ -69,24 +70,22 @@ export default {
             store.commit('setErrorMessage', `Error mounting internal Error code: Setup50b-3 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
-        //check sync status of chain every 10 seconds
-        // while (this.btcCoreHealthy == false) {
-        //     setTimeout(invoke('sync_status').then((res) => {
-        //         store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
-        //         let percentage = Math.floor(res)
-        //         if(percentage != 100) {
-        //         store.commit('setDebug', 'Not fully synced')
-        //         this.syncProgress = percentage
-        //         } else{
-        //             store.commit('setBTCCoreHealthy', true)
-        //         }
-        //     }).catch((e) =>{
-        //         store.commit('setDebug', `error checking sync status: ${e}`)
-        //         store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
-        //         this.$router.push({ name:'Error' })
-        //     })
-        //     ), 10000
-        // }
+        listen('progress', (event) =>{
+              let percentage = Math.floor(event.payload)
+              this.syncProgress = percentage
+            })
+               invoke('sync_status_emitter').then((res) => {
+                store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
+                // let percentage = Math.floor(res)
+                // this.syncProgress = percentage
+                  store.commit('setDebug', `Timechain Sync at ${this.syncProgress}%`)
+                  store.commit('setDebug', 'Timechain Sync Completed')
+                  store.commit('setBTCCoreHealthy', true)
+              }).catch((e) =>{
+                  store.commit('setDebug', `error checking sync status: ${e}`)
+                  store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
+                  this.$router.push({ name:'Error' })
+                })
 
 
     },
