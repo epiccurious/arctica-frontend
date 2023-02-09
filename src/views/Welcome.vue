@@ -118,6 +118,24 @@ export default {
         quickWithdrawal(){
             this.$router.push({ name: 'quick1' })
         },
+        checkSync(){
+          setTimeout( () => invoke('sync_status').then((res) => {
+                store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
+                let percentage = Math.floor(res)
+                this.syncProgress = percentage
+                if(percentage != 100) {
+                  store.commit('setDebug', 'Timechain Not fully synced')
+                } else{
+                    store.commit('setDebug', 'Timechain Sync Completed')
+                    store.commit('setBTCCoreHealthy', true)
+                }
+              }).catch((e) =>{
+                  store.commit('setDebug', `error checking sync status: ${e}`)
+                  store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
+                  this.$router.push({ name:'Error' })
+                })
+                , 5000)
+        }
     },
     computed: {
       psbtFound(){
@@ -269,24 +287,9 @@ export default {
             this.$router.push({ name: 'Error' })
             })
 
-            // while (this.btcCoreHealthy == false) {
-            //   invoke('sync_status').then((res) => {
-            //     store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
-            //     let percentage = Math.floor(res)
-            //     this.syncProgress = percentage
-            //   }).catch((e) =>{
-            //       store.commit('setDebug', `error checking sync status: ${e}`)
-            //       store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
-            //       this.$router.push({ name:'Error' })
-            //     })
-
-            //     if(this.syncProgress != 100) {
-            //       store.commit('setDebug', 'Timechain Not fully synced')
-            //     } else{
-            //         store.commit('setDebug', 'Timechain Sync Completed')
-            //         store.commit('setBTCCoreHealthy', true)
-            //     }
-            // }
+            while (this.btcCoreHealthy == false) {
+              await checkSync()
+            }
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
