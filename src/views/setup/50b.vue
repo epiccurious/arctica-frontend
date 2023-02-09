@@ -70,23 +70,23 @@ export default {
             this.$router.push({ name:'Error' })
         })
         //check sync status of chain every 10 seconds
-        while (this.btcCoreHealthy == false) {
-            setTimeout(invoke('sync_status').then((res) => {
-                store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
-                let percentage = Math.floor(res)
-                if(percentage != 100) {
-                store.commit('setDebug', 'Not fully synced')
-                this.syncProgress = percentage
-                } else{
-                    store.commit('setBTCCoreHealthy', true)
-                }
-            }).catch((e) =>{
-                store.commit('setDebug', `error checking sync status: ${e}`)
-                store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
-                this.$router.push({ name:'Error' })
-            })
-            ), 10000
-        }
+        // while (this.btcCoreHealthy == false) {
+        //     setTimeout(invoke('sync_status').then((res) => {
+        //         store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
+        //         let percentage = Math.floor(res)
+        //         if(percentage != 100) {
+        //         store.commit('setDebug', 'Not fully synced')
+        //         this.syncProgress = percentage
+        //         } else{
+        //             store.commit('setBTCCoreHealthy', true)
+        //         }
+        //     }).catch((e) =>{
+        //         store.commit('setDebug', `error checking sync status: ${e}`)
+        //         store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
+        //         this.$router.push({ name:'Error' })
+        //     })
+        //     ), 10000
+        // }
 
 
     },
