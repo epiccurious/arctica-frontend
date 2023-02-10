@@ -239,24 +239,25 @@ export default {
         if(this.currentSD == 1 && this.setupStep == 0){
           invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
+              
               //start bitcoind with networking enabled
               invoke('start_bitcoind').then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
                 //note: this conditional is nested within the previous conditional
                 //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
-                if(this.decrypted == true && this.btcCoreHealthy == true){
-                  store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
-                  invoke('sync_med_wallet').then((res)=>{
-                    store.commit('setDebug', `syncing immediate wallet: ${res}`)
-                    this.$router.push({ name: 'dashboard' })
-                  }).catch((e)=>{
-                    store.commit('setDebug', `error syncing wallet:${e}`)
-                    store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Welcome7 Response: ${e}`)
-                    this.$router.push({ name: 'Error' })  
-                  })
-                }else{
-                  store.commit('setDebug', 'decrypted state value is set to false')
-                }
+              //   if(this.decrypted == true && this.btcCoreHealthy == true){
+              //     store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
+              //     invoke('sync_med_wallet').then((res)=>{
+              //       store.commit('setDebug', `syncing immediate wallet: ${res}`)
+              //       this.$router.push({ name: 'dashboard' })
+              //     }).catch((e)=>{
+              //       store.commit('setDebug', `error syncing wallet:${e}`)
+              //       store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Welcome7 Response: ${e}`)
+              //       this.$router.push({ name: 'Error' })  
+              //     })
+              //   }else{
+              //     store.commit('setDebug', 'decrypted state value is set to false')
+              //   }
               })
               .catch((e)=> {
                 store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)    

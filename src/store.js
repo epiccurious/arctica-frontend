@@ -30,7 +30,8 @@ export default createStore({
 
     loadMessage: '',
     errorMessage: '',
-
+    internalDiskMounted: false,
+    
     
     //post set up complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
@@ -78,14 +79,17 @@ export default createStore({
     timeLock: true
     },
     mutations:{//synchronous, alters data in state (commit)
-        setDebug(state,value){
+        setDebug(state, value){
             state.debug.push(value)
         },
-        setLoadMessage(state,payload){
+        setLoadMessage(state, payload){
             state.loadMessage = payload
         },
-        setErrorMessage(state,payload){
+        setErrorMessage(state, payload){
             state.errorMessage = payload
+        },
+        setInternalDiskMounted(state, payload){
+            state.internalDiskMounted = payload
         },
         //below is for testing, may remove
         pushPSBTArr(state, payload){
@@ -197,6 +201,9 @@ export default createStore({
         },
         getErrorMessage(state){
             return state.errorMessage
+        },
+        getInternalDiskMounted(state){
+            return state.internalDiskMounted
         },
         //below is for testing, may remove
         getPSBTArr(state){
