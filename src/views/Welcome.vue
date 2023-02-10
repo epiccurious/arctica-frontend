@@ -237,6 +237,7 @@ export default {
         //we MAY be better off removing this as if decrypted was true we assumed the ramdisk already exists above and thus we could probably also assume 
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
         if(this.currentSD == 1 && this.setupStep == 0){
+          store.commit('setDebug', 'current SD = 1 and setupStep = 0 conditional met, invoking mount internal')
           invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
               
@@ -290,6 +291,7 @@ export default {
 
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
+          store.commit('setDebug', 'current SD !=0 and setupStep = 0 conditional met, invoking mount internal')
           invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
               //diable networking
