@@ -42,7 +42,7 @@
 <script>
 import store from '../store.js'
 const invoke = window.__TAURI__.invoke
-import { listen } from '@tauri-apps/api/event'
+// import { listen } from '@tauri-apps/api/event'
 
 export default {
   name: 'Welcome',
