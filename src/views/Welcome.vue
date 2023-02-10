@@ -240,7 +240,12 @@ export default {
           store.commit('setDebug', 'current SD = 1 and setupStep = 0 conditional met, invoking mount internal')
           invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
-              
+            })
+          .catch((e)=> {
+            store.commit('setDebug', `mount internal error: ${e}`)
+            store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
+            this.$router.push({ name: 'Error' })
+            })
               //start bitcoind with networking enabled
               invoke('start_bitcoind').then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
@@ -265,12 +270,7 @@ export default {
                 store.commit('setErrorMessage', `Error Starting Bitcoin Daemon Error code: Welcome6 Response: ${e}`)
                 this.$router.push({ name: 'Error' })            
               })
-          })
-          .catch((e)=> {
-            store.commit('setDebug', `mount internal error: ${e}`)
-            store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
-            this.$router.push({ name: 'Error' })
-            })
+
 
             // listen('progress', (event) =>{
             //   let percentage = Math.floor(event.payload)
