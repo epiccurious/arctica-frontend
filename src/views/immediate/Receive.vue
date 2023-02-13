@@ -44,9 +44,11 @@ export default {
     NavImmediate,
   },
   methods:{
-        async copy(s){
-        await navigator.clipboard.writeText(s)
-        alert('Copied Address!')
+        copy(){
+        var copyText = document.getElementsByClassName("receive_address");
+        copyText.select();
+        navigator.clipboard.writeText(copyText.value);
+        alert('Copied Address!');
         },
         newAddress(){
             invoke('get_address_med_wallet').then((res)=>{
