@@ -11,7 +11,7 @@
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
-                <div @click="copy(address)" id="copy">
+                <div @click="copy()" id="copy">
                     <img src="@/assets/Copy.png">
                     <h2 class="copy_text">Copy Address</h2>
                 </div>
