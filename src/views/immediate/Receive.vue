@@ -46,7 +46,7 @@ export default {
   methods:{
         copy(){
         var copyText = document.getElementsByClassName("receive_address");
-        copyText.select();
+        copyText[0].select();
         navigator.clipboard.writeText(copyText.value);
         alert('Copied Address!');
         },
