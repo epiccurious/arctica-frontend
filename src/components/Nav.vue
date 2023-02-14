@@ -31,8 +31,8 @@ export default{
         sync(){
         // invoke('sync_med_wallet').then((res)=> {
         //     store.commit('setDebug', `Syncing immediate wallet ${res}`)
-            invoke('init_med_wallet').then((res)=> {
-                store.commit('setDebug', `initializing immediate wallet ${res}`)
+            // invoke('init_med_wallet').then((res)=> {
+            //     store.commit('setDebug', `initializing immediate wallet ${res}`)
                 invoke('get_balance_med_wallet').then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                     store.commit('setImmediateBalance', `${res}`)
@@ -43,10 +43,10 @@ export default{
                     })
                 }).catch((e)=>{
                 store.commit('setDebug', `error getting immediate wallet balance ${e}`)
-                })
-            }).catch((e)=>{
-            store.commit('setDebug', `error initializing immediate wallet ${e}`)
-            })
+                 })
+            // }).catch((e)=>{
+            // store.commit('setDebug', `error initializing immediate wallet ${e}`)
+            // })
 
         // }).catch((e)=>{
         //     store.commit('setDebug', `error syncing immediate wallet:${e}`)
