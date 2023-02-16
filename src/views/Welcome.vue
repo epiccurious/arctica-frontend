@@ -1,4 +1,8 @@
 <template>
+    <div v-if="this.loading == true">
+  <Loader/>
+  </div>
+
   <div v-if="this.bpsHealthy == false || this.btcCoreHealthy == false" class="loading">
   <header>
     <h1>Welcome to Arctica</h1>
@@ -42,6 +46,7 @@
 <script>
 import store from '../store.js'
 const invoke = window.__TAURI__.invoke
+import Loader from '@/components/loader'
 // import { listen } from '@tauri-apps/api/event'
 
 export default {
@@ -83,11 +88,13 @@ export default {
             //user has manually recovered password using the appropriate amount of SD cards
             else if(this.decrypted == true && this.currentSD == 1){
               store.commit('setDebug', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
+              this.loading = true
               //unpacking sensitive dir
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
                 invoke('sync_med_wallet').then((res)=>{
                   store.commit('setDebug', `syncing immediate wallet: ${res}`)
+                  this.loading = false
                   this.$router.push({ name: 'dashboard' })
                 }).catch((e)=>{
                   store.commit('setDebug', `Error syncing immediate wallet: ${e}`)
@@ -166,7 +173,8 @@ export default {
     },
     data(){
         return{
-            syncProgress: 0
+            syncProgress: 0,
+            loading: false
         }
     },
     mounted(){
