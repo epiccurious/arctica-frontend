@@ -47,7 +47,7 @@ export default {
           this.loading=true
           store.commit('setLoadMessage', 'creating recovery cd...')
           //creating recovery cd
-          invoke('create_recovery_cd').then((res)=>{
+          invoke('recovery_initiate').then((res)=>{
             store.commit('setDebug', `creating recovery cd ${res}`)
             this.loading=false
             this.cdfinished=true
