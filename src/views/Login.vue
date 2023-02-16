@@ -58,7 +58,7 @@ export default {
                         store.commit('setDebug', 'Masterkey Found in Ramdisk')
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
-                            store.commit('setLoadMessage', 'syncing wallets...')
+                            store.commit('setLoadMessage', 'syncing immediate wallet...')
                             invoke('sync_med_wallet').then((res)=>{
                                 store.commit('setDebug', `syncing immediate wallet: ${res}`)
                                 this.loading = false

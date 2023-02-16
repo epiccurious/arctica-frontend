@@ -39,7 +39,7 @@ can be removed once immediate wallet is functional -->
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance_overview">{{ delayedBalance }} BTC</h2>
+            <h2 class="balance_overview">(Disabled) BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 

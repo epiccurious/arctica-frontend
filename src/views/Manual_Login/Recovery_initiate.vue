@@ -14,7 +14,7 @@
   <div v-else class="page">
     <header>
       <h1>Manual Recovery Initiated.</h1>
-      <h2>Please insert a blank transfer CD.</h2>
+      <h2>Please insert a blank CD(RW).</h2>
     </header>
     <div class="form_container">
         <form>
