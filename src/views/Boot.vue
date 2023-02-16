@@ -58,50 +58,61 @@ export default {
         acknowledge(){
           this.loading = true
           //read the config file of the inserted CD
-          invoke('read_cd').then((res) => {
-            store.commit('setDebug', `invoking read_cd: ${res}`)
-            store.commit('setLoadMessage', 'reading CD...')
-            let resArray = res.split("\n")
-            store.commit('setDebug', `response Array: ${resArray}`)
-            for(let i = 0; i < resArray.length; i ++){
-                let it = resArray[i].split("=")
-                store.commit('setDebug', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
-                //check for recovery CD
-                //assume user is attempting to manually decrypt
-                if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'TRANSFERCD'){
-                    store.commit('setTransferCD', true)
-                    store.commit('setDebug', `Recovery CD detected, boolean set to true ${store.getters.getTransferCD}`)
-                    //calculate numbertorecover differential based on how many shards are on recoverycd
-                    invoke('calculate_number_of_shards_cd').then((res)=> {
-                      store.commit('setDebug', `calculating number of shards on recovery cd: number = ${res}`)
-                      //send the user to recovery_additional if they have not yet met numbertorecover threshold
-                      if(this.numberToRecover > res){
-                        store.commit('setDebug', 'Need more shards, sending to recovery additional')
-                        this.loading = false
-                        this.$router.push({ name: 'RecoveryAdditional' })
-                      }
-                      //if the number of shards exceeds the decryption threshold, send user to success screen
-                      //combine shards at recovery success screen
-                      else{
-                        store.commit('setDebug', 'shard threshold met, sending to recovery success')
-                        this.loading = false
-                        this.$router.push({ name: 'RecoverySuccess' })
-                      }
-                    })
-                    .catch((e) => {
-                      store.commit('setDebug', `error calculating shards on recovery cd: ${e}`)
-                      store.commit('setErrorMessage', `Error calculating shard count on disk Error code: Boot1 Response: ${e}`)
-                      this.$router.push({ name: 'Error' })
-                    })
-                }
-                //either no cd is inserted or user hit the button too fast
-                else{
-                    store.commit('setDebug', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
-                }
-                this.loading = false
-        }
-      })
-    },
+          invoke('copy_cd_to_ramdisk').then((res) =>{
+            store.commit('setDebug', `copying cd to ramdisk: ${res}`)
+            store.commit('setLoadMessage', 'copying CD to ramdisk')
+            this.loading = false
+          }).catch((e)=>{ 
+            store.commit('setDebug', `error copying cd to ramdisk: ${e}`)
+            store.commit('setErrorMessage', `Error copying cd to ramdisk, Error Code: Boot3 Response: ${e}`)
+            this.$router.push({ name: 'Error' })
+          })
+
+
+    //       invoke('read_cd').then((res) => {
+    //         store.commit('setDebug', `invoking read_cd: ${res}`)
+    //         store.commit('setLoadMessage', 'reading CD...')
+    //         let resArray = res.split("\n")
+    //         store.commit('setDebug', `response Array: ${resArray}`)
+    //         for(let i = 0; i < resArray.length; i ++){
+    //             let it = resArray[i].split("=")
+    //             store.commit('setDebug', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+    //             //check for recovery CD
+    //             //assume user is attempting to manually decrypt
+    //             if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'TRANSFERCD'){
+    //                 store.commit('setTransferCD', true)
+    //                 store.commit('setDebug', `Recovery CD detected, boolean set to true ${store.getters.getTransferCD}`)
+    //                 //calculate numbertorecover differential based on how many shards are on recoverycd
+    //                 invoke('calculate_number_of_shards_cd').then((res)=> {
+    //                   store.commit('setDebug', `calculating number of shards on recovery cd: number = ${res}`)
+    //                   //send the user to recovery_additional if they have not yet met numbertorecover threshold
+    //                   if(this.numberToRecover > res){
+    //                     store.commit('setDebug', 'Need more shards, sending to recovery additional')
+    //                     this.loading = false
+    //                     this.$router.push({ name: 'RecoveryAdditional' })
+    //                   }
+    //                   //if the number of shards exceeds the decryption threshold, send user to success screen
+    //                   //combine shards at recovery success screen
+    //                   else{
+    //                     store.commit('setDebug', 'shard threshold met, sending to recovery success')
+    //                     this.loading = false
+    //                     this.$router.push({ name: 'RecoverySuccess' })
+    //                   }
+    //                 })
+    //                 .catch((e) => {
+    //                   store.commit('setDebug', `error calculating shards on recovery cd: ${e}`)
+    //                   store.commit('setErrorMessage', `Error calculating shard count on disk Error code: Boot1 Response: ${e}`)
+    //                   this.$router.push({ name: 'Error' })
+    //                 })
+    //             }
+    //             //either no cd is inserted or user hit the button too fast
+    //             else{
+    //                 store.commit('setDebug', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+    //             }
+    //             this.loading = false
+    //     }
+    //   })
+     },
         help(){
         },
         install(){
