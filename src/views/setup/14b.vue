@@ -43,7 +43,7 @@ export default {
                                     store.commit('setDebug', `installing SD dependencies: ${res}`)
                                     store.commit('setLoadMessage', 'Refreshing setup CD...')
                                         //refresh setup CD with latest .iso 
-                                        invoke('refresh_setup_cd').then((res)=>{
+                                        invoke('refresh_cd').then((res)=>{
                                             store.commit('setDebug', `refreshing setup CD: ${res}`)
                                             store.commit('setLoadMessage', 'Packing up sensitive info...')
                                             invoke('packup').then((res)=>{

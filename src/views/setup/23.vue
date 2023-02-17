@@ -98,7 +98,7 @@ export default {
                                                     store.commit('setDebug', `packing up sensitive info ${res}`)
                                                     store.commit('setLoadMessage', 'Refreshing Setup CD...')
                                                             //refresh setup CD with latest .iso 
-                                                            invoke('refresh_setup_cd').then((res)=>{
+                                                            invoke('refresh_cd').then((res)=>{
                                                                 store.commit('setDebug', `refreshing setup CD ${res}`)
                                                                 this.loading = false
                                                             }).catch((e)=>{

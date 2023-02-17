@@ -33,8 +33,6 @@ export default {
     methods: {
         acknowledge(){
         },
-        help(){
-        }
     },
     computed: {
       numberToRecover(){
@@ -43,16 +41,45 @@ export default {
       
     },
     mounted(){
-      //collecting shards and refreshing recovery cd
+      // collecting shards from $HOME on current SD and adding them to /mnt/ramdisk/CDROM/shards
       store.commit('setLoadMessage', 'collecting privacy key shards...')
       invoke('collect_shards').then((res)=>{
-        store.commit('setDebug', `collecting shards and refreshing recovery cd: ${res}`)
-        this.loading=false
-        this.$router.push({ name:'RecoveryEvaluate' })
+        store.commit('setDebug', `collecting shards: ${res}`)
+        store.commit('setLoadMessage', 'collecting shards...')
+        //calculate numbertorecover differential based on how many shards are present on recoverycd
+        invoke('calculate_number_of_shards').then((res)=> {
+          store.commit('setDebug', `calculating number of shards in ramdisk: number = ${res}`)
+          store.commit('setLoadMessage', 'calculating differential...')
+          //if numbertorecover threshold is not yet met
+          if(this.numberToRecover > res){
+            store.commit('setDebug', `Need more shards to complete recovery. obtained ${res} of ${this.numberToRecover}`)
+            //if more shards needed{recoveryadditional: genisoimage, blank inserted disc, burn new iso}
+          }
+          //if the numbertorecover threshold is met
+          else{
+            store.commit('setDebug', `shard threshold met, obtained ${res} of ${this.numberToRecover}`)
+            //else{recoveryfinish: reconstitute masterkey, genisoimage, blank inserted disc, burn new iso}
+
+          }
+      })
+      .catch((e) => {
+        store.commit('setDebug', `error calculating shards on recovery cd: ${e}`)
+        store.commit('setErrorMessage', `Error calculating shard count on disk Error code: RecoveryAdditional1 Response: ${e}`)
+        this.$router.push({ name: 'Error' })
+      })
       })
       .catch((e)=>{
         store.commit('setDebug', `error collecting shards ${e}`)
+        store.commit('setErrorMessage', `Error calculating shard count on disk Error code: RecoveryAdditional2 Response: ${e}`)
+        this.$router.push({ name: 'Error' })
       })
+
+      
+
+      //this.loading=false
+      //this.$router.push({ name:'RecoveryEvaluate' })
+      
+      
     },
     data() {
     return {
