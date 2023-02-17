@@ -19,6 +19,10 @@
       <h1>In order to manually recover you will need access to 1 additional SD card.</h1>
         <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
+    <div v-else-if="this.currentSD == 1 && this.numberToRecover <= 2" class="btn_container">
+      <h1>Enough of your privacy keys have decayed that you may login without a passphrase.</h1>
+        <button @click="login()" class="btn">Login</Button>
+    </div>
     <div v-else-if="this.currentSD != 1" class="btn_container">
       <h1>In order to begin manual recovery you must be on SD 1.</h1>
     </div>
@@ -36,6 +40,9 @@
           acknowledge(){
               this.$router.push({ name: 'RecoveryInitiate' })
           },
+          login(){
+            //nothing here yet until numbertorecover <=2 threshold is achievable, this will not happen until BPS publishes privacy keys according to decay schedule
+          }
       },
       computed: {
         numberToRecover(){
