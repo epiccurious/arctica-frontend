@@ -51,6 +51,9 @@ import Loader from '@/components/loader'
 
 export default {
   name: 'Welcome',
+  components: {
+    Loader
+  },
     methods: {
         login(){
            //user is returning with an immediate account PSBT that has been signed by 1 SD card
