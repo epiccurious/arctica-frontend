@@ -50,11 +50,6 @@ const routes = [
     name: 'RecoveryAdditional',
     component: () => import('../views/Manual_Login/Recovery_additional.vue')
    },
-   {
-    path: '/login/recovery_evaluate',
-    name: 'RecoveryEvaluate',
-    component: () => import('../views/Manual_Login/Recovery_evaluate.vue')
-   },
   {
     path: '/wallets',
     name: 'dashboard',
