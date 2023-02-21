@@ -273,7 +273,7 @@ export default{
             store.commit('setDebug', `invoking packup: ${res}`)
         })
         .catch((e)=>{
-            store.commit('setDebug', `error invoking packup${res}`)
+            store.commit('setDebug', `error invoking packup${e}`)
         })
     },
         generateKeys(){
