@@ -135,11 +135,13 @@
     <br> 
     <button @click="spendPolicy()" class="btn">Spend Policy</button>
     <br> 
-    <button @click="syncWallet()()" class="btn">Sync Wallet</button>
+    <button @click="syncWallet()" class="btn">Sync Wallet</button>
     <br> 
-    <button @click="getTransctionHistory()()" class="btn">Transaction History</button>
+    <button @click="getTransctionHistory()" class="btn">Transaction History</button>
     <br> 
-    <button @click="checkSync()()" class="btn">Sync Status</button>
+    <button @click="checkSync()" class="btn">Sync Status</button>
+    <br> 
+    <button @click="packup()" class="btn">Sync Status</button>
 
     </div> 
 </div>
@@ -265,6 +267,15 @@ export default{
         })
 
     },
+    packup(){
+        //this is a debug function which packs up the sensitive dir into an encrypted tarball
+        invoke('packup').then((res)=>{
+            store.commit('setDebug', `invoking packup: ${res}`)
+        })
+        .catch((e)=>{
+            store.commit('setDebug', `error invoking packup${res}`)
+        })
+    },
         generateKeys(){
             //this is a debug function used to create keys 2-7 on SD 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
@@ -320,7 +331,7 @@ export default{
     //this is for testing with testPrint()
     data(){
         return{
-            keynumber: 2
+            keynumber: 1
         }
     },
     computed:{
