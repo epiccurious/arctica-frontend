@@ -70,8 +70,6 @@ export default {
     Compromised,
   },
      mounted(){
-        // invoke('init_med_wallet').then((res)=> {
-        //   store.commit('setDebug', `initializing immediate wallet ${res}`)
           invoke('get_balance_med_wallet').then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             store.commit('setImmediateBalance', `${res}`)
@@ -87,27 +85,6 @@ export default {
           store.commit('setErrorMessage', `Error getting balance for Immediate Wallet Error code: Dashboard2 Response: ${e}`)
           this.$router.push({ name: 'Error' })
           })
-        // })
-        // .catch((e)=>{
-        //   store.commit('setDebug', `error initializing immediate wallet ${e}`)
-        //   store.commit('setErrorMessage', `Error initializing Immediate Wallet Error code: Dashboard3 Response: ${e}`)
-        //   this.$router.push({ name: 'Error' })
-        // })
-            
-      //temporarily commenting out until work begins on delayed wallet features
-      // invoke('init_high_wallet').then((res)=> {
-      //   store.commit('setDebug', `initializing delayed wallet ${res}`)
-      //   invoke('get_balance_high_wallet').then((res)=>{
-      //     store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
-      //     store.commit('setDelayedBalance', `${res}`)
-      //   })
-      //   .catch((e)=>{
-      //   store.commit('setDebug', `error getting delayed wallet balance ${e}`)
-      //   })
-      // })
-      // .catch((e)=>{
-      //   store.commit('setDebug', `error initializing delayed wallet ${e}`)
-      // })
 
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup

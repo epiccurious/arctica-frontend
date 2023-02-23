@@ -29,30 +29,20 @@ export default{
     components: { RefreshIcon },
     methods: {
         sync(){
-        // invoke('sync_med_wallet').then((res)=> {
-        //     store.commit('setDebug', `Syncing immediate wallet ${res}`)
-            // invoke('init_med_wallet').then((res)=> {
-            //     store.commit('setDebug', `initializing immediate wallet ${res}`)
-                invoke('get_balance_med_wallet').then((res)=>{
-                    store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-                    store.commit('setImmediateBalance', `${res}`)
-                    invoke('get_transactions_med_wallet').then((res)=>{
-                        store.commit('setDebug', `getting transactions for immediate wallet: ${res}`)
-                    }).catch((e)=>{
-                    store.commit('setDebug', `error getting transactions for immediate wallet: ${e}`)
-                    })
-                }).catch((e)=>{
-                store.commit('setDebug', `error getting immediate wallet balance ${e}`)
-                 })
-            // }).catch((e)=>{
-            // store.commit('setDebug', `error initializing immediate wallet ${e}`)
-            // })
+                // invoke('get_balance_med_wallet').then((res)=>{
+                //     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
+                //     store.commit('setImmediateBalance', `${res}`)
+                //     invoke('get_transactions_med_wallet').then((res)=>{
+                //         store.commit('setDebug', `getting transactions for immediate wallet: ${res}`)
+                //     }).catch((e)=>{
+                //     store.commit('setDebug', `error getting transactions for immediate wallet: ${e}`)
+                //     })
+                // }).catch((e)=>{
+                // store.commit('setDebug', `error getting immediate wallet balance ${e}`)
+                //  })
 
-        // }).catch((e)=>{
-        //     store.commit('setDebug', `error syncing immediate wallet:${e}`)
-        // })
-        }
     },
+},
     computed: {
         dash(){
             if(this.$route.path =='/wallets'){
@@ -69,7 +59,7 @@ export default{
             }
         }
     },
-}
+    }
 </script>
 
 <style scoped>

@@ -74,37 +74,14 @@ export default {
                   //if config value is set to 'recoverycd', user is attempting to manually decrypt
                   if (String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'RECOVERYCD'){
                       store.commit('setDebug', `Recovery CD detected`)
-                      
-                      //calculate numbertorecover differential based on how many shards are present on recoverycd
-                      invoke('calculate_number_of_shards_cd').then((res)=> {
-                        store.commit('setDebug', `calculating number of shards on recovery cd: number = ${res}`)
-                        //send the user to recovery_additional if they have not yet met numbertorecover threshold
-                        if(this.numberToRecover > res){
-                          store.commit('setDebug', 'Need more shards, sending to recovery additional')
-                          this.loading = false
-                          this.$router.push({ name: 'RecoveryAdditional' })
-                        }
-                        //if the number of shards exceeds the decryption threshold, send user to success screen
-                        //combine shards at recovery success screen
-                        else{
-                          store.commit('setDebug', 'shard threshold met, sending to recovery success')
-                          this.loading = false
-                          this.$router.push({ name: 'RecoverySuccess' })
-                        }
-                    })
-                    .catch((e) => {
-                      store.commit('setDebug', `error calculating shards on recovery cd: ${e}`)
-                      store.commit('setErrorMessage', `Error calculating shard count on disk Error code: Boot1 Response: ${e}`)
-                      this.$router.push({ name: 'Error' })
-                    })
+                      store.commit('setDebug', 'Sending user to RecoveryAdditional')
+                      this.$router.push({ name: 'RecoveryAdditional' })
                 }
-
                 //if the config value is set to 'transfercd', user is attempting to sign a PSBT
                 else if(String(it[0]).toUpperCase() == 'TYPE' && String(it[1]).toUpperCase() == 'TRANSFERCD'){
                   this.loading = false
                   store.commit('setDebug', `Transfer CD detected`)
                 }
-
                 //if no valid config value is found, either a blank cd is inserted or user potentially hit the button too fast
                 else{
                     this.loading = false
