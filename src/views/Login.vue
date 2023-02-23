@@ -59,15 +59,8 @@ export default {
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'syncing immediate wallet...')
-                            invoke('sync_med_wallet').then((res)=>{
-                                store.commit('setDebug', `syncing immediate wallet: ${res}`)
-                                this.loading = false
-                                this.$router.push({ name: 'dashboard' })
-                            }).catch((e)=>{
-                            store.commit('setDebug', `Error syncing immediate wallet: ${e}`)
-                            store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Login1 Response: ${e}`)
-                            this.$router.push({ name: 'Error' }) 
-                            })
+                            this.loading = false
+                            this.$router.push({ name: 'dashboard' })
                         })
                         .catch((e) => {
                         store.commit('setDebug', `error unpacking: ${e}`)

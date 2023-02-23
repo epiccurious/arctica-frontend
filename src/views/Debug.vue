@@ -135,8 +135,6 @@
     <br> 
     <button @click="spendPolicy()" class="btn">Spend Policy</button>
     <br> 
-    <button @click="syncWallet()" class="btn">Sync Wallet</button>
-    <br> 
     <button @click="getTransctionHistory()" class="btn">Transaction History</button>
     <br> 
     <button @click="checkSync()" class="btn">Sync Status</button>
@@ -237,15 +235,6 @@ export default{
                 store.commit('setDebug', `sync status: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `error checking sync status ${e}`)
-            })
-        },
-        
-        syncWallet(){
-            //this is a debug function used to sync the immediate wallet, for testing after a completed rescan
-            invoke('sync_med_wallet').then((res)=>{
-                store.commit('setDebug', `syncing immediate wallet:${res}`)
-            }).catch((e)=>{
-                store.commit('setDebug', `error syncing immediate wallet: ${e}`)
             })
         },
         getTransctionHistory(){

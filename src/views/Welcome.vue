@@ -95,15 +95,8 @@ export default {
               //unpacking sensitive dir
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
-                invoke('sync_med_wallet').then((res)=>{
-                  store.commit('setDebug', `syncing immediate wallet: ${res}`)
-                  this.loading = false
-                  this.$router.push({ name: 'dashboard' })
-                }).catch((e)=>{
-                  store.commit('setDebug', `Error syncing immediate wallet: ${e}`)
-                  store.commit('setErrorMessage', `Error Syncing Immediate Wallet. Error code: Welcome2 Response: ${e}`)
-                  this.$router.push({ name: 'Error' })
-                  })
+                this.loading = false
+                this.$router.push({ name: 'dashboard' })
               })
               .catch((e)=>{
                 store.commit('setDebug', `error unpacking sensitive dir ${e}`)
@@ -259,14 +252,8 @@ export default {
                 //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
                 // if(this.decrypted == true && this.btcCoreHealthy == true){
                 //   store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
-                //   invoke('sync_med_wallet').then((res)=>{
-                //     store.commit('setDebug', `syncing immediate wallet: ${res}`)
-                //     this.$router.push({ name: 'dashboard' })
-                //   }).catch((e)=>{
-                //     store.commit('setDebug', `error syncing wallet:${e}`)
-                //     store.commit('setErrorMessage', `Error Syncing Immediate Wallet Error code: Welcome7 Response: ${e}`)
-                //     this.$router.push({ name: 'Error' })  
-                //   })
+                //   this.$router.push({ name: 'dashboard' })
+
                 // }else{
                 //   store.commit('setDebug', 'decrypted state value is set to false')
                 // }
