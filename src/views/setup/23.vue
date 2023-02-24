@@ -74,9 +74,11 @@ export default {
     },
     mounted(){
         this.loading = true
+        store.commit('setLoadMessage', 'Invoking Mount Internal...')
         //mount and symlink internal .bitcoin dirs
         invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
+              store.commit('setLoadMessage', 'starting bitcoin daemon...')
             //start bitcoind with networking disabled
             invoke('start_bitcoind_network_off').then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
