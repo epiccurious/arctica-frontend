@@ -292,9 +292,6 @@ export default {
           store.commit('setDebug', 'current SD !=0 and setupStep = 0 conditional met, invoking mount internal')
           invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
-              //diable networking
-              invoke('disable_networking').then((res)=>{
-                store.commit('setDebug', `disabling networking: ${res}`)
                 //start bitcoind with networking disabled
                 invoke('start_bitcoind_network_off').then((res)=> {
                   store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
@@ -304,12 +301,7 @@ export default {
                   store.commit('setErrorMessage', `Error starting bitcoin daemon with networking disabled. Error code: Welcome3 Response: ${e}`)
                   this.$router.push({ name: 'Error' })
                 })
-              })
-              .catch((e)=>{
-                store.commit('setDebug', `error disabling networking error: ${e}`)
-                store.commit('setErrorMessage', `Error disabling networking. Error code: Welcome11 Response: ${e}`)
-                this.$router.push({ name: 'Error' })
-              })
+
           })
         .catch((e)=> {
           store.commit('setDebug', `mount internal error: ${e}`)
@@ -320,158 +312,60 @@ export default {
 
         //set up step redirects, promise disables networking for added security
         if(this.setupStep == 1 && this.currentSD == 1){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 1 found, redirecting user to setup12')
-            this.$router.push({ name: 'Setup12' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome12 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })    
+            this.$router.push({ name: 'Setup12' })  
         }
         else if(this.setupStep == 2 && this.currentSD == 2){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 2 found, redirecting user to setup14a')
             this.$router.push({ name: 'Setup14a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome13 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 3 && this.currentSD == 3){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 3 found, redirecting user to setup15a')
             this.$router.push({ name: 'Setup15a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome14 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 4 && this.currentSD == 4){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 4 found, redirecting user to setup16')
             this.$router.push({ name: 'Setup16' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome15 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 5 && this.currentSD == 5){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 5 found, redirecting user to setup18a')
             this.$router.push({ name: 'Setup18a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome16 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 6 && this.currentSD == 6){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 6 found, redirecting user to setup19a')
             this.$router.push({ name: 'Setup19a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome17 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 7 && this.currentSD == 7){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 7 found, redirecting user to setup20a')
             this.$router.push({ name: 'Setup20a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome18 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 8 && this.currentSD == 1){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 8 found, redirecting user to setup21')
             this.$router.push({ name: 'Setup21' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome19 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 9 && this.currentSD == 2){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 9 found, redirecting user to setup27a')
             this.$router.push({ name: 'Setup27a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome20 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 10 && this.currentSD == 3){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 10 found, redirecting user to setup31a')
             this.$router.push({ name: 'Setup31a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome21 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 11 && this.currentSD == 4){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 11 found, redirecting user to setup35a')
             this.$router.push({ name: 'Setup35a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome22 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 12 && this.currentSD == 5){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 12 found, redirecting user to setup39a')
             this.$router.push({ name: 'Setup39a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome23 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 13 && this.currentSD == 6){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 13 found, redirecting user to setup43a')
             this.$router.push({ name: 'Setup43a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome23 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 14 && this.currentSD == 7){
-          invoke('disable_networking').then((res)=>{
-            store.commit('setDebug', `disabling networking: ${res}`)
             store.commit('setDebug', 'setup step 14 found, redirecting user to setup47a')
             this.$router.push({ name: 'Setup47a' })
-          }).catch((e)=> {
-          store.commit('setDebug', `error disabling networking: ${e}`)
-          store.commit('setErrorMessage', `Error disabling networking: Welcome23 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
         else if(this.setupStep == 15 && this.currentSD == 1){
           store.commit('setDebug', 'setup step 15 found, redirecting user to setup50b')
