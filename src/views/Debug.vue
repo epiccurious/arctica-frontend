@@ -137,9 +137,7 @@
     <br> 
     <button @click="getTransctionHistory()" class="btn">Transaction History</button>
     <br> 
-    <button @click="checkSync()" class="btn">Sync Status</button>
-    <br> 
-    <button @click="packup()" class="btn">Sync Status</button>
+    <button @click="getDescriptorInfo()" class="btn">Descriptor Info</button>
 
     </div> 
 </div>
@@ -229,12 +227,12 @@ export default{
                 store.commit('setBPSHealthy', false)
             }
         },   
-        checkSync(){
-        //this is a debug function used to check the sync of the bitcoin blockchain
-            invoke('sync_status').then((res)=>{
-                store.commit('setDebug', `sync status: ${res}`)
+        getDescriptorInfo(){
+        //this is a debug function used to get the descriptor check summed analysis
+            invoke('get_descriptor_info').then((res)=>{
+                store.commit('setDebug', `descriptor info: ${res}`)
             }).catch((e)=>{
-                store.commit('setDebug', `error checking sync status ${e}`)
+                store.commit('setDebug', `error getting descriptor info ${e}`)
             })
         },
         getTransctionHistory(){
