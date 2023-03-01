@@ -52,15 +52,16 @@ export default {
         alert('Copied Address!');
         },
         newAddress(){
-            invoke('get_address_med_wallet').then((res)=>{
-            store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
-            this.address = res
-          })
-          .catch((e)=>{
-            store.commit('setDebug', `error getting new immediate wallet address ${e}`)
-            store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
-            this.$router.push({ name: 'Error' })
-          })
+            //deprecated
+          //   invoke('get_address_med_wallet').then((res)=>{
+          //   store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
+          //   this.address = res
+          // })
+          // .catch((e)=>{
+          //   store.commit('setDebug', `error getting new immediate wallet address ${e}`)
+          //   store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
+          //   this.$router.push({ name: 'Error' })
+          // })
         },
   },
   data(){
@@ -69,15 +70,16 @@ export default {
       }
   },
      mounted(){
-        invoke('get_address_med_wallet').then((res)=>{
-            store.commit('setDebug', `getting address for immediate wallet: ${res}`)
-            this.address = res
-          })
-          .catch((e)=>{
-            store.commit('setDebug', `error getting immediate wallet address ${e}`)
-            store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive2 Response: ${e}`)
-            this.$router.push({ name: 'Error' })
-          })
+          //deprecated
+        // invoke('get_address_med_wallet').then((res)=>{
+        //     store.commit('setDebug', `getting address for immediate wallet: ${res}`)
+        //     this.address = res
+        //   })
+        //   .catch((e)=>{
+        //     store.commit('setDebug', `error getting immediate wallet address ${e}`)
+        //     store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive2 Response: ${e}`)
+        //     this.$router.push({ name: 'Error' })
+        //   })
      }
 }
 </script>

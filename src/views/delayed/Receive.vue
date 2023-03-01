@@ -49,13 +49,14 @@ export default {
           alert('Copied Address!')
         },
         newAddress(){
-            invoke('get_address_high_wallet').then((res)=>{
-            store.commit('setDebug', `getting new address for delayed wallet: ${res}`)
-            this.address = res
-          })
-          .catch((e)=>{
-            store.commit('setDebug', `error getting new delayed wallet address ${e}`)
-          })
+            //deprecated
+        //     invoke('get_address_high_wallet').then((res)=>{
+        //     store.commit('setDebug', `getting new address for delayed wallet: ${res}`)
+        //     this.address = res
+        //   })
+        //   .catch((e)=>{
+        //     store.commit('setDebug', `error getting new delayed wallet address ${e}`)
+        //   })
         },
         ackWarning(){
           this.warning = false
@@ -68,13 +69,14 @@ export default {
       }
   },
    mounted(){
-    invoke('get_address_high_wallet').then((res)=>{
-        store.commit('setDebug', `getting address for delayed wallet: ${res}`)
-        this.address = res
-        })
-        .catch((e)=>{
-        store.commit('setDebug', `error getting delayed wallet address ${e}`)
-        })
+        //deprecated
+    // invoke('get_address_high_wallet').then((res)=>{
+    //     store.commit('setDebug', `getting address for delayed wallet: ${res}`)
+    //     this.address = res
+    //     })
+    //     .catch((e)=>{
+    //     store.commit('setDebug', `error getting delayed wallet address ${e}`)
+    //     })
     this.timeLock = store.getters.getTimeLock
     this.address = store.getters.getDelayedAddress
     if(this.timeLock == true){
