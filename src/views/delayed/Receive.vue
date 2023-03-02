@@ -34,8 +34,8 @@
 <script>
 import NavDelayed from '@/components/NavDelayed'
 import DelayWarning from './DelayWarning'
-// import store from '../../store.js'
-const invoke = window.__TAURI__.invoke
+import store from '../../store.js'
+// const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'delayedReceive',
