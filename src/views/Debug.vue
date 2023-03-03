@@ -138,6 +138,12 @@
     <button @click="getTransctionHistory()" class="btn">Transaction History</button>
     <br> 
     <button @click="getDescriptorInfo()" class="btn">Descriptor Info</button>
+    <br>
+    <button @click="createWallet()" class="btn">Create Wallet</button>
+    <br>
+    <button @click="importDescriptors()" class="btn">Import Descriptors</button>
+    <br>
+    <button @click="getBalance()" class="btn">Get Balance</button>
 
     </div> 
 </div>
@@ -229,7 +235,7 @@ export default{
         },   
         getDescriptorInfo(){
         //this is a debug function used to get the descriptor check summed analysis
-            invoke('get_descriptor_info').then((res)=>{
+            invoke('get_descriptor_info', {wallet: "immediate"}).then((res)=>{
                 store.commit('setDebug', `descriptor info: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `error getting descriptor info ${e}`)
@@ -242,6 +248,30 @@ export default{
             })
             .catch((e)=>{
                 store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
+            })
+        },
+        createWallet(){
+            //this is a debug function used to create a blank watch only immediate wallet
+            invoke('create_wallet', {wallet: "immediate"}).then((res)=>{
+                store.commit('setDebug', `creating blank watch only immediate wallet ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `error creating blank watch only wallet: ${e}`)
+            })
+        },
+        importDescriptors(){
+            //this is a debug function used to import immediate wallet descriptor
+            invoke('import_descriptor', {wallet: "immediate"}).then((res)=>{
+                store.commit('setDebug', `import immediate wallet descriptor into blank wallet: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `error importing immediate wallet descriptor: ${e}`)
+            })
+        },
+        getBalance(){
+            //this is a debug function used to get the balance of the immediate wallet
+            invoke('get_balance', {wallet: "immediate"}).then((res)=>{
+                store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `error getting balance for immediate wallet: ${e}`)
             })
         },
         spendPolicy(){
