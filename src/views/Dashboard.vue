@@ -70,21 +70,12 @@ export default {
     Compromised,
   },
      mounted(){
-          invoke('get_balance_med_wallet').then((res)=>{
+          invoke('get_balance', {wallet: this.wallet}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-            store.commit('setImmediateBalance', `${res}`)
-            invoke('get_transactions_med_wallet').then((res)=>{
-              store.commit('setDebug', `getting transactions for immediate wallet: ${res}`)
-            }).catch((e)=>{
-              store.commit('setDebug', `error getting transactions for immediate wallet: ${e}`)
-              store.commit('setErrorMessage', `Error getting transaction history for Immediate Wallet. Error code: Dashboard1 Response: ${e}`)
-              this.$router.push({ name: 'Error' })
-            })
+            store.commit('setImmediateBalance', `${parseInt(res)}`)
           }).catch((e)=>{
           store.commit('setDebug', `error getting immediate wallet balance ${e}`)
-          store.commit('setErrorMessage', `Error getting balance for Immediate Wallet Error code: Dashboard2 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
+            })
 
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
@@ -105,6 +96,7 @@ export default {
       return{
           immediateBalance: null,
           delayedBalance: null,
+          wallet: "immediate" 
       }
   },
  computed:{

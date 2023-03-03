@@ -20,8 +20,7 @@ import { RouterView, RouterLink } from "vue-router";
   RouterLink
 }
 import { RefreshIcon } from '@bitcoin-design/bitcoin-icons-vue/filled'
-// import store from '../store.js'
-// const invoke = window.__TAURI__.invoke
+
 
 
 export default{
@@ -29,18 +28,12 @@ export default{
     components: { RefreshIcon },
     methods: {
         sync(){
-                // invoke('get_balance_med_wallet').then((res)=>{
+                // invoke('get_balance', {wallet: this.wallet}).then((res)=>{
                 //     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-                //     store.commit('setImmediateBalance', `${res}`)
-                //     invoke('get_transactions_med_wallet').then((res)=>{
-                //         store.commit('setDebug', `getting transactions for immediate wallet: ${res}`)
-                //     }).catch((e)=>{
-                //     store.commit('setDebug', `error getting transactions for immediate wallet: ${e}`)
-                //     })
+                //     store.commit('setImmediateBalance', `${parseInt(res)}`)
                 // }).catch((e)=>{
                 // store.commit('setDebug', `error getting immediate wallet balance ${e}`)
                 //  })
-
     },
 },
     computed: {
@@ -59,6 +52,11 @@ export default{
             }
         }
     },
+    data(){
+      return{
+          wallet: "immediate"
+      }
+  },
     }
 </script>
 

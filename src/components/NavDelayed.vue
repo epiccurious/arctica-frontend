@@ -73,14 +73,18 @@ export default{
         },
     },
              mounted(){
-            invoke('get_balance_high_wallet').then((res)=>{
-            store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
-            store.commit('setDelayedBalance', `${res}`)
-          })
-          .catch((e)=>{
-            store.commit('setDebug', `error getting new high wallet address ${e}`)
-          })
+                // invoke('get_balance', {wallet: this.wallet}).then((res)=>{
+                //     store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
+                //     store.commit('setDelayedBalance', `${parseInt(res)}`)
+                // }).catch((e)=>{
+                // store.commit('setDebug', `error getting delayed wallet balance ${e}`)
+                //  })
  },
+ data(){
+      return{
+          wallet: "delayed"
+      }
+  },
 }
 </script>
 

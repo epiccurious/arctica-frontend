@@ -72,14 +72,18 @@ export default{
         },
     },
          mounted(){
-            invoke('get_balance_med_wallet').then((res)=>{
-            store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-            store.commit('setImmediateBalance', `${res}`)
-          })
-          .catch((e)=>{
-            store.commit('setDebug', `error getting new high wallet address ${e}`)
-          })
+            invoke('get_balance', {wallet: this.wallet}).then((res)=>{
+                    store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
+                    store.commit('setImmediateBalance', `${parseInt(res)}`)
+                }).catch((e)=>{
+                store.commit('setDebug', `error getting immediate wallet balance ${e}`)
+                 })
  },
+ data(){
+      return{
+          wallet: "immediate"
+      }
+  },
 }
 </script>
 
