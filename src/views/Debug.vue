@@ -243,7 +243,7 @@ export default{
         },
         getTransctionHistory(){
             //this is a debug function used to print the immediate wallet transaction history vec
-            invoke('get_transactions_med_wallet').then((res)=>{
+            invoke('get_transactions', {wallet: "immediate"}).then((res)=>{
                 store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
             })
             .catch((e)=>{
