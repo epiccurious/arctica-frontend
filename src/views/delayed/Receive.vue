@@ -49,13 +49,14 @@ export default {
           alert('Copied Address!')
         },
         newAddress(){
-            //deprecated
-        //     invoke('get_address_high_wallet').then((res)=>{
+        //     invoke('get_address', {wallet: this.wallet}).then((res)=>{
         //     store.commit('setDebug', `getting new address for delayed wallet: ${res}`)
         //     this.address = res
         //   })
         //   .catch((e)=>{
-        //     store.commit('setDebug', `error getting new delayed wallet address ${e}`)
+        //     store.commit('setDebug', `error getting new immediate wallet address ${e}`)
+        //     store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
+        //     this.$router.push({ name: 'Error' })
         //   })
         },
         ackWarning(){
@@ -65,18 +66,20 @@ export default {
   data(){
       return{
           address: null,
+          wallet: "delayed",
           warning: null
       }
   },
    mounted(){
-        //deprecated
-    // invoke('get_address_high_wallet').then((res)=>{
-    //     store.commit('setDebug', `getting address for delayed wallet: ${res}`)
-    //     this.address = res
-    //     })
-    //     .catch((e)=>{
-    //     store.commit('setDebug', `error getting delayed wallet address ${e}`)
-    //     })
+    // invoke('get_address', {wallet: this.wallet}).then((res)=>{
+    //         store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
+    //         this.address = res
+    //       })
+    //       .catch((e)=>{
+    //         store.commit('setDebug', `error getting new immediate wallet address ${e}`)
+    //         store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
+    //         this.$router.push({ name: 'Error' })
+    //       })
     this.timeLock = store.getters.getTimeLock
     this.address = store.getters.getDelayedAddress
     if(this.timeLock == true){

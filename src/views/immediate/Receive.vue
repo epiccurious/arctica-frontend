@@ -35,8 +35,8 @@ Todo:
 
 <script>
 import NavImmediate from '@/components/NavImmediate'
-// import store from '../../store.js'
-// const invoke = window.__TAURI__.invoke
+import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'immediateReceive',
@@ -52,34 +52,33 @@ export default {
         alert('Copied Address!');
         },
         newAddress(){
-            //deprecated
-          //   invoke('get_address_med_wallet').then((res)=>{
-          //   store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
-          //   this.address = res
-          // })
-          // .catch((e)=>{
-          //   store.commit('setDebug', `error getting new immediate wallet address ${e}`)
-          //   store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
-          //   this.$router.push({ name: 'Error' })
-          // })
+            invoke('get_address', {wallet: this.wallet}).then((res)=>{
+            store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
+            this.address = res
+          })
+          .catch((e)=>{
+            store.commit('setDebug', `error getting new immediate wallet address ${e}`)
+            store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
+            this.$router.push({ name: 'Error' })
+          })
         },
   },
   data(){
       return{
-          address: null
+          address: null,
+          wallet: "immediate"
       }
   },
      mounted(){
-          //deprecated
-        // invoke('get_address_med_wallet').then((res)=>{
-        //     store.commit('setDebug', `getting address for immediate wallet: ${res}`)
-        //     this.address = res
-        //   })
-        //   .catch((e)=>{
-        //     store.commit('setDebug', `error getting immediate wallet address ${e}`)
-        //     store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive2 Response: ${e}`)
-        //     this.$router.push({ name: 'Error' })
-        //   })
+          invoke('get_address', {wallet: this.wallet}).then((res)=>{
+            store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
+            this.address = res
+          })
+          .catch((e)=>{
+            store.commit('setDebug', `error getting new immediate wallet address ${e}`)
+            store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
+            this.$router.push({ name: 'Error' })
+          })
      }
 }
 </script>
