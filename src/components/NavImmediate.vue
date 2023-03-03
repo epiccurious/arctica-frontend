@@ -72,18 +72,13 @@ export default{
         },
     },
          mounted(){
-            invoke('get_balance', {wallet: this.wallet}).then((res)=>{
+            invoke('get_balance', {wallet: "immediate"}).then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                     store.commit('setImmediateBalance', `${parseInt(res)}`)
                 }).catch((e)=>{
                 store.commit('setDebug', `error getting immediate wallet balance ${e}`)
                  })
  },
- data(){
-      return{
-          wallet: "immediate"
-      }
-  },
 }
 </script>
 
