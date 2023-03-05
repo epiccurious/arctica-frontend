@@ -52,7 +52,14 @@
                                                 //update setupstep state on sd card
                                                 invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
                                                     store.commit('setDebug', `config set to new values setupStep: ${this.setupStep} res:${res}`)
+                                                    invoke('stop_bitcoind').then((res) =>{
+                                                    store.commit('setDebug', `stopping bitcoin daemon ${res}`)
                                                     this.loading = false
+                                                    }).catch((e)=>{
+                                                        store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
+                                                        store.commit('setErrorMessage', `Error with stopping bitcoin daemon Error Code: Setup19b-8 Response: ${e}`)
+                                                        this.$router.push({ name:'Error' })
+                                                })
                                                 }).catch((e) => {
                                                     store.commit('setDebug', `async write error: ${e}`)
                                                     store.commit('setErrorMessage', `Error with async write Error code: Setup19b-1 Response: ${e}`)
