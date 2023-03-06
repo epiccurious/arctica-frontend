@@ -84,9 +84,6 @@
         }
       },
       mounted(){
-        //mount and symlink internal .bitcoin dirs
-        invoke('mount_internal').then((res)=> {
-              store.commit('setDebug', `invoking mount internal ${res}`)
               //start bitcoind with networking disabled
               invoke('start_bitcoind_network_off').then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
@@ -96,12 +93,6 @@
                 store.commit('setErrorMessage', `Error starting bitcoin daemon Error code: Setup16-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
               })
-          })
-        .catch((e)=> {
-          store.commit('setDebug', `mount internal error: ${e}`)
-          store.commit('setErrorMessage', `Error mounting internal Error code: Setup16-2 Response: ${e}`)
-          this.$router.push({ name:'Error' })
-          })
           }
   }
   </script>

@@ -290,8 +290,6 @@ export default {
         //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
         } else if(this.currentSD != 0 && this.setupStep == 0){
           store.commit('setDebug', 'current SD !=0 and setupStep = 0 conditional met, invoking mount internal')
-          invoke('mount_internal').then((res)=> {
-              store.commit('setDebug', `invoking mount internal ${res}`)
                 //start bitcoind with networking disabled
                 invoke('start_bitcoind_network_off').then((res)=> {
                   store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
@@ -301,13 +299,6 @@ export default {
                   store.commit('setErrorMessage', `Error starting bitcoin daemon with networking disabled. Error code: Welcome3 Response: ${e}`)
                   this.$router.push({ name: 'Error' })
                 })
-
-          })
-        .catch((e)=> {
-          store.commit('setDebug', `mount internal error: ${e}`)
-          store.commit('setErrorMessage', `Error Mounting internal Error code: Welcome4 Response: ${e}`)
-          this.$router.push({ name: 'Error' })
-          })
         }
 
         //set up step redirects, promise disables networking for added security
