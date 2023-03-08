@@ -70,7 +70,7 @@ export default {
     Compromised,
   },
      mounted(){
-          invoke('get_balance', {wallet: this.wallet}).then((res)=>{
+          invoke('get_balance', {wallet: "immediate"}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             store.commit('setImmediateBalance', `${parseInt(res)}`)
           }).catch((e)=>{
@@ -94,9 +94,7 @@ export default {
  },
    data(){
       return{
-          immediateBalance: null,
-          delayedBalance: null,
-          wallet: "immediate" 
+          delayedBalance: 0,
       }
   },
  computed:{

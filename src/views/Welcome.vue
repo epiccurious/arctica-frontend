@@ -95,8 +95,15 @@ export default {
               //unpacking sensitive dir
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
-                this.loading = false
-                this.$router.push({ name: 'dashboard' })
+                invoke('loadwallets').then((res) =>{
+                  store.commit('setDebug', `Loaded Wallets: ${res}`)
+                  this.loading = false
+                  this.$router.push({ name: 'dashboard' })
+                })
+                .catch((e)=>{
+                    store.commit('setDebug', `error loading wallets: ${e}`)
+                    store.commit('setErrorMessage', `Error Loading Wallets Error Code: Login6 Response: ${e}`)
+                })   
               })
               .catch((e)=>{
                 store.commit('setDebug', `error unpacking sensitive dir ${e}`)

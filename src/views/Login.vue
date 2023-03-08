@@ -58,9 +58,16 @@ export default {
                         store.commit('setDebug', 'Masterkey Found in Ramdisk')
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
-                            store.commit('setLoadMessage', 'syncing immediate wallet...')
-                            this.loading = false
-                            this.$router.push({ name: 'dashboard' })
+                            store.commit('setLoadMessage', 'Loading wallets...')
+                            invoke('loadwallets').then((res) =>{
+                                store.commit('setDebug', `Loaded Wallets: ${res}`)
+                                this.loading = false
+                                this.$router.push({ name: 'dashboard' })
+                            })
+                            .catch((e)=>{
+                                store.commit('setDebug', `error loading wallets: ${e}`)
+                                store.commit('setErrorMessage', `Error Loading Wallets Error Code: Login6 Response: ${e}`)
+                            })        
                         })
                         .catch((e) => {
                         store.commit('setDebug', `error unpacking: ${e}`)
@@ -94,8 +101,8 @@ export default {
             }
             //use this condition for when user is logging in normally with password & BPS
             else{
-                this.$router.push({ name: 'dashboard' })
-                }
+                store.commit('setDebug', 'error, cannot login with password, not yet implemented, try setupCD, recoveryCD, or transferCD')
+            }
         },
         passwordRecovery(){
             this.$router.push({ name: 'Recovery' })
