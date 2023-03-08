@@ -84,7 +84,7 @@ export default {
                     store.commit('setDebug', `reading setup CD ${res}`)
                     store.commit('setLoadMessage', 'Creating Descriptors...')
                     //create the descriptors and export to the setupCD
-                    invoke('create_descriptor').then((res) => {
+                    invoke('create_descriptor', {sdcard: "1"}).then((res) => {
                         store.commit('setDebug', `creating descriptors ${res}`)
                         store.commit('setLoadMessage', 'Unpacking sensitive data...')
                                     //unpack() the encrypted dir on SD 1
