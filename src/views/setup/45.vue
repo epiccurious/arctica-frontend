@@ -54,6 +54,13 @@ export default {
                 store.commit('setErrorMessage', `Error with async write Error code: Setup45-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
+        invoke('stop_bitcoind').then((res) =>{
+            store.commit('setDebug', `stopping bitcoin daemon ${res}`)
+        }).catch((e)=>{
+            store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
+            store.commit('setErrorMessage', `Error with stopping bitcoin daemon Error Code: Setup45-2 Response: ${e}`)
+            this.$router.push({ name:'Error' })
+        })
     },
 }
 </script>
