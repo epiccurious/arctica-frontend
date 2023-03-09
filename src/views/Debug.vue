@@ -310,26 +310,12 @@ export default{
             //start bitcoind
             invoke('start_bitcoind_network_off').then((res) => {
                 store.commit('setDebug', `starting bitcoin daemon with networking off: ${res}`)
-                //create ramdisk
-                invoke('create_ramdisk').then((res) => {
-                    store.commit('setDebug', `creating ramdisk ${res}`)
-                    store.commit('setLoadMessage', 'Creating ramdisk...')
-                    //copy CD contents to ramdisk
-                    invoke('copy_cd_to_ramdisk').then((res) => {
-                        store.commit('setDebug', `reading setup CD ${res}`)
-                        store.commit('setLoadMessage', 'Creating Descriptors...')
                         //create the descriptors and export to the setupCD
-                        invoke('create_descriptor').then((res) => {
+                        invoke('create_descriptor', {sdcard: "1"}).then((res) => {
                             store.commit('setDebug', `creating descriptors ${res}`)
                         }).catch((e) => {
                                 store.commit('setDebug', `error creating descriptors: ${e}`)
                         })
-                    }).catch((e) => {
-                        store.commit('setDebug', `error reading setup CD: ${e}`)
-                    }) 
-                }).catch((e) => {
-                        store.commit('setDebug', `error creating ramdisk: ${e}`)
-                }) 
             }).catch((e) => {
                     store.commit('setDebug', `error starting bitcoin core: ${e}`)
             }) 
