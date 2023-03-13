@@ -136,10 +136,15 @@
     <button @click="spendPolicy()" class="btn">Spend Policy</button>
     <br> 
     <button @click="getTransctionHistory()" class="btn">Transaction History</button>
-    <br> 
-    <button @click="refreshCD()" class="btn">Refresh CD</button>
     <br>
     <button @click="getBalance()" class="btn">Get Balance</button>
+    <br> 
+    <button @click="refreshCD()" class="btn">Refresh CD</button>
+    <br> 
+    <button @click="unpack()" class="btn">Unpack</button>
+    <br> 
+    <button @click="packup()" class="btn">Packup</button>
+    
 
     </div> 
 </div>
@@ -230,11 +235,27 @@ export default{
             }
         },   
         refreshCD(){
-        //this is a debug function used to get the descriptor check summed analysis
+        //this is a debug function used to refresh the CD with the current contents of /mnt/ramdisk/CDROM
             invoke('refresh_cd').then((res)=>{
                 store.commit('setDebug', `refreshing CD: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `error refreshing CD ${e}`)
+            })
+        },
+        unpack(){
+            //this is a debug function used to unpack the encrypted tarball into /mnt/ramdisk/sensitive
+            invoke('unpack').then((res)=>{
+                store.commit('setDebug', `unpacking tarball: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `error unpacking tarball ${e}`)
+            })
+        },
+        packup(){
+            //this is a debug function used to packup the contents of /mnt/ramdisk/sensitive into an encrypted tarball
+            invoke('packup').then((res)=>{
+                store.commit('setDebug', `packing up tarball: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `error packing up tarball ${e}`)
             })
         },
         getTransctionHistory(){
