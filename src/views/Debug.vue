@@ -285,15 +285,6 @@ export default{
         })
 
     },
-    packup(){
-        //this is a debug function which packs up the sensitive dir into an encrypted tarball
-        invoke('packup').then((res)=>{
-            store.commit('setDebug', `invoking packup: ${res}`)
-        })
-        .catch((e)=>{
-            store.commit('setDebug', `error invoking packup${e}`)
-        })
-    },
         generateKeys(){
             //this is a debug function used to create keys 2-7 on SD 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
