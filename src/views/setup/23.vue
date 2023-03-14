@@ -94,16 +94,7 @@ export default {
                             //make sure sensitive contains everything it should before packup()
                             invoke('packup').then((res) => {
                                 store.commit('setDebug', `packing up sensitive info ${res}`)
-                                store.commit('setLoadMessage', 'Refreshing Setup CD...')
-                                        //refresh setup CD with latest .iso 
-                                        invoke('refresh_cd').then((res)=>{
-                                            store.commit('setDebug', `refreshing setup CD ${res}`)
-                                            this.loading = false
-                                        }).catch((e)=>{
-                                            store.commit('setDebug', `refresh setup CD error ${e}`)
-                                            store.commit('setErrorMessage', `Error refreshing setup CD Error code: Setup23-3 Response: ${e}`)
-                                            this.$router.push({ name:'Error' })
-                                            })  
+                                this.loading = false
                             }).catch((e) => {
                                 store.commit('setDebug', `error packing up sensitive info: ${e}`)
                                 store.commit('setErrorMessage', `Error packing up Error code: Setup23-4 Response: ${e}`)
