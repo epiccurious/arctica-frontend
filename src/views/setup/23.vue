@@ -75,51 +75,46 @@ export default {
     mounted(){
         this.loading = true
         store.commit('setLoadMessage', 'starting bitcoin daemon...')
-            //start bitcoind with networking disabled
-            invoke('start_bitcoind_network_off').then((res)=> {
-                store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
-                store.commit('setLoadMessage', 'Copying Setup CD...')
-                //copy everything from the setup CD to ramdisk
-                invoke('copy_cd_to_ramdisk').then((res) => {
-                    store.commit('setDebug', `reading setup CD ${res}`)
-                    store.commit('setLoadMessage', 'Unpacking Sensitive Data...')
-                    //unpack() the encrypted dir on SD 1
-                    invoke('unpack').then((res) => {
-                        store.commit('setDebug', `unpacking sensitive info ${res}`)
-                        store.commit('setLoadMessage', 'Creating Descriptors...')
-                        //create the descriptors and export to the setupCD
-                        invoke('create_descriptor', {sdcard: "1"}).then((res) => {
-                            store.commit('setDebug', `creating descriptors ${res}`)
-                            store.commit('setLoadMessage', 'Packing up sensitive data...')
-                            //make sure sensitive contains everything it should before packup()
-                            invoke('packup').then((res) => {
-                                store.commit('setDebug', `packing up sensitive info ${res}`)
-                                this.loading = false
-                            }).catch((e) => {
-                                store.commit('setDebug', `error packing up sensitive info: ${e}`)
-                                store.commit('setErrorMessage', `Error packing up Error code: Setup23-4 Response: ${e}`)
-                                this.$router.push({ name:'Error' })
-                                })        
-                        }).catch((e) => {
-                            store.commit('setDebug', `error creating descriptors: ${e}`)
-                            store.commit('setErrorMessage', `Error creating descriptors Error code: Setup23-6 Response: ${e}`)
-                            this.$router.push({ name:'Error' })
-                            })
+        //start bitcoind with networking disabled
+        invoke('start_bitcoind_network_off')
+        store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
+        store.commit('setLoadMessage', 'Copying Setup CD...')
+        //copy everything from the setup CD to ramdisk
+        invoke('copy_cd_to_ramdisk').then((res) => {
+            store.commit('setDebug', `reading setup CD ${res}`)
+            store.commit('setLoadMessage', 'Unpacking Sensitive Data...')
+            //unpack() the encrypted tarball
+            invoke('unpack').then((res) => {
+                store.commit('setDebug', `unpacking sensitive info ${res}`)
+                store.commit('setLoadMessage', 'Creating Descriptors...')
+                //create the descriptors
+                invoke('create_descriptor', {sdcard: "1"}).then((res) => {
+                    store.commit('setDebug', `creating descriptors ${res}`)
+                    store.commit('setLoadMessage', 'Packing up sensitive data...')
+                    //make sure sensitive contains everything it should before packup()
+                    invoke('packup').then((res) => {
+                        store.commit('setDebug', `packing up sensitive info ${res}`)
+                        this.loading = false
                     }).catch((e) => {
-                        store.commit('setDebug', `error unpacking sensitive info: ${e}`)
-                        store.commit('setErrorMessage', `Error unpacking Error code: Setup23-5 Response: ${e}`)
+                        store.commit('setDebug', `error packing up sensitive info: ${e}`)
+                        store.commit('setErrorMessage', `Error packing up Error code: Setup23-4 Response: ${e}`)
                         this.$router.push({ name:'Error' })
-                        })
+                        })        
                 }).catch((e) => {
-                    store.commit('setDebug', `error reading setup CD: ${e}`)
-                    store.commit('setErrorMessage', `Error reading setup CD Error code: Setup23-7 Response: ${e}`)
+                    store.commit('setDebug', `error creating descriptors: ${e}`)
+                    store.commit('setErrorMessage', `Error creating descriptors Error code: Setup23-6 Response: ${e}`)
                     this.$router.push({ name:'Error' })
-                    }) 
-            }).catch((e)=> {
-                store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)
-                store.commit('setErrorMessage', `Error starting bitcoin daemon Error code: Setup23-8 Response: ${e}`)
+                    })
+            }).catch((e) => {
+                store.commit('setDebug', `error unpacking sensitive info: ${e}`)
+                store.commit('setErrorMessage', `Error unpacking Error code: Setup23-5 Response: ${e}`)
                 this.$router.push({ name:'Error' })
-              })
+                })
+        }).catch((e) => {
+            store.commit('setDebug', `error reading setup CD: ${e}`)
+            store.commit('setErrorMessage', `Error reading setup CD Error code: Setup23-7 Response: ${e}`)
+            this.$router.push({ name:'Error' })
+            }) 
     }
             
 }

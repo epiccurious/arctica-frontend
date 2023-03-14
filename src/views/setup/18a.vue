@@ -86,14 +86,9 @@ export default {
     },
     mounted(){
               //start bitcoind with networking disabled
-              invoke('start_bitcoind_network_off').then((res)=> {
-                store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
-              })
-              .catch((e)=> {
-                store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)
-                store.commit('setErrorMessage', `Error starting bitcoin daemon Error code: Setup18a-2 Response: ${e}`)
-                this.$router.push({ name:'Error' })
-              })
+              invoke('start_bitcoind_network_off')
+                store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
+
           }
 }
 </script>

@@ -300,17 +300,13 @@ export default{
         createDescriptors(){
             //this is a debug function used to create descriptors when testing locally instead of on an SD card
             //start bitcoind
-            invoke('start_bitcoind_network_off').then((res) => {
-                store.commit('setDebug', `starting bitcoin daemon with networking off: ${res}`)
-                        //create the descriptors and export to the setupCD
+            invoke('start_bitcoind_network_off')
+                store.commit('setDebug', `starting bitcoin daemon with networking off`)
                         invoke('create_descriptor', {sdcard: "1"}).then((res) => {
                             store.commit('setDebug', `creating descriptors ${res}`)
                         }).catch((e) => {
                                 store.commit('setDebug', `error creating descriptors: ${e}`)
                         })
-            }).catch((e) => {
-                    store.commit('setDebug', `error starting bitcoin core: ${e}`)
-            }) 
         },
         reboot(){
             this.$router.push({ name: 'welcome' })

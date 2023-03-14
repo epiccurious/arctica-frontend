@@ -298,14 +298,9 @@ export default {
         } else if(this.currentSD != 0 && this.setupStep == 0){
           store.commit('setDebug', 'current SD !=0 and setupStep = 0 conditional met, invoking mount internal')
                 //start bitcoind with networking disabled
-                invoke('start_bitcoind_network_off').then((res)=> {
-                  store.commit('setDebug', `starting bitcoin daemon with networking disabled: ${res}`)
-                })
-                .catch((e)=> {
-                  store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)
-                  store.commit('setErrorMessage', `Error starting bitcoin daemon with networking disabled. Error code: Welcome3 Response: ${e}`)
-                  this.$router.push({ name: 'Error' })
-                })
+                invoke('start_bitcoind_network_off')
+                  store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
+
         }
 
         //set up step redirects, promise disables networking for added security
