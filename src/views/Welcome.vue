@@ -101,6 +101,7 @@ export default {
                     store.commit('setDebug', `Loaded Immediate Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Loading delayed wallet...')
                     invoke('load_wallet', {wallet: "delayed", sdcard: this.currentSD.toString()}).then((res) =>{
+                        store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
                         this.loading = false
                         this.$router.push({ name: 'dashboard' })
                     })
