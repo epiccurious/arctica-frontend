@@ -70,7 +70,7 @@ export default {
     Compromised,
   },
      mounted(){
-          invoke('get_balance', {wallet: "immediate"}).then((res)=>{
+          invoke('get_balance', {wallet: "immediate", sdcard:this.currentSD.toString()}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             store.commit('setImmediateBalance', `${parseInt(res)}`)
           }).catch((e)=>{
@@ -115,7 +115,10 @@ export default {
  },
  duressSetup(){
   return store.getters.getDuressSetup
- }
+ },
+ currentSD(){
+        return store.getters.getCurrentSD
+      },
 }
 </script>
 

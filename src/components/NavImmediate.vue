@@ -70,9 +70,12 @@ export default{
         immediateBalance(){
         return store.getters.getImmediateBalance
         },
+        currentSD(){
+        return store.getters.getCurrentSD
+      },
     },
          mounted(){
-            invoke('get_balance', {wallet: "immediate"}).then((res)=>{
+            invoke('get_balance', {wallet: "immediate", sdcard:this.currentSD.toString()}).then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                     store.commit('setImmediateBalance', `${parseInt(res)}`)
                 }).catch((e)=>{

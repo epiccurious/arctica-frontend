@@ -52,7 +52,7 @@ export default {
         alert('Copied Address!');
         },
         newAddress(){
-            invoke('get_address', {wallet: this.wallet}).then((res)=>{
+            invoke('get_address', {wallet: this.wallet, sdcard:this.currentSD.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
           })
@@ -69,8 +69,13 @@ export default {
           wallet: "immediate"
       }
   },
+  computed: {
+    currentSD(){
+        return store.getters.getCurrentSD
+      },
+  },
      mounted(){
-          invoke('get_address', {wallet: this.wallet}).then((res)=>{
+          invoke('get_address', {wallet: this.wallet, sdcard:this.currentSD.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
           })

@@ -28,7 +28,7 @@ export default{
     components: { RefreshIcon },
     methods: {
         sync(){
-                // invoke('get_balance', {wallet: this.wallet}).then((res)=>{
+                // invoke('get_balance', {wallet: this.wallet, sdcard:this.currentSD.toString()}).then((res)=>{
                 //     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                 //     store.commit('setImmediateBalance', `${parseInt(res)}`)
                 // }).catch((e)=>{
@@ -50,7 +50,10 @@ export default{
             } else{
                 return false
             }
-        }
+        }, 
+        currentSD(){
+        return store.getters.getCurrentSD
+      },
     },
     data(){
       return{
