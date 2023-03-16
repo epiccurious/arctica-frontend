@@ -20,7 +20,7 @@ import { RouterView, RouterLink } from "vue-router";
   RouterLink
 }
 import { RefreshIcon } from '@bitcoin-design/bitcoin-icons-vue/filled'
-import store from '../../store.js'
+import store from '../store.js'
 
 
 
