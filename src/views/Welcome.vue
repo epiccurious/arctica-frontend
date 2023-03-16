@@ -3,7 +3,7 @@
   <Loader/>
   </div>
 
-  <div v-if="this.bpsHealthy == false || this.btcCoreHealthy == false" class="loading">
+  <div v-else-if="this.bpsHealthy == false || this.btcCoreHealthy == false" class="loading">
   <header>
     <h1>Welcome to Arctica</h1>
     <h2>Hang Tight. We are checking on a few things.</h2>
