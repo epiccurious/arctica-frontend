@@ -59,7 +59,7 @@ export default {
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'Loading wallets...')
-                            invoke('load_wallets').then((res) =>{
+                            invoke('load_wallets', {sdcard: this.currentSD.toString()}).then((res) =>{
                                 store.commit('setDebug', `Loaded Wallets: ${res}`)
                                 this.loading = false
                                 this.$router.push({ name: 'dashboard' })
@@ -110,7 +110,11 @@ export default {
         warn(){
         },
     },
- computed: {},
+ computed: {
+    currentSD(){
+        return store.getters.getCurrentSD
+      },
+ },
  data(){
      return{
          password1: '',

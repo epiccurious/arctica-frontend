@@ -93,9 +93,11 @@ export default {
               store.commit('setDebug', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
               this.loading = true
               //unpacking sensitive dir
+              store.commit('setLoadMessage', 'unpacking tarball...')
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
-                invoke('load_wallets').then((res) =>{
+                store.commit('setLoadMessage', 'Loading wallets...')
+                invoke('load_wallets', {sdcard: this.currentSD.toString()}).then((res) =>{
                   store.commit('setDebug', `Loaded Wallets: ${res}`)
                   this.loading = false
                   this.$router.push({ name: 'dashboard' })
