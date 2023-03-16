@@ -96,16 +96,26 @@ export default {
               store.commit('setLoadMessage', 'unpacking tarball...')
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
-                store.commit('setLoadMessage', 'Loading wallets...')
-                invoke('load_wallets', {sdcard: this.currentSD.toString()}).then((res) =>{
-                  store.commit('setDebug', `Loaded Wallets: ${res}`)
-                  this.loading = false
-                  this.$router.push({ name: 'dashboard' })
+                store.commit('setLoadMessage', 'Loading immediate wallet...')
+                invoke('load_wallet', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res) =>{
+                    store.commit('setDebug', `Loaded Immediate Wallet: ${res}`)
+                    store.commit('setLoadMessage', 'Loading delayed wallet...')
+                    invoke('load_wallet', {wallet: "delayed", sdcard: this.currentSD.toString()}).then((res) =>{
+                        this.loading = false
+                        this.$router.push({ name: 'dashboard' })
+                    })
+                    .catch((e)=>{
+                        store.commit('setDebug', `error loading delayed wallet: ${e}`)
+                        store.commit('setErrorMessage', `Error Loading delayed Wallet Error Code: Welcome2 Response: ${e}`)
+                        this.$router.push({ name: 'Error' }) 
+                    })
+
                 })
                 .catch((e)=>{
-                    store.commit('setDebug', `error loading wallets: ${e}`)
-                    store.commit('setErrorMessage', `Error Loading Wallets Error Code: Login6 Response: ${e}`)
-                })   
+                    store.commit('setDebug', `error loading immediate wallet: ${e}`)
+                    store.commit('setErrorMessage', `Error Loading immediate Wallet Error Code: Welcome3 Response: ${e}`)
+                    this.$router.push({ name: 'Error' }) 
+                })
               })
               .catch((e)=>{
                 store.commit('setDebug', `error unpacking sensitive dir ${e}`)
