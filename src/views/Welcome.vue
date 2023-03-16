@@ -95,7 +95,7 @@ export default {
               //unpacking sensitive dir
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
-                invoke('loadwallets').then((res) =>{
+                invoke('load_wallets').then((res) =>{
                   store.commit('setDebug', `Loaded Wallets: ${res}`)
                   this.loading = false
                   this.$router.push({ name: 'dashboard' })
