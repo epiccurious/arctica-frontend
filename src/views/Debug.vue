@@ -128,7 +128,8 @@
             </label>
         </div>
 
-    
+    <button @click="getBlockChainInfo()" class="btn">Get Blockchain Info</button>
+    <br>
     <button @click="createDescriptors()" class="btn">Create Descriptors</button>
     <br>
     <button @click="generateKeys()" class="btn">Gen Keys</button>
