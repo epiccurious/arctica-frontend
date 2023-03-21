@@ -230,6 +230,7 @@ export default {
               //unpack sensitive since the masterkey is already in ramdisk
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive: ${res}`)
+                //TODO should automatically take the user to the dashboard here MAYBE? 
               }).catch((e)=>{
                 store.commit(('setDebug', `error unpacking sensitive: ${e}`))
                 store.commit('setErrorMessage', `Error unpacking sensitive Error code: Welcome8 Response: ${e}`)
@@ -262,14 +263,17 @@ export default {
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
         if(this.currentSD == 1 && this.setupStep == 0){
           store.commit('setDebug', 'current SD = 1 and setupStep = 0 conditional met, invoking mount internal')
+          this.loading = true
+          store.commit('setLoadMessage', 'Mounting the internal drive...')
           invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
-
+              store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...')
               //start bitcoind with networking enabled
               invoke('start_bitcoind').then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
+                this.loading = false
                 //note: this conditional is nested within the previous conditional
-                //if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
+                //TODO if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
                 // if(this.decrypted == true && this.btcCoreHealthy == true){
                 //   store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
                 //   this.$router.push({ name: 'dashboard' })
