@@ -1,11 +1,14 @@
 <template>
-<div class="page">
+    <div v-if="this.loading == true">
+  <Loader/>
+</div>
+<div v-else class="page">
     <header>
         <h1>Congratulations. You have successfully completed set up.</h1>
         <h2>Now we must wait for Bitcoin Core to finish it's initial sync.</h2>
         <h2>This computer should remain on and unlocked until the time chain has finished it's sync.</h2> 
         <h2>This can take anywhere from a few hours to a few weeks depending on your internet connection.</h2>
-        <h3>Progress: {{ syncProgress }}% complete.</h3>
+        <h3>Progress: X% complete.</h3>
     </header>
         <div class="btn_container"> 
             <button v-if="this.btcCoreHealthy == true" @click="acknowledge()" class="btn">Proceed</Button>
@@ -17,13 +20,15 @@
 
 <script>
 import store from '../../store.js'
-import { listen } from '@tauri-apps/api/event'
 const invoke = window.__TAURI__.invoke
+import Loader from '@/components/loader'
+
 
 export default {
   name: 'Setup50b',
   components: {
-    },
+    Loader
+  },
     methods: {
         acknowledge(){
             this.$router.push({ name: 'Setup51' })
@@ -38,8 +43,8 @@ export default {
     },
     data(){
         return{
+            loading: false,
             setupStep: '0',
-            syncProgress: 0
         }
     },
     mounted(){
@@ -52,9 +57,11 @@ export default {
                 store.commit('setErrorMessage', `Error with async write Error code: Setup50b-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
-        
+        store.commit('setLoadMessage', 'Mounting internal drive...')
         invoke('mount_internal').then((res) => {
             store.commit('setDebug', `Mounting internal drive ${res}`)
+            this.loading = true
+            store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...')
             //start the bitcoin daemon
             invoke('start_bitcoind').then((res) => {
                 store.commit('setDebug', `Starting the Bitcoin daemon ${res}`)
@@ -71,23 +78,6 @@ export default {
             this.$router.push({ name:'Error' })
         })
 
-        listen('progress', (event) =>{
-            store.commit('setDebug', `listening for event syncProgress. Even payload ${event.payload}`)
-              let percentage = Math.floor(event.payload)
-              this.syncProgress = percentage
-            })
-               invoke('sync_status_emitter').then((res) => {
-                store.commit('setDebug', `Checking sync status of Bitcoin Timechain: ${res}`)
-                // let percentage = Math.floor(res)
-                // this.syncProgress = percentage
-                  store.commit('setDebug', `Timechain Sync at ${this.syncProgress}%`)
-                  store.commit('setDebug', 'Timechain Sync Completed')
-                  store.commit('setBTCCoreHealthy', true)
-              }).catch((e) =>{
-                  store.commit('setDebug', `error checking sync status: ${e}`)
-                  store.commit('setErrorMessage', `Error cehcking sync status Error code: setup50b-4 Response: ${e}` )
-                  this.$router.push({ name:'Error' })
-                })
 
 
     },
