@@ -64,8 +64,16 @@ export default {
                                 store.commit('setLoadMessage', 'Loading delayed wallet...')
                                 invoke('load_wallet', {wallet: "delayed", sdcard: this.currentSD.toString()}).then((res) =>{
                                     store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
-                                    this.loading = false
-                                    this.$router.push({ name: 'dashboard' })
+                                    store.commit('setLoadMessage', 'Packing up sensitive info...')
+                                    invoke('packup').then((res) => {
+                                        store.commit('setDebug', `successfully packed up: ${res}`)
+                                        this.loading = false
+                                        this.$router.push({ name: 'dashboard' })
+                                    }).catch((e)=>{
+                                        store.commit('setDebug', `error packing up sensitive: ${e}`)
+                                        store.commit('setErrorMessage', `Error Packing up Sensitive Error Code: Login8 Response: ${e}`)
+                                        this.$router.push({ name: 'Error' })  
+                                    })
                                 })
                                 .catch((e)=>{
                                     store.commit('setDebug', `error loading delayed wallet: ${e}`)
