@@ -28,7 +28,7 @@ can be removed once immediate wallet is functional -->
             <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance_overview">{{ imbal }} BTC</h2>
+              <h2 class="balance_overview">{{ this.imbal }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 

@@ -5,7 +5,7 @@
                     <img src="@/assets/Wallet.png"/>
                     <div class="description_balance">
                     <h2 class="description">Immediate Wallet</h2>
-                    <h2 class="balance">₿ {{ bal }}</h2>
+                    <h2 class="balance">₿ {{ this.bal }}</h2>
                     </div>
             </div>
 
