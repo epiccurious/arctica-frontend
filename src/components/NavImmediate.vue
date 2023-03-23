@@ -5,7 +5,7 @@
                     <img src="@/assets/Wallet.png"/>
                     <div class="description_balance">
                     <h2 class="description">Immediate Wallet</h2>
-                    <h2 class="balance">₿ {{ immediateBalance }}</h2>
+                    <h2 class="balance">₿ {{ bal }}</h2>
                     </div>
             </div>
 
@@ -83,6 +83,11 @@ export default{
                 store.commit('setDebug', `error getting immediate wallet balance ${e}`)
                  })
  },
+ data(){
+      return{
+          bal: 0,
+      }
+  },
 }
 </script>
 
