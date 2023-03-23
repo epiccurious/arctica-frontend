@@ -28,7 +28,7 @@ can be removed once immediate wallet is functional -->
             <h2 class="time_decay">2 SD cards</h2>
             </div>
             <div class="wallet_container_right">
-              <h2 class="balance_overview">{{ imbal }} BTC</h2>
+              <h2 class="balance_overview">{{ this.immediateBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
@@ -72,8 +72,8 @@ export default {
      mounted(){
           invoke('get_balance', {wallet: "immediate", sdcard:this.currentSD.toString()}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-            this.imbal = parseInt(res).toPrecision(9)
-            store.commit('setImmediateBalance', `${this.imbal}`)
+            let imbal = parseInt(res).toPrecision(9)
+            store.commit('setImmediateBalance', `${imbal}`)
           }).catch((e)=>{
           store.commit('setDebug', `error getting immediate wallet balance ${e}`)
             })
@@ -95,8 +95,6 @@ export default {
  },
    data(){
       return{
-          imbal: 0,
-          delbal: 0,
       }
   },
  computed:{

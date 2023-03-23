@@ -5,7 +5,7 @@
                     <img src="@/assets/Wallet.png"/>
                     <div class="description_balance">
                     <h2 class="description">Immediate Wallet</h2>
-                    <h2 class="balance">₿ {{ bal }}</h2>
+                    <h2 class="balance">₿ {{ this.immediateBalance }}</h2>
                     </div>
             </div>
 
@@ -77,15 +77,14 @@ export default{
          mounted(){
             invoke('get_balance', {wallet: "immediate", sdcard:this.currentSD.toString()}).then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-                    this.bal = parseInt(res).toPrecision(9)
-                    store.commit('setImmediateBalance', `${this.bal}`)
+                    let bal = parseInt(res).toPrecision(9)
+                    store.commit('setImmediateBalance', `${bal}`)
                 }).catch((e)=>{
                 store.commit('setDebug', `error getting immediate wallet balance ${e}`)
                  })
  },
  data(){
       return{
-          bal: 0,
       }
   },
 }
