@@ -5,7 +5,7 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail(transaction.id)" v-for="transaction in immediateTransactions" :key="transaction.info.time" class="transaction_container">
+        <div @click="transactionDetail(transaction.info.txid)" v-for="transaction in immediateTransactions" :key="transaction.info.time" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.detail.address) }}</h2>
           <h3>{{ transaction.info.time }}</h3>
@@ -58,9 +58,9 @@ export default {
   },
   mounted(){
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
-                store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
                 //modify the json to remove the ListTransactionResult identifier
                 let modified = res.replace(/ListTransactionResult/g, '')
+                store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${modified}}`)
                 let arr = JSON.parse(modified)
                 store.commit('setImmediateTransactions', `${arr}`)
             })
