@@ -70,7 +70,7 @@ export default {
     Compromised,
   },
      mounted(){
-          invoke('get_balance', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
+          invoke('get_balance', {wallet: "immediate", sdcard: sdCard.toString()}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             let imbal = parseInt(res).toPrecision(9)
             store.commit('setImmediateBalance', `${imbal}`)
