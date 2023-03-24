@@ -101,9 +101,11 @@ export default {
  tripwire(){
     return store.getters.getTripwireTripped}
  },
- immediateBalance(){
-  return store.getters.getImmediateBalance
- },
+ immediateBalance:{
+            get(){
+                return store.getters.getImmediateBalance
+            }
+        },
  delayedBalance(){
   return store.getters.getDelayedBalance
  },

@@ -67,8 +67,10 @@ export default{
                 return false
             }
         },
-        immediateBalance(){
-        return store.getters.getImmediateBalance
+        immediateBalance:{
+            get(){
+                return store.getters.getImmediateBalance
+            }
         },
         sdCard:{
             get(){
