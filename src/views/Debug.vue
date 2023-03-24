@@ -136,9 +136,9 @@
     <br> 
     <button @click="spendPolicy()" class="btn">Spend Policy</button>
     <br> 
-    <button @click="getTransctionHistory()" class="btn">Transaction History</button>
+    <button @click="getTransctionHistory()" class="btn">Immediate Transaction History</button>
     <br>
-    <button @click="getBalance()" class="btn">Get Balance</button>
+    <button @click="getBalance()" class="btn">Get Immediate Balance</button>
     <br> 
     <button @click="refreshCD()" class="btn">Refresh CD</button>
     <br> 
@@ -297,6 +297,9 @@ export default{
         })
 
         this.keynumber++
+        },
+        getBlockChainInfo(){
+            invoke('get')
         },
         createDescriptors(){
             //this is a debug function used to create descriptors when testing locally instead of on an SD card
