@@ -5,7 +5,7 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail(transaction.info.txid)" v-for="transaction in immediateTransactions" :key="transaction.info.time" class="transaction_container">
+        <div @click="transactionDetail(transaction.info.txid)" v-for="transaction in this.immediateTransactions" :key="transaction.info.time" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.detail.address) }}</h2>
           <h3>{{ transaction.info.time }}</h3>
