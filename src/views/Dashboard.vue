@@ -70,32 +70,7 @@ export default {
     Nav,
     Compromised,
   },
-     mounted(){
-          invoke('get_balance', {wallet: "immediate", sdcard: this.sdCard.to_string()}).then((res)=>{
-            store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-            console.log(`printing get_balance res: ${res}`)
-            let bal = parseFloat(res)
-            console.log(`printing get_balance parseint: ${bal}`)
-            store.commit('setImmediateBalance', `${bal}`)
-          }).catch((e)=>{
-          store.commit('setDebug', `error getting immediate wallet balance ${e}`)
-            })
-
-      this.duressSetup = store.getters.getDuressSetup
-      this.recoverySetup = store.getters.getRecoverySetup
-      this.tripwireSetup = store.getters.getTripwireSetup
-
-      //below are the post set up redirects for first time users that have only completed initial set up
-      if(this.recoverySetup == false){
-        this.$router.push({ name: 'piiPostSetup1' })
-      }
-      else if(this.duressSetup == false){
-        this.$router.push({ name: 'duressPostSetup1' })
-      }
-      else if(this.tripwireSetup == false){
-        this.$router.push({ name: 'tripwirePostSetup1' })
-      }
- },
+     
    data(){
       return{
       }
@@ -129,6 +104,33 @@ export default {
         }
 
       },
+
+    mounted(){
+          invoke('get_balance', {wallet: "immediate", sdcard: this.sdCard.to_string()}).then((res)=>{
+            store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
+            console.log(`printing get_balance res: ${res}`)
+            let bal = parseFloat(res)
+            console.log(`printing get_balance parseint: ${bal}`)
+            store.commit('setImmediateBalance', `${bal}`)
+          }).catch((e)=>{
+          store.commit('setDebug', `error getting immediate wallet balance ${e}`)
+            })
+
+      this.duressSetup = store.getters.getDuressSetup
+      this.recoverySetup = store.getters.getRecoverySetup
+      this.tripwireSetup = store.getters.getTripwireSetup
+
+      //below are the post set up redirects for first time users that have only completed initial set up
+      if(this.recoverySetup == false){
+        this.$router.push({ name: 'piiPostSetup1' })
+      }
+      else if(this.duressSetup == false){
+        this.$router.push({ name: 'duressPostSetup1' })
+      }
+      else if(this.tripwireSetup == false){
+        this.$router.push({ name: 'tripwirePostSetup1' })
+      }
+ },
 
     }
 </script>
