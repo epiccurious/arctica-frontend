@@ -12,7 +12,7 @@
           </div>
           <div class="transaction_container_right">
             <h2 class="balance">₿ {{ transaction.info.amount }} BTC</h2>
-            <h3 class="fiat_currency"> $ dollar amount</h3>
+            <h3 class="fiat_currency"> $ 0.00</h3>
           </div>
         </div>
       </div>
@@ -59,7 +59,9 @@ export default {
   mounted(){
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
                 store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
-                let arr = JSON.parse(res)
+                //modify the json to remove the ListTransactionResult identifier
+                let modified = res.replace(/ListTransactionResult/g, '')
+                let arr = JSON.parse(modified)
                 store.commit('setImmediateTransactions', `${arr}`)
             })
             .catch((e)=>{
