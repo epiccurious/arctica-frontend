@@ -83,7 +83,7 @@ export default{
             invoke('get_balance', {wallet: "immediate", sdcard: "1"}).then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                     console.log(`printing get_balance res: ${res}`)
-                    let bal = parseFloat(res).toPrecision(9)
+                    let bal = parseFloat(res)
                     console.log(`printing get_balance parseint: ${bal}`)
                     store.commit('setImmediateBalance', `${bal}`)
                 }).catch((e)=>{
