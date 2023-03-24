@@ -25,6 +25,7 @@
 <script>
 import NavImmediate from '@/components/NavImmediate'
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'immediate',
