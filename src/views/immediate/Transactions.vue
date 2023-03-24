@@ -5,14 +5,14 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail(transaction.id)" v-for="transaction in immediateTransactions.slice().reverse()" :key="transaction.id" class="transaction_container">
+        <div @click="transactionDetail(transaction.id)" v-for="transaction in immediateTransactions.slice().reverse()" :key="transaction.WalletTxInfo.time" class="transaction_container">
           <div class="transaction_container_left">
-          <h2>{{ truncateString(transaction.address) }}</h2>
-          <h3>{{ transaction.datetime }}</h3>
+          <h2>{{ truncateString(transaction.GetTransactionResultDetail.address) }}</h2>
+          <h3>{{ transaction.WalletTxInfo.time }}</h3>
           </div>
           <div class="transaction_container_right">
-            <h2 class="balance">- ₿ {{ transaction.balance.toLocaleString('en-US') }} sats</h2>
-            <h3 class="fiat_currency">- $ {{ transaction.fiat_currency.toLocaleString('en-US') }}</h3>
+            <h2 class="balance">₿ {{ transaction.WalletTxInfo.amount }} BTC</h2>
+            <h3 class="fiat_currency"> $ dollar amount</h3>
           </div>
         </div>
       </div>
@@ -43,9 +43,27 @@ export default {
         return str.slice(0,18) + '...'
       }
       },
-      immediateTransactions(){ 
-        return store.getters.getImmediateTransactions
+      immediateTransactions:{ 
+        get(){
+          return store.getters.getImmediateTransactions
         }
+        },
+        sdCard:{
+            get(){
+                return store.getters.getCurrentSD
+            },
+
+        },
+  },
+  mounted(){
+    invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
+                store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
+                store.commit('setImmediateTransactions', `${res}`)
+            })
+            .catch((e)=>{
+                store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
+            })
+
   },
 }
 </script>
