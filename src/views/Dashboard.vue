@@ -36,11 +36,11 @@ can be removed once immediate wallet is functional -->
 
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
-          <h2>Delayed Wallet</h2>
+          <h2>Delayed Wallet (Disabled)</h2>
           <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
-            <h2 class="balance_overview">(Disabled) BTC</h2>
+            <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
@@ -121,13 +121,15 @@ export default {
  duressSetup(){
   return store.getters.getDuressSetup
  },
-  sdCard:{
+ sdCard:{
             get(){
-                return store.getters.getCurrentSD.toString()
-            },
+                return store.getters.getCurrentSD
+            }
 
-        },
+        }
+
       },
+
     }
 </script>
 
