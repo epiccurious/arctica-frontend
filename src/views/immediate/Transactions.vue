@@ -59,7 +59,8 @@ export default {
   mounted(){
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
                 store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
-                store.commit('setImmediateTransactions', `${res}`)
+                let arr = JSON.parse(res)
+                store.commit('setImmediateTransactions', `${arr}`)
             })
             .catch((e)=>{
                 store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
