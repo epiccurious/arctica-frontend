@@ -117,9 +117,7 @@ export default createStore({
             state.hotBalance = payload
         },
         setImmediateBalance(state, payload){
-            console.log(payload)
             state.immediateBalance = payload
-            console.log(state.immediateBalance)
         },
         setquickBalance(state, payload){
             state.quickBalance = payload

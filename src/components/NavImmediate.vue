@@ -82,9 +82,7 @@ export default{
          mounted(){
             invoke('get_balance', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-                    console.log(`printing get_balance res: ${res}`)
                     let bal = parseFloat(res)
-                    console.log(`printing get_balance parseint: ${bal}`)
                     store.commit('setImmediateBalance', `${bal}`)
                 }).catch((e)=>{
                 store.commit('setDebug', `error getting immediate wallet balance ${e}`)
