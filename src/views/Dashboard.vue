@@ -106,7 +106,7 @@ export default {
       },
 
     mounted(){
-          invoke('get_balance', {wallet: "immediate", sdcard: this.sdCard.to_string()}).then((res)=>{
+          invoke('get_balance', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             console.log(`printing get_balance res: ${res}`)
             let bal = parseFloat(res)
