@@ -5,13 +5,13 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail(transaction.id)" v-for="transaction in immediateTransactions" :key="transaction.WalletTxInfo.time" class="transaction_container">
+        <div @click="transactionDetail(transaction.id)" v-for="transaction in immediateTransactions" :key="transaction.info.time" class="transaction_container">
           <div class="transaction_container_left">
-          <h2>{{ truncateString(transaction.GetTransactionResultDetail.address) }}</h2>
-          <h3>{{ transaction.WalletTxInfo.time }}</h3>
+          <h2>{{ truncateString(transaction.detail.address) }}</h2>
+          <h3>{{ transaction.info.time }}</h3>
           </div>
           <div class="transaction_container_right">
-            <h2 class="balance">₿ {{ transaction.WalletTxInfo.amount }} BTC</h2>
+            <h2 class="balance">₿ {{ transaction.info.amount }} BTC</h2>
             <h3 class="fiat_currency"> $ dollar amount</h3>
           </div>
         </div>
