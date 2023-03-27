@@ -10,10 +10,13 @@
         <div v-else @click="transactionDetail(transaction.info.txid)" v-for="transaction in this.jsonData" :key="transaction.info.blockhash ? transaction.info.blockhash: index" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.detail.address) }}</h2>
-          <h3>{{ (transaction.info.time * 1000).toLocaleString() }}</h3>
+          <h3>{{ transaction.info.time }}</h3>
           </div>
           <div class="transaction_container_right">
-            <h2 class="balance">₿ {{ transaction.detail.amount }} BTC</h2>
+            <!-- if receive show green text with a + sign -->
+            <h2 v-if="transaction.detail.category == 'Receive'" class="receive_balance">₿ + {{ transaction.detail.amount }} sats</h2>
+            <h2 v-else class="send_balance">₿ - {{ transaction.detail.amount }} sats</h2>
+            <!-- if send show red text with a - sign -->
             <h3 class="fiat_currency"> $ 0.00</h3>
           </div>
         </div>

@@ -729,6 +729,16 @@ h3{
     color:#000000;
 
 }
+.receive_balance{
+    line-height: 15.73px;
+    color: greenyellow;
+
+}
+.send_balance{
+    line-height: 15.73px;
+    color: red;
+
+}
 .loading{
   cursor:wait;
 }
