@@ -7,7 +7,7 @@
         </div>
         <div v-if="txHistory == false">
         <h2>You don't have any transactions yet.</h2></div>
-        <div v-else @click="transactionDetail(transaction.info.txid)" v-for="transaction in this.immediateTransactions" :key="transaction.info.blockhash ? transaction.info.blockhash: index" class="transaction_container">
+        <div v-else @click="transactionDetail(jsonData.info.txid)" v-for="transaction in this.jsonData" :key="transaction.info.blockhash ? transaction.info.blockhash: index" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.detail.address) }}</h2>
           <h3>{{ transaction.info.time }}</h3>
@@ -61,6 +61,7 @@ export default {
   data(){
     return{
       txHistory: true,
+      jsonData: {}
     }
   },
   mounted(){
@@ -68,7 +69,8 @@ export default {
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
                 console.log(`result: ${res}`)
                   let parsed = JSON.parse(res)
-                  console.log(`parsed: ${parsed}`)
+                  this.jsonData = parsed
+                  console.log(`parsed: ${JSON.stringify(parsed)}`)
                   store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${parsed}`)
                   store.commit('setImmediateTransactions', `${parsed}`)
 
