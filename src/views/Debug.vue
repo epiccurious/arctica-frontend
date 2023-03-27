@@ -261,7 +261,7 @@ export default{
         },
         getTransctionHistory(){
             //this is a debug function used to print the immediate wallet transaction history vec
-            invoke('get_transactions', {wallet: "immediate", sdcard:this.sdCard.toString()}).then((res)=>{
+            invoke('get_transactions', {wallet: "immediate", sdcard: "1"}).then((res)=>{
                 store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
             })
             .catch((e)=>{

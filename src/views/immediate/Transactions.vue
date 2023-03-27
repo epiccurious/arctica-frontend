@@ -57,6 +57,7 @@ export default {
         },
   },
   mounted(){
+    console.log("invoking get_transactions")
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
                 //modify the json to remove the ListTransactionResult identifier
                 // let modified = res.replace(/ListTransactionResult/g, '')
