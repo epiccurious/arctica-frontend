@@ -59,13 +59,13 @@ export default {
   mounted(){
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
                 //modify the json to remove the ListTransactionResult identifier
-                let modified = res.replace(/ListTransactionResult/g, '')
-                console.log(`modified ${modified}`)
-                store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${modified}}`)
-                let arr = JSON.parse(modified)
-                console.log(`arr ${arr}`)
-                console.log(`time from tx index 0 ${arr[0].info.time}`)
-                store.commit('setImmediateTransactions', `${arr}`)
+                // let modified = res.replace(/ListTransactionResult/g, '')
+                console.log(`result: ${res}`)
+                store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${res}`)
+                // let arr = JSON.parse(modified)
+                // console.log(`arr ${arr}`)
+                // console.log(`time from tx index 0 ${arr[0].info.time}`)
+                store.commit('setImmediateTransactions', `${res}`)
             })
             .catch((e)=>{
                 store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
