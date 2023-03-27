@@ -5,7 +5,9 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div @click="transactionDetail(transaction.info.txid)" v-for="transaction in this.immediateTransactions" :key="transaction.info.blockhash ? transaction.info.blockhash: index" class="transaction_container">
+        <div v-if="txHistory == false">
+        <h2>You don't have any transactions yet.</h2></div>
+        <div v-else @click="transactionDetail(transaction.info.txid)" v-for="transaction in this.immediateTransactions" :key="transaction.info.blockhash ? transaction.info.blockhash: index" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.detail.address) }}</h2>
           <h3>{{ transaction.info.time }}</h3>
@@ -56,17 +58,20 @@ export default {
 
         },
   },
+  data(){
+    return{
+      txHistory: true,
+    }
+  },
   mounted(){
     console.log("invoking get_transactions")
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
-                //modify the json to remove the ListTransactionResult identifier
-                // let modified = res.replace(/ListTransactionResult/g, '')
                 console.log(`result: ${res}`)
-                store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${res}`)
-                // let arr = JSON.parse(modified)
-                // console.log(`arr ${arr}`)
-                // console.log(`time from tx index 0 ${arr[0].info.time}`)
-                store.commit('setImmediateTransactions', `${res}`)
+                  let parsed = JSON.parse(res)
+                  console.log(`parsed: ${parsed}`)
+                  store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${parsed}`)
+                  store.commit('setImmediateTransactions', `${parsed}`)
+
             })
             .catch((e)=>{
                 store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
