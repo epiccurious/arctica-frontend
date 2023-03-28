@@ -5,7 +5,7 @@
         <div class="head_container">
           <h1>Transaction History</h1>
         </div>
-        <div v-if="txHistory == false">
+        <div v-if="this.txHistory == false">
         <h2>You don't have any transactions yet.</h2></div>
         <div v-else @click="transactionDetail(transaction.info.txid)" v-for="transaction in this.jsonData" :key="transaction.info.blockhash ? transaction.info.blockhash: index" class="transaction_container">
           <div class="transaction_container_left">
