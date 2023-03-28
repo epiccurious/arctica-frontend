@@ -38,8 +38,8 @@ export default {
     NavImmediate,
   },
     methods: {
-      transactionDetail(transactionId){
-        this.$router.push({ path: `/wallets/immediate/${transactionId}` })
+      transactionDetail(txId){
+        this.$router.push({ path: `/wallets/immediate/${txId}` })
 
       },
       convertDateTime(unixTime){
@@ -85,7 +85,7 @@ export default {
                   this.jsonData = parsed
                   console.log(`parsed: ${JSON.stringify(parsed)}`)
                   store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${parsed}`)
-                  store.commit('setImmediateTransactions', `${parsed}`)
+                  store.commit('setImmediateTransactions', `${res}`)
                   console.log('console logging immediate tx store:', store.getters.getImmediateTransactions)
                   }
             })

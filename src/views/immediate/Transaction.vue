@@ -71,13 +71,9 @@ methods:{
 
     transaction:{
         get(){
-            console.log('showing dir raw print:')
-            console.dir(this.immediateTransactions)
-            console.log('logging transaction store', JSON.stringify(this.immediateTransactions))
-            console.log('showing dir with param index raw print:')
-            console.dir(this.immediateTransactions[this.params])
-            console.log(`logging transaction[id]`, JSON.stringify(this.immediateTransactions[this.params]))
-            return this.immediateTransactions[this.params]
+            let parsed = JSON.parse(this.immediateTransactions)
+            console.log(`parsed: ${JSON.stringify(parsed)}`)
+            return this.parsed[this.params]
         },
     },
 
