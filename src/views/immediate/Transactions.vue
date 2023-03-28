@@ -87,9 +87,6 @@ export default {
 </script>
 
 <style scoped>
-h2{
-  color:#000000;
-}
 h3{
   font-family: 'Inter';
   color: #777777;
