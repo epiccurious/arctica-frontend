@@ -66,7 +66,7 @@ methods:{
     immediateTransactions:{ 
         get(){
             console.log('immediate tx response:', store.getters.getImmediateTransactions)
-          return store.getters.getImmediateTransactions
+            return store.getters.getImmediateTransactions
         }
         },
 
@@ -78,16 +78,24 @@ methods:{
 
     },
 
-    transaction:{
-        get(){
-            console.log(`logging indexed tx`, this.immediateTransactions[this.params])
-            return this.immediateTransactions[this.params]
-        },
-    },
+    // transaction:{
+    //     get(){
+    //         console.log(`logging indexed tx`, this.immediateTransactions[this.params])
+    //         return 
+    //     },
+    // },
 
     
         
     },
+    mounted(){
+        this.transaction = this.immediateTransactions[this.params]
+    },
+    data(){
+        return{
+            transaction:{}
+        }
+    }
 }
   
 
