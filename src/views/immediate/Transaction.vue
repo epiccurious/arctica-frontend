@@ -65,7 +65,7 @@ methods:{
 
     immediateTransactions:{ 
         get(){
-          return store.getters.getImmediateTransactions
+          return JSON.parse(store.getters.getImmediateTransactions)
         }
         },
 
