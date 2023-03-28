@@ -17,7 +17,7 @@
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>{{ transaction.detail.amount }}</h3>
+            <h3>{{ transaction.detail.amount }} Sats</h3>
         </div>
 
         <div class="tx_block">
@@ -27,7 +27,7 @@
 
         <div class="tx_block">
             <h2>Time</h2>
-            <h3>{{ transaction.info.time }}</h3>
+            <h3>{{ convertDateTime(transaction.info.time) }}</h3>
         </div>
 
         <div class="tx_block">
@@ -59,7 +59,12 @@ components:{},
 methods:{
     goBack(){
         this.$router.push({ name: 'immediate' })
-    }
+    },
+    convertDateTime(unixTime){
+        let multiplied = unixTime * 1000
+        let dateval = new Date(multiplied).toLocaleString()
+        return dateval
+      },
 },
 
   computed:{

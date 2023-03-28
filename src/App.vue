@@ -510,6 +510,8 @@ h3{
 }
 .tx_block{
     display:flex;
+    max-width: 30%;
+    flex: 1 0 auto;
     flex-direction: row;
     justify-content: space-between;
     align-content:center;
