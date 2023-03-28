@@ -6,32 +6,32 @@
             <button class="btnclose" @click="goBack()"><img src="@/assets/X.png"></button>
         </header>
          <div class="description_block">
-            <input v-model="this.transaction.detail.label" type="text" placeholder="Enter a description...">
+            <input v-model="this.immediateTransactions.detail.label" type="text" placeholder="Enter a description...">
         </div>
 
         <div class="tx_block">
             <h2>To</h2>
-            <h3>{{ this.transaction.detail.address }}</h3>
+            <h3>{{ this.immediateTransactions.detail.address }}</h3>
         </div>
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>{{ this.transaction.detail.amount }}</h3>
+            <h3>{{ this.immediateTransactions.detail.amount }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>{{ this.transaction.detail.fee }}</h3>
+            <h3>{{ this.timmediateTransactions.detail.fee }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Time</h2>
-            <h3>{{ this.transaction.info.time }}</h3>
+            <h3>{{ this.immediateTransactions.info.time }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Status</h2>
-            <h3 v-if="this.transaction.info.confirmations >=1 " id="confirmed" >{{ this.transaction.info.confirmations }} Confirmation(s)</h3>
+            <h3 v-if="this.immediateTransactions.info.confirmations >=1 " id="confirmed" >{{ this.immediateTransactions.info.confirmations }} Confirmation(s)</h3>
             <h3 v-else id="unconfirmed" >Unconfirmed</h3>
         </div>
 
@@ -66,9 +66,9 @@ methods:{
     params(){
         return this.$route.params.id
     },
-    transaction(){
-        return this.immediateTransactions[this.params-1]
-    }
+    // transaction(){
+    //     return this.immediateTransactions[this.params-1]
+    // }
   }
 }
 
