@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { get } from 'http'
 import store from '../../store.js'
 
 
@@ -60,22 +61,30 @@ methods:{
         this.$router.push({ name: 'immediate' })
     }
 },
+
   computed:{
+
     immediateTransactions:{ 
         get(){
           return store.getters.getImmediateTransactions
         }
         },
-        
+
+    transaction:{
+        get(){
+            console.log(`logging transaction[id]`, this.immediateTransactions[this.params])
+            return this.immediateTransactions[this.params]
+        },
     },
+
     params(){
         return this.$route.params.id
     },
-    transaction(){
-        console.log(`logging immediatetx[id]`, this.immediateTransactions[this.params])
-        return this.immediateTransactions[this.params]
-    }
-  }
+    
+        
+    },
+}
+  
 
 
 </script>
