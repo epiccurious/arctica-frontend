@@ -70,7 +70,7 @@ export default {
   mounted(){
     console.log("invoking get_transactions")
     invoke('get_transactions', {wallet: "immediate", sdcard: "1"}).then((res)=>{
-                  if(res.includes("empty")){
+                  if(res.toString().includes("empty")){
                     console.log(`empty result: ${res}`)
                     this.txHistory = false
                   }
