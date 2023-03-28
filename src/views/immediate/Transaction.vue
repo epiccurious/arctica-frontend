@@ -12,27 +12,27 @@
 
         <div class="tx_block">
             <h2>To</h2>
-            <h3>{{ transaction.detail.address }}</h3>
+            <h3>{{ jsonData.detail.address }}</h3>
         </div>
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>{{ transaction.detail.amount }}</h3>
+            <h3>{{ jsonData.detail.amount }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>{{ transaction.detail.fee }}</h3>
+            <h3>{{ jsonData.detail.fee }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Time</h2>
-            <h3>{{ transaction.info.time }}</h3>
+            <h3>{{ jsonData.info.time }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Status</h2>
-            <h3 v-if="transaction.info.confirmations >=1 " id="confirmed" >{{ transaction.info.confirmations }} Confirmation(s)</h3>
+            <h3 v-if="jsonData.info.confirmations >=1 " id="confirmed" >{{ jsonData.info.confirmations }} Confirmation(s)</h3>
             <h3 v-else id="unconfirmed" >Unconfirmed</h3>
         </div>
 
@@ -65,7 +65,7 @@ methods:{
 
     immediateTransactions:{ 
         get(){
-          return JSON.parse(store.getters.getImmediateTransactions)
+          return store.getters.getImmediateTransactions
         }
         },
 
@@ -73,7 +73,10 @@ methods:{
         get(){
             console.log('logging transaction store', this.immediateTransactions)
             console.log(`logging transaction[id]`, this.immediateTransactions[this.params])
-            return this.immediateTransactions[this.params]
+            let tx = this.immediateTransactions[this.params]
+            this.jsonData = tx
+            console.log(`logging jsonData:`, this.jsonData)
+            return tx
         },
     },
 
@@ -86,6 +89,11 @@ methods:{
     },
     
         
+    },
+    data(){
+        return {
+            jsonData: {}
+        }
     },
 }
   
