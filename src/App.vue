@@ -736,7 +736,7 @@ h3{
 }
 .send_balance{
     line-height: 15.73px;
-    color: red;
+    color: #000000;
 
 }
 .loading{
