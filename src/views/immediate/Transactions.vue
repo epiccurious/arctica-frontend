@@ -76,6 +76,7 @@ export default {
                   console.log(`parsed: ${JSON.stringify(parsed)}`)
                   store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${parsed}`)
                   store.commit('setImmediateTransactions', `${parsed}`)
+                  console.log('console logging immediate tx store:', store.getters.getImmediateTransactions)
 
             })
             .catch((e)=>{

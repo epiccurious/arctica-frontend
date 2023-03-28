@@ -6,33 +6,33 @@
             <button class="btnclose" @click="goBack()"><img src="@/assets/X.png"></button>
         </header>
          <div class="description_block">
-            <input v-model="this.transaction.description" type="text" placeholder="Enter a description...">
+            <input v-model="this.transaction.detail.label" type="text" placeholder="Enter a description...">
         </div>
 
         <div class="tx_block">
             <h2>To</h2>
-            <h3>{{ this.transaction.address }}</h3>
+            <h3>{{ this.transaction.detail.address }}</h3>
         </div>
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>{{ this.transaction.balance }}</h3>
+            <h3>{{ this.transaction.detail.amount }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>{{ this.transaction.fee }}</h3>
+            <h3>{{ this.transaction.detail.fee }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Time</h2>
-            <h3>{{ this.transaction.datetime }}</h3>
+            <h3>{{ this.transaction.info.time }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Status</h2>
-            <h3 v-if="this.transaction.status=='Confirmed'" id="confirmed" >{{ this.transaction.status }}</h3>
-            <h3 v-else id="unconfirmed" >{{ this.transaction.status }}</h3>
+            <h3 v-if="this.transaction.info.confirmations >=1 " id="confirmed" >{{ this.transaction.info.confirmations }} Confirmation(s)</h3>
+            <h3 v-else id="unconfirmed" >Unconfirmed</h3>
         </div>
 
         <div class="footer_block">
