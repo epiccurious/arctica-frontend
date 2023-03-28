@@ -6,7 +6,8 @@
             <button class="btnclose" @click="goBack()"><img src="@/assets/X.png"></button>
         </header>
          <div class="description_block">
-            <input v-model="transaction.detail.label" type="text" placeholder="Enter a description...">
+            <!-- <input v-model="transaction.detail.label" type="text" placeholder="Enter a description..."> -->
+            <h2>There is no description</h2>
         </div>
 
         <div class="tx_block">
@@ -71,6 +72,7 @@ methods:{
         return this.$route.params.id
     },
     transaction(){
+        console.log(`logging immediatetx[id]`, this.immediateTransactions[this.params])
         return this.immediateTransactions[this.params]
     }
   }
