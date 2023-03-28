@@ -65,17 +65,10 @@ methods:{
 
     immediateTransactions:{ 
         get(){
+            console.log('immediate tx response:', store.getters.getImmediateTransactions)
           return store.getters.getImmediateTransactions
         }
         },
-
-    transaction:{
-        get(){
-            let parsed = JSON.parse(this.immediateTransactions)
-            console.log(`parsed: ${JSON.stringify(parsed)}`)
-            return this.parsed[this.params]
-        },
-    },
 
     params:{
         get(){
@@ -84,6 +77,16 @@ methods:{
         },
 
     },
+
+    transaction:{
+        get(){
+            let parsed = JSON.parse(this.immediateTransactions)
+            let string = JSON.stringify(parsed)
+            console.log(`parsed: ${string}`)
+            return this.parsed[this.params]
+        },
+    },
+
     
         
     },
