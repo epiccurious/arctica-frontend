@@ -731,7 +731,7 @@ h3{
 }
 .receive_balance{
     line-height: 15.73px;
-    color: greenyellow;
+    color: green;
 
 }
 .send_balance{
