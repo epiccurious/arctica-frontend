@@ -69,7 +69,7 @@ export default {
   },
   mounted(){
     console.log("invoking get_transactions")
-    invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
+    invoke('get_transactions', {wallet: "immediate", sdcard: "1"}).then((res)=>{
                   if(res.includes("empty")){
                     console.log(`result: ${res}`)
                     this.txHistory = false
