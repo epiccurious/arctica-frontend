@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import { get } from 'http'
 import store from '../../store.js'
 
 
