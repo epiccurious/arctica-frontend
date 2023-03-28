@@ -80,10 +80,8 @@ methods:{
 
     transaction:{
         get(){
-            let parsed = JSON.parse(this.immediateTransactions)
-            let string = JSON.stringify(parsed)
-            console.log(`parsed: ${string}`)
-            return this.parsed[this.params]
+            console.log(`logging indexed tx`, this.immediateTransactions[this.params])
+            return this.immediateTransactions[this.params]
         },
     },
 
