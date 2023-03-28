@@ -63,18 +63,18 @@ export default {
   },
   data(){
     return{
-      txHistory: true,
+      txHistory: false,
       jsonData: {}
     }
   },
   mounted(){
     console.log("invoking get_transactions")
     invoke('get_transactions', {wallet: "immediate", sdcard: "1"}).then((res)=>{
-                  if(res.toString().includes("empty")){
+                  if(res.toLowerCase().includes("empty123321") == true){
                     console.log(`empty result: ${res}`)
-                    this.txHistory = false
                   }
                   else{
+                  this.txHistory = true
                   console.log(`JSON result: ${res}`)
                   let parsed = JSON.parse(res)
                   this.jsonData = parsed
