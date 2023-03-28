@@ -70,14 +70,19 @@ export default {
   mounted(){
     console.log("invoking get_transactions")
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
-                console.log(`result: ${res}`)
+                  if(res == "empty"){
+                    console.log(`result: ${res}`)
+                    txHistory = false
+                  }
+                  else{
+                  console.log(`result: ${res}`)
                   let parsed = JSON.parse(res)
                   this.jsonData = parsed
                   console.log(`parsed: ${JSON.stringify(parsed)}`)
                   store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${parsed}`)
                   store.commit('setImmediateTransactions', `${parsed}`)
                   console.log('console logging immediate tx store:', store.getters.getImmediateTransactions)
-
+                  }
             })
             .catch((e)=>{
                 store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
