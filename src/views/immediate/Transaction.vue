@@ -6,27 +6,27 @@
             <button class="btnclose" @click="goBack()"><img src="@/assets/X.png"></button>
         </header>
          <div class="description_block">
-            <input v-model="immediateTransactions.detail.label" type="text" placeholder="Enter a description...">
+            <input v-model="this.transaction.detail.label" type="text" placeholder="Enter a description...">
         </div>
 
         <div class="tx_block">
             <h2>To</h2>
-            <h3>{{ immediateTransactions.detail.address }}</h3>
+            <h3>{{ this.transaction.detail.address }}</h3>
         </div>
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>{{ immediateTransactions.detail.amount }}</h3>
+            <h3>{{ this.transaction.detail.amount }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>{{ timmediateTransactions.detail.fee }}</h3>
+            <h3>{{ this.transaction.detail.fee }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Time</h2>
-            <h3>{{ immediateTransactions.info.time }}</h3>
+            <h3>{{ this.transaction.info.time }}</h3>
         </div>
 
         <div class="tx_block">
@@ -67,12 +67,12 @@ methods:{
         },
         
     },
-    // params(){
-    //     return this.$route.params.id
-    // },
-    // transaction(){
-    //     return this.immediateTransactions[this.params-1]
-    // }
+    params(){
+        return this.$route.params.id
+    },
+    transaction(){
+        return this.immediateTransactions[this.params-1]
+    }
   }
 
 
