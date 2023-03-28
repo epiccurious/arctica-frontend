@@ -10,7 +10,7 @@
         <div v-else @click="transactionDetail(transaction.info.txid)" v-for="transaction in this.jsonData" :key="transaction.info.blockhash ? transaction.info.blockhash: index" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.detail.address) }}</h2>
-          <h3>{{ Date(transaction.info.time * 1000).toLocaleString() }}</h3>
+          <h3>{{ convertDateTime(transaction.info.time) }}</h3>
           </div>
           <div class="transaction_container_right">
             <!-- if receive show green text with a + sign -->
@@ -41,6 +41,11 @@ export default {
       transactionDetail(transactionId){
         this.$router.push({ path: `/wallets/immediate/${transactionId}` })
 
+      },
+      convertDateTime(unixTime){
+        let multiplied = unixTime * 1000
+        let dateval = new Date(multiplied).toLocaleString()
+        return dateval
       },
   },
     computed:{
