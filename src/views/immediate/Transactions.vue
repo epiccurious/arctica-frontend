@@ -71,11 +71,11 @@ export default {
     console.log("invoking get_transactions")
     invoke('get_transactions', {wallet: "immediate", sdcard: "1"}).then((res)=>{
                   if(res.includes("empty")){
-                    console.log(`result: ${res}`)
+                    console.log(`empty result: ${res}`)
                     this.txHistory = false
                   }
                   else{
-                  console.log(`result: ${res}`)
+                  console.log(`JSON result: ${res}`)
                   let parsed = JSON.parse(res)
                   this.jsonData = parsed
                   console.log(`parsed: ${JSON.stringify(parsed)}`)
