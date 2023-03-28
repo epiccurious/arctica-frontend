@@ -17,7 +17,7 @@
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>{{ transaction.detail.amount }} Sats</h3>
+            <h3>₿ {{ convertSatstoBTC(transaction.detail.amount) }} Sats</h3>
         </div>
 
         <div class="tx_block">
@@ -65,6 +65,10 @@ methods:{
         let dateval = new Date(multiplied).toLocaleString()
         return dateval
       },
+      convertSatstoBTC(sats){
+        let total = sats/100000000
+        return total
+      }
 },
 
   computed:{
