@@ -12,27 +12,27 @@
 
         <div class="tx_block">
             <h2>To</h2>
-            <h3>{{ transaction.detail.address }}</h3>
+            <h3>{{ immediateTransactions[this.params].detail.address }}</h3>
         </div>
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>{{ transaction.detail.amount }}</h3>
+            <h3>{{ immediateTransactions[this.params].detail.amount }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>{{ transaction.detail.fee }}</h3>
+            <h3>{{ immediateTransactions[this.params].detail.fee }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Time</h2>
-            <h3>{{ transaction.info.time }}</h3>
+            <h3>{{ immediateTransactions[this.params].info.time }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Status</h2>
-            <h3 v-if="transaction.info.confirmations >=1 " id="confirmed" >{{ transaction.info.confirmations }} Confirmation(s)</h3>
+            <h3 v-if="immediateTransactions[this.params].info.confirmations >=1 " id="confirmed" >{{ immediateTransactions[this.params].info.confirmations }} Confirmation(s)</h3>
             <h3 v-else id="unconfirmed" >Unconfirmed</h3>
         </div>
 
@@ -71,7 +71,11 @@ methods:{
 
     transaction:{
         get(){
+            console.log('showing dir raw print:')
+            console.dir(this.immediateTransactions)
             console.log('logging transaction store', JSON.stringify(this.immediateTransactions))
+            console.log('showing dir with param index raw print:')
+            console.dir(this.immediateTransactions[this.params])
             console.log(`logging transaction[id]`, JSON.stringify(this.immediateTransactions[this.params]))
             return this.immediateTransactions[this.params]
         },
