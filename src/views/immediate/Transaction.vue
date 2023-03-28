@@ -89,7 +89,7 @@ methods:{
         
     },
     mounted(){
-        this.transaction = JSON.parse(this.immediateTransactions[this.params])
+        this.transaction = this.immediateTransactions[this.params]
     },
     data(){
         return{
