@@ -85,8 +85,8 @@ export default {
                   this.jsonData = parsed
                   console.log(`parsed: ${JSON.stringify(parsed)}`)
                   store.commit('setDebug', `obtaining transaction history JSON for immediate wallet: ${parsed}`)
-                  store.commit('setImmediateTransactions', `${res}`)
-                  console.log('console logging immediate tx store:', store.getters.getImmediateTransactions)
+                  store.commit('setImmediateTransactions', `${parsed}`)
+                  console.log('console logging immediate tx store:', JSON.stringify(store.getters.getImmediateTransactions))
                   }
             })
             .catch((e)=>{
