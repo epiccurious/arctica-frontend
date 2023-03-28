@@ -72,7 +72,7 @@ export default {
     invoke('get_transactions', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
                   if(res == "empty"){
                     console.log(`result: ${res}`)
-                    txHistory = false
+                    this.txHistory = false
                   }
                   else{
                   console.log(`result: ${res}`)
