@@ -63,12 +63,12 @@ methods:{
 
   computed:{
 
-    immediateTransactions:{ 
-        get(){
-            console.log('immediate tx response:', store.getters.getImmediateTransactions)
-            return store.getters.getImmediateTransactions
-        }
-        },
+    // immediateTransactions:{ 
+    //     get(){
+    //         console.log('immediate tx response:', store.getters.getImmediateTransactions)
+    //         return store.getters.getImmediateTransactions
+    //     }
+    //     },
 
     params:{
         get(){
@@ -89,8 +89,24 @@ methods:{
         
     },
     mounted(){
-        this.transaction = this.immediateTransactions[this.params]
-    },
+        console.log("invoking get_transactions")
+        invoke('get_transactions', {wallet: "immediate", sdcard: "1"}).then((res)=>{
+                  if(res.toLowerCase().includes("empty123321") == true){
+                    console.log(`empty result: ${res}`)
+                  }
+                  else{
+                  this.txHistory = true
+                  console.log(`JSON result: ${res}`)
+                  let parsed = JSON.parse(res)
+                  this.transaction = parsed[this.params]
+                  console.log(`parsed: ${JSON.stringify(parsed)}`)
+                  store.commit('setDebug', `obtaining transaction history JSON for immediate wallet at param index: ${this.transaction}`)
+                  }
+            })
+            .catch((e)=>{
+                store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
+            })
+            },
     data(){
         return{
             transaction:{}
