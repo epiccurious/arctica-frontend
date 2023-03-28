@@ -128,7 +128,8 @@ methods:{
 <style scoped>
 .display_block{
     align-items: flex-start;
-    width:30%;
+    flex-wrap: wrap;
+    width:40%;
     padding:2%;
     background: #FFFFFF;
     border-radius:10px;
