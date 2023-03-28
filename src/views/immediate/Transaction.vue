@@ -5,10 +5,10 @@
             <h1>Transaction</h1>
             <button class="btnclose" @click="goBack()"><img src="@/assets/X.png"></button>
         </header>
-         <div class="description_block">
+         <!-- <div class="description_block"> -->
             <!-- <input v-model="transaction.detail.label" type="text" placeholder="Enter a description..."> -->
-            <h2>There is no description</h2>
-        </div>
+            <!-- <h2>There is no description</h2> -->
+        <!-- </div> -->
 
         <div class="tx_block">
             <h2>To</h2>
@@ -17,7 +17,7 @@
 
        <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ {{ convertSatstoBTC(transaction.detail.amount) }} Sats</h3>
+            <h3>₿ {{ convertSatstoBTC(transaction.detail.amount) }}</h3>
         </div>
 
         <div class="tx_block">
@@ -37,7 +37,7 @@
         </div>
 
         <div class="footer_block">
-            <h2>View in explorer</h2>
+            <h2>View in explorer (Disabled)</h2>
             <div><img src="@/assets/carat_right.png"></div>
         </div> 
        
