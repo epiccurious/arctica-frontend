@@ -466,7 +466,7 @@ h3{
   align-items: center;
   align-content: center;
   justify-content: center;
-  width:60%;
+  width:65%;
   margin-left:20%;
 }
 .settings_dashboard{
