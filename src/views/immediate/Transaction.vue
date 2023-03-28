@@ -71,13 +71,18 @@ methods:{
 
     transaction:{
         get(){
+            console.log('logging transaction store', this.immediateTransactions)
             console.log(`logging transaction[id]`, this.immediateTransactions[this.params])
             return this.immediateTransactions[this.params]
         },
     },
 
-    params(){
-        return this.$route.params.id
+    params:{
+        get(){
+            console.log(`logging params`, this.$route.params.id)
+            return this.$route.params.id
+        },
+
     },
     
         
