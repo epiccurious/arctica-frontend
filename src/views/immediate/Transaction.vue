@@ -71,7 +71,7 @@ methods:{
         return this.$route.params.id
     },
     transaction(){
-        return this.immediateTransactions[this.params-1]
+        return this.immediateTransactions[this.params]
     }
   }
 
