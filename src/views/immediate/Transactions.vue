@@ -7,7 +7,7 @@
         </div>
         <div v-if="this.txHistory == false">
         <h2>You don't have any transactions yet.</h2></div>
-        <div v-else @click="transactionDetail(transaction.id)" v-for="transaction in this.jsonData" :key="transaction.id" class="transaction_container">
+        <div v-else @click="transactionDetail(transaction.id)" v-for="transaction in this.jsonData.slice().reverse()" :key="transaction.id" class="transaction_container">
           <div class="transaction_container_left">
           <h2>{{ truncateString(transaction.detail.address) }}</h2>
           <h3>{{ convertDateTime(transaction.info.time) }}</h3>
