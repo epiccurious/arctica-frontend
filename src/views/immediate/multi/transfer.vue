@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+<div v-if="this.loading == true">
+  <Loader/>
+  </div>
+<div v-else class="page">
     <header>
         <h1>Please insert a Transfer CD</h1>
         <h2>This is a blank CD(RW) that you will destroy after sending your transaction.</h2>
@@ -26,19 +29,23 @@
 
 <script>
 import store from '../../../store.js'
+import Loader from '@/components/loader'
 const invoke = window.__TAURI__.invoke
 
 
 export default {
   name: 'immediateTransfer',
   components: {
-    },
+    Loader,
+  },
     methods: {
         acknowledge(){
             //for now the transaction is already signed automatically and we will push the user to the 1of2success screen...in the future probably want to add
             //a confirmation screen and instead push the user to sign1of2
-            invoke('export_psbt').then((res) => {
+            this.loading=true
+            invoke('export_psbt', {progress: "1of2"}).then((res) => {
                 store.commit('setDebug', `Exporting PSBT: ${res}`)
+                this.loading=false
                 this.$router.push({name: '1of2success'})
             })
             .catch((e) => {
@@ -61,7 +68,8 @@ export default {
     },
     data(){
         return{
-            checkbox:false
+            checkbox:false,
+            loading: false
         }
     }
 }
