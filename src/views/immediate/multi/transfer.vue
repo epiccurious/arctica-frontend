@@ -13,7 +13,7 @@
                 </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="currentSD == 1 && checkbox && this.psbtFound == true" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="checkbox" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -33,7 +33,17 @@ export default {
     },
     methods: {
         acknowledge(){
-            this.$router.push({ name: 'sign1of2' })
+            //for now the transaction is already signed automatically and we will push the user to the 1of2success screen...in the future probably want to add
+            //a confirmation screen and instead push the user to sign1of2
+            invoke('export_psbt').then((res) => {
+                store.commit('setDebug', `Exporting PSBT: ${res}`)
+                this.$router.push({name: '1of2success'})
+            })
+            .catch((e) => {
+                store.commit('setDebug', `Error Exporting PSBT: ${e}`)
+                store.commit('setErrorMessage', `Error exporting PSBT. Error code: ImmediateTransfer Response: ${e}`)
+                this.$router.push({ name: 'Error' })
+            })
         },
                 warn(){
         },
