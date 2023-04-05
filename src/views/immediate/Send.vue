@@ -13,7 +13,7 @@
             <br><label>Address</label>
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
-            <br><label>Amount (sats whole numbers only)</label>
+            <br><label>Amount</label>
             <br><input v-model="balance" type="float" required placeholder="₿ 0.00">
             <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
 
