@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import store from '../../../store.js'
-
 export default {
   name: '1of2success',
   components: {
