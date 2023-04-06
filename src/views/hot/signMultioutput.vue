@@ -43,8 +43,6 @@
 
 
 <script>
-import store from '../../store.js'
-
 export default {
     name: 'hotSignMultioutput',
     methods: {
@@ -68,6 +66,7 @@ export default {
     },
     computed:{
         transaction(){
+            console.log("nothing")
         }
     }
 }
