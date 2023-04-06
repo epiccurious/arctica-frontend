@@ -43,20 +43,15 @@ export default {
     Loader,
     },
     methods: {
-        sign(){
-            if(this.currentSD != 1 && this.currentSD != 0 && this.psbtFound == true){
-                store.commit('setPSBT', '2of2')
-                this.$router.push({ name: '2of2success' })
-            }
+        sign(){ 
+            this.$router.push({ name: '2of2success' })
         },
         discard(){
-            store.commit('clearTransaction')
-            this.$router.push({ name: 'immediate' }) 
+            //this currently does nothing, eventually wipe the psbt cd after a confirmation prompt?
         },
     },
     data(){
         return{
-            transaction: store.getters.getTransaction,
             loading: true,
         }
     },
@@ -64,9 +59,6 @@ export default {
         currentSD(){
             return store.getters.getCurrentSD
         },
-        psbtFound(){
-            return store.getters.getPSBTFound
-        }
     },
     mounted(){
     //unpack

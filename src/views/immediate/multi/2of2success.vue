@@ -18,9 +18,6 @@ export default {
   components: {
     },
     computed:{
-        psbtFound(){
-            return store.getters.getPSBTFound
-        }
     }
 }
 </script>

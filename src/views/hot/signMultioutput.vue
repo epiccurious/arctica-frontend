@@ -53,9 +53,6 @@ export default {
             this.$router.push({ name: 'hotBroadcastMultioutput' })
         },
         discard(){
-            store.commit('clearTransaction')
-            store.commit('clearPSBTArr')
-            this.$router.push({name: 'hot'}) 
         },
         forward(){
             this.x = this.x + 1
@@ -71,7 +68,6 @@ export default {
     },
     computed:{
         transaction(){
-            return store.getters.getPSBTArr
         }
     }
 }

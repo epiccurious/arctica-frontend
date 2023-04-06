@@ -36,14 +36,9 @@ export default {
     name: 'sign1of2',
     methods: {
         sign(){
-            if(this.currentSD == 1 && this.psbtFound == true){
-                store.commit('setPSBT', '1of2')
                 this.$router.push({ name: '1of2success' })
-            }
         },
         discard(){
-            store.commit('clearTransaction')
-            this.$router.push({ name: 'immediate' }) 
         },
     },
     data(){
@@ -55,9 +50,6 @@ export default {
         currentSD(){
             return store.getters.getCurrentSD
         },
-        psbtFound(){
-            return store.getters.getPSBTFound
-        }
     }
 }
 </script>

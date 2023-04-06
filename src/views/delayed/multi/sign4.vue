@@ -38,14 +38,9 @@ export default {
     //import PSBT eventually...
     methods: {
         sign(){
-            if(this.currentSD != 1 && this.currentSD != 0 && this.psbtFound == true){
-                store.commit('setPSBT', '4of5')
                 this.$router.push({ name: '4of5success' })
-            }
         },
         discard(){
-            store.commit('clearTransaction')
-            this.$router.push({ name: 'delayed' })
         }
     },
     data(){
@@ -57,9 +52,6 @@ export default {
         currentSD(){
             return store.getters.getCurrentSD
         },
-        psbtFound(){
-            return store.getters.getPSBTFound
-        }
     }
 }
 </script>

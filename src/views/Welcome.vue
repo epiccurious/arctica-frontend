@@ -123,12 +123,6 @@ export default {
         },
     },
     computed: {
-      psbtFound(){
-        return store.getters.getPSBTFound
-      },
-      psbt(){
-        return store.getters.getPSBT
-      },
       timelock(){
         return store.getters.getTimeLock
       },

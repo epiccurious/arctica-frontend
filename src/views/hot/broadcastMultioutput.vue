@@ -10,17 +10,17 @@
         </div>
         <div class="tx_block">
             <h2>To</h2>
-            <h3>{{ this.transaction[x].address }}</h3>
+            <h3>NaaN</h3>
         </div>
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ {{ this.transaction[x].balance / 100000000 }}</h3>
+            <h3>₿ NaaN</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>₿ {{ this.transaction[x].fee }}</h3>
+            <h3>₿ NaaN</h3>
         </div>
 
         <div class="horizontal_btn_container">
@@ -50,13 +50,8 @@ export default {
     components: {},
     methods: {
         broadcast(){
-            store.commit('pushHotTransaction', this.tx)
-            this.$router.push({name: 'hotConfirmation'}) 
         },
         discard(){
-            store.commit('clearTransaction')
-            store.commit('clearPSBTArr')
-            this.$router.push({name: 'hot'}) 
         },
         forward(){
             this.x = this.x + 1
@@ -71,9 +66,6 @@ export default {
         }
         },
     computed:{
-        transaction(){
-            return store.getters.getPSBTArr
-        },
         //this is a mess, need to rework how the state is handled, above is the multioutput array, below is the single output tx
         tx(){
             return store.getters.getTransaction
