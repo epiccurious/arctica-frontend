@@ -43,6 +43,7 @@ export default {
             //for now the transaction is already signed automatically and we will push the user to the 1of2success screen...in the future probably want to add
             //a confirmation screen and instead push the user to sign1of2
             this.loading=true
+            store.commit('setLoadMessage', 'Exporting PSBT...')
             invoke('export_psbt', {progress: "1of2"}).then((res) => {
                 store.commit('setDebug', `Exporting PSBT: ${res}`)
                 this.loading=false
