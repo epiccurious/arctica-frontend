@@ -35,7 +35,7 @@
 <script>
 import store from '../../../store.js'
 import Loader from '@/components/loader'
-
+const invoke = window.__TAURI__.invoke
 
 export default {
     name: 'sign2of2',
@@ -69,11 +69,28 @@ export default {
         }
     },
     mounted(){
-    //TODO
     //unpack
-    //create wallets dir in sensitive
-    //start bitcoind with networking off
-    //load wallets
+    store.commit('setLoadMessage', 'Unpacking sensitive info...')
+        invoke('unpack').then((res) => {
+            store.commit('setDebug', `unpacked sensitive info ${res}`)
+            store.commit('setLoadMessage', `Loading immediate wallet`)
+            //load immediate wallet
+            invoke('load_wallet', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
+                store.commit('setDebug', `loading immediate wallet: ${res}`)
+                this.loading = false
+            }).catch((e)=>{
+                store.commit('setDebug', `error loading immediate wallet ${res}`)
+                store.commit('setErrorMessage', `Error Loading Immediate Wallet Error Code: sign2of2-2 Response: ${e}`)
+                this.$router.push({ name:'Error' })
+            })
+        })     
+        .catch((e) => {
+            store.commit('setDebug', `error unpacking sensitive: ${e}`)
+            store.commit('setErrorMessage', `Error unpacking sensitive Error code: sign2of2-1 Response: ${e}`)
+            this.$router.push({ name:'Error' })
+        })
+    //TODO
+    //eventually load up and display the transaction data within the page so the user may confirm what they are signing for...
  }
 }
 </script>

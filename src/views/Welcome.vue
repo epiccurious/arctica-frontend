@@ -199,44 +199,18 @@ export default {
         }
         store.commit('setDebug', `exiting config read`)
         //if the user has completed the initial flash of the first 7 sd cards (config is present) create ramdisk and check for masterkey
-        if(this.currentSD != 0){
-          //check for masterkey
-          invoke('check_for_masterkey').then((res)=>{
-            if(res == 'masterkey found'){
-              store.commit('setDebug', `checking for masterkey: ${res}`)
-              store.commit('setDebug', 'masterkey found!')
-              store.commit('setDecrypted', true)
-              //unpack sensitive since the masterkey is already in ramdisk
-              invoke('unpack').then((res)=>{
-                store.commit('setDebug', `unpacking sensitive: ${res}`)
-                //TODO should automatically take the user to the dashboard here MAYBE? 
-              }).catch((e)=>{
-                store.commit(('setDebug', `error unpacking sensitive: ${e}`))
-                store.commit('setErrorMessage', `Error unpacking sensitive Error code: Welcome8 Response: ${e}`)
-                this.$router.push({ name: 'Error' })  
-                })
-              }
-            else{
-              store.commit('setDebug', `checking for masterkey: ${res}`)
-              store.commit('setDebug', `masterkey not found`)
-              //creating ramdisk for sensitive data
-              //if the masterkey is not found we can assume that ramdisk probably does not already exist.
-              invoke('create_ramdisk').then((res)=>{
-                store.commit('setDebug', `creating ramdisk ${res}`)
-              })
-              .catch((e)=>{
-                store.commit('setDebug', `error creating ramdisk ${e}`)
-                store.commit('setErrorMessage', `Error creating ramdisk. Error code: Welcome9 Response: ${e}`)
-                this.$router.push({ name: 'Error' }) 
-              })  
-            }
-            
-          }).catch((e)=>{
-            store.commit('setDebug',  `error checking for masterkey ${e}`)
-            store.commit('setErrorMessage', `Error checking for masterkey. Error code: Welcome10 Response: ${e}`)
-            this.$router.push({ name: 'Error' }) 
-          })
-        }
+
+              
+        //creating ramdisk for sensitive data
+        invoke('create_ramdisk').then((res)=>{
+          store.commit('setDebug', `creating ramdisk ${res}`)
+        })
+        .catch((e)=>{
+          store.commit('setDebug', `error creating ramdisk ${e}`)
+          store.commit('setErrorMessage', `Error creating ramdisk. Error code: Welcome9 Response: ${e}`)
+          this.$router.push({ name: 'Error' }) 
+        })  
+
         //if user has completed initial setup and booted from an SD card, mount internal disk and symlink .bitcoin folders..
         //we MAY be better off removing this as if decrypted was true we assumed the ramdisk already exists above and thus we could probably also assume 
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
@@ -273,17 +247,16 @@ export default {
             store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
             this.$router.push({ name: 'Error' })
             })
-
-        //mount internal, symlink .bitcoin dirs if the user is booted on SD 2-7 and has completed setup
+        //user is booted on SD 2-7 and has completed setup...start bitcoind
         } else if(this.currentSD != 0 && this.setupStep == 0){
-          store.commit('setDebug', 'current SD !=0 and setupStep = 0 conditional met, invoking mount internal')
+          store.commit('setDebug', 'current SD !=0 and setupStep = 0 conditional met, starting bitcoind network off')
                 //start bitcoind with networking disabled
                 invoke('start_bitcoind_network_off')
                   store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
 
         }
 
-        //set up step redirects, promise disables networking for added security
+        //initial set up step redirects
         if(this.setupStep == 1 && this.currentSD == 1){
             store.commit('setDebug', 'setup step 1 found, redirecting user to setup12')
             this.$router.push({ name: 'Setup12' })  
@@ -344,6 +317,7 @@ export default {
           store.commit('setDebug', 'setup step 15 found, redirecting user to setup50b')
           this.$router.push({ name: 'Setup50b' })
         }
+
         //redirect user to boot screen if they have SD 2-7 or no SD inserted
         else if(this.currentSD != 1){
           store.commit('setDebug', 'SD card 1 not detected, redirecting to boot screen')
@@ -351,6 +325,7 @@ export default {
         }
 
         //eventually check externally for time machine keys here
+        //might want to move this somewhere else
         if(this.timeMachineKeysFound == true){
           store.commit('setTimeLock', false)
         }
