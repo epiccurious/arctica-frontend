@@ -5,17 +5,17 @@
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
             <h2>To</h2>
-            <h3>{{ this.transaction.address }}</h3>
+            <h3>NaaN</h3>
         </div>
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ {{ this.transaction.balance }}</h3>
+            <h3>₿ NaaN</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>₿ {{ this.transaction.fee }}</h3>
+            <h3>₿ NaaN</h3>
         </div>
 
         <div class="horizontal_btn_container">
@@ -60,7 +60,14 @@ export default {
         psbtFound(){
             return store.getters.getPSBTFound
         }
-    }
+    },
+    mounted(){
+    //TODO
+    //unpack
+    //create wallets dir in sensitive
+    //start bitcoind with networking off
+    //load wallets
+ }
 }
 </script>
 
