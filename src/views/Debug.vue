@@ -313,6 +313,7 @@ export default{
                         })
         },
         reboot(){
+            store.commit('setDebug', 'Reboot button pushed, Sending user to welcome')
             this.$router.push({ name: 'welcome' })
         },
         setSD(){

@@ -56,40 +56,7 @@ export default {
   },
     methods: {
         login(){
-           //user is returning with an immediate account PSBT that has been signed by 1 SD card
-            if(this.psbtFound == true && this.psbt == '1of2' && this.currentSD != 1 && this.currentSD != 0){
-              this.$router.push({ name:'sign2of2' })
-            }
-            //user is returning with an immediate account PSBT that has been signed by 2 SD cards
-            else if(this.psbtFound == true && this.psbt == '2of2' && this.currentSD == 1 && this.currentSD != 0){
-              this.$router.push({ name:'immediateBroadcast' })
-            }
-            //user is returning with a delayed account PSBT that has been signed by 1 SD card
-            else if(this.psbtFound == true && this.psbt == '1of5' && this.currentSD != 1 && this.currentSD != 0){
-              this.$router.push({ name:'sign2of5' })
-            }
-            //user is returning with a delayed account PSBT that has been signed by 2 SD card
-            else if(this.psbtFound == true && this.psbt == '2of5' && this.currentSD != 1 && this.currentSD != 0){
-              this.$router.push({ name:'sign3of5' })
-            }
-            //user is returning with a delayed account PSBT that has been signed by 3 SD card
-            else if(this.psbtFound == true && this.psbt == '3of5' && this.currentSD != 1 && this.currentSD != 0){
-              this.$router.push({ name:'sign4of5' })
-            }
-            //user is returning with a delayed account PSBT that has been signed by 4 SD card
-            else if(this.psbtFound == true && this.psbt == '4of5' && this.currentSD != 1 && this.currentSD !=0){
-              this.$router.push({ name:'sign5of5' })
-            }
-            //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is enabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.timelock == true){
-              this.$router.push({ name:'TimeMachine1' })
-            }
-            //user is returning with a delayed account PSBT that has been signed by 5 SD card and time lock is disabled
-            else if(this.psbtFound == true && this.psbt == '5of5' && this.currentSD == 1 && this.currentSD != 0 && this.timelock == false){
-              this.$router.push({ name:'delayedBroadcast' })
-            }
-            //user has manually recovered password using the appropriate amount of SD cards
-            else if(this.decrypted == true && this.currentSD == 1){
+            if(this.decrypted == true && this.currentSD == 1){
               store.commit('setDebug', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
               this.loading = true
               //unpacking sensitive dir
@@ -105,6 +72,7 @@ export default {
                         invoke('packup').then((res) => {
                           store.commit('setDebug', `successfully packed up: ${res}`)
                           this.loading = false
+                          store.commit('setDebug', 'Login button pushed Sending user to dashboard')
                           this.$router.push({ name: 'dashboard' })
                         }).catch((e)=>{
                             store.commit('setDebug', `error packing up sensitive: ${e}`)
@@ -134,19 +102,23 @@ export default {
             }
             //user has bricked their relationship with BPS and must manually decrypt
             else if(this.bpsBricked == true){
+              store.commit('setDebug', 'Sending user to BPS_Bricked')
               this.$router.push({ name: 'BPS_Bricked' })
             }
             //user is logging in with attic key, this is at at the very end of the logic loop here intentionally
             else if(this.currentSD == 1){
+              store.commit('setDebug', 'Sending user to Login')
               this.$router.push({ name: 'Login'})
             }
             //user does not have SD 1 inserted and/or is trying to login with SD 2-7 and does not have a valid transfer CD inserted
             else{
+              store.commit('setDebug', 'Sending user to Boot')
               this.$router.push({ name: 'Boot' })
             }
             
         },
         quickWithdrawal(){
+            store.commit('setDebug', 'Quick Withdraw pushed, Sending user to quick1')
             this.$router.push({ name: 'quick1' })
         },
     },
@@ -283,6 +255,7 @@ export default {
                 //TODO if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
                 // if(this.decrypted == true && this.btcCoreHealthy == true){
                 //   store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
+                //   store.commit('setDebug', 'Sending user to dashboard')
                 //   this.$router.push({ name: 'dashboard' })
 
                 // }else{

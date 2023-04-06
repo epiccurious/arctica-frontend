@@ -1,5 +1,8 @@
 <template>
-<div class="page">
+<div v-if="this.loading == true">
+  <Loader/>
+  </div>
+<div v-else class="page">
     <div class="display_block">
         <h1>Approve Transaction for Signing (2 of 2)</h1>
         <img src="@/assets/checkmark_grey.png">
@@ -31,11 +34,14 @@
 
 <script>
 import store from '../../../store.js'
+import Loader from '@/components/loader'
+
 
 export default {
     name: 'sign2of2',
-    props: [],
-    //import PSBT eventually...
+    components: {
+    Loader,
+    },
     methods: {
         sign(){
             if(this.currentSD != 1 && this.currentSD != 0 && this.psbtFound == true){
@@ -50,7 +56,8 @@ export default {
     },
     data(){
         return{
-            transaction: store.getters.getTransaction
+            transaction: store.getters.getTransaction,
+            loading: true,
         }
     },
     computed:{

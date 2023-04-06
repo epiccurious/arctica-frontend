@@ -19,6 +19,7 @@ export default{
 
     methods:{
         goHome(){
+            store.commit('setDebug', 'go home button pushed, Sending user to dashboard')
             this.$router.push({ name: 'dashboard' })
         }
     }

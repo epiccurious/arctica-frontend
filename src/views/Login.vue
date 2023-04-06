@@ -68,6 +68,7 @@ export default {
                                     invoke('packup').then((res) => {
                                         store.commit('setDebug', `successfully packed up: ${res}`)
                                         this.loading = false
+                                        store.commit('setDebug', 'Login succesful, Sending user to dashboard')
                                         this.$router.push({ name: 'dashboard' })
                                     }).catch((e)=>{
                                         store.commit('setDebug', `error packing up sensitive: ${e}`)
@@ -116,6 +117,7 @@ export default {
             }
             //use this condition for when user has a bricked bps relationship but has not indicated they already have a transfer CD with a masterkey 
             else if(this.bpsBricked == true){
+                store.commit('setDebug', 'Sending user to BPS_Bricked')
                 this.$router.push({ name: 'BPS_Bricked' })
             }
             //use this condition for when user is logging in normally with password & BPS
@@ -124,6 +126,7 @@ export default {
             }
         },
         passwordRecovery(){
+            store.commit('setDebug', 'Sending user to Recovery')
             this.$router.push({ name: 'Recovery' })
         },
         warn(){
@@ -147,6 +150,7 @@ export default {
  mounted(){
     this.bpsBricked = store.getters.getBPSBricked
     if(this.bpsBricked == true){
+        store.commit('setDebug', 'Sending user to BPS_Bricked')
         this.$router.push({ name: 'BPS_Bricked' })
     }
  }

@@ -120,12 +120,15 @@ export default {
 
       //below are the post set up redirects for first time users that have only completed initial set up
       if(this.recoverySetup == false){
+        store.commit('setDebug', 'Sending user to piiPostSetup1')
         this.$router.push({ name: 'piiPostSetup1' })
       }
       else if(this.duressSetup == false){
+        store.commit('setDebug', 'Sending user to duressPostSetup1')
         this.$router.push({ name: 'duressPostSetup1' })
       }
       else if(this.tripwireSetup == false){
+        store.commit('setDebug', 'Sending user to tripwirePostSetup1')
         this.$router.push({ name: 'tripwirePostSetup1' })
       }
  },

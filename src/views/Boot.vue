@@ -81,6 +81,7 @@ export default {
                 else if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '1OF2'){
                   this.loading = false
                   store.commit('setDebug', `Transfer CD detected 1OF2`)
+                  store.commit('setDebug', 'Sending user to sign2of2')
                   this.$router.push({ name: 'sign2of2' })
                 }
                 //if the PSBT key is present, and = 2OF2 user is attempting to broadcast a signed immediate transaction
@@ -90,7 +91,7 @@ export default {
                   store.commit('setDebug', `Transfer CD detected 2OF2`)
                 }
                 //TODO add logic here for handling delayed multisig txs
-                
+
                 //if no valid config value is found, either a blank cd is inserted or user potentially hit the button too fast
                 else{
                     this.loading = false
@@ -124,6 +125,7 @@ export default {
             store.commit('setDebug', 'ubuntu iso created successfully')
             this.loading = false;
             //send user to next step
+            store.commit('setDebug', 'install button pushed, Sending user to setup1')
             this.$router.push({ name:'Setup1' })
           })
           .catch((e) => {
