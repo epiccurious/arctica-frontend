@@ -66,7 +66,7 @@ export default {
     },
     computed:{
         transaction(){
-            console.log("nothing")
+            return "NaaN"
         }
     }
 }

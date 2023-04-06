@@ -17,9 +17,6 @@ export default {
     },
     computed:{
 
-        timeLock(){
-            return store.getters.getTimeLock
-        }
     }
 }
 </script>
