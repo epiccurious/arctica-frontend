@@ -51,7 +51,7 @@ export default {
                 this.loading=false
                 this.$router.push({ name: '2of2success' })
                 }).catch((e)=>{
-                    store.commit('setDebug', `error signing PSBT: ${res}`)
+                    store.commit('setDebug', `error signing PSBT: ${e}`)
                     store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign2of2-3 Response: ${e}`)
                     this.$router.push({ name:'Error' })
                 })   
@@ -81,7 +81,7 @@ export default {
                 store.commit('setDebug', `loading immediate wallet: ${res}`)
                 this.loading = false
             }).catch((e)=>{
-                store.commit('setDebug', `error loading immediate wallet ${res}`)
+                store.commit('setDebug', `error loading immediate wallet ${e}`)
                 store.commit('setErrorMessage', `Error Loading Immediate Wallet Error Code: sign2of2-2 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
