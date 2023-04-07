@@ -48,13 +48,21 @@ export default {
             this.loading = true
             invoke('sign_psbt', {wallet: "immediate", sdcard: this.currentSD.toString(), progress: "2of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
-                this.loading=false
-                this.$router.push({ name: '2of2success' })
+                store.commit('setLoadMessage', 'Refreshing Transfer CD...')
+                invoke('refresh_cd').then((res)=>{
+                    store.commit('setDebug', `Refreshing transfer CD: ${res}`)
+                    this.loading=false
+                    this.$router.push({ name: '2of2success' })
                 }).catch((e)=>{
-                    store.commit('setDebug', `error signing PSBT: ${e}`)
-                    store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign2of2-3 Response: ${e}`)
+                    store.commit('setDebug', `error refreshing transfer CD: ${e}`)
+                    store.commit('setErrorMessage', `Error refreshing transfer CD Error Code: sign2of2-4 Response: ${e}`)
                     this.$router.push({ name:'Error' })
-                })   
+                })
+            }).catch((e)=>{
+                store.commit('setDebug', `error signing PSBT: ${e}`)
+                store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign2of2-3 Response: ${e}`)
+                this.$router.push({ name:'Error' })
+            })   
         },
         discard(){
             //this currently does nothing, eventually wipe the psbt cd after a confirmation prompt?
@@ -66,7 +74,7 @@ export default {
         }
     },
     computed:{
-        currentSD(){
+        currentSD(){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
             return store.getters.getCurrentSD
         },
     },
