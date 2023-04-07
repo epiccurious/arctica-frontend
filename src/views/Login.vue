@@ -56,7 +56,6 @@ export default {
                     invoke('check_for_masterkey').then((res) => {
                         if(res == 'masterkey found'){
                         store.commit('setDebug', 'Masterkey Found in Ramdisk')
-                    
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'Loading Immediate wallet...')
@@ -68,12 +67,10 @@ export default {
                                     store.commit('setLoadMessage', 'Packing up sensitive info...')
                                     invoke('packup').then((res) => {
                                         store.commit('setDebug', `successfully packed up: ${res}`)
-                                        this.loading = false
-                                        store.commit('setDebug', 'Login succesful, Sending user to dashboard')
+                                        store.commit('setDebug', 'Login succesful, checking CD for psbt')
+                                        store.commit('setLoadMessage', 'checking for PSBT...')
                                         //TODO
-                                        //need to check for psbt here in /mnt/ramdisk/CDROM/config.txt
-                                        //and if psbt 2of2 is found send the user to broadcast screen
-                                        //if a different permutation is found send the user the dashboard w/ popup or to a screen that informs to continue signing or discard
+                                        //if a different permutation (ex 1of2) is found send the user the dashboard w/ popup or to a screen that informs to continue signing or discard
                                         invoke('read_cd').then((res) => {
                                                 store.commit('setDebug', `invoking read_cd: ${res}`)
                                                 let resArray = res.split("\n")
@@ -85,7 +82,7 @@ export default {
                                                     //if config value is set to 2of2, user has completed signing and is ready to broadcast
                                                     if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '2OF2'){
                                                     this.loading = false
-                                                    store.commit('setDebug', `Transfer CD detected 2OF2`)
+                                                    store.commit('setDebug', `Transfer CD detected: 2OF2, sending user to broadcast screen`)
                                                     this.$router.push({ name: 'immediateBroadcast' })
                                                     break
                                                     }
@@ -93,7 +90,7 @@ export default {
                                                     else{
                                                         this.loading = false
                                                         store.commit('setDebug', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
-                                                        store.commit('setDebug', `User is not ready to broadcast, something is wrong.`)
+                                                        store.commit('setDebug', `User is not ready to broadcast. Sending to dashboard.`)
                                                         this.$router.push({ name: 'dashboard' })
                                                     }
                                                 }
