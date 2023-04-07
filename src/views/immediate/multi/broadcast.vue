@@ -44,12 +44,26 @@ export default {
     },
     methods: {
         broadcast(){
-            this.$router.push({ name: 'immediateConfirmation' }) 
+            this.loadingc= true
+            store.commit('setLoadMessage', 'Broadcasting transaction...')
+            invoke('broadcast_tx', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
+                    store.commit('setDebug', `Broadcasting Fully Signed TX: ${res}`)
+                    this.loading = false
+                    this.$router.push({ name: 'immediateConfirmation' })
+                }).catch((e)=>{
+                    store.commit('setDebug', `error finalizing psbt ${e}`)
+                    store.commit('setErrorMessage', `Error finalizing psbt Error Code: immediateBroadcast-1 Response: ${e}`)
+                    this.$router.push({ name:'Error' })
+                })
+            
         },
         discard(){
         },
     },
     computed:{
+        currentSD(){
+            return store.getters.getCurrentSD
+        },
     },
     mounted(){
         store.commit('setLoadMessage', 'Importing PSBT...')

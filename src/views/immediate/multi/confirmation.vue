@@ -16,7 +16,7 @@
 
 
 <script>
-import store from '../../../store.js'
+// import store from '../../../store.js'
 export default{
     name: 'immediateConfirmation',
     methods:{
@@ -24,15 +24,9 @@ export default{
             this.$router.push({ name: 'immediate' })
         },
         viewTx(){
-            this.$router.push({path: `${this.id}`})
         }
     },
     computed:{
-        id(){
-           let immediateTransactions = store.getters.getImmediateTransactions
-           return immediateTransactions.length
-
-        }
     },
 }
 </script>
