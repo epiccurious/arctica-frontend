@@ -46,7 +46,7 @@ export default {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
             this.loading = true
-            invoke('sign_psbt').then((res) => {
+            invoke('sign_psbt', {wallet: "immediate", sdcard: this.currentSD.toString(), progress: "2of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 this.loading=false
                 this.$router.push({ name: '2of2success' })
