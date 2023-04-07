@@ -58,13 +58,13 @@ export default {
         acknowledge(){
           this.loading = true
           //mount the inserted disc and copy the contents to ramdisk
+          store.commit('setLoadMessage', 'copying CD to ramdisk')
           invoke('copy_cd_to_ramdisk').then((res) =>{
             store.commit('setDebug', `copying cd to ramdisk: ${res}`)
-            store.commit('setLoadMessage', 'copying CD to ramdisk')
+            store.commit('setLoadMessage', 'reading CD...')
             //read the config file of the inserted CD
             invoke('read_cd').then((res) => {
               store.commit('setDebug', `invoking read_cd: ${res}`)
-              store.commit('setLoadMessage', 'reading CD...')
               let resArray = res.split("\n")
               store.commit('setDebug', `response Array: ${resArray}`)
               //check the config values
@@ -76,6 +76,7 @@ export default {
                       store.commit('setDebug', `Recovery CD detected`)
                       store.commit('setDebug', 'Sending user to RecoveryAdditional')
                       this.$router.push({ name: 'RecoveryAdditional' })
+                      break
                 }
                 //if the PSBT key is present, and = 1OF2 user is attempting to sign from immediate wallet
                 else if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '1OF2'){
@@ -83,12 +84,14 @@ export default {
                   store.commit('setDebug', `Transfer CD detected 1OF2`)
                   store.commit('setDebug', 'Sending user to sign2of2')
                   this.$router.push({ name: 'sign2of2' })
+                  break
                 }
                 //if the PSBT key is present, and = 2OF2 user is attempting to broadcast a signed immediate transaction
                 //TODO, this condition can NEVER normally happen because the user should be broadcasting from SD 1...however we should still handle this condition with a warning
                 else if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '2OF2'){
                   this.loading = false
                   store.commit('setDebug', `Transfer CD detected 2OF2`)
+                  break
                 }
                 //TODO add logic here for handling delayed multisig txs
 
