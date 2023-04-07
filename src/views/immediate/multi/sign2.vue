@@ -74,7 +74,7 @@ export default {
         }
     },
     computed:{
-        currentSD(){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
+        currentSD(){
             return store.getters.getCurrentSD
         },
     },
