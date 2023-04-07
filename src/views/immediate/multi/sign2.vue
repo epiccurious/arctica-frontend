@@ -43,8 +43,18 @@ export default {
     Loader,
     },
     methods: {
-        sign(){ 
-            this.$router.push({ name: '2of2success' })
+        sign(){
+            store.commit('setLoadMessage', 'Signing PSBT...')
+            this.loading = true
+            invoke('sign_psbt').then((res) => {
+                store.commit('setDebug', `Signing PSBT: ${res}`)
+                this.loading=false
+                this.$router.push({ name: '2of2success' })
+                }).catch((e)=>{
+                    store.commit('setDebug', `error signing PSBT: ${res}`)
+                    store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign2of2-3 Response: ${e}`)
+                    this.$router.push({ name:'Error' })
+                })   
         },
         discard(){
             //this currently does nothing, eventually wipe the psbt cd after a confirmation prompt?
