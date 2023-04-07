@@ -56,6 +56,7 @@ export default {
                     invoke('check_for_masterkey').then((res) => {
                         if(res == 'masterkey found'){
                         store.commit('setDebug', 'Masterkey Found in Ramdisk')
+                    
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'Loading Immediate wallet...')
@@ -69,7 +70,38 @@ export default {
                                         store.commit('setDebug', `successfully packed up: ${res}`)
                                         this.loading = false
                                         store.commit('setDebug', 'Login succesful, Sending user to dashboard')
-                                        this.$router.push({ name: 'dashboard' })
+                                        //TODO
+                                        //need to check for psbt here in /mnt/ramdisk/CDROM/config.txt
+                                        //and if psbt 2of2 is found send the user to broadcast screen
+                                        //if a different permutation is found send the user the dashboard w/ popup or to a screen that informs to continue signing or discard
+                                        invoke('read_cd').then((res) => {
+                                                store.commit('setDebug', `invoking read_cd: ${res}`)
+                                                let resArray = res.split("\n")
+                                                store.commit('setDebug', `response Array: ${resArray}`)
+                                                //check the config values
+                                                for(let i = 0; i < resArray.length; i ++){
+                                                    let it = resArray[i].split("=")
+                                                    store.commit('setDebug', `for loop number: ${i+1}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+                                                    //if config value is set to 2of2, user has completed signing and is ready to broadcast
+                                                    if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '2OF2'){
+                                                    this.loading = false
+                                                    store.commit('setDebug', `Transfer CD detected 2OF2`)
+                                                    this.$router.push({ name: 'immediateBroadcast' })
+                                                    break
+                                                    }
+                                                    //if no valid config value is found assume user is not here to broadcast a signed tx
+                                                    else{
+                                                        this.loading = false
+                                                        store.commit('setDebug', `fall back inside for loop triggered; key: ${String(it[0]).toUpperCase()} value: ${String(it[1]).toUpperCase()}`)
+                                                        store.commit('setDebug', `User is not ready to broadcast, something is wrong.`)
+                                                        this.$router.push({ name: 'dashboard' })
+                                                    }
+                                                }
+                                            }).catch((e)=>{
+                                                store.commit('setDebug', `error reading CD: ${e}`)
+                                                store.commit('setErrorMessage', `Error reading CD: Login9 Response: ${e}`)
+                                                this.$router.push({ name: 'Error' })  
+                                            })
                                     }).catch((e)=>{
                                         store.commit('setDebug', `error packing up sensitive: ${e}`)
                                         store.commit('setErrorMessage', `Error Packing up Sensitive Error Code: Login8 Response: ${e}`)
