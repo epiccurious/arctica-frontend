@@ -16,6 +16,15 @@ export default {
   components: {
     },
     computed:{
+    },
+    mounted(){
+        invoke('stop_bitcoind').then((res) =>{
+            store.commit('setDebug', `stopping bitcoin daemon ${res}`)
+        }).catch((e)=>{
+            store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
+            store.commit('setErrorMessage', `Error with stopping bitcoin daemon Error Code: 1of2success-1 Response: ${e}`)
+            this.$router.push({ name:'Error' })
+        })
     }
 }
 </script>
