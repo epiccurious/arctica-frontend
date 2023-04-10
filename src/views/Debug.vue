@@ -145,6 +145,8 @@
     <button @click="unpack()" class="btn">Unpack</button>
     <br> 
     <button @click="packup()" class="btn">Packup</button>
+    <br> 
+    <button @click="decodeRawTx()" class="btn">Decode PSBT</button>
     
 
     </div> 
@@ -311,6 +313,15 @@ export default{
                         }).catch((e) => {
                                 store.commit('setDebug', `error creating descriptors: ${e}`)
                         })
+        },
+        decodeRawTx(){
+            //debug function used to decode a raw (fully signed?) PSBT
+            invoke('decode_raw_tx').then((res)=>{
+                store.commit('setDebug', `decoding PSBT from CDROM`)
+                store.commit('setDebug', `decoded psbt: ${res}`)
+            }).catch((e) => {
+                    store.commit('setDebug', `error decoding PSBTs: ${e}`)
+            })
         },
         reboot(){
             store.commit('setDebug', 'Reboot button pushed, Sending user to welcome')
