@@ -58,6 +58,7 @@ export default {
             
         },
         discard(){
+            this.$router.push({ name: "Dashboard" })
         },
     },
     computed:{
