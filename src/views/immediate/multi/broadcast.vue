@@ -8,17 +8,17 @@
         <img src="@/assets/checkmark_green.png">
         <div class="tx_block">
             <h2>To</h2>
-            <h3>NaaN</h3>
+            <h3>{{ this.address }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ NaaN</h3>
+            <h3>₿ {{ this.amount }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>₿ NaaN</h3>
+            <h3>₿ {{ this.fee }}</h3>
         </div>
 
         <div class="horizontal_btn_container">
@@ -69,7 +69,17 @@ export default {
         store.commit('setLoadMessage', 'Importing PSBT...')
         invoke('finalize_psbt', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
                 store.commit('setDebug', `finalizing PSBT: ${res}`)
-                this.loading = false
+                invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
+                    store.commit('setDebug', `decoding PSBT from CDROM`)
+                    store.commit('setDebug', `decoded psbt: ${res}`)
+                    let parsed = JSON.parse(res)
+                    let output = parsed.vout[0]
+                    this.address = output.script_pubkey.address.to_string()
+                    this.amount = output.value
+                    this.loading = false
+                }).catch((e) => {
+                        store.commit('setDebug', `error decoding PSBTs: ${e}`)
+                })
             }).catch((e)=>{
                 store.commit('setDebug', `error finalizing psbt ${e}`)
                 store.commit('setErrorMessage', `Error finalizing psbt Error Code: immediateBroadcast-1 Response: ${e}`)
@@ -79,6 +89,9 @@ export default {
     data(){
         return{
             loading: true,
+            address: null,
+            amount: null,
+            fee: null,
         }
     },
 }
