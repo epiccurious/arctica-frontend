@@ -90,11 +90,12 @@ export default {
             //load immediate wallet
             invoke('load_wallet', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
                 store.commit('setDebug', `loading immediate wallet: ${res}`)
+                store.commit('setLoadMessage', 'Decoding PSBT...')
                 invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
                     store.commit('setDebug', `decoding PSBT from CDROM`)
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")
-                    this. address = parts[0].split("=")[1].trim()
+                    this.address = parts[0].split("=")[1].trim()
                     this.amount = parts[1].split("=")[1].trim()
                     this.loading = false
                 }).catch((e) => {
