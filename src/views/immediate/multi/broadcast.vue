@@ -72,10 +72,16 @@ export default {
                 invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
                     store.commit('setDebug', `decoding PSBT from CDROM`)
                     store.commit('setDebug', `decoded psbt: ${res}`)
-                    let parsed = JSON.parse(res)
-                    let output = parsed.vout[0]
-                    this.address = output.script_pubkey.address.to_string()
-                    this.amount = output.value
+                    const addressRegex = /address\s*=\s*([a-zA-Z0-9]+)\s*,/;
+                    const amountRegex = /amount\s*=\s*([/d.]+)\s*BTC/;
+                    const addressMatch = res.match(addressRegex)
+                    const amountMatch = res.match(amountRegex)
+                    if(addressMatch && amountMatch){
+                        this.address = addressMatch[1];
+                        this.amount = parseFloat(amountMatch[1])
+                    }else{
+                        console.log("Err, invalid res")
+                    }
                     this.loading = false
                 }).catch((e) => {
                         store.commit('setDebug', `error decoding PSBTs: ${e}`)
