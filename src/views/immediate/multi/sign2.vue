@@ -8,12 +8,12 @@
         <img src="@/assets/checkmark_grey.png">
         <div class="tx_block">
             <h2>To</h2>
-            <h3>NaaN</h3>
+            <h3>{{ this.address }}</h3>
         </div>
 
         <div class="tx_block">
             <h2>Amount</h2>
-            <h3>₿ NaaN</h3>
+            <h3>₿ {{ this.amount }}</h3>
         </div>
 
         <div class="tx_block">
@@ -71,6 +71,9 @@ export default {
     data(){
         return{
             loading: true,
+            address: null,
+            amount: null,
+            fee: "unavailable",
         }
     },
     computed:{
@@ -87,7 +90,16 @@ export default {
             //load immediate wallet
             invoke('load_wallet', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
                 store.commit('setDebug', `loading immediate wallet: ${res}`)
-                this.loading = false
+                invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
+                    store.commit('setDebug', `decoding PSBT from CDROM`)
+                    store.commit('setDebug', `decoded psbt: ${res}`)
+                    const parts = res.split(",")
+                    this. address = parts[0].split("=")[1].trim()
+                    this.amount = parts[1].split("=")[1].trim()
+                    this.loading = false
+                }).catch((e) => {
+                        store.commit('setDebug', `error decoding PSBTs: ${e}`)
+                })
             }).catch((e)=>{
                 store.commit('setDebug', `error loading immediate wallet ${e}`)
                 store.commit('setErrorMessage', `Error Loading Immediate Wallet Error Code: sign2of2-2 Response: ${e}`)

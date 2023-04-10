@@ -90,7 +90,7 @@ export default {
             loading: true,
             address: null,
             amount: null,
-            fee: null,
+            fee: "Unavailable",
         }
     },
 }
