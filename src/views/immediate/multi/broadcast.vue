@@ -58,7 +58,8 @@ export default {
             
         },
         discard(){
-            this.$router.push({ name: "Dashboard" })
+            //TODO need to clear /mnt/ramdisk/CDROM/psbt at this point...should probably have a popup confirmation before doing this...
+            this.$router.push({ name: 'dashboard' })
         },
     },
     computed:{
