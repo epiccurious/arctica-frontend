@@ -71,12 +71,13 @@ export default {
         store.commit('setLoadMessage', 'Importing PSBT...')
         invoke('finalize_psbt', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
                 store.commit('setDebug', `finalizing PSBT: ${res}`)
+                store.commit('setDebug', `decoding PSBT...`)
                 invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
-                    store.commit('setDebug', `decoding PSBT from CDROM`)
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")
                     this. address = parts[0].split("=")[1].trim()
                     this.amount = parts[1].split("=")[1].trim()
+                    this.fee = parts[2].split("=")[1].trim()
                     this.loading = false
                 }).catch((e) => {
                         store.commit('setDebug', `error decoding PSBTs: ${e}`)
@@ -92,7 +93,7 @@ export default {
             loading: true,
             address: null,
             amount: null,
-            fee: "Unavailable",
+            fee: null,
         }
     },
 }
