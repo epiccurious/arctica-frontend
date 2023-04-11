@@ -18,7 +18,7 @@
 
         <div class="tx_block">
             <h2>Fee</h2>
-            <h3>₿ NaaN</h3>
+            <h3>₿ {{ this.fee }}</h3>
         </div>
 
         <div class="horizontal_btn_container">
@@ -73,7 +73,7 @@ export default {
             loading: true,
             address: null,
             amount: null,
-            fee: "unavailable",
+            fee: null,
         }
     },
     computed:{
@@ -86,17 +86,18 @@ export default {
     store.commit('setLoadMessage', 'Unpacking sensitive info...')
         invoke('unpack').then((res) => {
             store.commit('setDebug', `unpacked sensitive info ${res}`)
-            store.commit('setLoadMessage', `Loading immediate wallet`)
+            store.commit('setLoadMessage', `Loading immediate wallet...`)
             //load immediate wallet
             invoke('load_wallet', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
                 store.commit('setDebug', `loading immediate wallet: ${res}`)
                 store.commit('setLoadMessage', 'Decoding PSBT...')
                 invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res)=>{
-                    store.commit('setDebug', `decoding PSBT from CDROM`)
+                    console.log('decoding raw tx')
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")
                     this.address = parts[0].split("=")[1].trim()
                     this.amount = parts[1].split("=")[1].trim()
+                    this.fee = parts[2].split("=")[1].trim()
                     this.loading = false
                 }).catch((e) => {
                         store.commit('setDebug', `error decoding PSBTs: ${e}`)
