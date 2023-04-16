@@ -16,7 +16,7 @@ export default {
   name: 'Setup1',
     methods: {
        acknowledge(){
-        this.$router.push({ name:'Setup2' })
+        this.$router.push({ name:'Setup3' })
         },
       },
     data(){
