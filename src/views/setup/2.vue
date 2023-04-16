@@ -1,3 +1,8 @@
+<!-- This page is not currently in the setup flow. Waiting for BPS to be ready 
+before implementing this page as an asset -->
+
+
+
 <template>
 <Setup2A v-if="passwordSetup" v-on:goBack="goBack" :password="password2"/>
 

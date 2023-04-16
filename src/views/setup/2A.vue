@@ -1,3 +1,7 @@
+<!-- This page is not currently in the setup flow. Waiting for BPS to be ready 
+before implementing this page as an asset -->
+
+
 <template>
   <header>
 <h1>Let's double check your password.</h1>
