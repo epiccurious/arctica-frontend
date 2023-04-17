@@ -272,7 +272,7 @@ export default{
         },
         getBalance(){
             //this is a debug function used to get the balance of the immediate wallet
-            invoke('get_balance', {wallet: "immediate", sdcard:this.sdCard.toString()}).then((res)=>{
+            invoke('get_balance', {wallet_name: "immediate", hw_number:this.sdCard.toString()}).then((res)=>{
                 store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `error getting balance for immediate wallet: ${e}`)

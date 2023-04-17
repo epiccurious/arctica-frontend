@@ -76,7 +76,7 @@ export default{
       },
     },
              mounted(){
-                // invoke('get_balance', {wallet: "delayed", sdcard:this.currentHW.toString()}).then((res)=>{
+                // invoke('get_balance', {wallet_name: "delayed", hw_number:this.currentHW.toString()}).then((res)=>{
                 //     store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
                 //     store.commit('setDelayedBalance', `${parseInt(res)}`)
                 // }).catch((e)=>{
