@@ -72,7 +72,7 @@ export default {
         invoke('finalize_psbt', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `finalizing PSBT: ${res}`)
                 store.commit('setDebug', `decoding PSBT...`)
-                invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res)=>{
+                invoke('decode_raw_tx', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")
                     this. address = parts[0].split("=")[1].trim()

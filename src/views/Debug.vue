@@ -316,7 +316,7 @@ export default{
         },
         decodeRawTx(){
             //debug function used to decode a raw (fully signed?) PSBT
-            invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.sdCard.toString()}).then((res)=>{
+            invoke('decode_raw_tx', {wallet_name: "immediate", hw_number: this.sdCard.toString()}).then((res)=>{
                 store.commit('setDebug', `decoding PSBT from CDROM`)
                 store.commit('setDebug', `decoded psbt: ${res}`)
             }).catch((e) => {

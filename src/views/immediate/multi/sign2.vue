@@ -91,7 +91,7 @@ export default {
             invoke('load_wallet', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `loading immediate wallet: ${res}`)
                 store.commit('setLoadMessage', 'Decoding PSBT...')
-                invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res)=>{
+                invoke('decode_raw_tx', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                     console.log('decoding raw tx')
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")

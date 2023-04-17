@@ -35,11 +35,11 @@
                     store.commit('setDebug', `Generating Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 2 shards onto HW 4 from setupCD dir
-                    invoke('distribute_shards_sd4').then((res)=>{
+                    invoke('distribute_shards_hw4').then((res)=>{
                             store.commit('setDebug', `distributing 2 shards to Hardware Wallet ${res}`)
                             store.commit('setLoadMessage', 'Installing dependencies...')
                             //install wodim & ssss
-                            invoke('install_sd_deps').then((res) => {
+                            invoke('install_hw_deps').then((res) => {
                                     store.commit('setDebug', `installing HW dependencies ${res}`)
                                     store.commit('setLoadMessage', 'Refreshing setup CD...')
                                         //refresh setup CD with latest .iso 
