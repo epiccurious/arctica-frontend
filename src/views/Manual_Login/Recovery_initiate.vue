@@ -7,7 +7,7 @@
   <div v-else-if="this.cdfinished == true" class="page">
     <header>
       <h1>Recovery disk created</h1>
-      <h2>Please power off this machine, insert your next available SD card and reboot.</h2>
+      <h2>Please power off this machine, insert your next available Hardware Wallet and reboot.</h2>
     </header>
   </div>
    

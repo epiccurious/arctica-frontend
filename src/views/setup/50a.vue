@@ -1,4 +1,4 @@
-<!-- Consider revising this to having the user boot to primary machine with no SD card inserted and have them complete IBD there -->
+<!-- Consider revising this to having the user boot to primary machine with no Hardware Wallet inserted and have them complete IBD there -->
 
 <template>
 <div class="page">

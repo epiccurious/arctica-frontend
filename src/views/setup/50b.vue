@@ -48,7 +48,7 @@ export default {
         }
     },
     mounted(){
-        //update sd card setupstep to 0
+        //update HW setupstep to 0
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             store.commit('setDebug', `updating setupStep to ${this.setupStep}`)
             })

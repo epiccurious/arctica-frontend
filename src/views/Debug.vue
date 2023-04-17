@@ -304,7 +304,7 @@ export default{
             invoke('get')
         },
         createDescriptors(){
-            //this is a debug function used to create descriptors when testing locally instead of on an SD card
+            //this is a debug function used to create descriptors when testing locally instead of on a Hardware Wallet
             //start bitcoind
             invoke('start_bitcoind_network_off')
                 store.commit('setDebug', `starting bitcoin daemon with networking off`)

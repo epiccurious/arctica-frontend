@@ -39,7 +39,7 @@ export default {
         acknowledge(){
             this.loading = true
             store.commit('setLoadMessage', 'Creating Backup...')
-        //make a backup dir and fill it with a backup of the current SD card
+        //make a backup dir and fill it with a backup of the current Hardware Wallet
         invoke('create_backup', {number: "1"}).then((res) => {
             store.commit('setDebug', `creating and filling backup dir ${res}`)
             //burn backup ISO

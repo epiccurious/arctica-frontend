@@ -192,7 +192,7 @@ export default {
             }
         }
         store.commit('setDebug', `exiting config read`)
-        //if the user has completed the initial flash of the first 7 sd cards (config is present) create ramdisk and check for masterkey
+        //if the user has completed the initial flash of the 7 Hardware Wallets (config is present) create ramdisk and check for masterkey
 
               
         //creating ramdisk for sensitive data
@@ -205,7 +205,7 @@ export default {
           this.$router.push({ name: 'Error' }) 
         })  
 
-        //if user has completed initial setup and booted from an SD card, mount internal disk and symlink .bitcoin folders..
+        //if user has completed initial setup and booted from a Hardware Wallet, mount internal disk and symlink .bitcoin folders..
         //we MAY be better off removing this as if decrypted was true we assumed the ramdisk already exists above and thus we could probably also assume 
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
         if(this.currentSD == 1 && this.setupStep == 0){

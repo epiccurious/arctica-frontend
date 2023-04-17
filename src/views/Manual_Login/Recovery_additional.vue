@@ -5,7 +5,7 @@
   <div v-else class="page">
     <header>
       <h1>Manual Recovery</h1>
-      <h2>Please remove your recovery CD and reboot with your next available SD card</h2>
+      <h2>Please remove your recovery CD and reboot with your next available Hardware Wallet</h2>
     </header>
 
   </div>

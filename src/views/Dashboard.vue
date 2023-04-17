@@ -25,7 +25,7 @@ can be removed once immediate wallet is functional -->
         <router-link class="wallet_container" :to="{ name: 'immediate' }">
             <div class="wallet_container_left">
             <h2>Immediate Wallet</h2>
-            <h2 class="time_decay">2 SD cards</h2>
+            <h2 class="time_decay">2 HWs</h2>
             </div>
             <div class="wallet_container_right">
               <h2 class="balance_overview"> {{ this.immediateBalance }} BTC</h2>
@@ -37,7 +37,7 @@ can be removed once immediate wallet is functional -->
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet (Disabled)</h2>
-          <h2 class="time_decay">5 SD cards + 2 Time Machine Keys</h2>
+          <h2 class="time_decay">5 HWs + 2 Time Machine Keys</h2>
           </div>
           <div class="wallet_container_right">
             <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>

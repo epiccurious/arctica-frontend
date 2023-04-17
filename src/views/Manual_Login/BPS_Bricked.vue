@@ -5,7 +5,7 @@
     <header>
         <h1>You have 5 failed login attempts.</h1>
         <h2>Arctica will now initialize the manual recovery process.</h2>
-        <h2 class="strong">This will require you access additional SD cards.</h2>
+        <h2 class="strong">This will require you access additional Hardware Wallets.</h2>
     </header>
     
 

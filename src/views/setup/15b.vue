@@ -37,7 +37,7 @@
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 2 shards onto sd 3 from setupCD dir
                     invoke('distribute_shards_sd3').then((res)=>{
-                            store.commit('setDebug', `distributing 2 shards to SD card ${res}`)
+                            store.commit('setDebug', `distributing 2 shards to Hardware Wallet ${res}`)
                             store.commit('setLoadMessage', 'Installing dependencies...')
                             //install wodim & ssss
                             invoke('install_sd_deps').then((res) => {
@@ -50,7 +50,7 @@
                                             invoke('packup').then((res)=>{
                                                 store.commit('setDebug', `packing up sensitive info: ${res}`)
                                                 store.commit('setLoadMessage', 'Updating application state...')
-                                                //update setupstep state on sd card
+                                                //update setupstep state on Hardware Wallet
                                                 invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
                                                     store.commit('setDebug', `config set to new values setupStep: ${this.setupStep} res:${res}`)
                                                     invoke('stop_bitcoind').then((res) =>{
