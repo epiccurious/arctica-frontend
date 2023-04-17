@@ -59,10 +59,10 @@ export default {
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'Loading Immediate wallet...')
-                            invoke('load_wallet', {wallet: "immediate", sdcard: this.currentSD.toString()}).then((res) =>{
+                            invoke('load_wallet', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res) =>{
                                 store.commit('setDebug', `Loaded Immediate Wallet: ${res}`)
                                 store.commit('setLoadMessage', 'Loading delayed wallet...')
-                                invoke('load_wallet', {wallet: "delayed", sdcard: this.currentSD.toString()}).then((res) =>{
+                                invoke('load_wallet', {wallet: "delayed", sdcard: this.currentHW.toString()}).then((res) =>{
                                     store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
                                     store.commit('setLoadMessage', 'Packing up sensitive info...')
                                     invoke('packup').then((res) => {
@@ -162,8 +162,8 @@ export default {
         },
     },
  computed: {
-    currentSD(){
-        return store.getters.getCurrentSD
+    currentHW(){
+        return store.getters.getcurrentHW
       },
  },
  data(){

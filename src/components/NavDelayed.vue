@@ -71,12 +71,12 @@ export default{
         delayedBalance(){
         return store.getters.getDelayedBalance
         },
-        currentSD(){
-        return store.getters.getCurrentSD
+        currentHW(){
+        return store.getters.getcurrentHW
       },
     },
              mounted(){
-                // invoke('get_balance', {wallet: "delayed", sdcard:this.currentSD.toString()}).then((res)=>{
+                // invoke('get_balance', {wallet: "delayed", sdcard:this.currentHW.toString()}).then((res)=>{
                 //     store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
                 //     store.commit('setDelayedBalance', `${parseInt(res)}`)
                 // }).catch((e)=>{

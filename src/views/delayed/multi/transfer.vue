@@ -13,7 +13,7 @@
                 </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="currentSD == 1 && checkbox && this.psbtFound == true" @click="acknowledge()" class="btn">Continue</Button>
+            <button v-if="currentHW == 1 && checkbox && this.psbtFound == true" @click="acknowledge()" class="btn">Continue</Button>
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
@@ -40,8 +40,8 @@ export default {
 
     },
     computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
+        currentHW(){
+            return store.getters.getcurrentHW
         },
     },
     data(){

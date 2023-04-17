@@ -60,8 +60,8 @@ export default {
 
     },
     computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
+        currentHW(){
+            return store.getters.getcurrentHW
         },
         psbtFound(){
             return store.getters.getPSBTFound

@@ -98,7 +98,7 @@ export default {
  },
  sdCard:{
             get(){
-                return store.getters.getCurrentSD
+                return store.getters.getcurrentHW
             }
 
         }

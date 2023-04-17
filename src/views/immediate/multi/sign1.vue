@@ -47,8 +47,8 @@ export default {
         }
     },
     computed:{
-        currentSD(){
-            return store.getters.getCurrentSD
+        currentHW(){
+            return store.getters.getcurrentHW
         },
     }
 }

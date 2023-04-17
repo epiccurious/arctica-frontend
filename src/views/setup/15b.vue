@@ -32,7 +32,7 @@
             store.commit('setDebug', `reading setup CD ${res}`)
             store.commit('setLoadMessage', 'Creating Bitcoin Wallet...')
             //create xpriv and xpub
-            invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
+            invoke('generate_store_key_pair', {number: this.currentHW}).then((res)=>{
                     store.commit('setDebug', `Generating Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 2 shards onto sd 3 from setupCD dir
@@ -99,7 +99,7 @@
         },
         data(){
             return{
-                currentSD: '3',
+                currentHW: '3',
                 setupStep: '10',
                 loading: false,
             }

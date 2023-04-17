@@ -41,7 +41,7 @@ export default {
         acknowledge(){
             this.loading = true
             store.commit('setLoadMessage', 'Creating Bitcoin wallet...')
-            invoke('generate_store_key_pair', {number: this.currentSD}).then((res)=>{
+            invoke('generate_store_key_pair', {number: this.currentHW}).then((res)=>{
                 store.commit('setDebug', `Generating Wallet: ${res}`)
                 //create 4 simulated time machine key pairs
                 //eventually this will be where user receives 4 time machine pubkeys from BPS
@@ -101,7 +101,7 @@ export default {
     },
     data(){
         return{
-            currentSD: '1',
+            currentHW: '1',
             setupStep: '8',
             checkbox: false,
             loading: false,

@@ -328,7 +328,7 @@ export default{
             this.$router.push({ name: 'welcome' })
         },
         setSD(){
-            store.commit('setCurrentSD', this.sdCard)
+            store.commit('setcurrentHW', this.sdCard)
         },
         setNumberToRecover(){
             store.commit('setNumberToRecover', this.numberToRecover)
@@ -366,10 +366,10 @@ export default{
         },
         sdCard:{
             get(){
-                return store.getters.getCurrentSD
+                return store.getters.getcurrentHW
             },
             set(newVal){
-                store.commit('setCurrentSD', newVal)
+                store.commit('setcurrentHW', newVal)
             }
         },
         numberToRecover:{
