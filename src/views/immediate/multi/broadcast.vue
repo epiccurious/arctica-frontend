@@ -46,7 +46,7 @@ export default {
         broadcast(){
             this.loadingc= true
             store.commit('setLoadMessage', 'Broadcasting transaction...')
-            invoke('broadcast_tx', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res)=>{
+            invoke('broadcast_tx', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                     store.commit('setDebug', `Broadcasting Fully Signed TX: ${res}`)
                     this.loading = false
                     this.$router.push({ name: 'immediateConfirmation' })
@@ -69,7 +69,7 @@ export default {
     },
     mounted(){
         store.commit('setLoadMessage', 'Importing PSBT...')
-        invoke('finalize_psbt', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res)=>{
+        invoke('finalize_psbt', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `finalizing PSBT: ${res}`)
                 store.commit('setDebug', `decoding PSBT...`)
                 invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res)=>{
