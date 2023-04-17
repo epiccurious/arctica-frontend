@@ -88,7 +88,7 @@ export default {
             store.commit('setDebug', `unpacked sensitive info ${res}`)
             store.commit('setLoadMessage', `Loading immediate wallet...`)
             //load immediate wallet
-            invoke('load_wallet', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res)=>{
+            invoke('load_wallet', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `loading immediate wallet: ${res}`)
                 store.commit('setLoadMessage', 'Decoding PSBT...')
                 invoke('decode_raw_tx', {wallet: "immediate", sdcard: this.currentHW.toString()}).then((res)=>{

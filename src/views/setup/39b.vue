@@ -77,7 +77,7 @@ export default {
                 store.commit('setDebug', `unpacking sensitive info ${res}`)
                 store.commit('setLoadMessage', 'Creating Descriptors...')
                 //create the descriptors
-                invoke('create_descriptor', {sdcard: "5"}).then((res) => {
+                invoke('create_descriptor', {hw_number: "5"}).then((res) => {
                     store.commit('setDebug', `creating descriptors ${res}`)
                     store.commit('setLoadMessage', 'Packing up sensitive data...')
                     //make sure sensitive contains everything it should before packup()

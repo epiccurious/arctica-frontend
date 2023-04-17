@@ -308,7 +308,7 @@ export default{
             //start bitcoind
             invoke('start_bitcoind_network_off')
                 store.commit('setDebug', `starting bitcoin daemon with networking off`)
-                        invoke('create_descriptor', {sdcard: "2"}).then((res) => {
+                        invoke('create_descriptor', {hw_number: "2"}).then((res) => {
                             store.commit('setDebug', `creating descriptors ${res}`)
                         }).catch((e) => {
                                 store.commit('setDebug', `error creating descriptors: ${e}`)
