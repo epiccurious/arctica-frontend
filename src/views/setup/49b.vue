@@ -3,7 +3,7 @@
     <header>
         <h1>Destroy Set up CD</h1>
         <h2>Your Set up CD is no longer needed. Please <a class="blue_link" href="#">destroy</a> it now. </h2>
-        <h2>Alpha testers disregard this. You will need your setupCD to login. </h2>
+        <h2>Alpha testers please disregard this. Your setupCD can be used to login. </h2>
     </header> 
     <div class="form_container">
         <form>

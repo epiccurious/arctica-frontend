@@ -1,8 +1,11 @@
 <template>
 <div class="page">
     <header>
-        <h1>SD initial flash successful</h1>
-        <h2>Please power off this machine, insert SD 1, and power on the machine.</h2>
+        <h1>Hardware Wallet initial flash successful</h1>
+        <h2>Please power off this machine, insert Hardware Wallet 1, and power on the machine.</h2>
+        <h2>You should automatically boot into the Hardware wallet's internal operating system, however,
+           some computers will require you to manually configure the boot order within the BIOS.</h2>
+           <h2> <a href="#">See here for help.</a></h2>
     </header>   
 
 </div>

@@ -4,14 +4,14 @@
   </div>
 <div v-else class="page">
     <header>
-        <h1>SD Card 6</h1>
-        <h2>Please remove SD card 5 & insert SD card 6.</h2>
+        <h1>Hardware Wallet 6</h1>
+        <h2>Please remove Hardware Wallet 5 & insert Hardware Wallet 6.</h2>
     </header>   
     <div class="form_container">
         <form>
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have inserted SD card 6.</label>
+                <label for="checkbox">I have inserted HW 6.</label>
             </div>
         </form>
         <div class="btn_container"> 
@@ -38,7 +38,7 @@ export default {
   methods: {
         acknowledge() {
             this.loading = true
-            store.commit('setLoadMessage', 'Creating SD 6...')
+            store.commit('setLoadMessage', 'Creating Hardware Wallet 6...')
             invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then((res) => {
                 store.commit('setDebug', `SD card initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
                 store.commit('setDebug', `create bootable SD 6 completed: ${res}`)

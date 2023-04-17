@@ -2,8 +2,8 @@
 <div class="page">
 <header>
 <h1>Package 4 is now complete.</h1>
- <h2>Please remove DVD 4 and SD 4.</h2>
- <h2>Place SD card 4, and backups CD 4 and DVD 4 into Envelope 4.</h2> 
+ <h2>Please remove DVD 4 and Hardware Wallet 4.</h2>
+ <h2>Place Hardware Wallet 4, and backups CD 4 and DVD 4 into Envelope 4.</h2> 
  <h2>This envelope should be stored somewhere...[placeholder text]</h2>
  </header>
       <div class="form_container">

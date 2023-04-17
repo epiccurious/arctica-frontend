@@ -4,8 +4,8 @@
   </div>
   <div v-else class="page">
       <header>
-        <h1>SD 4 creation complete</h1>
-        <h2>Please power off this machine, remove SD 4, insert SD 5, and power on the machine.</h2> 
+        <h1>Hardware Wallet 4 creation complete</h1>
+        <h2>Please power off this machine, remove HW 4, insert HW 5, and power on the machine.</h2> 
       </header> 
   
   </div>

@@ -1,12 +1,12 @@
 <template>
 <div class="page">
     <header>
-        <h1>Time to set up your keys...</h1>
-        <h3>WARNING: All devices, including this computer, will be wiped during setup. Make absolutely sure you are only using dedicated devices that do not contain important information.</h3>
-        <h2>Label 8 CD's "CD 1" through "CD 7", and label the final one "set up". Set up must be a CD RW.</h2> 
-        <h2>Label 7 DVDs "DVD 1" through "DVD 7".</h2> 
-        <h2>Label 7 blank SD cards or 7 blank USB sticks "1" through "7".</h2>
-        <h2>Label 7 Envelopes "1" through "7".</h2>
+        <h1>Time to set up your Hardware Wallets...</h1>
+        <h3>WARNING: All devices, including this computer, may be wiped during setup. Make absolutely sure you are only using dedicated devices that do not contain important information.</h3>
+        <h2>Backup Discs: Label 8 CD's "CD 1" through "CD 7", and label the final one "set up". Set up must be a CD RW.</h2> 
+        <h2>Backup Discs: Label 7 DVDs "DVD 1" through "DVD 7".</h2> 
+        <h2>Hardware Wallets: Label 7 blank SD cards or 7 blank USB sticks "HW 1" through "HW 7".</h2>
+        <h2>Label 7 Envelopes "1" through "7" (large enough envelopes to hold 2 CDs & 1 Hardware Wallet).</h2>
     </header>
     
     <div class="form_container">
