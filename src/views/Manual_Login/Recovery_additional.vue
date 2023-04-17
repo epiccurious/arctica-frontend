@@ -27,7 +27,7 @@ export default {
       },
     },
     mounted(){
-      // collecting shards from $HOME on current SD and adding them to /mnt/ramdisk/CDROM/shards
+      // collecting shards from $HOME on current HW and adding them to /mnt/ramdisk/CDROM/shards
       store.commit('setLoadMessage', 'collecting privacy key shards...')
       invoke('collect_shards').then((res)=>{
         store.commit('setDebug', `collecting shards: ${res}`)

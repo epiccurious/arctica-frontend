@@ -34,7 +34,7 @@
 
 <!-- This screen is where we will eventually:
 -check for a transfer CD & PSBTs (virtual labels and update state)
--check which SD, if any, is currently inserted (virtual labels update state)
+-check which HW, if any, is currently inserted (virtual labels update state)
 -ensure Bitcoin Core is synced (update state)
 -check for a BPS connection (update state)
 -check the tripwire (update state)
@@ -110,7 +110,7 @@ export default {
               store.commit('setDebug', 'Sending user to Login')
               this.$router.push({ name: 'Login'})
             }
-            //user does not have SD 1 inserted and/or is trying to login with SD 2-7 and does not have a valid transfer CD inserted
+            //user does not have HW 1 inserted and/or is trying to login with HW 2-7 and does not have a valid transfer CD inserted
             else{
               store.commit('setDebug', 'Sending user to Boot')
               this.$router.push({ name: 'Boot' })
@@ -175,11 +175,11 @@ export default {
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
             store.commit('setDebug', `for loop number: ${i+1}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
-            //check config for current SD
+            //check config for current HW
             if (String(it[0]).toUpperCase() == 'SDNUMBER'){
               store.commit('setcurrentHW', parseInt(it[1]))
               this.currentHW == store.getters.getcurrentHW
-              store.commit('setDebug', `SD NUMBER successfully set to: ${this.currentHW}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+              store.commit('setDebug', `HW NUMBER successfully set to: ${this.currentHW}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
             //check config for current setup step
             else if(String(it[0]).toUpperCase() == 'SETUPSTEP'){
@@ -209,7 +209,7 @@ export default {
         //we MAY be better off removing this as if decrypted was true we assumed the ramdisk already exists above and thus we could probably also assume 
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
         if(this.currentHW == 1 && this.setupStep == 0){
-          store.commit('setDebug', 'current SD = 1 and setupStep = 0 conditional met, invoking mount internal')
+          store.commit('setDebug', 'current HW = 1 and setupStep = 0 conditional met, invoking mount internal')
           this.loading = true
           store.commit('setLoadMessage', 'Mounting the internal drive...')
           invoke('mount_internal').then((res)=> {
@@ -241,9 +241,9 @@ export default {
             store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
             this.$router.push({ name: 'Error' })
             })
-        //user is booted on SD 2-7 and has completed setup...start bitcoind
+        //user is booted on HW 2-7 and has completed setup...start bitcoind
         } else if(this.currentHW != 0 && this.setupStep == 0){
-          store.commit('setDebug', 'current SD !=0 and setupStep = 0 conditional met, starting bitcoind network off')
+          store.commit('setDebug', 'current HW !=0 and setupStep = 0 conditional met, starting bitcoind network off')
                 //start bitcoind with networking disabled
                 invoke('start_bitcoind_network_off')
                   store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
@@ -312,9 +312,9 @@ export default {
           this.$router.push({ name: 'Setup50b' })
         }
 
-        //redirect user to boot screen if they have SD 2-7 or no SD inserted
+        //redirect user to boot screen if they have HW 2-7 or no HW inserted
         else if(this.currentHW != 1){
-          store.commit('setDebug', 'SD card 1 not detected, redirecting to boot screen')
+          store.commit('setDebug', 'Hardware Wallet 1 not detected, redirecting to boot screen')
           this.$router.push({ name:'Boot' })
         }
 

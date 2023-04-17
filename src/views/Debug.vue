@@ -8,16 +8,16 @@
         <h2>Current Route: {{this.$route.name}}</h2>
         <button @click="reboot()" class="btn">Reboot</button>
 
-        <label>SD inserted</label>
+        <label>HW inserted</label>
         <select v-model="sdCard" name="sdCard" id="sdCard">
-            <option @click="setSD()" value= 0>None</option>
-            <option @click="setSD()" value= 1>One</option>
-            <option @click="setSD()" value= 2>Two</option>
-            <option @click="setSD()" value= 3>Three</option>
-            <option @click="setSD()" value= 4>Four</option>
-            <option @click="setSD()" value= 5>Five</option>
-            <option @click="setSD()" value= 6>Six</option>
-            <option @click="setSD()" value= 7>Seven</option>
+            <option @click="setHW()" value= 0>None</option>
+            <option @click="setHW()" value= 1>One</option>
+            <option @click="setHW()" value= 2>Two</option>
+            <option @click="setHW()" value= 3>Three</option>
+            <option @click="setHW()" value= 4>Four</option>
+            <option @click="setHW()" value= 5>Five</option>
+            <option @click="setHW()" value= 6>Six</option>
+            <option @click="setHW()" value= 7>Seven</option>
         </select>
 
         <h2>setup Step Loaded: {{this.setupStep}}</h2>
@@ -117,9 +117,9 @@
         </div>
 
         <!-- this button seems kind of useless, may remove. The only way for us to discern if this variable should be true or false in a real world scenario
-         would be to create a file on the users machine. Potential side effects in certain edge cases where a user tries to boot from SD 1 on a machine
+         would be to create a file on the users machine. Potential side effects in certain edge cases where a user tries to boot from HW 1 on a machine
         they did not use to complete set up. Perhaps better to assume we never know for sure if the user has set up already or not and always present 
-        them with the option, unless they have booted from SD 1-7 in which case this below variable and debug toggle switch will not be necessary. -->
+        them with the option, unless they have booted from HW 1-7 in which case this below variable and debug toggle switch will not be necessary. -->
         <div class="switch">
             Initial Set up Complete (disabled)
             <label class="toggle_switch_label">
@@ -289,7 +289,7 @@ export default{
 
     },
         generateKeys(){
-            //this is a debug function used to create keys 2-7 on SD 1
+            //this is a debug function used to create keys 2-7 on HW 1
         invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
             store.commit('setDebug', `invoking generate store keypair: ${res}`)
             store.commit('setDebug', `generating key: ${this.keynumber-1}`)
@@ -327,7 +327,7 @@ export default{
             store.commit('setDebug', 'Reboot button pushed, Sending user to welcome')
             this.$router.push({ name: 'welcome' })
         },
-        setSD(){
+        setHW(){
             store.commit('setcurrentHW', this.sdCard)
         },
         setNumberToRecover(){

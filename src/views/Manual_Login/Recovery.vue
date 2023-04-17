@@ -1,7 +1,7 @@
 <!-- This page will dynamically display the current number of Hardware Wallets needed to decrypt as well as a countdown to the remaining privacy key decay schedules -->
 <!-- Revisit this entire flow after dynamic privacy key decay feature is implemented -->
-<!-- The recovery protocol currently demands the user is starting the recovery process on SD 1-->
-<!-- There is a very rare edge case here which is not handled. If the user has somehow lost SD 1-4 and converted one of SD 5-7 into a new SD 1, they will only have access to 3 shards in total -->
+<!-- The recovery protocol currently demands the user is starting the recovery process on HW 1-->
+<!-- There is a very rare edge case here which is not handled. If the user has somehow lost HW 1-4 and converted one of HW 5-7 into a new HW 1, they will only have access to 3 shards in total -->
 <template>
   <div class="page">
     <header>

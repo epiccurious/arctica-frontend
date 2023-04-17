@@ -35,13 +35,13 @@
             invoke('generate_store_key_pair', {number: this.currentHW}).then((res)=>{
                     store.commit('setDebug', `Generating Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
-                    //distribute 2 shards onto sd 3 from setupCD dir
+                    //distribute 2 shards onto HW 3 from setupCD dir
                     invoke('distribute_shards_sd3').then((res)=>{
                             store.commit('setDebug', `distributing 2 shards to Hardware Wallet ${res}`)
                             store.commit('setLoadMessage', 'Installing dependencies...')
                             //install wodim & ssss
                             invoke('install_sd_deps').then((res) => {
-                                    store.commit('setDebug', `installing SD dependencies ${res}`)
+                                    store.commit('setDebug', `installing HW dependencies ${res}`)
                                     store.commit('setLoadMessage', 'Refreshing setup CD...')
                                         //refresh setup CD with latest .iso 
                                         invoke('refresh_cd').then((res)=>{
@@ -77,8 +77,8 @@
                                             this.$router.push({ name:'Error' })
                                             })
                                 }).catch((e) => {
-                                    store.commit('setDebug', `install SD deps error: ${e}`)
-                                    store.commit('setErrorMessage', `Error installing SD dependencies Error code: Setup15b-4 Response: ${e}`)
+                                    store.commit('setDebug', `install HW deps error: ${e}`)
+                                    store.commit('setErrorMessage', `Error installing HW dependencies Error code: Setup15b-4 Response: ${e}`)
                                     this.$router.push({ name:'Error' })
                                 })
                     }).catch((e)=>{

@@ -1,7 +1,7 @@
-<!-- this page conditionally renders if the user does not currently have any Arctica SD inserted (in which case they are prompted to install Arctica software)
-or directs them to the 'i need help' section which can walk them through restoring an attic SD. 
+<!-- this page conditionally renders if the user does not currently have any Arctica HW inserted (in which case they are prompted to install Arctica software)
+or directs them to the 'i need help' section which can walk them through restoring an attic HW. 
 
-the second conditional rendering below appears if the user has booted from SD 2-7 and needs to insert a transfer CD or a recovery CD. -->
+the second conditional rendering below appears if the user has booted from HW 2-7 and needs to insert a transfer CD or a recovery CD. -->
 
 <template>
 <div v-if="this.loading == true">
@@ -12,7 +12,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
   <div v-if="this.currentHW == 0" class="login">
     <header>
       <h1>Welcome to Arctica</h1>
-      <h2>If you have already set up Arctica, please insert SD 1 and restart this machine.</h2>
+      <h2>If you have already set up Arctica, please insert Hardware Wallet 1 and restart this machine.</h2>
       <h2>If you have not yet set up Arctica click install.</h2>
     </header>
     <div class="btn_container"> 
@@ -25,7 +25,7 @@ the second conditional rendering below appears if the user has booted from SD 2-
     <header> 
       <h1>Welcome to Arctica</h1>
       <h2>Please insert a transfer CD.</h2>
-      <h2>If you do not have a transfer CD, please insert SD 1 and reboot this machine.</h2>
+      <h2>If you do not have a transfer CD, please insert Hardware Wallet 1 and reboot this machine.</h2>
     </header>
     <div class="form_container">
       <form>
@@ -87,7 +87,7 @@ export default {
                   break
                 }
                 //if the PSBT key is present, and = 2OF2 user is attempting to broadcast a signed immediate transaction
-                //TODO, this condition can NEVER normally happen because the user should be broadcasting from SD 1...however we should still handle this condition with a warning
+                //TODO, this condition can NEVER normally happen because the user should be broadcasting from HW 1...however we should still handle this condition with a warning
                 else if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '2OF2'){
                   this.loading = false
                   store.commit('setDebug', `Transfer CD detected 2OF2`)

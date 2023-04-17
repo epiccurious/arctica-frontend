@@ -3,7 +3,7 @@
 <template>
 <div class="page">
     <header>
-        <h1>Someone has performed a quick withdrawal from SD {{ this.tripped }}</h1>
+        <h1>Someone has performed a quick withdrawal from HW {{ this.tripped }}</h1>
         <h2>If you did not spend this money, you should assume envelope {{ this.tripped }} is compromised.</h2> 
         <h2>For your security, all of your funds should now be moved to a fresh Arctica wallet.</h2> 
     </header>

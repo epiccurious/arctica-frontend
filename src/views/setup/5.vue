@@ -39,9 +39,9 @@ export default {
         acknowledge() {
             this.loading = true
             store.commit('setLoadMessage', 'Creating Hardware Wallet 2...')
-            invoke('create_bootable_usb', {number: this.sd, setup: this.setupStep}).then((res) => {
-                store.commit('setDebug', `Hardware Wallet initialized with config sdnumber:${this.sd} and setupStep:${this.setupStep}`)
-                store.commit('setDebug', `create bootable SD 2 completed: ${res}`)
+            invoke('create_bootable_usb', {number: this.hw, setup: this.setupStep}).then((res) => {
+                store.commit('setDebug', `Hardware Wallet initialized with config sdnumber:${this.hw} and setupStep:${this.setupStep}`)
+                store.commit('setDebug', `create bootable HW 2 completed: ${res}`)
                 this.loading = false
                 this.$router.push({ name:'Setup6' })   
             })
@@ -60,7 +60,7 @@ export default {
         return{
             checkbox: false,
             loading: false,
-            sd: "2",
+            hw: "2",
             setupStep: '2'
         }
     },
