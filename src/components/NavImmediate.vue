@@ -72,7 +72,7 @@ export default{
                 return store.getters.getImmediateBalance
             }
         },
-        sdCard:{
+        hwNumber:{
             get(){
                 return store.getters.getcurrentHW
             },
@@ -80,7 +80,7 @@ export default{
         },
     },
          mounted(){
-            invoke('get_balance', {wallet_name: "immediate", hw_number: this.sdCard.toString()}).then((res)=>{
+            invoke('get_balance', {wallet_name: "immediate", hw_number: this.hwNumber.toString()}).then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                     let bal = parseFloat(res)
                     store.commit('setImmediateBalance', `${bal}`)

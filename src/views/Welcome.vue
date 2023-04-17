@@ -176,7 +176,7 @@ export default {
             let it = resArray[i].split("=")
             store.commit('setDebug', `for loop number: ${i+1}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
             //check config for current HW
-            if (String(it[0]).toUpperCase() == 'SDNUMBER'){
+            if (String(it[0]).toUpperCase() == 'HWNUMBER'){
               store.commit('setcurrentHW', parseInt(it[1]))
               this.currentHW == store.getters.getcurrentHW
               store.commit('setDebug', `HW NUMBER successfully set to: ${this.currentHW}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)

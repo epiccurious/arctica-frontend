@@ -59,7 +59,7 @@ export default {
           return store.getters.getImmediateTransactions
         }
         },
-        sdCard:{
+        hwNumber:{
             get(){
                 return store.getters.getcurrentHW
             },

@@ -9,7 +9,7 @@
         <button @click="reboot()" class="btn">Reboot</button>
 
         <label>HW inserted</label>
-        <select v-model="sdCard" name="sdCard" id="sdCard">
+        <select v-model="hwNumber" name="hwNumber" id="hwNumber">
             <option @click="setHW()" value= 0>None</option>
             <option @click="setHW()" value= 1>One</option>
             <option @click="setHW()" value= 2>Two</option>
@@ -272,7 +272,7 @@ export default{
         },
         getBalance(){
             //this is a debug function used to get the balance of the immediate wallet
-            invoke('get_balance', {wallet_name: "immediate", hw_number:this.sdCard.toString()}).then((res)=>{
+            invoke('get_balance', {wallet_name: "immediate", hw_number:this.hwNumber.toString()}).then((res)=>{
                 store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `error getting balance for immediate wallet: ${e}`)
@@ -316,7 +316,7 @@ export default{
         },
         decodeRawTx(){
             //debug function used to decode a raw (fully signed?) PSBT
-            invoke('decode_raw_tx', {wallet_name: "immediate", hw_number: this.sdCard.toString()}).then((res)=>{
+            invoke('decode_raw_tx', {wallet_name: "immediate", hw_number: this.hwNumber.toString()}).then((res)=>{
                 store.commit('setDebug', `decoding PSBT from CDROM`)
                 store.commit('setDebug', `decoded psbt: ${res}`)
             }).catch((e) => {
@@ -328,7 +328,7 @@ export default{
             this.$router.push({ name: 'welcome' })
         },
         setHW(){
-            store.commit('setcurrentHW', this.sdCard)
+            store.commit('setcurrentHW', this.hwNumber)
         },
         setNumberToRecover(){
             store.commit('setNumberToRecover', this.numberToRecover)
@@ -364,7 +364,7 @@ export default{
                 store.commit('setTripwireTripped', newVal)
             }
         },
-        sdCard:{
+        hwNumber:{
             get(){
                 return store.getters.getcurrentHW
             },

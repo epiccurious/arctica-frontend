@@ -40,7 +40,7 @@ export default {
             this.loading = true
             store.commit('setLoadMessage', 'Creating Hardware Wallet 4...')
             invoke('create_bootable_usb', {number: this.hw, setup: this.setupStep}).then((res) => {
-                store.commit('setDebug', `Hardware Wallet initialized with config sdnumber:${this.hw} and setupStep:${this.setupStep}`)
+                store.commit('setDebug', `Hardware Wallet initialized with config hwNumber:${this.hw} and setupStep:${this.setupStep}`)
                 store.commit('setDebug', `create bootable HW 4 completed: ${res}`)
                 this.loading = false
                 this.$router.push({ name:'Setup8' })   
