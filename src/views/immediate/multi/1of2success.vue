@@ -2,7 +2,7 @@
 <div class="page">
     <header>
         <h1>1 of 2 Signing Successful</h1>
-        <h2>Please power off this machine. Swap HW 1 for your next available HW and power on this machine.</h2>
+        <h2>Please power off this machine. Swap HW 1 for HW 2 and power on this machine.</h2>
     </header>
     
 

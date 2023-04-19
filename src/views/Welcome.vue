@@ -33,9 +33,6 @@
 </template>
 
 <!-- This screen is where we will eventually:
--check for a transfer CD & PSBTs (virtual labels and update state)
--check which HW, if any, is currently inserted (virtual labels update state)
--ensure Bitcoin Core is synced (update state)
 -check for a BPS connection (update state)
 -check the tripwire (update state)
 -Check for any published time machine keys/privacy keys (update state) -->
@@ -47,7 +44,6 @@
 import store from '../store.js'
 const invoke = window.__TAURI__.invoke
 import Loader from '@/components/loader'
-// import { listen } from '@tauri-apps/api/event'
 
 export default {
   name: 'Welcome',

@@ -1,3 +1,5 @@
+<!-- this page currently does not appear in the signing flow -->
+
 <template>
 <div class="page">
     <div class="display_block">
