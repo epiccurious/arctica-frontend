@@ -116,18 +116,6 @@
             </label>
         </div>
 
-        <!-- this button seems kind of useless, may remove. The only way for us to discern if this variable should be true or false in a real world scenario
-         would be to create a file on the users machine. Potential side effects in certain edge cases where a user tries to boot from HW 1 on a machine
-        they did not use to complete set up. Perhaps better to assume we never know for sure if the user has set up already or not and always present 
-        them with the option, unless they have booted from HW 1-7 in which case this below variable and debug toggle switch will not be necessary. -->
-        <div class="switch">
-            Initial Set up Complete (disabled)
-            <label class="toggle_switch_label">
-                <input type="checkbox" disabled>
-                <span class="slider"></span>
-            </label>
-        </div>
-
     <button @click="getBlockChainInfo()" class="btn">Get Blockchain Info</button>
     <br>
     <button @click="createDescriptors()" class="btn">Create Descriptors</button>
@@ -147,7 +135,6 @@
     <button @click="packup()" class="btn">Packup</button>
     <br> 
     <button @click="decodeRawTx()" class="btn">Decode PSBT</button>
-    
 
     </div> 
 </div>
@@ -159,7 +146,6 @@ const invoke = window.__TAURI__.invoke
 
 export default{
     name: 'Debug',
-
     methods:{
         timeLockToggle(){
             if(this.timelock === false){
@@ -181,7 +167,6 @@ export default{
                 store.commit('setBPSBricked', false)
             }
             },
-
             //this function automatically sets timelock to false, assuming that time machine keys have ben found, time lock should be disabled automatically
         timeMachineKeysFoundToggle(){
             if(this.timeMachineKeysFound == false){
@@ -191,7 +176,6 @@ export default{
                 store.commit('setTimeMachineKeysFound', false)
             }
             },
-
         privacyKeysFoundToggle(){
             if(this.privacyKeysFound == false){
                 store.commit('setPrivacyKeysFound', true)
@@ -201,7 +185,6 @@ export default{
                 store.commit('setDecrypted', false)
             }
             },
-        
         tripWireSetupToggle(){
                 if(this.tripwireSetup == false){
                 store.commit('setTripwireSetup', true)
@@ -286,7 +269,6 @@ export default{
         .catch((e)=>{
         store.commit('setDebug', `error obtaining spend policy: ${e}`)
         })
-
     },
         generateKeys(){
             //this is a debug function used to create keys 2-7 on HW 1
@@ -297,7 +279,6 @@ export default{
         .catch((e)=>{
         store.commit('setDebug', `error invoking test function: ${e}`)
         })
-
         this.keynumber++
         },
         getBlockChainInfo(){
@@ -333,7 +314,6 @@ export default{
         setNumberToRecover(){
             store.commit('setNumberToRecover', this.numberToRecover)
         },
-
     },
     //this is for testing with testPrint()
     data(){
@@ -438,8 +418,6 @@ export default{
         },
     },
     }
-
-
 </script>
 
 <style scoped>
@@ -478,7 +456,6 @@ export default{
     transition: .4s;
     border-radius: 50%;
 }
-
 input:checked + .slider{
     background-color:#F7931A;
 }

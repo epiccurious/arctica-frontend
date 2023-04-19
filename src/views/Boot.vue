@@ -1,8 +1,6 @@
 <!-- this page conditionally renders if the user does not currently have any Arctica HW inserted (in which case they are prompted to install Arctica software)
 or directs them to the 'i need help' section which can walk them through restoring an attic HW. 
-
 the second conditional rendering below appears if the user has booted from HW 2-7 and needs to insert a transfer CD or a recovery CD. -->
-
 <template>
 <div v-if="this.loading == true">
   <Loader/>
@@ -94,7 +92,6 @@ export default {
                   break
                 }
                 //TODO add logic here for handling delayed multisig txs
-
                 //if no valid config value is found, either a blank cd is inserted or user potentially hit the button too fast
                 else{
                     this.loading = false
@@ -109,17 +106,13 @@ export default {
           store.commit('setDebug', `error copying cd to ramdisk: ${e}`)
           store.commit('setErrorMessage', `Error copying cd to ramdisk, Error Code: Boot3 Response: ${e}`)
           this.$router.push({ name: 'Error' })
-        })
-
-
-          
+        })     
      },
         help(){
         },
         install(){
           //show loader
           this.loading = true;
-
           //begin install
           //obtain latest tails image
           store.commit('setLoadMessage', 'Creating custom Ubuntu ISO...')
@@ -136,10 +129,7 @@ export default {
           store.commit('setErrorMessage', `Error Obtaining Ubuntu ISO. Error code: Boot2 Response: ${e}`)
           this.$router.push({ name: 'Error' })
     })
-
         },
-
-
         },
   computed:{
     currentHW(){

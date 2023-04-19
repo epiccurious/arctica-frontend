@@ -17,7 +17,6 @@
     </div>
   </div>
 
-
   <div v-else class="login">
     <header>
       <h1>Welcome to Arctica</h1>
@@ -38,7 +37,6 @@
 -Check for any published time machine keys/privacy keys (update state) -->
 
 <!-- Quick withdrawal button should eventually grey out if the balance has been swept/accessed or is not set up -->
-
 
 <script>
 import store from '../store.js'
@@ -81,7 +79,6 @@ export default {
                         store.commit('setErrorMessage', `Error Loading delayed Wallet Error Code: Welcome2 Response: ${e}`)
                         this.$router.push({ name: 'Error' }) 
                     })
-
                 })
                 .catch((e)=>{
                     store.commit('setDebug', `error loading immediate wallet: ${e}`)
@@ -94,7 +91,6 @@ export default {
                 store.commit('setErrorMessage', `Error unpacking sensitive from welcome. Error code: Welcome1 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
               })
-              
             }
             //user has bricked their relationship with BPS and must manually decrypt
             else if(this.bpsBricked == true){
@@ -188,9 +184,7 @@ export default {
             }
         }
         store.commit('setDebug', `exiting config read`)
-        //if the user has completed the initial flash of the 7 Hardware Wallets (config is present) create ramdisk and check for masterkey
-
-              
+        //if the user has completed the initial flash of the 7 Hardware Wallets (config is present) create ramdisk and check for masterkey   
         //creating ramdisk for sensitive data
         invoke('create_ramdisk').then((res)=>{
           store.commit('setDebug', `creating ramdisk ${res}`)
@@ -200,7 +194,6 @@ export default {
           store.commit('setErrorMessage', `Error creating ramdisk. Error code: Welcome9 Response: ${e}`)
           this.$router.push({ name: 'Error' }) 
         })  
-
         //if user has completed initial setup and booted from a Hardware Wallet, mount internal disk and symlink .bitcoin folders..
         //we MAY be better off removing this as if decrypted was true we assumed the ramdisk already exists above and thus we could probably also assume 
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
@@ -215,16 +208,6 @@ export default {
               invoke('start_bitcoind').then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
                 this.loading = false
-                //note: this conditional is nested within the previous conditional
-                //TODO if we have determined masterkey is present earlier decrypted is true, wallet can be synced and user sent to dashboard automatically
-                // if(this.decrypted == true && this.btcCoreHealthy == true){
-                //   store.commit('setDebug', `decrypted state value is set to true, syncing med wallet...`)
-                //   store.commit('setDebug', 'Sending user to dashboard')
-                //   this.$router.push({ name: 'dashboard' })
-
-                // }else{
-                //   store.commit('setDebug', 'decrypted state value is set to false')
-                // }
               })
               .catch((e)=> {
                 store.commit('setDebug', `error starting bitcoin daemon error: ${e}`)    
@@ -243,9 +226,7 @@ export default {
                 //start bitcoind with networking disabled
                 invoke('start_bitcoind_network_off')
                   store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
-
         }
-
         //initial set up step redirects
         if(this.setupStep == 1 && this.currentHW == 1){
             store.commit('setDebug', 'setup step 1 found, redirecting user to setup12')
@@ -307,23 +288,19 @@ export default {
           store.commit('setDebug', 'setup step 15 found, redirecting user to setup50b')
           this.$router.push({ name: 'Setup50b' })
         }
-
         //redirect user to boot screen if they have HW 2-7 or no HW inserted
         else if(this.currentHW != 1){
           store.commit('setDebug', 'Hardware Wallet 1 not detected, redirecting to boot screen')
           this.$router.push({ name:'Boot' })
         }
-
         //eventually check externally for time machine keys here
         //might want to move this somewhere else
         if(this.timeMachineKeysFound == true){
           store.commit('setTimeLock', false)
         }
-
         })
           .catch((e) => {
             store.commit('setDebug', `read config error: ${e}`)
-
       })
     },
 }

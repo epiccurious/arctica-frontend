@@ -6,20 +6,20 @@
         <header>
             <h1>Log in</h1>
             <h2>Please enter your password below.</h2>
+            <h2>Alpha testers must use a CD to Login!</h2>
         </header>
             <div class="form_container">
                 <form>
-                    <label>Enter Password</label>
+                    <label>Enter Password (Disabled)</label>
                    <br><input v-model="password1" type="password" required placeholder="Your secret password">
 
-                    <br><label>Confirm Password</label>
+                    <br><label>Confirm Password (Disabled)</label>
                    <br><input v-model="password2" type="password" required placeholder="Your secret password">
 
                 <div class="checkbox_container">
                     <input type="checkbox" v-model="checkbox" name="checkbox">
                     <label for="checkbox">I have inserted a transfer CD for login.</label>
                 </div>
-
                 </form>
 
                 <div class="btn_container"> 
@@ -31,8 +31,6 @@
             
 </div>  
 </template>
-
-<!-- Currently, the two passwords inputs just need to match in order for the user to login -->
 
 <script>
 import store from '../store.js'
@@ -173,7 +171,6 @@ export default {
          bpsBricked: null,
          checkbox: false,
          loading: false,
-        
      }
  },
  mounted(){

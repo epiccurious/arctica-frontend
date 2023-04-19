@@ -5,7 +5,6 @@ export default createStore({
     state: {
     currentHW: 0,
     //a current HW of 0 designates no inserted Hardware Wallet
-
     setupCD: false,
     //setupStep variables 
     // setupStep 1 placed on HW 1 at step 4 to jump user to step 12 
@@ -24,46 +23,28 @@ export default createStore({
     // setupStep 14 placed on HW 7 at step 20 to jump user to step 47a last HW 7, setupStep set to 0 at step 49a 
     // setupStep 15 placed on HW 1 at step 25 to jump user to step 50b last HW 1, setupStep set to 0 at step 50b 
     setupStep: 0,
-
     debug: [],
-
     loadMessage: '',
     errorMessage: '',
-    internalDiskMounted: false,
-    
-    
     //post set up complete
     tripwireSetup: true, recoverySetup: true, duressSetup: true,
     //bootup checking for special conditions and allowing for login
     btcCoreHealthy:true, bpsHealthy:true, tripwireTripped:'none', timeMachineKeysFound:false, privacyKeysFound:false,
-
     bpsBricked: false,
     decrypted: false,
     //numberToRecover should eventually dynamically decay as privacy keys are published to the blockchain
     numberToRecover: 5,
-    
     //data for creating a new Transaction
     address:[], balance:[], fiat_currency:null, datetime:null, fee:null, customFee:null, status: null, 
-
-
     //existing transaction history, placeholder hardcodes initiatilize as empty after backend hookup
-      immediateTransactions: [],
-      hotTransactions: [
-        {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-07T12:00:00-11:01', fee: 0.00000987, status: 'Confirmed', description: ''},
-        {id: 2, address: 'bc1qu7cr0hyc4xfnk3fh0cdce43fnzfwdtq5a089vs', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-09:30', fee: 0.00001247, status: 'Confirmed', description: ''},
-        {id: 3, address: 'bc1prd9haet4clzacme9gnpgxknj04480xemzh2wt3', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-10T12:00:00-04:10', fee: 0.00000408, status: 'Unconfirmed', description: ''}
-    ],
-    delayedTransactions: [
-        {id: 1, address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', balance: 21736, fiat_currency: 12.75, datetime: '2022-06-07T12:00:00-11:01' , fee: 0.00000987, status: 'Confirmed', description: ''},
-        {id: 2, address: 'bc1qu7cr0hyc4xfnk3fh0cdce43fnzfwdtq5a089vs', balance: 29345, fiat_currency: 15.28, datetime: '2022-06-09T12:00:00-09:30', fee: 0.00001247, status: 'Confirmed', description: ''},
-        {id: 3, address: 'bc1prd9haet4clzacme9gnpgxknj04480xemzh2wt3', balance: 101866, fiat_currency: 60.21, datetime: '2022-06-10T12:00:00-04:10', fee: 0.00000408, status: 'Unconfirmed', description: ''}
-    ],
+    immediateTransactions: [],
+    delayedTransactions: [],
+    hotTransactions: [],
     //various wallet balances
     quickBalance: null,
     hotBalance: null,
     immediateBalance: 0,
     delayedBalance: 0,
-
     //delayed wallet timelocked
     timeLock: true
     },
@@ -76,9 +57,6 @@ export default createStore({
         },
         setErrorMessage(state, payload){
             state.errorMessage = payload
-        },
-        setInternalDiskMounted(state, payload){
-            state.internalDiskMounted = payload
         },
         setHotTransactions(state, payload){
             state.hotTransactions = payload
@@ -174,9 +152,6 @@ export default createStore({
         },
         getErrorMessage(state){
             return state.errorMessage
-        },
-        getInternalDiskMounted(state){
-            return state.internalDiskMounted
         },
         getHotTransactions(state){
             return state.hotTransactions

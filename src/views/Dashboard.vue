@@ -51,7 +51,6 @@ can be removed once immediate wallet is functional -->
   </div>
 </template>
 
-
 <script>
 import Nav from '@/components/Nav'
 import { RouterView, RouterLink } from "vue-router";
@@ -69,8 +68,7 @@ export default {
   components: {
     Nav,
     Compromised,
-  },
-     
+  },  
    data(){
       return{
       }
@@ -100,11 +98,8 @@ export default {
             get(){
                 return store.getters.getcurrentHW
             }
-
         }
-
       },
-
     mounted(){
           invoke('get_balance', {wallet_name: "immediate", hw_number: this.hwNumber.toString()}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
@@ -113,11 +108,9 @@ export default {
           }).catch((e)=>{
           store.commit('setDebug', `error getting immediate wallet balance ${e}`)
             })
-
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
       this.tripwireSetup = store.getters.getTripwireSetup
-
       //below are the post set up redirects for first time users that have only completed initial set up
       if(this.recoverySetup == false){
         store.commit('setDebug', 'Sending user to piiPostSetup1')
@@ -132,7 +125,6 @@ export default {
         this.$router.push({ name: 'tripwirePostSetup1' })
       }
  },
-
     }
 </script>
 
@@ -143,5 +135,4 @@ h2{
 .time_decay{
   color:#777777;
 }
-
 </style>
