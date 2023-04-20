@@ -63,7 +63,7 @@ export default {
   },  
     methods: {
         continueFn(address, balance, fee){
-            invoke('generate_psbt', {walletname:"immediate", hw_number: "1", recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
+            invoke('generate_psbt', {walletname:"immediate", hwnumber: "1", recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
                 store.commit('setDebug', `Generating PSBT: ${res}`)
                 this.$router.push({name: 'immediateTransfer'})
             })

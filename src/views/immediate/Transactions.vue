@@ -74,7 +74,7 @@ export default {
   },
   mounted(){
     console.log("invoking get_transactions")
-    invoke('get_transactions', {walletname: "immediate", hw_number: "1"}).then((res)=>{
+    invoke('get_transactions', {walletname: "immediate", hwnumber: "1"}).then((res)=>{
                   if(res.toLowerCase().includes("empty123321") == true){
                     console.log(`empty result: ${res}`)
                   }

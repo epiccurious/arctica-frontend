@@ -246,7 +246,7 @@ export default{
         },
         getTransctionHistory(){
             //this is a debug function used to print the immediate wallet transaction history vec
-            invoke('get_transactions', {walletname: "immediate", hw_number: "1"}).then((res)=>{
+            invoke('get_transactions', {walletname: "immediate", hwnumber: "1"}).then((res)=>{
                 store.commit('setDebug', `obtaining transaction history for immediate wallet: ${res}`)
             })
             .catch((e)=>{
@@ -255,7 +255,7 @@ export default{
         },
         getBalance(){
             //this is a debug function used to get the balance of the immediate wallet
-            invoke('get_balance', {walletname: "immediate", hw_number:this.hwNumber.toString()}).then((res)=>{
+            invoke('get_balance', {walletname: "immediate", hwnumber:this.hwNumber.toString()}).then((res)=>{
                 store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `error getting balance for immediate wallet: ${e}`)
@@ -289,7 +289,7 @@ export default{
             //start bitcoind
             invoke('start_bitcoind_network_off')
                 store.commit('setDebug', `starting bitcoin daemon with networking off`)
-                        invoke('create_descriptor', {hw_number: "2"}).then((res) => {
+                        invoke('create_descriptor', {hwnumber: "2"}).then((res) => {
                             store.commit('setDebug', `creating descriptors ${res}`)
                         }).catch((e) => {
                                 store.commit('setDebug', `error creating descriptors: ${e}`)
@@ -297,7 +297,7 @@ export default{
         },
         decodeRawTx(){
             //debug function used to decode a raw (fully signed?) PSBT
-            invoke('decode_raw_tx', {walletname: "immediate", hw_number: this.hwNumber.toString()}).then((res)=>{
+            invoke('decode_raw_tx', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
                 store.commit('setDebug', `decoding PSBT from CDROM`)
                 store.commit('setDebug', `decoded psbt: ${res}`)
             }).catch((e) => {

@@ -49,7 +49,7 @@ export default {
           alert('Copied Address!')
         },
         newAddress(){
-        //     invoke('get_address', {walletname: this.wallet, hw_number:this.currentHW.toString()}).then((res)=>{
+        //     invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
         //     store.commit('setDebug', `getting new address for delayed wallet: ${res}`)
         //     this.address = res
         //   })
@@ -76,7 +76,7 @@ export default {
       },
   },
    mounted(){
-    // invoke('get_address', {walletname: this.wallet, hw_number: this.currentHW.toString()}).then((res)=>{
+    // invoke('get_address', {walletname: this.wallet, hwnumber: this.currentHW.toString()}).then((res)=>{
     //         store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
     //         this.address = res
     //       })

@@ -46,7 +46,7 @@ export default {
         broadcast(){
             this.loadingc= true
             store.commit('setLoadMessage', 'Broadcasting transaction...')
-            invoke('broadcast_tx', {walletname: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
+            invoke('broadcast_tx', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
                     store.commit('setDebug', `Broadcasting Fully Signed TX: ${res}`)
                     this.loading = false
                     this.$router.push({ name: 'immediateConfirmation' })
@@ -69,10 +69,10 @@ export default {
     },
     mounted(){
         store.commit('setLoadMessage', 'Importing PSBT...')
-        invoke('finalize_psbt', {walletname: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
+        invoke('finalize_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `finalizing PSBT: ${res}`)
                 store.commit('setDebug', `decoding PSBT...`)
-                invoke('decode_raw_tx', {walletname: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
+                invoke('decode_raw_tx', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")
                     this. address = parts[0].split("=")[1].trim()

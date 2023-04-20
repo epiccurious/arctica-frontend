@@ -29,7 +29,7 @@ export default{
     components: { RefreshIcon },
     methods: {
         sync(){
-                // invoke('get_balance', {walletname: this.wallet, hw_number:this.currentHW.toString()}).then((res)=>{
+                // invoke('get_balance', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
                 //     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                 //     store.commit('setImmediateBalance', `${parseInt(res)}`)
                 // }).catch((e)=>{
