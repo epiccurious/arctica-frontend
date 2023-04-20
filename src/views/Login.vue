@@ -58,7 +58,7 @@ export default {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'Loading Immediate wallet...')
                             console.log('immediate_wallet', this.currentHW)
-                            invoke('load_wallet', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res) =>{
+                            invoke('load_wallet1', {wallet_name1: "immediate", hw_number: this.currentHW.toString()}).then((res) =>{
                                 store.commit('setDebug', `Loaded Immediate Wallet: ${res}`)
                                 store.commit('setLoadMessage', 'Loading delayed wallet...')
                                 invoke('load_wallet', {wallet_name: "delayed", hw_number: this.currentHW.toString()}).then((res) =>{
