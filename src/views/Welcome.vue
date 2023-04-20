@@ -58,10 +58,10 @@ export default {
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
                 store.commit('setLoadMessage', 'Loading immediate wallet...')
-                invoke('load_wallet', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res) =>{
+                invoke('load_wallet', {walletname: "immediate", hw_number: this.currentHW.toString()}).then((res) =>{
                     store.commit('setDebug', `Loaded Immediate Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Loading delayed wallet...')
-                    invoke('load_wallet', {wallet_name: "delayed", hw_number: this.currentHW.toString()}).then((res) =>{
+                    invoke('load_wallet', {walletname: "delayed", hw_number: this.currentHW.toString()}).then((res) =>{
                         store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
                         invoke('packup').then((res) => {
                           store.commit('setDebug', `successfully packed up: ${res}`)

@@ -46,7 +46,7 @@ export default {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
             this.loading = true
-            invoke('sign_psbt', {wallet_name: "immediate", hw_number: this.currentHW.toString(), progress: "2of2"}).then((res) => {
+            invoke('sign_psbt', {walletname: "immediate", hw_number: this.currentHW.toString(), progress: "2of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Refreshing Transfer CD...')
                 invoke('refresh_cd').then((res)=>{
@@ -88,10 +88,10 @@ export default {
             store.commit('setDebug', `unpacked sensitive info ${res}`)
             store.commit('setLoadMessage', `Loading immediate wallet...`)
             //load immediate wallet
-            invoke('load_wallet', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
+            invoke('load_wallet', {walletname: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `loading immediate wallet: ${res}`)
                 store.commit('setLoadMessage', 'Decoding PSBT...')
-                invoke('decode_raw_tx', {wallet_name: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
+                invoke('decode_raw_tx', {walletname: "immediate", hw_number: this.currentHW.toString()}).then((res)=>{
                     console.log('decoding raw tx')
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")
