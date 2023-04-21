@@ -82,7 +82,7 @@ export default {
             // this.address = parts[0].split("=")[1].trim()
             // this.amount = parts[1].split("=")[1].trim()
             // this.fee = parts[2].split("=")[1].trim()
-            this.fee = res
+            this.fee = parseFloat(res)
             this.loading = false
         }).catch((e) => {
                 store.commit('setDebug', `error decoding PSBTs: ${e}`)
