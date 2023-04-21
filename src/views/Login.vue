@@ -11,10 +11,10 @@
             <div class="form_container">
                 <form>
                     <label>Enter Password (Disabled)</label>
-                   <br><input v-model="password1" type="password" required placeholder="Your secret password">
+                   <br><input v-model="password1" type="password" required placeholder="Your secret password" disabled="disabled">
 
                     <br><label>Confirm Password (Disabled)</label>
-                   <br><input v-model="password2" type="password" required placeholder="Your secret password">
+                   <br><input v-model="password2" type="password" required placeholder="Your secret password" disabled="disabled">
 
                 <div class="checkbox_container">
                     <input type="checkbox" v-model="checkbox" name="checkbox">
