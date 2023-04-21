@@ -46,13 +46,13 @@ export default {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
             this.loading = true
-            invoke('sign_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "2of2"}).then((res) => {
+            invoke('sign_funded_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "1of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Signing PSBT...')
                 this.$router.push({ name: 'immediateTransfer' })
             }).catch((e)=>{
                 store.commit('setDebug', `error signing PSBT: ${e}`)
-                store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign2of2-3 Response: ${e}`)
+                store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign1of2-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })   
         },
@@ -75,6 +75,7 @@ export default {
     },
     mounted(){
         store.commit('setLoadMessage', 'Decoding PSBT...')
+        //this obtains the fee
         invoke('decode_funded_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
             console.log('decoding funded psbt')
             store.commit('setDebug', `decoded psbt: ${res}`)
@@ -83,9 +84,12 @@ export default {
             // this.amount = parts[1].split("=")[1].trim()
             // this.fee = parts[2].split("=")[1].trim()
             this.fee = parseFloat(res)
+            //need to decode_raw_tx somehow here to display To and Amount
             this.loading = false
         }).catch((e) => {
-                store.commit('setDebug', `error decoding PSBTs: ${e}`)
+                store.commit('setDebug', `error decoding funded PSBT: ${e}`)
+                store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign1of2-2 Response: ${e}`)
+                this.$router.push({ name:'Error' })
         })
  }
 }
