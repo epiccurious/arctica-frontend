@@ -84,7 +84,7 @@ export default {
             this.address = parts[0].split("=")[1].trim()
             this.amount = parts[1].split("=")[1].trim()
             this.feeString = parts[2].split("=")[1].trim()
-            this.fee = parseFloat(feeString)
+            this.fee = parseFloat(this.feeString)
             //need to decode_raw_tx somehow here to display To and Amount
             this.loading = false
         }).catch((e) => {
