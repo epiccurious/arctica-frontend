@@ -27,8 +27,8 @@
                 </div>
             </div>
             
-            <br><label>Fee (Sats per Byte)</label>
-            <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
+            <br><label>Fee (Sats per Byte) [disabled]</label>
+            <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte" disabled="disabled">
             <div class="checkbox_container">
                     <input type="checkbox" v-model="custom" name="checkbox">
                     <label for="checkbox">Use a reccomended fee (fee estimates are placeholders)</label>
