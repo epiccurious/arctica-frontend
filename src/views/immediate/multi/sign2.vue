@@ -113,8 +113,6 @@ export default {
             store.commit('setErrorMessage', `Error unpacking sensitive Error code: sign2of2-1 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
-    //TODO
-    //eventually load up and display the transaction data within the page so the user may confirm what they are signing for...
  }
 }
 </script>

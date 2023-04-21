@@ -45,7 +45,7 @@ can be removed once immediate wallet is functional -->
           </div>
         </router-link> 
           <div class="decay_timer">
-            <h2 class="time_decay">Approximate time until next decay: 1 year & 162 days</h2>
+            <h2 class="time_decay">Approximate time until next decay: (decay disabled)</h2>
           </div>
       </div>
   </div>
