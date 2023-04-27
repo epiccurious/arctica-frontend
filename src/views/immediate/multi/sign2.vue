@@ -46,7 +46,7 @@ export default {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
             this.loading = true
-            invoke('sign_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "2of2"}).then((res) => {
+            invoke('sign_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "2of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Refreshing Transfer CD...')
                 invoke('refresh_cd').then((res)=>{
