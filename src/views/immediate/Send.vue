@@ -27,17 +27,12 @@
                 </div>
             </div>
             
-            <br><label>Fee (Sats per Byte) [disabled]</label>
-            <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte" disabled="disabled">
+            <br><label>Fee</label>
+            <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
             <div class="checkbox_container">
-                    <input type="checkbox" v-model="custom" name="checkbox">
-                    <label for="checkbox">Use a reccomended fee (fee estimates are placeholders)</label>
+                    <input type="checkbox" v-model="custom" name="checkbox" checked>
+                    <label for="checkbox">Use a reccomended fee</label>
                 </div>
-            <br><select v-if="custom == true" v-model="fee" name="fee" id="fee" required>
-                <option @click="setFee(highFee)" value="high">High Priority {{ highFee }} sat/Byte</option>
-                <option @click="setFee(mediumFee)" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
-                <option @click="setFee(lowFee)" value="low">Low Priority {{ lowFee }} sat/Byte</option>
-            </select>
 
 
         </div>
