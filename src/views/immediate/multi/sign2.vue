@@ -49,13 +49,13 @@ export default {
             invoke('sign_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "2of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Refreshing Transfer CD...')
-                invoke('refresh_cd').then((res)=>{
-                    store.commit('setDebug', `Refreshing transfer CD: ${res}`)
+                invoke('export_psbt', {progress: "2of2"}).then((res) => {
+                    store.commit('setDebug', `Exporting PSBT: ${res}`)
                     this.loading=false
-                    this.$router.push({ name: '2of2success' })
+                    this.$router.push({name: '2of2success'})
                 }).catch((e)=>{
-                    store.commit('setDebug', `error refreshing transfer CD: ${e}`)
-                    store.commit('setErrorMessage', `Error refreshing transfer CD Error Code: sign2of2-4 Response: ${e}`)
+                    store.commit('setDebug', `error exporting PSBT: ${e}`)
+                    store.commit('setErrorMessage', `Error exporting PSBT Error Code: sign2of2-4 Response: ${e}`)
                     this.$router.push({ name:'Error' })
                 })
             }).catch((e)=>{
