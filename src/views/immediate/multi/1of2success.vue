@@ -37,7 +37,7 @@ export default {
                 this.$router.push({ name:'Error' })
             })
         }).catch((e)=>{
-            store.commit('setDebug', `error packing up sensitive ${res}`)
+            store.commit('setDebug', `error packing up sensitive ${e}`)
             store.commit('setErrorMessage', `Error with packing up sensitive: 1of2success-2 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
