@@ -87,9 +87,7 @@ export default {
             this.amount = parseFloat(this.amountString)/100000000 //convert from sats to BTC
             this.feeString = parts[2].split("=")[1].trim()
             this.fee = parseFloat(this.feeString)
-            // this.address = res
             console.log("response:", res)
-            //need to decode_raw_tx somehow here to display To and Amount
             this.loading = false
         }).catch((e) => {
                 store.commit('setDebug', `error decoding funded PSBT: ${e}`)
