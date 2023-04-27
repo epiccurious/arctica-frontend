@@ -77,28 +77,20 @@ export default {
         selectMax(){
             this.balance = this.immediateBalance
         },
-        //real time fee estimates currently disabled, hard coded values provided below
-        setFee(input){
-            this.fee = input
-        }
     },
    data(){
      return{
          id: null,
          datetime: null,
-         highFee: 12,
-         mediumFee: 5,
-         lowFee: 1,
          description: '',
-         fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
+         fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API or a global user provided exchange price
          address: '',
          balance: null,
-         fee: null,
-         custom: false,
+         fee: 0,
+         custom: true,
          multiOutput: false,
          checkbox: true,
      }
-    //  Need a function to deliver dynamic fee estimates for the above data
  },
  computed:{
     immediateBalance:{
