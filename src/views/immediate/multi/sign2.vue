@@ -86,22 +86,25 @@ export default {
     store.commit('setLoadMessage', 'Unpacking sensitive info...')
         invoke('unpack').then((res) => {
             store.commit('setDebug', `unpacked sensitive info ${res}`)
-            store.commit('setLoadMessage', `Loading immediate wallet...`)
-            //load immediate wallet
-            invoke('load_wallet', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
-                store.commit('setDebug', `loading immediate wallet: ${res}`)
-                store.commit('setLoadMessage', 'Decoding PSBT...')
-                invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
-                    console.log('decoding raw tx')
-                    store.commit('setDebug', `decoded psbt: ${res}`)
-                    const parts = res.split(",")
-                    this.address = parts[0].split("=")[1].trim()
-                    this.amountString = parts[1].split("=")[1].trim()
-                    this.amount = parseFloat(this.amountString)/100000000 //convert from sats to BTC
-                    this.feeString = parts[2].split("=")[1].trim()
-                    this.fee = parseFloat(this.feeString)
-                    console.log("response:", res)
-                    this.loading = false
+            //start bitcoind with networking disabled
+            invoke('start_bitcoind_network_off')
+                store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
+                store.commit('setLoadMessage', `Loading immediate wallet...`)
+                //load immediate wallet
+                invoke('load_wallet', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
+                    store.commit('setDebug', `loading immediate wallet: ${res}`)
+                    store.commit('setLoadMessage', 'Decoding PSBT...')
+                    invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
+                        console.log('decoding raw tx')
+                        store.commit('setDebug', `decoded psbt: ${res}`)
+                        const parts = res.split(",")
+                        this.address = parts[0].split("=")[1].trim()
+                        this.amountString = parts[1].split("=")[1].trim()
+                        this.amount = parseFloat(this.amountString)/100000000 //convert from sats to BTC
+                        this.feeString = parts[2].split("=")[1].trim()
+                        this.fee = parseFloat(this.feeString)
+                        console.log("response:", res)
+                        this.loading = false
                 }).catch((e) => {
                         store.commit('setDebug', `error decoding PSBTs: ${e}`)
                 })

@@ -220,12 +220,9 @@ export default {
             store.commit('setErrorMessage', `Error Mounting internal. Error code: Welcome5 Response: ${e}`)
             this.$router.push({ name: 'Error' })
             })
-        //user is booted on HW 2-7 and has completed setup...start bitcoind
+        //user is booted on HW 2-7 and has completed setup
         } else if(this.currentHW != 0 && this.setupStep == 0){
-          store.commit('setDebug', 'current HW !=0 and setupStep = 0 conditional met, starting bitcoind network off')
-                //start bitcoind with networking disabled
-                invoke('start_bitcoind_network_off')
-                  store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
+          store.commit('setDebug', 'current HW !=0 and setupStep = 0 conditional met')
         }
         //initial set up step redirects
         if(this.setupStep == 1 && this.currentHW == 1){
