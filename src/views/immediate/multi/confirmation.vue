@@ -6,7 +6,7 @@
         <h2>It usually takes about 30 minutes to be finalized.</h2>
         <h2>You should now <a href="#">destroy</a> your transfer CD.</h2>
         <div class="horizontal_btn_container">
-            <button @click="viewTx()" class="btn2">View Transaction</button>
+            <button @click="viewTx()" class="btn2">View Transaction (Disabled)</button>
             <button @click="back()" class="btn">Back to Wallet</button>
         </div>
     </div>
