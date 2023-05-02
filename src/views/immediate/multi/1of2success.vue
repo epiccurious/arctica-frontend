@@ -26,6 +26,7 @@ export default {
     computed:{
     },
     mounted(){
+        //note: only necessary to packup on HW 1
         invoke('packup').then((res)=>{
             store.commit('setDebug', `packing up sensitive ${res}`)
             invoke('stop_bitcoind').then((res) =>{

@@ -23,7 +23,7 @@
     
             <div class="horizontal_btn_container">
                 <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
-                <button @click="discard()" class="btn2">Discard (Disabled)</button>
+                <button @click="discard()" class="btn2">Discard</button>
             </div>
             
     
@@ -57,7 +57,7 @@ export default {
             })   
         },
         discard(){
-            //this currently does nothing, eventually wipe the psbt cd after a confirmation prompt?
+            this.$router.push({ name: 'immediateSend' })
         },
     },
     data(){
