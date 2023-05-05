@@ -26,7 +26,7 @@
                     <button @click="selectMax()" class="btn4">Select Max (disabled)</button>
                 </div>
             </div>
-            
+            <br><h3 v-if="feeEstimate == false">*Fee Estimate not yet calculated. Please wait or use a custom fee!</h3>
             <br><label>Fee</label>
             <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
             <div class="checkbox_container">
@@ -65,6 +65,9 @@ export default {
             .catch((e) => {
                 //eventually need to add front end feedback here rather than send to fatal error screen
                 store.commit('setDebug', `Error generating PSBT: ${e}`)
+                if(e.contains("Fee estimation failed.")){
+                    this.feeEstimate = false
+                }
                 store.commit('setErrorMessage', `Error generating PSBT. Error code: ImmediateSend1 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
             })
@@ -90,6 +93,7 @@ export default {
          custom: true,
          multiOutput: false,
          checkbox: true,
+         feeEstimate: true,
      }
  },
  computed:{
@@ -111,5 +115,8 @@ export default {
 h2{
     font-size:15px;
     line-height: 18px;
+}
+h3{
+    color:red;
 }
   </style>
