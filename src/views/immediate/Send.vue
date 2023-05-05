@@ -26,7 +26,7 @@
                     <button @click="selectMax()" class="btn4">Select Max (disabled)</button>
                 </div>
             </div>
-            <br><h3 v-if="feeEstimate == false">*Fee Estimate not yet calculated. Please wait or use a custom fee!</h3>
+            <br><h4 v-if="feeEstimate == false">*Fee Estimate not yet calculated. Please wait or use a custom fee!</h4>
             <br><label>Fee</label>
             <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
             <div class="checkbox_container">
@@ -118,7 +118,12 @@ h2{
     font-size:15px;
     line-height: 18px;
 }
-h3{
+h4{
     color:red;
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 140%;
 }
   </style>
