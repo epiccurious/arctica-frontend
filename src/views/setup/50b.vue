@@ -5,13 +5,23 @@
 <div v-else class="page">
     <header>
         <h1>Congratulations. You have successfully completed set up.</h1>
-        <h2>Now we must wait for Bitcoin Core to finish it's initial sync.</h2>
+        <h2>Please ensure this computer is properly connected to the internet.</h2>
+        <h2>We must wait for Bitcoin Core to finish it's initial sync.</h2>
         <h2>This computer should remain on and unlocked until the time chain has finished it's sync.</h2> 
         <h2>This can take anywhere from a few hours to a few weeks depending on your internet connection.</h2>
     </header>
-        <div class="btn_container"> 
-            <button @click="acknowledge()" class="btn">Proceed</Button>
-        </div>
+        <div class="form_container">
+        <form>
+            <div class="checkbox_container">
+                <input type="checkbox" v-model="checkbox" name="checkbox">
+                <label for="checkbox">I have connected to the internet.</label>
+            </div>
+        </form>
+            <div class="btn_container"> 
+                <button v-if="checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+                <button v-else @click="warn()" class="btn3">Continue</Button>
+            </div>
+        </div> 
 </div>
 
 </template>
@@ -31,6 +41,8 @@ export default {
         acknowledge(){
             this.loading = true
         },
+        warn(){
+        }
     },
     computed:{
         btcCoreHealthy(){
@@ -41,6 +53,7 @@ export default {
         return{
             loading: false,
             setupStep: '0',
+            checkbox: false
         }
     },
     mounted(){
