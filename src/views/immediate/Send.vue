@@ -67,9 +67,11 @@ export default {
                 store.commit('setDebug', `Error generating PSBT: ${e}`)
                 if(e.contains("Fee estimation failed.")){
                     this.feeEstimate = false
+                }else{
+                    store.commit('setErrorMessage', `Error generating PSBT. Error code: ImmediateSend1 Response: ${e}`)
+                    this.$router.push({ name: 'Error' })
                 }
-                store.commit('setErrorMessage', `Error generating PSBT. Error code: ImmediateSend1 Response: ${e}`)
-                this.$router.push({ name: 'Error' })
+
             })
 
         },
