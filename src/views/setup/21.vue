@@ -4,7 +4,7 @@
     </div>
     <div v-else class="page">
     <header>
-        <h1>Insert the Set up CD</h1>
+        <h1>We will now create your multisig wallets</h1>
         <h2>Please insert the CD labelled "set up"</h2>
     </header> 
     <div class="form_container">
