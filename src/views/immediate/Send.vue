@@ -60,7 +60,11 @@ export default {
         continueFn(address, balance, fee){
             invoke('generate_psbt', {walletname:"immediate", hwnumber: "1", recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
                 store.commit('setDebug', `Generating PSBT: ${res}`)
-                this.$router.push({name: 'sign1of2'})
+                if(res.includes("Fee estimation failed.")){
+                    this.feeEstimate = false
+                }else{
+                    this.$router.push({name: 'sign1of2'})
+                }
             })
             .catch((e) => {
                 //eventually need to add front end feedback here rather than send to fatal error screen
