@@ -8,11 +8,9 @@
         <h2>Now we must wait for Bitcoin Core to finish it's initial sync.</h2>
         <h2>This computer should remain on and unlocked until the time chain has finished it's sync.</h2> 
         <h2>This can take anywhere from a few hours to a few weeks depending on your internet connection.</h2>
-        <h3>Progress: X% complete.</h3>
     </header>
         <div class="btn_container"> 
-            <button v-if="this.btcCoreHealthy == true" @click="acknowledge()" class="btn">Proceed</Button>
-            <button v-else @click="warn()" class="btn3">Proceed</Button>
+            <button @click="acknowledge()" class="btn">Proceed</Button>
         </div>
 </div>
 
@@ -31,9 +29,7 @@ export default {
   },
     methods: {
         acknowledge(){
-            this.$router.push({ name: 'Setup51' })
-        },
-        warn(){
+            this.loading = true
         },
     },
     computed:{
@@ -65,6 +61,7 @@ export default {
             //start the bitcoin daemon
             invoke('start_bitcoind').then((res) => {
                 store.commit('setDebug', `Starting the Bitcoin daemon ${res}`)
+                this.$router.push({ name: "Setup51" })
                 })
                 .catch((e) => {
                     store.commit('setDebug', `error starting the bitcoin daemon: ${e}`)
