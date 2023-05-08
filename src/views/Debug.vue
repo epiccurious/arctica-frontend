@@ -134,7 +134,7 @@
     <br> 
     <button @click="packup()" class="btn">Packup</button>
     <br> 
-    <button @click="decodeRawTx()" class="btn">Decode PSBT</button>
+    <button @click="copy_cd_to_ramdisk()" class="btn">Copy CD to ramdisk</button>
 
     </div> 
 </div>
@@ -302,6 +302,11 @@ export default{
                 store.commit('setDebug', `decoded psbt: ${res}`)
             }).catch((e) => {
                     store.commit('setDebug', `error decoding PSBTs: ${e}`)
+            })
+        },
+        copy_cd_to_ramdisk(){
+            invoke('copy_cd_to_ramdisk').then((res)=>{
+                store.commit('setDebug', `copying CD to ramdisk: ${res}`)
             })
         },
         reboot(){
