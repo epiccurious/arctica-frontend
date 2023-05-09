@@ -58,7 +58,7 @@ export default {
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
             const img = this.$refs.qrcode
-            img.src = 'file:///mnt/ramdisk/qrcode.png'
+            img.src = '/mnt/ramdisk/qrcode.png'
         })
           .catch((e)=>{
             store.commit('setDebug', `error getting new immediate wallet address ${e}`)
@@ -84,7 +84,7 @@ export default {
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
             const img = this.$refs.qrcode
-            img.src = 'file:///mnt/ramdisk/qrcode.png'
+            img.src = '/mnt/ramdisk/qrcode.png'
         })
           .catch((e)=>{
             store.commit('setDebug', `error getting new immediate wallet address ${e}`)
