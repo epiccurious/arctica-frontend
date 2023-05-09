@@ -1,8 +1,7 @@
 # arctica-frontend
 
-### Current development work consists of bringing the front-end up to MVP in accordance with the <a href="https://www.figma.com/file/KcE9byRVhSntYcTITn1OvY/Bitcoin-Wallet-UI-Kit-(Arctica)?node-id=3350%3A85090">design document. </a>
-### Open source contributions are encouraged! Feel free to contact me if you have questions. 
-
+### Warning: This program is a front end wrapper and is only intended to be run when compiled within the arctica backend.
+### Main Repo: https:://github.com/wild-kard/arctica
 
 ## Install Vue
 ```
