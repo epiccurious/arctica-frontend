@@ -8,7 +8,7 @@
         <div class="receive_container">
             <div class="receive_top">
                <div class="img">
-                 <img src="file:///mnt/ramdisk/qrcode.png"/>
+                 <img ref="qrcode"/>
                </div>
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
@@ -39,7 +39,6 @@ Todo:
 import NavImmediate from '@/components/NavImmediate'
 import store from '../../store.js'
 const invoke = window.__TAURI__.invoke
-const { window } = require('tauri/api');
 
 export default {
   name: 'immediateReceive',
@@ -58,6 +57,7 @@ export default {
             invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
+            const img = this.$refs.qrcode
             img.src = 'file:///mnt/ramdisk/qrcode.png'
         })
           .catch((e)=>{
@@ -83,6 +83,7 @@ export default {
     invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
+            const img = this.$refs.qrcode
             img.src = 'file:///mnt/ramdisk/qrcode.png'
         })
           .catch((e)=>{
