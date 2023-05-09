@@ -7,7 +7,7 @@
          </div>
         <div class="receive_container">
             <div class="receive_top">
-               <div ref="qrcode"></div>
+               <div><img src="file:///mnt/ramdisk/qrcode.png"/></div>
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
@@ -85,17 +85,7 @@ export default {
             store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
             this.$router.push({ name: 'Error' })
           })
-          //load the QR code in from local file system.
-          const xhr = new XMLHttpRequest()
-          xhr.open('GET', 'path/to/qrcode.svg')
-          xhr.onload = () =>{
-            if(xhr.status === 200){
-              const parser = new DOMParser()
-              const svg = parser.parseFromString(xhr.responseText, 'image/svg+xml').querySelector('svg')
-              this.$refs.qrcode.appendChild(svg)
-            } 
-            xhr.send()
-          }
+
      }
 }
 </script>
