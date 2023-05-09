@@ -7,7 +7,9 @@
          </div>
         <div class="receive_container">
             <div class="receive_top">
-               <img src="../mnt/ramdisk/qrcode.png"/>
+               <div class="img">
+                 <img ref="qrcode"/>
+               </div>
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
@@ -37,6 +39,7 @@ Todo:
 import NavImmediate from '@/components/NavImmediate'
 import store from '../../store.js'
 const invoke = window.__TAURI__.invoke
+const { app, window } = require('tauri/api');
 
 export default {
   name: 'immediateReceive',
@@ -55,13 +58,21 @@ export default {
             invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
+            window.loadURL('file:///mnt/ramdisk/qrcode.png').then(()=>{
+              //once html file has loaded update the source
+              //attribute of img tag to display the img
+              const img = this.$refs.qrcode
+              img.src = 'file:///mnt/ramdisk/qrcode.png'
+            }).catch((e)=>{
+              console.log('error loading qrcode from file: ', e)
           })
+        })
           .catch((e)=>{
             store.commit('setDebug', `error getting new immediate wallet address ${e}`)
             store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
             this.$router.push({ name: 'Error' })
           })
-        },
+        }
   },
   data(){
       return{
@@ -74,19 +85,28 @@ export default {
         return store.getters.getcurrentHW
       },
   },
-     mounted(){
-          //obtain a new address to display on screen
-          invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
+
+  mounted(){
+    invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
+            window.loadURL('file:///mnt/ramdisk/qrcode.png').then(()=>{
+              //once html file has loaded update the source
+              //attribute of img tag to display the img
+              const img = this.$refs.qrcode
+              img.src = 'file:///mnt/ramdisk/qrcode.png'
+            }).catch((e)=>{
+              console.log('error loading qrcode from file: ', e)
           })
+        })
           .catch((e)=>{
             store.commit('setDebug', `error getting new immediate wallet address ${e}`)
             store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
             this.$router.push({ name: 'Error' })
           })
+  }
 
-     }
 }
+        
 </script>
 
