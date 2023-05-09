@@ -7,7 +7,7 @@
          </div>
         <div class="receive_container">
             <div class="receive_top">
-               <img src="@~/mnt/ramdisk/qrcode.png"/>
+               <img src="file:///mnt/ramdisk/qrcode.png"/>
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
