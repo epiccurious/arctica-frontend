@@ -599,7 +599,7 @@ h3{
     padding-right: 18px;
 }
 .receive_address{
-    font-size:16px;
+    font-size:2rem;
     line-height: 20px;
     font-feature-settings: 'tnum' on, 'lnum' on, 'zero' on;
     text-transform: uppercase;

@@ -62,7 +62,10 @@ export default {
                 store.commit('setDebug', `Generating PSBT: ${res}`)
                 if(res.includes("Fee estimation failed.")){
                     this.feeEstimate = false
-                }else{
+                }else if(res.includes("Insufficient funds")){
+                    this.insufficientFunds = true
+                }
+                else{
                     this.$router.push({name: 'sign1of2'})
                 }
             })
@@ -100,6 +103,7 @@ export default {
          multiOutput: false,
          checkbox: true,
          feeEstimate: true,
+         insufficientFunds: false,
      }
  },
  computed:{
