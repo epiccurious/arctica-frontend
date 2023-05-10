@@ -16,7 +16,7 @@
                 </div>
                 <div @click="displayQR()" id="download">
                     <img src="@/assets/Arrow_down.png">
-                    <h2 class="download_text">Show QR Code</h2>
+                    <h2 class="download_text">Display QR Code</h2>
                 </div>
             </div>
         </div>
