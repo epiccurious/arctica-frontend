@@ -15,7 +15,7 @@
           <div class="transaction_container_right">
             <!-- if receive show green text with a + sign -->
             <h2 v-if="transaction.detail.category == 'Receive'" class="receive_balance">₿ + {{ transaction.detail.amount }} sats</h2>
-            <h2 v-else class="send_balance">₿ - {{ transaction.detail.amount }} sats</h2>
+            <h2 v-else class="send_balance">₿ {{ transaction.detail.amount }} sats</h2>
             <!-- if send show red text with a - sign -->
             <h3 class="fiat_currency"> $ 0.00</h3>
           </div>
