@@ -16,7 +16,7 @@
             <br><label>Amount</label>
             <br><input v-model="balance" type="float" required placeholder="₿ 0.00">
             <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
-
+            <br><h4 v-if="insufficientFunds == true">*Insufficient Balance</h4>
             <div class="balance_calculator">
                 <div class="balance_left">
                 <h2>Your Balance</h2>
@@ -26,7 +26,7 @@
                     <button @click="selectMax()" class="btn4">Select Max (disabled)</button>
                 </div>
             </div>
-            <br><h4 v-if="feeEstimate == false">*Fee Estimate not yet calculated. Please wait or use a custom fee!</h4>
+            <br><h4 v-if="feeEstimate == false">*Fee Estimates not yet calculated. Please wait or use a custom fee.</h4>
             <br><label>Fee</label>
             <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
             <div class="checkbox_container">
