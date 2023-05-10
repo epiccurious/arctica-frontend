@@ -54,8 +54,6 @@ export default {
             invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
-            const img = this.$refs.qrcode
-            img.src = 'file://home/ubuntu/qr/qrcode.png'
         })
           .catch((e)=>{
             store.commit('setDebug', `error getting new immediate wallet address ${e}`)
@@ -90,8 +88,6 @@ export default {
     invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
-            const img = this.$refs.qrcode
-            img.src = 'file://home/ubuntu/qr/qrcode.png'
         })
           .catch((e)=>{
             store.commit('setDebug', `error getting new immediate wallet address ${e}`)
