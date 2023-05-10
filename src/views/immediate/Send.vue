@@ -58,6 +58,8 @@ export default {
   },  
     methods: {
         continueFn(address, balance, fee){
+            this.feeEstimate = true
+            this.insufficientFunds = false
             invoke('generate_psbt', {walletname:"immediate", hwnumber: "1", recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
                 store.commit('setDebug', `Generating PSBT: ${res}`)
                 if(res.includes("Fee estimation failed.")){
