@@ -24,8 +24,8 @@
     </header>
     <div class="btn_container"> 
         <button @click="login()" class="btn">Log in</Button>
-        <button v-if="tripwireTripped == 'none' && tripwireSetup == true" @click="quickWithdrawal()" class="btn2">Quick Withdrawal - $500</button>
-        <button v-else class="btn6">Quick Withdrawal - $500</button>
+        <button v-if="tripwireTripped == 'none' && tripwireSetup == true" @click="quickWithdrawal()" class="btn2">Quick Withdrawal (Disabled)</button>
+        <button v-else class="btn6">Quick Withdrawal (Disabled)</button>
        
     </div>
   </div>
@@ -111,7 +111,7 @@ export default {
         },
         quickWithdrawal(){
             store.commit('setDebug', 'Quick Withdraw pushed, Sending user to quick1')
-            this.$router.push({ name: 'quick1' })
+            // this.$router.push({ name: 'quick1' })
         },
     },
     computed: {
