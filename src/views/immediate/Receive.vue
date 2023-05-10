@@ -7,9 +7,6 @@
          </div>
         <div class="receive_container">
             <div class="receive_top">
-               <div class="img">
-                 <img ref="qrcode"/>
-               </div>
                 <h2 class="receive_address">{{ address }}</h2>
             </div>
             <div class="receive_bottom">
@@ -17,9 +14,9 @@
                     <img src="@/assets/Copy.png">
                     <h2 class="copy_text">Copy Address</h2>
                 </div>
-                <div id="download">
+                <div @click="displayQR()" id="download">
                     <img src="@/assets/Arrow_down.png">
-                    <h2 class="download_text">Download QR Code</h2>
+                    <h2 class="download_text">Show QR Code</h2>
                 </div>
             </div>
         </div>
@@ -53,7 +50,7 @@ export default {
         navigator.clipboard.writeText(copyText.value);
         alert('Copied Address!');
         },
-        newAddress(){
+        newAddress(){            
             invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
@@ -65,7 +62,17 @@ export default {
             store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
             this.$router.push({ name: 'Error' })
           })
+        },
+        displayQR(){
+          invoke('display_qr').then((res)=>{
+            store.commit('setDebug', `displaying QR code: ${res}`)
+          }).catch((e)=>{
+            store.commit('setDebug', `error getting new immediate wallet address ${e}`)
+            store.commit('setErrorMessage', `Error displaying QR code Error code: ImmediateReceive2 Response: ${e}`)
+            this.$router.push({ name: 'Error' })
+          })
         }
+
   },
   data(){
       return{
@@ -88,7 +95,7 @@ export default {
         })
           .catch((e)=>{
             store.commit('setDebug', `error getting new immediate wallet address ${e}`)
-            store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive1 Response: ${e}`)
+            store.commit('setErrorMessage', `Error getting new wallet address Error code: ImmediateReceive3 Response: ${e}`)
             this.$router.push({ name: 'Error' })
           })
   }
