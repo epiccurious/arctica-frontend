@@ -10,6 +10,7 @@
             <label>Description (disabled)</label>
             <br><input v-model="description" type="text" placeholder="What is this transaction for?" disabled="disabled">
 
+            <br><h4 v-if="badAddress == true">*Invalid Bitcoin Address</h4>
             <br><label>Address</label>
             <br><input v-model="address" type="text" required placeholder="Enter Address"> 
 
@@ -60,12 +61,15 @@ export default {
         continueFn(address, balance, fee){
             this.feeEstimate = true
             this.insufficientFunds = false
+            this.badAddress = false
             invoke('generate_psbt', {walletname:"immediate", hwnumber: "1", recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
                 store.commit('setDebug', `Generating PSBT: ${res}`)
                 if(res.includes("Fee estimation failed.")){
                     this.feeEstimate = false
                 }else if(res.includes("Insufficient funds")){
                     this.insufficientFunds = true
+                }else if(res.includes("Invalid Bitcoin address")){
+                    this.badAddress = true
                 }
                 else{
                     this.$router.push({name: 'sign1of2'})
@@ -106,6 +110,7 @@ export default {
          checkbox: true,
          feeEstimate: true,
          insufficientFunds: false,
+         badAddress: false
      }
  },
  computed:{
