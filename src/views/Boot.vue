@@ -15,7 +15,7 @@ the second conditional rendering below appears if the user has booted from HW 2-
     </header>
     <div class="btn_container"> 
         <button @click="install()" class="btn">Install</Button>
-        <button @click="help()" class="btn2">I need help</button>
+        <button @click="help()" class="btn2">I need help (Disabled)</button>
     </div>
   </div>
 
