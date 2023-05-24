@@ -167,9 +167,11 @@ export default {
           for(let i = 0; i < resArray.length; i ++){
             let it = resArray[i].split("=")
             store.commit('setDebug', `for loop number: ${i+1}; key: ${it[0].toUpperCase()} value: ${it[1]}`)
+            //send the user to the test environment if it is designated in the config file
             if (String(it[1]).toUpperCase() == 'TEST'){
               store.commit('setDebug', 'Test type discovered, sending to test environment')
               this.$router.push({ name: 'TestEnvironment' }) 
+              break
             }
             //check config for current HW
             if (String(it[0]).toUpperCase() == 'HWNUMBER'){

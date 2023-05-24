@@ -2,6 +2,7 @@
 <div class="page">
     <header>
         <h1>This is a test environment</h1>
+        <h2>Make sure Bitcoin Core is running...</h2>
     </header>
 
     <label>HW inserted</label>
