@@ -18,6 +18,8 @@
                 <option @click="setHW()" value= 7>Seven</option>
             </select>
 
+        <button @click="createRamdisk()" class="btn">Create Ramdisk</button>
+        <br> 
         <button @click="generateKeys()" class="btn">Gen Keys</button>
         <br> 
         <button @click="createDescriptors()" class="btn">Create Descriptors</button>
@@ -36,6 +38,13 @@ export default {
     methods: {
         setHW(){
             store.commit('setcurrentHW', this.hwNumber)
+        },
+        createRamdisk(){
+            invoke('create_ramdisk').then((res)=>{
+                store.commit('setDebug', `invoking create ramdisk: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `error creating ramdisk: ${e}`)
+            })
         },
         generateKeys(){
             invoke('generate_store_key_pair', {number: this.hwNumber.toString()}).then((res)=>{
