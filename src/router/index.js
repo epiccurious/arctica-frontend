@@ -15,6 +15,11 @@ const routes = [
     name: 'Error',
     component: () => import('../views/Error.vue')
    },
+   {
+    path: '/test',
+    name: 'TestEnvironment',
+    component: () => import('..views/Test.vue')
+   },
   {
     path: '/boot',
     name: 'Boot',

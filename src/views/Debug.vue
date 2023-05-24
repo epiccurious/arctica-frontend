@@ -8,17 +8,7 @@
         <h2>Current Route: {{this.$route.name}}</h2>
         <button @click="reboot()" class="btn">Reboot</button>
 
-        <label>HW inserted</label>
-        <select v-model="hwNumber" name="hwNumber" id="hwNumber">
-            <option @click="setHW()" value= 0>None</option>
-            <option @click="setHW()" value= 1>One</option>
-            <option @click="setHW()" value= 2>Two</option>
-            <option @click="setHW()" value= 3>Three</option>
-            <option @click="setHW()" value= 4>Four</option>
-            <option @click="setHW()" value= 5>Five</option>
-            <option @click="setHW()" value= 6>Six</option>
-            <option @click="setHW()" value= 7>Seven</option>
-        </select>
+        <h2>Current HW: {{this.hwNumber}}</h2>
 
         <h2>setup Step Loaded: {{this.setupStep}}</h2>
 
@@ -312,9 +302,6 @@ export default{
         reboot(){
             store.commit('setDebug', 'Reboot button pushed, Sending user to welcome')
             this.$router.push({ name: 'welcome' })
-        },
-        setHW(){
-            store.commit('setcurrentHW', this.hwNumber)
         },
         setNumberToRecover(){
             store.commit('setNumberToRecover', this.numberToRecover)
