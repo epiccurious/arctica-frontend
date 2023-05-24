@@ -18,7 +18,7 @@ const routes = [
    {
     path: '/test',
     name: 'TestEnvironment',
-    component: () => import('..views/Test.vue')
+    component: () => import('../views/Test.vue')
    },
   {
     path: '/boot',
