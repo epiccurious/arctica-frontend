@@ -47,4 +47,7 @@ export default {
 </script>
 
 <style scoped>
+select{
+    max-width:20%;
+}
 </style>
