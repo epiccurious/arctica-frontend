@@ -5,8 +5,9 @@
     </header>
         <h2 v-for="item in this.debug" :key="item">{{item}}</h2>
     <div class="btn_container"> 
-        <h2>Current Route: {{this.$route.name}}</h2>
         <button @click="reboot()" class="btn">Reboot</button>
+
+        <h2>Current Route: {{this.$route.name}}</h2>
 
         <h2>Current HW: {{this.hwNumber}}</h2>
 
@@ -108,16 +109,8 @@
 
     <button @click="getBlockChainInfo()" class="btn">Get Blockchain Info</button>
     <br>
-    <button @click="createDescriptors()" class="btn">Create Descriptors</button>
-    <br>
-    <button @click="generateKeys()" class="btn">Gen Keys</button>
-    <br> 
-    <button @click="spendPolicy()" class="btn">Spend Policy</button>
-    <br> 
     <button @click="getTransctionHistory()" class="btn">Immediate Transaction History</button>
     <br>
-    <button @click="getBalance()" class="btn">Get Immediate Balance</button>
-    <br> 
     <button @click="refreshCD()" class="btn">Refresh CD</button>
     <br> 
     <button @click="unpack()" class="btn">Unpack</button>
@@ -243,48 +236,6 @@ export default{
                 store.commit('setDebug', `error obtaining transactions for immediate wallet: ${e}`)
             })
         },
-        getBalance(){
-            //this is a debug function used to get the balance of the immediate wallet
-            invoke('get_balance', {walletname: "immediate", hwnumber:this.hwNumber.toString()}).then((res)=>{
-                store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-            }).catch((e)=>{
-                store.commit('setDebug', `error getting balance for immediate wallet: ${e}`)
-            })
-        },
-        spendPolicy(){
-            //this is a debug function used to print the keychain policy 
-        invoke('test_function').then((res)=>{
-            store.commit('setDebug', `obtaining spend policy: ${res}`)
-        })
-        .catch((e)=>{
-        store.commit('setDebug', `error obtaining spend policy: ${e}`)
-        })
-    },
-        generateKeys(){
-            //this is a debug function used to create keys 2-7 on HW 1
-        invoke('generate_store_key_pair', {number: this.keynumber.toString()}).then((res)=>{
-            store.commit('setDebug', `invoking generate store keypair: ${res}`)
-            store.commit('setDebug', `generating key: ${this.keynumber-1}`)
-                    })
-        .catch((e)=>{
-        store.commit('setDebug', `error invoking test function: ${e}`)
-        })
-        this.keynumber++
-        },
-        getBlockChainInfo(){
-            invoke('get')
-        },
-        createDescriptors(){
-            //this is a debug function used to create descriptors when testing locally instead of on a Hardware Wallet
-            //start bitcoind
-            invoke('start_bitcoind_network_off')
-                store.commit('setDebug', `starting bitcoin daemon with networking off`)
-                        invoke('create_descriptor', {hwnumber: this.hwNumber.toString()}).then((res) => {
-                            store.commit('setDebug', `creating descriptors ${res}`)
-                        }).catch((e) => {
-                                store.commit('setDebug', `error creating descriptors: ${e}`)
-                        })
-        },
         decodeRawTx(){
             //debug function used to decode a signed PSBT
             invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
@@ -306,12 +257,6 @@ export default{
         setNumberToRecover(){
             store.commit('setNumberToRecover', this.numberToRecover)
         },
-    },
-    //this is for testing with testPrint()
-    data(){
-        return{
-            keynumber: 1
-        }
     },
     computed:{
         debug(){
