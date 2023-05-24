@@ -171,7 +171,7 @@ export default {
             if (String(it[1]).toUpperCase() == 'TEST'){
               store.commit('setDebug', 'Test type discovered, sending to test environment')
               this.$router.push({ name: 'TestEnvironment' }) 
-              break
+              return
             }
             //check config for current HW
             if (String(it[0]).toUpperCase() == 'HWNUMBER'){
