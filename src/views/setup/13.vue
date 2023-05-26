@@ -25,11 +25,11 @@ export default {
     mounted(){
       this.loading = true
       store.commit('setLoadMessage', 'Packing up sensitive info...')
-      invoke('packup').then((res)=>{
-        store.commit('setDebug', `invoking packup: ${res}`)
-        invoke('stop_bitcoind').then((res) =>{
+      invoke('stop_bitcoind').then((res)=>{
             store.commit('setDebug', `stopping bitcoin daemon ${res}`)
-            this.loading = false
+            invoke('packup').then((res) =>{
+                store.commit('setDebug', `packing up sensitive ${res}`)
+                this.loading=false
         }).catch((e)=>{
             store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
             store.commit('setErrorMessage', `Error with stopping bitcoin daemon Error Code: Setup13-2 Response: ${e}`)

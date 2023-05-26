@@ -27,10 +27,10 @@ export default {
     },
     mounted(){
         //note: only necessary to packup on HW 1
-        invoke('packup').then((res)=>{
-            store.commit('setDebug', `packing up sensitive ${res}`)
-            invoke('stop_bitcoind').then((res) =>{
-                store.commit('setDebug', `stopping bitcoin daemon ${res}`)
+        invoke('stop_bitcoind').then((res)=>{
+            store.commit('setDebug', `stopping bitcoin daemon ${res}`)
+            invoke('packup').then((res) =>{
+                store.commit('setDebug', `packing up sensitive ${res}`)
                 this.loading=false
             }).catch((e)=>{
                 store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)

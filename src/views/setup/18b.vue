@@ -46,14 +46,14 @@
                                         invoke('refresh_cd').then((res)=>{
                                             store.commit('setDebug', `refreshing setup CD: ${res}`)
                                             store.commit('setLoadMessage', 'Packing up sensitive info...')
-                                            invoke('packup').then((res)=>{
-                                                store.commit('setDebug', `packing up sensitive info: ${res}`)
+                                            invoke('stop_bitcoind').then((res)=>{
+                                                store.commit('setDebug', `stopping bitcoin daemon: ${res}`)
                                                 store.commit('setLoadMessage', 'Updating application state...')
                                                 //update setupstep state on Hardware Wallet
                                                 invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
                                                     store.commit('setDebug', `config set to new values setupStep: ${this.setupStep} res:${res}`)
-                                                    invoke('stop_bitcoind').then((res) =>{
-                                                    store.commit('setDebug', `stopping bitcoin daemon ${res}`)
+                                                    invoke('packup').then((res) =>{
+                                                    store.commit('setDebug', `packing up sensitive... ${res}`)
                                                     this.loading = false
                                                     }).catch((e)=>{
                                                         store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
