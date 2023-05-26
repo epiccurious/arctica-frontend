@@ -22,6 +22,8 @@
         <br> 
         <button @click="generateKeys()" class="btn">Gen Keys</button>
         <br> 
+        <button @click="timeMachineKeys()" class="btn">Time Machine Keys</button>
+        <br>
         <button @click="createDescriptors()" class="btn">Create Descriptors</button>
         <br>
     </div>
@@ -62,6 +64,40 @@ export default {
                     store.commit('setDebug', `error creating descriptors: ${e}`)
             })
         },
+        timeMachineKeys(){
+            invoke('generate_store_simulated_time_machine_key_pair', {number: '1'}).then((res)=>{
+                    store.commit('setDebug', `Generating simulated time machine key pair 1: ${res}`)
+                    invoke('generate_store_simulated_time_machine_key_pair', {number: '2'}).then((res)=>{
+                        store.commit('setDebug', `Generating simulated time machine key pair 2: ${res}`)
+                        invoke('generate_store_simulated_time_machine_key_pair', {number: '3'}).then((res)=>{
+                            store.commit('setDebug', `Generating simulated time machine key pair 3: ${res}`)
+                            invoke('generate_store_simulated_time_machine_key_pair', {number: '4'}).then((res)=>{
+                                store.commit('setDebug', `Generating simulated time machine key pair 4: ${res}`)
+                            })
+                            .catch((e)=>{
+                                store.commit('setDebug', `error generating time machine key pair 4 ${e}`)
+                                store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-2 Response: ${e}`)
+                                this.$router.push({ name:'Error' })
+                            })  
+                        })
+                        .catch((e)=>{
+                            store.commit('setDebug', `error generating time machine key pair 3 ${e}`)
+                            store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-3 Response: ${e}`)
+                            this.$router.push({ name:'Error' })
+                        })  
+                    })
+                    .catch((e)=>{
+                        store.commit('setDebug', `error generating time machine key pair 2 ${e}`)
+                        store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-4 Response: ${e}`)
+                        this.$router.push({ name:'Error' })
+                    })  
+            })
+            .catch((e)=>{
+                store.commit('setDebug', `error generating time machine key pair 1 ${e}`)
+                store.commit('setErrorMessage', `Error creating time machine key Error code: Setup12-5 Response: ${e}`)
+                this.$router.push({ name:'Error' })
+            })  
+        }
     },
     computed: {
         hwNumber:{
