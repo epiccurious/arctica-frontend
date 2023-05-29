@@ -209,7 +209,7 @@ export default {
           store.commit('setLoadMessage', 'Mounting the internal drive...')
           invoke('mount_internal').then((res)=> {
               store.commit('setDebug', `invoking mount internal ${res}`)
-              store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...')
+              store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...Make sure you are connected to the internet...')
               //start bitcoind with networking enabled
               invoke('start_bitcoind').then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
