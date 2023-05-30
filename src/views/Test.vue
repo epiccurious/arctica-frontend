@@ -54,7 +54,7 @@ export default {
         get_balance(){
             invoke('get_balance', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-                    balance = parseFloat(res)
+                    this.balance = parseFloat(res)
                 })
         },
         createRamdisk(){
