@@ -6,8 +6,10 @@
         <h2>Make sure you have the right file structures in /mnt/ramdisk...I won't do it for you.</h2>
     </header>
 
+    <header>
     <h3>Balance: {{ balance }}</h3>
     <h3>Receive Address: {{ address }}</h3>
+    </header>
     <div class="btn_container"> 
 
         <label>HW inserted</label>
@@ -24,6 +26,8 @@
 
         <button @click="get_address()" class="btn">Receive Address</button>
         <br> 
+        <button @click="get_balance()" class="btn">Check Balance</button>
+        <br>         
         <button @click="generateKeys()" class="btn">Gen Keys</button>
         <br> 
         <button @click="timeMachineKeys()" class="btn">Time Machine Keys</button>
