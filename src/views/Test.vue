@@ -3,7 +3,11 @@
     <header>
         <h1>This is a test environment</h1>
         <h2>Make sure Bitcoin Core is running...I won't do it for you.</h2>
+        <h2>Make sure you have the right file structures in /mnt/ramdisk...I won't do it for you.</h2>
     </header>
+
+    <h3>Balance: {{ balance }}</h3>
+    <h3>Receive Address: {{ address }}</h3>
     <div class="btn_container"> 
 
         <label>HW inserted</label>
@@ -18,7 +22,7 @@
                 <option @click="setHW()" value= 7>Seven</option>
             </select>
 
-        <button @click="createRamdisk()" class="btn">Create Ramdisk</button>
+        <button @click="get_address()" class="btn">Receive Address</button>
         <br> 
         <button @click="generateKeys()" class="btn">Gen Keys</button>
         <br> 
@@ -40,6 +44,18 @@ export default {
     methods: {
         setHW(){
             store.commit('setcurrentHW', this.hwNumber)
+        },
+        get_address(){
+            invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
+            store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
+            this.address = res
+        })
+        },
+        get_balance(){
+            invoke('get_balance', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
+                    store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
+                    balance = parseFloat(res)
+                })
         },
         createRamdisk(){
             invoke('create_ramdisk').then((res)=>{
@@ -109,6 +125,12 @@ export default {
             }
         },
     },
+    data(){
+        return{
+            address: 'None',
+            balance: 0,
+        }
+    }
 }
 </script>
 
