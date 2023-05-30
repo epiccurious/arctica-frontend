@@ -50,7 +50,7 @@ export default {
             store.commit('setcurrentHW', this.hwNumber)
         },
         get_address(){
-            invoke('get_address', {walletname: "immediate", hwnumber:this.currentHW.toString()}).then((res)=>{
+            invoke('get_address', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
                 store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
                 this.address = res
             })
@@ -60,13 +60,6 @@ export default {
                     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
                     this.balance = parseFloat(res)
                 })
-        },
-        createRamdisk(){
-            invoke('create_ramdisk').then((res)=>{
-                store.commit('setDebug', `invoking create ramdisk: ${res}`)
-            }).catch((e)=>{
-                store.commit('setDebug', `error creating ramdisk: ${e}`)
-            })
         },
         generateKeys(){
             invoke('generate_store_key_pair', {number: this.hwNumber.toString()}).then((res)=>{
