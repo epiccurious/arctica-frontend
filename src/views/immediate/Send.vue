@@ -118,7 +118,7 @@ export default {
         get(){
                 return store.getters.getImmediateBalance
             }
-    }
+    },
  },
  mounted(){
     this.immediateBalance = store.getters.getImmediateBalance

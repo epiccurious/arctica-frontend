@@ -49,7 +49,12 @@ export default {
             invoke('sign_funded_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "1of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Signing PSBT...')
-                this.$router.push({ name: 'immediateTransfer' })
+                if(immediateDecay == false){
+                    this.$router.push({ name: 'immediateTransfer' })
+                }else{
+                    this.$router.push({ name: 'immediateBroadcast' })
+                }
+                
             }).catch((e)=>{
                 store.commit('setDebug', `error signing PSBT: ${e}`)
                 store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign1of2-1 Response: ${e}`)
@@ -73,6 +78,9 @@ export default {
     computed:{
         currentHW(){
             return store.getters.getcurrentHW
+        },
+        immediateDecay(){
+            return store.getters.getImmediateDecay
         },
     },
     mounted(){
