@@ -25,7 +25,8 @@ can be removed once immediate wallet is functional -->
         <router-link class="wallet_container" :to="{ name: 'immediate' }">
             <div class="wallet_container_left">
             <h2>Immediate Wallet</h2>
-            <h2 class="time_decay">2 HWs</h2>
+            <h2 v-if="immediateDecay == false" class="time_decay">2 HWs</h2>
+            <h2 v-else-if="immediateDecay == true" class="time_decay">1 HW</h2>
             </div>
             <div class="wallet_container_right">
               <h2 class="balance_overview"> {{ this.immediateBalance }} BTC</h2>
@@ -93,6 +94,9 @@ export default {
  duressSetup(){
   return store.getters.getDuressSetup
  },
+ immediateDecay(){
+  return store.getters.getImmediateDecay
+ },
  hwNumber:{
             get(){
                 return store.getters.getcurrentHW
@@ -103,6 +107,7 @@ export default {
           invoke('calculate_decay_time').then((res)=>{
             console.log("response:", res)
             if(res.contains("decay complete")){
+              store.commit('setImmediateDecay', true)
               this.decayComplete = true
 
             }

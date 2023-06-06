@@ -46,7 +46,8 @@ export default createStore({
     immediateBalance: 0,
     delayedBalance: 0,
     //delayed wallet timelocked
-    timeLock: true
+    timeLock: true,
+    immediateDecay: false,
     },
     mutations:{//synchronous, alters data in state (commit)
         setDebug(state, value){
@@ -105,6 +106,9 @@ export default createStore({
         },
         setTimeLock(state, payload){
             state.timeLock = payload
+        },
+        setImmediateDecay(state, payload){
+            state.immediateDecay = payload
         },
         setcurrentHW(state, payload){
             state.currentHW = payload
@@ -191,6 +195,9 @@ export default createStore({
         },
         getTimeLock(state){
             return state.timeLock
+        },
+        getImmediateDecay(state){
+            return state.immediateDecay
         },
         getcurrentHW(state){
            return state.currentHW
