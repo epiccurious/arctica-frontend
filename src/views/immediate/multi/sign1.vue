@@ -49,7 +49,7 @@ export default {
             invoke('sign_funded_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "1of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Signing PSBT...')
-                if(immediateDecay == false){
+                if(this.immediateDecay == false){
                     this.$router.push({ name: 'immediateTransfer' })
                 }else{
                     this.$router.push({ name: 'immediateBroadcast' })
