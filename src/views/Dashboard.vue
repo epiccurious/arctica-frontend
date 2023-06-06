@@ -44,8 +44,11 @@ can be removed once immediate wallet is functional -->
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
-          <div class="decay_timer">
-            <h2 class="time_decay">Approximate time until next decay: (decay disabled)</h2>
+          <div v-if="this.decayComplete == false" class="decay_timer">
+            <h2 class="time_decay">Approximate time until next decay: {{ this.years }} year(s) {{ this.months }} month(s) {{ this.days }} day(s) {{ this.hours }} hour(s) {{ this.minutes }} minute(s) {{ this.seconds }} second(s)</h2>
+          </div>
+          <div v-else class="decay_timer">
+            <h2 class="time_decay">Decay Complete</h2>
           </div>
       </div>
   </div>
@@ -101,6 +104,22 @@ export default {
         }
       },
     mounted(){
+          invoke('calculate_decay_time').then((res)=>{
+            console.log("response:", res)
+            if(res.contains("decay complete")){
+              decayComplete = true
+            }
+            else{
+            const parts = res.split(",")
+            this.years = parts[0].split("=")[1].trim()
+            this.months = parts[1].split("=")[1].trim()
+            this.weeks = parts[2].split("=")[1].trim()
+            this.days = parts[3].split("=")[1].trim()
+            this.hours = parts[4].split("=")[1].trim()
+            this.minutes = parts[5].split("=")[1].trim()
+            this.seconds = parts[6].split("=")[1].trim()
+            }
+          })
           invoke('get_balance', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
             store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
             let bal = parseFloat(res)
@@ -125,6 +144,18 @@ export default {
         this.$router.push({ name: 'tripwirePostSetup1' })
       }
  },
+ data(){
+  return{
+    decayComplete: false,
+    years: 0,
+    months: 0,
+    weeks: 0,
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  }
+ }
     }
 </script>
 
