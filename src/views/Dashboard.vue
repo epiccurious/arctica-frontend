@@ -106,7 +106,7 @@ export default {
     mounted(){
           invoke('calculate_decay_time').then((res)=>{
             console.log("response:", res)
-            if(res.contains("decay complete")){
+            if(res.includes("decay complete")){
               store.commit('setImmediateDecay', true)
               this.decayComplete = true
 
