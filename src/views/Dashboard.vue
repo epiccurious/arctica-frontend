@@ -103,7 +103,7 @@ export default {
           invoke('calculate_decay_time').then((res)=>{
             console.log("response:", res)
             if(res.contains("decay complete")){
-              decayComplete = true
+              this.decayComplete = true
 
             }
             else{
