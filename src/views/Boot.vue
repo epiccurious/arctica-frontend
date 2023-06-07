@@ -24,6 +24,7 @@ the second conditional rendering below appears if the user has booted from HW 2-
       <h1>Welcome to Arctica</h1>
       <h2>Please insert a transfer CD.</h2>
       <h2>If you do not have a transfer CD, please insert Hardware Wallet 1 and reboot this machine.</h2>
+      <h4 v-if="this.fullySigned == true">* Please switch to HW 1, this PSBT is fully signed</h4>
     </header>
     <div class="form_container">
       <form>
@@ -87,6 +88,7 @@ export default {
                 //if the PSBT key is present, and = 2OF2 user is attempting to broadcast a signed immediate transaction
                 //TODO, this condition can NEVER normally happen because the user should be broadcasting from HW 1...however we should still handle this condition with a warning
                 else if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '2OF2'){
+                  this.fullySigned = true
                   this.loading = false
                   store.commit('setDebug', `Transfer CD detected 2OF2`)
                   break
@@ -145,9 +147,20 @@ export default {
   data() {
     return {
     loading: false,
-    checkbox: false
+    checkbox: false,
+    fullySigned: false
     }
   },
 }
 </script>
 
+<style scoped>
+h4{
+    color:red;
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 140%;
+}
+</style>
