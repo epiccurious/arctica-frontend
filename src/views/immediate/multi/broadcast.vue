@@ -73,6 +73,11 @@ export default {
                 store.commit('setDebug', `finalizing PSBT: ${res}`)
                 store.commit('setDebug', `decoding PSBT...`)
                 invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
+                    if(res.includes("ERROR PSBT not complete")){
+                        store.commit('setDebug', `error PSBT not fully signed ${e}`)
+                        store.commit('setErrorMessage', `Error PSBT not fully signed Error Code: immediateBroadcast-2 Response: ${e}`)
+                        this.$router.push({ name:'Error' })
+                    }
                     store.commit('setDebug', `decoded psbt: ${res}`)
                     const parts = res.split(",")
                     this.address = parts[0].split("=")[1].trim()
@@ -87,7 +92,7 @@ export default {
                 })
             }).catch((e)=>{
                 store.commit('setDebug', `error finalizing psbt ${e}`)
-                store.commit('setErrorMessage', `Error finalizing psbt Error Code: immediateBroadcast-1 Response: ${e}`)
+                store.commit('setErrorMessage', `Error finalizing psbt Error Code: immediateBroadcast-3 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
     },
