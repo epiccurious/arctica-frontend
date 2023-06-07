@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         broadcast(){
-            this.loadingc= true
+            this.loading = true
             store.commit('setLoadMessage', 'Broadcasting transaction...')
             invoke('broadcast_tx', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
                     store.commit('setDebug', `Broadcasting Fully Signed TX: ${res}`)
