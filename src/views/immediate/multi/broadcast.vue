@@ -69,9 +69,10 @@ export default {
     },
     mounted(){
         store.commit('setLoadMessage', 'Importing PSBT...')
+        //not sure exactly what finalize_psbt is accomplishing here, might be redundant...
         invoke('finalize_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `finalizing PSBT: ${res}`)
-                store.commit('setDebug', `decoding PSBT...`)
+                store.commit('setLoadMessage', `decoding PSBT...`)
                 invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
                     //handle the condition where a user somehow got here with an incomplete PSBT
                     if(res.includes("ERROR PSBT not complete")){
