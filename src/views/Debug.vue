@@ -260,7 +260,7 @@ export default{
             store.commit('setNumberToRecover', this.numberToRecover)
         },
         getMedianTime(){
-            invoke('get_median_blocktime').then((res)=>{
+            invoke('retrieve_median_blocktime').then((res)=>{
                 store.commit('setDebug', `getting median block time: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `Error getting median blocktime: ${e}`)
