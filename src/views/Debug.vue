@@ -107,6 +107,8 @@
             </label>
         </div>
 
+    <button @click="getMedianTime()" class="btn">Get Median Time</button>
+    <br>
     <button @click="getBlockChainInfo()" class="btn">Get Blockchain Info</button>
     <br>
     <button @click="getTransctionHistory()" class="btn">Immediate Transaction History</button>
@@ -257,6 +259,13 @@ export default{
         setNumberToRecover(){
             store.commit('setNumberToRecover', this.numberToRecover)
         },
+        getMedianTime(){
+            invoke('get_median_blocktime').then((res)=>{
+                store.commit('setDebug', `getting median block time: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `Error getting median blocktime: ${e}`)
+            })
+        }
     },
     computed:{
         debug(){
