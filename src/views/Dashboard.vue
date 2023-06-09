@@ -34,7 +34,12 @@ can be removed once immediate wallet is functional -->
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
         </router-link> 
-
+        <div v-if="this.immediateDecayComplete == false" class="decay_timer">
+            <h2 class="time_decay">Time until next decay: {{ this.years }} year(s), {{ this.months }} month(s), {{ this.days }} day(s), {{ this.hours }} hour(s), {{ this.minutes }} minute(s), {{ this.seconds }} second(s)</h2>
+          </div>
+          <div v-else class="decay_timer">
+            <h2 class="time_decay">Decay Complete</h2>
+          </div>
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet (Disabled)</h2>
@@ -45,12 +50,7 @@ can be removed once immediate wallet is functional -->
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
-          <div v-if="this.decayComplete == false" class="decay_timer">
-            <h2 class="time_decay">Time until next decay: {{ this.years }} year(s), {{ this.months }} month(s), {{ this.days }} day(s), {{ this.hours }} hour(s), {{ this.minutes }} minute(s), {{ this.seconds }} second(s)</h2>
-          </div>
-          <div v-else class="decay_timer">
-            <h2 class="time_decay">Decay Complete</h2>
-          </div>
+        <h2 class="time_decay">Time until next decay: (disabled)</h2>
       </div>
   </div>
 </template>
@@ -108,7 +108,7 @@ export default {
             console.log("response:", res)
             if(res.includes("decay complete")){
               store.commit('setImmediateDecay', true)
-              this.decayComplete = true
+              this.immediateDecayComplete = true
 
             }
             else{
@@ -148,7 +148,7 @@ export default {
  },
  data(){
   return{
-    decayComplete: false,
+    immediateDecayComplete: false,
     years: 0,
     months: 0,
     weeks: 0,
