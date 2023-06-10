@@ -32,13 +32,13 @@ can be removed once immediate wallet is functional -->
               <h2 class="balance_overview"> {{ this.immediateBalance }} BTC</h2>
               <span class="carat"><img src="@/assets/carat_right.png"/></span>
             </div>
-            <div v-if="this.immediateDecayComplete == false" class="decay_timer">
+        </router-link> 
+        <div v-if="this.immediateDecayComplete == false" class="decay_timer">
             <h2 class="time_decay">Time until next decay: {{ this.years }} year(s), {{ this.months }} month(s), {{ this.days }} day(s), {{ this.hours }} hour(s), {{ this.minutes }} minute(s), {{ this.seconds }} second(s)</h2>
           </div>
           <div v-else class="decay_timer">
             <h2 class="time_decay">Decay Complete</h2>
           </div>
-        </router-link> 
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet (Disabled)</h2>
@@ -48,9 +48,8 @@ can be removed once immediate wallet is functional -->
             <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
-          <h2 class="time_decay">Time until next decay: (disabled)</h2>
         </router-link> 
-       
+        <h2 class="time_decay">Time until next decay: (disabled)</h2>
       </div>
   </div>
 </template>
