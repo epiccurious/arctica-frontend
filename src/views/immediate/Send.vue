@@ -24,7 +24,7 @@
                 <h3>₿ {{ immediateBalance }}</h3>
                 </div>
                 <div class="balance_right">
-                    <button @click="selectMax()" class="btn4">Select Max (disabled)</button>
+                    <button @click="selectMax()" class="btn4">Select Max</button>
                 </div>
             </div>
             <br><h4 v-if="feeEstimate == false">*Fee Estimates not yet calculated. Please wait or use a custom fee.</h4>
