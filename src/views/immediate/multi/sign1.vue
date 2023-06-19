@@ -99,7 +99,7 @@ export default {
             this.loading = false
         }).catch((e) => {
                 store.commit('setDebug', `error decoding funded PSBT: ${e}`)
-                store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign1of2-2 Response: ${e}`)
+                store.commit('setErrorMessage', `Error Decoding PSBT Error Code: sign1of2-2 Response: ${e}`)
                 this.$router.push({ name:'Error' })
         })
  }

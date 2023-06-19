@@ -68,10 +68,6 @@ export default {
         },
     },
     mounted(){
-        store.commit('setLoadMessage', 'Importing PSBT...')
-        //not sure exactly what finalize_psbt is accomplishing here, might be redundant...
-        invoke('finalize_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
-                store.commit('setDebug', `finalizing PSBT: ${res}`)
                 store.commit('setLoadMessage', `decoding PSBT...`)
                 invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
                     //handle the condition where a user somehow got here with an incomplete PSBT
@@ -93,11 +89,6 @@ export default {
                 }).catch((e) => {
                         store.commit('setDebug', `error decoding PSBTs: ${e}`)
                 })
-            }).catch((e)=>{
-                store.commit('setDebug', `error finalizing psbt ${e}`)
-                store.commit('setErrorMessage', `Error finalizing psbt Error Code: immediateBroadcast-3 Response: ${e}`)
-                this.$router.push({ name:'Error' })
-            })
     },
     data(){
         return{
