@@ -34,7 +34,7 @@ can be removed once immediate wallet is functional -->
             </div>
         </router-link> 
         <div v-if="this.immediateDecayComplete == false" class="decay_timer">
-            <h2 class="time_decay">Time until next decay: {{ this.years }} year(s), {{ this.months }} month(s), {{ this.days }} day(s), {{ this.hours }} hour(s), {{ this.minutes }} minute(s), {{ this.seconds }} second(s)</h2>
+            <h2 class="time_decay">Time until next decay: {{ this.immediateYears }} year(s), {{ this.immediateMonths }} month(s), {{ this.immediateDays }} day(s), {{ this.immediateHours }} hour(s), {{ this.immediateMinutes }} minute(s), {{ this.immediateSeconds }} second(s)</h2>
           </div>
           <div v-else class="decay_timer">
             <h2 class="time_decay">Decay Complete</h2>
@@ -113,13 +113,13 @@ export default {
             }
             else{
             const parts = res.split(",")
-            this.years = parts[0].split("=")[1].trim()
-            this.months = parts[1].split("=")[1].trim()
-            this.weeks = parts[2].split("=")[1].trim()
-            this.days = parts[3].split("=")[1].trim()
-            this.hours = parts[4].split("=")[1].trim()
-            this.minutes = parts[5].split("=")[1].trim()
-            this.seconds = parts[6].split("=")[1].trim()
+            this.immediateYears = parts[0].split("=")[1].trim()
+            this.immediateMonths = parts[1].split("=")[1].trim()
+            this.immediateWeeks = parts[2].split("=")[1].trim()
+            this.immediateDays = parts[3].split("=")[1].trim()
+            this.immediateHours = parts[4].split("=")[1].trim()
+            this.immediateMinutes = parts[5].split("=")[1].trim()
+            this.immediateSeconds = parts[6].split("=")[1].trim()
             }
           })
           invoke('get_balance', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
@@ -151,13 +151,13 @@ export default {
  data(){
   return{
     immediateDecayComplete: false,
-    years: 0,
-    months: 0,
-    weeks: 0,
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
+    immediateYears: 0,
+    immediateMonths: 0,
+    immediateWeeks: 0,
+    immediateDays: 0,
+    immediateHours: 0,
+    immediateMinutes: 0,
+    immediateSeconds: 0
   }
  }
     }
