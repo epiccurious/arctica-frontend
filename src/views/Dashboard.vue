@@ -103,7 +103,8 @@ export default {
         }
       },
     mounted(){
-          invoke('calculate_decay_time').then((res)=>{
+          //calculate immediate_decay
+          invoke('calculate_decay_time', {file: "immediate_decay"}).then((res)=>{
             console.log("response:", res)
             if(res.includes("decay complete")){
               store.commit('setImmediateDecay', true)
@@ -128,6 +129,8 @@ export default {
           }).catch((e)=>{
           store.commit('setDebug', `error getting immediate wallet balance ${e}`)
             })
+        //TODO calculate delayed_decay1-5
+        //TODO get delayed balance
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
       this.tripwireSetup = store.getters.getTripwireSetup
