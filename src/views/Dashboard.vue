@@ -42,7 +42,7 @@ can be removed once immediate wallet is functional -->
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet (Disabled)</h2>
-          <h3 class="time_decay">5 HWs + 2 Time Machine Keys</h3>
+          <h3 class="time_decay">5 HWs + Timelock</h3>
           </div>
           <div class="wallet_container_right">
             <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
