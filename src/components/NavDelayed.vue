@@ -37,7 +37,7 @@
 <script>
 import { RouterView, RouterLink } from "vue-router";
 import store from '../store.js'
-// const invoke = window.__TAURI__.invoke
+const invoke = window.__TAURI__.invoke
 {
   RouterView;
   RouterLink
@@ -76,12 +76,13 @@ export default{
       },
     },
              mounted(){
-                // invoke('get_balance', {walletname: "delayed", hwnumber:this.currentHW.toString()}).then((res)=>{
-                //     store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
-                //     store.commit('setDelayedBalance', `${parseInt(res)}`)
-                // }).catch((e)=>{
-                // store.commit('setDebug', `error getting delayed wallet balance ${e}`)
-                //  })
+                invoke('get_balance', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res)=>{
+                    store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
+                    let bal = parseFloat(res)
+                    store.commit('setDelayedBalance', `${bal}`)
+                }).catch((e)=>{
+                store.commit('setDebug', `error getting delayed wallet balance ${e}`)
+                 })
  },
 }
 </script>
