@@ -41,15 +41,25 @@ can be removed once immediate wallet is functional -->
           </div>
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
-          <h2>Delayed Wallet (Disabled)</h2>
-          <h3 class="time_decay">5 HWs + Timelock</h3>
+          <h2>Delayed Wallet</h2>
+          <h3 v-if="delayedDecay == 'zero'" class="time_decay">5 HWs + Timelock</h3>
+          <h3 v-else-if="delayedDecay == 'one'" class="time_decay">5 HWs</h3>
+          <h3 v-else-if="delayedDecay == 'two'" class="time_decay">4 HWs</h3>
+          <h3 v-else-if="delayedDecay == 'three'" class="time_decay">3 HWs</h3>
+          <h3 v-else-if="delayedDecay == 'four'" class="time_decay">2 HWs</h3>
+          <h3 v-else-if="delayedDecay == 'five'" class="time_decay">1 HW</h3>
           </div>
           <div class="wallet_container_right">
             <h2 class="balance_overview">{{ this.delayedBalance }} BTC</h2>
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
-        <h2 class="time_decay">Time until next decay: (disabled)</h2>
+        <div v-if="this.delayedDecayComplete == false" class="decay_timer">
+            <h2 class="time_decay">Time until next decay: {{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</h2>
+          </div>
+          <div v-else class="decay_timer">
+            <h2 class="time_decay">Decay Complete</h2>
+          </div>
       </div>
   </div>
 </template>
@@ -96,6 +106,9 @@ export default {
  immediateDecay(){
   return store.getters.getImmediateDecay
  },
+ delayedDecay(){
+  return store.getters.getDelayedDecay
+ },
  hwNumber:{
             get(){
                 return store.getters.getcurrentHW
@@ -105,11 +118,10 @@ export default {
     mounted(){
           //calculate immediate_decay
           invoke('calculate_decay_time', {file: "immediate_decay"}).then((res)=>{
-            console.log("response:", res)
+            console.log("immediate decay response:", res)
             if(res.includes("decay complete")){
               store.commit('setImmediateDecay', true)
               this.immediateDecayComplete = true
-
             }
             else{
             const parts = res.split(",")
@@ -129,8 +141,110 @@ export default {
           }).catch((e)=>{
           store.commit('setDebug', `error getting immediate wallet balance ${e}`)
             })
-        //TODO calculate delayed_decay1-5
-        //TODO get delayed balance
+        //calculate delayed_decay1
+        invoke('calculate_decay_time', {file: "delayed_decay1"}).then((res)=>{
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDelayedDecay', 'one')
+          }
+          else{
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+          }
+        })
+        //calculate delayed_decay2
+        if(delayedDecay == 'one'){
+          invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDelayedDecay', 'two')
+          }
+          else{
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+          }
+        })
+        }
+        //calculate delayed_decay3
+        if(delayedDecay == 'two'){
+          invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDelayedDecay', 'three')
+          }
+          else{
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+          }
+        })
+        }
+        //calculate delayed decay4
+        if(delayedDecay == 'three'){
+          invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDelayedDecay', 'four')
+          }
+          else{
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+          }
+        })
+        }
+        //calculate delayed decay5
+        if(delayedDecay == 'four'){
+          invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDelayedDecay', 'five')
+            this.delayedDecayComplete = true
+          }
+          else{
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+          }
+        })
+        }
+      //get delayed balance
+      invoke('get_balance', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res)=>{
+          store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
+          let bal = parseFloat(res)
+          store.commit('setDelayedBalance', `${bal}`)
+        }).catch((e)=>{
+        store.commit('setDebug', `error getting delayed wallet balance ${e}`)
+          })
+      //fetch first time initial setup vars
+      //eventually these need to be checked against some kind of meta data
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
       this.tripwireSetup = store.getters.getTripwireSetup
@@ -157,7 +271,15 @@ export default {
     immediateDays: 0,
     immediateHours: 0,
     immediateMinutes: 0,
-    immediateSeconds: 0
+    immediateSeconds: 0,
+    delayedDecayComplete: false,
+    delayedYears: 0,
+    delayedMonths: 0,
+    delayedWeeks: 0,
+    delayedDays: 0,
+    delayedHours: 0,
+    delayedMinutes: 0,
+    delayedSeconds: 0
   }
  }
     }
