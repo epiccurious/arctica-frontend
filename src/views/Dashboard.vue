@@ -159,7 +159,7 @@ export default {
           }
         })
         //calculate delayed_decay2
-        if(delayedDecay == 'one'){
+        if(this.delayedDecay == 'one'){
           invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
@@ -178,7 +178,7 @@ export default {
         })
         }
         //calculate delayed_decay3
-        if(delayedDecay == 'two'){
+        if(this.delayedDecay == 'two'){
           invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
@@ -197,7 +197,7 @@ export default {
         })
         }
         //calculate delayed decay4
-        if(delayedDecay == 'three'){
+        if(this.delayedDecay == 'three'){
           invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
@@ -216,7 +216,7 @@ export default {
         })
         }
         //calculate delayed decay5
-        if(delayedDecay == 'four'){
+        if(this.delayedDecay == 'four'){
           invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
@@ -244,7 +244,7 @@ export default {
         store.commit('setDebug', `error getting delayed wallet balance ${e}`)
           })
       //fetch first time initial setup vars
-      //eventually these need to be checked against some kind of meta data
+      //TODO eventually these need to be checked against some kind of meta data
       this.duressSetup = store.getters.getDuressSetup
       this.recoverySetup = store.getters.getRecoverySetup
       this.tripwireSetup = store.getters.getTripwireSetup
