@@ -42,7 +42,7 @@ can be removed once immediate wallet is functional -->
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet</h2>
-          <h3 v-if="delayedDecay == 'zero'" class="time_decay">5 HWs + Timelock</h3>
+          <h3 v-if="delayedDecay == 'zero'" class="time_decay">5 HWs + Time Machine</h3>
           <h3 v-else-if="delayedDecay == 'one'" class="time_decay">5 HWs</h3>
           <h3 v-else-if="delayedDecay == 'two'" class="time_decay">4 HWs</h3>
           <h3 v-else-if="delayedDecay == 'three'" class="time_decay">3 HWs</h3>
@@ -54,10 +54,7 @@ can be removed once immediate wallet is functional -->
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div>
         </router-link> 
-        <div v-if="this.delayedDecayComplete == false && this.delayedDecay == 'zero'" class="decay_timer">
-            <h2 class="time_decay">Time lock expires in: {{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</h2>
-          </div>
-        <div v-else-if="this.delayedDecayComplete == false" class="decay_timer">
+        <div v-if="this.delayedDecayComplete == false" class="decay_timer">
             <h2 class="time_decay">Time until next decay: {{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</h2>
           </div>
           <div v-else class="decay_timer">
