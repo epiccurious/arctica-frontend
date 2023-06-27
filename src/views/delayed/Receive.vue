@@ -74,7 +74,8 @@ export default {
       data(){
           return{
               address: null,
-              wallet: "delayed"
+              wallet: "delayed",
+              warning: null
           }
       },
       computed: {
@@ -84,6 +85,10 @@ export default {
       },
     
       mounted(){
+        this.timeLock = store.getters.getTimeLock
+        if(this.timeLock == true){
+            this.warning = true
+        }else{this.warning = false}
         invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
                 store.commit('setDebug', `getting new address for delayed wallet: ${res}`)
                 this.address = res

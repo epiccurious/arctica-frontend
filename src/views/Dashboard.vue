@@ -124,6 +124,7 @@ export default {
               this.immediateDecayComplete = true
             }
             else{
+            store.commit('setTimeLock', true)
             const parts = res.split(",")
             this.immediateYears = parts[0].split("=")[1].trim()
             this.immediateMonths = parts[1].split("=")[1].trim()
@@ -146,6 +147,7 @@ export default {
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
             store.commit('setDelayedDecay', 'one')
+            store.commit('setTimeLock', false)
           }
           else{
             const parts = res.split(",")
@@ -164,6 +166,7 @@ export default {
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
             store.commit('setDelayedDecay', 'two')
+            store.commit('setTimeLock', false)
           }
           else{
             const parts = res.split(",")
@@ -183,6 +186,7 @@ export default {
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
             store.commit('setDelayedDecay', 'three')
+            store.commit('setTimeLock', false)
           }
           else{
             const parts = res.split(",")
@@ -202,6 +206,7 @@ export default {
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
             store.commit('setDelayedDecay', 'four')
+            store.commit('setTimeLock', false)
           }
           else{
             const parts = res.split(",")
@@ -222,6 +227,7 @@ export default {
           if(res.includes("decay complete")){
             store.commit('setDelayedDecay', 'five')
             this.delayedDecayComplete = true
+            store.commit('setTimeLock', false)
           }
           else{
             const parts = res.split(",")
