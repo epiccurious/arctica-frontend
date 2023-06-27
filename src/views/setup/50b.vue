@@ -40,24 +40,7 @@ export default {
     methods: {
         acknowledge(){
             this.loading = true
-        },
-        warn(){
-        }
-    },
-    computed:{
-        btcCoreHealthy(){
-            return store.getters.getBTCCoreHealthy
-        },
-    },
-    data(){
-        return{
-            loading: false,
-            setupStep: '0',
-            checkbox: false
-        }
-    },
-    mounted(){
-        //update HW setupstep to 0
+                    //update HW setupstep to 0
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             store.commit('setDebug', `updating setupStep to ${this.setupStep}`)
             })
@@ -69,7 +52,6 @@ export default {
         store.commit('setLoadMessage', 'Mounting internal drive...')
         invoke('mount_internal').then((res) => {
             store.commit('setDebug', `Mounting internal drive ${res}`)
-            this.loading = true
             store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...Make sure you are connected to the internet...')
             //start the bitcoin daemon
             invoke('start_bitcoind').then((res) => {
@@ -87,9 +69,23 @@ export default {
             store.commit('setErrorMessage', `Error mounting internal Error code: Setup50b-3 Response: ${e}`)
             this.$router.push({ name:'Error' })
         })
-
-
-
+        },
+        warn(){
+        }
+    },
+    computed:{
+        btcCoreHealthy(){
+            return store.getters.getBTCCoreHealthy
+        },
+    },
+    data(){
+        return{
+            loading: false,
+            setupStep: '0',
+            checkbox: false
+        }
+    },
+    mounted(){
     },
 }
 </script>
