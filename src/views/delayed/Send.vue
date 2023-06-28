@@ -4,20 +4,21 @@
         <NavDelayed/>
         <div class="outer_container">
             <div class="send_head_container">
-            <h1>Send Bitcoin</h1>
-            </div>
+             <h1>Send Bitcoin</h1>
+             </div>
         <div class="send_container">
             <div class="send_form">
-                <label>Description</label>
-                <br><input v-model="description" type="text" placeholder="What is this transaction for?">
-
+                <label>Description (disabled)</label>
+                <br><input v-model="description" type="text" placeholder="What is this transaction for?" disabled="disabled">
+    
+                <br><h4 v-if="badAddress == true">*Invalid Bitcoin Address</h4>
                 <br><label>Address</label>
                 <br><input v-model="address" type="text" required placeholder="Enter Address"> 
-
+    
                 <br><label>Amount</label>
                 <br><input v-model="balance" type="float" required placeholder="₿ 0.00">
                 <!-- Need to implement a 2 way bind here and reference it against an exchange API so we can dynamically calucate the BTC or Fiat amount against whatever the user inputs -->
-
+                <br><h4 v-if="insufficientFunds == true">*Insufficient Balance</h4>
                 <div class="balance_calculator">
                     <div class="balance_left">
                     <h2>Your Balance</h2>
@@ -27,32 +28,31 @@
                         <button @click="selectMax()" class="btn4">Select Max</button>
                     </div>
                 </div>
-                
+                <br><h4 v-if="feeEstimate == false">*Fee Estimates not yet calculated. Please wait or use a custom fee.</h4>
                 <br><label>Fee</label>
-                <br><select v-model="fee" name="fee" id="fee" required>
-                    <option @click="customDisable()" value="high">High Priority {{ highFee }} sat/Byte</option>
-                    <option @click="customDisable()" value="medium">Medium Priority {{ mediumFee }} sat/Byte</option>
-                    <option @click="customDisable()" value="low">Low Priority {{ lowFee }} sat/Byte</option>
-                    <option @click="customEnable()" value="custom">Custom (Advanced)</option>
-                </select>
-                <br><label v-if="custom == true">Sats per Byte</label>
-                <br><input v-if="custom == true" v-model="customFee" type="integer" placeholder="Sats per Byte">
-
+                <br><input v-if="custom == false" v-model="fee" type="integer" placeholder="Sats per Byte">
+                <div class="checkbox_container">
+                        <input type="checkbox" v-model="custom" name="checkbox" checked>
+                        <label for="checkbox">Use a reccomended fee</label>
+                    </div>
+    
+    
             </div>
         </div>
             <div class="send_button_container">
-                <button @click="addRecipient()" class="btn2">Add another recipient</button>
-                <button @click="continueFn(description, address, balance, fee, customFee)" class="btn">Continue</Button>
+                <button @click="addRecipient()" class="btn2">Add another recipient (disabled)</button>
+                <button @click="continueFn(address, balance, fee)" class="btn">Continue</Button>
             </div>
         </div>        
     </div>
-</template>
+    </template>
 
 
 <script>
 import NavDelayed from '@/components/NavDelayed'
 import DelayWarning from './DelayWarning'
 import store from '../../store.js'
+const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'delayedSend',
@@ -61,61 +61,65 @@ export default {
     DelayWarning
   },
     methods: {
-        continueFn(description, address, balance, fee, customFee){
-            store.commit('setTxId', this.id)
-            store.commit('setTxDescription', description)
-            store.commit('setTxAddress', address)
-            store.commit('setTxBalance', balance)
-            store.commit('setTxFiat', this.fiat_currency)
-            store.commit('setTxDateTime', this.datetime)
-            store.commit('setTxFee', fee)
-            store.commit('setTxCustomFee', customFee)
-            store.commit('setTxStatus', 'unconfirmed')
-            this.transaction = store.getters.getTransaction
-            this.$router.push({ name: 'delayedTransfer' })        
-        },
-        txConstructed(transaction){
-            this.constructed = transaction
-        },
-        addRecipient(){
-            this.multiOutput = true
-        },
-        selectMax(){
-            this.balance = this.delayedBalance
-        },
-        customEnable(){
-            this.custom = true
-        },
-        customDisable(){
-            this.custom = false
-        },
-        closeOut(){
-          this.constructed = false
-      },
-        ackWarning(){
-        this.warning = false
-      },
+        continueFn(address, balance, fee){
+                this.feeEstimate = true
+                this.insufficientFunds = false
+                this.badAddress = false
+                invoke('generate_psbt', {walletname:"delayed", hwnumber: "1", recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
+                    store.commit('setDebug', `Generating PSBT: ${res}`)
+                    if(res.includes("Fee estimation failed.")){
+                        this.feeEstimate = false
+                    }else if(res.includes("Insufficient funds")){
+                        this.insufficientFunds = true
+                    }else if(res.includes("Invalid Bitcoin address")){
+                        this.badAddress = true
+                    }
+                    else{
+                        //TODO CHANGE THIS DESTINATION to sign 1of5
+                        // this.$router.push({name: 'sign1of2'})
+                        console.log('end of the road jack')
+                    }
+                })
+                .catch((e) => {
+                    //eventually need to add front end feedback here rather than send to fatal error screen
+                    store.commit('setDebug', `Error generating PSBT: ${e}`)
+                    if(e.includes("Fee estimation failed.")){
+                        this.feeEstimate = false
+                    }else{
+                        store.commit('setErrorMessage', `Error generating PSBT. Error code: DelayedSend1 Response: ${e}`)
+                        this.$router.push({ name: 'Error' })
+                    }
+    
+                })
+    
+            },
+            addRecipient(){
+                this.multiOutput = true
+            },
+            selectMax(){
+                this.balance = this.delayedBalance
+            },
+            ackWarning(){
+            this.warning = false
+            },
     },
    data(){
      return{
-         id: null,
-         datetime: null,
-         highFee: 12,
-         mediumFee: 5,
-         lowFee: 1,
-         description: '',
-         address: '',
-         balance: '',
-         fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API 
-         fee: 'high',
-         customFee: '',
-         custom: false,
-         transaction: {},
-         constructed: false,
-         multiOutput: false,
-         timeLock: null,
-         warning: null
-     }
+        id: null,
+        datetime: null,
+        description: '',
+        fiat_currency: 'NaN', //this eventually needs to utilize a live exchange API or a global user provided exchange price
+        address: '',
+        balance: null,
+        fee: 0,
+        custom: true,
+        multiOutput: false,
+        checkbox: true,
+        feeEstimate: true,
+        insufficientFunds: false,
+        badAddress: false,
+        warning: null
+}
     //  Need a function to deliver dynamic fee estimates for the above data
  },
  computed:{
@@ -132,8 +136,8 @@ export default {
     }else{this.warning = false}
     //get a new internal id for the bitcoin tx about to be created
     this.id = store.getters.getDelayedTransactions.length + 1
-
-    //set current datetime
+    //
+    this.delayedBalance = store.getters.getDelayedBalance
  }
 
     //  Need a function to deliver dynamic fee estimates for the above data
@@ -141,16 +145,17 @@ export default {
 
 </script>
 
-
-<style>
-  </style>
-
-
-
-
 <style scoped>
 h2{
     font-size:15px;
     line-height: 18px;
+}
+h4{
+    color:red;
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 140%;
 }
   </style>
