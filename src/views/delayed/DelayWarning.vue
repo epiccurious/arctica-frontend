@@ -3,7 +3,7 @@
     <div v-if="timelock == true" class="page">
         <header>
             <h1>Warning! Your Delayed Wallet is currently timelocked.</h1>
-            <h2>Your Delayed Wallet is timelocked for... <br><span class="strong_text">{{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</span></h2> 
+            <h2>Your Delayed Wallet is timelocked for... <br><span class="strong_text">{{ this.delayedYears }} year(s), <br>{{ this.delayedMonths }} month(s), <br>{{ this.delayedDays }} day(s), <br>{{ this.delayedHours }} hour(s), <br>{{ this.delayedMinutes }} minute(s), <br>{{ this.delayedSeconds }} second(s)</span></h2> 
             <h2>Accessing these funds early will involve significant cost.</h2> 
             <h2>For more information, read the <a class="blue_link" href="#">Time Machine Protocol</a>.</h2>
         </header>        
