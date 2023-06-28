@@ -68,7 +68,10 @@ export default {
                 store.commit('setErrorMessage', `Error displaying QR code Error code: DelayedReceive2 Response: ${e}`)
                 this.$router.push({ name: 'Error' })
               })
-            }
+            },
+            ackWarning(){
+        this.warning = false
+      },
     
       },
       data(){
