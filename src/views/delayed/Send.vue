@@ -130,7 +130,6 @@ export default {
  },
  mounted(){
     this.timeLock = store.getters.getTimeLock
-    this.transaction = store.getters.getTransaction
     if(this.timeLock == true){
         this.warning = true
     }else{this.warning = false}
@@ -139,8 +138,6 @@ export default {
     //
     this.delayedBalance = store.getters.getDelayedBalance
  }
-
-    //  Need a function to deliver dynamic fee estimates for the above data
  }
 
 </script>
