@@ -1,8 +1,8 @@
 <template>
     <div class="page">
         <header>
-            <h1>Warning! Your Delayed Wallet is timelocked.</h1>
-            <h2>Your Delayed Wallet is timelocked for... <br><span class="strong_text">1 year 301 days</span></h2> 
+            <h1>Warning! Your Delayed Wallet is currently timelocked.</h1>
+            <h2>Your Delayed Wallet is timelocked for... <br><span class="strong_text">{{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</span></h2> 
             <h2>Accessing these funds early will involve significant cost.</h2> 
             <h2>For more information, read the <a class="blue_link" href="#">Time Machine Protocol</a>.</h2>
         </header>
@@ -30,12 +30,38 @@ export default {
     data(){
         return{
             checkbox: false,
-            
+            delayedYears: 0,
+            delayedMonths: 0,
+            delayedWeeks: 0,
+            delayedDays: 0,
+            delayedHours: 0,
+            delayedMinutes: 0,
+            delayedSeconds: 0      
         }
     },
     methods:{
         warn(){
         },
-    }
+    },
+    mounted(){
+        //calculate delayed_decay1
+        invoke('calculate_decay_time', {file: "delayed_decay1"}).then((res)=>{
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setTimeLock', false)
+            $emit('ackWarning')
+          }
+          else{
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+          }
+        })
+    },
 }
 </script>
