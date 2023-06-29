@@ -49,6 +49,11 @@ export default createStore({
     timeLock: true,
     immediateDecay: false,
     delayedDecay: "zero", //this is a string to allow for a larger set of conditions than a boolean
+    //delayedDecay is looking for either "zero", "one", "two", "three", "four", or "five" as an input.
+    //if it is set to "zero" that means the delayed wallet is timelocked
+    //if it is set to "one" that means the timelock has expired
+    //if it is set to "two", "three", or "four" that means it is at various stages of theshold decay
+    //if it is set to "five" that means that the delayed wallet has fully decayed down to a 1 of 7
     },
     mutations:{//synchronous, alters data in state (commit)
         setDebug(state, value){

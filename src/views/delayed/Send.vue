@@ -75,9 +75,7 @@ export default {
                         this.badAddress = true
                     }
                     else{
-                        //TODO CHANGE THIS DESTINATION to sign 1of5
-                        // this.$router.push({name: 'sign1of2'})
-                        console.log('end of the road jack')
+                        this.$router.push({name: 'sign1of5'})
                     }
                 })
                 .catch((e) => {

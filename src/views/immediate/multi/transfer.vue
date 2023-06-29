@@ -5,9 +5,8 @@
 <div v-else class="page">
     <header>
         <h1>Please insert a Transfer CD</h1>
-        <h2>This is a blank CD(RW) that you will destroy after sending your transaction.</h2>
+        <h2>This is a blank CD that you will destroy after sending your transaction.</h2>
     </header>
-    
     <div class="form_container">
         <form>
             <div class="checkbox_container">
@@ -20,11 +19,7 @@
             <button v-else @click="warn()" class="btn3">Continue</Button>
         </div>
     </div> 
-
-
-
 </div>
-
 </template>
 
 <script>
@@ -40,8 +35,6 @@ export default {
   },
     methods: {
         acknowledge(){
-            //for now the transaction is already signed automatically and we will push the user to the 1of2success screen...in the future probably want to add
-            //a confirmation screen and instead push the user to sign1of2
             this.loading=true
             store.commit('setLoadMessage', 'Exporting PSBT...')
             invoke('export_psbt', {progress: "1of2"}).then((res) => {
@@ -63,9 +56,6 @@ export default {
         currentHW(){
             return store.getters.getcurrentHW
         },
-        psbtFound(){
-            return store.getters.getPSBTFound
-        }
     },
     data(){
         return{
