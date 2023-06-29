@@ -60,6 +60,7 @@ export default {
                 this.$router.push({ name: 'Error' })
               })
             },
+            //currently broken
             displayQR(){
               invoke('display_qr').then((res)=>{
                 store.commit('setDebug', `displaying QR code: ${res}`)

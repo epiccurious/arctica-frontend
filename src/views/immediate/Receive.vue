@@ -28,8 +28,6 @@
 
 <!-- 
 Todo:
--Images are distorted here...why!?
--download QR button not yet implemented
 -Copy Address button works in native webview but not inside tauri -->
 
 <script>
@@ -61,6 +59,7 @@ export default {
             this.$router.push({ name: 'Error' })
           })
         },
+        //this is currently broken
         displayQR(){
           invoke('display_qr').then((res)=>{
             store.commit('setDebug', `displaying QR code: ${res}`)
