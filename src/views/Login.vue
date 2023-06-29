@@ -81,8 +81,15 @@ export default {
                                                     //if config value is set to 2of2, user has completed signing and is ready to broadcast
                                                     if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '2OF2'){
                                                     this.loading = false
-                                                    store.commit('setDebug', `Transfer CD detected: 2OF2, sending user to broadcast screen`)
+                                                    store.commit('setDebug', `Transfer CD detected: 2OF2, sending user to immediate broadcast screen`)
                                                     this.$router.push({ name: 'immediateBroadcast' })
+                                                    break
+                                                    }
+                                                    //else if config value is set to 5of5, user has completed signing and is ready to broadcast
+                                                    else if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '5OF5'){
+                                                    this.loading = false
+                                                    store.commit('setDebug', `Transfer CD detected: 5OF5, sending user to delayed broadcast screen`)
+                                                    this.$router.push({ name: 'delayedBroadcast' })
                                                     break
                                                     }
                                                     //if no valid config value is found assume user is not here to broadcast a signed tx
