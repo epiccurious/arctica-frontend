@@ -38,17 +38,18 @@ export default {
         acknowledge(){
             this.loading=true
             let progressStr = null
-            if(this.delayedDecay == "zero"|| this.delayedDecay == "one"){
-                progressStr = "1of5"
-            }else if(this.delayedDecay == "two"){
-                progressStr = "2of5"
-            }else if(this.delayedDecay == "three"){
-                progressStr = "3of5"
-            }else if(this.delayedDecay == "four"){
-                progressStr = "4of5"
-            }else if(this.delayedDecay == "five"){
-                progressStr = "5of5"
-            }
+                if(this.delayedDecay == "zero"|| this.delayedDecay == "one"){
+                    progressStr = "1of5"
+                }else if(this.delayedDecay == "two"){
+                    progressStr = "2of5"
+                }else if(this.delayedDecay == "three"){
+                    progressStr = "3of5"
+                }else if(this.delayedDecay == "four"){
+                    progressStr = "4of5"
+                }//5of5 condition can only occur here when set by sign5 as the user is normally sent straight to broadcast instead after sign1 in this condition
+                else if(this.delayedDecay == "five"){
+                    progressStr = "5of5"
+                }                
             store.commit('setLoadMessage', 'Exporting PSBT...')
             invoke('export_psbt', {progress: progressStr}).then((res) => {
                 store.commit('setDebug', `Exporting PSBT: ${res}`)

@@ -45,22 +45,11 @@ export default {
     methods: {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
-            let progressStr = null
             this.loading = true
-            //calcuate the progress param needed for sign_funded_psbt
-            if(this.delayedDecay == "zero"|| this.delayedDecay == "one"){
-                progressStr = "1of5"
-            }else if(this.delayedDecay == "two"){
-                progressStr = "2of5"
-            }else if(this.delayedDecay == "three"){
-                progressStr = "3of5"
-            }else if(this.delayedDecay == "four"){
-                progressStr = "4of5"
-            }else if(this.delayedDecay == "five"){
-                progressStr = "5of5"
-            }
+            //artficially set the state of decay here to inform the transfer page 
+            store.commit('setDelayedDecay', 'four')
             //sign the psbt
-            invoke('sign_funded_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString(), progress: progressStr}).then((res) => {
+            invoke('sign_funded_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString(), progress: '4of5'}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Signing PSBT...')
                 //redirect the user to transfer for export psbt
