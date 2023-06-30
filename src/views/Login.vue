@@ -89,7 +89,22 @@ export default {
                                                     else if(String(it[0]).toUpperCase() == 'PSBT' && String(it[1]).toUpperCase() == '5OF5'){
                                                     this.loading = false
                                                     store.commit('setDebug', `Transfer CD detected: 5OF5, sending user to delayed broadcast screen`)
-                                                    this.$router.push({ name: 'delayedBroadcast' })
+                                                    //calculate delayed_decay1
+                                                    invoke('calculate_decay_time', {file: "delayed_decay1"}).then((res)=>{
+                                                        //in the event that the wallet is no longer time locked...
+                                                        console.log("delayed decay response:", res)
+                                                        if(res.includes("decay complete")){
+                                                            //send the user to the broadcast page
+                                                            this.$router.push({ name: 'delayedBroadcast' })
+                                                        }else{
+                                                            //otherwise, in the event the wallet IS still timelocked, send the user to the time machine
+                                                            this.$router.push({ name: 'TimeMachine1' })
+                                                        }
+                                                    }).catch((e)=>{
+                                                        store.commit('setDebug', `error calculating decay time: ${e}`)
+                                                        store.commit('setErrorMessage', `Error calculating decay time: Login10 Response: ${e}`)
+                                                        this.$router.push({ name: 'Error' })  
+                                                    })
                                                     break
                                                     }
                                                     //if no valid config value is found assume user is not here to broadcast a signed tx
