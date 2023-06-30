@@ -53,7 +53,9 @@ export default {
             invoke('export_psbt', {progress: progressStr}).then((res) => {
                 store.commit('setDebug', `Exporting PSBT: ${res}`)
                 this.loading=false
-                this.$router.push({name: '1of5success'})
+                let progress = progressStr + "success"
+                //send the user to the correct success screen after export is complete
+                this.$router.push({name: progress})
             })
             .catch((e) => {
                 store.commit('setDebug', `Error Exporting PSBT: ${e}`)
