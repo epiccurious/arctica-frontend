@@ -54,7 +54,7 @@ export default {
             store.commit('setDebug', `Mounting internal drive ${res}`)
             store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...Make sure you are connected to the internet...')
             //start the bitcoin daemon
-            invoke('start_bitcoind', {reindex: false, network_active: true}).then((res) => {
+            invoke('start_bitcoind', {reindex: false, networkactive: true}).then((res) => {
                 store.commit('setDebug', `Starting the Bitcoin daemon ${res}`)
                 this.$router.push({ name: "Setup51" })
                 })

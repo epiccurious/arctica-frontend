@@ -109,7 +109,7 @@ export default {
     },
     mounted(){
               //start bitcoind with networking disabled
-              invoke('start_bitcoind', {reindex: false, network_active: false})
+              invoke('start_bitcoind', {reindex: false, networkactive: false})
                 store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
         invoke('async_write', {name: 'setupStep', value: this.setupStep}).then(() => {
             })

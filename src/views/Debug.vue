@@ -269,7 +269,7 @@ export default{
             })
         },
         reindexBitcoin(){
-            invoke('start_bitcoind', {reindex: true, network_active: true}).then((res)=>{
+            invoke('start_bitcoind', {reindex: true, networkactive: true}).then((res)=>{
                 store.commit('setDebug', `starting bitcoind and reindexing blocksdb: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `Error reindexing blocksdb: ${e}`)

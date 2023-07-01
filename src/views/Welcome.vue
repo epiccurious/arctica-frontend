@@ -212,7 +212,7 @@ export default {
               store.commit('setDebug', `invoking mount internal ${res}`)
               store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...Make sure you are connected to the internet...')
               //start bitcoind with networking enabled
-              invoke('start_bitcoind', {reindex: false, network_active: true}).then((res)=> {
+              invoke('start_bitcoind', {reindex: false, networkActive: true}).then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
                 this.loading = false
               })
