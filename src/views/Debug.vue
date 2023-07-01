@@ -113,6 +113,8 @@
     <br>
     <button @click="getTransctionHistory()" class="btn">Immediate Transaction History</button>
     <br>
+    <button @click="reindexBitcoin()" class="btn">Reindex Bitcoin</button>
+    <br>
     <button @click="refreshCD()" class="btn">Refresh CD</button>
     <br> 
     <button @click="unpack()" class="btn">Unpack</button>
@@ -265,7 +267,14 @@ export default{
             }).catch((e)=>{
                 store.commit('setDebug', `Error getting median blocktime: ${e}`)
             })
-        }
+        },
+        reindexBitcoin(){
+            invoke('start_bitcoind', {reindex: true, network_active: true}).then((res)=>{
+                store.commit('setDebug', `starting bitcoind and reindexing blocksdb: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `Error reindexing blocksdb: ${e}`)
+            })
+        },
     },
     computed:{
         debug(){

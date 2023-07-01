@@ -85,7 +85,7 @@
       },
       mounted(){
               //start bitcoind with networking disabled
-              invoke('start_bitcoind_network_off')
+              invoke('start_bitcoind', {reindex: false, network_active: false})
                 store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
 
           }

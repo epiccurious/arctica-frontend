@@ -65,7 +65,7 @@ export default {
         this.loading = true
         store.commit('setLoadMessage', 'starting bitcoin daemon...')
         //start bitcoind with networking disabled
-        invoke('start_bitcoind_network_off')
+        invoke('start_bitcoind', {reindex: false, network_active: false})
         store.commit('setDebug', `starting bitcoin daemon with networking disabled:`)
         store.commit('setLoadMessage', 'Copying Setup CD...')
         //copy everything from the setup CD to ramdisk

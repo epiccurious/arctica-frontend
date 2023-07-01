@@ -87,7 +87,7 @@ export default {
         invoke('unpack').then((res) => {
             store.commit('setDebug', `unpacked sensitive info ${res}`)
             //start bitcoind with networking disabled
-            invoke('start_bitcoind_network_off')
+            invoke('start_bitcoind', {reindex: false, network_active: false})
                 store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
                 store.commit('setLoadMessage', `Loading immediate wallet...`)
                 //load immediate wallet

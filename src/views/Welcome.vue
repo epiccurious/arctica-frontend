@@ -50,6 +50,7 @@ export default {
   },
     methods: {
         login(){
+            //normal login path, takes the user to the main dashboard
             if(this.decrypted == true && this.currentHW == 1){
               store.commit('setDebug', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
               this.loading = true
@@ -211,7 +212,7 @@ export default {
               store.commit('setDebug', `invoking mount internal ${res}`)
               store.commit('setLoadMessage', 'Syncing Bitcoin Blockchain...Make sure you are connected to the internet...')
               //start bitcoind with networking enabled
-              invoke('start_bitcoind').then((res)=> {
+              invoke('start_bitcoind', {reindex: false, network_active: true}).then((res)=> {
                 store.commit('setDebug', `starting bitcoin daemon ${res}`)
                 this.loading = false
               })
