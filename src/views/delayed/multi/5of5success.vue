@@ -27,21 +27,13 @@
         },
         mounted(){
             //note: only necessary to packup on HW 1
-            invoke('stop_bitcoind').then((res)=>{
+            invoke('stop_bitcoind').then((res) =>{
                 store.commit('setDebug', `stopping bitcoin daemon ${res}`)
-                invoke('packup').then((res) =>{
-                    store.commit('setDebug', `packing up sensitive ${res}`)
-                    this.loading=false
-                }).catch((e)=>{
-                    store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
-                    store.commit('setErrorMessage', `Error with stopping bitcoin daemon Error Code: 5of5success-1 Response: ${e}`)
-                    this.$router.push({ name:'Error' })
-                })
             }).catch((e)=>{
-                store.commit('setDebug', `error packing up sensitive ${e}`)
-                store.commit('setErrorMessage', `Error with packing up sensitive: 5of5success-2 Response: ${e}`)
+                store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
+                store.commit('setErrorMessage', `Error with stopping bitcoin daemon Error Code: 2of5success-1 Response: ${e}`)
                 this.$router.push({ name:'Error' })
-            })
+        })
         }, 
         data(){
             return{

@@ -46,17 +46,21 @@ export default {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
             this.loading = true
-            //artficially set the state of decay here to inform the transfer page 
-            store.commit('setDelayedDecay', 'four')
-            //sign the psbt
-            invoke('sign_funded_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString(), progress: '4of5'}).then((res) => {
+            invoke('sign_processed_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString(), progress: "4of5"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
-                store.commit('setLoadMessage', 'Signing PSBT...')
-                //redirect the user to transfer for export psbt
-                this.$router.push({ name: 'delayedTransfer' })
+                store.commit('setLoadMessage', 'Refreshing Transfer CD...')
+                invoke('export_psbt', {progress: "4of5"}).then((res) => {
+                    store.commit('setDebug', `Exporting PSBT: ${res}`)
+                    this.loading=false
+                    this.$router.push({name: '4of5success'})
+                }).catch((e)=>{
+                    store.commit('setDebug', `error exporting PSBT: ${e}`)
+                    store.commit('setErrorMessage', `Error exporting PSBT Error Code: sign4of5-4 Response: ${e}`)
+                    this.$router.push({ name:'Error' })
+                })
             }).catch((e)=>{
                 store.commit('setDebug', `error signing PSBT: ${e}`)
-                store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign4of5-1 Response: ${e}`)
+                store.commit('setErrorMessage', `Error Signing PSBT Error Code: sign4of5-3 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })   
         },
@@ -80,23 +84,42 @@ export default {
         },
     },
     mounted(){
-        store.commit('setLoadMessage', 'Decoding PSBT...')
-        //this obtains the fee
-        invoke('decode_funded_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
-            console.log('decoding funded psbt')
-            store.commit('setDebug', `decoded psbt: ${res}`)
-            const parts = res.split(",")
-            this.address = parts[0].split("=")[1].trim()
-            this.amountString = parts[1].split("=")[1].trim()
-            this.amount = parseFloat(this.amountString)/100000000 //convert from sats to BTC
-            this.feeString = parts[2].split("=")[1].trim()
-            this.fee = parseFloat(this.feeString)
-            console.log("response:", res)
-            this.loading = false
-        }).catch((e) => {
-                store.commit('setDebug', `error decoding funded PSBT: ${e}`)
-                store.commit('setErrorMessage', `Error Decoding PSBT Error Code: sign4of5-2 Response: ${e}`)
+    //unpack
+    store.commit('setLoadMessage', 'Unpacking sensitive info...')
+        invoke('unpack').then((res) => {
+            store.commit('setDebug', `unpacked sensitive info ${res}`)
+            //start bitcoind with networking disabled
+            invoke('start_bitcoind', {reindex: false, networkactive: false})
+                store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
+                store.commit('setLoadMessage', `Loading delayed wallet...`)
+                //load immediate wallet
+                invoke('load_wallet', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
+                    store.commit('setDebug', `loading delayed wallet: ${res}`)
+                    store.commit('setLoadMessage', 'Decoding PSBT...')
+                    invoke('decode_processed_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
+                        console.log('decoding raw tx')
+                        store.commit('setDebug', `decoded psbt: ${res}`)
+                        const parts = res.split(",")
+                        this.address = parts[0].split("=")[1].trim()
+                        this.amountString = parts[1].split("=")[1].trim()
+                        this.amount = parseFloat(this.amountString)/100000000 //convert from sats to BTC
+                        this.feeString = parts[2].split("=")[1].trim()
+                        this.fee = parseFloat(this.feeString)
+                        console.log("response:", res)
+                        this.loading = false
+                }).catch((e) => {
+                        store.commit('setDebug', `error decoding PSBTs: ${e}`)
+                })
+            }).catch((e)=>{
+                store.commit('setDebug', `error loading delayed wallet ${e}`)
+                store.commit('setErrorMessage', `Error Loading Delayed Wallet Error Code: sign4of5-2 Response: ${e}`)
                 this.$router.push({ name:'Error' })
+            })
+        })     
+        .catch((e) => {
+            store.commit('setDebug', `error unpacking sensitive: ${e}`)
+            store.commit('setErrorMessage', `Error unpacking sensitive Error code: sign4of5-1 Response: ${e}`)
+            this.$router.push({ name:'Error' })
         })
  }
 }
