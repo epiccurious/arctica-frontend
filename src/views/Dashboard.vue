@@ -42,7 +42,7 @@ can be removed once immediate wallet is functional -->
         <router-link class="wallet_container" :to="{ name: 'delayed' }">
           <div class="wallet_container_left">
           <h2>Delayed Wallet</h2>
-          <h3 v-if="delayedDecay == 'zero'" class="time_decay">5 HWs + Time Machine</h3>
+          <h3 v-if="delayedDecay == 'zero'" class="time_decay">5 HWs + Time Lock</h3>
           <h3 v-else-if="delayedDecay == 'one'" class="time_decay">5 HWs</h3>
           <h3 v-else-if="delayedDecay == 'two'" class="time_decay">4 HWs</h3>
           <h3 v-else-if="delayedDecay == 'three'" class="time_decay">3 HWs</h3>
