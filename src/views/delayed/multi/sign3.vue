@@ -87,10 +87,12 @@ export default {
     //unpack
     store.commit('setLoadMessage', 'Unpacking sensitive info...')
         invoke('unpack').then((res) => {
+            store.commit('setLoadMessage', 'Starting Bitcoin Daemon...')
             store.commit('setDebug', `unpacked sensitive info ${res}`)
+            store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
             //start bitcoind with networking disabled
-            invoke('start_bitcoind', {reindex: false, networkactive: false})
-                store.commit('setDebug', `starting bitcoin daemon with networking disabled`)
+            invoke('start_bitcoind', {reindex: false, networkactive: false}).then((res)=>{
+                store.commit('setDebug', `starting Bitcoin Daemon: ${res}`)
                 store.commit('setLoadMessage', `Loading delayed wallet...`)
                 //load immediate wallet
                 invoke('load_wallet', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
@@ -115,6 +117,11 @@ export default {
                 store.commit('setErrorMessage', `Error Loading Delayed Wallet Error Code: sign3of5-2 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
+        }).catch((e) => {
+            store.commit('setDebug', `error starting bitcoin daemon: ${e}`)
+            store.commit('setErrorMessage', `Error starting bitcoin daemon Error Code: sign3of5-5 Response: ${e}`)
+            this.$router.push({ name:'Error' })
+        })
         })     
         .catch((e) => {
             store.commit('setDebug', `error unpacking sensitive: ${e}`)
