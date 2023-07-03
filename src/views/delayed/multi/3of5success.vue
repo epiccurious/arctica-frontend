@@ -29,6 +29,7 @@
             //note: only necessary to packup on HW 1
             invoke('stop_bitcoind').then((res) =>{
                 store.commit('setDebug', `stopping bitcoin daemon ${res}`)
+                this.loading = false
             }).catch((e)=>{
                 store.commit('setDebug', `error stopping bitcoin daemon: ${e}`)
                 store.commit('setErrorMessage', `Error with stopping bitcoin daemon Error Code: 2of5success-1 Response: ${e}`)
