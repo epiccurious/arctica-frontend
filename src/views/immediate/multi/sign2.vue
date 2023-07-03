@@ -23,7 +23,6 @@
 
         <div class="horizontal_btn_container">
             <button @click="sign()" class="btn"><img src="@/assets/checkmark_button.png">Approve</button>
-            <button @click="discard()" class="btn2">Discard (Disabled)</button>
         </div>
         
 
