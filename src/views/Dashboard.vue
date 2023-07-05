@@ -291,7 +291,15 @@ export default {
     delayedDays: 0,
     delayedHours: 0,
     delayedMinutes: 0,
-    delayedSeconds: 0
+    delayedSeconds: 0,
+    delayedLockYears: 0,
+    delayedLockMonths: 0,
+    delayedLockWeeks: 0,
+    delayedLockDays: 0,
+    delayedLockHours: 0,
+    delayedLockMinutes: 0,
+    delayedLockSeconds: 0
+
   }
  }
     }
