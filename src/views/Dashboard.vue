@@ -145,7 +145,7 @@ export default {
           }).catch((e)=>{
           store.commit('setDebug', `error getting immediate wallet balance ${e}`)
             })
-        //calculate delayed_decay1
+        //calculate delayed_decay1 which is the timelock
         invoke('calculate_decay_time', {file: "delayed_decay1"}).then((res)=>{
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
@@ -154,23 +154,16 @@ export default {
           }
           else{
             const parts = res.split(",")
-            this.delayedYears = parts[0].split("=")[1].trim()
             this.delayedLockYears = parts[0].split("=")[1].trim()
-            this.delayedMonths = parts[1].split("=")[1].trim()
             this.delayedLockMonths = parts[1].split("=")[1].trim()
-            this.delayedWeeks = parts[2].split("=")[1].trim()
             this.delayedLockWeeks = parts[2].split("=")[1].trim()
-            this.delayedDays = parts[3].split("=")[1].trim()
             this.delayedLockDays = parts[3].split("=")[1].trim()
-            this.delayedHours = parts[4].split("=")[1].trim()
             this.delayedLockHours = parts[4].split("=")[1].trim()
-            this.delayedMinutes = parts[5].split("=")[1].trim()
             this.delayedLockMinutes = parts[5].split("=")[1].trim()
-            this.delayedSeconds = parts[6].split("=")[1].trim()
             this.delayedLockSeconds = parts[6].split("=")[1].trim()
           }
         })
-        //calculate delayed_decay2
+        //calculate delayed_decay2 which is the first threshold decay
         if(this.delayedDecay == 'one'){
           invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
           console.log("delayed decay response:", res)
@@ -190,7 +183,7 @@ export default {
           }
         })
         }
-        //calculate delayed_decay3
+        //calculate delayed_decay3 which is the second threshold decay
         if(this.delayedDecay == 'two'){
           invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
           console.log("delayed decay response:", res)
@@ -210,7 +203,7 @@ export default {
           }
         })
         }
-        //calculate delayed decay4
+        //calculate delayed decay4 which is the third threshold decay
         if(this.delayedDecay == 'three'){
           invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
           console.log("delayed decay response:", res)
@@ -230,7 +223,7 @@ export default {
           }
         })
         }
-        //calculate delayed decay5
+        //calculate delayed decay5 which is the fourth threshold decay
         if(this.delayedDecay == 'four'){
           invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
           console.log("delayed decay response:", res)
