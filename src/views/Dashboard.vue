@@ -167,7 +167,7 @@ export default {
           }
         })
         //calculate delayed_decay2 which is the first threshold decay
-        if(this.delayedDecay == 'one'){
+        if(this.delayedDecay == 'zero' || this.delayedDecay == 'one'){
           invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
