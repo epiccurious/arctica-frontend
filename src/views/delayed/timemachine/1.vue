@@ -6,6 +6,7 @@
         <h2>This information will be released to anonymous Time Machine Operators.</h2> 
         <h2>Additionally, this process will take several weeks and cost you approximately $20,000.</h2>
         <h4>Are you sure you wish to proceed?</h4>
+        <h5>Alpha testers please note that this is currently only a time machine simulation that will sign for you automatically to break the time lock early</h5>
     </header>
     
     <div class="form_container">
@@ -18,7 +19,8 @@
         <div class="btn_container"> 
             <button v-if="checkbox" @click="acknowledge()" class="btn">Release my information</Button>
             <button v-else @click="warn()" class="btn3">Release my information</Button>
-            <button @click="goBack()" class="btn2">Nevermind</button>
+            <button @click="goBack()" class="btn2">Go Back</button>
+            <button @click="skip()" class="btn2">Skip - Debug</button>
         </div>
     </div> 
 
@@ -35,7 +37,7 @@ export default {
     },
     methods: {
         acknowledge(){
-            this.$router.push({ name: 'TimeMachine2' })
+            // this.$router.push({ name: 'TimeMachine2' })
         },
         warn(){
         },

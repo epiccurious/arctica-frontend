@@ -54,10 +54,10 @@ can be removed once immediate wallet is functional -->
             <span class="carat"><img src="@/assets/carat_right.png"/></span>
           </div> 
         </router-link> 
-          <div v-if="this.delayedDecayComplete == false && delayedDecay == 'zero'" class="decay_timer">
-            <h2 class="time_decay">Time Lock Expires in: {{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</h2>
+          <div class="decay_timer">
+            <h2 class="time_decay">Time Lock Expires in: {{ this.delayedLockYears }} year(s), {{ this.delayedLockMonths }} month(s), {{ this.delayedLockDays }} day(s), {{ this.delayedLockHours }} hour(s), {{ this.delayedLockMinutes }} minute(s), {{ this.delayedLockSeconds }} second(s)</h2>
           </div>
-          <div v-else-if="this.delayedDecayComplete == false && delayedDecay != 'zero'" class="decay_timer">
+          <div v-if="this.delayedDecayComplete == false" class="decay_timer">
             <h2 class="time_decay">Time until next decay: {{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</h2>
           </div>
           <div v-else class="decay_timer">
@@ -155,12 +155,19 @@ export default {
           else{
             const parts = res.split(",")
             this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedLockYears = parts[0].split("=")[1].trim()
             this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedLockMonths = parts[1].split("=")[1].trim()
             this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedLockWeeks = parts[2].split("=")[1].trim()
             this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedLockDays = parts[3].split("=")[1].trim()
             this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedLockHours = parts[4].split("=")[1].trim()
             this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedLockMinutes = parts[5].split("=")[1].trim()
             this.delayedSeconds = parts[6].split("=")[1].trim()
+            this.delayedLockSeconds = parts[6].split("=")[1].trim()
           }
         })
         //calculate delayed_decay2
