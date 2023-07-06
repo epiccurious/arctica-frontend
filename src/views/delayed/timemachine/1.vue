@@ -17,10 +17,11 @@
             </div>
         </form>
         <div class="btn_container"> 
+            <button @click="skip()" class="btn">Time Machine Simulator (debug)</button>
             <button v-if="checkbox" @click="acknowledge()" class="btn">Release my information</Button>
             <button v-else @click="warn()" class="btn3">Release my information</Button>
             <button @click="goBack()" class="btn2">Go Back</button>
-            <button @click="skip()" class="btn2">Time Machine Simulate - Debug</button>
+            
         </div>
     </div> 
 
@@ -45,10 +46,18 @@ export default {
             this.$router.push({ name: 'dashboard' })
         },
         skip(){
-            //need to send the user to the time machine simulator here
+            //TODO
+            //this.$router.push({ name: 'TimeMachineSimulator' })
+            //this page does not exist yet
+
+            //at the simulator page copy the psbt from the transfer CD:
+            //and then prompt the user to insert the setup CD and copy the CD to ramdisk
+
+            //then:
             //invoke(time_machine_simulator)
-            //OR maybe just have this button create the wallets and sign the psbt and then take the user to the broadcast screen from here. 
-            //if we push to delayedBroadcast, make sure the output of time_machine_simulator ends up in the expected location!
+            //check the bitcoin_wallet.rs file for pseudo code
+
+            //once signing is fully complete:
             //this.$routerpush({ name: 'delayedBroadcast' })
 
         }
