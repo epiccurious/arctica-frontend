@@ -150,12 +150,15 @@ export default {
             })
         //calculate delayed_decay1 which is the timelock
         invoke('calculate_decay_time', {file: "delayed_decay1"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay1(timelock): ${res}`)
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay1 complete, time lock expired')
             store.commit('setDelayedDecay', 'one')
             store.commit('setTimeLock', false)
           }
           else{
+            store.commit('setDebug', 'delayed_decay1 incomplete')
             const parts = res.split(",")
             this.delayedLockYears = parts[0].split("=")[1].trim()
             this.delayedLockMonths = parts[1].split("=")[1].trim()
@@ -169,12 +172,15 @@ export default {
         //calculate delayed_decay2 which is the first threshold decay
         if(this.delayedDecay == 'zero' || this.delayedDecay == 'one'){
           invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay2: ${res}`)
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay2 complete, delayed thresh 4')
             store.commit('setDelayedDecay', 'two')
             store.commit('setTimeLock', false)
           }
           else{
+            store.commit('setDebug', 'delayed_decay2 incomplete')
             const parts = res.split(",")
             this.delayedYears = parts[0].split("=")[1].trim()
             this.delayedMonths = parts[1].split("=")[1].trim()
@@ -189,12 +195,15 @@ export default {
         //calculate delayed_decay3 which is the second threshold decay
         if(this.delayedDecay == 'two'){
           invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay3: ${res}`)
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay3 complete, delayed thresh 3')
             store.commit('setDelayedDecay', 'three')
             store.commit('setTimeLock', false)
           }
           else{
+            store.commit('setDebug', 'delayed_decay3 incomplete')
             const parts = res.split(",")
             this.delayedYears = parts[0].split("=")[1].trim()
             this.delayedMonths = parts[1].split("=")[1].trim()
@@ -209,12 +218,15 @@ export default {
         //calculate delayed decay4 which is the third threshold decay
         if(this.delayedDecay == 'three'){
           invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay4: ${res}`)
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay4 complete, delayed thresh 2')
             store.commit('setDelayedDecay', 'four')
             store.commit('setTimeLock', false)
           }
           else{
+            store.commit('setDebug', 'delayed_decay4 incomplete')
             const parts = res.split(",")
             this.delayedYears = parts[0].split("=")[1].trim()
             this.delayedMonths = parts[1].split("=")[1].trim()
@@ -229,13 +241,16 @@ export default {
         //calculate delayed decay5 which is the fourth threshold decay
         if(this.delayedDecay == 'four'){
           invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay5: ${res}`)
           console.log("delayed decay response:", res)
           if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay5 complete, delayed thresh 1')
             store.commit('setDelayedDecay', 'five')
             this.delayedDecayComplete = true
             store.commit('setTimeLock', false)
           }
           else{
+            store.commit('setDebug', 'delayed_decay5 incomplete')
             const parts = res.split(",")
             this.delayedYears = parts[0].split("=")[1].trim()
             this.delayedMonths = parts[1].split("=")[1].trim()
