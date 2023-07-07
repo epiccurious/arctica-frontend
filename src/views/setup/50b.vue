@@ -73,17 +73,6 @@ export default {
         warn(){
         }
     },
-    mounted(){
-        //enable networking so that the user may connect to a network
-        invoke('enable_networking').then((res) => {
-                store.commit('setDebug', `Enabling Networking: ${res}`)
-                })
-                .catch((e) => {
-                    store.commit('setDebug', `error enabling networking: ${e}`)
-                    store.commit('setErrorMessage', `Error enabling networking Error code: Setup50b-4 Response: ${e}`)
-                    this.$router.push({ name:'Error' })
-                })
-    },
     computed:{
         btcCoreHealthy(){
             return store.getters.getBTCCoreHealthy
@@ -97,6 +86,15 @@ export default {
         }
     },
     mounted(){
+        //enable networking so that the user may connect to a network
+        invoke('enable_networking').then((res) => {
+        store.commit('setDebug', `Enabling Networking: ${res}`)
+        })
+        .catch((e) => {
+            store.commit('setDebug', `error enabling networking: ${e}`)
+            store.commit('setErrorMessage', `Error enabling networking Error code: Setup50b-4 Response: ${e}`)
+            this.$router.push({ name:'Error' })
+        })
     },
 }
 </script>
