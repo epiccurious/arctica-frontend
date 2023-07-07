@@ -55,13 +55,13 @@ can be removed once immediate wallet is functional -->
           </div> 
         </router-link> 
           <div v-if="this.delayedDecay == 'zero'" class="decay_timer">
-            <h2 class="time_decay">Time Lock Expires in: {{ this.delayedLockYears }} year(s), {{ this.delayedLockMonths }} month(s), {{ this.delayedLockDays }} day(s), {{ this.delayedLockHours }} hour(s), {{ this.delayedLockMinutes }} minute(s), {{ this.delayedLockSeconds }} second(s)</h2>
+            <h2 class="time_decay">Time Lock Expires in: {{ this.delayedLockYears }} year(s), {{ this.delayedLockMonths }} month(s), {{ this.delayedLockWeeks }} week(s), {{ this.delayedLockDays }} day(s), {{ this.delayedLockHours }} hour(s), {{ this.delayedLockMinutes }} minute(s), {{ this.delayedLockSeconds }} second(s)</h2>
           </div>
           <div v-else class="decay_timer">
             <h2 class="time_decay">Time Lock Unlocked!</h2>
           </div>
           <div v-if="this.delayedDecayComplete == false" class="decay_timer">
-            <h2 class="time_decay">Time until next decay: {{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</h2>
+            <h2 class="time_decay">Time until next decay: {{ this.delayedYears }} year(s), {{ this.delayedMonths }} month(s), {{ this.delayedWeeks }} week(s), {{ this.delayedDays }} day(s), {{ this.delayedHours }} hour(s), {{ this.delayedMinutes }} minute(s), {{ this.delayedSeconds }} second(s)</h2>
           </div>
           <div v-else class="decay_timer">
             <h2 class="time_decay">Decay Complete</h2>
