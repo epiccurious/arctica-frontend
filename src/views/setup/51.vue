@@ -23,10 +23,10 @@ export default {
     methods: {
         acknowledge(){
             this.$router.push({ name: 'welcome' })
-
-            store.commit('setDuressSetup', false)
-            store.commit('setRecoverySetup', false)
-            store.commit('setTripwireSetup', false)
+            //TODO set these two false when building them out and testing
+            store.commit('setDuressSetup', true)
+            store.commit('setRecoverySetup', true)
+            store.commit('setTripwireSetup', true)
         },
 
     },
