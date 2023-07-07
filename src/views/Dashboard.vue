@@ -34,7 +34,7 @@ can be removed once immediate wallet is functional -->
             </div>
         </router-link> 
         <div v-if="this.immediateDecayComplete == false" class="decay_timer">
-            <h2 class="time_decay">Time until next decay: {{ this.immediateYears }} year(s), {{ this.immediateMonths }} month(s), {{ this.immediateDays }} day(s), {{ this.immediateHours }} hour(s), {{ this.immediateMinutes }} minute(s), {{ this.immediateSeconds }} second(s)</h2>
+            <h2 class="time_decay">Time until next decay: {{ this.immediateYears }} year(s), {{ this.immediateMonths }} month(s), {{ this.immediateWeeks }} week(s), {{ this.immediateDays }} day(s), {{ this.immediateHours }} hour(s), {{ this.immediateMinutes }} minute(s), {{ this.immediateSeconds }} second(s)</h2>
           </div>
           <div v-else class="decay_timer">
             <h2 class="time_decay">Decay Complete</h2>
