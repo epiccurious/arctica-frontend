@@ -111,7 +111,7 @@
     <br>
     <button @click="getBlockChainInfo()" class="btn">Get Blockchain Info</button>
     <br>
-    <button @click="getTransctionHistory()" class="btn">Immediate Transaction History</button>
+    <button @click="startBitcoinOffline()" class="btn">Start Bitcoind Offline</button>
     <br>
     <button @click="reindexBitcoin()" class="btn">Reindex Bitcoin</button>
     <br>
@@ -273,6 +273,13 @@ export default{
                 store.commit('setDebug', `starting bitcoind and reindexing blocksdb: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `Error reindexing blocksdb: ${e}`)
+            })
+        },
+        startBitcoinOffline(){
+            invoke('start_bitcoind', {reindex: false, networkactive: false}).then((res)=>{
+                store.commit('setDebug', `starting bitcoind with network disabled: ${res}`)
+            }).catch((e)=>{
+                store.commit('setDebug', `Error starting bitcoind with network disabled: ${e}`)
             })
         },
     },
