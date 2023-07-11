@@ -221,6 +221,7 @@ export default {
         }
         })
         //calculate delayed_decay3 (2nd threshold decay)
+        if(this.timeSet == false){
           invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
           store.commit('setDebug', `calculating decay time for delayed_decay3: ${res}`)
           console.log("delayed decay response:", res)
@@ -242,7 +243,7 @@ export default {
             this.timeSet = true
           }
         })
-        
+        }
         //calculate delayed decay4 (3rd threshold decay)
         if(this.timeSet == false){
           invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
