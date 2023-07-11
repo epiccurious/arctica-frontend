@@ -112,8 +112,10 @@ export default {
  immediateDecay(){
   return store.getters.getImmediateDecay
  },
- delayedDecay(){
-  return store.getters.getDelayedDecay
+ delayedDecay:{
+    get(){
+      return store.getters.getDelayedDecay
+    }
  },
  hwNumber:{
             get(){
