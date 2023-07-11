@@ -225,7 +225,7 @@ export default{
         },
         packup(){
             //this is a debug function used to packup the contents of /mnt/ramdisk/sensitive into an encrypted tarball
-            invoke('packup', {hwnumber: this.hwNumber.to_string()}).then((res)=>{
+            invoke('packup', {hwnumber: this.hwNumber.toString()}).then((res)=>{
                 store.commit('setDebug', `packing up tarball: ${res}`)
             }).catch((e)=>{
                 store.commit('setDebug', `error packing up tarball ${e}`)

@@ -32,7 +32,7 @@
             //note: only necessary to packup on HW 1
             invoke('stop_bitcoind').then((res)=>{
                 store.commit('setDebug', `stopping bitcoin daemon ${res}`)
-                invoke('packup', {hwnumber: this.currentHW.to_string()}).then((res) =>{
+                invoke('packup', {hwnumber: this.currentHW.toString()}).then((res) =>{
                     store.commit('setDebug', `packing up sensitive ${res}`)
                     this.loading=false
                 }).catch((e)=>{

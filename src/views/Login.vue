@@ -64,7 +64,7 @@ export default {
                                 invoke('load_wallet', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res) =>{
                                     store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
                                     store.commit('setLoadMessage', 'Packing up sensitive info...')
-                                    invoke('packup', {hwnumber: this.currentHW.to_string()}).then((res) => {
+                                    invoke('packup', {hwnumber: this.currentHW.toString()}).then((res) => {
                                         store.commit('setDebug', `successfully packed up: ${res}`)
                                         store.commit('setDebug', 'Login succesful, checking CD for psbt')
                                         store.commit('setLoadMessage', 'checking for PSBT...')
