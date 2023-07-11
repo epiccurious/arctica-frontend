@@ -315,7 +315,6 @@ export default {
     delayedLockHours: 0,
     delayedLockMinutes: 0,
     delayedLockSeconds: 0,
-    delayedStatus: 0
 
   }
  }

@@ -26,7 +26,6 @@
         computed:{
         },
         mounted(){
-            //note: only necessary to packup on HW 1
             invoke('stop_bitcoind').then((res) =>{
                 store.commit('setDebug', `stopping bitcoin daemon ${res}`)
                 this.loading = false

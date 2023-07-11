@@ -64,7 +64,7 @@ export default {
                     store.commit('setLoadMessage', 'Loading delayed wallet...')
                     invoke('load_wallet', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res) =>{
                         store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
-                        invoke('packup').then((res) => {
+                        invoke('packup', {hwnumber: this.currentHW.to_string()}).then((res) => {
                           store.commit('setDebug', `successfully packed up: ${res}`)
                           this.loading = false
                           store.commit('setDebug', 'Login button pushed Sending user to dashboard')

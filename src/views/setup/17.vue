@@ -23,6 +23,11 @@
     components: {
       Loader,
     },
+    computed:{
+        currentHW(){
+            return store.getters.getCurrentHW
+        }
+    },
       mounted(){
         this.loading = true
         store.commit('setLoadMessage', 'Copying the setup CD...')
@@ -52,7 +57,7 @@
                                                 //update setupstep state on Hardware Wallet
                                                 invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
                                                     store.commit('setDebug', `config set to new values setupStep: ${this.setupStep} res:${res}`)
-                                                    invoke('packup').then((res) =>{
+                                                    invoke('packup', {hwnumber: this.currentHW.to_string()}).then((res) =>{
                                                     store.commit('setDebug', `packing up sensitive... ${res}`)
                                                     this.loading = false
                                                     }).catch((e)=>{

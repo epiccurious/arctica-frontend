@@ -81,7 +81,7 @@ export default {
                     store.commit('setDebug', `creating descriptors ${res}`)
                     store.commit('setLoadMessage', 'Packing up sensitive data...')
                     //make sure sensitive contains everything it should before packup()
-                    invoke('packup').then((res) => {
+                    invoke('packup', {hwnumber: this.currentHW.to_string()}).then((res) => {
                         store.commit('setDebug', `packing up sensitive info ${res}`)
                         invoke('eject_cd').then((res)=>{
                             store.commit('setDebug', `ejecting CD: ${res}`)
