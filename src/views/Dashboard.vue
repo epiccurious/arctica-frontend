@@ -158,6 +158,7 @@ export default {
             store.commit('setDebug', 'delayed_decay1 complete, time lock expired')
             store.commit('setDelayedDecay', 'one')
             store.commit('setTimeLock', false)
+            this.delayedStatus = 1
           }
           else{
             store.commit('setDebug', 'delayed_decay1 incomplete')
@@ -172,7 +173,7 @@ export default {
           }
         })
         //calculate delayed_decay2 which is the first threshold decay
-        if(this.delayedDecay == 'zero' || this.delayedDecay == 'one'){
+        if(this.delayedStatus == 1 || this.delayedStatus == 0){
           invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
           store.commit('setDebug', `calculating decay time for delayed_decay2: ${res}`)
           console.log("delayed decay response:", res)
@@ -180,6 +181,7 @@ export default {
             store.commit('setDebug', 'delayed_decay2 complete, delayed thresh 4')
             store.commit('setDelayedDecay', 'two')
             store.commit('setTimeLock', false)
+            this.delayedStatus = 2
           }
           else{
             store.commit('setDebug', 'delayed_decay2 incomplete')
@@ -195,7 +197,7 @@ export default {
         })
         }
         //calculate delayed_decay3 which is the second threshold decay
-        if(this.delayedDecay == 'two'){
+        if(this.delayedStatus == 2){
           invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
           store.commit('setDebug', `calculating decay time for delayed_decay3: ${res}`)
           console.log("delayed decay response:", res)
@@ -203,6 +205,7 @@ export default {
             store.commit('setDebug', 'delayed_decay3 complete, delayed thresh 3')
             store.commit('setDelayedDecay', 'three')
             store.commit('setTimeLock', false)
+            this.delayedStatus = 3
           }
           else{
             store.commit('setDebug', 'delayed_decay3 incomplete')
@@ -218,7 +221,7 @@ export default {
         })
         }
         //calculate delayed decay4 which is the third threshold decay
-        if(this.delayedDecay == 'three'){
+        if(this.delayedStatus == 3){
           invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
           store.commit('setDebug', `calculating decay time for delayed_decay4: ${res}`)
           console.log("delayed decay response:", res)
@@ -226,6 +229,7 @@ export default {
             store.commit('setDebug', 'delayed_decay4 complete, delayed thresh 2')
             store.commit('setDelayedDecay', 'four')
             store.commit('setTimeLock', false)
+            this.delayedStatus = 4
           }
           else{
             store.commit('setDebug', 'delayed_decay4 incomplete')
@@ -241,7 +245,7 @@ export default {
         })
         }
         //calculate delayed decay5 which is the fourth threshold decay
-        if(this.delayedDecay == 'four'){
+        if(this.delayedStatus == 4){
           invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
           store.commit('setDebug', `calculating decay time for delayed_decay5: ${res}`)
           console.log("delayed decay response:", res)
@@ -250,6 +254,7 @@ export default {
             store.commit('setDelayedDecay', 'five')
             this.delayedDecayComplete = true
             store.commit('setTimeLock', false)
+            this.delayedStatus = 5
           }
           else{
             store.commit('setDebug', 'delayed_decay5 incomplete')
@@ -315,7 +320,8 @@ export default {
     delayedLockDays: 0,
     delayedLockHours: 0,
     delayedLockMinutes: 0,
-    delayedLockSeconds: 0
+    delayedLockSeconds: 0,
+    delayedStatus: 0
 
   }
  }
