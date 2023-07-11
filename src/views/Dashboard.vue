@@ -150,126 +150,7 @@ export default {
           }).catch((e)=>{
           store.commit('setDebug', `error getting immediate wallet balance ${e}`)
             })
-        //calculate delayed_decay1 which is the timelock
-        invoke('calculate_decay_time', {file: "delayed_decay1"}).then((res)=>{
-          store.commit('setDebug', `calculating decay time for delayed_decay1(timelock): ${res}`)
-          console.log("delayed decay response:", res)
-          if(res.includes("decay complete")){
-            store.commit('setDebug', 'delayed_decay1 complete, time lock expired')
-            store.commit('setDelayedDecay', 'one')
-            store.commit('setTimeLock', false)
-            this.delayedStatus = 1
-          }
-          else{
-            store.commit('setDebug', 'delayed_decay1 incomplete')
-            const parts = res.split(",")
-            this.delayedLockYears = parts[0].split("=")[1].trim()
-            this.delayedLockMonths = parts[1].split("=")[1].trim()
-            this.delayedLockWeeks = parts[2].split("=")[1].trim()
-            this.delayedLockDays = parts[3].split("=")[1].trim()
-            this.delayedLockHours = parts[4].split("=")[1].trim()
-            this.delayedLockMinutes = parts[5].split("=")[1].trim()
-            this.delayedLockSeconds = parts[6].split("=")[1].trim()
-          }
-        })
-        //calculate delayed_decay2 which is the first threshold decay
-        if(this.delayedStatus == 1 || this.delayedStatus == 0){
-          invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
-          store.commit('setDebug', `calculating decay time for delayed_decay2: ${res}`)
-          console.log("delayed decay response:", res)
-          if(res.includes("decay complete")){
-            store.commit('setDebug', 'delayed_decay2 complete, delayed thresh 4')
-            store.commit('setDelayedDecay', 'two')
-            store.commit('setTimeLock', false)
-            this.delayedStatus = 2
-          }
-          else{
-            store.commit('setDebug', 'delayed_decay2 incomplete')
-            const parts = res.split(",")
-            this.delayedYears = parts[0].split("=")[1].trim()
-            this.delayedMonths = parts[1].split("=")[1].trim()
-            this.delayedWeeks = parts[2].split("=")[1].trim()
-            this.delayedDays = parts[3].split("=")[1].trim()
-            this.delayedHours = parts[4].split("=")[1].trim()
-            this.delayedMinutes = parts[5].split("=")[1].trim()
-            this.delayedSeconds = parts[6].split("=")[1].trim()
-          }
-        })
-        }
-        //calculate delayed_decay3 which is the second threshold decay
-        if(this.delayedStatus == 2){
-          invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
-          store.commit('setDebug', `calculating decay time for delayed_decay3: ${res}`)
-          console.log("delayed decay response:", res)
-          if(res.includes("decay complete")){
-            store.commit('setDebug', 'delayed_decay3 complete, delayed thresh 3')
-            store.commit('setDelayedDecay', 'three')
-            store.commit('setTimeLock', false)
-            this.delayedStatus = 3
-          }
-          else{
-            store.commit('setDebug', 'delayed_decay3 incomplete')
-            const parts = res.split(",")
-            this.delayedYears = parts[0].split("=")[1].trim()
-            this.delayedMonths = parts[1].split("=")[1].trim()
-            this.delayedWeeks = parts[2].split("=")[1].trim()
-            this.delayedDays = parts[3].split("=")[1].trim()
-            this.delayedHours = parts[4].split("=")[1].trim()
-            this.delayedMinutes = parts[5].split("=")[1].trim()
-            this.delayedSeconds = parts[6].split("=")[1].trim()
-          }
-        })
-        }
-        //calculate delayed decay4 which is the third threshold decay
-        if(this.delayedStatus == 3){
-          invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
-          store.commit('setDebug', `calculating decay time for delayed_decay4: ${res}`)
-          console.log("delayed decay response:", res)
-          if(res.includes("decay complete")){
-            store.commit('setDebug', 'delayed_decay4 complete, delayed thresh 2')
-            store.commit('setDelayedDecay', 'four')
-            store.commit('setTimeLock', false)
-            this.delayedStatus = 4
-          }
-          else{
-            store.commit('setDebug', 'delayed_decay4 incomplete')
-            const parts = res.split(",")
-            this.delayedYears = parts[0].split("=")[1].trim()
-            this.delayedMonths = parts[1].split("=")[1].trim()
-            this.delayedWeeks = parts[2].split("=")[1].trim()
-            this.delayedDays = parts[3].split("=")[1].trim()
-            this.delayedHours = parts[4].split("=")[1].trim()
-            this.delayedMinutes = parts[5].split("=")[1].trim()
-            this.delayedSeconds = parts[6].split("=")[1].trim()
-          }
-        })
-        }
-        //calculate delayed decay5 which is the fourth threshold decay
-        if(this.delayedStatus == 4){
-          invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
-          store.commit('setDebug', `calculating decay time for delayed_decay5: ${res}`)
-          console.log("delayed decay response:", res)
-          if(res.includes("decay complete")){
-            store.commit('setDebug', 'delayed_decay5 complete, delayed thresh 1')
-            store.commit('setDelayedDecay', 'five')
-            this.delayedDecayComplete = true
-            store.commit('setTimeLock', false)
-            this.delayedStatus = 5
-          }
-          else{
-            store.commit('setDebug', 'delayed_decay5 incomplete')
-            const parts = res.split(",")
-            this.delayedYears = parts[0].split("=")[1].trim()
-            this.delayedMonths = parts[1].split("=")[1].trim()
-            this.delayedWeeks = parts[2].split("=")[1].trim()
-            this.delayedDays = parts[3].split("=")[1].trim()
-            this.delayedHours = parts[4].split("=")[1].trim()
-            this.delayedMinutes = parts[5].split("=")[1].trim()
-            this.delayedSeconds = parts[6].split("=")[1].trim()
-          }
-        })
-        }
-      //get delayed balance
+                  //get delayed balance
       invoke('get_balance', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res)=>{
           store.commit('setDebug', `getting balance for delayed wallet: ${res}`)
           let bal = parseFloat(res)
@@ -295,6 +176,119 @@ export default {
         store.commit('setDebug', 'Sending user to tripwirePostSetup1')
         this.$router.push({ name: 'tripwirePostSetup1' })
       }
+      //DELAYED WALLET DECAY TIMERS
+        //calculate delayed_decay1 (Timelock)
+        invoke('calculate_decay_time', {file: "delayed_decay1"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay1(timelock): ${res}`)
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay1 complete, time lock expired')
+            store.commit('setDelayedDecay', 'one')
+            store.commit('setTimeLock', false)
+          }
+          else{
+            store.commit('setDebug', 'delayed_decay1 incomplete')
+            const parts = res.split(",")
+            this.delayedLockYears = parts[0].split("=")[1].trim()
+            this.delayedLockMonths = parts[1].split("=")[1].trim()
+            this.delayedLockWeeks = parts[2].split("=")[1].trim()
+            this.delayedLockDays = parts[3].split("=")[1].trim()
+            this.delayedLockHours = parts[4].split("=")[1].trim()
+            this.delayedLockMinutes = parts[5].split("=")[1].trim()
+            this.delayedLockSeconds = parts[6].split("=")[1].trim()
+          }
+        })
+        //calculate delayed_decay2 (1st threshold decay)
+        invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
+        store.commit('setDebug', `calculating decay time for delayed_decay2: ${res}`)
+        console.log("delayed decay response:", res)
+        if(res.includes("decay complete")){
+          store.commit('setDebug', 'delayed_decay2 complete, delayed thresh 4')
+          store.commit('setDelayedDecay', 'two')
+          store.commit('setTimeLock', false)
+        }
+        else{
+          store.commit('setDebug', 'delayed_decay2 incomplete')
+          const parts = res.split(",")
+          this.delayedYears = parts[0].split("=")[1].trim()
+          this.delayedMonths = parts[1].split("=")[1].trim()
+          this.delayedWeeks = parts[2].split("=")[1].trim()
+          this.delayedDays = parts[3].split("=")[1].trim()
+          this.delayedHours = parts[4].split("=")[1].trim()
+          this.delayedMinutes = parts[5].split("=")[1].trim()
+          this.delayedSeconds = parts[6].split("=")[1].trim()
+          return; 
+        }
+        })
+        //calculate delayed_decay3 (2nd threshold decay)
+          invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay3: ${res}`)
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay3 complete, delayed thresh 3')
+            store.commit('setDelayedDecay', 'three')
+            store.commit('setTimeLock', false)
+          }
+          else{
+            store.commit('setDebug', 'delayed_decay3 incomplete')
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+            return;
+          }
+        })
+        
+        //calculate delayed decay4 (3rd threshold decay)
+          invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay4: ${res}`)
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay4 complete, delayed thresh 2')
+            store.commit('setDelayedDecay', 'four')
+            store.commit('setTimeLock', false)
+            this.delayedStatus = 4
+          }
+          else{
+            store.commit('setDebug', 'delayed_decay4 incomplete')
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+            return;
+          }
+        })
+        
+        //calculate delayed decay5 which is the fourth threshold decay
+          invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
+          store.commit('setDebug', `calculating decay time for delayed_decay5: ${res}`)
+          console.log("delayed decay response:", res)
+          if(res.includes("decay complete")){
+            store.commit('setDebug', 'delayed_decay5 complete, delayed thresh 1')
+            store.commit('setDelayedDecay', 'five')
+            this.delayedDecayComplete = true
+            store.commit('setTimeLock', false)
+          }
+          else{
+            store.commit('setDebug', 'delayed_decay5 incomplete')
+            const parts = res.split(",")
+            this.delayedYears = parts[0].split("=")[1].trim()
+            this.delayedMonths = parts[1].split("=")[1].trim()
+            this.delayedWeeks = parts[2].split("=")[1].trim()
+            this.delayedDays = parts[3].split("=")[1].trim()
+            this.delayedHours = parts[4].split("=")[1].trim()
+            this.delayedMinutes = parts[5].split("=")[1].trim()
+            this.delayedSeconds = parts[6].split("=")[1].trim()
+          }
+        })
  },
  data(){
   return{
