@@ -121,7 +121,8 @@ export default {
             get(){
                 return store.getters.getcurrentHW
             }
-        }
+        },
+  timeSet: false,
       },
     mounted(){
           //calculate immediate_decay
@@ -321,8 +322,6 @@ export default {
     delayedLockHours: 0,
     delayedLockMinutes: 0,
     delayedLockSeconds: 0,
-    timeSet: false
-
   }
  }
     }
