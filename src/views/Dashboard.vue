@@ -198,8 +198,7 @@ export default {
             this.delayedLockMinutes = parts[5].split("=")[1].trim()
             this.delayedLockSeconds = parts[6].split("=")[1].trim()
           }
-        })
-        //calculate delayed_decay2 (1st threshold decay)
+          //calculate delayed_decay2 (1st threshold decay)
         invoke('calculate_decay_time', {file: "delayed_decay2"}).then((res)=>{
         store.commit('setDebug', `calculating decay time for delayed_decay2: ${res}`)
         console.log("delayed decay response:", res)
@@ -220,7 +219,7 @@ export default {
           this.delayedSeconds = parts[6].split("=")[1].trim()
           timeSet = true
         }
-        })
+
         //calculate delayed_decay3 (2nd threshold decay)
         if(timeSet == false){
           invoke('calculate_decay_time', {file: "delayed_decay3"}).then((res)=>{
@@ -243,9 +242,8 @@ export default {
             this.delayedSeconds = parts[6].split("=")[1].trim()
             timeSet = true
           }
-        })
-        }
-        //calculate delayed decay4 (3rd threshold decay)
+
+          //calculate delayed decay4 (3rd threshold decay)
         if(timeSet == false){
           invoke('calculate_decay_time', {file: "delayed_decay4"}).then((res)=>{
           store.commit('setDebug', `calculating decay time for delayed_decay4: ${res}`)
@@ -268,9 +266,8 @@ export default {
             this.delayedSeconds = parts[6].split("=")[1].trim()
             timeSet = true
           }
-        })
-        }
-        //calculate delayed decay5 (4th & final threshold decay)
+
+          //calculate delayed decay5 (4th & final threshold decay)
         if(timeSet == false){
           invoke('calculate_decay_time', {file: "delayed_decay5"}).then((res)=>{
           store.commit('setDebug', `calculating decay time for delayed_decay5: ${res}`)
@@ -294,6 +291,18 @@ export default {
           }
         })
         }
+        })
+        }
+        })
+        }
+        })
+        
+        })
+
+        
+        
+        
+        
         
 
  },
