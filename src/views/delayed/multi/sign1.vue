@@ -5,12 +5,12 @@
     <div v-else class="page">
         <div class="display_block">
             <!-- display a dynamic spend threshold based on decay status -->
-            <h1 v-if="this.delayedDecay == 'zero'">Approve Transaction for Signing (1 of 5)</h1>
-            <h1 v-else-if="this.delayedDecay == 'one'">Approve Transaction for Signing (1 of 5)</h1>
-            <h1 v-else-if="this.delayedDecay == 'two'">Approve Transaction for Signing (2 of 5)</h1>
-            <h1 v-else-if="this.delayedDecay == 'three'">Approve Transaction for Signing (3 of 5)</h1>
-            <h1 v-else-if="this.delayedDecay == 'four'">Approve Transaction for Signing (4 of 5)</h1>
-            <h1 v-else-if="this.delayedDecay == 'five'">Approve Transaction for Signing (5 of 5)</h1>
+            <h1 v-if="delayedDecay == 'zero'">Approve Transaction for Signing (1 of 5)</h1>
+            <h1 v-else-if="delayedDecay == 'one'">Approve Transaction for Signing (1 of 5)</h1>
+            <h1 v-else-if="delayedDecay == 'two'">Approve Transaction for Signing (2 of 5)</h1>
+            <h1 v-else-if="delayedDecay == 'three'">Approve Transaction for Signing (3 of 5)</h1>
+            <h1 v-else-if="delayedDecay == 'four'">Approve Transaction for Signing (4 of 5)</h1>
+            <h1 v-else-if="delayedDecay == 'five'">Approve Transaction for Signing (5 of 5)</h1>
             <!-- TODO make this image display dynamic using the above params -->
             <img src="@/assets/checkmark_grey.png">
             <div class="tx_block">
