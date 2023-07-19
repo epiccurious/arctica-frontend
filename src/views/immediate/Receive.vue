@@ -41,13 +41,17 @@ export default {
     NavImmediate,
   },
   methods:{
-        copy(){
-        var copyText = document.getElementsByClassName("receive_address")[0];
-        console.log(copyText)
-        copyText.select();
-        navigator.clipboard.writeText(copyText.value);
-        alert('Copied Address!');
-        },
+    copy(){
+            invoke('copy_to_clipboard', {address: this.address}).then((res)=>{
+              store.commit('setDebug', `copying to clipboard: ${res}`)
+              alert('Copied Address!')
+            })
+            .catch((e)=>{
+                store.commit('setDebug', `error copying address to clipboard ${e}`)
+                store.commit('setErrorMessage', `Error copying address to clipboard Error code: ImmediateReceive4 Response: ${e}`)
+                this.$router.push({ name: 'Error' })
+              })
+            },
         newAddress(){            
             invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
