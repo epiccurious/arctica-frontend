@@ -7,7 +7,7 @@
     <div v-if="setupStage == 3" id="stage3" class="stage active">Stage 3</div>
     <div v-else id="stage3" class="stage active">Stage 3</div>
     <div v-if="setupStage == 4" id="stage4" class="stage active">Stage 4</div>
-    <div v-else="setupStage == 4" id="stage4" class="stage">Stage 4</div>
+    <div v-else id="stage4" class="stage">Stage 4</div>
 </div>
 </template>
 
