@@ -233,62 +233,77 @@ export default {
         }
         //initial set up step redirects
         if(this.setupStep == 1 && this.currentHW == 1){
+            store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 1 found, redirecting user to setup12')
             this.$router.push({ name: 'Setup12' })  
         }
         else if(this.setupStep == 2 && this.currentHW == 2){
+            store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 2 found, redirecting user to setup14a')
             this.$router.push({ name: 'Setup14a' })
         }
         else if(this.setupStep == 3 && this.currentHW == 3){
+            store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 3 found, redirecting user to setup15a')
             this.$router.push({ name: 'Setup15a' })
         }
         else if(this.setupStep == 4 && this.currentHW == 4){
+            store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 4 found, redirecting user to setup16')
             this.$router.push({ name: 'Setup16' })
         }
         else if(this.setupStep == 5 && this.currentHW == 5){
+            store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 5 found, redirecting user to setup18a')
             this.$router.push({ name: 'Setup18a' })
         }
         else if(this.setupStep == 6 && this.currentHW == 6){
+            store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 6 found, redirecting user to setup19a')
             this.$router.push({ name: 'Setup19a' })
         }
         else if(this.setupStep == 7 && this.currentHW == 7){
+            store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 7 found, redirecting user to setup20a')
             this.$router.push({ name: 'Setup20a' })
         }
         else if(this.setupStep == 8 && this.currentHW == 1){
+            store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 8 found, redirecting user to setup21')
             this.$router.push({ name: 'Setup21' })
         }
         else if(this.setupStep == 9 && this.currentHW == 2){
+            store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 9 found, redirecting user to setup27a')
             this.$router.push({ name: 'Setup27a' })
         }
         else if(this.setupStep == 10 && this.currentHW == 3){
+            store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 10 found, redirecting user to setup31a')
             this.$router.push({ name: 'Setup31a' })
         }
         else if(this.setupStep == 11 && this.currentHW == 4){
+            store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 11 found, redirecting user to setup35a')
             this.$router.push({ name: 'Setup35a' })
         }
         else if(this.setupStep == 12 && this.currentHW == 5){
+            store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 12 found, redirecting user to setup39a')
             this.$router.push({ name: 'Setup39a' })
         }
         else if(this.setupStep == 13 && this.currentHW == 6){
+            store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 13 found, redirecting user to setup43a')
             this.$router.push({ name: 'Setup43a' })
         }
         else if(this.setupStep == 14 && this.currentHW == 7){
+            store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 14 found, redirecting user to setup47a')
             this.$router.push({ name: 'Setup47a' })
         }
         else if(this.setupStep == 15 && this.currentHW == 1){
+          store.commit('setSetupStage', 4)
           store.commit('setDebug', 'setup step 15 found, redirecting user to setup50b')
           this.$router.push({ name: 'Setup50b' })
         }
