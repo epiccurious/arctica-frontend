@@ -38,13 +38,13 @@ export default{
 <style scoped>
 #progressbar {
     margin: auto 0;
-    padding-top: 15%;
+    padding-top: 10%;
     padding-bottom: 5%;
-    padding-right: 10%;
-    padding-left: 10%;
+    padding-right: 5%;
+    padding-left: 5%;
     display: flex;
-    height: 1rem;
-    width: 100%;
+    height: 0.5rem;
+    width: 80%;
     border: 1px solid black;
 }.stage {
     width: 25%;
