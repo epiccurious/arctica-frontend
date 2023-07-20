@@ -249,6 +249,8 @@ hr {
 }
 #nav{
   margin-top:60px;
+  padding:5px;
+  width:100%;
 }
 #nav a{
   padding:5px;
