@@ -37,7 +37,10 @@ export default{
 
 <style scoped>
 #progressbar {
-    margin-top: 15%;
+    padding-top: 15%;
+    padding-bottom: 5%;
+    padding-right: 10%;
+    padding-left: 10%;
     display: flex;
     height: 20px;
     width: 100%;
