@@ -23,6 +23,7 @@
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
     <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
+    <br>
     <router-link :to="{ name: 'TimeMachine1' }">Time-Machine-1</router-link>
     <router-link :to="{ name: 'TimeMachine2' }">Time-Machine-2</router-link>
     <router-link :to="{ name: 'TimeMachine3' }">Time-Machine-3</router-link>
@@ -32,6 +33,7 @@
     <router-link :to="{ name: 'TimeMachine7' }">Time-Machine-7</router-link>
     <router-link :to="{ name: 'TimeMachine8' }">Time-Machine-8</router-link>
     <router-link :to="{ name: 'TimeMachine9' }">Time-Machine-9</router-link>
+    <br>
     <router-link :to="{ name: 'Setup1' }">Setup-1</router-link>
     <router-link :to="{ name: 'Setup2' }">Setup-2</router-link>
     <router-link :to="{ name: 'Setup3' }">Setup-3</router-link>
@@ -95,6 +97,7 @@
     <router-link :to="{ name: 'Setup50a' }">Setup-50a</router-link>
     <router-link :to="{ name: 'Setup50b' }">Setup-50b</router-link>
     <router-link :to="{ name: 'Setup51' }">Setup-51</router-link>
+    <br>
     <router-link :to="{ name: 'tripwirePostSetup1' }">Tripwire-Post-Setup-1</router-link>
     <router-link :to="{ name: 'tripwirePostSetup2' }">Tripwire-Post-Setup-2</router-link>
     <router-link :to="{ name: 'duressPostSetup1' }">Duress-Post-Setup-1</router-link>
