@@ -52,7 +52,7 @@ export default{
     line-height: 20px;
     background-color: lightgray;
 }.active {
-    background-color: blue;
+    background-color: #F7931A;
     color: white;
 }
 </style>
