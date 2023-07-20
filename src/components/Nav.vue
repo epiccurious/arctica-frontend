@@ -6,9 +6,9 @@
             <router-link v-if="settings" class="icons" :to="{ name: 'settings' }"><img src="@/assets/settings_selected.png"></router-link>
             <router-link v-else class="icons" :to="{ name: 'settings' }"><img src="@/assets/settings.png"></router-link>
         </div>
-        <div class="refresh_container">
+        <!-- <div class="refresh_container">
             <RefreshIcon @click="sync()" style="height:5px;width:5px;color:black" />
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -19,14 +19,12 @@ import { RouterView, RouterLink } from "vue-router";
   RouterView;
   RouterLink
 }
-import { RefreshIcon } from '@bitcoin-design/bitcoin-icons-vue/filled'
 import store from '../store.js'
 
 
 
 export default{
     name: 'Nav',
-    components: { RefreshIcon },
     methods: {
         sync(){
                 // invoke('get_balance', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{

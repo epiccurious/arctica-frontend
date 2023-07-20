@@ -23,6 +23,7 @@ export default createStore({
     // setupStep 14 placed on HW 7 at step 20 to jump user to step 47a last HW 7, setupStep set to 0 at step 49a 
     // setupStep 15 placed on HW 1 at step 25 to jump user to step 50b last HW 1, setupStep set to 0 at step 50b 
     setupStep: 0,
+    setupStage: 0,
     debug: [],
     loadMessage: '',
     errorMessage: '',
@@ -152,6 +153,9 @@ export default createStore({
         setSetupStep(state, payload){
             state.setupStep = payload
         },
+        setSetupStage(state, payload){
+            state.setupStage = payload
+        },
     },
     actions:{//asynchronous, used for external API calls (dispatch)
     },
@@ -237,6 +241,9 @@ export default createStore({
         },
         getSetupStep(state){
             return state.setupStep
+        },
+        getSetupStage(state){
+            return state.setupStage
         },
 
 
