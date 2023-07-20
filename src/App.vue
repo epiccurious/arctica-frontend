@@ -8,14 +8,17 @@
     <router-link :to="{ name: 'Boot' }">Boot</router-link> 
     <router-link :to="{ name: 'Login' }">Login</router-link> 
     <router-link :to="{ name: 'BPS_Bricked' }">BPSBricked</router-link> 
+    <br>
     <router-link :to="{ name: 'Recovery' }">Recovery</router-link> 
     <router-link :to="{ name: 'RecoveryInitiate' }">RecoveryInitiate</router-link> 
     <router-link :to="{ name: 'RecoveryAdditional' }">RecoveryAdditional</router-link> 
     <router-link :to="{ name: 'RecoveryEvaluate' }">RecoveryEvaluate</router-link> 
     <router-link :to="{ name: 'RecoverySuccess' }">RecoverySuccess</router-link> 
+    <br>
     <router-link :to="{ name: 'quick1' }">Quick1</router-link> 
     <router-link :to="{ name: 'quick2' }">Quick2</router-link> 
     <router-link :to="{ name: 'Compromised' }">TripwireCompromised</router-link> 
+    <br>
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'immediateSend' }">ImmediateSend</router-link>
@@ -44,6 +47,7 @@
     <router-link :to="{ name: 'Setup8' }">Setup-8</router-link>
     <router-link :to="{ name: 'Setup9' }">Setup-9</router-link>
     <router-link :to="{ name: 'Setup10' }">Setup-10</router-link>
+    <br>
     <router-link :to="{ name: 'Setup11' }">Setup-11</router-link>
     <router-link :to="{ name: 'Setup12' }">Setup-12</router-link>
     <router-link :to="{ name: 'Setup13' }">Setup-13</router-link>
@@ -57,6 +61,7 @@
     <router-link :to="{ name: 'Setup18b' }">Setup-18b</router-link>
     <router-link :to="{ name: 'Setup19a' }">Setup-19a</router-link>
     <router-link :to="{ name: 'Setup19b' }">Setup-19b</router-link>
+    <br>
     <router-link :to="{ name: 'Setup20a' }">Setup-20a</router-link>
     <router-link :to="{ name: 'Setup20b' }">Setup-20b</router-link>
     <router-link :to="{ name: 'Setup21' }">Setup-21</router-link>
@@ -68,6 +73,7 @@
     <router-link :to="{ name: 'Setup27b' }">Setup-27b</router-link>
     <router-link :to="{ name: 'Setup28' }">Setup-28</router-link>
     <router-link :to="{ name: 'Setup29' }">Setup-29</router-link>
+    <br>
     <router-link :to="{ name: 'Setup30' }">Setup-30</router-link>
     <router-link :to="{ name: 'Setup31a' }">Setup-31a</router-link>
     <router-link :to="{ name: 'Setup31b' }">Setup-31b</router-link>
@@ -81,6 +87,7 @@
     <router-link :to="{ name: 'Setup38' }">Setup-38</router-link>
     <router-link :to="{ name: 'Setup39a' }">Setup-39a</router-link>
     <router-link :to="{ name: 'Setup39b' }">Setup-39b</router-link>
+    <br>
     <router-link :to="{ name: 'Setup40' }">Setup-40</router-link>
     <router-link :to="{ name: 'Setup41' }">Setup-41</router-link>
     <router-link :to="{ name: 'Setup42' }">Setup-42</router-link>
@@ -94,6 +101,7 @@
     <router-link :to="{ name: 'Setup48' }">Setup-48</router-link>
     <router-link :to="{ name: 'Setup49a' }">Setup-49a</router-link>
     <router-link :to="{ name: 'Setup49b' }">Setup-49b</router-link>
+    <br>
     <router-link :to="{ name: 'Setup50a' }">Setup-50a</router-link>
     <router-link :to="{ name: 'Setup50b' }">Setup-50b</router-link>
     <router-link :to="{ name: 'Setup51' }">Setup-51</router-link>
