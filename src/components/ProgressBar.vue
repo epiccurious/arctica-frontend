@@ -37,22 +37,24 @@ export default{
 
 <style scoped>
 #progressbar {
+    margin: auto 0;
     padding-top: 15%;
     padding-bottom: 5%;
     padding-right: 10%;
     padding-left: 10%;
     display: flex;
-    height: 20px;
+    height: 1rem;
     width: 100%;
     border: 1px solid black;
-    border-radius:10px;
 }.stage {
     width: 25%;
     text-align: center;
     line-height: 20px;
     background-color: lightgray;
+    border-radius:10px;
 }.active {
     background-color: #F7931A;
     color: white;
+    border-radius:10px;
 }
 </style>
