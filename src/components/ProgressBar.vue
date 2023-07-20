@@ -5,7 +5,7 @@
     <div v-if="setupStage == 2" id="stage2" class="stage active">Key Gen</div>
     <div v-else id="stage2" class="stage">Key Gen</div>
     <div v-if="setupStage == 3" id="stage3" class="stage active">Wallets & Backups</div>
-    <div v-else id="stage3" class="stage active">Wallets & Backups</div>
+    <div v-else id="stage3" class="stage">Wallets & Backups</div>
     <div v-if="setupStage == 4" id="stage4" class="stage active">Sync Bitcoin</div>
     <div v-else id="stage4" class="stage">Sync Bitcoin</div>
 </div>
@@ -37,6 +37,7 @@ export default{
 
 <style scoped>
 #progressbar {
+    margin-top: 15%;
     display: flex;
     height: 20px;
     width: 100%;
