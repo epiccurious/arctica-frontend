@@ -45,6 +45,7 @@ export default{
     height: 20px;
     width: 100%;
     border: 1px solid black;
+    border-radius:10px;
 }.stage {
     width: 25%;
     text-align: center;
