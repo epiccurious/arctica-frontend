@@ -17,26 +17,11 @@
     <router-link :to="{ name: 'quick2' }">Quick2</router-link> 
     <router-link :to="{ name: 'Compromised' }">TripwireCompromised</router-link> 
     <router-link :to="{ name: 'dashboard' }">Wallets</router-link>
-    <router-link :to="{ name: 'settings' }">Settings</router-link>
-    <router-link :to="{ name: 'hot' }">Hot</router-link>
-    <router-link :to="{ name: 'hotSend' }">HotSend</router-link>
-    <router-link :to="{ name: 'hotSignMultioutput' }">Hot-Sign-Multioutput</router-link>
-    <router-link :to="{ name: 'hotReceive' }">HotReceive</router-link>
     <router-link :to="{ name: 'immediate' }">Immediate</router-link>
     <router-link :to="{ name: 'immediateSend' }">ImmediateSend</router-link>
     <router-link :to="{ name: 'immediateReceive' }">ImmediateReceive</router-link>
     <router-link :to="{ name: 'delayed' }">Delayed</router-link>
     <router-link :to="{ name: 'delayedSend' }">DelayedSend</router-link>
-    <router-link :to="{ name: 'sign1of5' }">Sign(1of5)</router-link>
-    <router-link :to="{ name: '1of5success' }">1of5-success</router-link>
-    <router-link :to="{ name: 'sign2of5' }">Sign(2of5)</router-link>
-    <router-link :to="{ name: '2of5success' }">2of5-success</router-link>
-    <router-link :to="{ name: 'sign3of5' }">Sign(3of5)</router-link>
-    <router-link :to="{ name: '3of5success' }">3of5-success</router-link>
-    <router-link :to="{ name: 'sign4of5' }">Sign(4of5)</router-link>
-    <router-link :to="{ name: '4of5success' }">4of5-success</router-link>
-    <router-link :to="{ name: 'sign5of5' }">Sign(5of5)</router-link>
-    <router-link :to="{ name: '5of5success' }">5of5-success</router-link>
     <router-link :to="{ name: 'delayedReceive' }">DelayedReceive</router-link>
     <router-link :to="{ name: 'TimeMachine1' }">Time-Machine-1</router-link>
     <router-link :to="{ name: 'TimeMachine2' }">Time-Machine-2</router-link>
@@ -116,7 +101,6 @@
     <router-link :to="{ name: 'piiPostSetup1' }">Recovery-Post-Setup-1</router-link>
     <router-link :to="{ name: 'piiPostSetup2' }">Recovery-Post-Setup-2</router-link>
     <router-link :to="{ name: 'piiPostSetup3' }">Recovery-Post-Setup-3</router-link>
-    <router-link :to="{ name: 'Error' }">Error-Screen</router-link>
   </nav>
   <!-- The above is a debug menu, will be removed -->
 </div>
