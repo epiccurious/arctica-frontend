@@ -48,7 +48,7 @@ export default{
     border: 0px solid black;
 }.stage {
     width: 25%;
-    height: 0.1rem;
+    height: 20px;
     text-align: center;
     line-height: 20px;
     background-color: lightgray;
