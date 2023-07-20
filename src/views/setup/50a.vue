@@ -7,12 +7,17 @@
         <h2>Please swap over to your primary machine, power it off, insert Hardware Wallet 1 and power on the machine.</h2>
     </header> 
 </div>
-
+<ProgressBar/>
 </template>
 
 <script>
+import ProgressBar from '@/components/ProgressBar'
+
 export default {
   name: 'Setup50a',
+  components: {
+    ProgressBar
+  },
     }
 </script>
 

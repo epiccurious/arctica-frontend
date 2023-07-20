@@ -18,18 +18,21 @@ before implementing this page as an asset -->
                 </div>
                 </div>
     </header>
+    <ProgressBar/>
 </template>
 
 <!-- 
 this component needs a fail condition -->
 
 <script>
+import ProgressBar from '@/components/ProgressBar'
 
 export default {
   name: 'Setup2A',
   props: ['password'],
   components: {
-    },
+    ProgressBar
+  },
     methods: {
         acknowledge(){
             this.$router.push({ name: 'Setup3' })

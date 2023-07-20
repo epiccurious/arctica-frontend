@@ -20,17 +20,19 @@
     </div> 
 
 </div>
-
+<ProgressBar/>
 </template>
 
 <script>
+import ProgressBar from '@/components/ProgressBar'
 import store from '../../store.js'
 const invoke = window.__TAURI__.invoke
 
 export default {
   name: 'Setup33',
   components: {
-    },
+    ProgressBar
+  },
     methods: {
         acknowledge(){
             this.$router.push({ name: 'Setup34' })

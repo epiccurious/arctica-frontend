@@ -30,17 +30,19 @@ before implementing this page as an asset -->
                 </div>
     
 </header>
-  
+<ProgressBar/>
 </template>
 
 <script>
+import ProgressBar from '@/components/ProgressBar'
 import Setup2A from './2A'
 import wordlist from '../../wordlist.js'
 
 export default {
   name: 'Setup2',
   components: {
-      Setup2A
+      Setup2A,
+      ProgressBar
     },
     methods: {
         acknowledge(){

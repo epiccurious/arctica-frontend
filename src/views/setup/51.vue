@@ -11,15 +11,18 @@
         </div>
 
 </div>
-
+<ProgressBar/>
 </template>
 
 <script>
+import ProgressBar from '@/components/ProgressBar'
 import store from '../../store.js'
 
 export default {
   name: 'Setup51',
-  components: {},
+  components: {
+    ProgressBar
+  },
     methods: {
         acknowledge(){
             this.$router.push({ name: 'welcome' })

@@ -6,12 +6,17 @@
     </header> 
 
 </div>
-
+<ProgressBar/>
 </template>
 
 <script>
+import ProgressBar from '@/components/ProgressBar'
+
 export default {
   name: 'Setup30',
+  components: {
+    ProgressBar
+  },
 
     }
 </script>

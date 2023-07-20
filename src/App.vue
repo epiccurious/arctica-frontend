@@ -113,7 +113,7 @@
     <router-link :to="{ name: 'piiPostSetup2' }">Recovery-Post-Setup-2</router-link>
     <router-link :to="{ name: 'piiPostSetup3' }">Recovery-Post-Setup-3</router-link>
   </nav>
-  <!-- The above is a debug menu, will be removed -->
+  <!-- The above is a debug navigation menu, use extreme caution as some pages begin firing functions on mount, this can eventually be removed -->
 </div>
 </template>
 

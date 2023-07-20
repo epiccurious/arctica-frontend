@@ -22,10 +22,11 @@
 
 
 </div>
-
+<ProgressBar/>
 </template>
 
 <script>
+import ProgressBar from '@/components/ProgressBar'
 import store from '../../store.js'
 import Loader from '@/components/loader'
 const invoke = window.__TAURI__.invoke
@@ -33,7 +34,8 @@ const invoke = window.__TAURI__.invoke
 export default {
   name: 'Setup31a',
   components: {
-    Loader
+    Loader,
+    ProgressBar
   },
     methods: {
         acknowledge(){
