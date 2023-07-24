@@ -62,9 +62,16 @@ export default {
                                     this.loading = false
                                     this.$router.push({ name:'Setup13' }) 
                                 }).catch((e)=>{
-                                    store.commit('setDebug', `create setup cd error: ${e}`)
-                                    store.commit('setErrorMessage', `Error creating setup CD Error code: Setup12-1 Response: ${e}`)
-                                    this.$router.push({ name:'Error' })
+                                    if(e.includes("ERROR No CD found in create_setup_cd")){
+                                        store.commit('setDebug', `create setup cd error (MAYBE USER DOES NOT HAVE A CD DRIVE?): ${e}`) 
+                                        store.commit('setHelperMessage', `It seems that you do not currently have a CD or a DVD drive connected to this computer, 
+                                        in order to continue, you will need to obtain a usb tethered CD drive and start over.`)
+                                        this.$router.push({ name:'Helper' })
+                                    }else{
+                                        store.commit('setDebug', `create setup cd error: ${e}`)
+                                        store.commit('setErrorMessage', `Error creating setup CD Error code: Setup12-1 Response: ${e}`)
+                                        this.$router.push({ name:'Error' })
+                                    }
                                 })
 
                             })
