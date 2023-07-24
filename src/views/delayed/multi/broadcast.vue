@@ -70,10 +70,7 @@
         mounted(){
                     store.commit('setLoadMessage', `decoding PSBT...`)
                     invoke('decode_processed_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
-                        //handle the condition where a user somehow got here with an incomplete PSBT
-                        if(res.includes("ERROR PSBT not complete")){
-
-                        }else{ //expected path, return the tx info and display on front end
+                         //expected path, return the tx info and display on front end
                             store.commit('setDebug', `decoded psbt: ${res}`)
                             const parts = res.split(",")
                             this.address = parts[0].split("=")[1].trim()
@@ -83,7 +80,6 @@
                             this.fee = parseFloat(this.feeString)
                             console.log("response:", res)
                             this.loading = false
-                        }
                     }).catch((e) => {
                         if(e.includes("PSBT not complete")){
                             store.commit('setDebug', `error PSBT not fully signed`)

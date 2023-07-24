@@ -72,11 +72,11 @@ export default {
                 .catch((e) => {
                     //eventually need to add front end feedback here rather than send to fatal error screen
                     store.commit('setDebug', `Error generating PSBT: ${e}`)
-                    if(res.includes("Fee estimation failed.")){
+                    if(e.includes("Fee estimation failed.")){
                         this.feeEstimate = false
-                    }else if(res.includes("Insufficient funds")){
+                    }else if(e.includes("Insufficient funds")){
                         this.insufficientFunds = true
-                    }else if(res.includes("Invalid Bitcoin address")){
+                    }else if(e.includes("Invalid Bitcoin address")){
                         this.badAddress = true
                     }else{
                         store.commit('setErrorMessage', `Error generating PSBT. Error code: DelayedSend1 Response: ${e}`)
