@@ -2,8 +2,8 @@
 <div class="page">
 <header>
 <h1>Package 1 is now complete.</h1>
- <h2>Please remove DVD 1 and HW 1.</h2>
- <h2>Place Hardware Wallet 1, and backups CD 1 and DVD 1 into Envelope 1.</h2> 
+ <h2>Please remove DVD/M-DISC 1 and HW 1.</h2>
+ <h2>Place Hardware Wallet 1, and backups CD 1 and DVD/M-DISC 1 into Envelope 1.</h2> 
  <h2>This envelope should be stored somewhere secure and easily accessible, like your attic.</h2>
  <h2>Hardware Wallet 1 should be what you boot first when you want to spend or receive bitcoin or check your wallet balances.</h2>
  </header>

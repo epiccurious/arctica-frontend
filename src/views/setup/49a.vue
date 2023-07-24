@@ -2,8 +2,8 @@
 <div class="page">
 <header>
 <h1>Package 7 is now complete.</h1>
- <h2>Please remove DVD 7 and Hardware Wallet 7.</h2>
- <h2>Place Hardware Wallet 7, and backups CD 7 and DVD 7 into Envelope 7.</h2> 
+ <h2>Please remove DVD/M-DISC 7 and Hardware Wallet 7.</h2>
+ <h2>Place Hardware Wallet 7, and backups CD 7 and DVD/M-DISC 7 into Envelope 7.</h2> 
  <h2>This envelope should be stored somewhere...[placeholder text]</h2>
  </header>
       <div class="form_container">

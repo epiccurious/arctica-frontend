@@ -4,14 +4,14 @@
     </div>
     <div v-else class="page">
         <header>
-        <h1>DVD 4 Backup</h1>
-        <h2>Please remove CD 4 and insert DVD 4.</h2>
+        <h1>DVD/M-DISC 4 Backup</h1>
+        <h2>Please remove CD 4 and insert DVD/M-DISC 4.</h2>
     </header> 
     <div class="form_container">
         <form>
             <div class="checkbox_container">
                 <input type="checkbox" v-model="checkbox" name="checkbox">
-                <label for="checkbox">I have inserted DVD 4.</label>
+                <label for="checkbox">I have inserted DVD/M-DISC 4.</label>
             </div>
         </form>
         <div class="btn_container"> 
