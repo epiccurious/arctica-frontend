@@ -64,22 +64,17 @@ export default {
             this.badAddress = false
             invoke('generate_psbt', {walletname:"immediate", hwnumber: "1", recipient: address, amount: Number(balance), fee: Number(fee)}).then((res) => {
                 store.commit('setDebug', `Generating PSBT: ${res}`)
+                this.$router.push({name: 'sign1of2'})
+            })
+            .catch((e) => {
+                //eventually need to add front end feedback here rather than send to fatal error screen
+                store.commit('setDebug', `Error generating PSBT: ${e}`)
                 if(res.includes("Fee estimation failed.")){
                     this.feeEstimate = false
                 }else if(res.includes("Insufficient funds")){
                     this.insufficientFunds = true
                 }else if(res.includes("Invalid Bitcoin address")){
                     this.badAddress = true
-                }
-                else{
-                    this.$router.push({name: 'sign1of2'})
-                }
-            })
-            .catch((e) => {
-                //eventually need to add front end feedback here rather than send to fatal error screen
-                store.commit('setDebug', `Error generating PSBT: ${e}`)
-                if(e.includes("Fee estimation failed.")){
-                    this.feeEstimate = false
                 }else{
                     store.commit('setErrorMessage', `Error generating PSBT. Error code: ImmediateSend1 Response: ${e}`)
                     this.$router.push({ name: 'Error' })
