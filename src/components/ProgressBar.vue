@@ -21,9 +21,6 @@ export default{
     name: 'ProgressBar',
     methods: {},
     computed: {
-        currentHW(){
-        return store.getters.getcurrentHW
-      },
       setupStage(){
         return store.getters.getSetupStage
       }

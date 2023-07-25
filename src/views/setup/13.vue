@@ -25,7 +25,7 @@ export default {
     ProgressBar
   },
   computed:{
-        currentHW(){
+    currentHW(){
             return store.getters.getCurrentHW
         }
     },

@@ -71,7 +71,7 @@ export default{
         delayedBalance(){
         return store.getters.getDelayedBalance
         },
-        currentHW(){
+        hwNumber(){
         return store.getters.getcurrentHW
       },
     },
