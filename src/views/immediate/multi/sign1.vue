@@ -46,7 +46,7 @@ export default {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
             this.loading = true
-            invoke('sign_funded_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString(), progress: "1of2"}).then((res) => {
+            invoke('sign_funded_psbt', {walletname: "immediate", hwnumber: this.hwNumber.toString(), progress: "1of2"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Signing PSBT...')
                 if(this.immediateDecay == false){
@@ -76,8 +76,10 @@ export default {
         }
     },
     computed:{
-        currentHW(){
-            return store.getters.getcurrentHW
+        hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
         },
         immediateDecay(){
             return store.getters.getImmediateDecay
@@ -86,7 +88,7 @@ export default {
     mounted(){
         store.commit('setLoadMessage', 'Decoding PSBT...')
         //this obtains the fee
-        invoke('decode_funded_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
+        invoke('decode_funded_psbt', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
             console.log('decoding funded psbt')
             store.commit('setDebug', `decoded psbt: ${res}`)
             const parts = res.split(",")

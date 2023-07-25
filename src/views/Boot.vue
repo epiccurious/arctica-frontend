@@ -7,7 +7,7 @@ the second conditional rendering below appears if the user has booted from HW 2-
 </div>
 
 <div v-else>
-  <div v-if="this.currentHW == 0" class="login">
+  <div v-if="this.hwNumber == 0" class="login">
     <header>
       <h1>Welcome to Arctica</h1>
       <h2>If you have already set up Arctica, please insert Hardware Wallet 1 and restart this machine.</h2>
@@ -173,9 +173,11 @@ export default {
         },
         },
   computed:{
-    currentHW(){
-      return store.getters.getcurrentHW
-    },
+    hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
+        },
     setupStep(){
       return store.getters.getSetupStep
     },

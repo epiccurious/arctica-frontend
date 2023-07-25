@@ -57,14 +57,14 @@ export default {
                         invoke('unpack').then((res) => {
                             store.commit('setDebug', `successfully unpacked: ${res}`)
                             store.commit('setLoadMessage', 'Loading Immediate wallet...')
-                            console.log('immediate_wallet', this.currentHW)
-                            invoke('load_wallet', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res) =>{
+                            console.log('immediate_wallet', this.hwNumber)
+                            invoke('load_wallet', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res) =>{
                                 store.commit('setDebug', `Loaded Immediate Wallet: ${res}`)
                                 store.commit('setLoadMessage', 'Loading delayed wallet...')
-                                invoke('load_wallet', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res) =>{
+                                invoke('load_wallet', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res) =>{
                                     store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
                                     store.commit('setLoadMessage', 'Packing up sensitive info...')
-                                    invoke('packup', {hwnumber: this.currentHW.toString()}).then((res) => {
+                                    invoke('packup', {hwnumber: this.hwNumber.toString()}).then((res) => {
                                         store.commit('setDebug', `successfully packed up: ${res}`)
                                         store.commit('setDebug', 'Login succesful, checking CD for psbt')
                                         store.commit('setLoadMessage', 'checking for PSBT...')
@@ -183,9 +183,11 @@ export default {
         },
     },
  computed: {
-    currentHW(){
-        return store.getters.getcurrentHW
-      },
+    hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
+        },
  },
  data(){
      return{

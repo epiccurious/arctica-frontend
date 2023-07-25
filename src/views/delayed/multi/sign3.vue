@@ -45,7 +45,7 @@ export default {
         sign(){
             store.commit('setLoadMessage', 'Signing PSBT...')
             this.loading = true
-            invoke('sign_processed_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString(), progress: "3of5"}).then((res) => {
+            invoke('sign_processed_psbt', {walletname: "delayed", hwnumber: this.hwNumber.toString(), progress: "3of5"}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Refreshing Transfer CD...')
                 invoke('export_psbt', {progress: "3of5"}).then((res) => {
@@ -75,8 +75,10 @@ export default {
         }
     },
     computed:{
-        currentHW(){
-            return store.getters.getcurrentHW
+        hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
         },
         delayedDecay(){
             return store.getters.getDelayedDecay
@@ -94,10 +96,10 @@ export default {
                 store.commit('setDebug', `starting Bitcoin Daemon: ${res}`)
                 store.commit('setLoadMessage', `Loading delayed wallet...`)
                 //load immediate wallet
-                invoke('load_wallet', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
+                invoke('load_wallet', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res)=>{
                     store.commit('setDebug', `loading delayed wallet: ${res}`)
                     store.commit('setLoadMessage', 'Decoding PSBT...')
-                    invoke('decode_processed_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
+                    invoke('decode_processed_psbt', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res)=>{
                         console.log('decoding raw tx')
                         store.commit('setDebug', `decoded psbt: ${res}`)
                         const parts = res.split(",")

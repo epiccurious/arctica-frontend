@@ -53,9 +53,6 @@ export default {
 
     },
     computed:{
-        currentHW(){
-            return store.getters.getcurrentHW
-        },
     },
     data(){
         return{

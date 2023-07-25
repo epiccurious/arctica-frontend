@@ -15,7 +15,7 @@
             </div>
         </form>
         <div class="btn_container"> 
-            <button v-if="this.currentHW == 7 && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
+            <button v-if="this.hwNumber == 7 && checkbox" @click="acknowledge()" class="btn">Proceed</Button>
             <button v-else @click="warn()" class="btn3">Proceed</Button>
         </div>
     </div> 
@@ -83,7 +83,7 @@ export default {
                     store.commit('setDebug', `creating descriptors ${res}`)
                     store.commit('setLoadMessage', 'Packing up sensitive data...')
                     //make sure sensitive contains everything it should before packup()
-                    invoke('packup', {hwnumber: this.currentHW.toString()}).then((res) => {
+                    invoke('packup', {hwnumber: this.hwNumber.toString()}).then((res) => {
                         store.commit('setDebug', `packing up sensitive info ${res}`)
                         invoke('eject_cd').then((res)=>{
                             store.commit('setDebug', `ejecting CD: ${res}`)
@@ -118,9 +118,11 @@ export default {
         }
     },
         computed:{
-        currentHW(){
-            return store.getters.getcurrentHW
-        }
+            hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
+        },
     }
 }
 </script>

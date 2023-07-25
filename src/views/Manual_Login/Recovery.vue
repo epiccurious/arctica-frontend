@@ -6,24 +6,24 @@
   <div class="page">
     <header>
     </header>
-    <div v-if="this.currentHW == 1 && this.numberToRecover == 5" class="btn_container">
+    <div v-if="this.hwNumber == 1 && this.numberToRecover == 5" class="btn_container">
       <h1>In order to manually recover you will need access to 2-3 additional Hardware Wallets.</h1>
         <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
     <!-- Eventually every option below this point needs to be fetching privacy keys from blockchain and adding them to shards dir -->
-    <div v-else-if="this.currentHW == 1 && this.numberToRecover == 4" class="btn_container"> 
+    <div v-else-if="this.hwNumber == 1 && this.numberToRecover == 4" class="btn_container"> 
       <h1>In order to manually recover you will need access to 1-2 additional Hardware Wallets.</h1>
       <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
-    <div v-else-if="this.currentHW == 1 && this.numberToRecover == 3" class="btn_container">
+    <div v-else-if="this.hwNumber == 1 && this.numberToRecover == 3" class="btn_container">
       <h1>In order to manually recover you will need access to 1 additional Hardware Wallet.</h1>
         <button @click="acknowledge()" class="btn">Proceed</Button>
     </div>
-    <div v-else-if="this.currentHW == 1 && this.numberToRecover <= 2" class="btn_container">
+    <div v-else-if="this.hwNumber == 1 && this.numberToRecover <= 2" class="btn_container">
       <h1>Enough of your privacy keys have decayed that you may login without a passphrase.</h1>
         <button @click="login()" class="btn">Login</Button>
     </div>
-    <div v-else-if="this.currentHW != 1" class="btn_container">
+    <div v-else-if="this.hwNumber != 1" class="btn_container">
       <h1>In order to begin manual recovery you must be on Hardware Wallet 1.</h1>
     </div>
 
@@ -48,9 +48,11 @@
         numberToRecover(){
           return store.getters.getNumberToRecover
         },
-        currentHW(){
-          return store.getters.getcurrentHW
-        }
+        hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
+        },
       }
     }
   </script>

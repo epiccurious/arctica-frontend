@@ -28,9 +28,6 @@ export default {
     hwNumber:{
             get(){
                 return store.getters.getcurrentHW
-            },
-            set(newVal){
-                store.commit('setcurrentHW', newVal)
             }
         },
     },

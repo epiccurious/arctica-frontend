@@ -51,7 +51,7 @@ export default {
     methods: {
         login(){
             //normal login path, takes the user to the main dashboard
-            if(this.decrypted == true && this.currentHW == 1){
+            if(this.decrypted == true && this.hwNumber == 1){
               store.commit('setDebug', 'masterkey found in ramdisk, unpacking & sending user to dashboard')
               this.loading = true
               //unpacking sensitive dir
@@ -59,12 +59,12 @@ export default {
               invoke('unpack').then((res)=>{
                 store.commit('setDebug', `unpacking sensitive dir ${res}`)
                 store.commit('setLoadMessage', 'Loading immediate wallet...')
-                invoke('load_wallet', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res) =>{
+                invoke('load_wallet', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res) =>{
                     store.commit('setDebug', `Loaded Immediate Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Loading delayed wallet...')
-                    invoke('load_wallet', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res) =>{
+                    invoke('load_wallet', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res) =>{
                         store.commit('setDebug', `Loaded Delayed Wallet: ${res}`)
-                        invoke('packup', {hwnumber: this.currentHW.toString()}).then((res) => {
+                        invoke('packup', {hwnumber: this.hwNumber.toString()}).then((res) => {
                           store.commit('setDebug', `successfully packed up: ${res}`)
                           this.loading = false
                           store.commit('setDebug', 'Login button pushed Sending user to dashboard')
@@ -99,7 +99,7 @@ export default {
               this.$router.push({ name: 'BPS_Bricked' })
             }
             //user is logging in with attic key, this is at at the very end of the logic loop here intentionally
-            else if(this.currentHW == 1){
+            else if(this.hwNumber == 1){
               store.commit('setDebug', 'Sending user to Login')
               this.$router.push({ name: 'Login'})
             }
@@ -137,9 +137,14 @@ export default {
       privacyKeysFound(){
         return store.getters.getPrivacyKeysFound
       },
-      currentHW(){
-        return store.getters.getcurrentHW
-      },
+      hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            },
+            set(newVal){
+                store.commit('setcurrentHW', newVal)
+            }
+        },
       bpsBricked(){
         return store.getters.getBPSBricked
       },
@@ -177,8 +182,8 @@ export default {
             //check config for current HW
             if (String(it[0]).toUpperCase() == 'HWNUMBER'){
               store.commit('setcurrentHW', parseInt(it[1]))
-              this.currentHW == store.getters.getcurrentHW
-              store.commit('setDebug', `HW NUMBER successfully set to: ${this.currentHW}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
+              this.hwNumber == store.getters.getcurrentHW
+              store.commit('setDebug', `HW NUMBER successfully set to: ${this.hwNumber}; key: ${String(it[0]).toUpperCase()} value: ${it[1]}`)
             }
             //check config for current setup step
             else if(String(it[0]).toUpperCase() == 'SETUPSTEP'){
@@ -204,7 +209,7 @@ export default {
         //if user has completed initial setup and booted from a Hardware Wallet, mount internal disk and symlink .bitcoin folders..
         //we MAY be better off removing this as if decrypted was true we assumed the ramdisk already exists above and thus we could probably also assume 
         //that bitcoin core is already running properly and sync MAY have already occurred, in which case running sync again is superfluous. 
-        if(this.currentHW == 1 && this.setupStep == 0){
+        if(this.hwNumber == 1 && this.setupStep == 0){
           store.commit('setDebug', 'current HW = 1 and setupStep = 0 conditional met, invoking mount internal')
           this.loading = true
           store.commit('setLoadMessage', 'Mounting the internal drive...')
@@ -228,87 +233,87 @@ export default {
             this.$router.push({ name: 'Error' })
             })
         //user is booted on HW 2-7 and has completed setup
-        } else if(this.currentHW != 0 && this.setupStep == 0){
+        } else if(this.hwNumber != 0 && this.setupStep == 0){
           store.commit('setDebug', 'current HW !=0 and setupStep = 0 conditional met')
         }
         //initial set up step redirects
-        if(this.setupStep == 1 && this.currentHW == 1){
+        if(this.setupStep == 1 && this.hwNumber == 1){
             store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 1 found, redirecting user to setup12')
             this.$router.push({ name: 'Setup12' })  
         }
-        else if(this.setupStep == 2 && this.currentHW == 2){
+        else if(this.setupStep == 2 && this.hwNumber == 2){
             store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 2 found, redirecting user to setup14a')
             this.$router.push({ name: 'Setup14a' })
         }
-        else if(this.setupStep == 3 && this.currentHW == 3){
+        else if(this.setupStep == 3 && this.hwNumber == 3){
             store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 3 found, redirecting user to setup15a')
             this.$router.push({ name: 'Setup15a' })
         }
-        else if(this.setupStep == 4 && this.currentHW == 4){
+        else if(this.setupStep == 4 && this.hwNumber == 4){
             store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 4 found, redirecting user to setup16')
             this.$router.push({ name: 'Setup16' })
         }
-        else if(this.setupStep == 5 && this.currentHW == 5){
+        else if(this.setupStep == 5 && this.hwNumber == 5){
             store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 5 found, redirecting user to setup18a')
             this.$router.push({ name: 'Setup18a' })
         }
-        else if(this.setupStep == 6 && this.currentHW == 6){
+        else if(this.setupStep == 6 && this.hwNumber == 6){
             store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 6 found, redirecting user to setup19a')
             this.$router.push({ name: 'Setup19a' })
         }
-        else if(this.setupStep == 7 && this.currentHW == 7){
+        else if(this.setupStep == 7 && this.hwNumber == 7){
             store.commit('setSetupStage', 2)
             store.commit('setDebug', 'setup step 7 found, redirecting user to setup20a')
             this.$router.push({ name: 'Setup20a' })
         }
-        else if(this.setupStep == 8 && this.currentHW == 1){
+        else if(this.setupStep == 8 && this.hwNumber == 1){
             store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 8 found, redirecting user to setup21')
             this.$router.push({ name: 'Setup21' })
         }
-        else if(this.setupStep == 9 && this.currentHW == 2){
+        else if(this.setupStep == 9 && this.hwNumber == 2){
             store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 9 found, redirecting user to setup27a')
             this.$router.push({ name: 'Setup27a' })
         }
-        else if(this.setupStep == 10 && this.currentHW == 3){
+        else if(this.setupStep == 10 && this.hwNumber == 3){
             store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 10 found, redirecting user to setup31a')
             this.$router.push({ name: 'Setup31a' })
         }
-        else if(this.setupStep == 11 && this.currentHW == 4){
+        else if(this.setupStep == 11 && this.hwNumber == 4){
             store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 11 found, redirecting user to setup35a')
             this.$router.push({ name: 'Setup35a' })
         }
-        else if(this.setupStep == 12 && this.currentHW == 5){
+        else if(this.setupStep == 12 && this.hwNumber == 5){
             store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 12 found, redirecting user to setup39a')
             this.$router.push({ name: 'Setup39a' })
         }
-        else if(this.setupStep == 13 && this.currentHW == 6){
+        else if(this.setupStep == 13 && this.hwNumber == 6){
             store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 13 found, redirecting user to setup43a')
             this.$router.push({ name: 'Setup43a' })
         }
-        else if(this.setupStep == 14 && this.currentHW == 7){
+        else if(this.setupStep == 14 && this.hwNumber == 7){
             store.commit('setSetupStage', 3)
             store.commit('setDebug', 'setup step 14 found, redirecting user to setup47a')
             this.$router.push({ name: 'Setup47a' })
         }
-        else if(this.setupStep == 15 && this.currentHW == 1){
+        else if(this.setupStep == 15 && this.hwNumber == 1){
           store.commit('setSetupStage', 4)
           store.commit('setDebug', 'setup step 15 found, redirecting user to setup50b')
           this.$router.push({ name: 'Setup50b' })
         }
         //redirect user to boot screen if they have HW 2-7 or no HW inserted
-        else if(this.currentHW != 1){
+        else if(this.hwNumber != 1){
           store.commit('setDebug', 'Hardware Wallet 1 not detected, redirecting to boot screen')
           this.$router.push({ name:'Boot' })
         }

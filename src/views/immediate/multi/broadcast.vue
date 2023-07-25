@@ -46,7 +46,7 @@ export default {
         broadcast(){
             this.loading = true
             store.commit('setLoadMessage', 'Broadcasting transaction...')
-            invoke('broadcast_tx', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
+            invoke('broadcast_tx', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
                     store.commit('setDebug', `Broadcasting Fully Signed TX: ${res}`)
                     this.loading = false
                     this.$router.push({ name: 'immediateConfirmation' })
@@ -63,13 +63,15 @@ export default {
         },
     },
     computed:{
-        currentHW(){
-            return store.getters.getcurrentHW
+        hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
         },
     },
     mounted(){
                 store.commit('setLoadMessage', `decoding PSBT...`)
-                invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.currentHW.toString()}).then((res)=>{
+                invoke('decode_processed_psbt', {walletname: "immediate", hwnumber: this.hwNumber.toString()}).then((res)=>{
                          //expected path, return the tx info and display on front end
                             store.commit('setDebug', `decoded psbt: ${res}`)
                             const parts = res.split(",")

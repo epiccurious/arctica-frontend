@@ -67,7 +67,7 @@ export default {
                 progressStr = "5of5"
             }
             //sign the psbt
-            invoke('sign_funded_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString(), progress: progressStr}).then((res) => {
+            invoke('sign_funded_psbt', {walletname: "delayed", hwnumber: this.hwNumber.toString(), progress: progressStr}).then((res) => {
                 store.commit('setDebug', `Signing PSBT: ${res}`)
                 store.commit('setLoadMessage', 'Signing PSBT...')
                 //if the wallet is not yet fully decayed, send the user to transfer
@@ -99,8 +99,10 @@ export default {
         }
     },
     computed:{
-        currentHW(){
-            return store.getters.getcurrentHW
+        hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
         },
         delayedDecay(){
             return store.getters.getDelayedDecay
@@ -109,7 +111,7 @@ export default {
     mounted(){
         store.commit('setLoadMessage', 'Decoding PSBT...')
         //this obtains the fee
-        invoke('decode_funded_psbt', {walletname: "delayed", hwnumber: this.currentHW.toString()}).then((res)=>{
+        invoke('decode_funded_psbt', {walletname: "delayed", hwnumber: this.hwNumber.toString()}).then((res)=>{
             console.log('decoding funded psbt')
             store.commit('setDebug', `decoded psbt: ${res}`)
             const parts = res.split(",")

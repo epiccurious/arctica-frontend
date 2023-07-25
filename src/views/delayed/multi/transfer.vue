@@ -69,9 +69,6 @@ export default {
 
     },
     computed:{
-        currentHW(){
-            return store.getters.getcurrentHW
-        },
         delayedDecay(){
             return store.getters.getDelayedDecay
         }

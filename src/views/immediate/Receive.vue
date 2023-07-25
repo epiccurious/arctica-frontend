@@ -53,7 +53,7 @@ export default {
               })
             },
         newAddress(){            
-            invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
+            invoke('get_address', {walletname: this.wallet, hwnumber:this.hwNumber.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
         })
@@ -82,13 +82,15 @@ export default {
       }
   },
   computed: {
-    currentHW(){
-        return store.getters.getcurrentHW
-      },
+    hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
+        },
   },
 
   mounted(){
-    invoke('get_address', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
+    invoke('get_address', {walletname: this.wallet, hwnumber:this.hwNumber.toString()}).then((res)=>{
             store.commit('setDebug', `getting new address for immediate wallet: ${res}`)
             this.address = res
         })

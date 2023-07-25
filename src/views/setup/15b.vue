@@ -27,9 +27,11 @@
     ProgressBar
   },
       computed:{
-        currentHW(){
-            return store.getters.getCurrentHW
-        }
+        hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            }
+        },
     },
         mounted(){
         this.loading = true
@@ -39,7 +41,7 @@
             store.commit('setDebug', `reading setup CD ${res}`)
             store.commit('setLoadMessage', 'Creating Bitcoin Wallet...')
             //create xpriv and xpub
-            invoke('generate_store_key_pair', {number: this.currentHW.toString()}).then((res)=>{
+            invoke('generate_store_key_pair', {number: this.hwNumber.toString()}).then((res)=>{
                     store.commit('setDebug', `Generating Wallet: ${res}`)
                     store.commit('setLoadMessage', 'Distributing privacy keys...')
                     //distribute 2 shards onto HW 3 from setupCD dir
@@ -60,7 +62,7 @@
                                                 //update setupstep state on Hardware Wallet
                                                 invoke('async_write', {name: 'setupStep', value: this.setupStep}).then((res) => {
                                                     store.commit('setDebug', `config set to new values setupStep: ${this.setupStep} res:${res}`)
-                                                    invoke('packup', {hwnumber: this.currentHW.toString()}).then((res) =>{
+                                                    invoke('packup', {hwnumber: this.hwNumber.toString()}).then((res) =>{
                                                     store.commit('setDebug', `packing up sensitive... ${res}`)
                                                     this.loading = false
                                                     }).catch((e)=>{
