@@ -16,9 +16,6 @@ import { RouterView, RouterLink } from "vue-router";
   RouterView;
   RouterLink
 }
-import store from '../store.js'
-
-
 
 export default{
     name: 'Nav',
