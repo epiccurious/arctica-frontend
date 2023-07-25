@@ -25,16 +25,21 @@ export default {
     ProgressBar
   },
   computed:{
-    currentHW(){
-            return store.getters.getCurrentHW.toString()
-        }
+    hwNumber:{
+            get(){
+                return store.getters.getcurrentHW
+            },
+            set(newVal){
+                store.commit('setcurrentHW', newVal)
+            }
+        },
     },
     mounted(){
       this.loading = true
       store.commit('setLoadMessage', 'Packing up sensitive info...')
       invoke('stop_bitcoind').then((res)=>{
             store.commit('setDebug', `stopping bitcoin daemon ${res}`)
-            invoke('packup', {hwnumber: this.currentHW}).then((res) =>{
+            invoke('packup', {hwnumber: this.hwNumber.toString()}).then((res) =>{
                 store.commit('setDebug', `packing up sensitive ${res}`)
                 this.loading=false
         }).catch((e)=>{
