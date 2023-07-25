@@ -6,9 +6,6 @@
             <router-link v-if="settings" class="icons" :to="{ name: 'settings' }"><img src="@/assets/settings_selected.png"></router-link>
             <router-link v-else class="icons" :to="{ name: 'settings' }"><img src="@/assets/settings.png"></router-link>
         </div>
-        <!-- <div class="refresh_container">
-            <RefreshIcon @click="sync()" style="height:5px;width:5px;color:black" />
-        </div> -->
     </div>
 </template>
 
@@ -25,16 +22,7 @@ import store from '../store.js'
 
 export default{
     name: 'Nav',
-    methods: {
-        sync(){
-                // invoke('get_balance', {walletname: this.wallet, hwnumber:this.currentHW.toString()}).then((res)=>{
-                //     store.commit('setDebug', `getting balance for immediate wallet: ${res}`)
-                //     store.commit('setImmediateBalance', `${parseInt(res)}`)
-                // }).catch((e)=>{
-                // store.commit('setDebug', `error getting immediate wallet balance ${e}`)
-                //  })
-    },
-},
+    methods: {},
     computed: {
         dash(){
             if(this.$route.path =='/wallets'){
@@ -50,15 +38,7 @@ export default{
                 return false
             }
         }, 
-        currentHW(){
-        return store.getters.getcurrentHW
-      },
     },
-    data(){
-      return{
-          wallet: "immediate"
-      }
-  },
     }
 </script>
 

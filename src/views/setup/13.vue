@@ -26,7 +26,7 @@ export default {
   },
   computed:{
     currentHW(){
-            return store.getters.getCurrentHW
+            return store.getters.getCurrentHW.toString()
         }
     },
     mounted(){
@@ -34,7 +34,7 @@ export default {
       store.commit('setLoadMessage', 'Packing up sensitive info...')
       invoke('stop_bitcoind').then((res)=>{
             store.commit('setDebug', `stopping bitcoin daemon ${res}`)
-            invoke('packup', {hwnumber: this.currentHW.toString()}).then((res) =>{
+            invoke('packup', {hwnumber: this.currentHW}).then((res) =>{
                 store.commit('setDebug', `packing up sensitive ${res}`)
                 this.loading=false
         }).catch((e)=>{
