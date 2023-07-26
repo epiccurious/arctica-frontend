@@ -4,7 +4,7 @@
     </div>
     <div v-else class="page">
         <header>
-        <h1>Hardware Wallet 3 creation complete</h1>
+        <h1>Key Generation for Wallet 3 complete</h1>
          <h2>Please remove HW 3 and remove the set up CD.</h2>
         <h2>Please move to your secondary machine and power it off, insert HW 4 and power on the machine.</h2>
         </header> 
