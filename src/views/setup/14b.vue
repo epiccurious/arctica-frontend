@@ -40,7 +40,7 @@ export default {
             store.commit('setDebug', `reading setup CD ${res}`)
             store.commit('setLoadMessage', 'Creating Bitcoin Wallet...')
             //create xpriv and xpub
-            invoke('generate_store_key_pair', {number: this.hwNumber}).then((res)=>{
+            invoke('generate_store_key_pair', {number: this.hwNumber.toString()}).then((res)=>{
                 store.commit('setDebug', `Generating Wallet: ${res}`)
                 store.commit('setLoadMessage', 'Distributing privacy keys...')
                 //distribute 2 shards onto HW 2 from setupCD dir
@@ -95,7 +95,7 @@ export default {
                     this.$router.push({ name:'Error' })
                 })
             }).catch((e)=>{
-                store.commit('setDebug', `generate_store_keypair error ${e}`)
+                store.commit('setDebug', `generate_store_key_pair error ${e}`)
                 store.commit('setErrorMessage', `Error generating and storing keypair Error code: Setup14b-6 Response: ${e}`)
                 this.$router.push({ name:'Error' })
             })
