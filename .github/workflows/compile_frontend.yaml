@@ -2,9 +2,9 @@ name: Compile arctica-frontend CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "actionstest" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "actionstest" ]
 
   workflow_dispatch:
 
@@ -14,7 +14,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [12.x, 12.22.9]
+        node-version: [12.x, 12.22.9, 14.x, 14.6.0]
 
     steps:
       - uses: actions/checkout@v3
